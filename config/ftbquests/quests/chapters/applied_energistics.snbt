@@ -1379,7 +1379,7 @@
 			invisible: true
 			tasks: [{
 				id: "76B74EE25F58E344"
-				title: "{quest.ae2.positioner.checkmarkdesc}"
+				title: "{quest.positioner.checkmarkdesc}"
 				type: "checkmark"
 			}]
 			x: 0.0d
