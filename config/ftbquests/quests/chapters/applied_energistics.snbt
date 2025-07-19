@@ -373,7 +373,7 @@
 					type: "item"
 				}
 			]
-			title: "GregTech ME hatches"
+			title: "{quest.ae2.gregtech_me_hatches.title}"
 			x: -3.0d
 			y: 7.0d
 		}
@@ -451,7 +451,7 @@
 					type: "item"
 				}
 			]
-			title: "Infinity Cells"
+			title: "{quest.ae2.infinity_cells.title}"
 			x: -3.0d
 			y: -7.0d
 		}
@@ -637,7 +637,7 @@
 					type: "item"
 				}
 			]
-			title: "Printed Circuits"
+			title: "{quest.ae2.printed_circuits.title}"
 			x: 5.0d
 			y: -3.0d
 		}
@@ -678,7 +678,7 @@
 						]
 					}
 				}
-				title: "ME Assembler"
+				title: "{quest.ae2.me_assembler.title}"
 				type: "item"
 			}]
 			x: 1.0d
@@ -704,7 +704,7 @@
 					type: "item"
 				}
 			]
-			title: "Skystone Alloys"
+			title: "{quest.ae2.skystone_alloys.title}"
 			x: 7.0d
 			y: -3.0d
 		}
@@ -779,7 +779,7 @@
 					type: "item"
 				}
 			]
-			title: "Cheaper Cores"
+			title: "{quest.ae2.cheaper_cores.title}"
 			x: 1.0d
 			y: -1.0d
 		}
@@ -857,7 +857,7 @@
 					type: "item"
 				}
 			]
-			title: "Netherite Skystone Alloys"
+			title: "{quest.ae2.netherite_skystone_alloys.title}"
 			x: 5.0d
 			y: -5.0d
 		}
@@ -884,7 +884,7 @@
 				item: "gtceu:large_me_assembler"
 				type: "item"
 			}]
-			title: "Large ME Assembler"
+			title: "{quest.ae2.large_me_assembler.title}"
 			x: -1.0d
 			y: 5.0d
 		}
@@ -988,7 +988,7 @@
 					type: "item"
 				}
 			]
-			title: "Quantum Network Bridge"
+			title: "{quest.ae2.quantum_network_bridge.title}"
 			x: 5.0d
 			y: 7.0d
 		}
@@ -1028,9 +1028,9 @@
 		{
 			dependencies: ["534F27BC96F104A2"]
 			description: [
-				"Terminals allow you to see what is happening inside your network, and interact with it."
+				"{quest.ae2.me_terminals.desc.1}"
 				""
-				"We recommend instantly upgrading to a crafting terminal, as they are extremely convenient."
+				"{quest.ae2.me_terminals.desc.2}"
 			]
 			id: "3FC037156B8DB553"
 			tasks: [
@@ -1045,7 +1045,7 @@
 					type: "item"
 				}
 			]
-			title: "ME Terminals"
+			title: "{quest.ae2.me_terminals.title}"
 			x: 11.0d
 			y: 3.0d
 		}
@@ -1078,9 +1078,9 @@
 				"372842AD602BB1BF"
 			]
 			description: [
-				"Patterns are the key to autocrafting with AE2."
+				"{quest.ae2.autocrafting.desc.1}"
 				""
-				"They store the recipes that you want to craft, and when you put them in a pattern provider, AE2 will see how to craft that item."
+				"{quest.ae2.autocrafting.desc.2}"
 			]
 			id: "54D3F6BC8F7BC609"
 			tasks: [{
@@ -1088,7 +1088,7 @@
 				item: "ae2:blank_pattern"
 				type: "item"
 			}]
-			title: "AE2 Autocrafting"
+			title: "{quest.ae2.autocrafting.title}"
 			x: 11.0d
 			y: -1.0d
 		}
@@ -1190,7 +1190,7 @@
 					type: "item"
 				}
 			]
-			title: "ME Extended Import/Export Bus"
+			title: "{quest.ae2.extended_buses.title}"
 			x: -9.0d
 			y: 5.0d
 		}
@@ -1313,7 +1313,7 @@
 						]
 					}
 				}
-				title: "Spatial Storage"
+				title: "{quest.ae2.spatial_storage.title}"
 				type: "item"
 			}]
 			x: -3.0d
@@ -1357,7 +1357,7 @@
 			id: "45EA9095FAF7DDD6"
 			tasks: [{
 				id: "1BEA9D6C9EB86103"
-				title: "Extended Machines"
+				title: "{quest.ae2.extended_machines.checkmarkdesc}"
 				type: "checkmark"
 			}]
 			x: -7.0d
@@ -1368,7 +1368,7 @@
 			id: "083D06BEA8E39628"
 			tasks: [{
 				id: "473655F43587CB20"
-				title: "Mega Machines"
+				title: "{quest.ae2.mega_machines.checkmarkdesc}"
 				type: "checkmark"
 			}]
 			x: -11.0d
@@ -1379,7 +1379,7 @@
 			invisible: true
 			tasks: [{
 				id: "76B74EE25F58E344"
-				title: "positioner"
+				title: "{quest.ae2.positioner.checkmarkdesc}"
 				type: "checkmark"
 			}]
 			x: 0.0d
@@ -1423,7 +1423,7 @@
 					type: "item"
 				}
 			]
-			title: "Assembler Matrix"
+			title: "{quest.ae2.assembler_matrix.title}"
 			x: -11.0d
 			y: 3.0d
 		}

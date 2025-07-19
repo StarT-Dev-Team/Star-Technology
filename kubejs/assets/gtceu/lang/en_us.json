@@ -1167,13 +1167,29 @@
   "quest.abydos.naquadah_armor.desc": "Not much use on their own but they may hold the secret to stronger things",
   "quest.abydos.naquadah_armor.title": "Ancient Armors",
   "quest.abydos.title": "Adventures in Abydos",
-//  "": "",
-//  "": "",
-//  "": "",
-//  "": "",
-//  "": "",
-//  "": "",
-//  "": "",
-//  "": "",
-//  "": ""
+
+  // AE2
+
+  "quest.ae2.gregtech_me_hatches.title": "GregTech ME hatches",
+  "quest.ae2.infinity_cells.title": "Infinity Cells",
+  "quest.ae2.printed_circuits.title": "Printed Circuits",
+  "quest.ae2.me_assembler.title": "ME Assembler",
+  "quest.ae2.skystone_alloys.title": "Skystone Alloys",
+  "quest.ae2.cheaper_cores.title": "Cheaper Cores",
+  "quest.ae2.netherite_skystone_alloys.title": "Netherite Skystone Alloys",
+  "quest.ae2.large_me_assembler.title": "Large ME Assembler",
+  "quest.ae2.quantum_network_bridge.title": "Quantum Network Bridge",
+  "quest.ae2.me_terminals.desc.1": "Terminals allow you to see what is happening inside your network, and interact with it.",
+  "quest.ae2.me_terminals.desc.2": "We recommend instantly upgrading to a crafting terminal, as they are extremely convenient.",
+  "quest.ae2.me_terminals.title": "ME Terminals",
+  "quest.ae2.autocrafting.desc.1": "Patterns are the key to autocrafting with AE2.",
+  "quest.ae2.autocrafting.desc.2": "They store the recipes that you want to craft, and when you put them in a pattern provider, AE2 will see how to craft that item.",
+  "quest.ae2.autocrafting.title": "AE2 Autocrafting",
+  "quest.ae2.extended_buses.title": "ME Extended Import/Export Bus",
+  "quest.ae2.spatial_storage.title": "Spatial Storage",
+  "quest.ae2.extended_machines.checkmarkdesc": "Extended Machines",
+  "quest.ae2.mega_machines.checkmarkdesc": "Mega Machines",
+  "quest.ae2.positioner.checkmarkdesc": "positioner",
+  "quest.ae2.assembler_matrix.title": "Assembler Matrix",
+
 }
