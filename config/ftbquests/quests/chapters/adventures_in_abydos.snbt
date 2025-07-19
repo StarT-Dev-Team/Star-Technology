@@ -37,7 +37,7 @@
 	quests: [
 		{
 			dependencies: ["1FB502D770A4A59B"]
-			description: ["I hope the sand doesn't get in your machines."]
+			description: ["{quest.abydos.root.desc}"]
 			icon: {
 				Count: 1
 				id: "ftbquests:custom_icon"
@@ -53,10 +53,10 @@
 			}]
 			shape: "rsquare"
 			size: 1.5d
-			subtitle: "One step closer to home..."
+			subtitle: "{quest.abydos.root.subtitle}"
 			tasks: [{
 				id: "015668E3D80CF755"
-				title: "A new world!"
+				title: "{quest.abydos.root.checkmark}"
 				type: "checkmark"
 			}]
 			x: -2.5d
@@ -69,7 +69,7 @@
 				"73D0DC357821B395"
 				"588B98BE82BB689C"
 			]
-			description: ["A small computer that can regulate mechanisms."]
+			description: ["{quest.abydos.computational_matrix.desc}"]
 			id: "4DD3C38FCD8D704D"
 			rewards: [{
 				id: "0FA7D7BA54BC6792"
@@ -91,7 +91,7 @@
 				"73D0DC357821B395"
 				"4E761937069F4A8D"
 			]
-			description: ["A mechanism that can create rotation with large amounts of force."]
+			description: ["{quest.abydos.transmission_assembly.desc}"]
 			id: "06F8BF8FB54B3BEE"
 			rewards: [{
 				id: "6F4F9E0DD0FF5BD4"
@@ -113,7 +113,7 @@
 				"73D0DC357821B395"
 				"5C92E3705080A08C"
 			]
-			description: ["A mechanism that can do precise movements with directives."]
+			description: ["{quest.abydos.precision_mechanism.desc}"]
 			id: "0A321FE2FB18EA8B"
 			rewards: [{
 				id: "3F1880871D2A1F70"
@@ -134,7 +134,7 @@
 				"73D0DC357821B395"
 				"05B9D0B5977E3F05"
 			]
-			description: ["A valve that can measure the tiniest amounts of fluid and accurately dose them."]
+			description: ["{quest.abydos.flow_valve.desc}"]
 			id: "05EEBCD256194C78"
 			rewards: [{
 				id: "15E0AA677E224833"
@@ -157,7 +157,7 @@
 				"73D0DC357821B395"
 				"0D4EFA300817A74D"
 			]
-			description: ["A magnetic field controller."]
+			description: ["{quest.abydos.magnetic_core.desc}"]
 			id: "6D7188F8CA92DAAF"
 			rewards: [{
 				id: "0F419A2561844A0E"
@@ -178,7 +178,7 @@
 				"73D0DC357821B395"
 				"00B6B1AFD9AB29C3"
 			]
-			description: ["A sturdy core that can precisely regulate it's inner working environment."]
+			description: ["{quest.abydos.catalyst_core.desc}"]
 			id: "77E6700262CDB4E0"
 			rewards: [{
 				id: "577AB092403F0B3D"
@@ -200,7 +200,7 @@
 				"73D0DC357821B395"
 				"1D259520871C3A28"
 			]
-			description: ["A sturdy plating that can resist wear and tear from high stress machinery."]
+			description: ["{quest.abydos.high_strength_panel.desc}"]
 			id: "433B94A266536D86"
 			rewards: [{
 				id: "2C0891BA24962E56"
@@ -223,7 +223,7 @@
 				"73D0DC357821B395"
 				"05B9D0B5977E3F05"
 			]
-			description: ["A controller that can precisely regulate energy transfer."]
+			description: ["{quest.abydos.micropower_router.desc}"]
 			id: "7BBEB3C2DADBAD8B"
 			rewards: [{
 				id: "43BD55C54E2A6076"
@@ -240,7 +240,7 @@
 		}
 		{
 			dependencies: ["37E3EF96EDE85C86"]
-			description: ["The core component for crafting all components for &4UHV&r."]
+			description: ["{quest.abydos.zalloy.desc}"]
 			id: "6110BA7B3E84F06F"
 			rewards: [{
 				id: "61B75FB189A66E73"
@@ -257,7 +257,7 @@
 		}
 		{
 			dependencies: ["5BD0047E69D79476"]
-			description: ["An element used for alloys that can make excellent mechanical parts."]
+			description: ["{quest.abydos.selenium.desc}"]
 			id: "6A21CA0E47D6FA6F"
 			rewards: [{
 				id: "29BC3C059823221C"
@@ -274,7 +274,7 @@
 		}
 		{
 			dependencies: ["1BE69DB2DFDC35C8"]
-			description: ["An alloy used for sturdy mechanical components."]
+			description: ["{quest.abydos.zarcalloy.desc}"]
 			hide_dependent_lines: true
 			id: "0254109773A2D93C"
 			rewards: [{
@@ -443,7 +443,7 @@
 				"6A21CA0E47D6FA6F"
 				"14F1B40FACDDE02C"
 			]
-			description: ["An alloy that is extremely proficient in guiding electromagnetic fields."]
+			description: ["{quest.abydos.iron_selenide_over_strontium_titanium_oxide.desc}"]
 			hide_dependent_lines: true
 			id: "3A52F8061046CB05"
 			rewards: [{
@@ -461,7 +461,7 @@
 		}
 		{
 			dependencies: ["5BD0047E69D79476"]
-			description: ["A remnant of nuclear decay, possibly telling a story of what happened to this world."]
+			description: ["{quest.abydos.strontium.desc}"]
 			id: "14F1B40FACDDE02C"
 			rewards: [{
 				id: "7F4F27A1BE0CC9B6"
@@ -481,7 +481,7 @@
 				"6A21CA0E47D6FA6F"
 				"1BE69DB2DFDC35C8"
 			]
-			description: ["A new alloy that can control the flow of electricity with extreme precision."]
+			description: ["{quest.abydos.zirconium_selenide_diiodide.desc}"]
 			hide_dependent_lines: true
 			id: "512757BEBFD1F584"
 			rewards: [{
@@ -502,7 +502,7 @@
 				"179A15014A5716B5"
 				"7AC55BA8BDD0F3D2"
 			]
-			description: ["A new machine that can find treasures among the rubble."]
+			description: ["{quest.abydos.cyclonic_sifter.desc}"]
 			id: "1A8F645AC1B30411"
 			rewards: [{
 				count: 2
@@ -517,13 +517,13 @@
 				item: "gtceu:cyclonic_sifter"
 				type: "item"
 			}]
-			title: "1st &4&oUltimate&r Multiblock"
+			title: "{quest.abydos.cyclonic_sifter.title}"
 			x: -0.5d
 			y: 3.0d
 		}
 		{
 			dependencies: ["7AC55BA8BDD0F3D2"]
-			description: ["This machine mixes a liquid with 2 catalysts to put it in a more activated form."]
+			description: ["{quest.abydos.akreyrium_stabiliser.desc}"]
 			id: "5368269646BC0F27"
 			rewards: [{
 				id: "3E1E31EFB499CF8F"
@@ -540,7 +540,7 @@
 		}
 		{
 			dependencies: ["07AD6651D0B40E22"]
-			description: ["With these 2 machines you can massively increase the amount of Akreyrium you produce."]
+			description: ["{quest.abydos.injection_mixer.desc}"]
 			hide_dependent_lines: true
 			id: "7F203254ACDF8C88"
 			optional: true
@@ -561,7 +561,7 @@
 					type: "item"
 				}
 			]
-			title: "More &4&oUltimate&r Multiblocks"
+			title: "{quest.abydos.injection_mixer.title}"
 			x: 1.5d
 			y: 1.0d
 		}
@@ -570,7 +570,7 @@
 				"5368269646BC0F27"
 				"283F10E58CA1FCEB"
 			]
-			description: ["A weird fluid, that has some interesting properties making it necessary for more advanced machines."]
+			description: ["{quest.abydos.utopian_akreyrium.desc}"]
 			icon: {
 				Count: 1
 				id: "gtceu:utopian_akreyrium_bucket"
@@ -603,7 +603,7 @@
 		}
 		{
 			dependencies: ["305974D431F17AF0"]
-			description: ["By inputting a bacteria you are able to breed then so they multiply and get mutated copies so you can try to find the exact rates you are looking for. Higher mutability means more variance in its output."]
+			description: ["{quest.abydos.bacterial_breeding_vat.desc}"]
 			id: "6356F875511B2610"
 			rewards: [{
 				id: "6115048882C1189D"
@@ -624,7 +624,7 @@
 		}
 		{
 			dependencies: ["305974D431F17AF0"]
-			description: ["This is how you can extract the bacteria to get the resources you desire"]
+			description: ["{quest.abydos.bacterial_hydrocarbon_harvester.desc}"]
 			id: "47DF7968E9B98C65"
 			rewards: [{
 				id: "217E675CB4B89D49"
@@ -646,11 +646,11 @@
 		{
 			dependencies: ["6F05FAE3F5AAC357"]
 			description: [
-				"This machine can do 3 things."
-				"1. Reactivate the Dormant Bacteria to a usable form"
-				"2. Mutate bacteria so that it may have a new affinity"
-				"3. Mutate bacteria so that it may be a new type"
-				"With all of this and the breeder (more information there) you should be able to get the exact type of bacteria you desire."
+				"{quest.abydos.bacterial_runic_mutator.desc.1}"
+				"{quest.abydos.bacterial_runic_mutator.desc.2}"
+				"{quest.abydos.bacterial_runic_mutator.desc.3}"
+				"{quest.abydos.bacterial_runic_mutator.desc.4}"
+				"{quest.abydos.bacterial_runic_mutator.desc.5}"
 			]
 			id: "7F72F9E28713D965"
 			rewards: [{
@@ -676,8 +676,8 @@
 		{
 			dependencies: ["493DD013C818BB7B"]
 			description: [
-				"Go Explore the Scattered Temples of Abydos to find the things you are searching for."
-				"You might even find a &ltalisman&r powerful enough to stop the sands of Abydos from eroding you..."
+				"{quest.abydos.scattered_temples.desc.1}"
+				"{quest.abydos.scattered_temples.desc.2}"
 			]
 			id: "3479CEBD73550718"
 			rewards: [{
@@ -689,7 +689,7 @@
 				icon: "sgjourney:golden_idol"
 				id: "53D64E8D434ECA9C"
 				structure: "sgjourney:goauld_temple/desert_pyramid/desert_pyramid"
-				title: "Scattered Temples"
+				title: "{quest.abydos.scattered_temples.taskdesc}"
 				type: "structure"
 			}]
 			x: -0.5d
@@ -697,7 +697,7 @@
 		}
 		{
 			dependencies: ["3479CEBD73550718"]
-			description: ["A bacteria that is in a dormant state. Why was this stored with treasures?"]
+			description: ["{quest.abydos.bacteria_dormant.desc}"]
 			id: "6F05FAE3F5AAC357"
 			rewards: [{
 				id: "1C5C5256EB429800"
@@ -719,7 +719,7 @@
 		}
 		{
 			dependencies: ["7F72F9E28713D965"]
-			description: ["Awoken Bacteria. These come in all kinds of types and seem to produce some familiar liquids."]
+			description: ["{quest.abydos.bacterial_colonies.desc}"]
 			id: "305974D431F17AF0"
 			rewards: [{
 				id: "0707F4889D91098E"
@@ -758,13 +758,13 @@
 					type: "item"
 				}
 			]
-			title: "Bacterial Colonies"
+			title: "{quest.abydos.bacterial_colonies.title}"
 			x: 1.5d
 			y: -5.0d
 		}
 		{
 			dependencies: ["3479CEBD73550718"]
-			description: ["Find all the fragments to uncover hidden knowledge"]
+			description: ["{quest.abydos.runic_tablet_fragments.desc}"]
 			id: "5744150A5658FE4D"
 			rewards: [{
 				id: "615C650D39461500"
@@ -803,13 +803,13 @@
 					type: "item"
 				}
 			]
-			title: "Runic Tablet Fragments"
+			title: "{quest.abydos.runic_tablet_fragments.title}"
 			x: 1.5d
 			y: -1.0d
 		}
 		{
 			dependencies: ["5744150A5658FE4D"]
-			description: ["Soon more advanced technology is unveiled"]
+			description: ["{quest.abydos.runic_tablet_complete.desc}"]
 			id: "146F88E5C1119649"
 			rewards: [{
 				id: "2DDF7ACB3920B1DA"
@@ -829,7 +829,7 @@
 				"4D04123F036F181E"
 				"1BE69DB2DFDC35C8"
 			]
-			description: ["A new Stellarium alloy mixed with materials not normally found on your home isle."]
+			description: ["{quest.abydos.ancient_runicalium.desc}"]
 			id: "30C974448C57F0EC"
 			rewards: [{
 				id: "470268845820F4F7"
@@ -846,7 +846,7 @@
 		}
 		{
 			dependencies: ["30C974448C57F0EC"]
-			description: ["The &2UEV&r superconductor, can hold 256 amps in a 1x wire"]
+			description: ["{quest.abydos.uev_superconductor.desc}"]
 			id: "1C0B16612DBBE8CA"
 			rewards: [{
 				id: "7EE50E0E44FBAE00"
@@ -868,9 +868,9 @@
 				"5B91E94506FB37D6"
 			]
 			description: [
-				"A Fusion Reactor that can do parallels. Long gone are the days of excessive Fusion spam, now all you need to do is figure out how to efficiently wallshare these."
+				"{quest.abydos.aux_reactor.desc.1}"
 				""
-				"Auxiliary Fusion Reactors are special in that they can parallel using &6Absolute &3Parallel&r hatches. (Placed on the interior side of the controller)"
+				"{quest.abydos.aux_reactor.desc.2}"
 			]
 			id: "6C8C6EA426060065"
 			rewards: [{
@@ -895,7 +895,7 @@
 		}
 		{
 			dependencies: ["7AC55BA8BDD0F3D2"]
-			description: ["This beauty can harvest colossal amounts of air at once, and then also automatically distill it. Without a doubt, this multiblock is a must for getting to Ancient Gate."]
+			description: ["{quest.abydos.exotic_gas_siphon.desc}"]
 			id: "2659B3AA9108BC43"
 			rewards: [{
 				id: "518D145AEA79CC76"
@@ -912,7 +912,7 @@
 		}
 		{
 			dependencies: ["3540AE6C940F985B"]
-			description: ["A computer that can read data from a Draconic Coordinate Core."]
+			description: ["{quest.abydos.asg_computer_core.desc}"]
 			id: "34585406B4A18F41"
 			rewards: [{
 				count: 2
@@ -936,9 +936,9 @@
 				"5DADD2204991B4D5"
 			]
 			description: [
-				"The core of an Ancient Stargate."
+				"{quest.abydos.asg_base.desc.1}"
 				""
-				"This can accurately detect and use Chevrons to lock on planets far beyond Abydos."
+				"{quest.abydos.asg_base.desc.2}"
 			]
 			id: "6F9793149DE81FCC"
 			rewards: [{
@@ -967,9 +967,9 @@
 				"78117340F3D4549A"
 			]
 			description: [
-				"And here we go again, more Ring Blocks"
+				"{quest.abydos.asg_ring_block.desc.1}"
 				""
-				"Though this time, much stronger"
+				"{quest.abydos.asg_ring_block.desc.2}"
 			]
 			id: "5DADD2204991B4D5"
 			rewards: [{
@@ -996,7 +996,7 @@
 				"5DADD2204991B4D5"
 				"425A865B6B617DEC"
 			]
-			description: ["These Chevrons can lock in coordinates with far more precision then the previous generation."]
+			description: ["{quest.abydos.asg_chevron_block.desc}"]
 			id: "63E36421AE07BC42"
 			rewards: [{
 				id: "1E1781F6129AF097"
@@ -1019,7 +1019,7 @@
 		}
 		{
 			dependencies: ["442233119AED645F"]
-			description: ["A Chevron that can hold data for more advanced destinations."]
+			description: ["{quest.abydos.asg_chevron_disk.desc}"]
 			id: "425A865B6B617DEC"
 			rewards: [{
 				count: 2
@@ -1039,7 +1039,7 @@
 		}
 		{
 			dependencies: ["379D69A44FC5B2F2"]
-			description: ["So this is what makes the Gates Beyond Comprehension...."]
+			description: ["{quest.abydos.gate_assembly.desc}"]
 			id: "64F0BB858EEB7913"
 			rewards: [{
 				count: 2
@@ -1066,7 +1066,7 @@
 				"21188AF95E6D5030"
 				"5FAD11260BC2F305"
 			]
-			description: ["A core with the ability to find the smallest and largest traces of planets all over the Galaxy"]
+			description: ["{quest.abydos.draconic_coordinate_core.desc}"]
 			id: "3540AE6C940F985B"
 			rewards: [{
 				id: "4C923D283D3BE0EA"
@@ -1083,7 +1083,7 @@
 		}
 		{
 			dependencies: ["2D064F759D13FE4B"]
-			description: ["The path to the hellfires of the Nether, inscribed on a piece of whispering gemstone."]
+			description: ["{quest.abydos.nether_coordinate_crystal.desc}"]
 			id: "29DAE5F27A1D4115"
 			rewards: [{
 				id: "361187FB10BF0C39"
@@ -1100,7 +1100,7 @@
 		}
 		{
 			dependencies: ["2D064F759D13FE4B"]
-			description: ["The path to the shattered void of the End, inscribed on a piece of whispering gemstone."]
+			description: ["{quest.abydos.end_coordinate_crystal.desc}"]
 			id: "14479FB9FCF478D6"
 			rewards: [{
 				id: "2EFAEEDC5007A402"
@@ -1123,11 +1123,11 @@
 				"5DADD2204991B4D5"
 			]
 			description: [
-				"The gateway to the cold and lifeless abyss, and the burning fires of hell."
+				"{quest.abydos.nether.desc.1}"
 				""
 				""
 				""
-				"&oJust a recommendation, but don't take any valuable items with you the first time."
+				"{quest.abydos.nether.desc.2}"
 			]
 			icon: {
 				Count: 1
@@ -1221,19 +1221,19 @@
 					type: "item"
 				}
 			]
-			title: "The Ancient Gate"
+			title: "{quest.abydos.the_ancient_gate.desc}"
 			x: 11.5d
 			y: -3.5d
 		}
 		{
 			dependencies: ["47DF7968E9B98C65"]
-			description: ["Mutate and Breed Bacteria to fit your needs and help you gather all the hydrocarbons you could need."]
+			description: ["{quest.abydos.bacteria_hydrocarbons.desc}"]
 			icon: "gtceu:ethylbenzene_bucket"
 			id: "2F91771A1872EB4E"
 			optional: true
 			tasks: [{
 				id: "78C1C4C6A34B9E8B"
-				title: "Cheaper HydroCarbons"
+				title: "{quest.abydos.bacteria_hydrocarbons.checkmark_desc}"
 				type: "checkmark"
 			}]
 			x: -2.5d
@@ -1245,7 +1245,7 @@
 				"4A0AD203617FEF0E"
 				"7F203254ACDF8C88"
 			]
-			description: ["A core that can detect the smallest amounts of matter inside the vast nothingness of space."]
+			description: ["{quest.abydos.void_core.desc}"]
 			id: "5FAD11260BC2F305"
 			rewards: [{
 				id: "0433F422BDFFAF25"
@@ -1266,7 +1266,7 @@
 				"4A0AD203617FEF0E"
 				"7F203254ACDF8C88"
 			]
-			description: ["A core that can feel the immense energy of burning flames all across the galaxy."]
+			description: ["{quest.abydos.hell_core.desc}"]
 			id: "21188AF95E6D5030"
 			rewards: [{
 				id: "4AE809F68AD3D5B3"
@@ -1283,7 +1283,7 @@
 		}
 		{
 			dependencies: ["1C9396E2587051F7"]
-			description: ["This data disk can store so much data that you could put all human DNA in it."]
+			description: ["{quest.abydos.data_dna_disk.desc}"]
 			id: "43DAD4B63603BFC3"
 			rewards: [{
 				id: "2D07335EE60C7099"
@@ -1307,7 +1307,7 @@
 				"78777C3EE2DA5D0F"
 				"2D064F759D13FE4B"
 			]
-			description: ["The start of your wildest dreams, a dragon based circuit board."]
+			description: ["{quest.abydos.draconic_board.desc}"]
 			id: "1C9396E2587051F7"
 			rewards: [{
 				id: "170A7AD04A8BFCA6"
@@ -1335,7 +1335,7 @@
 		}
 		{
 			dependencies: ["6110BA7B3E84F06F"]
-			description: ["The new tier of coils in Abydos, so get ready to replace your old ones."]
+			description: ["{quest.abydos.zalloy_coil.desc}"]
 			id: "4D04123F036F181E"
 			rewards: [{
 				count: 2
@@ -1358,7 +1358,7 @@
 				"5BA69EDC3C223B2C"
 				"22B85F7F13C66730"
 			]
-			description: ["Another tier of PIC Wafers, used for some incredible Abydos technology."]
+			description: ["{quest.abydos.uepic.desc}"]
 			id: "7AC55BA8BDD0F3D2"
 			rewards: [{
 				id: "7B8476986ACF57ED"
@@ -1383,7 +1383,7 @@
 		}
 		{
 			dependencies: ["2C354B0735DF8023"]
-			description: ["Runes engraved on blocks to allow for them to exert power on placed blocks."]
+			description: ["{quest.abydos.runes.desc}"]
 			id: "379D69A44FC5B2F2"
 			rewards: [{
 				id: "06D88EE9C7DC14A5"
@@ -1407,7 +1407,7 @@
 					type: "item"
 				}
 			]
-			title: "Runic Engraved Casings"
+			title: "{quest.abydos.runes.title}"
 			x: 5.5d
 			y: -5.0d
 		}
@@ -1416,7 +1416,7 @@
 				"2C354B0735DF8023"
 				"3C3E585C933C9515"
 			]
-			description: ["Multi-layered runes, carrying the power of all that went into crafting them."]
+			description: ["{quest.abydos.multi_layer_runes.desc}"]
 			id: "5FCA8ED151CEB5C1"
 			rewards: [{
 				id: "7FDA3D0E34F6806E"
@@ -1439,7 +1439,7 @@
 					type: "item"
 				}
 			]
-			title: "Multi-Engraved Runic Plating"
+			title: "{quest.abydos.multi_layer_runes.title}"
 			x: 7.5d
 			y: -3.0d
 		}
@@ -1448,7 +1448,7 @@
 				"146F88E5C1119649"
 				"624480A1E62B52EF"
 			]
-			description: ["A machine that can engrave runes on top of each other using lost Abydos technology."]
+			description: ["{quest.abydos.runic_insriber.desc}"]
 			id: "2C354B0735DF8023"
 			rewards: [{
 				count: 2
@@ -1476,7 +1476,7 @@
 				"4D5EEE7D7EC1FAFA"
 				"6D573ACD05D0EF96"
 			]
-			description: ["Even more runes."]
+			description: ["{quest.abydos.runic_plating.desc}"]
 			id: "3C3E585C933C9515"
 			rewards: [{
 				id: "187EF22FCDECD230"
@@ -1500,7 +1500,7 @@
 					type: "item"
 				}
 			]
-			title: "Advanced Engraved Runes"
+			title: "{quest.abydos.runic_plating.title}"
 			x: 9.5d
 			y: -3.0d
 		}
@@ -1510,7 +1510,7 @@
 				"3212A3351DAD4492"
 				"4F3EE28B3F38FC85"
 			]
-			description: ["An array of Chevrons that can store more complex data."]
+			description: ["{quest.abydos.csg_chevron_assembly.desc}"]
 			hide_dependency_lines: true
 			id: "442233119AED645F"
 			rewards: [{
@@ -1532,7 +1532,7 @@
 		}
 		{
 			dependencies: ["493DD013C818BB7B"]
-			description: ["You can drill this up just like Oil."]
+			description: ["{quest.abydos.gritty_akreyrium.desc}"]
 			icon: {
 				Count: 1
 				id: "gtceu:gritty_akreyrium_bucket"
@@ -1560,13 +1560,13 @@
 					type: "checkmark"
 				}
 			]
-			title: "Gritty Akreyrium"
+			title: "{quest.abydos.gritty_akreyrium.title}"
 			x: -0.5d
 			y: 1.0d
 		}
 		{
 			dependencies: ["07AD6651D0B40E22"]
-			description: ["A passive Heat Sink with actual good cooling."]
+			description: ["{quest.abydos.hpca_nanofluidic_heat_sink.desc}"]
 			id: "6E40FC247C876DB2"
 			optional: true
 			rewards: [{
@@ -1579,7 +1579,7 @@
 				item: "start_core:hpca_nanofluidic_heat_sink_component"
 				type: "item"
 			}]
-			title: "Better Research Heat Sink"
+			title: "{quest.abydos.hpca_nanofluidic_heat_sink.title}"
 			x: 3.5d
 			y: 1.0d
 		}
@@ -1589,7 +1589,7 @@
 			optional: true
 			tasks: [{
 				id: "6A826ED481004E31"
-				title: "Positioner"
+				title: "{quest.abydos.hpca_nanofluidic_heat_sink.checkmarkdesc}"
 				type: "checkmark"
 			}]
 			x: 1.0d
@@ -1601,7 +1601,7 @@
 				"30C974448C57F0EC"
 				"3212A3351DAD4492"
 			]
-			description: ["The Maker of Gates applauds you and bestoys upon you their recognition."]
+			description: ["{quest.abydos.inscrive_casing.desc}"]
 			hide_dependency_lines: true
 			id: "624480A1E62B52EF"
 			rewards: [{
@@ -1619,7 +1619,7 @@
 		}
 		{
 			dependencies: ["43DAD4B63603BFC3"]
-			description: ["This is most definitly looking at you."]
+			description: ["{quest.abydos.wetware_neuroloom.desc}"]
 			id: "4F3EE28B3F38FC85"
 			rewards: [{
 				id: "7B18F86418699D3C"
@@ -1636,14 +1636,14 @@
 		}
 		{
 			dependencies: ["4F3EE28B3F38FC85"]
-			description: ["Ok now these rates are getting insane"]
+			description: ["{quest.abydos.uhv_parallel_hatch.desc}"]
 			id: "320ADA7E07856560"
 			rewards: [{
 				id: "1D899BA83FEBF385"
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			subtitle: "1024x Parallel Hatch"
+			subtitle: "{quest.abydos.uhv_parallel_hatch.subtitle}"
 			tasks: [{
 				id: "03A50D522C002B0C"
 				item: "start_core:uhv_parallel_hatch"
@@ -1658,9 +1658,9 @@
 				"7AC55BA8BDD0F3D2"
 			]
 			description: [
-				"Remember how regular &3Parallel&r hatches are complex and care about maxing out amperage and your overclocks. Ya forget all of that it's just that many more of a recipe at once."
+				"{quest.abydos.uhv_absolute_parallel_hatch.desc.1}"
 				""
-				"(Only goes on special machines, does &4NOT&r replace your normal parallel hatch)"
+				"{quest.abydos.uhv_absolute_parallel_hatch.desc.2}"
 			]
 			id: "230A202BB7D02C1A"
 			rewards: [{
@@ -1668,7 +1668,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			subtitle: "4x Absolute Parallel Hatch"
+			subtitle: "{quest.abydos.uhv_absolute_parallel_hatch.subtitle}"
 			tasks: [{
 				id: "59E8F04BD1D95FD9"
 				item: "start_core:uhv_absolute_parallel_hatch"
@@ -1680,16 +1680,16 @@
 		{
 			dependencies: ["2659B3AA9108BC43"]
 			description: [
-				"By using the exotic gas collector you can do all of Air Distillation in 1 step."
+				"{quest.abydos.cheaper_gases.desc.1}"
 				""
-				"Furthermore you are able to collect airs from exotic dimensions."
+				"{quest.abydos.cheaper_gases.desc.2}"
 			]
 			icon: "gtceu:radon_bucket"
 			id: "6849929CF7E4477F"
 			optional: true
 			tasks: [{
 				id: "2635BED4229F491B"
-				title: "Cheaper Gasses"
+				title: "{quest.abydos.cheaper_gases.checkmarkdesc}"
 				type: "checkmark"
 			}]
 			x: -4.5d
@@ -1701,7 +1701,7 @@
 				"5FCA8ED151CEB5C1"
 				"2F26A144D29B00A5"
 			]
-			description: ["Scans indicate that the Nether is an inhospitable dimension due to intensive radioactive decay. This armor will help mitigate the effects. The Nether inhabitants might be hiding a &ltalisman&r capable of nullifying the effects of radiation..."]
+			description: ["{quest.abydos.hazmat.desc}"]
 			hide_dependent_lines: true
 			id: "59B0F5DB2C1E96DC"
 			rewards: [{
@@ -1755,7 +1755,7 @@
 					type: "item"
 				}
 			]
-			title: "Runic Infused Hazmat Armor"
+			title: "{quest.abydos.hazmat.title}"
 			x: 6.5d
 			y: -4.0d
 		}
@@ -1764,12 +1764,12 @@
 				"05E824087CE7825D"
 				"493DD013C818BB7B"
 			]
-			description: ["More information present in the Processing Lines (4,5,6) Chapter"]
+			description: ["{quest.abydos.processing_lines_link.desc}"]
 			icon: "gtceu:abydos_zapolite_rich_magma_bucket"
 			id: "5BD0047E69D79476"
 			tasks: [{
 				id: "630CDF3A4731333F"
-				title: "Magma Processing"
+				title: "{quest.abydos.processing_lines_link.checkmarkdesc}"
 				type: "checkmark"
 			}]
 			x: -4.5d
@@ -1780,7 +1780,7 @@
 				"707C2E9BA62A60C5"
 				"5C39B74171CC21F9"
 			]
-			description: ["These Magmas need to a little more to break down."]
+			description: ["{quest.abydos.molten_destabilizer.desc}"]
 			id: "05E824087CE7825D"
 			shape: "gear"
 			size: 1.5d
@@ -1794,7 +1794,7 @@
 		}
 		{
 			dependencies: ["5BD0047E69D79476"]
-			description: ["Obtained from Crooksite, and holding &lIMMENSE&r importance when it comes to &o&nAkreyrium&r"]
+			description: ["{quest.abydos.thallium.desc}"]
 			hide_dependent_lines: true
 			id: "283F10E58CA1FCEB"
 			tasks: [{
@@ -1811,11 +1811,11 @@
 				"43DAD4B63603BFC3"
 			]
 			description: [
-				"A shard of the &5&l&o&mAbyss&r"
+				"{quest.abydos.abyss_fragment.desc.1}"
 				""
-				"Forged from echoes of a void and altered stars"
+				"{quest.abydos.abyss_fragment.desc.2}"
 				""
-				"It must be at the heart of something strong"
+				"{quest.abydos.abyss_fragment.desc.3}"
 			]
 			id: "63AD0F905F2A262B"
 			shape: "gear"
@@ -1834,11 +1834,11 @@
 				"43DAD4B63603BFC3"
 			]
 			description: [
-				"A shard of the &4&l&o&mInferno&r"
+				"{quest.abydos.inferno_fragment.desc.1}"
 				""
-				"Forged from blinding flames and altered stars"
+				"{quest.abydos.inferno_fragment.desc.2}"
 				""
-				"It must be at the heart of something strong"
+				"{quest.abydos.inferno_fragment.desc.3}"
 			]
 			id: "5BA6FB8F852C2629"
 			shape: "gear"
@@ -1856,7 +1856,7 @@
 				"07AD6651D0B40E22"
 				"43DAD4B63603BFC3"
 			]
-			description: ["Used to contain powers just within comprehention."]
+			description: ["{quest.abydos.empty_coordinate_core.desc}"]
 			id: "4A0AD203617FEF0E"
 			tasks: [{
 				id: "510926669DC47CEC"
@@ -1869,9 +1869,9 @@
 		{
 			dependencies: ["509F0DE97411C0CD"]
 			description: [
-				"A refined Stargate Rod, infused with the power of the &5&o&lAbyss&r. Refined over and over."
+				"{quest.abydos.abyssal_stargate_rod.desc.1}"
 				""
-				"Alone it is able to rip tears in the fabric of the endless void."
+				"{quest.abydos.abyssal_stargate_rod.desc.2}"
 			]
 			hide_dependent_lines: true
 			id: "29A86F882D68239F"
@@ -1886,9 +1886,9 @@
 		{
 			dependencies: ["5829828FB6290587"]
 			description: [
-				"A refined Stargate Rod, infused with the power of the &4&o&lInferno&r. Refined over and over."
+				"{quest.abydos.infernal_stargate_rod.desc.1}"
 				""
-				"Alone it holds enough power to burn through the fabric of space"
+				"{quest.abydos.infernal_stargate_rod.desc.2}"
 			]
 			hide_dependent_lines: true
 			id: "78117340F3D4549A"
@@ -1902,7 +1902,7 @@
 		}
 		{
 			dependencies: ["63AD0F905F2A262B"]
-			description: ["A Stargate Rod infused with the power of the &5&oAbyss&r, though not yet refined"]
+			description: ["{quest.abydos.untreated_abyssal_stargate_rod.desc}"]
 			id: "509F0DE97411C0CD"
 			tasks: [{
 				id: "4B87905BEBE00F09"
@@ -1914,7 +1914,7 @@
 		}
 		{
 			dependencies: ["5BA6FB8F852C2629"]
-			description: ["A Stargate Rod infused with the power of the &4&oInferno&r, though not yet refined"]
+			description: ["{quest.abydos.untreated_infernal_stargate_rod.desc}"]
 			id: "5829828FB6290587"
 			tasks: [{
 				id: "4543736298C247BE"
@@ -1930,9 +1930,9 @@
 				"0DA1386616FF7222"
 			]
 			description: [
-				"Have you ever wanted to process millions of items at once? "
+				"{quest.abydos.bulk_ore_processing_array.desc.1}"
 				""
-				"Well now you can."
+				"{quest.abydos.bulk_ore_processing_array.desc.2}"
 			]
 			id: "13118B7518370623"
 			tasks: [{
@@ -1945,7 +1945,7 @@
 		}
 		{
 			dependencies: ["630F50E03EC3D144"]
-			description: ["Gravi-Stars &o&lCollapsed&r with even greater intensity."]
+			description: ["{quest.abydos.singularities.desc}"]
 			id: "4D5EEE7D7EC1FAFA"
 			rewards: [{
 				id: "370282BF6FAD644A"
@@ -1979,12 +1979,12 @@
 				"2D064F759D13FE4B"
 			]
 			description: [
-				"Have you ever thought that wires were a little... excessive. Well now they arent needed."
+				"{quest.abydos.dream_link_node.desc.1}"
 				""
-				"If you love using Converters, bad luck, after &aUEV&r that no longer becomes an as direct solution."
+				"{quest.abydos.dream_link_node.desc.2}"
 				""
 				""
-				"{ \"text\": \"Read more about how wireless power works here\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"2F63F0E239737E38\" } }"
+				"{ \"text\": \"{quest.abydos.dream_link_node.desc.3}\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"2F63F0E239737E38\" } }"
 			]
 			id: "141911C5DD68CD2A"
 			rewards: [{
@@ -2003,11 +2003,11 @@
 		{
 			dependencies: ["141911C5DD68CD2A"]
 			description: [
-				"&lWireless Power&r Adds the Following for &3UV&f and &4Higher&f:&r"
+				"{quest.abydos.wireless_power_info.desc.1}"
 				""
-				"- Covers: Let your single blocks run from anywhere in the Dream Link's range (Beware of Overvolting)"
+				"{quest.abydos.wireless_power_info.desc.2}"
 				""
-				"- Hatches: All your regular hatches and the brand new addition of 64a Hatches"
+				"{quest.abydos.wireless_power_info.desc.3}"
 			]
 			id: "659690E81B3E3AE7"
 			rewards: [{
@@ -2092,16 +2092,16 @@
 					type: "item"
 				}
 			]
-			title: "Wireless Covers and Hatches"
+			title: "{quest.abydos.wireless_power_info.title}"
 			x: 5.5d
 			y: 7.0d
 		}
 		{
 			dependencies: ["652809D17FCE8B11"]
 			description: [
-				"Ruined Component Parts can be found as loot in various structures in Abydos."
+				"{quest.abydos.ruined_component_parts.desc.1}"
 				""
-				"By finding these ancient parts of technology and researching them, you can discover how to advance into &4UHV&r technology."
+				"{quest.abydos.ruined_component_parts.desc.2}"
 			]
 			id: "077F46BD75F325FD"
 			tasks: [
@@ -2146,13 +2146,13 @@
 					type: "item"
 				}
 			]
-			title: "Ruined Component Parts"
+			title: "{quest.abydos.ruined_component_parts.title}"
 			x: -3.5d
 			y: -4.0d
 		}
 		{
 			dependencies: ["652809D17FCE8B11"]
-			description: ["A way to bypass the needs of armor, a blessing of sorts."]
+			description: ["{quest.abydos.abydos_talisman.desc}"]
 			id: "7FBEF894C1FC4CCF"
 			tasks: [{
 				id: "16690ECAFD8AF4A4"
@@ -2175,7 +2175,7 @@
 				icon: "sgjourney:sandstone_cartouche"
 				id: "7B142445383BC74F"
 				structure: "common_stargates:cartouche/sandstone_cartouche_monument"
-				title: "Buried Tombs"
+				title: "{quest.abydos.buried_tombs.title}"
 				type: "structure"
 			}]
 			x: -2.5d
@@ -2183,7 +2183,7 @@
 		}
 		{
 			dependencies: ["3479CEBD73550718"]
-			description: ["Not much use on their own but they may hold the secret to stronger things"]
+			description: ["{quest.abydos.naquadah_armor.desc}"]
 			hide_dependency_lines: true
 			id: "2F26A144D29B00A5"
 			tasks: [
@@ -2232,10 +2232,10 @@
 					type: "item"
 				}
 			]
-			title: "Ancient Armors"
+			title: "{quest.abydos.naquadah_armor.title}"
 			x: 6.5d
 			y: -6.0d
 		}
 	]
-	title: "Adventures in Abydos"
+	title: "{quest.abydos.title}"
 }
