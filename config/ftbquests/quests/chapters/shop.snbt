@@ -35,7 +35,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Bronze"
+			title: "{quest.shop.bronze.title}"
 			x: -5.0d
 			y: -3.5d
 		}
@@ -57,7 +57,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Gravel"
+			title: "{quest.shop.gravel.title}"
 			x: -5.0d
 			y: -2.0d
 		}
@@ -78,7 +78,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Wood"
+			title: "{quest.shop.wood.title}"
 			x: 5.0d
 			y: -2.0d
 		}
@@ -133,7 +133,7 @@
 				item: { Count: 8, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Bus/Hatch Pack"
+			title: "{quest.shop.bus_hatch_pack.title}"
 			x: 0.0d
 			y: -2.0d
 		}
@@ -179,7 +179,7 @@
 				item: { Count: 64, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Jet Boots"
+			title: "{quest.shop.jetboots.title}"
 			x: -3.5d
 			y: -5.5d
 		}
@@ -228,7 +228,7 @@
 				item: { Count: 12, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Basic Circuit Components"
+			title: "{quest.shop.circuit_components.title}"
 			x: -3.5d
 			y: -4.0d
 		}
@@ -251,7 +251,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Wafers"
+			title: "{quest.shop.wafers.title}"
 			x: -3.5d
 			y: -2.5d
 		}
@@ -285,7 +285,7 @@
 				item: { Count: 32, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Magnet"
+			title: "{quest.shop.magnet.title}"
 			x: 2.0d
 			y: -3.0d
 		}
@@ -320,7 +320,7 @@
 				item: { Count: 16, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Flux Networks Connectors Pack"
+			title: "{quest.shop.flux.title}"
 			x: -2.0d
 			y: -3.0d
 		}
@@ -343,7 +343,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Steel"
+			title: "{quest.shop.steel.title}"
 			x: -6.0d
 			y: 0.5d
 		}
@@ -366,7 +366,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Aluminium"
+			title: "{quest.shop.aluminium.title}"
 			x: -4.5d
 			y: 0.5d
 		}
@@ -389,7 +389,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Stainless Steel"
+			title: "{quest.shop.stainless_steel.title}"
 			x: -3.0d
 			y: 0.5d
 		}
@@ -412,7 +412,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Titanium"
+			title: "{quest.shop.titanium.title}"
 			x: -1.5d
 			y: 0.5d
 		}
@@ -435,7 +435,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Tungsten Steel"
+			title: "{quest.shop.tungsten_steel.title}"
 			x: 0.0d
 			y: 0.5d
 		}
@@ -458,7 +458,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Rhodium Plated Palladium"
+			title: "{quest.shop.rhodium_plated_palladium.title}"
 			x: 1.5d
 			y: 0.5d
 		}
@@ -481,7 +481,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Naquadah Alloy"
+			title: "{quest.shop.naquadah_alloy_ingot.title}"
 			x: 3.0d
 			y: 0.5d
 		}
@@ -504,7 +504,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Darmstadtium"
+			title: "{quest.shop.darmstadtium.title}"
 			x: 4.5d
 			y: 0.5d
 		}
@@ -527,7 +527,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Neutronium"
+			title: "{quest.shop.neutronium.title}"
 			x: 6.0d
 			y: 0.5d
 		}
@@ -550,7 +550,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "LV Circuits"
+			title: "{quest.shop.lv_circuit.title}"
 			x: -6.0d
 			y: -0.5d
 		}
@@ -573,7 +573,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "MV Circuits"
+			title: "{quest.shop.mv_circuit.title}"
 			x: -4.5d
 			y: -0.5d
 		}
@@ -596,7 +596,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "HV Circuits"
+			title: "{quest.shop.hv_circuit.title}"
 			x: -3.0d
 			y: -0.5d
 		}
@@ -619,7 +619,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "EV Circuits"
+			title: "{quest.shop.ev_circuit.title}"
 			x: -1.5d
 			y: -0.5d
 		}
@@ -642,7 +642,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "IV Circuits"
+			title: "{quest.shop.iv_circuit.title}"
 			x: 0.0d
 			y: -0.5d
 		}
@@ -665,7 +665,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "LuV Circuits"
+			title: "{quest.shop.luv_circuit.title}"
 			x: 1.5d
 			y: -0.5d
 		}
@@ -688,7 +688,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "ZPM Circuits"
+			title: "{quest.shop.zpm_circuit.title}"
 			x: 3.0d
 			y: -0.5d
 		}
@@ -711,7 +711,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "UV Circuits"
+			title: "{quest.shop.uv_circuit.title}"
 			x: 4.5d
 			y: -0.5d
 		}
@@ -733,7 +733,7 @@
 				item: { Count: 4, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "UHV Circuits"
+			title: "{quest.shop.uhv_circuit.title}"
 			x: 6.0d
 			y: -0.5d
 		}
@@ -782,7 +782,7 @@
 					type: "item"
 				}
 			]
-			title: "Enchant your String Mesh with Fortune"
+			title: "{quest.shop.enchant_sieve.fortune.title}"
 			x: 1.5d
 			y: 2.0d
 		}
@@ -831,7 +831,7 @@
 					type: "item"
 				}
 			]
-			title: "Enchant your String Mesh with Efficiency"
+			title: "{quest.shop.enchant_sieve.efficiency.title}"
 			x: -1.5d
 			y: 2.0d
 		}
@@ -899,7 +899,7 @@
 					type: "item"
 				}
 			]
-			title: "Enchant your Fortune String Mesh with Efficiency"
+			title: "{quest.shop.enchant_sieve.from_fortune_efficiency.title}"
 			x: 1.0d
 			y: 3.0d
 		}
@@ -967,7 +967,7 @@
 					type: "item"
 				}
 			]
-			title: "Enchant your Efficiency String Mesh with Fortune"
+			title: "{quest.shop.enchant_sieve.from_efficiency_fortune.title}"
 			x: -1.0d
 			y: 3.0d
 		}
@@ -1013,7 +1013,7 @@
 					type: "item"
 				}
 			]
-			title: "Enchant your String Mesh with Fortune and Efficiency"
+			title: "{quest.shop.enchant_sieve.both.title}"
 			x: 0.0d
 			y: 2.5d
 		}
@@ -1035,7 +1035,7 @@
 				item: { Count: 2, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Charcoal"
+			title: "{quest.shop.charcoal.title}"
 			x: 5.0d
 			y: -3.5d
 		}
@@ -1155,7 +1155,7 @@
 				item: { Count: 2, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Starting Gear"
+			title: "{quest.shop.starting_gear.title}"
 			x: 3.5d
 			y: -2.5d
 		}
@@ -1337,7 +1337,7 @@
 				item: { Count: 2, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Tool Pack"
+			title: "{quest.shop.tool_pack.title}"
 			x: 3.5d
 			y: -4.0d
 		}
@@ -1388,7 +1388,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Teleportation+"
+			title: "{quest.shop.teleportation_plus.title}"
 			x: 3.5d
 			y: -5.5d
 		}
@@ -1402,16 +1402,16 @@
 				command: "/gamerule doDaylightCycle false"
 				icon: "ae2:singularity"
 				id: "3EB38A984CAA9456"
-				title: "Disable the Daylight Cycle"
+				title: "{quest.shop.disable_daylight_cycle.title}"
 				type: "command"
 			}]
 			shape: "octagon"
 			tasks: [{
 				id: "67D11D234889008C"
-				title: "Disable Daylight Cycle"
+				title: "{quest.shop.disable_daylight_cycle.title}"
 				type: "checkmark"
 			}]
-			title: "Disable the Daylight Cycle"
+			title: "{quest.shop.disable_daylight_cycle.title}"
 			x: -3.5d
 			y: 3.0d
 		}
@@ -1425,16 +1425,16 @@
 				command: "/gamerule doWeatherCycle false"
 				icon: "ae2:singularity"
 				id: "5AE2822D8BC289FE"
-				title: "Disable the Weather Cycle"
+				title: "{quest.shop.disable_weather_cycle.title}"
 				type: "command"
 			}]
 			shape: "octagon"
 			tasks: [{
 				id: "379C24585F64F8CA"
-				title: "Disable Weather Cycle"
+				title: "{quest.shop.disable_weather_cycle.title}"
 				type: "checkmark"
 			}]
-			title: "Disable the Weather Cycle"
+			title: "{quest.shop.disable_weather_cycle.title}"
 			x: 3.5d
 			y: 3.0d
 		}
@@ -1448,16 +1448,16 @@
 				command: "/gamerule doDaylightCycle true"
 				icon: "ae2:singularity"
 				id: "4FB40FA2C1F1AE47"
-				title: "Enable the Daylight Cycle"
+				title: "{quest.shop.enable_daylight_cycle.title}"
 				type: "command"
 			}]
 			shape: "octagon"
 			tasks: [{
 				id: "3B840D173C0A7E28"
-				title: "Enable the Daylight Cycle"
+				title: "{quest.shop.enable_daylight_cycle.title}"
 				type: "checkmark"
 			}]
-			title: "Enable the Daylight Cycle"
+			title: "{quest.shop.enable_daylight_cycle.title}"
 			x: -4.5d
 			y: 3.0d
 		}
@@ -1472,7 +1472,7 @@
 				item: { Count: 16, id: "kubejs:coin" }
 				type: "item"
 			}]
-			title: "Changing Daylight Cycle"
+			title: "{quest.shop.daylight_cycle.title}"
 			x: -4.0d
 			y: 2.0d
 		}
@@ -1487,7 +1487,7 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			title: "Changing Weather Cycle"
+			title: "{quest.shop.weather_cycle.title}"
 			x: 4.0d
 			y: 2.0d
 		}
@@ -1501,16 +1501,16 @@
 				command: "/gamerule doWeatherCycle true"
 				icon: "ae2:singularity"
 				id: "095C9F5A75C8759E"
-				title: "Disable the Weather Cycle"
+				title: "{quest.shop.enable_weather_cycle.title}"
 				type: "command"
 			}]
 			shape: "octagon"
 			tasks: [{
 				id: "443D011EE22F18B7"
-				title: "Enable Weather Cycle"
+				title: "{quest.shop.enable_weather_cycle.title}"
 				type: "checkmark"
 			}]
-			title: "Enable the Weather Cycle"
+			title: "{quest.shop.enable_weather_cycle.title}"
 			x: 4.5d
 			y: 3.0d
 		}
@@ -1544,10 +1544,10 @@
 					type: "item"
 				}
 			]
-			title: "Dragon Breath"
+			title: "{quest.shop.dragon_breath.title}"
 			x: 0.0d
 			y: 4.0249999999999995d
 		}
 	]
-	title: "Shop"
+	title: "{quest.shop.title}"
 }
