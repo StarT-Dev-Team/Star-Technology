@@ -788,7 +788,7 @@
 					type: "item"
 				}
 			]
-			title: "Titanium Ingot"
+			title: "{quest.processing.titanium_ingot.title}"
 			x: 5.0d
 			y: -2.0d
 		}
@@ -930,7 +930,7 @@
 			size: 1.5d
 			tasks: [{
 				id: "55FB41FCEAAE689F"
-				title: "Nether Drilling"
+				title: "{quest.processing.nether_drilling.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -12.0d
@@ -3436,7 +3436,7 @@
 				item: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_bucket"
 				type: "item"
 			}]
-			title: "PEDOT:PSS"
+			title: "{quest.processing.pedot_pss.title}"
 			x: 6.5d
 			y: 10.0d
 		}
@@ -4303,7 +4303,7 @@
 			size: 1.5d
 			tasks: [{
 				id: "1F8B168C07797665"
-				title: "Abyss Harvesting"
+				title: "{quest.processing.void_core.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: 16.0d
@@ -5060,5 +5060,5 @@
 			y: 6.5d
 		}
 	]
-	title: "Processing Lines (Chap 7..)"
+	title: "{quest.processing.7__.title}"
 }

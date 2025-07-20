@@ -981,7 +981,7 @@
 				}
 				{
 					id: "4EF2A5F41BF53145"
-					title: "{quest.automation_age.distillation_tower.checkmarkdesc}"
+					title: "{quest.automation_age.distillation_tower.checkmark.desc}"
 					type: "checkmark"
 				}
 			]
@@ -1006,7 +1006,7 @@
 			size: 1.0d
 			tasks: [{
 				id: "73EEEC72819C9305"
-				title: "{quest.automation_age.oil.checkmarkdesc}"
+				title: "{quest.automation_age.oil.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -7.5d
@@ -1096,7 +1096,7 @@
 			size: 1.0d
 			tasks: [{
 				id: "1F4744E75B385516"
-				title: "{quest.automation_age.desulfurizing.checkmarkdesc}"
+				title: "{quest.automation_age.desulfurizing.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -8.5d
@@ -1160,7 +1160,7 @@
 			size: 1.5d
 			tasks: [{
 				id: "4436BD62EA28EC5E"
-				title: "{quest.automation_age.byproduct_distilling.checkmarkdesc}"
+				title: "{quest.automation_age.byproduct_distilling.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -12.5d
@@ -2335,7 +2335,7 @@
 			id: "775AAF108AFAF707"
 			tasks: [{
 				id: "39A4828A672AE4A1"
-				title: "{quest.automation_age.perfect_oc.checkmarkdesc}"
+				title: "{quest.automation_age.perfect_oc.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -7.5d
@@ -2347,7 +2347,7 @@
 			optional: true
 			tasks: [{
 				id: "02A369FF9CB41D88"
-				title: "{quest.positioner.checkmarkdesc}"
+				title: "{quest.positioner.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -2.5d
@@ -2387,7 +2387,7 @@
 			optional: true
 			tasks: [{
 				id: "6B319AA87C949FE7"
-				title: "{quest.automation_age.lcr_skips.checkmarkdesc}"
+				title: "{quest.automation_age.lcr_skips.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -9.5d
@@ -2401,7 +2401,7 @@
 			id: "7E74A114F4054345"
 			tasks: [{
 				id: "52333CEF18B39599"
-				title: "{quest.automation_age.distinct_buses.checkmarkdesc}"
+				title: "{quest.automation_age.distinct_buses.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -3.5d
@@ -2419,7 +2419,7 @@
 			id: "171BD0E155CF98CA"
 			tasks: [{
 				id: "75801F4A6F213865"
-				title: "{quest.automation_age.lockable_hatches.checkmarkdesc}"
+				title: "{quest.automation_age.lockable_hatches.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -5.5d
@@ -2436,7 +2436,7 @@
 			id: "0B36E111D8F13F49"
 			tasks: [{
 				id: "6CBB8D7367F787C3"
-				title: "{quest.automation_age.power_link.checkmarkdesc}"
+				title: "{quest.automation_age.power_link.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -9.5d
@@ -2479,7 +2479,7 @@
 			id: "74186F521D41913D"
 			tasks: [{
 				id: "0E8DB02CDB2185B9"
-				title: "{quest.automation_age.heavy_oil_alt.checkmarkdesc}"
+				title: "{quest.automation_age.heavy_oil_alt.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -8.5d

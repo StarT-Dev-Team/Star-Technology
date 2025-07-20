@@ -40,7 +40,7 @@
 			tasks: [
 				{
 					id: "632E07BAB3C511C3"
-					title: "Hot Naquadah Ingot"
+					title: "{quest.processing.hot_naq.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -61,7 +61,7 @@
 			tasks: [
 				{
 					id: "11232B9188CE6D47"
-					title: "Impure Enriched Naquadah Solution"
+					title: "{quest.processing.impure_enriched_naq_solution.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -82,7 +82,7 @@
 			tasks: [
 				{
 					id: "117918C7D0538504"
-					title: "Impure Naquadria Solution"
+					title: "{quest.processing.impure_naquadria_solution.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -100,7 +100,7 @@
 				"0743A08E81AB84D3"
 				"1F416C7A641914EC"
 			]
-			description: ["Naquadah and it's family tree of materials will now be used everywhere, so you better passive the Naquadah line asap."]
+			description: ["{quest.processing.naquadah_ingot.desc}"]
 			id: "445BC7DFD3387DD4"
 			rewards: [{
 				count: 3
@@ -138,7 +138,7 @@
 			tasks: [
 				{
 					id: "080549D49691AC4F"
-					title: "Enriched Naquadah Solution"
+					title: "{quest.processing.enriched_naq_solution.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -159,7 +159,7 @@
 			tasks: [
 				{
 					id: "5C7C7BD5A3888932"
-					title: "Acidic Enriched Naquadah Solution"
+					title: "{quest.processing.acidic_enriched_naq_solution.desc}"
 					type: "checkmark"
 				}
 				{
@@ -192,7 +192,7 @@
 			tasks: [
 				{
 					id: "5C519C32B01BA776"
-					title: "Hot Enriched Naquadah Ingot"
+					title: "{quest.processing.hot_enriched_naq_ingot.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -272,7 +272,7 @@
 			tasks: [
 				{
 					id: "6E78318257063B21"
-					title: "Naquadria Solution"
+					title: "{quest.processing.naquadria_solution}"
 					type: "checkmark"
 				}
 				{
@@ -293,7 +293,7 @@
 			tasks: [
 				{
 					id: "3D44822AA7B4D618"
-					title: "Acidic Naquadria Solution"
+					title: "{quest.processing.acidic_naquadria_solution.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -326,7 +326,7 @@
 			tasks: [
 				{
 					id: "4D23139AB83241E6"
-					title: "Hot Naquadria Ingot"
+					title: "{quest.processing.hot_naquadria_ingot.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -378,7 +378,7 @@
 			tasks: [
 				{
 					id: "66228796EFF3C400"
-					title: "Polychlorinated Biphenyl"
+					title: "{quest.processing.polychlorinated_biphenyl.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -418,7 +418,7 @@
 			tasks: [
 				{
 					id: "1609921B3C9372BF"
-					title: "Benzotrichloride "
+					title: "{quest.processing.benzotrichloride.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -439,7 +439,7 @@
 			tasks: [
 				{
 					id: "2AEB4CCD7C180D78"
-					title: "Benzoyl Chloride"
+					title: "{quest.processing.benzoyl_chloride.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -460,7 +460,7 @@
 			tasks: [
 				{
 					id: "15A8697511899135"
-					title: "4-Fluorobenzoyl Chloride"
+					title: "{quest.processing.4_fluorobenzoyl_chloride.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -496,7 +496,7 @@
 			tasks: [
 				{
 					id: "6DE47056203EB7E5"
-					title: "Fluorobenzene"
+					title: "{quest.processing.fluorobenzene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -552,13 +552,13 @@
 				item: "gtceu:polyether_ether_ketone_bucket"
 				type: "item"
 			}]
-			title: "Liquid PEEK Plastic"
+			title: "{quest.processing.peek.title}"
 			x: 6.75d
 			y: 10.5d
 		}
 		{
 			dependencies: ["6CC13BE9AD447218"]
-			description: ["This entire processing line requires a Sterile Cleanroom"]
+			description: ["{quest.processing.bacteria_bucker.desc}"]
 			icon: "gtceu:bacteria_bucket"
 			id: "24AE98EABF69F2D1"
 			size: 1.0d
@@ -607,7 +607,7 @@
 			tasks: [
 				{
 					id: "69354C3F77402E73"
-					title: "Enriched Bacterial Sludge"
+					title: "{quest.processing.enriched_bacterial_sludge.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -628,7 +628,7 @@
 			tasks: [
 				{
 					id: "3A9BAC2494B830B8"
-					title: "Mutagen"
+					title: "{quest.processing.mutagen.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -653,7 +653,7 @@
 			tasks: [
 				{
 					id: "2EB6451DFA1D8FF1"
-					title: "Raw Growth Medium"
+					title: "{quest.processing.raw_growth_medium.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -667,7 +667,7 @@
 			y: 6.5d
 		}
 		{
-			description: ["Try using the Aquatic Entangler to automate this. If it is too slow, you can upgrade it with the Upgrade Kits you made before. These increase the amount of fish per catch by quite a bit."]
+			description: ["{quest.processing.meat_dust.desc}"]
 			id: "3DB8A5E51DB80275"
 			size: 1.0d
 			tasks: [{
@@ -698,7 +698,7 @@
 			tasks: [
 				{
 					id: "4028128489137766"
-					title: "Gelatin Mixture"
+					title: "{quest.processing.gelatin_mixture.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -740,7 +740,7 @@
 				"59BA8A76701B3739"
 				"5BD0047E69D79476"
 			]
-			description: ["An element with excellent resistance against a number of factors. Made by processing Abydos Titanite-rich Magma"]
+			description: ["{quest.processing.zirconium.desc}"]
 			id: "1BE69DB2DFDC35C8"
 			rewards: [{
 				count: 3
@@ -767,7 +767,7 @@
 				"7658E16BA79A7632"
 				"5BD0047E69D79476"
 			]
-			description: ["A material gotten by processing Abydos Zapolite-rich Magma"]
+			description: ["{quest.processing.zpolgium.desc}"]
 			id: "37E3EF96EDE85C86"
 			rewards: [{
 				count: 3
@@ -856,7 +856,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Titanium Tetrachloride Mixture"
+			title: "{quest.processing.titanium_tetrachloride_mixture.title}"
 			x: 22.0d
 			y: -0.5d
 		}
@@ -915,7 +915,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Hydroxo(dioxo) Titanite Mixture"
+			title: "{quest.processing.hydroxo_dioxo_titanite_mixture.title}"
 			x: 19.0d
 			y: -0.5d
 		}
@@ -946,7 +946,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Titanite Slurry"
+			title: "{quest.processing.titanite_slurry.title}"
 			x: 16.0d
 			y: -0.5d
 		}
@@ -974,7 +974,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Titanite Slurry Residue"
+			title: "{quest.processing.titanite_slurry_residue.title}"
 			x: 17.5d
 			y: -0.5d
 		}
@@ -1020,7 +1020,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Perchloric Acid"
+			title: "{quest.processing.perchloric_acid.title}"
 			x: 15.0d
 			y: -1.5d
 		}
@@ -1063,7 +1063,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Silica Gel"
+			title: "{quest.processing.silica_gel.title}"
 			x: 16.5d
 			y: 0.5d
 		}
@@ -1309,13 +1309,13 @@
 					type: "checkmark"
 				}
 			]
-			title: "Lepton-Sparse Akreyrium"
+			title: "{quest.processing.lepton_sparse_akreyrium.title}"
 			x: 22.5d
 			y: 9.0d
 		}
 		{
 			dependencies: ["5BD0047E69D79476"]
-			description: ["A new element, that opens up the possibility for new materials."]
+			description: ["{quest.processing.tellurium.desc}"]
 			id: "0C19C040CA121E3B"
 			rewards: [{
 				id: "4A6E9001EC8CD83D"
@@ -1437,7 +1437,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Nitric Acid"
+			title: "{quest.processing.nitric_acid.title}"
 			x: 14.0d
 			y: 7.5d
 		}
@@ -1490,7 +1490,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Yes, STEAM!!"
+			title: "{quest.processing.yes_steam.title}"
 			x: 24.0d
 			y: 6.5d
 		}
@@ -1518,7 +1518,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Carbon Monoxide"
+			title: "{quest.processing.carbon_monooxide.title}"
 			x: 24.0d
 			y: 4.5d
 		}
@@ -1538,7 +1538,7 @@
 		}
 		{
 			dependencies: ["7E99889B3427A842"]
-			description: ["The medium used to grow life."]
+			description: ["{quest.processing.sterilized_growth_medium.desc}"]
 			id: "01AF9486EA6DA792"
 			rewards: [{
 				count: 3
@@ -1604,7 +1604,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "PCB Coolant"
+			title: "{quest.processing.pcb_coolant.title}"
 			x: -0.5d
 			y: 1.5d
 		}
@@ -1632,7 +1632,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Hot PCB Coolant"
+			title: "{quest.processing.hot_pcb_coolant.title}"
 			x: 0.5d
 			y: 1.5d
 		}
@@ -1642,7 +1642,7 @@
 				"1C81273869C0EC9F"
 				"60ECE277341A9408"
 			]
-			description: ["Where did those voices come from..."]
+			description: ["{quest.processing.echo_shard.desc}"]
 			id: "2F87FC1D5BB43220"
 			rewards: [{
 				count: 3
@@ -1752,7 +1752,7 @@
 					type: "item"
 				}
 			]
-			title: "Abydos Magmas"
+			title: "{quest.processing.abydos_magmas.title}"
 			x: 13.0d
 			y: 2.5d
 		}
@@ -1824,7 +1824,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Dichlorobenzene"
+			title: "{quest.processing.dichlorobenzene.title}"
 			x: 11.0d
 			y: -1.0d
 		}
@@ -1865,7 +1865,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Chlorine Gas"
+			title: "{quest.processing.chlorine.title}"
 			x: 10.0d
 			y: -0.5d
 		}
@@ -1892,7 +1892,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Benzene"
+			title: "{quest.processing.benzene.title}"
 			x: 10.0d
 			y: -1.5d
 		}
@@ -1902,7 +1902,7 @@
 			optional: true
 			tasks: [{
 				id: "1DF81F94D45BC87C"
-				title: "postioner"
+				title: "{quest.postioner.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: 14.0d
@@ -1988,7 +1988,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Magma Byproducts"
+			title: "{quest.processing.magma_byproducts.title}"
 			x: 14.5d
 			y: 2.5d
 		}
@@ -2018,7 +2018,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Tellurides"
+			title: "{quest.processing.tellurides.title}"
 			x: 16.0d
 			y: 1.75d
 		}
@@ -2061,7 +2061,7 @@
 					type: "item"
 				}
 			]
-			title: "Selenides"
+			title: "{quest.processing.selenides.title}"
 			x: 16.0d
 			y: 3.25d
 		}
@@ -2156,7 +2156,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Lepton-Flux Akreyrium"
+			title: "{quest.processing.lepton_flux_akreyrium.title}"
 			x: 24.5d
 			y: 9.0d
 		}
@@ -2208,7 +2208,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Electron Sparse Akreyrium"
+			title: "{quest.processing.sparse_electron_akreyrium.title}"
 			x: 22.5d
 			y: 11.0d
 		}
@@ -2228,7 +2228,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Muon Sparse Akreyrium"
+			title: "{quest.processing.sparse_muon_akreyrium.title}"
 			x: 22.5d
 			y: 15.0d
 		}
@@ -2248,7 +2248,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Tau Sparse Akreyrium"
+			title: "{quest.processing.sparse_tau_akreyrium.title}"
 			x: 22.5d
 			y: 13.0d
 		}
@@ -2257,7 +2257,7 @@
 				"2C9FFC93C52399F3"
 				"3FF8A91DA67DDD97"
 			]
-			description: ["Electron with Electron yields the most"]
+			description: ["{quest.processing.electron_injection_catalyst.desc}"]
 			id: "3BE8A9FAFBB4DEDD"
 			tasks: [{
 				id: "275036A577A31726"
@@ -2272,7 +2272,7 @@
 				"2C9FFC93C52399F3"
 				"37229FB72AB997FC"
 			]
-			description: ["Muon with Muon yields the most"]
+			description: ["{quest.processing.muon_injection_catalyst.desc}"]
 			id: "60E2F170BC0CBCB6"
 			tasks: [{
 				id: "4838181402B28B0C"
@@ -2287,7 +2287,7 @@
 				"2C9FFC93C52399F3"
 				"40394150F71A72BA"
 			]
-			description: ["Tau with Tau yields the most"]
+			description: ["{quest.processing.tau_injection_catalyst}"]
 			id: "5A127232CB963785"
 			tasks: [{
 				id: "3DB30CBF26B6B2FE"
@@ -2400,7 +2400,7 @@
 				item: "gtceu:utopian_akreyrium_bucket"
 				type: "item"
 			}]
-			title: "Better Akreyrium"
+			title: "{quest.processing.utopian_akreyrium.title}"
 			x: 26.5d
 			y: 13.0d
 		}
@@ -2424,7 +2424,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Partial Superalloy Looping"
+			title: "{quest.processing.lepton_coalescing_superalloy.title}"
 			x: 26.5d
 			y: 11.0d
 		}
@@ -2436,7 +2436,7 @@
 				item: "kubejs:damaged_injection_catalyst"
 				type: "item"
 			}]
-			title: "Catalyst Recycling"
+			title: "{quest.processing.damaged_injection_catalyst.title}"
 			x: 28.5d
 			y: 13.0d
 		}
@@ -2471,7 +2471,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Alternating Electron Infused Flux"
+			title: "{quest.processing.alternating_phase_electron_infusion_flux.title}"
 			x: 21.5d
 			y: 12.0d
 		}
@@ -2496,7 +2496,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Brilliant Muon Infused Flux"
+			title: "{quest.processing.brilliant_muon_infusion_flux.title}"
 			x: 21.5d
 			y: 16.0d
 		}
@@ -2520,7 +2520,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Ethereal Tau Infused Flux"
+			title: "{quest.processingethereal_tau_infusion_flux.title}"
 			x: 21.5d
 			y: 14.0d
 		}
@@ -2623,7 +2623,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Mono-Phase Electron Infused Flux"
+			title: "{quest.processing.mono_phase_electron_infusion_flux.title}"
 			x: 15.5d
 			y: 14.0d
 		}
@@ -2646,7 +2646,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Lepton-Flavour Foundational Flux"
+			title: "{quest.processing.lepton_flavour_foundational_flux.title}"
 			x: 15.5d
 			y: 16.0d
 		}
@@ -2677,7 +2677,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Superlight Tau Infused Flux"
+			title: "{quest.processing.superlight_tau_infusion_flux.title}"
 			x: 19.5d
 			y: 14.0d
 		}
@@ -2700,7 +2700,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Superheavy Tau Infused Flux"
+			title: "{quest.processing.superheavy_tau_infusion_flux.title}"
 			x: 20.5d
 			y: 15.0d
 		}
@@ -2736,7 +2736,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Heavy Tau Infused Flux"
+			title: "{quest.processing.heavy_tau_infusion_flux.title}"
 			x: 18.5d
 			y: 15.0d
 		}
@@ -2756,7 +2756,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Light Tau Infused Flux"
+			title: "{quest.processing.light_tau_infusion_flux.title}"
 			x: 17.5d
 			y: 14.0d
 		}
@@ -2776,7 +2776,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Radiant Muon Infused Flux"
+			title: "{quest.processing.radiant_muon_infusion_flux.title}"
 			x: 22.5d
 			y: 17.0d
 		}
@@ -2796,7 +2796,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Shining Muon Infused Flux"
+			title: "{quest.processing.shining_muon_infusion_flux.title}"
 			x: 21.5d
 			y: 18.0d
 		}
@@ -2816,7 +2816,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Glowing Muon Infused Flux"
+			title: "{quest.processing.glowing_muon_infusion_flux.title}"
 			x: 20.5d
 			y: 17.0d
 		}
@@ -2836,7 +2836,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Twinkling Muon Infused Flux"
+			title: "{quest.processing.twinkling_muon_infusion_flux.title}"
 			x: 19.5d
 			y: 16.0d
 		}
@@ -3470,5 +3470,5 @@
 			y: 8.0d
 		}
 	]
-	title: "Processing Lines (Chap 4,5,6)"
+	title: "{quest.processing.456.title}"
 }

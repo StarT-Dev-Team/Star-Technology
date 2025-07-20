@@ -1357,7 +1357,7 @@
 			id: "45EA9095FAF7DDD6"
 			tasks: [{
 				id: "1BEA9D6C9EB86103"
-				title: "{quest.ae2.extended_machines.checkmarkdesc}"
+				title: "{quest.ae2.extended_machines.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -7.0d
@@ -1368,7 +1368,7 @@
 			id: "083D06BEA8E39628"
 			tasks: [{
 				id: "473655F43587CB20"
-				title: "{quest.ae2.mega_machines.checkmarkdesc}"
+				title: "{quest.ae2.mega_machines.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -11.0d
@@ -1379,7 +1379,7 @@
 			invisible: true
 			tasks: [{
 				id: "76B74EE25F58E344"
-				title: "{quest.positioner.checkmarkdesc}"
+				title: "{quest.positioner.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: 0.0d

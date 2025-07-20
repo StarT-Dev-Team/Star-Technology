@@ -1589,7 +1589,7 @@
 			optional: true
 			tasks: [{
 				id: "6A826ED481004E31"
-				title: "{quest.abydos.hpca_nanofluidic_heat_sink.checkmarkdesc}"
+				title: "{quest.abydos.hpca_nanofluidic_heat_sink.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: 1.0d
@@ -1689,7 +1689,7 @@
 			optional: true
 			tasks: [{
 				id: "2635BED4229F491B"
-				title: "{quest.abydos.cheaper_gases.checkmarkdesc}"
+				title: "{quest.abydos.cheaper_gases.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -4.5d
@@ -1769,7 +1769,7 @@
 			id: "5BD0047E69D79476"
 			tasks: [{
 				id: "630CDF3A4731333F"
-				title: "{quest.abydos.processing_lines_link.checkmarkdesc}"
+				title: "{quest.abydos.processing_lines_link.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: -4.5d

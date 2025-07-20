@@ -31,7 +31,7 @@
 					type: "item"
 				}
 			]
-			title: "Sulfur Dioxide"
+			title: "{quest.processing.sulfur_dioxide.title}"
 			x: 0.5d
 			y: 10.5d
 		}
@@ -43,7 +43,7 @@
 			tasks: [
 				{
 					id: "3BC73684BC154A06"
-					title: "Sulfur Trioxide"
+					title: "{quest.processing.sulfur_trioxide.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -58,7 +58,7 @@
 		}
 		{
 			dependencies: ["7F22CD2F778802BE"]
-			description: ["Sulfuric acid is used in a ton of recipes. Once you have sufficient resource generation, automating this on passive is a must."]
+			description: ["{quest.processing.sulfuric_acid.desc}"]
 			id: "104CAE7C2406E9BF"
 			shape: "gear"
 			size: 1.0d
@@ -180,14 +180,14 @@
 				"3F74E863172E757F"
 			]
 			dependency_requirement: "one_completed"
-			description: ["Can alternatively be made with basins, see the first chapter for reference."]
+			description: ["{quest.processing.ethanol.desc}"]
 			icon: "gtceu:ethanol_bucket"
 			id: "3CB84935C465C540"
 			size: 1.0d
 			tasks: [
 				{
 					id: "419F116AD4733E56"
-					title: "Ethanol"
+					title: "{quest.processing.ethanol.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -209,7 +209,7 @@
 						}
 					}
 					optional_task: true
-					title: "Ethanol"
+					title: "{quest.processing.ethanol.title}"
 					type: "item"
 				}
 			]
@@ -225,7 +225,7 @@
 			tasks: [
 				{
 					id: "4F81151616E89614"
-					title: "Ethylene"
+					title: "{quest.processing.ethylene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -265,7 +265,7 @@
 			tasks: [
 				{
 					id: "4E58A7986F1D5BE6"
-					title: "Vinyl Chloride"
+					title: "{quest.processing.vinyl_chloride.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -389,7 +389,7 @@
 			tasks: [
 				{
 					id: "069673AEFB5037EE"
-					title: "Acidic Osmium Solution"
+					title: "{quest.processing.acidic_osmium_solution.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -541,7 +541,7 @@
 			tasks: [
 				{
 					id: "29F52086D31D7845"
-					title: "Rhodium Sulfate"
+					title: "{quest.processing.rhodium_sulfate.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -604,7 +604,7 @@
 			tasks: [
 				{
 					id: "1AC8263E17A28078"
-					title: "Tetrafluoroethylene"
+					title: "{quest.processing.tetrafluoroethylene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -625,7 +625,7 @@
 			tasks: [
 				{
 					id: "089B70E61E159675"
-					title: "Chloroform"
+					title: "{quest.processing.chloroform.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -646,7 +646,7 @@
 			tasks: [
 				{
 					id: "3EE73A010E54EFC9"
-					title: "Hydrofluoric Acid"
+					title: "{quest.processing.hydrofluoric_acid.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -666,7 +666,7 @@
 			tasks: [
 				{
 					id: "765A4DC2FB58644A"
-					title: "Methane"
+					title: "{quest.processing.methane.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -824,7 +824,7 @@
 				"10FB3D35E075D49A"
 			]
 			dependency_requirement: "one_completed"
-			description: ["Sodalite and Clay electroysis are both great ways to automate this once you have &bMV&r electrolyzers"]
+			description: ["{quest.processing.aluminium_electrolysis.desc}"]
 			id: "0C029ABAE1BD9231"
 			rewards: [{
 				count: 3
@@ -908,7 +908,7 @@
 			tasks: [
 				{
 					id: "5138666FCD1BF732"
-					title: "Diaminobenzidine"
+					title: "{quest.processing.diaminobenzidine.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -932,7 +932,7 @@
 			tasks: [
 				{
 					id: "716853FA571D1365"
-					title: "Nitrochlorobenzene"
+					title: "{quest.processing.nitrochlorobenzene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -952,7 +952,7 @@
 			tasks: [
 				{
 					id: "24A0DDF33003AE6E"
-					title: "Nitration Mixture"
+					title: "{quest.processing.nitration_mixture.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -973,7 +973,7 @@
 			tasks: [
 				{
 					id: "6AF71D0B8CCC68DB"
-					title: "Chlorobenzene"
+					title: "{quest.processing.chlorobenzene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -994,7 +994,7 @@
 			tasks: [
 				{
 					id: "0A3BB8126F2E0289"
-					title: "Diphenyl Isophthalate"
+					title: "{quest.processing.diphenyl_isophthalate.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1019,7 +1019,7 @@
 			tasks: [
 				{
 					id: "0C74CC27D0A941BF"
-					title: "Phthalic Acid"
+					title: "{quest.processing.phthalic_acid.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1046,7 +1046,7 @@
 				}
 				{
 					id: "12C9B8173AB4C9E9"
-					title: "Naphthalene"
+					title: "{quest.processing.potassium_and_naphtalene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1056,7 +1056,7 @@
 					type: "item"
 				}
 			]
-			title: "Potassium Dust and Naphthalene"
+			title: "{quest.processing.potassium_and_naphtalene.title}"
 			x: 12.0d
 			y: 19.0d
 		}
@@ -1074,7 +1074,7 @@
 				}
 				{
 					id: "23DD4F8D3734EE17"
-					title: "Dimethylbenzene"
+					title: "{quest.processing.potassium_dichromate_and_dimethylbenzene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1084,7 +1084,7 @@
 					type: "item"
 				}
 			]
-			title: "Potassium Dichromate Dust and Dimethylbenzene"
+			title: "{quest.processing.potassium_dichromate_and_dimethylbenzene.title}"
 			x: 12.0d
 			y: 18.0d
 		}
@@ -1094,7 +1094,7 @@
 				"3082B526665B4B24"
 			]
 			dependency_requirement: "one_completed"
-			description: ["Processing Ilmenite or Bauxite gives Rutile as byproduct, and you can electrolyze the Bauxite dust or process Ilmenite for more Rutile yield."]
+			description: ["{quest.processing.ilmenite_processing.desc}"]
 			id: "61A21D40EC64D60E"
 			size: 1.0d
 			tasks: [{
@@ -1124,7 +1124,7 @@
 			tasks: [
 				{
 					id: "399EE9678941AB20"
-					title: "Titanium Tetrachloride"
+					title: "{quest.processing.titanium_tetrachloride.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1145,7 +1145,7 @@
 			tasks: [
 				{
 					id: "3215A0791594DDE9"
-					title: "Hot Titanium Ingot"
+					title: "{quest.processing.hot_titanium_ingot.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1403,7 +1403,7 @@
 		}
 		{
 			dependencies: ["3AA8F5EDD58D4F43"]
-			description: ["(Almost) free Netherite."]
+			description: ["{quest.processing.small_purified_debris.desc}"]
 			id: "346DEF55D35A9E96"
 			size: 1.0d
 			tasks: [{
@@ -1416,7 +1416,7 @@
 		}
 		{
 			dependencies: ["3AA8F5EDD58D4F43"]
-			description: ["By electrolyzing the Purified Debris Dust that you get you are able to obtain the Debris Dust to kick off the processing chain again, thus looping the system."]
+			description: ["{quest.processing.purified_debris.desc}"]
 			id: "2F561AA9ED46E0F8"
 			size: 1.0d
 			tasks: [{
@@ -1473,7 +1473,7 @@
 			tasks: [
 				{
 					id: "632427F657A7003C"
-					title: "Hot Titanium Ingot"
+					title: "{quest.processing.hot_titanium_ingot.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1494,7 +1494,7 @@
 			tasks: [
 				{
 					id: "2C2C90EDD06D87E6"
-					title: "Sulfur Dichloride"
+					title: "{quest.processing.sulfur_dichloride.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1514,7 +1514,7 @@
 			tasks: [
 				{
 					id: "20F3E88E8DB52339"
-					title: "Chlorine Trifluoride"
+					title: "{quest.processing.chlorine_trifluoride.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1603,7 +1603,7 @@
 			tasks: [
 				{
 					id: "4F29D2326E02AFD4"
-					title: "Hot Pure Netherite Ingot"
+					title: "{quest.processing.hot_pure_netherite_ingot.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1639,7 +1639,7 @@
 			tasks: [
 				{
 					id: "615439B1D90A3017"
-					title: "Tetrachloroethylene"
+					title: "{quest.processing.tetrachloroethylene.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1660,7 +1660,7 @@
 			tasks: [
 				{
 					id: "2FC7FD124DE2CC42"
-					title: "Dichloroethane"
+					title: "{quest.processing.dichloroethane.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1680,7 +1680,7 @@
 			tasks: [
 				{
 					id: "7EDA664C4AE2E70C"
-					title: "Wood Vinegar"
+					title: "{quest.processing.wood_vinegar.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1700,7 +1700,7 @@
 			tasks: [
 				{
 					id: "38B4C17E7B182F39"
-					title: "Wood Tar"
+					title: "{quest.processing.wood_tar.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1742,7 +1742,7 @@
 			tasks: [
 				{
 					id: "5697A9E7FBD7B9A8"
-					title: "Acetone"
+					title: "{quest.processing.acetone.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1766,7 +1766,7 @@
 			tasks: [
 				{
 					id: "455E3D3C6EE0445E"
-					title: "Bisphenol A"
+					title: "{quest.processing.bisphenol_a.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1793,7 +1793,7 @@
 			tasks: [
 				{
 					id: "55746ED641BD5B30"
-					title: "Epichlorohydrin"
+					title: "{quest.processing.epichlorohydrin.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1807,7 +1807,7 @@
 			y: 19.5d
 		}
 		{
-			description: ["This recipe is quite easy to make."]
+			description: ["{quest.processing.propene_and_hypochlorus.desc}"]
 			icon: "gtceu:propene_bucket"
 			id: "7DF87CEDE533948D"
 			optional: true
@@ -1815,7 +1815,7 @@
 			tasks: [
 				{
 					id: "04580F1A50CD22F6"
-					title: "Propene and Hypochlorous Acid"
+					title: "{quest.processing.propene_and_hypochlorus.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1835,7 +1835,7 @@
 			y: 20.25d
 		}
 		{
-			description: ["This recipe is the easiest to make."]
+			description: ["{quest.processing.propene_and_chlorine.desc}"]
 			icon: "gtceu:propene_bucket"
 			id: "629C4DE28BB97660"
 			optional: true
@@ -1843,7 +1843,7 @@
 			tasks: [
 				{
 					id: "2C5B2A46AA946E7A"
-					title: "Propene, Chlorine and Water"
+					title: "{quest.processing.propene_and_chlorine.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1863,7 +1863,7 @@
 			y: 21.0d
 		}
 		{
-			description: ["This recipe has the least amount of byproducts."]
+			description: ["{quest.processing.glycerol.desc}"]
 			icon: "gtceu:glycerol_bucket"
 			id: "2F55E0917FE80801"
 			optional: true
@@ -1871,7 +1871,7 @@
 			tasks: [
 				{
 					id: "10373E891DA5F3A6"
-					title: "Glycerol and Hydrochloric Acid"
+					title: "{quest.processing.glycerol.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1898,7 +1898,7 @@
 			tasks: [
 				{
 					id: "79B0A1AADC878B14"
-					title: "Allyl Chloride and Hypochlorous Acid"
+					title: "{quest.processing.allyl_chloride_and_hypochlorus_acid.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1947,7 +1947,7 @@
 			tasks: [
 				{
 					id: "43E9B9E4B544E4E9"
-					title: "Acetic Acid"
+					title: "{quest.processing.acetic_acid.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1968,7 +1968,7 @@
 			tasks: [
 				{
 					id: "5418E2E385B6D16C"
-					title: "Vinyl Acetate"
+					title: "{quest.processing.vinyl_acetate.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -1989,7 +1989,7 @@
 			tasks: [
 				{
 					id: "0A7287ABB26F2946"
-					title: "Polyvinyl Acetate"
+					title: "{quest.processing.polyvinyl_acetate.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -2008,7 +2008,7 @@
 				"03B49B558B85346B"
 				"439D8AE6D3DC41AF"
 			]
-			description: ["A polymer used to coat materials making them more secure."]
+			description: ["{quest.processing.polyvinyl_butyral.desc}"]
 			id: "3306CAE5E57839A2"
 			rewards: [{
 				count: 3
@@ -2034,7 +2034,7 @@
 			tasks: [
 				{
 					id: "0A18B444703C80DF"
-					title: "Butyraldehyde"
+					title: "{quest.processing.butyraldehyde.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -2063,7 +2063,7 @@
 					type: "item"
 				}
 			]
-			title: "Purified Galena and Sphalerite"
+			title: "{quest.processing.purified_galena_sphalerite.title}"
 			x: 22.5d
 			y: 16.25d
 		}
@@ -2075,7 +2075,7 @@
 			tasks: [
 				{
 					id: "556B050A71284138"
-					title: "Indium Concentrate"
+					title: "{quest.processing.indium_concentrate.checkmark.desc}"
 					type: "checkmark"
 				}
 				{
@@ -2217,7 +2217,7 @@
 					type: "item"
 				}
 			]
-			title: "Sapphires"
+			title: "{quest.processing.sapphires.title}"
 			x: 0.0d
 			y: 12.5d
 		}
@@ -2241,7 +2241,7 @@
 			optional: true
 			tasks: [{
 				id: "49E62DC78BE77A44"
-				title: "postioner"
+				title: "{quest.positioner.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: 16.5d
@@ -2331,7 +2331,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Uranium Hexafluoride"
+			title: "{quest.processing.uranium_hexafluoride.title}"
 			x: 25.0d
 			y: 9.0d
 		}
@@ -2359,7 +2359,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Enriched Uranium Hexafluoride"
+			title: "{quest.processing.enriched_uranium_hexafluoride.title}"
 			x: 26.0d
 			y: 8.0d
 		}
@@ -2387,7 +2387,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Depleted Uranium Hexafluoride"
+			title: "{quest.processing.depleted_uranium_hexafluoride.title}"
 			x: 26.0d
 			y: 10.0d
 		}
@@ -2557,11 +2557,11 @@
 		{
 			dependencies: ["4BCC078B76C6CAE3"]
 			description: [
-				"A singular &o&dNether Star&r can be broken down into 5 shards. Using this you can more cheaply loop them."
+				"{quest.processing.star_looping.desc.1}"
 				""
-				"With an Autoclave at &9IV&r, you can higher chances at getting your elemental infused shards by using the nether star shards and energizing them in a Polarizer."
+				"{quest.processing.star_looping.desc.2}"
 				""
-				"At &4UHV&r you can guarantee infused shards by using energized elemental fluids, which you can get from fusion reactors."
+				"{quest.processing.star_looping.desc.3}"
 			]
 			icon: "mysticalagradditions:nether_star_shard"
 			id: "200BA54AC5EC0BF0"
@@ -2573,11 +2573,11 @@
 				}
 				{
 					id: "30D9A1473D4A2A42"
-					title: "Making Sure &4YOU&r Read This"
+					title: "{quest.processing.star_looping.checkmark.desc}"
 					type: "checkmark"
 				}
 			]
-			title: "Basic Nether Star Looping"
+			title: "{quest.processing.star_looping.title}"
 			x: 29.0d
 			y: 13.0d
 		}
@@ -2717,7 +2717,7 @@
 				"27CDE08D18C0AAE4"
 				"1A5AE57C3F996A31"
 			]
-			description: ["While there are multiple ways to do this, for demonstration purposes this method is shown."]
+			description: ["{quest.processing.polydimethylsiloxane.desc}"]
 			id: "6109BB0B2C118C28"
 			tasks: [{
 				id: "11557AB1EAFAFC78"
@@ -2743,7 +2743,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Chlorine"
+			title: "{quest.processing.chlorine.title}"
 			x: 3.0d
 			y: 16.5d
 		}
@@ -2763,7 +2763,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Water"
+			title: "{quest.processing.water.title}"
 			x: 2.0d
 			y: 17.25d
 		}
@@ -2783,7 +2783,7 @@
 					type: "checkmark"
 				}
 			]
-			title: "Methane"
+			title: "{quest.processing.methane.title}"
 			x: 3.0d
 			y: 18.0d
 		}
@@ -2797,7 +2797,7 @@
 					id: "itemfilters:or"
 					tag: {
 						display: {
-							Name: "{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"#FFFFFF\",\"text\":\"Sapphire Dust\"}"
+							Name: "{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"#FFFFFF\",\"text\":\"{quest.processing.sapphire_dust.desc}\"}"
 						}
 						items: [
 							{
@@ -2833,12 +2833,12 @@
 		}
 		{
 			dependencies: ["24CF3F64E74A027E"]
-			description: ["Once you reach the Nether, you can create the most efficient Nether Star line using your &2UIV&r tier autoclave and the nether tempered elemental fluids, where, not only are you guaranteed to get infused shards, but have a chance to get extra!"]
+			description: ["{quest.processing.perfect_star_looping.desc}"]
 			icon: "minecraft:nether_star"
 			id: "2AA8CBE804E07BC7"
 			tasks: [{
 				id: "38C47CEF4F0CDF23"
-				title: "Perfect Nether Star Looping"
+				title: "{quest.processing.perfect_star_looping.checkmark.desc}"
 				type: "checkmark"
 			}]
 			x: 34.5d
@@ -2893,5 +2893,5 @@
 			y: 11.5d
 		}
 	]
-	title: "Processing Lines (Chap 1,2,3)"
+	title: "{quest.processing.123.title}"
 }
