@@ -25,12 +25,14 @@ ServerEvents.recipes(event => {
         recipe.duration(duration);
     };
     
-    fermenting('8x #forge:crops', 'gtceu:bio_chaff', 'createdieselgenerators:ethanol 200', 600, 'ethanol');
+    fermenting('8x #forge:crops', 'gtceu:bio_chaff', 'gtceu:ethanol 200', 600, 'ethanol');
     
     const potionRecipes = (fermentationMixture, potionID) => {
         fermenting(fermentationMixture, false, `kubejs:${potionID} 100`, 100, potionID);
 
         event.recipes.create.filling(`kubejs:${potionID}`, [Fluid.of(`kubejs:${potionID}`, 250), 'minecraft:glass_bottle']).id(`start:filling/${potionID}`);
+
+        event.shapeless(`4x kubejs:${potionID}`, [`kubejs:${potionID}_bucket`, 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle']).id(`start:shapeless/${potionID}`);
     };
 
     potionRecipes(['3x thermal:corn', '3x minecraft:wheat', '2x minecraft:sugar'], 'sweetcord_beer'); // Haste
