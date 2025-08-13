@@ -17,7 +17,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
         .definition((tier, builder) => {
             builder
             .recipeType('fermenting')
-            .workableCasingRenderer('minecraft:block/stripped_spruce_log', 'gtceu:block/machines/advanced_composter', false);
+            .workableCasingRenderer('gtceu:block/treated_wood_planks', 'gtceu:block/machines/casket', false);
         }
     );
     

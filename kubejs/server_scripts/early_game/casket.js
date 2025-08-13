@@ -5,14 +5,14 @@ ServerEvents.recipes(event => {
         (() => {
     
     event.shaped('gtceu:ulv_casket',[
-        'PRP',
-        'PGP',
-        'ISI'],{
-        P: 'gtceu:treated_wood_slab',
-        G: 'create:basin',
-        R: 'gtceu:iron_gear',
-        I: 'gtceu:iron_plate',
-        S: 'thermal:redstone_servo'
+        'RPR',
+        'SMS',
+        'TTT'],{
+        T: 'gtceu:treated_wood_slab',
+        M: 'exnihilosequentia:string_mesh',
+        R: 'gtceu:rubber_ring',
+        P: 'gtceu:wrought_iron_plate',
+        S: 'gtceu:treated_wood_rod'
     }).id('start:shaped/ulv_casket');
 
     const fermenting = (input, outputItem, outputFluid, duration, recipeID) => {
