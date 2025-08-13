@@ -681,7 +681,12 @@
     "material.gtceu.superstate_helium_3": "Superstate Helium 3",
     "material.gtceu.astatine_bis_tritelluride_cobo_selenium": "Astatine Bis-Tritelluride Cobo-Selenium",
     "material.gtceu.iron_titanium_oxide": "Iron Titanium Oxide",
+
+    "block.gtceu.ulv_advanced_composter": "Advanced Composter",
     "gtceu.composting": "Composting",
+    "block.gtceu.ulv_casket": "Fermenting Casket",
+    "gtceu.fermenting": "Fermenting",
+    
     "material.gtceu.warped": "Warped",
 
     "block.gtceu.classic_stargate_display": "Classic Stargate Shape Helper",

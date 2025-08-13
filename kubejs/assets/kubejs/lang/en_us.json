@@ -1,5 +1,18 @@
 {
     "death.attack.radiation": "%s irridiated to death",
     "death.attack.abyssal_pull": "%s was drained by the pull of the abyss",
-    "death.attack.heat_exhaustion": "%s dried up from the intense heat"
+    "death.attack.heat_exhaustion": "%s dried up from the intense heat",
+
+    "item.kubejs.sweetcord_beer": "Sweetcord Beer",
+    "item.kubejs.sweetcord_beer.tooltip": "A sweet drink that gives you Haste",
+    "item.kubejs.apple_cidar": "Apple Cidar",
+    "item.kubejs.apple_cidar.tooltip": "A refreshing drink that gives you Slow Falling",
+    "item.kubejs.carrot_ale": "Carrot Ale",
+    "item.kubejs.carrot_ale.tooltip": "A bitter drink that gives you Night Vision",
+    "item.kubejs.berry_wine": "Berry Wine",
+    "item.kubejs.berry_wine.tooltip": "A classy drink that gives you Speed",
+    "item.kubejs.wheat_kvas": "Wheat Kvas",
+    "item.kubejs.wheat_kvas.tooltip": "A sweet and sour drink that gives you Jump Boost",
+    "item.kubejs.sake": "Sake",
+    "item.kubejs.sake.tooltip": "A rich drink that gives you ..."
 }
