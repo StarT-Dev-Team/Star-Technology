@@ -4,7 +4,7 @@ const potions = [
     {id: 'carrot_ale', color: 0xE58E26, effect: {id: 'minecraft:night_vision', duration: 2400, amplifier: 0}},
     {id: 'berry_wine', color: 0x8B1A3A, effect: {id: 'minecraft:speed', duration: 2400, amplifier: 0}},
     {id: 'wheat_kvas', color: 0xC2A878, effect: {id: 'minecraft:jump_boost', duration: 2400, amplifier: 0}},
-    {id: 'sake', color: 0xF5F5E6, effect: {id: 'minecraft:haste', duration: 2400, amplifier: 0}}
+    {id: 'sake', color: 0xF5F5E6, effect: {id: 'kubejs:reach', duration: 2400, amplifier: 0}}
 ];
 
 StartupEvents.registry('item', event => {
@@ -19,7 +19,7 @@ StartupEvents.registry('item', event => {
                 .eaten(ctx => {
                     ctx.player.give('minecraft:glass_bottle')
                 })
-            })
+            })  
             .texture(`kubejs:item/drinks/${itemID}`);
     };
 

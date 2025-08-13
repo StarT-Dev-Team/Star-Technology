@@ -14,5 +14,7 @@
     "item.kubejs.wheat_kvas": "Wheat Kvas",
     "item.kubejs.wheat_kvas.tooltip": "A sweet and sour drink that gives you Jump Boost",
     "item.kubejs.sake": "Sake",
-    "item.kubejs.sake.tooltip": "A rich drink that gives you ..."
+    "item.kubejs.sake.tooltip": "A rich drink that gives you ...",
+
+    "effect.kubejs.reach": "Reach"
 }
