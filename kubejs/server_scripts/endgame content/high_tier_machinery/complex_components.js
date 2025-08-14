@@ -32,7 +32,7 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VHA[GTValues.UHV]);
 
     let dataItem = (cwu > 0 && cwu < 32) ? 'gtceu:data_orb' : (cwu < 160) ? 'gtceu:data_module' : 'start_core:data_dna_disk';
-    event.recipes.gtceu.research_station(id(`1_x_gtceu_advanced_smd_${nameType}`))
+    event.recipes.gtceu.research_station(`1_x_gtceu_advanced_smd_${nameType}`)
         .itemInputs(dataItem)
         .itemInputs(`gtceu:advanced_smd_${type}`)
         .itemOutputs(Item.of(`${dataItem}`, `{assembly_line_research:{research_id:"1x_gtceu_advanced_smd_${type}",research_type:"gtceu:component_part_assembly"}}`))
@@ -67,7 +67,7 @@ ServerEvents.recipes(event => {
             .EUt(eut);
 
         let dataItem = (cwu > 0 && cwu < 32) ? 'gtceu:data_orb' : (cwu < 160) ? 'gtceu:data_module' : 'start_core:data_dna_disk';
-        event.recipes.gtceu.research_station(id(`1_x_${researched.replace(':','_')}`))
+        event.recipes.gtceu.research_station(`1_x_${researched.replace(':','_')}`)
             .itemInputs(dataItem)
             .itemInputs(researched)
             .itemOutputs(Item.of(`${dataItem}`, `{assembly_line_research:{research_id:"1x_${researched.replace(':','_')}",research_type:"gtceu:component_part_assembly"}}`))
