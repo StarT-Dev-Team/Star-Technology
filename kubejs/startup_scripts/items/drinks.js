@@ -20,7 +20,8 @@ StartupEvents.registry('item', event => {
                     ctx.player.give('minecraft:glass_bottle')
                 })
             })  
-            .texture(`kubejs:item/drinks/${itemID}`);
+            .texture(`kubejs:item/drinks/${itemID}`)
+            .tooltip(Text.translate(`item.kubejs.${itemID}.tooltip`));
     };
 
     potions.forEach(potion => {

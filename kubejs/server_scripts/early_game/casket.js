@@ -13,7 +13,7 @@ ServerEvents.recipes(event => {
         R: 'gtceu:rubber_ring',
         P: 'gtceu:wrought_iron_plate',
         S: 'gtceu:treated_wood_rod'
-    }).id('start:shaped/ulv_casket');
+    }).id(id('shaped/ulv_casket'));
 
     const fermenting = (input, outputItem, outputFluid, duration, recipeID) => {
         const recipe = event.recipes.gtceu.fermenting(id(recipeID));
