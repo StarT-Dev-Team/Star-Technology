@@ -1,153 +1,40 @@
 ServerEvents.recipes(event => {
     const id = global.id;
 
-    event.remove({mod: 'vintage'}); 
+    ['turning', 'coiling', 'pressurizing', 'vacuumizing', 'curving', 'hammering', 'laser_cutting', 'centrifugation'].forEach(type => {
+        event.remove({type: `vintage:${type}`});
+    });
+
+    ['framedblocks:framed_flower_pot', 'manyideas_core:block/mortar___crafting', 'framedblocks:framed_prism_corner', 'minecraft:bowl', 'createlowheated:basic_burner',
+        'minecraft:flower_pot', 'woodenbucket:wooden_bucket', 'framedblocks:framed_inner_prism_corner', 'framedblocks:framed_inner_threeway_corner',
+        'framedblocks:framed_threeway_corner', 'framedblocks:framed_slope'].forEach(recipeID => {
+        event.remove({id: recipeID});
+    });
+
+    event.remove({type: 'create:pressing', mod: 'vintage'}); // Random plates recipes
     
     // if (global.packmode !== 'hard'){(() => {   
 
     const vintage = event.recipes.vintage;
     const create = event.recipes.create;
 
-    event.shaped('vintage:grinder_belt', [
-        'PPP',
-        'P P',
-        'PPP'
-    ], {
-        P: '#create:sandpaper'
-    }).id('start:shaped/grinder_belt');
+    event.remove({id: 'vintage:sequenced_assembly/redstone_module'});
+    create.deploying('vintage:redstone_module', ['create:precision_mechanism', 'minecraft:redstone_block']).id('start:deploying/redstone_module');
 
-    event.shaped('vintage:spring_coiling_machine_wheel', [
-        ' A ',
-        'AIA',
-        ' A '
-    ], {
-        A: 'create:andesite_alloy',
-        I: 'minecraft:iron_block'
-    }).id('start:shaped/spring_coiling_machine_wheel');
+    event.remove({id: 'vintage:sequenced_assembly/recipe_card'});
+    create.deploying('vintage:recipe_card', ['gtceu:brass_plate', 'create:empty_schematic']).id('start:deploying/recipe_card');
 
-    event.shaped('vintage:helve_hammer_slot_cover', [
-        '  N',
-        ' N ',
-        'N  '
-    ], {
-        N: 'gtceu:brass_nugget'
-    }).id('start:shaped/helve_hammer_slot_cover');
+    [
+        {modID: 'gtceu', metals: ['lead','silver','tin','zinc', 'brass','bronze','red_alloy','nickel','invar','soul_infused','cobalt_brass','wrought_iron','potin']},
+        {modID: 'minecraft', metals: ['iron', 'gold', 'copper']}
+    ].forEach(mod => {
+        mod.metals.forEach(metal => {
+            vintage.turning(`gtceu:${metal}_rod`,`${mod.modID}:${metal}_ingot`).id(`start:turning/${metal}_rod`);
 
-    event.shaped('vintage:belt_grinder', [
-        'B',
-        'C',
-        'S'
-    ], {
-        B: 'vintage:grinder_belt',
-        C: 'create:andesite_casing',
-        S: 'create:shaft' 
-    }).id('start:shaped/belt_grinder');
-
-    event.shaped('vintage:spring_coiling_machine', [
-        'I  ',
-        'WCS',
-        'I  '
-    ], {
-        W: 'vintage:spring_coiling_machine_wheel',
-        C: 'create:andesite_casing',
-        S: 'create:shaft',
-        I: 'minecraft:iron_ingot'
-    }).id('start:shaped/spring_coiling_machine');
-
-    event.shaped('vintage:curving_press', [
-        ' S ',
-        'PCP'
-    ], {
-        P: 'gtceu:iron_spring',
-        C: 'create:andesite_casing',
-        S: 'create:shaft'
-    }).id('start:shaped/curving_press');
-
-    event.shaped('vintage:centrifuge', [
-        'P P',
-        'LSL',
-        'PCP'
-    ], {
-        P: 'gtceu:iron_spring',
-        C: 'create:andesite_casing',
-        S: 'create:shaft',
-        L: '#minecraft:logs'
-    }).id('start:shaped/centrifuge');
-
-    event.shaped('vintage:vibrating_table', [
-        'PLP',
-        'PTP'
-    ], {
-        P: 'gtceu:iron_spring',
-        T: 'create:mechanical_piston',
-        L: '#minecraft:wooden_slabs'
-    }).id('start:shaped/vibrating_table');
-
-    event.shaped('vintage:vacuum_chamber', [
-        'PCP',
-        'AMA'
-    ], {
-        P: 'gtceu:iron_spring',
-        C: 'create:andesite_casing',
-        A: 'create:andesite_alloy',
-        M: 'create:mechanical_pump'
-    }).id('start:shaped/vacuum_chamber');
-
-    event.shaped('vintage:laser', [
-        'GRG',
-        'MCP',
-        'QLQ'
-    ], {
-        P: 'gtceu:iron_spring',
-        C: 'create:brass_casing',
-        G: 'create:cogwheel',
-        R: 'minecraft:redstone_block',
-        M: 'create:precision_mechanism',
-        Q: 'minecraft:quartz',
-        L: 'vintage:laser_item'
-    }).id('start:shaped/laser');
-
-    create.mechanical_crafting('vintage:laser_item', [
-		' R ',
-		'PEP',
-		'PTP',
-		' G '
-	], {
-		T: 'minecraft:glowstone_dust',
-		R: 'minecraft:redstone',
-		P: 'gtceu:copper_plate',
-		G: '#forge:glass/red',
-        E: 'create:electron_tube'
-	}).id('start:shaped/laser_item');
-
-    create.mechanical_crafting('vintage:helve_hammer', [
-		' I PP',
-		'ILLLC',
-		'II  S'
-	], {
-		I: 'minecraft:iron_block',
-        P: 'gtceu:iron_spring',
-        L: '#minecraft:logs',
-        C: 'create:andesite_casing',
-        S: 'create:shatf'
-	}).id('start:shaped/helve_hammer');
-
-    create.mechanical_crafting('vintage:lathe', [
-		' MPA ',
-		'SCCIS',
-		'  PA '
-	], {
-		I: 'minecraft:iron_block',
-        P: 'gtceu:iron_spring',
-        A: 'create:andesite_alloy',
-        M: 'create:precision_mechanism',
-        C: 'create:andesite_casing',
-        S: 'create:shatf'
-	}).id('start:shaped/lathe');
-
-    event.recipes.create.deploying('vintage:redstone_module', ['create:precision_mechanism', 'minecraft:redstone_block']);
-
-    event.recipes.create.deploying('vintage:recipe_card', ['gtceu:brass_plate', 'create:empty_schematic']);
+            vintage.coiling(`gtceu:${metal}_spring`,`gtceu:long_${metal}_rod`).id(`start:coiling/${metal}_spring`);
+            vintage.coiling(`gtceu:small_${metal}_spring`,`gtceu:${metal}_single_wire`).id(`start:coiling/small_${metal}_spring`);
+        });
+    });
 
     //Carried over from source code
         // event.custom({
