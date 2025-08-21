@@ -5,13 +5,17 @@ ServerEvents.recipes(event => {
         event.remove({type: `vintage:${type}`});
     });
 
-    ['framedblocks:framed_flower_pot', 'manyideas_core:block/mortar___crafting', 'framedblocks:framed_prism_corner', 'minecraft:bowl', 'createlowheated:basic_burner',
-        'minecraft:flower_pot', 'woodenbucket:wooden_bucket', 'framedblocks:framed_inner_prism_corner', 'framedblocks:framed_inner_threeway_corner',
-        'framedblocks:framed_threeway_corner', 'framedblocks:framed_slope'].forEach(recipeID => {
-        event.remove({id: recipeID});
-    });
+    event.remove({type: 'create:pressing', mod: 'vintage'});
+    event.remove({output: /vintage:.*_rod/});
+    event.remove({output: /vintage:.*_wire/});
 
-    event.remove({type: 'create:pressing', mod: 'vintage'}); // Random plates recipes
+    event.replaceInput({input: 'vintage:iron_spring'}, 'vintage:iron_spring', 'gtceu:iron_spring')
+
+    // ['framedblocks:framed_flower_pot', 'manyideas_core:block/mortar___crafting', 'framedblocks:framed_prism_corner', 'minecraft:bowl', 'createlowheated:basic_burner',
+    //     'minecraft:flower_pot', 'woodenbucket:wooden_bucket', 'framedblocks:framed_inner_prism_corner', 'framedblocks:framed_inner_threeway_corner',
+    //     'framedblocks:framed_threeway_corner', 'framedblocks:framed_slope'].forEach(recipeID => {
+    //     event.remove({id: recipeID, type: 'vintage:curving'});
+    // });          Either removes manual and curving recipe, or none when `, type: 'vintage:curving'` is added, seems to be some kind of hardcoded compat :/
     
     // if (global.packmode !== 'hard'){(() => {   
 
@@ -25,15 +29,30 @@ ServerEvents.recipes(event => {
     create.deploying('vintage:recipe_card', ['gtceu:brass_plate', 'create:empty_schematic']).id('start:deploying/recipe_card');
 
     [
-        {modID: 'gtceu', metals: ['lead','silver','tin','zinc', 'brass','bronze','red_alloy','nickel','invar','soul_infused','cobalt_brass','wrought_iron','potin']},
-        {modID: 'minecraft', metals: ['iron', 'gold', 'copper']}
-    ].forEach(mod => {
-        mod.metals.forEach(metal => {
-            vintage.turning(`gtceu:${metal}_rod`,`${mod.modID}:${metal}_ingot`).id(`start:turning/${metal}_rod`);
-
+        {modID: 'minecraft', metal: 'copper', spring: true, small_spring: true},
+        {modID: 'minecraft', metal: 'gold', spring: true, small_spring: true},
+        {modID: 'minecraft', metal: 'iron', spring: true, small_spring: true},
+        {modID: 'gtceu', metal: 'lead', spring: true, small_spring: true},
+        {modID: 'gtceu', metal: 'tin', spring: true, small_spring: true},
+        {modID: 'gtceu', metal: 'red_alloy', spring: true, small_spring: false},
+        {modID: 'gtceu', metal: 'wrought_iron', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'bronze', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'silver', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'brass', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'invar', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'soul_infused', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'zinc', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'potin', spring: false, small_spring: false},
+        {modID: 'gtceu', metal: 'cobalt_brass', spring: false, small_spring: false},
+    ].forEach(material => {
+        const {modID, metal, spring, small_spring} = material;
+        vintage.turning(`gtceu:${metal}_rod`,`${modID}:${metal}_ingot`).id(`start:turning/${metal}_rod`);
+        if (spring) {
             vintage.coiling(`gtceu:${metal}_spring`,`gtceu:long_${metal}_rod`).id(`start:coiling/${metal}_spring`);
+        }
+        if (small_spring) {
             vintage.coiling(`gtceu:small_${metal}_spring`,`gtceu:${metal}_single_wire`).id(`start:coiling/small_${metal}_spring`);
-        });
+        }
     });
 
     //Carried over from source code

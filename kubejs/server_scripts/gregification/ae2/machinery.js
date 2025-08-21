@@ -16,14 +16,14 @@ ServerEvents.recipes(event => {
     }
 
     const assemblerfluid = (id1, output, inputit, inputfl, eu, circuit) => {
-        event.recipes.gtceu.assembler(id(`${id1}`))
-            .itemInputs(inputit)
-            .inputFluids(`gtceu:${inputfl}`)
-            .itemOutputs(`${output}`)
-            .duration(400)
-            .EUt(eu);
+        const recipe = event.recipes.gtceu.assembler(id(`${id1}`))
+            recipe.itemInputs(inputit)
+            recipe.inputFluids(`gtceu:${inputfl}`)
+            recipe.itemOutputs(`${output}`)
+            recipe.duration(400)
+            recipe.EUt(eu);
         if (circuit) {
-            event.recipes.gtceu.assembler(id(`${id1}`)).circuit(circuit)
+            recipe.circuit(circuit)
         }
     }
 

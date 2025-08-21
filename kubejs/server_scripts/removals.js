@@ -97,7 +97,7 @@ ServerEvents.recipes(event => {
     event.remove({ input: /thermal:.*_nugget/});
     event.remove({ output: /exnihilosequentia:.*_nugget/});
     event.remove({ input: /exnihilosequentia:.*_nugget/});
-    event.remove({ input: Item.of('createdieselgenerators:mold').ignoreNBT()});
+    event.remove({ input: Item.of('createdieselgenerators:mold')});
     event.remove({ output: 'createdieselgenerators:mold'});
 
     //Pattern Buffer Research Removals

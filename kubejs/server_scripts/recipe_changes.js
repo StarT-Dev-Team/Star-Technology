@@ -853,7 +853,7 @@ ServerEvents.recipes(event => {
         ['enriched_naquadah','neutronium'].forEach(type=>{
 
             event.shapeless(Item.of(`start_core:${type}_${container}`), [
-                Item.of(`start_core:${type}_${container}`).ignoreNBT()
+                Item.of(`start_core:${type}_${container}`)
             ]);
 
         });

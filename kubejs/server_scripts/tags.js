@@ -42,26 +42,14 @@ ServerEvents.tags('item', event => {
     event.add('curios:back', 'kubejs:end_talisman');
 
     //Vintage Tag Removals
-    //Sheets
-    ['aluminum','andesite','cast_iron','palladium','pig_iron','rhodium','rose_gold','vanadium'].forEach(type=>{
-    event.remove(`forge:plates`, `vintage:${type}_sheet`);
-    event.remove(`forge:plates/${type}`, `vintage:${type}_sheet`);
-    });
-    //Rods
-    ['aluminum','andesite','cast_iron','palladium','pig_iron','rhodium','rose_gold','vanadium','constantan','nickel'].forEach(type=>{
-    event.remove(`forge:rods`, `vintage:${type}_sheet`);
-    event.remove(`forge:rods/${type}`, `vintage:${type}_sheet`);
-    });
-    //Wires
-    ['aluminum','andesite','cast_iron','palladium','pig_iron','rhodium','rose_gold','vanadium','constantan',
-    'nickel','brass','bronze','invar','silver','steel','tin','zinc'].forEach(type=>{
-    event.remove(`forge:wires`, `vintage:${type}_sheet`);
-    event.remove(`forge:wires/${type}`, `vintage:${type}_sheet`);
-    });
     //Materials
     ['vanadium','sulfur'].forEach(type=>{
-    event.remove(`forge:storage_blocks/${type}`,`vintage:${type}_block`)
-    event.remove(`forge:storage_blocks`,`vintage:${type}_block`)
+        const nuggetSuffix = type == 'sulfur' ? 'chunk' : 'nugget'
+        event.remove(`forge:storage_blocks/${type}`, `vintage:${type}_block`)
+        event.remove('forge:storage_blocks', `vintage:${type}_block`)
+        event.remove(`forge:nuggets/${type}`, `vintage:${type}_${nuggetSuffix}`);
+        event.remove('forge:nuggets', `vintage:${type}_${nuggetSuffix}`);
+        event.remove('balm:nuggets', `vintage:${type}_${nuggetSuffix}`);
     });
     event.remove('balm:gems', 'vintage:sulfur');
     event.remove('forge:gems', 'vintage:sulfur');
@@ -71,13 +59,6 @@ ServerEvents.tags('item', event => {
     event.remove('forge:ingots/vanadium', 'vintage:vanadium_ingot');
     event.remove('minecraft:beacon_payment_items', 'vintage:vanadium_ingot');
     event.remove('minecraft:trim_materials', 'vintage:vanadium_ingot');
-    event.remove('forge:nuggets/sulfur','vintage:sulfur_chunk');
-    event.remove('forge:nuggets','vintage:sulfur_chunk');
-    event.remove('balm:nuggets','vintage:sulfur_chunk');
-    event.remove('forge:nuggets/vanadium','vintage:vanadium_nugget');
-    event.remove('forge:nuggets','vintage:vanadium_nugget');
-    event.remove('balm:nuggets','vintage:vanadium_nugget');
-
 
 });
 
@@ -138,6 +119,11 @@ ServerEvents.tags('item', event=>{
     const Megacells = [
         /megacells:sky_steel.*/
     ]
+    const Vintage = [
+        /vintage:.*_sheet/,
+        /vintage:.*_rod/,
+        /vintage:.*_wire/
+    ]
 
     thermal.forEach((item)=> {
         event.removeAllTagsFrom(`${item}`)
@@ -152,6 +138,9 @@ ServerEvents.tags('item', event=>{
         event.removeAllTagsFrom(`${item}`)
     });
     Megacells.forEach((item)=> {
+        event.removeAllTagsFrom(`${item}`)
+    });
+    Vintage.forEach((item)=> {
         event.removeAllTagsFrom(`${item}`)
     });
 });
