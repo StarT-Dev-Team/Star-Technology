@@ -1,15 +1,29 @@
 ServerEvents.recipes(event => {
     const id = global.id;
 
+    const vintage = event.recipes.vintage;
+    const create = event.recipes.create;  
+
+    // Machinery
     ['turning', 'coiling', 'pressurizing', 'vacuumizing', 'curving', 'hammering', 'laser_cutting', 'centrifugation'].forEach(type => {
         event.remove({type: `vintage:${type}`});
     });
 
+    event.remove({output: 'vintage:curving_press'});
+    event.remove({output: 'vintage:laser'});
+
+    event.remove({id: 'vintage:sequenced_assembly/redstone_module'});
+    create.deploying('vintage:redstone_module', ['create:precision_mechanism', 'minecraft:redstone_block']).id(id('deploying/redstone_module'));
+
+    event.remove({id: 'vintage:sequenced_assembly/recipe_card'});
+    create.deploying('vintage:recipe_card', ['gtceu:brass_plate', 'create:empty_schematic']).id(id('deploying/recipe_card'));
+
+    // Material Processing
     event.remove({type: 'create:pressing', mod: 'vintage'});
     event.remove({output: /vintage:.*_rod/});
     event.remove({output: /vintage:.*_wire/});
 
-    event.replaceInput({input: 'vintage:iron_spring'}, 'vintage:iron_spring', 'gtceu:iron_spring')
+    event.replaceInput({input: 'vintage:iron_spring'}, 'vintage:iron_spring', 'gtceu:iron_spring');
 
     // ['framedblocks:framed_flower_pot', 'manyideas_core:block/mortar___crafting', 'framedblocks:framed_prism_corner', 'minecraft:bowl', 'createlowheated:basic_burner',
     //     'minecraft:flower_pot', 'woodenbucket:wooden_bucket', 'framedblocks:framed_inner_prism_corner', 'framedblocks:framed_inner_threeway_corner',
@@ -17,102 +31,99 @@ ServerEvents.recipes(event => {
     //     event.remove({id: recipeID, type: 'vintage:curving'});
     // });          Either removes manual and curving recipe, or none when `, type: 'vintage:curving'` is added, seems to be some kind of hardcoded compat :/
     
-    // if (global.packmode !== 'hard'){(() => {   
-
-    const vintage = event.recipes.vintage;
-    const create = event.recipes.create;
-
-    event.remove({id: 'vintage:sequenced_assembly/redstone_module'});
-    create.deploying('vintage:redstone_module', ['create:precision_mechanism', 'minecraft:redstone_block']).id('start:deploying/redstone_module');
-
-    event.remove({id: 'vintage:sequenced_assembly/recipe_card'});
-    create.deploying('vintage:recipe_card', ['gtceu:brass_plate', 'create:empty_schematic']).id('start:deploying/recipe_card');
+    // if (global.packmode !== 'hard'){(() => { 
 
     [
-        {modID: 'minecraft', metal: 'copper', spring: true, small_spring: true},
-        {modID: 'minecraft', metal: 'gold', spring: true, small_spring: true},
-        {modID: 'minecraft', metal: 'iron', spring: true, small_spring: true},
-        {modID: 'gtceu', metal: 'lead', spring: true, small_spring: true},
-        {modID: 'gtceu', metal: 'tin', spring: true, small_spring: true},
-        {modID: 'gtceu', metal: 'red_alloy', spring: true, small_spring: false},
-        {modID: 'gtceu', metal: 'wrought_iron', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'bronze', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'silver', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'brass', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'invar', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'soul_infused', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'zinc', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'potin', spring: false, small_spring: false},
-        {modID: 'gtceu', metal: 'cobalt_brass', spring: false, small_spring: false},
+        {modID: 'minecraft', metal: 'copper', rod: true, spring: true, small_spring: true, double_plate: true},
+        {modID: 'minecraft', metal: 'gold', rod: true, spring: true, small_spring: true, double_plate: true},
+        {modID: 'minecraft', metal: 'iron', rod: true, spring: true, small_spring: true, double_plate: true},
+        {modID: 'gtceu', metal: 'lead', rod: true, spring: true, small_spring: true, double_plate: true},
+        {modID: 'gtceu', metal: 'tin', rod: true, spring: true, small_spring: true, double_plate: true},
+        {modID: 'gtceu', metal: 'red_alloy', rod: true, spring: true, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'wrought_iron', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'bronze', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'silver', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'brass', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'invar', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'soul_infused', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'zinc', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'potin', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'cobalt_brass', rod: true, spring: false, small_spring: false, double_plate: true},
+        {modID: 'gtceu', metal: 'nickel', rod: false, spring: false, small_spring: false, double_plate: true}
     ].forEach(material => {
-        const {modID, metal, spring, small_spring} = material;
-        vintage.turning(`gtceu:${metal}_rod`,`${modID}:${metal}_ingot`).id(`start:turning/${metal}_rod`);
+        const {modID, metal, rod, spring, small_spring, double_plate} = material;
+        vintage.polishing(`gtceu:${metal}_dust`, `${modID}:${metal}_ingot`).id(id(`polishing/${metal}_ingot`));
+        if (rod) {
+            vintage.turning(`gtceu:${metal}_rod`, `${modID}:${metal}_ingot`).id(id(`turning/${metal}_rod`));
+        }
         if (spring) {
-            vintage.coiling(`gtceu:${metal}_spring`,`gtceu:long_${metal}_rod`).id(`start:coiling/${metal}_spring`);
+            vintage.coiling(`gtceu:${metal}_spring`, `gtceu:long_${metal}_rod`).id(id(`coiling/${metal}_spring`));
         }
         if (small_spring) {
-            vintage.coiling(`gtceu:small_${metal}_spring`,`gtceu:${metal}_single_wire`).id(`start:coiling/small_${metal}_spring`);
+            vintage.coiling(`gtceu:small_${metal}_spring`, `gtceu:${metal}_single_wire`).id(id(`coiling/small_${metal}_spring`));
+        }
+        if (double_plate) {
+            vintage.hammering(`gtceu:double_${metal}_plate`, `gtceu:${metal}_plate`).hammerBlows(3).id(id(`hammering/double_${metal}_plate`));
         }
     });
 
-    //Carried over from source code
-        // event.custom({
-        // "type": "create:sequenced_assembly",
-        // "ingredient": {"tag": "forge:plates/brass"},
-        // "loops": 3,
-        // "results": [{"item": "vintageimprovements:recipe_card"}],
-        // "sequence": [{
-        //     "type": "create:deploying",
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_recipe_card"},{"item": "minecraft:redstone"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_recipe_card"}]
-        // },
-        // {
-        //     "type": "create:pressing",
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_recipe_card"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_recipe_card"}]
-        // },
-        // {
-        //     "type": "vintageimprovements:polishing",
-        //     "speed_limits": 2,
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_recipe_card"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_recipe_card"}]
-        // }],
-        // "transitionalItem": {"item": "vintageimprovements:incomplete_recipe_card"}
-        // }).id(`start:sequenced_assembly/recipe_card`);
+    [
+        {input: 'minecraft:brown_mushroom_block', output: '3x minecraft:brown_mushroom'},
+        {input: 'minecraft:red_mushroom_block', output: '3x minecraft:red_mushroom'},
+        {input: 'minecraft:bone', output: '4x minecraft:bone_meal'},
+        {input: 'minecraft:gravel', output: 'minecraft:flint'},
+        {input: 'minecraft:soul_sand', output: 'thermal_extra:soul_sand_dust'},
+        {input: 'gtceu:antimony_ingot', output: 'gtceu:antimony_dust'},
+        {input: 'gtceu:annealed_copper_ingot', output: 'gtceu:annealed_copper_dust'},
+        {input: 'minecraft:charcoal', output: 'gtceu:charcoal_dust'},
+        {input: 'minecraft:coal', output: 'gtceu:coal_dust'},
+        {input: 'gtceu:flawless_coal_gem', output: '2x gtceu:coal_dust'},
+        {input: 'gtceu:exquisite_coal_gem', output: '4x gtceu:coal_dust'},
+        {input: 'gtceu:electrum_ingot', output: 'gtceu:electrum_dust'},
+        {input: 'gtceu:coke_gem', output: 'gtceu:coke_dust'},
+        {input: 'gtceu:flawless_coke_gem', output: '2x gtceu:coke_dust'},
+        {input: 'gtceu:exquisite_coke_gem', output: '4x gtceu:coke_dust'},
+        {input: 'gtceu:steel_ingot', output: 'gtceu:steel_dust'},
+        {input: 'minecraft:wheat', output: 'gtceu:wheat_dust'},
+        {input: 'minecraft:sand', output: 'gtceu:quartz_sand_dust'},
+        {input: 'minecraft:flint', output: 'gtceu:flint_dust'},
+        {input: 'minecraft:clay', output: 'gtceu:clay_dust'},
+        {input: 'minecraft:bricks', output: 'gtceu:brick_dust'},
+        {input: 'minecraft:clay_ball', output: 'gtceu:small_clay_dust'},
+        {input: 'minecraft:brick', output: 'gtceu:small_brick_dust'}
+    ].forEach(set => {
+        const {input, output} = set;
+        vintage.polishing(`${output}`, `${input}`).id(id(`polishing/${input.split(':')[1]}`));
+    });
 
-        // event.custom(
-        // {
-        // "type": "create:sequenced_assembly",
-        // "ingredient": {"tag": "forge:plates/gold"},
-        // "loops": 3,
-        // "results": [{"item": "vintageimprovements:redstone_module"}],
-        // "sequence": [{
-        //     "type": "create:deploying",
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_redstone_module"},{"item": "minecraft:redstone"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_redstone_module"}]
-        // },
-        // {
-        //     "type": "vintageimprovements:vibrating",
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_redstone_module"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_redstone_module"}]
-        // },
-        // {
-        //     "type": "create:deploying",
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_redstone_module"},{"tag": "forge:gems/quartz"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_redstone_module"}]
-        // },
-        // {
-        //     "type": "create:pressing",
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_redstone_module"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_redstone_module"}]
-        // },
-        // {
-        //     "type": "create:deploying",
-        //     "ingredients": [{"item": "vintageimprovements:incomplete_redstone_module"},{"tag": "forge:nuggets/iron"}],
-        //     "results": [{"item": "vintageimprovements:incomplete_redstone_module"}]
-        // }],
-        // "transitionalItem": {"item": "vintageimprovements:incomplete_redstone_module"}
-        // }).id(`start:sequenced_assembly/redstone_module`);
+    vintage.centrifugation(['minecraft:slime_ball', 'gtceu:sticky_resin', Item.of('gtceu:sticky_resin').withChance(0.50)], 'thermal:slime_mushroom_spores').minimalRPM(32).id(id('centrifugation/slitake_spores'));
+
+    vintage.centrifugation('3x gtceu:rubber_pulp', 'gtceu:sticky_resin').minimalRPM(64).id(id('centrifugation/sticky_resin'));
+    event.recipes.create.mixing('2x gtceu:invar_ingot', ['2x minecraft:iron_ingot', '#forge:ingots/nickel']).heatRequirement('lowheated').id('start:create_mixing/invar');;
+    vintage.centrifugation('3x gtceu:rubber_pulp', 'gtceu:sticky_resin').minimalRPM(64).id(id('centrifugation/sticky_resin'));
+
+    // Create Ore Proc
+    event.remove({id: 'create:splashing/red_sand'});
+
+    [// Main, secondary, tertiary
+        {mainOre: 'copper', secOre: 'gold', terOre: 'nickel'},
+        {mainOre: 'iron', secOre: 'nickel', terOre: 'tin'},
+        {mainOre: 'magnetite', secOre: 'gold', terOre: 'gold'},
+        {mainOre: 'sphalerite', secOre: 'gallium', terOre: 'sulfur'},
+        {mainOre: 'tin', secOre: 'iron', terOre: 'zinc'},
+        {mainOre: 'galena', secOre: 'silver', terOre: 'sulfur'},
+        {mainOre: 'stibnite', secOre: 'antimony', terOre: 'sulfur'}
+    ].forEach(matSet => {
+        const {mainOre, secOre, terOre} = matSet;
+        vintage.vibrating([`gtceu:impure_${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.25)], `gtceu:crushed_${mainOre}_ore`).id(id(`vibrating/crushed_${mainOre}`));
+        vintage.centrifugation([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.11)], `gtceu:impure_${mainOre}_dust`).minimalRPM(128).id(id(`centrifugation/impure_${mainOre}`));
+        create.splashing([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.11)], `gtceu:impure_${mainOre}_dust`).id(id(`splashing/impure_${mainOre}`));
+
+        create.splashing([`gtceu:purified_${mainOre}_ore`, Item.of(`gtceu:${secOre}_dust`).withChance(0.33)], `gtceu:crushed_${mainOre}_ore`).id(id(`splashing/crushed_${mainOre}`));
+        vintage.vibrating([`gtceu:pure_${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.25)], `gtceu:purified_${mainOre}_ore`).id(id(`vibrating/purified_${mainOre}`));
+        vintage.centrifugation([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.11)], `gtceu:pure_${mainOre}_dust`).minimalRPM(128).id(id(`centrifugation/pure_${mainOre}`));
+        create.splashing([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.11)], `gtceu:pure_${mainOre}_dust`).id(id(`splashing/pure_${mainOre}`));
+    });
 
 // })()}
 
