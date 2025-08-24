@@ -1,3 +1,5 @@
+//requires: vintage
+
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -62,8 +64,8 @@ ServerEvents.recipes(event => {
         if (small_spring) {
             vintage.coiling(`gtceu:small_${metal}_spring`, `gtceu:${metal}_single_wire`).id(id(`coiling/small_${metal}_spring`));
         }
-        if (double_plate) {
-            vintage.hammering(`gtceu:double_${metal}_plate`, `gtceu:${metal}_plate`).hammerBlows(3).id(id(`hammering/double_${metal}_plate`));
+        if (double_plate) {// For some reason Item.of(`gtceu:${metal}_plate`, 2) does not work
+            vintage.hammering(`gtceu:double_${metal}_plate`, [`gtceu:${metal}_plate`, `gtceu:${metal}_plate`]).hammerBlows(3).id(id(`hammering/double_${metal}_plate`));
         }
     });
 
@@ -98,9 +100,9 @@ ServerEvents.recipes(event => {
 
     vintage.centrifugation(['minecraft:slime_ball', 'gtceu:sticky_resin', Item.of('gtceu:sticky_resin').withChance(0.50)], 'thermal:slime_mushroom_spores').minimalRPM(32).id(id('centrifugation/slitake_spores'));
 
-    vintage.centrifugation('3x gtceu:rubber_pulp', 'gtceu:sticky_resin').minimalRPM(64).id(id('centrifugation/sticky_resin'));
-    event.recipes.create.mixing('2x gtceu:invar_ingot', ['2x minecraft:iron_ingot', '#forge:ingots/nickel']).heatRequirement('lowheated').id('start:create_mixing/invar');;
-    vintage.centrifugation('3x gtceu:rubber_pulp', 'gtceu:sticky_resin').minimalRPM(64).id(id('centrifugation/sticky_resin'));
+    vintage.centrifugation('3x gtceu:raw_rubber_dust', 'gtceu:sticky_resin').minimalRPM(64).id(id('centrifugation/sticky_resin'));
+    event.recipes.create.mixing(Fluid.of('gtceu:rubber', 720), ['9x gtceu:raw_rubber_dust', 'gtceu:sulfur_dust']).heatRequirement('lowheated').id('start:create_mixing/rubber');;
+    vintage.pressurizing('thermal:cured_rubber', Fluid.of('gtceu:rubber', 144)).heatRequirement('lowheated').id(id('centrifugation/cured_rubber'));
 
     // Create Ore Proc
     event.remove({id: 'create:splashing/red_sand'});
