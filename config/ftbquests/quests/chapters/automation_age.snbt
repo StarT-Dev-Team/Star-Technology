@@ -447,7 +447,7 @@
 				"491C4CECC6C24DDF"
 				"0DEEBB486450E74E"
 			]
-			description: ["This chip is used to make &6HV&r energy hatches and transformers."]
+			description: ["This Chip is used to make &6HV&r Energy Hatches and Transformers."]
 			icon: "gtceu:lpic_chip"
 			id: "2681E878121B1CF6"
 			rewards: [{
@@ -667,7 +667,7 @@
 		}
 		{
 			dependencies: ["47CD61D6ECD3DC7D"]
-			description: ["The end of the circuit upgrade chain will bring you into &9IV&r, bet you didnt expect that."]
+			description: ["The end of the circuit upgrade chain will bring you into &9IV&r, bet you didn't expect that."]
 			id: "62BA581B2918BB7B"
 			rewards: [{
 				count: 2
@@ -693,7 +693,7 @@
 				"77303F30F0A44393"
 			]
 			description: [
-				"Allows you to turn RF into &5EV&r power. "
+				"Allows you to turn RF into &5EV&r power."
 				""
 				"Oh ya and 64A converters exist from now on."
 			]
@@ -1056,7 +1056,7 @@
 		{
 			dependencies: ["73931EAA3EC5C9A9"]
 			description: [
-				"Allows you to scan your surrounding chunks for fluids. "
+				"Allows you to scan your surrounding chunks for fluids."
 				""
 				"Spoilers, its going to be oil."
 			]
@@ -1162,7 +1162,7 @@
 		{
 			dependencies: ["439D8AE6D3DC41AF"]
 			description: [
-				"Another material that can be used to coat cables, is the most efficent resource wise."
+				"Another material that can be used to coat cables, it's the most efficent resource wise."
 				""
 				"Should now be easily craftable with oil distillation fully set up."
 			]
@@ -1236,7 +1236,7 @@
 				"74749B089D50329C"
 			]
 			description: [
-				"This is the &9IV&r material. "
+				"This is the &9IV&r material."
 				""
 				"You are going to need a lot of this, just like every other main voltage material."
 			]
@@ -1317,7 +1317,7 @@
 		}
 		{
 			dependencies: ["2CABFCC73E33E133"]
-			description: ["This chip is used for making &5EV&r tier Energy Hatches and Transformers."]
+			description: ["This Chip is used for making &5EV&r tier Energy Hatches and Transformers."]
 			icon: "gtceu:mpic_chip"
 			id: "2D4F9DFF6B559C65"
 			rewards: [{
@@ -1642,7 +1642,7 @@
 		}
 		{
 			dependencies: ["1820787D031EAB15"]
-			description: ["Make some Netherack and get to processing it."]
+			description: ["Make some Netherrack and get to processing it."]
 			id: "0725DE9E90815AB4"
 			rewards: [{
 				id: "5F7A11F57B0F3C94"
@@ -1688,7 +1688,7 @@
 				"62BA581B2918BB7B"
 				"2DB216B224F2E8EF"
 			]
-			description: ["Better Circuits, Fasters Circuits, Cheaper Circuits, this is a big one."]
+			description: ["Better Circuits, Faster Circuits, Cheaper Circuits, this is a big one."]
 			id: "574ECD841D0D2AD7"
 			rewards: [{
 				id: "454446B7F35018F3"
@@ -1770,7 +1770,7 @@
 		}
 		{
 			dependencies: ["076532C492102F8E"]
-			description: ["The spoils from the massive expoy processing line."]
+			description: ["The spoils from the massive epoxy processing line."]
 			id: "059FD3E475A05070"
 			rewards: [{
 				id: "1F3EC27C4996E6A2"
@@ -2143,9 +2143,9 @@
 				"06FCA7209B892A81"
 			]
 			description: [
-				"The 5th tier of Coils. "
+				"The 5th tier of Coils."
 				""
-				"These will give you the heat to make HSS-E and HSS-S ingots. Thats not going to get confusing at all."
+				"These will give you the heat to make HSS-E and HSS-S ingots. That's not going to get confusing at all."
 			]
 			id: "689150D2A185216C"
 			rewards: [{
@@ -2241,9 +2241,9 @@
 			description: [
 				"This multiblock allows you to create even more complex alloys, but will give outputs in a molten form."
 				""
-				"The ABS does both the mixing and smelting, and gives multiple units of ingots (144mb) as output because of this while only taking 75% the time of their EBF counter-part."
+				"The ABS performs both mixing and smelting, producing multiple ingot units (144 mB each) while requiring only 75% of the time compared to its EBF counterpart."
 				""
-				"You will need to cool the Molten Liquids in a Vacuum Freezer.."
+				"You will need to cool the Molten Liquids in a Vacuum Freezer."
 			]
 			id: "664E782C6A24D9F1"
 			rewards: [{
@@ -2389,12 +2389,12 @@
 		{
 			dependencies: ["5B70B63D4157594F"]
 			dependency_requirement: "one_completed"
-			description: ["{ \"text\": \"Read About Distinct Busses\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"2757CDEC1D8F5CCE\" } }"]
+			description: ["{ \"text\": \"Read About Distinct Buses\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"2757CDEC1D8F5CCE\" } }"]
 			icon: "ftbquests:book"
 			id: "7E74A114F4054345"
 			tasks: [{
 				id: "52333CEF18B39599"
-				title: "Go Read About Distinct Busses"
+				title: "Go Read About Distinct Buses"
 				type: "checkmark"
 			}]
 			x: -3.5d

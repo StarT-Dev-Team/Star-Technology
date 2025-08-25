@@ -24,7 +24,7 @@ StartupEvents.registry('block', event => {
         .textureAll('kubejs:block/casings/casing-inconel-625');
 
     event.create('wood_casing')
-        .displayName('Treatedwood Reinforced Casing')
+        .displayName('Treated Wood Reinforced Casing')
         .hardness(5)
         .resistance(1)
         .material('wood')

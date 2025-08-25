@@ -538,7 +538,7 @@
 				""
 				"There are 2 ways to do this, either by placing &nArboreal Extractors&r around a Jungle Tree or by building the &nLatex Plantation&r multiblock."
 				""
-				"&nNote&r: For the Latex Plantation you can use a wooden tap in the controller block, to use the better tap methods with a fuel and circuit you'll need a &8ULV&r Input Bus at a minimum. A Output Hatch can be placed on the back to automate further but isn't needed."
+				"&nNote&r: For the Latex Plantation you can use a wooden tap in the controller block, to use the better tap methods with a fuel and circuit you'll need a &8ULV&r Input Bus at a minimum. An Output Hatch can be placed on the back to automate further but isn't needed."
 			]
 			icon: "gtceu:latex_plantation"
 			id: "0A41C4FB379984C0"
@@ -825,7 +825,7 @@
 			description: [
 				"Barrel transformations from Ex Nihilo have been disabled, and replaced with this beautiful machine! "
 				""
-				"It can soak, compost, and transform. "
+				"It can soak, compost, and transform."
 				""
 				"Be sure to choose the correct \"&n&o&7Active Machine Mode&r\", in the tab on the left of the UI."
 			]
@@ -1316,7 +1316,7 @@
 				""
 				"You might get some good use out of this when making Bio Diesel."
 				""
-				"You can optionally use busses and hatches for automation, otherwise you can interacti directly with the controller. "
+				"You can optionally use buses and hatches for automation, otherwise you can interact directly with the controller."
 			]
 			icon: "gtceu:large_farm"
 			id: "14417CCE1E25C9C6"
@@ -1352,7 +1352,7 @@
 			dependencies: ["07C5B4C5EE2F948D"]
 			description: [
 				"A larger barrel means faster recipes! Maybe this will help with that slime addiction..."
-				"You can optionally use busses and hatches for automation, otherwise you can interacti directly with the controller. "
+				"You can optionally use buses and hatches for automation, otherwise you can interact directly with the controller."
 			]
 			icon: "gtceu:large_barrel"
 			id: "27E9698231A04022"
@@ -1387,8 +1387,8 @@
 		{
 			dependencies: ["07C5B4C5EE2F948D"]
 			description: [
-				"Automatic pebbles and lava? Sounds like a good use of your time to make a few of these."
-				"You can optionally use busses and hatches for automation, otherwise you can interacti directly with the controller. "
+				"Automatic pebbles and lava? Making a few of these sounds like a good use of your time."
+				"You can optionally use buses and hatches for automation, otherwise you can interact directly with the controller."
 			]
 			icon: "gtceu:large_stone_barrel"
 			id: "3477B2FEEF0DF44C"
@@ -1481,7 +1481,7 @@
 		{
 			dependencies: ["70BE6905EC722DCA"]
 			description: [
-				"Since Blazes are out of the question, a Basic Burner is needed to heat Basins. "
+				"Since Blazes are out of the question, a Basic Burner is needed to heat Basins."
 				"Note that you can &6superheat&r Basic Burners with an Encased Fan at max &3RPM&r, though it will burn through fuel faster (32x)."
 			]
 			id: "3B50E73E5A176301"
@@ -1808,7 +1808,7 @@
 		{
 			dependencies: ["7EE1BE4043827F35"]
 			description: [
-				"While Tempered Glass is typically made in an Arc Furnace, it can be made in a Stone Barrel with Lava and Glass. "
+				"While Tempered Glass is typically made in an Arc Furnace, it can be made in a Stone Barrel with Lava and Glass."
 				""
 				"It will be needed to make the Rock Filtrator which is what gates the Arc Furnace."
 			]

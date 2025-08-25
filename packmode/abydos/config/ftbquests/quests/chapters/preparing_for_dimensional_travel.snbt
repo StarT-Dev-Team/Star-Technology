@@ -903,7 +903,7 @@
 			]
 			description: [
 				"Visit the sands that hide the remnants of an ancient race of beings, long since gone."
-				"The sands of Abydos are &ounwelcoming&r. "
+				"The sands of Abydos are &ounwelcoming&r."
 				"{ \"text\": \"Maybe this will protect you...\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"6AA4CC44DE1C8E1E\" } }"
 			]
 			icon: "minecraft:sand"

@@ -91,6 +91,20 @@ ServerEvents.recipes(event => {
         .duration(20)
         .EUt(GTValues.VHA[GTValues.IV]);
 
+    event.recipes.gtceu.chemical_skip(id('iron_iii_chloride'))
+        .itemInputs('1x gtceu:iron_dust')
+        .inputFluids('gtceu:chlorine 3000')
+        .outputFluids('gtceu:iron_iii_chloride 1000')
+        .duration(40)
+        .EUt(GTValues.VA[GTValues.IV]);
+
+    event.recipes.gtceu.chemical_skip(id('cupric_chloride_solution'))
+        .itemInputs('1x gtceu:copper_dust')
+        .inputFluids('gtceu:hydrogen 2000','gtceu:chlorine 3000')
+        .outputFluids('gtceu:cupric_chloride_solution 2000')
+        .duration(160)
+        .EUt(GTValues.VHA[GTValues.LuV]);
+
     event.recipes.gtceu.chemical_skip(id('borax'))
         .itemInputs('4x gtceu:boron_dust', '14x gtceu:sodium_bisulfate_dust')
         .inputFluids('minecraft:water 12000')

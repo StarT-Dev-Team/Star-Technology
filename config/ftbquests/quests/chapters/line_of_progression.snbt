@@ -1344,7 +1344,7 @@
 			dependencies: ["2DA7FFD9B7A550B9"]
 			id: "35D5CC08AE53A7FA"
 			optional: true
-			subtitle: "Second UHV Circuit"
+			subtitle: "Third UHV Circuit"
 			tasks: [{
 				id: "7278702A05728EA6"
 				item: {
@@ -1396,7 +1396,7 @@
 			dependencies: ["4DF812EEFB4FD1C3"]
 			id: "2DA7FFD9B7A550B9"
 			optional: true
-			subtitle: "Third and Last UV Circuit"
+			subtitle: "Fourth and Last UV Circuit"
 			tasks: [{
 				id: "4B3DDFC692C95879"
 				item: {

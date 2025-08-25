@@ -285,7 +285,7 @@ ServerEvents.recipes(event => {
         .duration(12000)
         .EUt(GTValues.VHA[GTValues.UV]);
     
-    event.recipes.gtceu.super_pressure_heat_chamber(id('stargate_rod'))
+    event.recipes.gtceu.pressure_heat_chamber(id('stargate_rod'))
         .itemInputs('kubejs:crude_stargate_rod')
         .itemOutputs('kubejs:stargate_rod')
         .duration(2400)
@@ -321,14 +321,14 @@ ServerEvents.recipes(event => {
         
         //Gate Rods
         
-        event.recipes.gtceu.super_pressure_heat_chamber(id('infernal_stargate_rod'))
+        event.recipes.gtceu.pressure_heat_chamber(id('infernal_stargate_rod'))
             .itemInputs('64x minecraft:blaze_rod','kubejs:untreated_infernal_stargate_rod','64x minecraft:blaze_rod')
             .inputFluids('gtceu:blaze 64000')
             .itemOutputs('kubejs:infernal_stargate_rod')
             .duration(2400)
             .EUt(GTValues.VHA[GTValues.UHV]);
 
-        event.recipes.gtceu.super_pressure_heat_chamber(id('abyssal_stargate_rod'))
+        event.recipes.gtceu.pressure_heat_chamber(id('abyssal_stargate_rod'))
             .itemInputs('64x minecraft:echo_shard','kubejs:untreated_abyssal_stargate_rod','64x minecraft:echo_shard')
             .inputFluids('thermal:ender 64000')
             .itemOutputs('kubejs:abyssal_stargate_rod')
@@ -392,7 +392,7 @@ ServerEvents.recipes(event => {
             .EUt(GTValues.VA[GTValues.UEV]);
 
         //Draconic Coordinate Core
-        event.recipes.gtceu.super_pressure_heat_chamber(id('draconic_coordinate_core'))
+        event.recipes.gtceu.pressure_heat_chamber(id('draconic_coordinate_core'))
             .itemInputs('kubejs:hell_core','kubejs:void_core')
             .inputFluids('gtceu:blaze 50000','thermal:ender 50000')
             .itemOutputs('kubejs:draconic_coordinate_core')

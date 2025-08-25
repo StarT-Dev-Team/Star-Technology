@@ -49,7 +49,7 @@
 			description: [
 				"Worried your multiblock extruder is going to use the wrong cast? Well theres a feature to stop that!"
 				""
-				"If you enable distinct buses on every input bus on a multiblock then it will seperate the ingredients thats stored in each one. "
+				"If you enable distinct buses on every input bus on a multiblock then it will seperate the ingredients that's stored in each one."
 				"This means that if you insert a material into the bus with a certain cast, it can only ever use that cast and never any in other buses."
 			]
 			icon: "gtceu:mv_input_bus"
@@ -59,17 +59,17 @@
 				title: "Item Bus"
 				type: "checkmark"
 			}]
-			title: "Distinct Busses"
+			title: "Distinct Buses"
 			x: -1.5d
 			y: -2.0d
 		}
 		{
 			dependencies: ["6EBA06E5F9B25100"]
 			description: [
-				"If you put two energy hatches onto a multiblock, it will allow you to \"Overclock\" the machine to the next voltage tier. "
+				"If you put two Energy Hatches onto a multiblock, it will allow you to \"Overclock\" the machine to the next voltage tier."
 				"This is used quite a lot in the EBF to give you access to the next voltage tier of material but can be used on almost any other multiblock."
 				""
-				"Examples of multiblocks that cannot form with 2 energy hatches is the Circuit and Normal Assembler to not allow progress skipping."
+				"Examples of multiblocks that cannot form with two energy hatches is the Circuit and Normal Assembler to not allow progress skipping."
 			]
 			icon: "gtceu:lv_energy_input_hatch"
 			id: "34EDF98BDC245F77"
@@ -187,7 +187,7 @@
 		}
 		{
 			description: [
-				"EMI/JEI has its own intergration into Greg Tech that allows the user to more easily figure out recipes like,"
+				"EMI/JEI has its own intergration into GregTech that allows the user to more easily figure out recipes like,"
 				""
 				"&5-&r The minimum voltage tier of the recipe being on the bottom right"
 				"&5-&r Allowing you to see the speed of the recipe at each voltage tier "
@@ -207,11 +207,11 @@
 		{
 			dependencies: ["0F9486CD70580835"]
 			description: [
-				"Many Greg-Tech machines have a circuit configuration window found on the bottom left of the screen. Each circuit starting from Blank and going up to 32 refers to possible recipes each machine can utilise. "
+				"Many GregTech machines include a circuit configuration window in the bottom-left of the interface. Circuits, ranging from Blank to 32, determine which recipes the machine can process."
 				""
-				"To find the circuit configuration your particular recipe requires Click on the arrow between input items and final product boxes to show uses for the given machine."
+				"To check the required circuit for a recipe, click the arrow between the input and output slots to view the machine's recipe list."
 				""
-				"If the recipe does not require a circuit or shows blank select the blank circuit. However if your given recipe shows a circuit with an icon number EG; 4, Then in the circuit configuration screen select the same icon circuit"
+				"If a recipe shows no circuit or a blank one, select Blank. If it specifies a numbered circuit (e.g., 4), select the corresponding circuit in the configuration window."
 			]
 			icon: "kubejs:ulv_universal_circuit"
 			id: "2A608D87158DF4CB"
@@ -227,11 +227,11 @@
 		{
 			dependencies: ["0A1BF10244D43021"]
 			description: [
-				"Some Greg-Tech machines have multiple machine modes that you can swap between with the window found on the left of the screen (UI). Doing this allows 1 machine to swap between multiple task."
+				"Some GregTech machines support multiple modes, which you can switch using the window on the left side of the UI. This allows one machine to perform different tasks."
 				""
-				"The first machine that you'll encounter to do this would be the Wooden Barrel."
+				"The first machine you'll encounter with this functionality is the Wooden Barrel"
 				""
-				"Make sure you update the machine when switching modes so recipes can work (taking inputs out and back in does this)"
+				"When changing modes, make sure to update the machine (by removing and reinserting inputs) so recipes work correctly."
 			]
 			icon: "gtceu:lv_robot_arm"
 			id: "76CD29559C341985"

@@ -28,14 +28,14 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VHA[GTValues.UEV]);
 
     event.recipes.gtceu.assembler(id('mythrolic_drill_casing'))
-        .itemInputs('gtceu:nyanium_frame', 'gtceu:uhv_emitter', '6x gtceu:double_mythrolic_alloy_plate', '4x gtceu:mythrolic_alloy_gear', '2x gtceu:small_mythrolic_alloy_gear')
+        .itemInputs('gtceu:nyanium_frame', 'gtceu:uhv_emitter', '6x gtceu:double_mythrolic_alloy_plate', '2x gtceu:mythrolic_alloy_gear', '4x gtceu:small_mythrolic_alloy_gear')
         .itemOutputs('2x kubejs:abyssal_drill_1')
         .duration(250)
         .EUt(GTValues.VHA[GTValues.UEV])
         .circuit(6);
 
     event.recipes.gtceu.assembler(id('starium_drill_casing'))
-        .itemInputs('gtceu:nyanium_frame', 'gtceu:uhv_sensor', '6x gtceu:double_starium_alloy_plate', '4x gtceu:starium_alloy_gear', '2x gtceu:small_starium_alloy_gear')
+        .itemInputs('gtceu:nyanium_frame', 'gtceu:uhv_sensor', '6x gtceu:double_starium_alloy_plate', '2x gtceu:starium_alloy_gear', '4x gtceu:small_starium_alloy_gear')
         .itemOutputs('2x kubejs:abyssal_drill_2')
         .duration(250)
         .EUt(GTValues.VHA[GTValues.UEV])
@@ -126,13 +126,13 @@ ServerEvents.recipes(event => {
 
     event.recipes.gtceu.injection_mixer(id('order_centric_void'))
         .inputFluids('gtceu:alpha_state_void_residue 1000','gtceu:beta_state_void_residue 1000','gtceu:gamma_state_void_residue 1000')
-        .outputFluids('gtceu:order_centric_void 500')
+        .outputFluids('gtceu:order_centric_void 2400')
         .duration(160)
         .EUt(GTValues.VHA[GTValues.UIV]);
 
     event.recipes.gtceu.injection_mixer(id('chaos_centric_void'))
         .inputFluids('gtceu:delta_state_void_residue 1000','gtceu:epsilon_state_void_residue 1000','gtceu:zeta_state_void_residue 1000')
-        .outputFluids('gtceu:chaos_centric_void 500')
+        .outputFluids('gtceu:chaos_centric_void 2400')
         .duration(160)
         .EUt(GTValues.VHA[GTValues.UIV]);
 

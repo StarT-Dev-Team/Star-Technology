@@ -232,8 +232,8 @@
 				}
 			]
 			title: "Advanced Cooling Materials"
-			x: -2.0d
-			y: -6.0d
+			x: -3.0d
+			y: -5.0d
 		}
 		{
 			dependencies: [
@@ -291,7 +291,10 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["538113DD6E1EA84D"]
+			dependencies: [
+				"538113DD6E1EA84D"
+				"00333140377A33F5"
+			]
 			description: ["&eUXV&r recipe speeds."]
 			id: "11971C9E5BF28E5C"
 			rewards: [{
@@ -994,20 +997,20 @@
 				item: "start_core:sterile_cleaning_maintenance_hatch"
 				type: "item"
 			}]
-			x: -1.0d
-			y: -3.0d
+			x: -2.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
 				"6A82CC9F01960097"
 				"31F87896FF834E63"
 			]
-			description: ["Not added till Theta"]
+			description: [""]
 			id: "09B55AFE7C06EC82"
 			tasks: [{
-				id: "3C1633006F6ECB70"
-				title: "Abyssal Room"
-				type: "checkmark"
+				id: "054C06846B9D4D16"
+				item: "start_core:abyssal_containment_room"
+				type: "item"
 			}]
 			x: 2.0d
 			y: 2.0d
@@ -1160,6 +1163,7 @@
 			dependencies: [
 				"310FC3F86513555F"
 				"1B6159E114BA50ED"
+				"00333140377A33F5"
 			]
 			description: ["A parallel Alloy Blast Smelter, just in case it wasn't fast enough already."]
 			id: "5FEC7470D01CEBDD"
@@ -1721,8 +1725,8 @@
 				item: "gtceu:lepton_resonant_thallium_antimonide_ingot"
 				type: "item"
 			}]
-			x: 3.0d
-			y: 7.0d
+			x: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -1861,6 +1865,18 @@
 			title: "Draconic QMDs"
 			x: -1.0d
 			y: 3.0d
+		}
+		{
+			dependencies: ["310FC3F86513555F"]
+			hide_dependent_lines: true
+			id: "00333140377A33F5"
+			tasks: [{
+				id: "5132FFE029480B05"
+				item: "gtceu:polonium_bismide_ingot"
+				type: "item"
+			}]
+			x: -1.0d
+			y: -3.0d
 		}
 	]
 	title: "Draconic Empires"

@@ -86,25 +86,25 @@ ServerEvents.recipes(event => {
         componentParts('computational_matrix', [`gtceu:${Primary}_frame`, `1x #gtceu:circuits/${Tier}`, `2x #gtceu:circuits/${Tier1}`, `3x #gtceu:circuits/${Tier2}`, `4x gtceu:fine_${WireTypeComputational}_wire`, `${2*(2**Scaler)}x kubejs:qram_chip`],
             [`gtceu:sterilized_growth_medium ${250+Scaler*250}`, `gtceu:indium_tin_lead_cadmium_soldering_alloy ${72+Scaler*72}`], 400, `kubejs:${PriorTier}_computational_matrix`);
         
-        componentParts('transmission_assembly', [`gtceu:${Primary}_frame`, `gtceu:${Tier1}_electric_motor`, `2x gtceu:${Primary}_rod`, `2x gtceu:${Primary}_ring`, `8x gtceu:${Primary}_round`, `64x gtceu:fine_${WireTypeMechanical}_wire`],
+        componentParts('transmission_assembly', [`gtceu:${Material}_frame`, `gtceu:${Tier1}_electric_motor`, `2x gtceu:${Primary}_rod`, `2x gtceu:${Primary}_ring`, `4x gtceu:${Primary}_round`, `16x gtceu:fine_${WireTypeMechanical}_wire`],
             [`gtceu:${Lubricant} ${250+Scaler*250}`], 320, `kubejs:${PriorTier}_transmission_assembly`);
         
         componentParts('precision_drive_mechanism', [`gtceu:${Primary}_frame`, `gtceu:${Tier1}_electric_motor`, `#gtceu:circuits/${Tier1}`, `gtceu:${Support}_gear`, `gtceu:small_${Primary}_gear`, `8x gtceu:${Primary}_round`],
             [`gtceu:${Lubricant} ${250+Scaler*250}`, `gtceu:${RubberF} 1728`], 480, `kubejs:${PriorTier}_precision_drive_mechanism`);
         
-        componentParts('microfluidic_flow_valve', [`gtceu:${Tier1}_fluid_regulator`, `gtceu:${Material}_small_fluid_pipe`, `2x gtceu:${Primary}_plate`, `6x gtceu:${Primary}_round`, `4x gtceu:${RubberR}_ring`, `6x gtceu:${Primary}_ring`],
+        componentParts('microfluidic_flow_valve', [`gtceu:${Tier1}_fluid_regulator`, `gtceu:${Material}_small_fluid_pipe`, `2x gtceu:${Primary}_plate`, `4x gtceu:${Primary}_round`, `4x gtceu:${RubberR}_ring`, `2x gtceu:${Primary}_ring`],
             [`gtceu:${Plastic} ${396+Scaler*36}`], 320, `kubejs:${PriorTier}_microfluidic_flow_valve`);
         
         componentParts('super_magnetic_core', [`gtceu:long_magnetic_${PrimaryMagnet}_rod`, `2x gtceu:magnetic_${SecondaryMagnet}_rod`, `3x gtceu:${Primary}_rod`, `24x gtceu:fine_${WireTypeMechanical}_wire`, `2x gtceu:${Material}_tiny_fluid_pipe`],
             [`gtceu:${Coolant} 2500`], 300, `kubejs:${PriorTier}_super_magnetic_core`);
         
-        componentParts('catalyst_core', [`4x gtceu:long_${Primary}_rod`, `${GlassType}`, `${CatalystType}`, `32x gtceu:fine_${SuperConductor}_wire`, `gtceu:${Tier1}_emitter`, `4x gtceu:${Support}_ring`],
+        componentParts('catalyst_core', [`4x gtceu:${Primary}_rod`, `${GlassType}`, `2x ${CatalystType}`, `32x gtceu:fine_${SuperConductor}_wire`, `gtceu:${Tier1}_emitter`, `4x gtceu:${Support}_ring`],
             [`gtceu:${Fluid} 576`], 480, `kubejs:${PriorTier}_catalyst_core`);
         
         componentParts('high_strength_panel', [`2x gtceu:double_${Primary}_plate`, `#gtceu:circuits/${Tier1}`, `8x gtceu:${Support}_screw`],
             [`gtceu:${Material} 576`, `gtceu:${Plastic} ${396+Scaler*36}`], 200, `kubejs:${PriorTier}_high_strength_panel`);
     
-        componentParts('micropower_router', [`gtceu:${CableType}_double_cable`, `4x gtceu:${CableType}_single_cable`, `4x gtceu:${Primary}_plate`, `32x gtceu:fine_${WireTypeComputational}_wire`],
+        componentParts('micropower_router', [`gtceu:${CableType}_double_cable`, `4x gtceu:${CableType}_single_cable`, `2x gtceu:${Primary}_plate`, `32x gtceu:fine_${WireTypeComputational}_wire`],
             [`gtceu:${RubberF} 720`], 240, `kubejs:${PriorTier}_micropower_router`);
         };
     // === Components ===
@@ -135,7 +135,7 @@ ServerEvents.recipes(event => {
         components('electric_piston', [`gtceu:${Tier}_electric_motor`, `2x kubejs:${Tier}_high_strength_panel`, `2x kubejs:${Tier}_transmission_assembly`, `kubejs:${Tier}_micropower_router`, `gtceu:${Support}_gear`, `gtceu:small_${Primary}_gear`],
             [`gtceu:indium_tin_lead_cadmium_soldering_alloy ${288*(2**Scaler)}`, `gtceu:${Lubricant} ${500+Scaler*500}`, `gtceu:${Fluid} 576`], 600);
         
-        components('robot_arm', [`4x gtceu:long_${Primary}_rod`, `kubejs:${Tier}_precision_drive_mechanism`, `2x kubejs:${Tier}_transmission_assembly`, `2x gtceu:${Tier}_electric_motor`, `gtceu:${Tier}_electric_piston`, `3x kubejs:${Tier}_computational_matrix`, `2x kubejs:${Tier}_micropower_router`],
+        components('robot_arm', [`4x gtceu:long_${Primary}_rod`, `kubejs:${Tier}_precision_drive_mechanism`, `kubejs:${Tier}_transmission_assembly`, `gtceu:${Tier}_electric_motor`, `gtceu:${Tier}_electric_piston`, `3x kubejs:${Tier}_computational_matrix`, `2x kubejs:${Tier}_micropower_router`],
             [`gtceu:indium_tin_lead_cadmium_soldering_alloy ${864*(2**Scaler)}`, `gtceu:${Lubricant} ${500+Scaler*500}`, `gtceu:${Fluid} 576`], 600);
        
         components('field_generator', [`gtceu:${Primary}_frame`, `2x kubejs:${Tier}_high_strength_panel`, `kubejs:${Tier}_catalyst_core`, `2x gtceu:${Tier}_emitter`, `2x kubejs:${Tier}_computational_matrix`, `64x gtceu:fine_${SuperConductor}_wire`, `2x kubejs:${Tier}_micropower_router`],

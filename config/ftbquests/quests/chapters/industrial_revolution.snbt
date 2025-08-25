@@ -111,7 +111,7 @@
 		}
 		{
 			dependencies: ["53E98CFC7934FA67"]
-			description: ["A &7LV&r component thats used everywhere."]
+			description: ["A &7LV&r component that's used everywhere."]
 			id: "234CE57A62FB8D82"
 			rewards: [{
 				count: 2
@@ -312,7 +312,7 @@
 		}
 		{
 			dependencies: ["4B51B15B49620F57"]
-			description: ["With energy hatches you can now power massive machines to do your bidding."]
+			description: ["With Energy Hatches you can now power massive machines to do your bidding."]
 			id: "1F5CCE8CFD02903A"
 			rewards: [{
 				count: 2
@@ -484,7 +484,7 @@
 		}
 		{
 			dependencies: ["53E98CFC7934FA67"]
-			description: ["Usefull for separating items in their base forms."]
+			description: ["Useful for separating items into their base forms."]
 			id: "3A15777DD813EE71"
 			rewards: [{
 				id: "52E6F6B56D322690"
@@ -559,8 +559,8 @@
 			description: [
 				"Used to upgrade all Thermal machine stats by 6x."
 				""
-				"Very usefull to use on:"
-				"- Dynamo's"
+				"Very useful to use on:"
+				"- Dynamos"
 				"- Energy Cells"
 				"- Fluid Cells"
 				"- Aqueous Accumulators"
@@ -915,7 +915,7 @@
 		}
 		{
 			dependencies: ["12C9427A04A2F550"]
-			description: ["Wafers on their own are kinda useless. By using a colored lens, you can inscribe them with the Laser Engraver, making them more usefull."]
+			description: ["Wafers are kinda useless on their own. You can inscribe them with the Laser Engraver and a colored lens, making them more useful."]
 			id: "491C4CECC6C24DDF"
 			rewards: [{
 				id: "1671366165B56302"
@@ -1131,7 +1131,7 @@
 				"491C4CECC6C24DDF"
 				"0DEEBB486450E74E"
 			]
-			description: ["This chip is used for creating an Energy Hatch that gives &bMV&r power to multiblocks as well as transforming power to &bMV&r."]
+			description: ["This Chip is used for creating an Energy Hatch that gives &bMV&r power to multiblocks as well as transforming power to &bMV&r."]
 			icon: "gtceu:ulpic_chip"
 			id: "79AA3AF63E976038"
 			rewards: [{
@@ -1211,7 +1211,7 @@
 		{
 			dependencies: ["261174370DC87FCB"]
 			description: [
-				"Super Tanks store a large amount of liquids. "
+				"Super Tanks store a large amount of liquids."
 				"However, they do need Polyethylene to be made. Check the Processing lines chapter for more information."
 			]
 			id: "1A9E5F3F6CE13465"
@@ -1256,7 +1256,7 @@
 		}
 		{
 			dependencies: ["4597B95C2F5EE106"]
-			description: ["For now the most usefull material out of these is Neodynium, being used for higher tier Motors and Magnets."]
+			description: ["For now the most useful material out of these is Neodymium, being used for higher tier Motors and Magnets."]
 			hide_dependent_lines: true
 			id: "2C404AE10029FCD4"
 			rewards: [{
@@ -1534,11 +1534,11 @@
 				"23C8E1371ABA986C"
 			]
 			description: [
-				"The machine allowing you to gather all the Geodes and Gems you could need."
+				"The machine allowing you to gather all the Geodes and Gems you could ever need."
 				""
-				"You'll want 2 output busses to have enough room for the Geodes"
+				"You'll probably want two &7LV&r Output Buses to have enough room for the Geodes."
 				""
-				"Note: You can only have 1 energy hatch on the machine. Make sure to have enough output space: 2 &7LV&r Output Busses will work."
+				"Note: This machine only supports a single Energy Hatch."
 				""
 				"Uses Found Here:"
 				"{ \"text\": \"Geodes\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"14AB8F4BE7C1F8E3\" } }"
@@ -1568,7 +1568,7 @@
 				""
 				"Make sure to save the liquids for later as you can get more and rarer materials."
 				""
-				"Note: This machine can only take 1 energy hatch. Additionally, make sure you have enough output space: 2 &7LV&r Output Busses, and 2 &7LV&r Output Hatches will do the trick."
+				"Note: This machine can only take a single Energy Hatch. Additionally, make sure you have enough output space: 2 &7LV&r Output Buses, and 2 &7LV&r Output Hatches will do the trick."
 				""
 				"Use Found Here:"
 				"{ \"text\": \"Void Extraction\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"71456BC654A6D4A7\" } }"

@@ -1,9 +1,9 @@
 GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
 
-    event.create('super_pressure_heat_chamber')
+    event.create('pressure_heat_chamber')
         .category('highly_advanced')
         .setEUIO('in')
-        .setMaxIOSize(3, 3, 3, 3)
+        .setMaxIOSize(3, 1, 3, 1)
         .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION , FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.ARC);
 
@@ -13,7 +13,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('super_pressure_heat_chamber', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .recipeType('super_pressure_heat_chamber')
+        .recipeType('pressure_heat_chamber')
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT])
         .appearanceBlock(GCYMBlocks.CASING_STRESS_PROOF)
         .pattern(definition => FactoryBlockPattern.start()

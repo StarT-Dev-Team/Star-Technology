@@ -48,9 +48,9 @@
 		{
 			dependencies: ["53A9F3758C218CDC"]
 			description: [
-				"This will be the final Circuit Assembler you will make."
+				"This is the final Circuit Assembler you'll make."
 				""
-				"You can upgrade this into a Large Circuit Assembling Facility, which can accept a single Energy Hatch, allowing you to get Circuit Assemblers of a voltage tier before getting the next tier of Circuits."
+				"It can later be upgraded into a Large Circuit Assembling Facility, which accepts only a single Energy Hatch. This allows access to Circuit Assemblers of a higher voltage tier before getting the next tier of Circuits."
 			]
 			id: "4ED562DC235425FE"
 			rewards: [{
@@ -449,7 +449,7 @@
 			description: [
 				"This is what you will use to make more advanced components and machines."
 				""
-				"Inputs must be placed in THAT order and only uses &8ULV&r input busses."
+				"Inputs must be placed in THAT order and only in &8ULV&r input buses."
 				""
 				"If something has multiple unstackables, a forming press with a rename is a good way to differentiate the item in inputs."
 			]
@@ -1299,7 +1299,7 @@
 		}
 		{
 			dependencies: ["3FC351F05F2AC743"]
-			description: ["Even more parallels on your machine. If it didn't happen before, then now these will definitly outpace your perfect overclock cubes."]
+			description: ["Even more parallels on your machine. If it hasn't happened yet, these will now definitely outpace your perfect overclock cubes."]
 			id: "69E5F396CF39B8DC"
 			rewards: [{
 				id: "106CA303A0D7B2B6"
@@ -1573,7 +1573,7 @@
 		}
 		{
 			dependencies: ["445BC7DFD3387DD4"]
-			description: ["A new Boule, that will allow access to new chips, and makes the older ones cheaper."]
+			description: ["A new Boule, that unlocks new chips, and makes the older ones even cheaper."]
 			id: "5C302CB1A1068EE1"
 			rewards: [{
 				id: "53E6A8C84D19526E"
