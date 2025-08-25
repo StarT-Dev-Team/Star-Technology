@@ -2,7 +2,7 @@
 #General options
 [general]
 	#Enable FPS Reducer features.
-	enableFpsReducer = true
+	enableFpsReducer = false
 	#Waiting time(sec) before reducing the FPS. (0:OFF)
 	#Range: 0 ~ 86400
 	waitingTime = 0

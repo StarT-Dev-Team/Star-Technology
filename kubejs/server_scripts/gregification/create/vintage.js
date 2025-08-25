@@ -7,7 +7,7 @@ ServerEvents.recipes(event => {
     const create = event.recipes.create;  
 
     // Machinery
-    ['turning', 'coiling', 'pressurizing', 'vacuumizing', 'curving', 'hammering', 'laser_cutting', 'centrifugation'].forEach(type => {
+    ['turning', 'coiling', 'pressurizing', 'curving', 'hammering', 'laser_cutting', 'centrifugation'].forEach(type => {
         event.remove({type: `vintage:${type}`});
     });
 

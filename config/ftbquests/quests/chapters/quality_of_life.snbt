@@ -18,10 +18,11 @@
 				title: "Effortless Building"
 				type: "checkmark"
 			}]
-			x: 2.0d
-			y: 2.5d
+			x: 3.5d
+			y: 2.0d
 		}
 		{
+			dependencies: ["64F15C7160BF5CBB"]
 			description: ["Teleportation?"]
 			icon: "travelanchors:travel_anchor"
 			id: "2092BC62D0ABB53F"
@@ -39,7 +40,7 @@
 				}
 			]
 			title: "Travel Anchors and Travel Staff"
-			x: 0.0d
+			x: 2.0d
 			y: 2.5d
 		}
 		{
@@ -60,10 +61,11 @@
 				type: "item"
 			}]
 			title: "Functional Storage"
-			x: 5.0d
-			y: 1.0d
+			x: 6.0d
+			y: 0.5d
 		}
 		{
+			dependencies: ["64F15C7160BF5CBB"]
 			description: ["Vrooom, vacuums up all your items"]
 			id: "2D522E868DFD339A"
 			shape: "rsquare"
@@ -73,7 +75,7 @@
 				type: "item"
 			}]
 			title: "Item Collectors"
-			x: 5.0d
+			x: 4.0d
 			y: -2.5d
 		}
 		{
@@ -90,8 +92,8 @@
 				type: "item"
 			}]
 			title: "Backpacks"
-			x: 3.0d
-			y: 2.5d
+			x: 0.5d
+			y: 2.0d
 		}
 		{
 			description: ["More Building"]
@@ -103,8 +105,8 @@
 				type: "item"
 			}]
 			title: "Xtones"
-			x: 0.0d
-			y: -1.5d
+			x: 2.0d
+			y: 4.5d
 		}
 		{
 			description: ["More Building"]
@@ -116,8 +118,8 @@
 				title: "Architect's Palette"
 				type: "checkmark"
 			}]
-			x: -1.0d
-			y: -1.5d
+			x: 1.0d
+			y: 4.0d
 		}
 		{
 			description: ["More Building"]
@@ -129,8 +131,8 @@
 				title: "'Durstrial Decor"
 				type: "checkmark"
 			}]
-			x: -1.0d
-			y: -2.5d
+			x: 0.0d
+			y: 3.5d
 		}
 		{
 			description: ["More Building"]
@@ -142,8 +144,8 @@
 				title: "Fantasy Furniture"
 				type: "checkmark"
 			}]
-			x: -1.0d
-			y: -0.5d
+			x: 4.0d
+			y: 3.5d
 		}
 		{
 			description: ["Write that down"]
@@ -154,8 +156,8 @@
 				item: "create:clipboard"
 				type: "item"
 			}]
-			x: -1.0d
-			y: 2.5d
+			x: -2.0d
+			y: 1.5d
 		}
 		{
 			description: ["Transmit energy, items, and fluids across vast distances"]
@@ -167,8 +169,8 @@
 				type: "item"
 			}]
 			title: "LaserIO"
-			x: 4.0d
-			y: -1.5d
+			x: 1.0d
+			y: -3.0d
 		}
 		{
 			description: ["More Building"]
@@ -184,8 +186,8 @@
 				type: "item"
 			}]
 			title: "Rechiseled"
-			x: 0.0d
-			y: -2.5d
+			x: 3.0d
+			y: 4.0d
 		}
 		{
 			description: ["Early systems to reduce micro-crafting"]
@@ -196,10 +198,11 @@
 				item: "create:crafting_blueprint"
 				type: "item"
 			}]
-			x: 5.0d
-			y: 2.5d
+			x: 6.0d
+			y: 1.5d
 		}
 		{
+			dependencies: ["7EC83EEF3F7A89B8"]
 			description: ["I can FLY, the shop has these"]
 			id: "6DEDF965FFD12B7B"
 			shape: "rsquare"
@@ -220,46 +223,42 @@
 				}
 				type: "item"
 			}]
-			x: 4.0d
+			x: -2.0d
 			y: 2.5d
 		}
 		{
-			description: ["Transmit items across vast distances"]
+			dependencies: ["73931EAA3EC5C9A9"]
+			description: ["Transmit items and fluids across vast distances"]
 			id: "48D2144395562A62"
 			shape: "rsquare"
-			tasks: [{
-				id: "457960EC0164CC29"
-				item: {
-					Count: 1
-					id: "enderchests:ender_chest"
-					tag: {
-						code: "000"
-						owner: "all"
+			tasks: [
+				{
+					id: "457960EC0164CC29"
+					item: {
+						Count: 1
+						id: "enderchests:ender_chest"
+						tag: {
+							code: "000"
+							owner: "all"
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}]
-			x: 5.0d
-			y: -1.5d
-		}
-		{
-			description: ["Transmit fluids across vast distances"]
-			id: "5CA8EFB9CE8473FB"
-			shape: "rsquare"
-			tasks: [{
-				id: "02D516C817862D95"
-				item: {
-					Count: 1
-					id: "endertanks:ender_tank"
-					tag: {
-						code: "000"
-						owner: "all"
+				{
+					id: "70CD4943D5796A34"
+					item: {
+						Count: 1
+						id: "endertanks:ender_tank"
+						tag: {
+							code: "000"
+							owner: "all"
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}]
-			x: 5.0d
-			y: -0.5d
+			]
+			x: 0.0d
+			y: -2.5d
 		}
 		{
 			can_repeat: true
@@ -329,8 +328,8 @@
 					type: "item"
 				}
 			]
-			x: 4.0d
-			y: -2.5d
+			x: 3.0d
+			y: -3.0d
 		}
 		{
 			description: ["A great way to interface with your storage prior to AE2"]
@@ -355,7 +354,7 @@
 				}
 			]
 			title: "Tom's Simple Storage Mod"
-			x: 1.0d
+			x: 6.0d
 			y: 2.5d
 		}
 		{
@@ -367,8 +366,8 @@
 				item: "modularrouters:modular_router"
 				type: "item"
 			}]
-			x: -1.0d
-			y: 1.0d
+			x: 2.0d
+			y: -3.5d
 		}
 		{
 			description: ["This tool can both help you do more and MOST notibly build multiblock for you by shift right clicking a controller with the blocks in your inventory."]
@@ -378,8 +377,101 @@
 				item: "gtceu:terminal"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -2.5d
+			x: -2.0d
+			y: 0.5d
+		}
+		{
+			icon: "create_hypertube:hypertube"
+			id: "7610BAEF52A6C023"
+			tasks: [
+				{
+					id: "2EC4AE40A7BEAEED"
+					item: "create_hypertube:hypertube"
+					type: "item"
+				}
+				{
+					id: "154DD9BD0A965054"
+					item: "create_hypertube:hypertube_entrance"
+					type: "item"
+				}
+			]
+			title: "Create: Hypertubes"
+			x: -1.5d
+			y: -1.5d
+		}
+		{
+			id: "084F686E51A82458"
+			tasks: [{
+				id: "1AE41DF68A5699CE"
+				item: "bingus:bingus_orb"
+				type: "item"
+			}]
+			x: -0.5d
+			y: 0.0d
+		}
+		{
+			id: "18A5DF95BD8AC501"
+			tasks: [{
+				id: "6B44816312D05240"
+				item: "bingus:floppa_orb"
+				type: "item"
+			}]
+			x: 4.5d
+			y: 0.0d
+		}
+		{
+			id: "492BB422DF58E191"
+			tasks: [{
+				id: "064BEBE2B784C8C3"
+				item: {
+					Count: 1
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "tinygates:and_gate_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:clock_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:counter_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:edge_detector_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:not_gate_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:or_gate_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:rs_latch_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:t_flip_flop_item"
+							}
+							{
+								Count: 1b
+								id: "tinygates:xor_gate_item"
+							}
+						]
+					}
+				}
+				title: "Redstone Gates"
+				type: "item"
+			}]
+			x: 5.5d
+			y: -1.5d
 		}
 	]
 	title: "Quality Of Life"

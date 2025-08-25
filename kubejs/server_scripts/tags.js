@@ -165,9 +165,11 @@ ServerEvents.tags('block', event => {
     event.remove('mineable/pickaxe', [
         'gtceu:ulv_barrel'
     ]);
+
     event.add('mineable/axe', [
         'gtceu:ulv_barrel'
     ]);
+
     event.add('mineable/pickaxe', [
         'travelanchors:travel_anchor'
     ]);
@@ -176,7 +178,6 @@ ServerEvents.tags('block', event => {
     event.remove(`forge:storage_blocks/${type}`,`vintage:${type}_block`);
     });
     event.remove('minecraft:beacon_base_blocks', 'vintage:vanadium_block');
-
 });
 
 ServerEvents.tags('fluid', event => {

@@ -533,8 +533,8 @@
 				type: "item"
 			}]
 			title: "Bulk Smash"
-			x: -1.0d
-			y: -5.5d
+			x: -2.0d
+			y: -5.0d
 		}
 		{
 			dependencies: [
@@ -787,14 +787,15 @@
 				}
 			]
 			title: "Alloy Mixing"
-			x: -1.0d
-			y: -7.0d
+			x: -2.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
 				"3F74E863172E757F"
 				"0A41C4FB379984C0"
 				"483B101A7F71E674"
+				"3D78314A07F5782A"
 			]
 			dependency_requirement: "one_completed"
 			description: [
@@ -1126,7 +1127,11 @@
 			y: 3.5d
 		}
 		{
-			dependencies: ["397C622B06B1165A"]
+			dependencies: [
+				"397C622B06B1165A"
+				"6C7DB1CB4517B843"
+			]
+			dependency_requirement: "one_completed"
 			description: ["Gold has a few uses for making Create components and machines, and is used for some alloys in &7LV&r"]
 			hide_dependent_lines: true
 			id: "708A5EE75EC40FAD"
@@ -1485,8 +1490,8 @@
 				type: "item"
 			}]
 			title: "Stressed Out"
-			x: 0.5d
-			y: -5.5d
+			x: -1.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["70BE6905EC722DCA"]
@@ -1524,8 +1529,8 @@
 				}
 			]
 			title: "Steam Powered"
-			x: 2.0d
-			y: -7.0d
+			x: 0.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1594,8 +1599,8 @@
 				}
 			]
 			title: "Diesel Engines"
-			x: 2.0d
-			y: -5.5d
+			x: 0.0d
+			y: -5.0d
 		}
 		{
 			dependencies: [
@@ -1707,7 +1712,11 @@
 			y: 2.0d
 		}
 		{
-			dependencies: ["397C622B06B1165A"]
+			dependencies: [
+				"397C622B06B1165A"
+				"6C7DB1CB4517B843"
+			]
+			dependency_requirement: "one_completed"
 			description: ["Nickel is a base material used in quite a few alloys. Getting a good amount early on will definitly be beneficial."]
 			id: "0E47ACCDF46E6B1F"
 			rewards: [{
@@ -1742,7 +1751,7 @@
 				type: "item"
 			}]
 			title: "Basic Cobbleworks"
-			x: 0.5d
+			x: -2.0d
 			y: -7.0d
 		}
 		{
@@ -2249,7 +2258,7 @@
 				type: "item"
 			}]
 			x: -0.5d
-			y: 2.75d
+			y: 2.5d
 		}
 		{
 			dependencies: [
@@ -2274,7 +2283,7 @@
 				type: "item"
 			}]
 			x: -0.5d
-			y: 1.25d
+			y: 1.0d
 		}
 		{
 			dependencies: ["6B059D530FCE7428"]
@@ -2340,8 +2349,87 @@
 				item: "gtceu:ulv_casket"
 				type: "item"
 			}]
-			x: 7.0d
-			y: -1.5d
+			x: 9.5d
+			y: 0.5d
+		}
+		{
+			dependencies: [
+				"3F74E863172E757F"
+				"6D5287A0FB892DFF"
+				"6C7DB1CB4517B843"
+			]
+			description: ["A slightly more complicated way of making rubber, that does not depend on latex."]
+			hide_dependency_lines: true
+			icon: "gtceu:raw_rubber_dust"
+			id: "3D78314A07F5782A"
+			shape: "gear"
+			size: 1.25d
+			subtitle: "This seems familiar"
+			tasks: [
+				{
+					id: "417253D624B78148"
+					item: "vintage:centrifuge"
+					type: "item"
+				}
+				{
+					id: "27CB8A723B645E4A"
+					item: "vintage:vacuum_chamber"
+					type: "item"
+				}
+			]
+			title: "Rubber Processing"
+			x: 9.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["70BE6905EC722DCA"]
+			description: ["Machines from vintage open up many interesting opportunities for more efficient material processing, alongside primitive ore processing."]
+			hide_dependent_lines: true
+			id: "6C7DB1CB4517B843"
+			tasks: [{
+				id: "34B96CC7C1DDB90A"
+				item: {
+					Count: 1
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "vintage:belt_grinder"
+							}
+							{
+								Count: 1b
+								id: "vintage:spring_coiling_machine"
+							}
+							{
+								Count: 1b
+								id: "vintage:vacuum_chamber"
+							}
+							{
+								Count: 1b
+								id: "vintage:vibrating_table"
+							}
+							{
+								Count: 1b
+								id: "vintage:centrifuge"
+							}
+							{
+								Count: 1b
+								id: "vintage:helve_hammer"
+							}
+							{
+								Count: 1b
+								id: "vintage:lathe"
+							}
+						]
+					}
+				}
+				title: "Vintage machines"
+				type: "item"
+			}]
+			title: "Create: Vintage"
+			x: 0.0d
+			y: -7.0d
 		}
 	]
 	title: "Early Game"

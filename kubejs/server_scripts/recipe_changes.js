@@ -951,6 +951,16 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VH[GTValues.EV])
         .circuit(14);
 
+    event.shaped('bingus:floppa_orb', [
+        'ABA',
+        'BCB',
+        'ABA'
+    ], {
+        A: '#minecraft:fishes',
+        B: 'minecraft:amethyst_shard',
+        C: 'minecraft:emerald'
+    }).id('start:shaped/floppa_orb');
+
     // REMOVING LARGE BOILERS BECAUSE ALL OUR FOOD KEEPS BLOWING UP
     event.remove({ id: /gtceu:.*_large_boiler/});
 });
@@ -976,15 +986,3 @@ BlockEvents.rightClicked('minecraft:grass_block', event => {
 });
 })()
 }
-
-ServerEvents.tags('block', event => {
-    event.remove('mineable/pickaxe', [
-        'gtceu:ulv_barrel'
-    ]);
-    event.add('mineable/axe', [
-        'gtceu:ulv_barrel'
-    ]);
-    event.add('mineable/pickaxe', [
-        'travelanchors:travel_anchor'
-    ]);
-});

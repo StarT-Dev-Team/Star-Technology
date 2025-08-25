@@ -32,11 +32,11 @@ ServerEvents.recipes(event => {
         'create:milling/compat/ae2/ender_pearl', 'create:milling/compat/ae2/certus_quartz', 'create:crushing/raw_platinum_ore', 'create:crushing/raw_platinum_block',
         'create:crushing/raw_uranium_ore', 'create:crushing/raw_uranium_block', 'create:crafting/appliances/slime_ball', 'minecraft:fire_charge', 'gtceu:shapeless/dust_bronze',
         'gtceu:shapeless/dust_brass', 'create:mixing/brass_ingot', 'minecraft:ender_eye', 'create_new_age:shaped/carbon_brushes', 'create_new_age:shaped/basic_motor_extension',
-        'create_new_age:advanced_motor_extension', 'create_new_age:shaped/redstone_magnet', 
-        'createdieselgenerators:basin_fermenting/magma_cream', 'gtceu:research_station/1_x_gtceu_uv_energy_input_hatch', 'gtceu:research_station/1_x_gtceu_uv_energy_output_hatch',
-        'toms_storage:adv_wireless_terminal', 'megacells:mega_crafting_unit', 'gtceu:shaped/resistor_wire', 'gtceu:shaped/resistor_wire_fine', 'gtceu:shaped/resistor_wire_fine_carbon',
-        'gtceu:shaped/resistor_wire_carbon', 'gtceu:shaped/resistor_wire_charcoal', 'create:crushing/diorite_recycling', 'create:milling/charcoal', 'gtceu:macerator/macerate_sculk',
-        'thermal:gunpowder_4','gtceu:shaped/block_compress_marble','gtceu:shapeless/block_decompress_marble'
+        'create_new_age:advanced_motor_extension', 'create_new_age:shaped/redstone_magnet', 'createdieselgenerators:basin_fermenting/magma_cream',
+        'gtceu:research_station/1_x_gtceu_uv_energy_input_hatch', 'gtceu:research_station/1_x_gtceu_uv_energy_output_hatch', 'toms_storage:adv_wireless_terminal',
+        'megacells:mega_crafting_unit', 'gtceu:shaped/resistor_wire', 'gtceu:shaped/resistor_wire_fine', 'gtceu:shaped/resistor_wire_fine_carbon', 'gtceu:shaped/resistor_wire_carbon',
+        'gtceu:shaped/resistor_wire_charcoal', 'create:crushing/diorite_recycling', 'create:milling/charcoal', 'gtceu:macerator/macerate_sculk', 'thermal:gunpowder_4',
+        'gtceu:shaped/block_compress_marble', 'gtceu:shapeless/block_decompress_marble', 'createdieselgenerators:basin_fermenting/golden_apple'
     ];
 
     const toRemoveType = ['thermal:sawmill', 'thermal:pulverizer', 'thermal:insolator', 'thermal:centrifuge', 'thermal:crucible', 'thermal:chiller', 'thermal:refinery',

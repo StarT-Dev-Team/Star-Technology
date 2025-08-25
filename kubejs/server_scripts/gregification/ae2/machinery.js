@@ -47,9 +47,13 @@ ServerEvents.recipes(event => {
     assemblerfluid('ex_interface', 'expatternprovider:ex_interface', ['megacells:mega_interface', '4x ae2:calculation_processor', '#gtceu:circuits/ev', '4x gtceu:double_certus_quartz_skystone_alloy_plate'],'sky_steel 576', 2048);
     assemblerfluid('ex_pattern_provider', 'expatternprovider:ex_pattern_provider', ['megacells:mega_pattern_provider', '4x ae2:calculation_processor', '#gtceu:circuits/ev', '4x gtceu:double_gold_skystone_alloy_plate'],'sky_steel 576', 2048);
 
+    assemblerfluid('expanded_pattern_provider','expandedae:exp_pattern_provider', ['expatternprovider:ex_pattern_provider', '4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],'fluix_steel 576', 8192);
+
     ['molecular_assembler', 'drive', 'io_port'].forEach(type => {
         extended(`${type}`, `${type}`);
     });
+
+    assemblerfluid_rem('expanded_io_port','expandedae:exp_io_port', ['expatternprovider:ex_io_port', '4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],'fluix_steel 576', 8192);
     
     ['import_bus', 'export_bus'].forEach(type => {
         assemblerfluid_rem(`extended_${type}_part`, `expatternprovider:ex_${type}_part`,[`ae2:${type}`, '4x ae2:calculation_processor', '#gtceu:circuits/ev', '4x gtceu:certus_quartz_skystone_alloy_plate','4x gtceu:gold_skystone_alloy_plate'],'sky_steel 576', 2048);
@@ -378,6 +382,8 @@ ServerEvents.recipes(event => {
     
     assemblerfluid_rem('interface_upgrade','expatternprovider:interface_upgrade',['8x ae2:calculation_processor','#gtceu:circuits/hv','#gtceu:circuits/ev','8x gtceu:diamond_skystone_alloy_plate','4x gtceu:double_certus_quartz_skystone_alloy_plate'],'sky_steel 1152',2048, 1);
     assemblerfluid_rem('pattern_provider_upgrade','expatternprovider:pattern_provider_upgrade',['8x ae2:calculation_processor','#gtceu:circuits/hv','#gtceu:circuits/ev','8x gtceu:diamond_skystone_alloy_plate','4x gtceu:double_gold_skystone_alloy_plate'],'sky_steel 1152',2048, 1);
+
+    assemblerfluid_rem('expanded_pattern_provider_upgrade','expandedae:exp_pattern_provider_upgrade', ['4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],'fluix_steel 576', 8192, 1);
 
     assemblerfluid_rem('assembler_matrix_frame','expatternprovider:assembler_matrix_frame',['gtceu:plascrete','2x ae2:fluix_smart_dense_cable','4x gtceu:ruthenium_plate'],'fluix_steel 576',2048);
     assemblerfluid_rem('assembler_matrix_wall','expatternprovider:assembler_matrix_wall',['gtceu:plascrete','4x ae2:fluix_smart_cable','2x gtceu:ruthenium_plate'],'fluix_steel 576',2048);
