@@ -98,8 +98,6 @@ ServerEvents.recipes(event => {
         vintage.polishing(`${output}`, `${input}`).id(id(`polishing/${input.split(':')[1]}`));
     });
 
-    vintage.centrifugation(['minecraft:slime_ball', 'gtceu:sticky_resin', Item.of('gtceu:sticky_resin').withChance(0.50)], 'thermal:slime_mushroom_spores').minimalRPM(32).id(id('centrifugation/slitake_spores'));
-
     vintage.centrifugation('3x gtceu:raw_rubber_dust', 'gtceu:sticky_resin').minimalRPM(64).id(id('centrifugation/sticky_resin'));
     event.recipes.create.mixing(Fluid.of('gtceu:rubber', 720), ['9x gtceu:raw_rubber_dust', 'gtceu:sulfur_dust']).heatRequirement('lowheated').id('start:create_mixing/rubber');;
     vintage.pressurizing('thermal:cured_rubber', Fluid.of('gtceu:rubber', 144)).heatRequirement('lowheated').id(id('centrifugation/cured_rubber'));
