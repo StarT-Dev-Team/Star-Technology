@@ -437,16 +437,6 @@ ServerEvents.recipes(event => {
         E: 'gtceu:energium_dust'
     }).id('start:shaped/neodymium_magnet');
 
-    //plates
-    [
-        {mod: 'gtceu', metals: ['lead','silver','tin','zinc', 'brass','bronze','red_alloy','nickel','invar','soul_infused','cobalt_brass','wrought_iron','potin']},
-        {mod: 'minecraft', metals: ['iron', 'gold', 'copper']}
-    ].forEach(type => {
-        type.metals.forEach(foo => {
-            event.recipes.create.pressing(`gtceu:${foo}_plate`,`${type.mod}:${foo}_ingot`).id(`start:pressing/${foo}_plate`);
-        });
-    });
-
     event.shaped(Item.of('16x minecraft:stick'), [
         'L',
         'L'
@@ -473,6 +463,10 @@ ServerEvents.recipes(event => {
     });
     
     })()}
+
+    // Andesite Alloy compression
+    event.shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block']).id('start:shapeless/andesite_alloy_block_decomp');
+
     //Added Tools
 
         //Mallet + Plunger

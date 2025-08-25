@@ -20,7 +20,7 @@ ServerEvents.recipes(event => {
         'createdieselgenerators:gasoline', 'createdieselgenerators:pumpjack_hole', 'exmachinis:item_buffer', 'exnihilosequentia:mechanical_sieve', 'exnihilosequentia:mechanical_hammer',
         'systeams:frost_boiler', 'exnihilosequentia:golden_mesh', 'minecraft:mycelium', 'thermal:gunpowder_4', 'thermal:dirt_crafting', '#thermal:rockwool', 'create:brass_block', 'create:zinc_block',
         'createdieselgenerators:wire_cutters', 'createdieselgenerators:hammer', 'createdieselgenerators:pumpjack_hole', 'createdieselgenerators:bulk_fermenter',
-        'createdieselgenerators:chemical_turret',
+        'createdieselgenerators:chemical_turret', 'create:andesite_alloy',
         // Following 2 to be removed for Zeta/Eta due to exploits and bugs
         'gtceu:me_pattern_buffer_proxy', 'gtceu:me_pattern_buffer',
         // Boilers removed for Eta since they keep exploding on load

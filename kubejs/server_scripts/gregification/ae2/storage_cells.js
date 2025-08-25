@@ -120,16 +120,16 @@ ServerEvents.recipes(event => {
             const current = `${tier}${tier == 1 ? suffixList[suffixPos + 1] : suffixList[suffixPos]}`;
 
             const transformerDict = {
-                '4': [GTValues.V[GTValues.ULV], 1],
-                '16': [GTValues.V[GTValues.LV], 2],
-                '64': [GTValues.V[GTValues.MV], 4],
-                '256': [GTValues.V[GTValues.HV], 8],
-                '1k': [GTValues.V[GTValues.EV], 16],
-                '4k': [GTValues.V[GTValues.IV], 32],
-                '16k': [GTValues.V[GTValues.LuV], 64],
-                '64k': [GTValues.V[GTValues.ZPM], 128],
-                '256k': [GTValues.V[GTValues.UV], 256],
-                '1m': [GTValues.V[GTValues.UHV], 512]
+                '4': [GTValues.VHA[GTValues.ULV], 1],
+                '16': [GTValues.VHA[GTValues.LV], 2],
+                '64': [GTValues.VHA[GTValues.MV], 4],
+                '256': [GTValues.VHA[GTValues.HV], 8],
+                '1k': [GTValues.VHA[GTValues.EV], 16],
+                '4k': [GTValues.VHA[GTValues.IV], 32],
+                '16k': [GTValues.VHA[GTValues.LuV], 64],
+                '64k': [GTValues.VHA[GTValues.ZPM], 128],
+                '256k': [GTValues.VHA[GTValues.UV], 256],
+                '1m': [GTValues.VHA[GTValues.UHV], 512]
             };
 
             event.remove({output: `expandedae:exp_crafting_accelerator_${lower}`});
