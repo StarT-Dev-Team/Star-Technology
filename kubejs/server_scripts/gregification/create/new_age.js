@@ -1,5 +1,5 @@
 //requires: create_new_age
-global.not_hardmode(
+global.not_hardmode(() => {
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -39,4 +39,4 @@ ServerEvents.recipes(event => {
     wiremill('create_new_age:overcharged_golden_sheet', '4x create_new_age:overcharged_golden_wire', 588, 7, 'gold_wire');
     wiremill('create_new_age:overcharged_diamond', '4x create_new_age:overcharged_diamond_wire', 764, 7, 'diamond_wire');
 
-}));
+})});

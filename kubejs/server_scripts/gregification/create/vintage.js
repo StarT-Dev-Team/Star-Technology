@@ -1,5 +1,5 @@
 //requires: vintage
-global.not_hardmode(
+global.not_hardmode(() => {
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -123,4 +123,4 @@ ServerEvents.recipes(event => {
         create.splashing([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.07)], `gtceu:pure_${mainOre}_dust`).id(id(`splashing/pure_${mainOre}`));
     });
 
-}));
+})});

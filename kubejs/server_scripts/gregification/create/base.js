@@ -1,4 +1,4 @@
-global.not_hardmode(
+global.not_hardmode(() => {
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -26,4 +26,4 @@ ServerEvents.recipes(event => {
         P: 'gtceu:gold_plate'
     }).id(id('shaped/precision_mechanism'));
     
-}));
+})});
