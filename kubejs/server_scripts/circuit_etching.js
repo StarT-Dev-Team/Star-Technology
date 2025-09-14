@@ -8,10 +8,10 @@ ServerEvents.recipes(event => {
 
     //plastic boards
     [
-        {plastic: 'polyether_ether_ketone', abreviation: 'peek', quantity: 16},
-        {plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate', abreviation: 'pedot_pss', quantity: 32},
+        {plastic: 'polyether_ether_ketone', abbreviation: 'peek', quantity: 16},
+        {plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate', abbreviation: 'pedot_pss', quantity: 32},
     ].forEach(type=>{
-    CR(id(`plastic_boards_${type.abreviation}`))
+    CR(id(`plastic_boards_${type.abbreviation}`))
         .itemInputs(`gtceu:${type.plastic}_plate`, '4x gtceu:copper_foil')
         .inputFluids('gtceu:sulfuric_acid 250')
         .itemOutputs(`${type.quantity}x gtceu:plastic_circuit_board`)
