@@ -111,6 +111,12 @@
 			y: -23.5d
 		}
 		{
+			id: "2C389E4B673A803E"
+			linked_quest: "79428BAEAA7856E1"
+			x: 0.0d
+			y: -22.0d
+		}
+		{
 			id: "3296AB708049D9CD"
 			linked_quest: "70C2BB4FAA2FB1F2"
 			x: 1.5d
@@ -1562,18 +1568,6 @@
 			}]
 			x: -15.0d
 			y: -23.5d
-		}
-		{
-			dependencies: ["421DF7880AD00F58"]
-			id: "2C389E4B673A803E"
-			subtitle: "First ZPM Circuit"
-			tasks: [{
-				id: "2B6DA2DF1C1EA537"
-				item: "gtceu:quantum_processor_mainframe"
-				type: "item"
-			}]
-			x: 0.0d
-			y: -22.0d
 		}
 		{
 			dependencies: ["75942788374CDEF3"]
