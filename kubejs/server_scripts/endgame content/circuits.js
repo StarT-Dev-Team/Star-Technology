@@ -262,7 +262,7 @@ ServerEvents.recipes(event => {
         const lensType = (LensIsTag == true) ? `#forge:lenses/${Lens}` : `gtceu:${Lens}_lens` ;
     
         event.recipes.gtceu.mass_laser_engraving(id(`mass_engrave_${output}`))
-            .itemInputs(`gtceu:${input}`)
+            .itemInputs(`64x gtceu:${input}`)
             .notConsumable(lensType)
             .itemOutputs(`${quantity * 64}x gtceu:${output}`)
             .duration(duration * 48)
