@@ -301,7 +301,6 @@ ServerEvents.recipes(event => {
     casing('blue_steel','blue_steel' ,'kubejs');
     casing('red_steel','red_steel' ,'kubejs');
     casing('enriched_naquadah_machine','enriched_naquadah' ,'kubejs');
-    casing('nyanium_machine','nyanium' ,'kubejs');
 
     const casingDouble = (type,material,casing_id) => {
         event.shaped(Item.of(`${casing_id}:${type}_casing`,2), [
@@ -348,8 +347,7 @@ ServerEvents.recipes(event => {
         }).id(`start:${type}_firebox_casing`);
     };
 
-    firebox('enriched_naquadah','enriched_naquadah','start_core');
-    // firebox('nyanium','nyanium','start_core')
+    firebox('enriched_naquadah','enriched_naquadah','start_core')
 
     const gearbox = (type,material,casing_id) => {
         event.shaped(Item.of(`2x ${casing_id}:${type}_gearbox`), [
@@ -372,8 +370,7 @@ ServerEvents.recipes(event => {
             .circuit(4);
     };
 
-    gearbox('enriched_naquadah','enriched_naquadah','kubejs');
-    gearbox('nyanium','nyanium','kubejs');
+    gearbox('enriched_naquadah','enriched_naquadah','kubejs')
 
     const pipe = (type,material,pipe,casing_id) => {
         event.shaped(Item.of(`2x ${casing_id}:${type}_pipe_casing`), [
@@ -387,8 +384,7 @@ ServerEvents.recipes(event => {
         }).id(`start:${type}_pipe_casing`);
     };
 
-    pipe('enriched_naquadah','enriched_naquadah','enriched_naquadah','kubejs');
-    pipe('nyanium','nyanium','nyanium','kubejs');
+    pipe('enriched_naquadah','enriched_naquadah','naquadah','kubejs');
 
     const engine_intake = (type,material,pipe,casing_id,used_casing) => {
         event.shaped(Item.of(`2x ${casing_id}:${type}_engine_intake_casing`), [
@@ -410,8 +406,7 @@ ServerEvents.recipes(event => {
             .EUt(16);
     };
 
-    engine_intake('enriched_naquadah','enriched_naquadah','enriched_naquadah','start_core','kubejs:enriched_naquadah_machine');
-    // engine_intake('nyanium','nyanium','nyanium','start_core','kubejs:nyanium_machine');
+    engine_intake('enriched_naquadah','enriched_naquadah','naquadah','start_core','kubejs:enriched_naquadah_machine');
 
     ['blackstone','calcite','tuff','dripstone_block'].forEach(stone => {
     event.recipes.gtceu.rock_breaker(id(`${stone}`))
@@ -421,6 +416,7 @@ ServerEvents.recipes(event => {
         .EUt(7)
         .addDataString('fluidA', 'minecraft:lava')
         .addDataString('fluidB', 'minecraft:water');
+        // .addCondition($RockBreakerCondition.INSTANCE);
     });
 
     if (global.packmode !== 'hard'){
@@ -832,15 +828,6 @@ ServerEvents.recipes(event => {
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(GTValues.V[GTValues.UHV]);
 
-    event.recipes.gtceu.circuit_assembler(id('multithread_data_module'))
-        .itemInputs('kubejs:draconic_wetware_printed_circuit_board','2x #gtceu:circuits/uev','64x kubejs:qram_chip', 
-            '48x kubejs:3d_nor_chip','48x kubejs:3d_nand_chip','32x gtceu:fine_polonium_bismide_wire')
-        .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576')
-        .itemOutputs('kubejs:multithread_data_module') //to be moved to core for data abilities
-        .duration(400)
-        .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.V[GTValues.UEV]);
-
     event.recipes.gtceu.assembler(id('redstone_variadic_interface'))
         .itemInputs('gtceu:luv_machine_hull', '2x gtceu:hpic_chip', 'gtceu:redstone_plate', 'gtceu:advanced_item_detector_cover',
             'gtceu:advanced_fluid_detector_cover', 'gtceu:advanced_energy_detector_cover')
@@ -913,14 +900,6 @@ ServerEvents.recipes(event => {
         .outputFluids('gtceu:npk_solution 6400')
         .EUt(280)
         .duration(120);
-
-    event.remove({ id:'gtceu:electrolyzer/decomposition_electrolyzing_npk_solution' });
-    event.recipes.gtceu.electrolyzer(id('npk_solution_decomposition'))
-        .inputFluids('gtceu:npk_solution 6400')
-        .itemOutputs('15x gtceu:apatite_dust', '5x gtceu:potassium_dust')
-        .outputFluids('gtceu:sulfur_trioxide 1000', 'gtceu:nitrogen 1000', 'minecraft:water 2000')
-        .duration(33.6 * 20)
-        .EUt(60);
 
     // Mushroom Decomp
 
