@@ -157,6 +157,21 @@ ServerEvents.recipes(event => {
             A: 'gtceu:sky_steel_frame'
         });
 
+    ['minecraft:sand','minecraft:gravel','exnihilosequentia:dust','exnihilosequentia:crushed_blackstone'].forEach(Sediment => {
+    event.shaped(Item.of('expatternprovider:infinity_cell', `{record:{"#c":"ae2:i",id:"${Sediment}"}}`),[
+            'BAB',
+            'CDC',
+            'FEF'
+    ],{
+            A: 'gtceu:luv_electric_piston',
+            B: Sediment,
+            C: 'gtceu:double_netherite_certus_quartz_skystone_alloy_plate',
+            D: Item.of('expatternprovider:infinity_cell', `{record:{"#c":"ae2:i",id:"minecraft:cobblestone"}}`),
+            E: 'gtceu:luv_conveyor_module',
+            F: 'gtceu:pure_netherite_gear'
+    });
+});
+
     shapedRecipeRem('ae2:crafting_unit', [
             'HFH',
             'BCB',

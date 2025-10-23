@@ -1,5 +1,9 @@
 {
-    "ldlib": {
-        "connection": "kubejs:block/casings/superconductors/casing-dragonsteel-ctm"
-    }
+  "ldlib": {
+    "connection": "kubejs:block/casings/superconductors/casing-dragonsteel-ctm"
+  },
+  "animation": {
+    "interpolate": false,
+    "frametime": 4
+  }
 }
