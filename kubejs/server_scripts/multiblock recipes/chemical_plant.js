@@ -171,7 +171,7 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VHA[GTValues.LuV]);
 
     event.recipes.gtceu.chemical_skip(id('glycerol_skip'))
-        .itemInputs('gtceu:carbon_dust 3')
+        .itemInputs('3x gtceu:carbon_dust')
         .inputFluids('gtceu:hydrogen 8000', 'gtceu:oxygen 3000')
         .outputFluids('gtceu:glycerol 1000')
         .duration(200)
