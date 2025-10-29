@@ -36,7 +36,8 @@ ServerEvents.recipes(event => {
         'gtceu:research_station/1_x_gtceu_uv_energy_input_hatch', 'gtceu:research_station/1_x_gtceu_uv_energy_output_hatch', 'toms_storage:adv_wireless_terminal',
         'megacells:mega_crafting_unit', 'gtceu:shaped/resistor_wire', 'gtceu:shaped/resistor_wire_fine', 'gtceu:shaped/resistor_wire_fine_carbon', 'gtceu:shaped/resistor_wire_carbon',
         'gtceu:shaped/resistor_wire_charcoal', 'create:crushing/diorite_recycling', 'create:milling/charcoal', 'gtceu:macerator/macerate_sculk', 'thermal:gunpowder_4',
-        'gtceu:shaped/block_compress_marble', 'gtceu:shapeless/block_decompress_marble', 'createdieselgenerators:basin_fermenting/golden_apple'
+        'gtceu:shaped/block_compress_marble', 'gtceu:shapeless/block_decompress_marble', 'createdieselgenerators:basin_fermenting/golden_apple', 'gtceu:arc_furnace/arc_mega_vacuum_freezer',
+        'gtceu:macerator/macerate_mega_vacuum_freezer', 'gtceu:arc_furnace/arc_mega_blast_furnace', 'gtceu:macerator/macerate_mega_blast_furnace'
     ];
 
     const toRemoveType = ['thermal:sawmill', 'thermal:pulverizer', 'thermal:insolator', 'thermal:centrifuge', 'thermal:crucible', 'thermal:chiller', 'thermal:refinery',

@@ -41,3 +41,4 @@ config/sgjourney-common.toml
 config/defaultworldtype/client-config.toml
 config/skyblockbuilder/data/dimensions.txt
 config/nuclearcraft/*
+config/create_hypertube-client.toml

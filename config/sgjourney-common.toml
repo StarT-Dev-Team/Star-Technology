@@ -15,30 +15,36 @@
 			#Maximum amount of energy that can be transferred from the ZPM Hub in one tick
 			#Range: 1 ~ 9223372036854775807
 			zpm_hub_max_transfer = 100000000000
+			#If true, it will be possible to power Stargates (and by extension Interfaces) with energy from ZPMs
+			stargates_use_zero_point_energy = true
+			#If true, it will be possible to power Stargate Journey technology with energy from ZPMs
+			tech_uses_zero_point_energy = true
+			#If true, it will be possible to power technology and cables from other mods with energy from ZPMs
+			other_mods_use_zero_point_energy = false
 
 	["Stargate Journey Common Config"."Interface Config"]
 
 		["Stargate Journey Common Config"."Interface Config".server]
 			#The amount of energy a Basic Interface can hold
-			#Range: 1 ~ 2147483647
+			#Range: 1 ~ 9223372036854775807
 			basic_interface_capacity = 100000000
 			#The maximum amount of energy a Basic Interface can transfer at once
-			#Range: 1 ~ 2147483647
+			#Range: 1 ~ 9223372036854775807
 			basic_interface_max_transfer = 5000000
 			#The amount of energy a Crystal Interface can hold
-			#Range: 1 ~ 2147483647
+			#Range: 1 ~ 9223372036854775807
 			crystal_interface_capacity = 2147483647
 			#The maximum amount of energy a Crystal Interface can transfer at once
-			#Range: 1 ~ 2147483647
+			#Range: 1 ~ 9223372036854775807
 			crystal_interface_max_transfer = 2147483647
 			#The amount of energy an Advanced Crystal Interface can hold
-			#Range: 1 ~ 2147483647
+			#Range: 1 ~ 9223372036854775807
 			advanced_crystal_interface_capacity = 1000000000
 			#The maximum amount of energy an Advanced Crystal Interface can transfer at once
-			#Range: 1 ~ 2147483647
+			#Range: 1 ~ 9223372036854775807
 			advanced_crystal_interface_max_transfer = 100000000
 			#The default amount of energy the Interface will try to provide until it stops
-			#Range: 1 ~ 2147483647
+			#Range: 1 ~ 9223372036854775807
 			default_energy_target = 200000
 
 	["Stargate Journey Common Config"."Stargate Config"]
@@ -124,13 +130,22 @@
 			#The maximum amount of energy the Stargate can receive at once
 			#Range: 0 ~ 9223372036854775807
 			stargate_energy_max_receive = 34359738240
-			#The energy required to keep the Stargate open after exceeding the maximum open time is multiplied by this number
-			#Range: > 1
-			energy_bypass_multiplier = 33554432
 			#If true, Stargate will load the chunk it's in while it's connected to another Stargate
 			stargate_loads_chunk_when_connected = true
 			#If false, it will be impossible to break the Stargate through mining while it's connected
 			can_break_connected_stargate = false
+			#The maximum amount of blocks allowed within the ring area before Tollan Stargate becomes obstructed
+			#Range: 1 ~ 16
+			max_obstructive_blocks_tollan = 9
+			#The amount of energy required to establish a connection inside a solar system after exceeding the maximum open time
+			#Range: 0 ~ 9223372036854775807
+			system_wide_connection_bypass_energy_draw = 50000
+			#The amount of energy cost of keeping the wormhole open each tick for interstellar connections after exceeding the maximum open time
+			#Range: 0 ~ 9223372036854775807
+			interstellar_connection_bypass_energy_draw = 5000000
+			#The amount of energy cost of keeping the wormhole open each tick for intergalactic connections after exceeding the maximum open time
+			#Range: 0 ~ 9223372036854775807
+			intergalactic_connection_bypass_energy_draw = 5000000000
 
 	["Stargate Journey Common Config"."Naquadah Generator Config"]
 
@@ -200,6 +215,8 @@
 			buried_stargate_generation_z_bound = 64
 			#Common Stargates will generate
 			common_stargate_generation = false
+			#When false, Stargate Network won't include Common Stargates in the search for ungenerated Stargate Structures
+			common_stargate_search = false
 
 	["Stargate Journey Common Config"."Tech Config"]
 
@@ -207,26 +224,8 @@
 			#If true Kara Kesh won't require its user to have Naquadah in their bloodstream
 			disable_kara_kesh_requirements = true
 			#The amount of Heavy Liquid Naquadah a Personal Shield can hold
-			#Range: 1 ~ 10000
+			#Range: > 1
 			personal_shield_capacity = 300
-			#The amount of energy an Energy Crystal can hold
-			#Range: 1 ~ 9223372036854775807
-			energy_crystal_capacity = 50000
-			#The amount of energy an Advanced Energy Crystal can hold
-			#Range: 1 ~ 9223372036854775807
-			advanced_energy_crystal_capacity = 100000
-			#The amount of energy that can be transfered into and out of an Energy Crystal per tick
-			#Range: 1 ~ 9223372036854775807
-			energy_crystal_max_transfer = 1500
-			#The amount of energy that can be transfered into and out of an Advanced Energy Crystal per tick
-			#Range: 1 ~ 9223372036854775807
-			advanced_energy_crystal_max_transfer = 3000
-			#The amount of energy a Transfer Crystal can transfer per tick
-			#Range: 1 ~ 9223372036854775807
-			transfer_crystal_max_transfer = 2500
-			#The amount of energy an Advanced Transfer Crystal can transfer per tick
-			#Range: 1 ~ 9223372036854775807
-			advanced_transfer_crystal_max_transfer = 5000
 			#If true, Fusion Core will produce an endless amount of energy and won't require any fuel
 			fusion_core_infinite_energy = true
 			#The amount of energy generated by Fusion Core from one unit of fuel
@@ -235,6 +234,33 @@
 			#The fuel capacity of a Fusion Core
 			#Range: > 1
 			fusion_core_fuel_capacity = 65536
+			#The amount of Liquid Naquadah or Heavy Liquid Naquadah a Vial can hold
+			#Range: > 1
+			vial_capacity = 250
+			#The amount of energy generated from one unit of Liquid Naquadah
+			#Range: 1 ~ 9223372036854775807
+			energy_from_liquid_naquadah = 10000
+			#The amount of energy generated from one unit of Heavy Liquid Naquadah
+			#Range: 1 ~ 9223372036854775807
+			energy_from_heavy_liquid_naquadah = 50000
+			#The amount of energy the Naquadah Power Cell's Energy Buffer can hold
+			#Range: 1 ~ 9223372036854775807
+			naquadah_power_cell_buffer_capacity = 50000
+			#The amount of energy the Naquadah Power Cell's Energy Buffer can transfer out at once
+			#Range: 1 ~ 9223372036854775807
+			naquadah_power_cell_max_transfer = 200000
+			#The amount of energy an Energy Crystal can hold
+			#Range: 1 ~ 9223372036854775807
+			small_naquadah_battery_capacity = 5000000
+			#The amount of energy an Advanced Energy Crystal can hold
+			#Range: 1 ~ 9223372036854775807
+			small_naquadah_battery_max_transfer = 10000
+			#The amount of energy an Energy Crystal can hold
+			#Range: 1 ~ 9223372036854775807
+			large_naquadah_battery_capacity = 1000000000
+			#The amount of energy an Advanced Energy Crystal can hold
+			#Range: 1 ~ 9223372036854775807
+			large_naquadah_battery_max_transfer = 100000
 
 	["Stargate Journey Common Config"."Genetic Config"]
 
@@ -316,6 +342,13 @@
 			#Decides the player permission level required to modify or break protected DHDs
 			#Range: 0 ~ 4
 			protected_dhd_permissions = 0
+			#Decides the player permission level required to modify or break protected ZPM Hubs
+			#Range: 0 ~ 4
+			protected_zpm_hub_permissions = 0
+			#If false, it will be impossible for other blocks (like Hoppers) to access the inventories of protected blocks
+			protected_inventory_access = true
+			#If true, protected blocks won't be destroyed during any explosion
+			protected_blocks_ignore_explosions = false
 
 	["Stargate Journey Common Config"."DHD Config"]
 
@@ -356,4 +389,62 @@
 			#Energy depleted by pressing a button on the DHD
 			#Range: 0 ~ 9223372036854775807
 			classic_dhd_button_press_energy_cost = 0
+			#The amount by which the Energy Crystal increases a DHD's Energy Target
+			#Range: 1 ~ 9223372036854775807
+			energy_crystal_dhd_energy_target = 50000
+			#The amount by which the AdvancedEnergy Crystal increases a DHD's Energy Target
+			#Range: 1 ~ 9223372036854775807
+			advanced_energy_crystal_dhd_energy_target = 100000
+
+	["Stargate Journey Common Config"."Crystal Config"]
+
+		["Stargate Journey Common Config"."Crystal Config".server]
+			#The amount of energy an Energy Crystal can hold
+			#Range: 1 ~ 9223372036854775807
+			energy_crystal_capacity = 500000
+			#The amount of energy an Advanced Energy Crystal can hold
+			#Range: 1 ~ 9223372036854775807
+			advanced_energy_crystal_capacity = 2000000
+			#The amount of energy that can be transfered into and out of an Energy Crystal per tick
+			#Range: 1 ~ 9223372036854775807
+			energy_crystal_max_transfer = 100000
+			#The amount of energy that can be transfered into and out of an Advanced Energy Crystal per tick
+			#Range: 1 ~ 9223372036854775807
+			advanced_energy_crystal_max_transfer = 1000000
+			#The amount of energy a Transfer Crystal can transfer per tick
+			#Range: 1 ~ 9223372036854775807
+			transfer_crystal_max_transfer = 2500
+			#The amount of energy an Advanced Transfer Crystal can transfer per tick
+			#Range: 1 ~ 9223372036854775807
+			advanced_transfer_crystal_max_transfer = 5000
+
+	["Stargate Journey Common Config"."Cable Config"]
+
+		["Stargate Journey Common Config"."Cable Config".server]
+			#The maximum number of Cable Blocks in a single Cable Network
+			#Range: > 1
+			max_cables_in_network = 4096
+			#The amount of energy that will be generated if Lightning strikes a Stargate or a Lightning Rod connected to a cable
+			#Range: 0 ~ 9223372036854775807
+			lightning_strike_energy = 100000
+			#Maximum amount of energy that can be transferred through the Naquadah Wire per tick
+			#Range: 1 ~ 9223372036854775807
+			naquadah_wire_max_transfer = 5000
+			#Maximum amount of energy that can be transferred through the Small Naquadah Cable per tick
+			#Range: 1 ~ 9223372036854775807
+			small_naquadah_cable_max_transfer = 100000
+			#Maximum amount of energy that can be transferred through the Medium Naquadah Cable per tick
+			#Range: 1 ~ 9223372036854775807
+			medium_naquadah_cable_max_transfer = 10000000
+			#Maximum amount of energy that can be transferred through the Large Naquadah Cable per tick
+			#Range: 1 ~ 9223372036854775807
+			large_naquadah_cable_max_transfer = 100000000000
+			#If true, Naquadah Wires will be able to transfer energy from ZPMs
+			naquadah_wire_transfers_zero_point_energy = false
+			#If true, Small Naquadah Cables will be able to transfer energy from ZPMs
+			small_naquadah_cable_transfers_zero_point_energy = false
+			#If true, Medium Naquadah Cables will be able to transfer energy from ZPMs
+			medium_naquadah_cable_transfers_zero_point_energy = true
+			#If true, Large Naquadah Cables will be able to transfer energy from ZPMs
+			large_naquadah_cable_transfers_zero_point_energy = true
 

@@ -1454,9 +1454,9 @@
 	#Spawning options for sgjourney:goauld
 	[sgjourney.goauld]
 		#Should the entity be allowed to spawn normally?
-		allowNormalSpawning = true
+		allowNormalSpawning = false
 		#Should spawners be able to spawn the entity?
-		allowSpawners = true
+		allowSpawners = false
 		#Should spawn eggs be able to spawn the entity?
 		allowSpawnEggs = true
 		#Should the entity spawn via mob conversion? i.e. villager -> zombie
@@ -1465,9 +1465,9 @@
 	#Spawning options for sgjourney:human
 	[sgjourney.human]
 		#Should the entity be allowed to spawn normally?
-		allowNormalSpawning = true
+		allowNormalSpawning = false
 		#Should spawners be able to spawn the entity?
-		allowSpawners = true
+		allowSpawners = false
 		#Should spawn eggs be able to spawn the entity?
 		allowSpawnEggs = true
 		#Should the entity spawn via mob conversion? i.e. villager -> zombie
@@ -1476,9 +1476,9 @@
 	#Spawning options for sgjourney:jaffa
 	[sgjourney.jaffa]
 		#Should the entity be allowed to spawn normally?
-		allowNormalSpawning = true
+		allowNormalSpawning = false
 		#Should spawners be able to spawn the entity?
-		allowSpawners = true
+		allowSpawners = false
 		#Should spawn eggs be able to spawn the entity?
 		allowSpawnEggs = true
 		#Should the entity spawn via mob conversion? i.e. villager -> zombie

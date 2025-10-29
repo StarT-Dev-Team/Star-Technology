@@ -914,6 +914,15 @@ ServerEvents.recipes(event => {
         .EUt(280)
         .duration(120);
 
+    //NPK Decomp
+    event.remove({ id:'gtceu:electrolyzer/decomposition_electrolyzing_npk_solution' });
+    event.recipes.gtceu.electrolyzer(id('npk_solution_decomposition'))
+        .inputFluids('gtceu:npk_solution 6400')
+        .itemOutputs('15x gtceu:apatite_dust', '5x gtceu:potassium_dust')
+        .outputFluids('gtceu:sulfur_trioxide 288', 'gtceu:nitrogen 1000', 'minecraft:water 2200')
+        .duration(33.6 * 20)
+        .EUt(60);
+
     // Mushroom Decomp
 
     event.shapeless(Item.of('3x minecraft:brown_mushroom'), ['minecraft:brown_mushroom_block', '#forge:tools/mortars']).id('start:shapeless/brown_mushroom');

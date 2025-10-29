@@ -58,11 +58,12 @@ ServerEvents.recipes(event => {
 
     event.remove({id: 'megacells:cells/standard/bulk_item_cell'});
     event.recipes.gtceu.assembler(id('bulk_item_cell'))
-            .itemInputs(`6x gtceu:netherite_certus_quartz_skystone_alloy_plate`,'megacells:bulk_cell_component','gtceu:laminated_glass','4x #gtceu:circuits/ev')
-            .inputFluids('gtceu:fluix_steel 576')
-            .itemOutputs('megacells:bulk_item_cell')
-            .duration(400)
-            .EUt(8192);
+        .itemInputs(`6x gtceu:netherite_certus_quartz_skystone_alloy_plate`,'megacells:bulk_cell_component','gtceu:laminated_glass','4x #gtceu:circuits/ev')
+        .inputFluids('gtceu:fluix_steel 576')
+        .itemOutputs('megacells:bulk_item_cell')
+        .circuit(1)
+        .duration(400)
+        .EUt(8192);
 
     event.recipes.gtceu.canner(id('bulk_item_cell'))
         .itemInputs('megacells:mega_item_cell_housing', 'megacells:bulk_cell_component')
@@ -218,7 +219,7 @@ ServerEvents.recipes(event => {
             .inputFluids('gtceu:fluix_steel 576')
             .itemOutputs('megacells:mega_item_cell_housing')
             .duration(400)
-            .circuit(1)
+            .circuit(2)
             .EUt(2048);
 
     event.remove({id: 'megacells:cells/mega_fluid_cell_housing'});

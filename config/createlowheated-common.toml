@@ -16,4 +16,8 @@
 	#How much fan speed is needed for the Basic Burner to be empowered.
 	#Range: > 1
 	fanSpeedRequired = 256
+	#When set to true, it re-enables all passive heaters.
+	passiveBoilerHeatersTag = false
+	#Fan direction preference.
+	fanHorizontalOnly = true
 
