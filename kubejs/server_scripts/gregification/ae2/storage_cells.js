@@ -113,7 +113,7 @@ ServerEvents.recipes(event => {
 
     };
 
-    /*const expandedAccelerator = (tier) => {
+    const expandedAccelerator = (tier) => {
         const suffixList = ['', 'k', 'm'];
         [0, 1].forEach(suffixPos => {
             const previous = `${tier == 1 ? 256 : tier / 4}${suffixList[suffixPos]}`;
@@ -121,30 +121,37 @@ ServerEvents.recipes(event => {
             const current = `${tier}${tier == 1 ? suffixList[suffixPos + 1] : suffixList[suffixPos]}`;
 
             const transformerDict = {
-                '4': [GTValues.VHA[GTValues.ULV], 1],
-                '16': [GTValues.VHA[GTValues.LV], 2],
-                '64': [GTValues.VHA[GTValues.MV], 4],
-                '256': [GTValues.VHA[GTValues.HV], 8],
-                '1k': [GTValues.VHA[GTValues.EV], 16],
-                '4k': [GTValues.VHA[GTValues.IV], 32],
-                '16k': [GTValues.VHA[GTValues.LuV], 64],
-                '64k': [GTValues.VHA[GTValues.ZPM], 128],
-                '256k': [GTValues.VHA[GTValues.UV], 256],
-                '1m': [GTValues.VHA[GTValues.UHV], 512]
+                '4': ['ulv', 1, 'wrought_iron'],
+                '16': ['lv', 2, 'steel'],
+                '64': ['mv', 4, 'aluminium'],
+                '256': ['hv', 8, 'stainless_steel'],
+                '1k': ['ev', 16, 'titanium'],
+                '4k': ['iv', 32, 'tungsten_steel'],
+                '16k': ['luv', 64, 'rhodium_plated_palladium'],
+                '64k': ['zpm', 128, 'naquadah_alloy'],
+                '256k': ['uv', 256, 'darmstadtium'],
+                '1m': ['uhv', 512, 'neutronium']
             };
 
-            event.remove({output: `expandedae:exp_crafting_accelerator_${lower}`});
+            const voltage = transformerDict[current][0]
+            const previousAcceleratorCraft = suffixPos == 0 && tier == 4 ? 'ae2:crafting_accelerator' : `expandedae:exp_crafting_accelerator_${previous}`
+            const lowerAccelerator = `expandedae:exp_crafting_accelerator_${lower}`
+            const currentAccelerator = `expandedae:exp_crafting_accelerator_${current}`
 
-            event.shapeless(`2x expandedae:exp_crafting_accelerator_${lower}`, `expandedae:exp_crafting_accelerator_${current}`).id(`start:shapeless/exp_crafting_accelerator_${current}_uncompressing`);
+            event.remove({output: lowerAccelerator});
+
+            event.shapeless(`2x ${lowerAccelerator}`, currentAccelerator).id(`start:shapeless/exp_crafting_accelerator_${current}_uncompressing`);
 
             event.recipes.gtceu.me_assembler(id(`exp_crafting_accelerator_${current}`))
-                .itemInputs(`3x ${suffixPos == 0 && tier == 4 ? 'ae2:crafting_accelerator' : `expandedae:exp_crafting_accelerator_${previous}`}`, `4x gtceu:${suffixPos == 1 ? 'netherite_' : ''}certus_quartz_skystone_alloy_plate`)
-                .inputFluids(`gtceu:fluix_steel ${72 * transformerDict[current][1]}`)
-                .itemOutputs(`expandedae:exp_crafting_accelerator_${current}`)
+                .itemInputs(`gtceu:${transformerDict[current][2]}_frame`, `3x ${previousAcceleratorCraft}`, `#gtceu:circuits/${voltage}`, `6x gtceu:${suffixPos == 1 ? 'netherite_' : ''}certus_quartz_skystone_alloy_plate`)
+                .inputFluids(`gtceu:fluix_steel ${9 * transformerDict[current][1]}`)
+                .itemOutputs(currentAccelerator)
                 .duration(200)
-                .EUt(transformerDict[current][0]);
+                .EUt(global.vha[voltage]);
         });
-    };*/
+    };
+
+    event.shapeless('expandedae:exp_crafting_accelerator_4', 'megacells:mega_crafting_accelerator').id(`start:shapeless/exp_crafting_accelerator_${current}_uncompressing`);
     
     [1, 4, 16, 64, 256].forEach(tier => {
         packaging(tier, 'item', 'certus_quartz');
@@ -152,7 +159,7 @@ ServerEvents.recipes(event => {
 
         craftingStorage(tier);
 
-        // expandedAccelerator(tier);
+        expandedAccelerator(tier);
     });
 
     const canner = (output, catalyst, Mega) => {

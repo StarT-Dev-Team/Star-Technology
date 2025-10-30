@@ -1422,7 +1422,6 @@
 		{
 			dependencies: ["0A1DB46E5375B995"]
 			id: "478A02E7D8C0A1C8"
-			invisible: true
 			tasks: [{
 				id: "4E8FEE68E8397840"
 				item: "expandedae:exp_crafting_accelerator_4"
@@ -1632,7 +1631,6 @@
 		{
 			dependencies: ["0C82D20AA1B8A33B"]
 			id: "6820C607C25AE859"
-			invisible: true
 			tasks: [{
 				id: "76B22CA34DBF4917"
 				item: "expandedae:exp_io_port"
@@ -1644,7 +1642,6 @@
 		{
 			dependencies: ["6D441C650137BD6D"]
 			id: "2519DA28EADD47D4"
-			invisible: true
 			tasks: [{
 				id: "7C66519BF801C80D"
 				item: "expandedae:exp_pattern_provider"
