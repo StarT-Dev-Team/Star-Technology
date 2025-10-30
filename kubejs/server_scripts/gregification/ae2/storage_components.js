@@ -32,6 +32,13 @@ ServerEvents.recipes(event => {
     storage_base('megacells:cell_component_64m', 'megacells:cell_component_16m', 'uv', 'yttrium_barium_cuprate', 128);
     storage_base('megacells:cell_component_256m', 'megacells:cell_component_64m', 'uhv', 'europium', 256);
 
+    event.recipes.gtceu.me_assembler('cell_component_1m_skip')
+        .itemInputs('512x ae2:logic_processor', '#gtceu:circuits/luv', '4x kubejs:ae2_soc_chip', '48x gtceu:fine_niobium_titanium_wire')
+        .inputFluids('gtceu:fluix_steel 576')
+        .itemOutputs('megacells:cell_component_1m')
+        .duration(400)
+        .EUt(global.v['luv']);
+
     const spatial = (tier, storage, voltage) => {
         event.remove({output: `ae2:spatial_cell_component_${tier}`})
         event.recipes.gtceu.me_assembler(id(`spatial_cell_component_${tier}`))

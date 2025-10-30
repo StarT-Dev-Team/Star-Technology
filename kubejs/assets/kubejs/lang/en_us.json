@@ -153,7 +153,10 @@
     "item.kubejs.draco_chip": "§5Draco§r-Doped Chip",
 
     "item.kubejs.ae2_soc_wafer": "AE2 SoC Wafer",
-    "item.kubejs.ae2_soc": "AE2 SoC",
+    "item.kubejs.ae2_soc_wafer.tooltip": "Raw Applied Circuit",
+    "item.kubejs.ae2_soc_chip": "AE2 SoC",
+    "item.kubejs.ae2_soc_chip.tooltip": "Applied System on Chip",
+    "item.kubejs.fluix_lens": "Fluix Lens",
     "item.kubejs.3d_nand_chip": "3D-NAND Memory Chip Array",
     "item.kubejs.3d_nand_chip.tooltip": "§7Complex NAND Logic Gate",
     "item.kubejs.3d_nor_chip": "3D-NOR Memory Chip Array",

@@ -176,24 +176,32 @@ ServerEvents.recipes(event => {
             .EUt(128);
     });
 
-    // [// free lenses: white, l_gray, lime
-    //     {type: 'naquadah', n: 1, time: 900, volt: 'ev'},
-    //     {type: 'neutronium', n: 4, time: 500, volt: 'iv'},
-    //     {type: 'draco', n: 16, time: 200, volt: 'uv'}
-    // ].forEach(wafer => {
-    //     event.recipes.gtceu.laser_engraver(id(`engrave_ae2_soc_${wafer.type}`))
-    //         .itemInputs(`gtceu:${wafer.type}_wafer`)
-    //         .notConsumable('#forge:lenses/magenta')
-    //         .itemOutputs(`${wafer.n}x kubejs:ae2_soc_wafer`)
-    //         .duration(wafer.time)
-    //         .EUt(global.va[wafer.volt]);
-    // });
+    [// free lenses: white, l_gray, lime, magenta
+        {type: 'naquadah', n: 1, time: 900, voltage: 'ev'},
+        {type: 'neutronium', n: 4, time: 500, voltage: 'iv'},
+        {type: 'draco', n: 16, time: 200, voltage: 'uv'}
+    ].forEach(wafer => {
+        const { type, n, time, voltage} = wafer
+        event.recipes.gtceu.laser_engraver(id(`engrave_ae2_soc_${type}`))
+            .itemInputs(`${(type == 'naquadah' || type == 'neutronium') ? 'gtceu' : 'kubejs'}:${type}_wafer`)
+            .notConsumable('kubejs:fluix_lens')
+            .itemOutputs(`${n}x kubejs:ae2_soc_wafer`)
+            .duration(time)
+            .EUt(global.va[voltage]);
+    });
 
-    // event.recipes.gtceu.cutter(id('ae2_soc'))
-    //     .itemInputs('kubejs:ae2_soc_wafer')
-    //     .itemOutputs('6x kubejs:ae2_soc')
-    //     .duration(900)
-    //     .EUt(global.va['ev']);
+    event.recipes.gtceu.cutter(id('ae2_soc_chip'))
+        .itemInputs('kubejs:ae2_soc_wafer')
+        .itemOutputs('6x kubejs:ae2_soc_chip')
+        .duration(900)
+        .EUt(global.va['ev']);
+
+    event.recipes.gtceu.chemical_bath(id('fluix_lens'))
+        .itemInputs('gtceu:sapphire_lens')
+        .inputFluids('gtceu:fluix_steel 144')
+        .itemOutputs('kubejs:fluix_lens')
+        .duration(900)
+        .EUt(global.va['ev']);
 
     // [
     //     {circuit: 'logic', material: 'gold'},

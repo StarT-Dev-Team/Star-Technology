@@ -1,4 +1,3 @@
-
 StartupEvents.registry('item', event => {
 
     ['silicon', 'phosphorus', 'naquadah', 'neutronium', 'draco'].forEach(boule => {
@@ -13,5 +12,8 @@ StartupEvents.registry('item', event => {
             .tooltip(Text.translate(`item.kubejs.${item}.tooltip`))
             .texture(`kubejs:item/chips_n_wafers/${item}`);
     });
+
+    event.create('fluix_lens')
+        .texture(`kubejs:item/chips_n_wafers/fluix_lens`);
 
 });

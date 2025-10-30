@@ -18,13 +18,13 @@ ServerEvents.recipes(event => {
             .inputFluids('gtceu:soldering_alloy 144')
             .itemOutputs(`ae2:${type}_storage_cell_${tier}k`)
             .duration(400)
-            .EUt(128);
+            .EUt(120);
 
         event.recipes.gtceu.canner(id(`${type}_storage_cell_${tier}k`))
             .itemInputs(`ae2:${type}_cell_housing`, `ae2:cell_component_${tier}k`)
             .itemOutputs(`ae2:${type}_storage_cell_${tier}k`)
             .duration(400)
-            .EUt(128);
+            .EUt(120);
             
         event.recipes.gtceu.packer(id(`${type}_cell_${tier}k_uncrafting`))
             .itemInputs(`ae2:${type}_storage_cell_${tier}k`)
@@ -40,13 +40,13 @@ ServerEvents.recipes(event => {
             .inputFluids('gtceu:fluix_steel 576')
             .itemOutputs(`megacells:${type}_storage_cell_${tier}m`)
             .duration(400)
-            .EUt(8192*tier);
+            .EUt(7680);
 
         event.recipes.gtceu.canner(id(`${type}_storage_cell_${tier}m`))
             .itemInputs(`megacells:mega_${type}_cell_housing`, `megacells:cell_component_${tier}m`)
             .itemOutputs(`megacells:${type}_storage_cell_${tier}m`)
             .duration(400)
-            .EUt(8192*tier);
+            .EUt(7680);
             
         event.recipes.gtceu.packer(id(`${type}_cell_${tier}m_uncrafting`))
             .itemInputs(`megacells:${type}_storage_cell_${tier}m`)
@@ -87,7 +87,7 @@ ServerEvents.recipes(event => {
             .itemInputs('ae2:crafting_unit', `ae2:cell_component_${tier}k`)
             .itemOutputs(`ae2:${tier}k_crafting_storage`)
             .duration(200)
-            .EUt(128);
+            .EUt(120);
 
         event.recipes.gtceu.packer(id(`crafting_storage_${tier}k_uncrafting`))
             .itemInputs(`ae2:${tier}k_crafting_storage`)
@@ -102,7 +102,7 @@ ServerEvents.recipes(event => {
             .itemInputs('megacells:mega_crafting_unit', `megacells:cell_component_${tier}m`)
             .itemOutputs(`megacells:${tier}m_crafting_storage`)
             .duration(200)
-            .EUt(128);
+            .EUt(120);
 
         event.recipes.gtceu.packer(id(`crafting_storage_${tier}m_uncrafting`))
             .itemInputs(`megacells:${tier}m_crafting_storage`)
@@ -113,25 +113,25 @@ ServerEvents.recipes(event => {
 
     };
 
+    const transformerDict = {
+        '4': ['ulv', 1, 'wrought_iron'],
+        '16': ['lv', 2, 'steel'],
+        '64': ['mv', 4, 'aluminium'],
+        '256': ['hv', 8, 'stainless_steel'],
+        '1k': ['ev', 16, 'titanium'],
+        '4k': ['iv', 32, 'tungsten_steel'],
+        '16k': ['luv', 64, 'rhodium_plated_palladium'],
+        '64k': ['zpm', 128, 'naquadah_alloy'],
+        '256k': ['uv', 256, 'darmstadtium'],
+        '1m': ['uhv', 512, 'neutronium']
+    };
+
     const expandedAccelerator = (tier) => {
         const suffixList = ['', 'k', 'm'];
         [0, 1].forEach(suffixPos => {
             const previous = `${tier == 1 ? 256 : tier / 4}${suffixList[suffixPos]}`;
             const lower = `${tier == 1 ? 512 : tier / 2}${suffixList[suffixPos]}`;
             const current = `${tier}${tier == 1 ? suffixList[suffixPos + 1] : suffixList[suffixPos]}`;
-
-            const transformerDict = {
-                '4': ['ulv', 1, 'wrought_iron'],
-                '16': ['lv', 2, 'steel'],
-                '64': ['mv', 4, 'aluminium'],
-                '256': ['hv', 8, 'stainless_steel'],
-                '1k': ['ev', 16, 'titanium'],
-                '4k': ['iv', 32, 'tungsten_steel'],
-                '16k': ['luv', 64, 'rhodium_plated_palladium'],
-                '64k': ['zpm', 128, 'naquadah_alloy'],
-                '256k': ['uv', 256, 'darmstadtium'],
-                '1m': ['uhv', 512, 'neutronium']
-            };
 
             const voltage = transformerDict[current][0]
             const previousAcceleratorCraft = suffixPos == 0 && tier == 4 ? 'ae2:crafting_accelerator' : `expandedae:exp_crafting_accelerator_${previous}`
@@ -151,7 +151,7 @@ ServerEvents.recipes(event => {
         });
     };
 
-    event.shapeless('expandedae:exp_crafting_accelerator_4', 'megacells:mega_crafting_accelerator').id(`start:shapeless/exp_crafting_accelerator_${current}_uncompressing`);
+    event.shapeless('expandedae:exp_crafting_accelerator_4', 'megacells:mega_crafting_accelerator').id('start:shapeless/mega_crafting_accelerator_deprecation');
     
     [1, 4, 16, 64, 256].forEach(tier => {
         packaging(tier, 'item', 'certus_quartz');
@@ -168,7 +168,7 @@ ServerEvents.recipes(event => {
             .itemInputs('ae2:crafting_unit', `ae2:${catalyst}`)
             .itemOutputs(`ae2:crafting_${output}`)
             .duration(200)
-            .EUt(128);
+            .EUt(120);
 
         event.recipes.gtceu.packer(id(`crafting_${output}_uncrafting`))
             .itemInputs(`ae2:crafting_${output}`)
@@ -183,7 +183,7 @@ ServerEvents.recipes(event => {
                 .itemInputs('megacells:mega_crafting_unit', `ae2:${catalyst}`)
                 .itemOutputs(`megacells:mega_crafting_${output}`)
                 .duration(200)
-                .EUt(128);
+                .EUt(120);
 
             event.recipes.gtceu.packer(id(`mega_crafting_${output}_uncrafting`))
                 .itemInputs(`megacells:mega_crafting_${output}`)
@@ -194,7 +194,7 @@ ServerEvents.recipes(event => {
         }
     };
 
-    canner('accelerator', 'engineering_processor', true);
+    canner('accelerator', 'engineering_processor', false);
     canner('monitor', 'storage_monitor', true);
 
     ['2', '16', '128'].forEach(tier => {
@@ -204,13 +204,13 @@ ServerEvents.recipes(event => {
             .inputFluids('gtceu:soldering_alloy 144')
             .itemOutputs(`ae2:spatial_storage_cell_${tier}`)
             .duration(400)
-            .EUt(128);
+            .EUt(120);
 
         event.recipes.gtceu.canner(id(`spatial_storage_cell_${tier}`))
             .itemInputs('ae2:item_cell_housing', `ae2:spatial_cell_component_${tier}`)
             .itemOutputs(`ae2:spatial_storage_cell_${tier}`)
             .duration(400)
-            .EUt(128);
+            .EUt(120);
             
         event.recipes.gtceu.packer(id(`spatial_cell_${tier}_uncrafting`))
             .itemInputs(`ae2:spatial_storage_cell_${tier}`)
@@ -227,7 +227,7 @@ ServerEvents.recipes(event => {
             .itemOutputs('megacells:mega_item_cell_housing')
             .duration(400)
             .circuit(2)
-            .EUt(2048);
+            .EUt(1920);
 
     event.remove({id: 'megacells:cells/mega_fluid_cell_housing'});
     event.recipes.gtceu.assembler(id('mega_fluid_cell_housing'))
@@ -236,6 +236,6 @@ ServerEvents.recipes(event => {
             .itemOutputs('megacells:mega_fluid_cell_housing')
             .duration(400)
             .circuit(1)
-            .EUt(2048);
+            .EUt(1920);
 
 });
