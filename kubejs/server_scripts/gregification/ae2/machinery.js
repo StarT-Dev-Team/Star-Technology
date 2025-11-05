@@ -384,6 +384,7 @@ ServerEvents.recipes(event => {
     assembler_rem('quantum_ring', 'ae2:quantum_ring', ['gtceu:tungsten_carbide_frame', 'gtceu:ev_field_generator', 'gtceu:ev_emitter', 'gtceu:quantum_star', '6x gtceu:double_fluix_steel_plate'], 2048);
 
     assemblerfluid_rem('mega_energy_cell', 'megacells:mega_energy_cell', ['gtceu:netherite_gold_skystone_alloy_frame', '8x ae2:dense_energy_cell', 'gtceu:lapotronic_energy_orb'], 'fluix_steel 576', 8192);
+    assemblerfluid_rem('expanded_energy_cell', 'expandedae:exp_energy_cell', ['gtceu:void_frame', '8x megacells:mega_energy_cell', 'gtceu:max_battery', '6x gtceu:stellarium_plate'], 'netherite_gold_skystone_alloy 1152', 983040);
 
     assemblerfluid_rem('mega_crafting_unit','megacells:mega_crafting_unit',['gtceu:netherite_certus_quartz_skystone_alloy_frame', '8x ae2:crafting_unit','#gtceu:circuits/iv'],'fluix_steel 576',8192);
 
