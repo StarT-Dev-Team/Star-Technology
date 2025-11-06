@@ -178,8 +178,8 @@ ServerEvents.recipes(event => {
 
     [// free lenses: white, l_gray, lime, magenta
         {type: 'naquadah', n: 1, time: 900, voltage: 'ev'},
-        {type: 'neutronium', n: 4, time: 500, voltage: 'iv'},
-        {type: 'draco', n: 16, time: 200, voltage: 'uv'}
+        {type: 'neutronium', n: 2, time: 500, voltage: 'iv'},
+        {type: 'draco', n: 8, time: 200, voltage: 'uv'}
     ].forEach(wafer => {
         const { type, n, time, voltage} = wafer
         event.recipes.gtceu.laser_engraver(id(`engrave_ae2_soc_${type}`))

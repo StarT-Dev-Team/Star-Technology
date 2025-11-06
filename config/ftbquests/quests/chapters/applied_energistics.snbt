@@ -1662,6 +1662,19 @@
 			x: 1.0d
 			y: -9.0d
 		}
+		{
+			dependencies: ["29FCED9F85FB2882"]
+			description: ["{ftbquests.chapter.applied_energistics.quest97.description1}"]
+			id: "334AE7B73C221920"
+			tasks: [{
+				id: "3CAA8DC4BE329DE5"
+				item: "megacells:cell_component_1m"
+				type: "item"
+			}]
+			title: "{ftbquests.chapter.applied_energistics.quest96.title}"
+			x: -7.0d
+			y: -9.0d
+		}
 	]
 	title: "{ftbquests.chapter.applied_energistics.title}"
 }
