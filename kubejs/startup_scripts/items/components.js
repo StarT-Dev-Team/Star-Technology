@@ -13,7 +13,4 @@ StartupEvents.registry('item', event => {
             .texture(`kubejs:item/chips_n_wafers/${item}`);
     });
 
-    event.create('fluix_lens')
-        .texture(`kubejs:item/chips_n_wafers/fluix_lens`);
-
 });

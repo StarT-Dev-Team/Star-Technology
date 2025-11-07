@@ -179,12 +179,12 @@ ServerEvents.recipes(event => {
     [// free lenses: white, l_gray, lime, magenta
         {type: 'naquadah', n: 1, time: 900, voltage: 'ev'},
         {type: 'neutronium', n: 2, time: 500, voltage: 'iv'},
-        {type: 'draco', n: 8, time: 200, voltage: 'uv'}
+        {type: 'draco', n: 8, time: 200, voltage: 'luv'}
     ].forEach(wafer => {
         const { type, n, time, voltage} = wafer
         event.recipes.gtceu.laser_engraver(id(`engrave_ae2_soc_${type}`))
             .itemInputs(`${(type == 'naquadah' || type == 'neutronium') ? 'gtceu' : 'kubejs'}:${type}_wafer`)
-            .notConsumable('kubejs:fluix_lens')
+            .notConsumable('gtceu:fluix_lens')
             .itemOutputs(`${n}x kubejs:ae2_soc_wafer`)
             .duration(time)
             .EUt(global.va[voltage]);
@@ -199,7 +199,7 @@ ServerEvents.recipes(event => {
     event.recipes.gtceu.chemical_bath(id('fluix_lens'))
         .itemInputs('gtceu:sapphire_lens')
         .inputFluids('gtceu:fluix_steel 144')
-        .itemOutputs('kubejs:fluix_lens')
+        .itemOutputs('gtceu:fluix_lens')
         .duration(900)
         .EUt(global.va['ev']);
 
