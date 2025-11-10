@@ -499,6 +499,8 @@
 				"Smash elements to get more powerful materials"
 				""
 				"Fusion Glass isn't a horrible idea"
+				""
+				"&4To copy \\& paste a fusion reactor, first turn it off, otherwise you will brick your world!"
 			]
 			id: "67ABB3BF6D0C183B"
 			rewards: [{
