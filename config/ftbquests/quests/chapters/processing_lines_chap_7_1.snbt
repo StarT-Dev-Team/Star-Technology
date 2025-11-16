@@ -2443,17 +2443,17 @@
 		}
 		{
 			dependencies: ["52D4B5EDABCA9420"]
-			icon: "gtceu:hydroxide_bucket"
+			icon: "gtceu:oxygen_bucket"
 			id: "632E3EF2E231A069"
 			tasks: [
 				{
-					id: "3B6CFA81B1411C5C"
-					item: "gtceu:hydroxide_bucket"
+					id: "646B36F104F31CAA"
+					item: "gtceu:oxygen_bucket"
 					optional_task: true
 					type: "item"
 				}
 				{
-					id: "5C0794BEB6D59CCF"
+					id: "46C321DB78DA6A14"
 					type: "checkmark"
 				}
 			]
@@ -2461,6 +2461,7 @@
 			y: 9.5d
 		}
 		{
+			dependencies: ["52D4B5EDABCA9420"]
 			icon: "gtceu:hydrogen_bucket"
 			id: "2E7AAF45F5ECC113"
 			tasks: [
@@ -2475,8 +2476,8 @@
 					type: "checkmark"
 				}
 			]
-			x: 8.5d
-			y: 9.5d
+			x: 8.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
