@@ -29,6 +29,7 @@ config/fml.toml
 config/oculus.properties
 config/emi.css
 
+config/jade/*
 config/jei/*
 config/worldedit/
 
@@ -47,6 +48,7 @@ config/craftingtweaks-common.toml
 config/cucumber-tags.json
 config/fastsuite.cfg
 config/ftbbackups2.json
+config/flywheel-client.toml
 config/gtceu.yaml
 config/guideme.toml
 config/immersive_optimization.json
