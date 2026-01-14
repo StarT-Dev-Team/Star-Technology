@@ -71,3 +71,5 @@ config/konkrete/locals/en_us.local
 config/konkrete/locals/pl_pl.local
 config/konkrete/locals/pt_br.local
 config/skyblockbuilder/data/*
+
+!config/jei/blacklist.cfg
