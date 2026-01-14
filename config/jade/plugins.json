@@ -57,6 +57,16 @@
     "painting": true,
     "chiseled_bookshelf": true
   },
+  "jadeaddons.create": {
+    "filter": true,
+    "backtank_capacity": true,
+    "goggles.requires_goggles": true,
+    "goggles": false,
+    "blaze_burner": true,
+    "exact_block": true,
+    "goggles.detailed": false,
+    "placard": true
+  },
   "endertanks": {
     "hud.basic": true,
     "hud": true,
@@ -124,6 +134,9 @@
   },
   "modularrouters": {
     "router": true
+  },
+  "jadeaddons": {
+    "equipment_requirement": ""
   },
   "hammerlib": {
     "root": true
