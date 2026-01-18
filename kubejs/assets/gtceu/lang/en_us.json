@@ -47,7 +47,7 @@
     "block.gtceu.exotic_gas_siphon.tooltip.1": "§7Utilising precision filtration and molecular isolation technologies, it efficiently separates exotic compounds from ambient environments, ensuring high-purity yields for any applications.",
     "block.gtceu.exotic_gas_siphon.tooltip.2": "§8-----------------------------------",
     "block.gtceu.exotic_gas_siphon.tooltip.3": "§6Exotic Gas Siphoning:",
-    "block.gtceu.exotic_gas_siphon.tooltip.4": "§7Siphons exotic gasses directly from the atmosphere through a complex filtration and refining process, directly condensing traditional collection and distillation methods.",
+    "block.gtceu.exotic_gas_siphon.tooltip.4": "§7Siphons exotic gases directly from the atmosphere through a complex filtration and refining process, directly condensing traditional collection and distillation methods.",
     "block.gtceu.exotic_gas_siphon.tooltip.5": "",
     "block.gtceu.exotic_gas_siphon.tooltip.6": "§6Gas Collector:",
     "block.gtceu.exotic_gas_siphon.tooltip.7": "§7This machine can collect the ambient air in the surrounding atmosphere, providing the same functionality as a basic §fGas Collector§7.",
@@ -1333,7 +1333,7 @@
     "block.gtceu.electro_magnetic_material_ripper.tooltip.0": "§3§lMulti-threaded Energizer",
     "block.gtceu.electro_magnetic_material_ripper.tooltip.1": "§7A violent yet impossibly controlled field-flux engine that tears molecular alignments apart and reconfigures them under overwhelming authority.",
     "block.gtceu.electro_magnetic_material_ripper.tooltip.2": "§8-----------------------------------",
-    "block.gtceu.electro_magnetic_material_ripper.tooltip.3": "§7Available Recipe Types: §fPolarizer§7, §fElectro-Magnetic Separator§7, §fElectrolyzer",
+    "block.gtceu.electro_magnetic_material_ripper.tooltip.3": "§7Available Recipe Types: §fPolarizer§7, §fElectromagnetic Separator§7, §fElectrolyzer",
     "block.gtceu.electro_magnetic_material_ripper.tooltip.4": "Can use §3Parallel§r hatches§r, has §5Threading§r, §2Bulking§r, and §cSubtick Parallels§r",
 
     "block.gtceu.fermenting_arboreal_rejuvination_monstronsity": "Fermenting Arboreal Rejuvination Monstronsity",

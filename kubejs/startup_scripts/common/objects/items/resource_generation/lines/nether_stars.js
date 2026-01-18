@@ -20,7 +20,7 @@ StartupEvents.registry('item', event => {
         .texture('kubejs:item/resource_gen/lines/netherstar/nether_star_shard');
         
     event.create('energized_nether_star_shard')
-        .tooltip('"§e✧+')
+        .tooltip('§e✧+')
         .texture('kubejs:item/resource_gen/lines/netherstar/energized_nether_star_shard')
         .glow(true);
 
