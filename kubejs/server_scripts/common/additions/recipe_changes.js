@@ -3,19 +3,9 @@
 ServerEvents.recipes(event => {
     const id = global.id;
 
-    event.replaceInput({id: 'create:crafting/kinetics/goggles'}, '#forge:plates/gold', 'gtceu:copper_plate');
-
     event.replaceInput({ id: 'gtceu:macerator/macerate_nether_star_lens' }, '#forge:lenses/white', 'gtceu:nether_star_lens');
 
-    event.replaceInput({ input: 'farmersdelight:onion'}, 'farmersdelight:onion', '#forge:crops/onion');
-    
-    event.replaceInput({ input: 'farmersdelight:onion'}, 'farmersdelight:onion', '#forge:crops/onion');
-
-    ['tiled','framed','horizontal_framed','vertical_framed'].forEach(type => {
-        event.remove({ id: `create:smelting/glass_pane_from_${type}_glass_pane`})
-    });
-
-    event.remove({ id: 'create:splashing/stained_glass'});
+    event.replaceOutput({ type: 'gtceu:cutter'}, 'ae2:certus_quartz_crystal', '2x ae2:certus_quartz_crystal');
 
     event.recipes.gtceu.alloy_smelter(id('rubber_sheet_from_thermal'))
         .itemInputs('2x thermal:cured_rubber')
@@ -47,9 +37,6 @@ ServerEvents.recipes(event => {
         .addDataString('fluidB', 'minecraft:water');
     });
 
-    // Andesite Alloy compression
-    event.shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block']).id('start:shapeless/andesite_alloy_block_decomp');
-
     //Added Tools
     const plungerMats = ['rubber', 'polyethylene', 'polytetrafluoroethylene', 'silicone_rubber', 'styrene_butadiene_rubber', 'polybenzimidazole' ];
     const malletMats = ['perfluoroelastomer_rubber' ];
@@ -79,12 +66,6 @@ ServerEvents.recipes(event => {
             }).id(`start:shaped/${material}_mallet`);
     });
 
-    [1,2,4].forEach(size => {
-        event.remove({id: `functionalstorage:oak_drawer_alternate_x${size}`});
-    });
-
-    event.replaceInput({id: 'enderchests:ender_pouch'}, 'minecraft:leather', 'gtceu:carbon_fiber_plate');
-
     //B(SiO)7 Foil
     event.recipes.gtceu.bender(id('borosilicate_glas_foil'))
         .itemInputs('gtceu:borosilicate_glass_ingot')
@@ -101,30 +82,6 @@ ServerEvents.recipes(event => {
     event.recipes.create.pressing('kubejs:compressed_mycelium', 'kubejs:mycelium_growth').id('start:pressing/compressed_mycelium');
     event.smoking('kubejs:smoked_mycelium', 'kubejs:compressed_mycelium').id('start:smoking/smoked_mycelium');
     event.recipes.create.pressing('minecraft:leather', 'kubejs:smoked_mycelium').id('start:pressing/mycelium_leather');
-
-    // Warping recipes
-    [{input: 'architects_palette:abyssaline_lamp', output: 'architects_palette:hadaline_lamp'},
-    {input: 'architects_palette:abyssaline_pillar', output: 'architects_palette:hadaline_pillar'},
-    {input: 'architects_palette:abyssaline_bricks', output: 'architects_palette:hadaline_bricks'},
-    {input: 'architects_palette:chiseled_abyssaline_bricks', output: 'architects_palette:chiseled_hadaline_bricks'},
-    {input: 'architects_palette:sunstone', output: 'architects_palette:moonstone'},
-    {input: 'gtceu:steel_ingot', output: 'architects_palette:unobtanium'},
-    {input: 'minecraft:granite', output: 'architects_palette:onyx'},
-    {input: '#minecraft:logs', output: 'architects_palette:twisted_log'},
-    {input: 'architects_palette:abyssaline', output: 'architects_palette:hadaline'},
-    {input: 'architects_palette:abyssaline_tiles', output: 'architects_palette:hadaline_tiles'},
-    {input: '#minecraft:planks', output: 'architects_palette:twisted_planks'},
-    {input: 'minecraft:diorite', output: 'architects_palette:nebulite'},
-    {input: 'architects_palette:rotten_flesh_block', output: 'architects_palette:entrails'},
-    {input: 'minecraft:polished_blackstone', output: 'architects_palette:craterstone'},
-    {input: 'minecraft:andesite', output: 'architects_palette:esoterrack'},
-    {input: 'minecraft:polished_blackstone_bricks', output: 'architects_palette:moonshale_bricks'},
-    {input: 'minecraft:basalt', output: 'architects_palette:moonshale'},
-    {input: '#minecraft:saplings', output: 'architects_palette:twisted_sapling'},
-    {input: '#minecraft:leaves', output: 'architects_palette:twisted_leaves'}
-    ].forEach(prop => {
-        event.recipes.create.haunting(Item.of(prop.output), Item.of(prop.input)).id(`start:haunting/${prop.output.split(':')[1]}`);
-    });
 
     event.remove({id: 'gtceu:electrolyzer/decomposition_electrolyzing_sodalite'}); //Moves to LV but at same total EU cost
     event.recipes.gtceu.electrolyzer(id('sodalite_decomposition'))
@@ -158,8 +115,6 @@ ServerEvents.recipes(event => {
         .duration(400)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(GTValues.V[GTValues.UIV]);
-
-    event.recipes.create.item_application('minecraft:mycelium', ['minecraft:grass_block', 'exnihilosequentia:mycelium_spores']).id('start:item_application/mycelium');
 
     // StarT Core Cell* Emptying
     ['drum','fluid_cell'].forEach(container=>{
@@ -208,19 +163,6 @@ ServerEvents.recipes(event => {
         .duration(45)
         .EUt(8);
 
-    //Tom's / Chipped Fixes
-
-    event.replaceInput({id: 'chipped:benches/mechanist_workbench'}, 'minecraft:tnt', 'minecraft:red_concrete');
-
-    event.shaped('toms_storage:ts.adv_wireless_terminal', [
-        ' P ',
-        'PTP',
-        ' P '
-    ], {
-        P: 'gtceu:steel_plate',
-        T: 'toms_storage:ts.wireless_terminal'
-    }).id('start:shaped/advanced_wireless_terminal');
-
     //Treated Wood Fixes/Additions
     event.remove({id: 'gtceu:macerator/macerate_treated_wood_chest_boat'})
     event.recipes.gtceu.macerator(id('treated_wood_chest_boat'))
@@ -234,35 +176,6 @@ ServerEvents.recipes(event => {
         .duration(98)
         .EUt(2);
     event.recipes.create.filling('gtceu:treated_wood_planks', [Fluid.of('gtceu:creosote', 125), '#minecraft:planks']).id('start:filling/treated_wood_planks');
-
-    event.replaceOutput({ type: 'gtceu:cutter'}, 'ae2:certus_quartz_crystal', '2x ae2:certus_quartz_crystal');
-
-    const nuggetFixMod = (mod) => {
-    event.replaceOutput({output: `${mod}:copper_nugget`},`${mod}:copper_nugget`,`gtceu:copper_nugget`);
-    event.replaceOutput({output: `${mod}:zinc_nugget`},`${mod}:zinc_nugget`,`gtceu:zinc_nugget`);
-    event.replaceOutput({output: `${mod}:brass_nugget`},`${mod}:brass_nugget`,`gtceu:brass_nugget`);
-    event.replaceInput({input: `${mod}:copper_nugget`},`${mod}:copper_nugget`,`gtceu:copper_nugget`);
-    event.replaceInput({input: `${mod}:zinc_nugget`},`${mod}:zinc_nugget`,`gtceu:zinc_nugget`);
-    event.replaceInput({input: `${mod}:brass_nugget`},`${mod}:brass_nugget`,`gtceu:brass_nugget`);
-    }
-    nuggetFixMod('create');nuggetFixMod('thermal');nuggetFixMod('exnihilosequentia');
-
-    // Effortless Building Upgrade Accessibility
-    const reachUpgrade = (type,mat,dye,core) => {
-    event.remove({output: `effortlessbuilding:reach_upgrade${type}`});
-    event.shaped(Item.of(`effortlessbuilding:reach_upgrade${type}`), [
-        ' D ',
-        'MCM',
-        ' D '
-    ], {
-        D: `${dye}`,
-        M: `${mat}`,
-        C: `${core}`
-    }).id(`start:shaped/reach_upgrade${type}`);
-    }
-    reachUpgrade('1','minecraft:slime_ball','minecraft:lime_dye',`minecraft:ender_pearl`);
-    reachUpgrade('2','minecraft:glowstone_dust','minecraft:orange_dye',`effortlessbuilding:reach_upgrade1`);
-    reachUpgrade('3','minecraft:amethyst_shard','minecraft:purple_dye',`effortlessbuilding:reach_upgrade2`);
 
     event.recipes.gtceu.alloy_blast_smelter(id('indium_tin_lead_cadmium_soldering_alloy'))
         .itemInputs('14x gtceu:indium_dust', '3x gtceu:tin_dust', '2x gtceu:lead_dust', '1x gtceu:cadmium_dust')
@@ -289,26 +202,6 @@ ServerEvents.recipes(event => {
         .circuit(1)
         .duration(200)
         .EUt(GTValues.VA[GTValues.UV]);
-
-    event.shaped('bingus:floppa_orb', [
-        'ABA',
-        'BCB',
-        'ABA'
-    ], {
-        A: '#minecraft:fishes',
-        B: 'minecraft:amethyst_shard',
-        C: 'minecraft:emerald'
-    }).id('start:shaped/floppa_orb');
-
-    event.shaped('2x minecraft:sponge', [
-        'CMC',
-        'CTC',
-        'CMC'
-    ], {
-        C: 'minecraft:yellow_carpet',
-        T: 'kubejs:meshblock',
-        M: 'minecraft:string'
-    });
 
     // REMOVING LARGE BOILERS BECAUSE ALL OUR FOOD KEEPS BLOWING UP
     event.remove({ id: /gtceu:.*_large_boiler/});
