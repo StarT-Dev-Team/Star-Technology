@@ -3,6 +3,48 @@ ServerEvents.recipes(event => {
 
     global.not_hardmode(() => {
         const components = global.componentMaterials;
+        const calculateDuration = global.calculateRecyclingDuration;
+        const calculateVoltageMultiplier = global.calculateRecyclingVoltageMultiplier;
+
+        function postIVHatchRecycling(tierKey, postUV) {
+            const tierData = components[tierKey];
+
+            if (!tierData) return;
+
+            const {
+                materials: {
+                    primMaterial,
+                    cable,
+                    tierMaterial
+                }
+            } = tierData;
+
+            const parallelHatchMaceratorOutputs = [
+                `18x gtceu:${primMaterial}_dust`,
+                '16x gtceu:rubber_dust',
+                `9x gtceu:${cable}_dust`,
+                `8x gtceu:${tierMaterial}_dust`
+            ]
+            event.recipes.gtceu.macerator(id(`macerate_${tierKey}_parallel_hatch`))
+                .itemInputs(`${postUV ? 'start_core' : 'gtceu'}:${tierKey}_parallel_hatch`)
+                .itemOutputs(parallelHatchMaceratorOutputs)
+                .duration(calculateDuration(parallelHatchMaceratorOutputs))
+                .EUt(2 * calculateVoltageMultiplier(parallelHatchMaceratorOutputs))
+                .category(GTRecipeCategories.MACERATOR_RECYCLING);
+
+            const parallelArcFurnaceOutputs = [
+                `18x gtceu:${primMaterial}_ingot`,
+                `9x gtceu:${cable}_ingot`,
+                `8x gtceu:${tierMaterial}_ingot`,
+                '16x gtceu:tiny_ash_dust'
+            ];
+            event.recipes.gtceu.arc_furnace(id(`arc_${tierKey}_parallel_hatch`))
+                .itemInputs(`${postUV ? 'start_core' : 'gtceu'}:${tierKey}_parallel_hatch`)
+                .itemOutputs(parallelArcFurnaceOutputs)
+                .duration(calculateDuration(parallelArcFurnaceOutputs))
+                .EUt(GTValues.VA[GTValues.LV])
+                .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
+        }
 
         function postUVMachines(tierKey,chip) {
             const tierData = components[tierKey];
@@ -11,7 +53,9 @@ ServerEvents.recipes(event => {
 
             const {
                 tiers: { tier, tier0 },
-                materials: { 
+                materials: {
+                    primMaterial,
+                    tierMaterial,
                     tierFluid, 
                     cable
                 }
@@ -41,11 +85,63 @@ ServerEvents.recipes(event => {
                 .itemOutputs(`start_core:${tier}_absolute_parallel_hatch`)
                 .duration(320)
                 .EUt(GTValues.VA[GTValues[tier.toUpperCase()]]);
+
+            postIVHatchRecycling(tierKey, true);
+
+            // absolute hatch recycling
+            const parallelHatchMaceratorOutputs = [
+                `64x gtceu:${primMaterial}_dust`,
+                `26x gtceu:${primMaterial}_dust`,
+                '64x gtceu:rubber_dust',
+                `33x gtceu:${cable}_dust`,
+                `8x gtceu:${tierMaterial}_dust`
+            ]
+            event.recipes.gtceu.macerator(id(`macerate_${tier}_absolute_parallel_hatch`))
+                .itemInputs(`start_core:${tier}_absolute_parallel_hatch`)
+                .itemOutputs(parallelHatchMaceratorOutputs)
+                .duration(calculateDuration(parallelHatchMaceratorOutputs))
+                .EUt(2 * calculateVoltageMultiplier(parallelHatchMaceratorOutputs))
+                .category(GTRecipeCategories.MACERATOR_RECYCLING);
+
+            const parallelArcFurnaceOutputs = [
+                `64x gtceu:${primMaterial}_ingot`,
+                `26x gtceu:${primMaterial}_ingot`,
+                `33x gtceu:${cable}_ingot`,
+                `8x gtceu:${tierMaterial}_ingot`,
+                '64x gtceu:tiny_ash_dust'
+            ];
+            event.recipes.gtceu.arc_furnace(id(`arc_${tier}_absolute_parallel_hatch`))
+                .itemInputs(`start_core:${tier}_absolute_parallel_hatch`)
+                .itemOutputs(parallelArcFurnaceOutputs)
+                .duration(calculateDuration(parallelArcFurnaceOutputs))
+                .EUt(GTValues.VA[GTValues.LV])
+                .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
         }
+
+        // add recycling recipes to all hatches
+        // iv hatches are slightly cheaper than the rest because they are not made using assline components
+        const ivHatchMaceratorOutputs = ['12x gtceu:tungsten_steel_dust', '6x gtceu:rubber_dust', '3x gtceu:platinum_dust', '10x gtceu:small_iridium_dust'];
+        event.recipes.gtceu.macerator(id(`macerate_iv_parallel_hatch`))
+            .itemInputs(`gtceu:iv_parallel_hatch`)
+            .itemOutputs(ivHatchMaceratorOutputs)
+            .duration(calculateDuration(ivHatchMaceratorOutputs))
+            .EUt(2 * calculateVoltageMultiplier(ivHatchMaceratorOutputs))
+            .category(GTRecipeCategories.MACERATOR_RECYCLING);
+
+        const ivHatchArcFurnaceOutputs = ['12x gtceu:tungsten_steel_ingot', '3x gtceu:platinum_ingot', '22x gtceu:iridium_nugget', '6x gtceu:tiny_ash_dust'];
+        event.recipes.gtceu.arc_furnace(id(`arc_iv_parallel_hatch`))
+            .itemInputs(`gtceu:iv_parallel_hatch`)
+            .itemOutputs(ivHatchArcFurnaceOutputs)
+            .duration(calculateDuration(ivHatchArcFurnaceOutputs))
+            .EUt(GTValues.VA[GTValues.LV])
+            .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
+
+        postIVHatchRecycling('luv', false);
+        postIVHatchRecycling('zpm', false);
+        postIVHatchRecycling('uv', false);
 
         postUVMachines('uhv','kubejs:uepic_chip');
         postUVMachines('uev','kubejs:uepic_chip');
         postUVMachines('uiv','kubejs:uipic_chip');
-
     });
 });
