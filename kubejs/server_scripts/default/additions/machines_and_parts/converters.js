@@ -1,9 +1,8 @@
 global.not_hardmode(() => {
 
     ServerEvents.recipes(event => {
-        const id = global.id;
-        const calculateDuration = global.calculateRecyclingDuration;
-        const calculateVoltageMultiplier = global.calculateRecyclingVoltageMultiplier;
+        const registerScrapRecyclingRecipe = global.registerScrapRecyclingRecipe;
+        const registerPlasmaRecyclingRecipe = global.registerPlasmaRecyclingRecipe;
 
         event.remove({ output: /gtceu:.*_energy_converter/ });
         // remove recyling recipes
@@ -84,8 +83,8 @@ global.not_hardmode(() => {
                     C: `#gtceu:circuits/${tier}`,
                     S: `gtceu:${tier}_machine_hull`
                 }).id(`start:shaped/${tier}_${amps}a_energy_converter`);
-            };
-        };
+            }
+        }
 
         converterCraftingRecipe(1, 'single');
         converterCraftingRecipe(4, 'quadruple');
@@ -118,19 +117,8 @@ global.not_hardmode(() => {
                 let appendMacerator = amps === 64 ? [`64x ${info.superconductor}_dust`, `64x ${info.superconductor}_dust`] : [`${amps * 2}x ${info.superconductor}_dust`];
                 outputsMacerator.splice.apply(outputsMacerator, [amps < 8 ? 1 : 0, 0].concat(appendMacerator));
 
-                event.recipes.gtceu.arc_furnace(id(`arc_${tier}_${amps}a_energy_converter`))
-                    .itemInputs(`${converterPrefix}:${tier}_${amps}a_energy_converter`)
-                    .itemOutputs(outputsArc)
-                    .duration(calculateDuration(outputsArc))
-                    .EUt(GTValues.VA[GTValues.LV])
-                    .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
-
-                event.recipes.gtceu.macerator(id(`macerate_${tier}_${amps}a_energy_converter`))
-                    .itemInputs(`${converterPrefix}:${tier}_${amps}a_energy_converter`)
-                    .itemOutputs(outputsMacerator)
-                    .duration(calculateDuration(outputsMacerator))
-                    .EUt(2 * calculateVoltageMultiplier(outputsMacerator))
-                    .category(GTRecipeCategories.MACERATOR_RECYCLING);
+                registerScrapRecyclingRecipe(event, `${converterPrefix}:${tier}_${amps}a_energy_converter`, outputsMacerator);
+                registerPlasmaRecyclingRecipe(event, `${converterPrefix}:${tier}_${amps}a_energy_converter`, outputsArc);
             }
         }
     });
@@ -140,5 +128,5 @@ BlockEvents.placed(event => {
 	let block = event.getBlock();
 	if (/^(?:gtceu|start_core):.*energy_converter$/.test(block.getId())) {
         block.mergeEntityData({ energyContainer: { feToEu: true } });
-	};
+	}
 });
