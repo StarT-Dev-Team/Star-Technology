@@ -309,7 +309,7 @@ ServerEvents.recipes(event => {
         .EUt(global.vha['mv']);
 
     event.recipes.gtceu.large_chemical_reactor(id('biostimulating_mixture'))
-        .inputFluids('gtceu:silicic_acid 150', 'gtceu:seaweed_oil 250', 'gtceu:liquefied_nutrient_paste 325', 'gtceu:mutagen 25', 'gtceu:glycerol 250')
+        .inputFluids('gtceu:silicic_acid 150', 'gtceu:seaweed_oil 250', 'gtceu:liquefied_nutrient_paste 325', 'gtceu:fermented_biomass 25', 'gtceu:glycerol 250')
         .outputFluids('gtceu:biostimulating_mixture 1000')
         .duration(160)
         .EUt(global.vha['iv']);
