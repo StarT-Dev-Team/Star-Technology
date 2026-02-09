@@ -45,62 +45,45 @@ ServerEvents.recipes(event => {
         .duration(600)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(1920);
-    
-    /*
-    Changes to mutation recipes:
-    [ ] - Removal of runes and mutagen since this will be accessible prior (CSG being moved earlier)
-    [ ] - Reawakening recipe is now: Dormant + Nether Star + Liquid Naquadria
-    [ ] - Mutate Bacteria to Random is now: Bacteria + Nether Star + Liquid Naquadria
-    [ ] - Mutate Affinities/Stats is now: Bacteria + Nether Star + Enriched Naquadah
-    [ ] - Recipes no longer impacted by mutability (helps with tps) and times are increased 12s=>20s for Mutate Affinities, 12s=>32s for Mutate Bacteria to Random, and 24s=>60s for reawaken
 
-    Changes to breeding recipes:
-    [ ] - 2B Bacteria(GT fluid) input changed to be 2B of Biostimulating Mixture
-    [ ] - Recipe changed to be 90s at ZPM from 40s at UV
+    // const FS = "gtceu:fermentibacter_solvis", XC = "gtceu:xylopseudomonas_creosotica", PS = "gtceu:petrospirillum_solvans", OS = "gtceu:octanivorax_sorbitolens", BC = "gtceu:bituminimonas_combustilis", CV = "gtceu:carbanogasibacter_volatilis";
 
-    Changes to harvesting recipes:
-    [ ] - Recipe Changed to be: 
-        Bacteria(a1,a2,a3)(p,c,m) + 2^c Sugar + 100mb * 2^c Biomass + 1B Distilled Water
-        =>
-        1.5 * p B of a1, 0.75 * p B of a2, 0.25 * p B of a3, 1 * p B of Bacteria(Type), 0.5 * p B of Bacteria(GT Fluid).
-        Time changed 12=>8s and made half tier volt
+    // [
+    //     {main: FS, primary: "ethanol", secondary: "acetic_acid", terniary: "methanol"},
+    //     {main: XC, primary: "creosote", secondary: "naphthalene", terniary: "phenol"},
+    //     {main: PS, primary: "benzene", secondary: "ethane", terniary: "acetone"},
+    //     {main: OS, primary: "octane", secondary: "sorbitol", terniary: "butane"},
+    //     {main: BC, primary: "toluene", secondary: "butadiene", terniary: "propene"},
+    //     {main: CV, primary: "methane", secondary: "butene", terniary: "ethylene"}
+    // ].forEach(superSkip => {
+    //     const { main, primary, secondary, terniary } = superSkip;
+    //     event.recipes.gtceu.electrolyzer(id(main.split(":")[1]))
+    //         .inputFluids(`${main} 3000`)
+    //         .outputFluids(`gtceu:${primary} 1000`, `gtceu:${secondary} 1000`, `gtceu:${terniary} 1000`)
+    //         .duration(80)
+    //         .EUt(global.va["iv"]);
+    // });
 
-    Other adjacent changes:
-    [X] - Biostimulating Mixture to no longer need Mutagen but Fermented Biomass instead
-    [X] - Fermented Biomass Pyrolyze Removed and Fermenter recipe made to be 500mb at 10s instead of 100mb at 7.5s
-    [X] - Biomass Pyrolyze Removed and more crop to plant ball recipes added
-    [ ] - Brewery Bacteria Removed (replaced with method above)
-    [X] - Bacterial Sludge Biomass input swapped for Fermented Biomass
-    [X] - Overworld Fluid Drilling Removed (Additional Oil Pyrolyze recipes added, Wood Pulp + Biomass, to compensate)
-    [ ] - Bacteria Multiblocks made easier to get (UV tier)
-    [ ] - Recipes added: 3B Bacteria(Type) Electroylzes to 1B a1, 1B a2, 1B a3
-    [ ] - Multiblock added: Bacterial Synthesizer (for super skips)
-    [ ] - Current Bacteria Multiblocks revamped (maybe)
-    [ ] - Perchloric Chem Plant Skip (for epoxy super skip)
-    [ ] - All polymer and rubber chem plant(and plant 2) skips removed (Chem Plant and Bacteria unlocked at the same time), stuff like 1-4 Buta stays in Chem Plant
-
-    Super Skips:
-    Key
-    Fermentibacter Solvatis = FS
-    Xylopseudomonas Creosotica = XC
-    Petrospirillum Solvans = PS
-    Octanivorax Sorbitolens = OS
-    Bituminimonas Combustilis = BC
-    Carbanogasibacter Volatilis = CV
-    FKKM = Perfluoroelastomer Rubber
-    Common Abbreviations such as PVC and PEEK are used
-    Skips
-    [ ] - Polymide = FS + BC+ PS + Nitric Acid
-    [ ] - PSS = PS + Sulfur + Oxygen
-    [ ] - PVC = CV + Hydorchloric Acid + Oxygen
-    [ ] - Epoxy = BC + PS + Perchloric Acid
-    [ ] - PVB = BC + CV + FS + Oxygen
-    [ ] - FKKM= FS + "2"CV + Fluorine + Sulfur
-    [ ] - SBR = BC + "2"PS +Sulfur
-    [ ] - Silicone Rubber = "2"CV + Silicic Acid + Sulfur
-    [ ] - PEDOT:PSS= OS + PS + FS + Bromine + Sulfuric Acid
-    [ ] - PEEK = "2"BC + PS + Oxygen
-    [ ] - PBI = PS + XC + Ammonia
-    */
+    // [
+    //     {output: "polyimide", fluidInput: [`${FS} 1000`, `${BC} 1000`, `${PS} 1000`, 'gtceu:nitric_acid 1000'], inputItem: false, voltage: "uhv"},
+    //     {output: "polystyrene_sulfate", fluidInput: [`${PS} 1000`, 'gtceu:oxygen 1000'], inputItem: 'gtceu:sulfur_dust', voltage: "uev"},
+    //     {output: "polyvinyl_chloride", fluidInput: [`${CV} 1000`, 'gtceu:hydrochloric_acid 1000', 'gtceu:oxygen 1000'], inputItem: false, voltage: "ev"},
+    //     {output: "epoxy", fluidInput: [`${BC} 1000`, `${PS} 1000`, 'gtceu:perchloric_acid 1000'], inputItem: false, voltage: "luv"},
+    //     {output: "polyvinyl_butyral", fluidInput: [`${BC} 1000`, `${CV} 1000`, `${FS} 1000`, 'gtceu:oxygen 1000'], inputItem: false, voltage: "iv"},
+    //     {output: "perfluoroelastomer_rubber", fluidInput: [`${FS} 1000`, `${CV} 2000`, 'gtceu:fluorine 1000'], inputItem: 'gtceu:sulfur_dust', voltage: "uhv"},
+    //     {output: "sorbitol", fluidInput: [`${BC} 1000`, `${PS} 2000`], inputItem: 'gtceu:sulfur_dust', voltage: "uv"},
+    //     {output: "silicone_rubber", fluidInput: [`${CV} 2000`, 'gtceu:silicic_acid 1000'], inputItem: 'gtceu:sulfur_dust', voltage: "ev"},
+    //     {output: "poly_34_ethylenedioxythiophene_polystyrene_sulfate", fluidInput: [`${OS} 1000`, `${PS} 1000`, `${FS} 1000`, 'gtceu:bromine 1000', 'gtceu:sulfuric_acid'], inputItem: false, voltage: "uiv"},
+    //     {output: "polyether_ether_ketone", fluidInput: [`${BC} 2000`, `${PS} 1000`, 'gtceu:oxygen 1000'], inputItem: false, voltage: "uv"},
+    //     {output: "polybenzimidazole", fluidInput: [`${PS} 1000`, `${XC} 1000`, 'gtceu:ammonia 1000'], inputItem: false, voltage: "zpm"}
+    // ].forEach(superSkip => {
+    //     const { output, fluidInput, inputItem, voltage } = superSkip;
+    //     const recipe = event.recipes.gtceu.bacteria_synthesizer(id(`${output}_synthesis`))
+    //         recipe.inputFluids(fluidInput)
+    //         recipe.outputFluids(`gtceu:${output} 1000`)
+    //         recipe.duration(200)
+    //         recipe.EUt(global.va[voltage])
+    //         if(inputItem) {recipe.itemInputs(inputItem)}
+    // });
 
 });

@@ -64,19 +64,19 @@ ServerEvents.recipes(event => {
         .duration(150)
         .EUt(GTValues.VHA[GTValues.IV]);
 
-    event.recipes.gtceu.chemical_skip(id('polybenzimidazole_phenol_skip'))
-        .inputFluids('gtceu:benzene 2000', 'gtceu:phenol 1000', 'gtceu:carbon_monoxide 2000', 'gtceu:ammonia 4000', 'gtceu:oxygen 6000')
-        .outputFluids('gtceu:polybenzimidazole 1000', 'minecraft:water 9000')
-        .circuit(24)
-        .duration(315)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+    // event.recipes.gtceu.chemical_skip(id('polybenzimidazole_phenol_skip'))
+    //     .inputFluids('gtceu:benzene 2000', 'gtceu:phenol 1000', 'gtceu:carbon_monoxide 2000', 'gtceu:ammonia 4000', 'gtceu:oxygen 6000')
+    //     .outputFluids('gtceu:polybenzimidazole 1000', 'minecraft:water 9000')
+    //     .circuit(24)
+    //     .duration(315)
+    //     .EUt(GTValues.VHA[GTValues.ZPM]);
 
-    event.recipes.gtceu.chemical_skip(id('polybenzimidazole_no_phenol_skip'))
-        .inputFluids('gtceu:benzene 3000', 'gtceu:carbon_dioxide 2000', 'gtceu:ammonia 4000', 'gtceu:oxygen 5000')
-        .outputFluids('gtceu:polybenzimidazole 1000', 'minecraft:water 9000')
-        .circuit(25)
-        .duration(315)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+    // event.recipes.gtceu.chemical_skip(id('polybenzimidazole_no_phenol_skip'))
+    //     .inputFluids('gtceu:benzene 3000', 'gtceu:carbon_dioxide 2000', 'gtceu:ammonia 4000', 'gtceu:oxygen 5000')
+    //     .outputFluids('gtceu:polybenzimidazole 1000', 'minecraft:water 9000')
+    //     .circuit(25)
+    //     .duration(315)
+    //     .EUt(GTValues.VHA[GTValues.ZPM]);
 
     event.recipes.gtceu.chemical_skip(id('plat_line_skip'))
         .itemInputs('12x gtceu:platinum_group_sludge_dust')
@@ -94,12 +94,12 @@ ServerEvents.recipes(event => {
         .circuit(1)
         .EUt(GTValues.VHA[GTValues.LuV]);
 
-    event.recipes.gtceu.chemical_skip(id('epoxy_skip'))
-        .inputFluids('gtceu:benzene 2000', 'gtceu:propene 2000', 'gtceu:chlorine 2000', 'gtceu:oxygen 4000')
-        .outputFluids('gtceu:epoxy 1000', 'gtceu:hydrochloric_acid 1000')
-        .duration(150)
-        .circuit(12)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+    // event.recipes.gtceu.chemical_skip(id('epoxy_skip'))
+    //     .inputFluids('gtceu:benzene 2000', 'gtceu:propene 2000', 'gtceu:chlorine 2000', 'gtceu:oxygen 4000')
+    //     .outputFluids('gtceu:epoxy 1000', 'gtceu:hydrochloric_acid 1000')
+    //     .duration(150)
+    //     .circuit(12)
+    //     .EUt(GTValues.VHA[GTValues.LuV]);
 
     event.recipes.gtceu.chemical_skip(id('naquadah_line_skip'))
         .itemInputs('5x gtceu:naquadah_dust')
@@ -146,12 +146,12 @@ ServerEvents.recipes(event => {
         .duration(720)
         .EUt(GTValues.VHA[GTValues.IV]);
 
-    event.recipes.gtceu.chemical_skip(id('peek_skip'))
-        .inputFluids('gtceu:benzene 2000','gtceu:toluene 1000','gtceu:propene 1000','gtceu:oxygen 2000')
-        .outputFluids('gtceu:polyether_ether_ketone 4896','gtceu:acetone 1000','gtceu:hydrogen 4000')
-        .duration(64)
-        .circuit(5)
-        .EUt(GTValues.VA[GTValues.UEV] * .3);
+    // event.recipes.gtceu.chemical_skip(id('peek_skip'))
+    //     .inputFluids('gtceu:benzene 2000','gtceu:toluene 1000','gtceu:propene 1000','gtceu:oxygen 2000')
+    //     .outputFluids('gtceu:polyether_ether_ketone 4896','gtceu:acetone 1000','gtceu:hydrogen 4000')
+    //     .duration(64)
+    //     .circuit(5)
+    //     .EUt(GTValues.VA[GTValues.UEV] * .3);
 
     event.recipes.gtceu.chemical_skip(id('14_butanediol_skip'))
         .notConsumable('gtceu:palladium_on_carbon_dust')
@@ -216,20 +216,20 @@ ServerEvents.recipes(event => {
         .duration(355)
         .EUt(GTValues.VA[GTValues.LuV]);
 
-    event.recipes.gtceu.chemical_skip(id('polyvinyl_butyral_skip'))
-        .itemInputs('1x gtceu:carbon_dust')
-        .inputFluids('gtceu:oxygen 6000', 'gtceu:acetic_acid 576', 'gtceu:ethylene 576', 'gtceu:propene 1000', 'gtceu:hydrogen 2000')
-        .outputFluids('gtceu:polyvinyl_butyral 576', 'minecraft:water 1000')
-        .duration(75)
-        .circuit(4)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+    // event.recipes.gtceu.chemical_skip(id('polyvinyl_butyral_skip'))
+    //     .itemInputs('1x gtceu:carbon_dust')
+    //     .inputFluids('gtceu:oxygen 6000', 'gtceu:acetic_acid 576', 'gtceu:ethylene 576', 'gtceu:propene 1000', 'gtceu:hydrogen 2000')
+    //     .outputFluids('gtceu:polyvinyl_butyral 576', 'minecraft:water 1000')
+    //     .duration(75)
+    //     .circuit(4)
+    //     .EUt(GTValues.VHA[GTValues.LuV]);
 
-    event.recipes.gtceu.chemical_skip(id('polyvinyl_chloride_skip'))
-        .inputFluids('gtceu:oxygen 8000', 'gtceu:ethylene 1000', 'gtceu:hydrochloric_acid 1000')
-        .outputFluids('gtceu:polyvinyl_chloride 1512')
-        .duration(24)
-        .circuit(2)
-        .EUt(GTValues.VHA[GTValues.IV]);
+    // event.recipes.gtceu.chemical_skip(id('polyvinyl_chloride_skip'))
+    //     .inputFluids('gtceu:oxygen 8000', 'gtceu:ethylene 1000', 'gtceu:hydrochloric_acid 1000')
+    //     .outputFluids('gtceu:polyvinyl_chloride 1512')
+    //     .duration(24)
+    //     .circuit(2)
+    //     .EUt(GTValues.VHA[GTValues.IV]);
 
     event.recipes.gtceu.chemical_skip(id('polyphenylene_sulfide_skip'))
         .itemInputs('1x gtceu:sulfur_dust')
@@ -261,6 +261,12 @@ ServerEvents.recipes(event => {
         .outputFluids('gtceu:hydrochloric_acid 8000', 'gtceu:fluorine 3000')
         .duration(385)
         .EUt((GTValues.VA[GTValues.ZPM]));
+
+    event.recipes.gtceu.chemical_skip(id('perchloric_acid'))
+        .inputFluids('gtceu:chlorine 1000', 'gtceu:hydrogen 1000', 'gtceu:oxygen 4000')
+        .outputFluids('gtceu:perchloric_acid 1000')
+        .duration(100)
+        .EUt((GTValues.VA[GTValues.HV]));
 
     // === Absolute Reductions ===
 
@@ -319,15 +325,15 @@ ServerEvents.recipes(event => {
         .duration(316)
         .EUt(GTValues.VHA[GTValues.UEV]);
 
-    event.recipes.gtceu.absolute_reduction(id('polyimide_skip'))
-        .notConsumable('gtceu:palladium_on_carbon_dust')
-        .notConsumable('gtceu:nickel_dust')
-        .inputFluids('gtceu:ammonia 3250', 'gtceu:nitric_acid 1250', 'gtceu:hydrogen 18000', 'gtceu:benzene 4500', 
-            'gtceu:oxygen 14750', 'gtceu:toluene 2000','gtceu:acetic_acid 2000')
-        .outputFluids('gtceu:polyimide 3000', 'gtceu:nitrous_oxide 750', 'gtceu:carbon_dioxide 500', 'minecraft:water 15000')
-        .duration(274)
-        .circuit(7)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+    // event.recipes.gtceu.absolute_reduction(id('polyimide_skip'))
+    //     .notConsumable('gtceu:palladium_on_carbon_dust')
+    //     .notConsumable('gtceu:nickel_dust')
+    //     .inputFluids('gtceu:ammonia 3250', 'gtceu:nitric_acid 1250', 'gtceu:hydrogen 18000', 'gtceu:benzene 4500', 
+    //         'gtceu:oxygen 14750', 'gtceu:toluene 2000','gtceu:acetic_acid 2000')
+    //     .outputFluids('gtceu:polyimide 3000', 'gtceu:nitrous_oxide 750', 'gtceu:carbon_dioxide 500', 'minecraft:water 15000')
+    //     .duration(274)
+    //     .circuit(7)
+    //     .EUt(GTValues.VHA[GTValues.UIV]);
 
     event.recipes.gtceu.absolute_reduction(id('raw_growth_medium_skip'))
         .itemInputs('64x gtceu:bio_chaff','64x gtceu:bio_chaff','64x gtceu:bio_chaff','24x gtceu:bio_chaff','5x gtceu:naquadria_dust', 
@@ -421,18 +427,18 @@ ServerEvents.recipes(event => {
         .duration(224)
         .EUt(GTValues.VHA[GTValues.UIV]);
 
-    event.recipes.gtceu.absolute_reduction(id('pedot_pss_skip'))
-        .itemInputs('36x minecraft:sugar', '9x gtceu:sodium_hydroxide_dust', '3x gtceu:sulfur_dust', '11x gtceu:sodium_bisulfate_dust', 
-            '11x gtceu:carbon_dust', '4x gtceu:calcium_hydroxide_dust', '550x #minecraft:villager_plantable_seeds')
-        .inputFluids('gtceu:14_butanediol 1500', 'gtceu:oxygen 12750', 'gtceu:ethanol 5250', 'gtceu:sorbitol 270', 'gtceu:ethylene 3663',
-            'gtceu:bromine 3000', 'gtceu:ammonia 3000', 'gtceu:hydrogen 13874', 'gtceu:benzene 1313')
-        .itemOutputs('6x gtceu:potassium_bromide_dust', '12x gtceu:sodium_nitrite_dust', '9x gtceu:sodium_bicarbonate_dust', '1x gtceu:calcium_dust')
-        .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 864', 'gtceu:ethylene_glycol 1770', 'gtceu:ethane 1500',
-            'gtceu:ethenone 1500', 'gtceu:hydrogen_chloride 750', 'gtceu:diluted_sulfuric_acid 6750')
-        .circuit(3)
-        .duration(126)
-        .EUt(GTValues.VA[GTValues.UXV] * .3)
-        .cleanroom(CleanroomType.CLEANROOM); 
+    // event.recipes.gtceu.absolute_reduction(id('pedot_pss_skip'))
+    //     .itemInputs('36x minecraft:sugar', '9x gtceu:sodium_hydroxide_dust', '3x gtceu:sulfur_dust', '11x gtceu:sodium_bisulfate_dust', 
+    //         '11x gtceu:carbon_dust', '4x gtceu:calcium_hydroxide_dust', '550x #minecraft:villager_plantable_seeds')
+    //     .inputFluids('gtceu:14_butanediol 1500', 'gtceu:oxygen 12750', 'gtceu:ethanol 5250', 'gtceu:sorbitol 270', 'gtceu:ethylene 3663',
+    //         'gtceu:bromine 3000', 'gtceu:ammonia 3000', 'gtceu:hydrogen 13874', 'gtceu:benzene 1313')
+    //     .itemOutputs('6x gtceu:potassium_bromide_dust', '12x gtceu:sodium_nitrite_dust', '9x gtceu:sodium_bicarbonate_dust', '1x gtceu:calcium_dust')
+    //     .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 864', 'gtceu:ethylene_glycol 1770', 'gtceu:ethane 1500',
+    //         'gtceu:ethenone 1500', 'gtceu:hydrogen_chloride 750', 'gtceu:diluted_sulfuric_acid 6750')
+    //     .circuit(3)
+    //     .duration(126)
+    //     .EUt(GTValues.VA[GTValues.UXV] * .3)
+    //     .cleanroom(CleanroomType.CLEANROOM); 
 
     event.recipes.gtceu.absolute_reduction(id('plat_line_skip'))
         .itemInputs('4x gtceu:cooperite_dust')
