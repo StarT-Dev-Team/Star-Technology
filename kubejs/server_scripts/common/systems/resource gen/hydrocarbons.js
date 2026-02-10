@@ -46,7 +46,7 @@ ServerEvents.recipes(event => {
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(1920);
 
-    const FS = "gtceu:fermentibacter_solvis", XC = "gtceu:xylopseudomonas_creosotica", PS = "gtceu:petrospirillum_solvans", OS = "gtceu:octanivorax_sorbitolens", BC = "gtceu:bituminimonas_combustilis", CV = "gtceu:carbanogasibacter_volatilis";
+    const FS = "start_core:fermentibacter_solvis", XC = "start_core:xylopseudomonas_creosotica", PS = "start_core:petrospirillum_solvans", OS = "start_core:octanivorax_sorbitolens", BC = "start_core:bituminimonas_combustilis", CV = "start_core:carbanogasibacter_volatilis";
 
     [
         {main: FS, primary: "ethanol", secondary: "acetic_acid", terniary: "methanol"},
