@@ -1409,5 +1409,9 @@
     "material.gtceu.brominated_chlorine_vapor": "Brominated Chlorine Vapor",
     "material.gtceu.acidic_bromine_exhaust": "Acidic Bromine Exhaust",
 
-    "block.gtceu.large_maceration_tower.tooltip.1": "Available Recipe Types: Macerator, Pulverizer" 
+    "block.gtceu.large_maceration_tower.tooltip.1": "Available Recipe Types: Macerator, Pulverizer",
+
+    "block.gtceu.bacteria_synthesizer": "Bacteria Synthesizer",
+    "block.gtceu.bacteria_synthesizer.tooltip.0": "Can use §3Parallel§r hatches",
+    "gtceu.bacteria_synthesizer": "Bacteria Synthesizer"
 }
