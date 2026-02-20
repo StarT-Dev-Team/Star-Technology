@@ -46,36 +46,36 @@ ServerEvents.recipes(event => {
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(1920);
 
-    const FS = "start_core:fermentibacter_solvis", XC = "start_core:xylopseudomonas_creosotica", PS = "start_core:petrospirillum_solvans", OS = "start_core:octanivorax_sorbitolens", BC = "start_core:bituminimonas_combustilis", CV = "start_core:carbanogasibacter_volatilis";
+    const FS = 'start_core:fermentibacter_solvis', XC = 'start_core:xylopseudomonas_creosotica', PS = 'start_core:petrospirillum_solvans', OS = 'start_core:octanivorax_sorbitolens', BC = 'start_core:bituminimonas_combustilis', CV = 'start_core:carbanogasibacter_volatilis';
 
     [
-        {main: FS, primary: "ethanol", secondary: "acetic_acid", terniary: "methanol"},
-        {main: XC, primary: "creosote", secondary: "naphthalene", terniary: "phenol"},
-        {main: PS, primary: "benzene", secondary: "ethane", terniary: "acetone"},
-        {main: OS, primary: "octane", secondary: "sorbitol", terniary: "butane"},
-        {main: BC, primary: "toluene", secondary: "butadiene", terniary: "propene"},
-        {main: CV, primary: "methane", secondary: "butene", terniary: "ethylene"}
+        {main: FS, primary: 'ethanol', secondary: 'acetic_acid', terniary: 'methanol'},
+        {main: XC, primary: 'creosote', secondary: 'naphthalene', terniary: 'phenol'},
+        {main: PS, primary: 'benzene', secondary: 'ethane', terniary: 'acetone'},
+        {main: OS, primary: 'octane', secondary: 'sorbitol', terniary: 'butane'},
+        {main: BC, primary: 'toluene', secondary: 'butadiene', terniary: 'propene'},
+        {main: CV, primary: 'methane', secondary: 'butene', terniary: 'ethylene'}
     ].forEach(superSkip => {
         const { main, primary, secondary, terniary } = superSkip;
-        event.recipes.gtceu.electrolyzer(id(main.split(":")[1]))
+        event.recipes.gtceu.electrolyzer(id(main.split(':')[1]))
             .inputFluids(`${main} 3000`)
             .outputFluids(`gtceu:${primary} 1000`, `gtceu:${secondary} 1000`, `gtceu:${terniary} 1000`)
             .duration(80)
-            .EUt(global.va["iv"]);
+            .EUt(global.va['iv']);
     });
 
     [
-        {output: "polyimide", fluidInput: [`${FS} 1000`, `${BC} 1000`, `${PS} 1000`, 'gtceu:nitric_acid 1000'], inputItem: false, voltage: "uhv"},
-        {output: "polystyrene_sulfate", fluidInput: [`${PS} 1000`, 'gtceu:oxygen 1000'], inputItem: 'gtceu:sulfur_dust', voltage: "uev"},
-        {output: "polyvinyl_chloride", fluidInput: [`${CV} 1000`, 'gtceu:hydrochloric_acid 1000', 'gtceu:oxygen 1000'], inputItem: false, voltage: "ev"},
-        {output: "epoxy", fluidInput: [`${BC} 1000`, `${PS} 1000`, 'gtceu:perchloric_acid 1000'], inputItem: false, voltage: "luv"},
-        {output: "polyvinyl_butyral", fluidInput: [`${BC} 1000`, `${CV} 1000`, `${FS} 1000`, 'gtceu:oxygen 1000'], inputItem: false, voltage: "iv"},
-        {output: "perfluoroelastomer_rubber", fluidInput: [`${FS} 1000`, `${CV} 2000`, 'gtceu:fluorine 1000'], inputItem: 'gtceu:sulfur_dust', voltage: "uhv"},
-        {output: "sorbitol", fluidInput: [`${BC} 1000`, `${PS} 2000`], inputItem: 'gtceu:sulfur_dust', voltage: "uv"},
-        {output: "silicone_rubber", fluidInput: [`${CV} 2000`, 'gtceu:silicic_acid 1000'], inputItem: 'gtceu:sulfur_dust', voltage: "ev"},
-        {output: "poly_34_ethylenedioxythiophene_polystyrene_sulfate", fluidInput: [`${OS} 1000`, `${PS} 1000`, `${FS} 1000`, 'gtceu:bromine 1000', 'gtceu:sulfuric_acid'], inputItem: false, voltage: "uiv"},
-        {output: "polyether_ether_ketone", fluidInput: [`${BC} 2000`, `${PS} 1000`, 'gtceu:oxygen 1000'], inputItem: false, voltage: "uv"},
-        {output: "polybenzimidazole", fluidInput: [`${PS} 1000`, `${XC} 1000`, 'gtceu:ammonia 1000'], inputItem: false, voltage: "zpm"}
+        {output: 'polyimide', fluidInput: [`${FS} 1000`, `${BC} 1000`, `${PS} 1000`, 'gtceu:nitric_acid 1000'], inputItem: false, voltage: 'uhv'},
+        {output: 'polystyrene_sulfate', fluidInput: [`${PS} 1000`, 'gtceu:oxygen 1000'], inputItem: 'gtceu:sulfur_dust', voltage: 'uev'},
+        {output: 'polyvinyl_chloride', fluidInput: [`${CV} 1000`, 'gtceu:hydrochloric_acid 1000', 'gtceu:oxygen 1000'], inputItem: false, voltage: 'ev'},
+        {output: 'epoxy', fluidInput: [`${BC} 1000`, `${PS} 1000`, 'gtceu:perchloric_acid 1000'], inputItem: false, voltage: 'luv'},
+        {output: 'polyvinyl_butyral', fluidInput: [`${BC} 1000`, `${CV} 1000`, `${FS} 1000`, 'gtceu:oxygen 1000'], inputItem: false, voltage: 'iv'},
+        {output: 'perfluoroelastomer_rubber', fluidInput: [`${FS} 1000`, `${CV} 2000`, 'gtceu:fluorine 1000'], inputItem: 'gtceu:sulfur_dust', voltage: 'uhv'},
+        {output: 'sorbitol', fluidInput: [`${BC} 1000`, `${PS} 2000`], inputItem: 'gtceu:sulfur_dust', voltage: 'uv'},
+        {output: 'silicone_rubber', fluidInput: [`${CV} 2000`, 'gtceu:silicic_acid 1000'], inputItem: 'gtceu:sulfur_dust', voltage: 'ev'},
+        {output: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate', fluidInput: [`${OS} 1000`, `${PS} 1000`, `${FS} 1000`, 'gtceu:bromine 1000', 'gtceu:sulfuric_acid'], inputItem: false, voltage: 'uiv'},
+        {output: 'polyether_ether_ketone', fluidInput: [`${BC} 2000`, `${PS} 1000`, 'gtceu:oxygen 1000'], inputItem: false, voltage: 'uv'},
+        {output: 'polybenzimidazole', fluidInput: [`${PS} 1000`, `${XC} 1000`, 'gtceu:ammonia 1000'], inputItem: false, voltage: 'zpm'}
     ].forEach(superSkip => {
         const { output, fluidInput, inputItem, voltage } = superSkip;
         const recipe = event.recipes.gtceu.bacteria_synthesizer(id(`${output}_synthesis`))
