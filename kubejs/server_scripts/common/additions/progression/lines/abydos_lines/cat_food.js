@@ -48,8 +48,8 @@ ServerEvents.recipes(event => {
         .itemInputs(`kubejs:wet_kibbles`, "minecraft:paper")
         .itemOutputs(`kubejs:dry_cat_food_bag`)
         .outputFluids(`minecraft:water 100`)
-        .duration(60*20)
-        .EUt(GTValues.VA[GTValues.IV])
+        .duration(3.75*20)
+        .EUt(GTValues.VA[GTValues.UHV])
         .vacuumLevel(90);
 
     event.shaped(`kubejs:tin_can`, [
