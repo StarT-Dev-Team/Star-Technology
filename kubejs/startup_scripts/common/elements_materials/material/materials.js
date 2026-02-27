@@ -1802,4 +1802,6 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
     compLiquid(`phosgene`, [`carbon`, `oxygen`, `2x chlorine`], 0xFDFEFC, [no_decomp]);
     polymerFluidPipe(`polycarbonate`, [`3x oxygen`, `16x carbon`, `16x hydrogen`], 0x202020, [388, 300, true, true, false, false], [no_decomp, foil, plates]);
 
+    //Cat food line
+    noCompFluid(`meaty_gravy`, 0x4a2921);
 });
