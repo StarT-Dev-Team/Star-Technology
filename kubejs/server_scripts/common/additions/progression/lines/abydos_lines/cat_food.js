@@ -18,7 +18,7 @@ ServerEvents.recipes(event => {
     const mixer = event.recipes.gtceu.mixer;
     const bender = event.recipes.gtceu.bender;
     const extruder = event.recipes.gtceu.extruder;
-    const vcrc = event.recipes.gtceu.vacuum_chemical_reaction_chamber;
+    const vcr = event.recipes.gtceu.vacuum_chemical_reaction_chamber;
     const compressor = event.recipes.gtceu.compressor;
     const canner = event.recipes.gtceu.canner;
     const doughFish = ["cod", "salmon"];
@@ -44,7 +44,7 @@ ServerEvents.recipes(event => {
         .duration(100)
         .EUt(GTValues.VHA[GTValues.MV]);
 
-    vcrc(id(`dry_cat_food_bag`))
+    vcr(id(`dry_cat_food_bag`))
         .itemInputs(`kubejs:wet_kibbles`, "minecraft:paper")
         .itemOutputs(`kubejs:dry_cat_food_bag`)
         .outputFluids(`minecraft:water 100`)
