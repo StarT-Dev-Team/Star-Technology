@@ -1781,7 +1781,7 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
         .color(0x8f681e)
         .components('3x steam', '1x chlorine');
     
-    //aerogel line
+    //Aerogel line
     compLiquid(`linoleic_acid`, [`18x carbon`, `31x hydrogen`, `2x oxygen`], 0xDBDCDB, [no_decomp]);
     compDust(`sodium_linoleate`, [`18x carbon`, `31x hydrogen`, `2x oxygen`, `sodium`], 0xFFFFFF, [no_decomp]);
     noCompFluid(`aerogel_solvent_mixture`, 0x9DE4DB);
@@ -1798,11 +1798,6 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
 
 
     //Polycarbonate Line
-    /* Missing items/fluids
-    diphenoxide
-    phosgene
-    polycarbonate
-    */
     compDust(`sodium_diphenoxide`, [`2x sodium`, `2x oxygen`, `15x carbon`, `16x hydrogen`], 0xFEFEFE, [no_decomp]);
     compLiquid(`phosgene`, [`carbon`, `oxygen`, `2x chlorine`], 0xFDFEFC, [no_decomp]);
     polymerFluidPipe(`polycarbonate`, [`3x oxygen`, `16x carbon`, `16x hydrogen`], 0x202020, [388, 300, true, true, false, false], [no_decomp, foil, plates]);
