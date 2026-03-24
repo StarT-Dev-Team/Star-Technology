@@ -118,14 +118,14 @@ global.not_hardmode(() => {
         ].forEach(matSet => {
             const {mainOre, secOre, terOre} = matSet;
             // All vintage.vibarating() recipes need to be looked at, duel output is causing some issues
-            vintage.vibrating([`gtceu:impure_${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.07)], `gtceu:crushed_${mainOre}_ore`).id(id(`vibrating/crushed_${mainOre}`));
-            vintage.centrifugation([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.04)], `gtceu:impure_${mainOre}_dust`).minimalRPM(128).id(id(`centrifugation/impure_${mainOre}`));
-            create.splashing([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.04)], `gtceu:impure_${mainOre}_dust`).id(id(`splashing/impure_${mainOre}`));
+            vintage.vibrating([`gtceu:impure_${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.04)], `gtceu:crushed_${mainOre}_ore`).id(id(`vibrating/crushed_${mainOre}`));
+            vintage.centrifugation([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.02)], `gtceu:impure_${mainOre}_dust`).minimalRPM(128).id(id(`centrifugation/impure_${mainOre}`));
+            create.splashing([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.02)], `gtceu:impure_${mainOre}_dust`).id(id(`splashing/impure_${mainOre}`));
 
-            create.splashing([`gtceu:purified_${mainOre}_ore`, Item.of(`gtceu:${secOre}_dust`).withChance(0.10)], `gtceu:crushed_${mainOre}_ore`).id(id(`splashing/crushed_${mainOre}`));
-            vintage.vibrating([`gtceu:pure_${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.07)], `gtceu:purified_${mainOre}_ore`).id(id(`vibrating/purified_${mainOre}`));
-            vintage.centrifugation([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.04)], `gtceu:pure_${mainOre}_dust`).minimalRPM(128).id(id(`centrifugation/pure_${mainOre}`));
-            create.splashing([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.04)], `gtceu:pure_${mainOre}_dust`).id(id(`splashing/pure_${mainOre}`));
+            create.splashing([`gtceu:purified_${mainOre}_ore`, Item.of(`gtceu:${secOre}_dust`).withChance(0.07)], `gtceu:crushed_${mainOre}_ore`).id(id(`splashing/crushed_${mainOre}`));
+            vintage.vibrating([`gtceu:pure_${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.04)], `gtceu:purified_${mainOre}_ore`).id(id(`vibrating/purified_${mainOre}`));
+            vintage.centrifugation([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.02)], `gtceu:pure_${mainOre}_dust`).minimalRPM(128).id(id(`centrifugation/pure_${mainOre}`));
+            create.splashing([`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.02)], `gtceu:pure_${mainOre}_dust`).id(id(`splashing/pure_${mainOre}`));
         });
 
     });

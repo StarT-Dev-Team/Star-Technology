@@ -83,14 +83,4 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VA[GTValues.UV])
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
-    // Temp recipe for Thallium until structure revamp
-    event.recipes.gtceu.dimensional_destabiliser(id('temp_crookesite_mining'))
-        .itemInputs('kubejs:lightning_infused_shard')
-        .inputFluids('gtceu:pcb_coolant 16000')
-        .itemOutputs('32x gtceu:crookesite_dust')
-        .chancedOutput('gtceu:tiny_nether_star_dust', 8000, 0)
-        .outputFluids('gtceu:hot_pcb_coolant 19200')
-        .duration(400)
-        .EUt(GTValues.VHA[GTValues.UEV]);
-
 });

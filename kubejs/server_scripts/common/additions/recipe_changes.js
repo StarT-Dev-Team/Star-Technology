@@ -203,10 +203,10 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VA[GTValues.UV]);
 
     //certus fixes
-   [ 
-    {name: `exquisite_certus_quartz_gem`, dustCount: 4},
-    {name: `flawless_certus_quartz_gem`, dustCount: 2}
-   ].forEach(item => {
+    [ 
+        {name: `exquisite_certus_quartz_gem`, dustCount: 4},
+        {name: `flawless_certus_quartz_gem`, dustCount: 2}
+    ].forEach(item => {
         event.remove({ input: `gtceu:${item.name}`, type: `gtceu:macerator` });
 
         event.recipes.gtceu.macerator(id(`macerate_${item.name}`))
@@ -215,5 +215,13 @@ ServerEvents.recipes(event => {
             .duration(item.dustCount * 20)
             .EUt(2)
             .category(GTRecipeCategories.MACERATOR_RECYCLING);
-    })
+    });
+    
+    event.recipes.gtceu.chemical_bath(id('echo_shard_dust'))
+        .itemInputs('gtceu:silicon_dioxide_dust')
+        .inputFluids('gtceu:echo_r 144')
+        .itemOutputs('gtceu:echo_shard_dust')
+        .circuit(1)
+        .duration(160)
+        .EUt(GTValues.VA[GTValues.ZPM]);
 });

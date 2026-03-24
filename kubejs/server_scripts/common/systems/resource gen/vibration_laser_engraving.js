@@ -2,7 +2,7 @@ ServerEvents.recipes(event => {
     const id = global.id;    
 
     event.recipes.gtceu.heat_chamber(id('tiny_purified_naquadah'))
-        .itemInputs('gtceu:tiny_naquadah_dust')
+        .itemInputs('gtceu:tiny_enriched_naquadah_dust')
         .inputFluids('gtceu:neon 120')
         .itemOutputs('gtceu:tiny_purified_naquadah_dust')
         .blastFurnaceTemp(10000)

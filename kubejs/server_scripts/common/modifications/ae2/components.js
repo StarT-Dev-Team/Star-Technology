@@ -63,15 +63,6 @@ ServerEvents.recipes(event => {
         .duration(48)
         .EUt(84);
 
-    event.recipes.gtceu.dimensional_destabiliser(id('sky_stone_mining'))
-        .itemInputs('kubejs:earth_infused_shard')
-        .inputFluids('gtceu:pcb_coolant 8000')
-        .itemOutputs('256x ae2:sky_stone_block','256x ae2:sky_stone_block')
-        .chancedOutput('gtceu:tiny_nether_star_dust', 8000, 0)
-        .outputFluids('gtceu:skystone 19200', 'gtceu:hot_pcb_coolant 9600')
-        .duration(1800)
-        .EUt(4096);
-
     event.recipes.gtceu.mixer(id('sky_dust'))
         .itemInputs('6x gtceu:stone_dust', '4x gtceu:ender_pearl_dust', '1x minecraft:redstone', '1x minecraft:glowstone_dust')
         .itemOutputs('ae2:sky_dust') //keep at low output
