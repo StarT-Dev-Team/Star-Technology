@@ -7,7 +7,7 @@ global.addedByStarT = {
         'chemical_plant', 'mega_abs', 't_large_bender', 't_large_centrifuge', 't_large_electrolyzer', 't_large_extruder', 
         't_large_forming_press', 't_large_lathe', 't_large_macerator', 't_large_mixer', 't_large_ore_washer', 't_large_sifter',
         't_large_thermal_centrifuge', 't_large_wiremill', 't_large_autoclave', 't_large_rock_crusher', 'bulk_ore_processing_array', 
-        'folding_akreyrium_stabiliser', 'molten_destabiliser', 'ancient_refinement_center', 'component_nexus', 'cyclonic_sifter', 'injection_mixer', 
+        'folding_akreyrium_stabiliser', 'molten_destabiliser', 'component_nexus', 'cyclonic_sifter', 'injection_mixer', 
         'manifold_centrifuge', 'atomic_synthesis_plant', 'component_part_hub', 'draco_circuit_assembler', 'draco_infusion', 'cryostate_quantum_chiller', 
         'hellforge', 'abyssal_harvester', 'abyssal_containment_room', 'dimensional_finder', 'gate_assembly', 'large_rotor_machine', 
         'large_quantum_compressor', 'runic_circuitry_assembling_station', 'runic_inscribe_manipulate', 'stargate_component_assembly', 
@@ -62,9 +62,6 @@ global.addedByStarT = {
     ],
     threadSubBatch: [
         'multithreaded_component_synthesis_forge'
-    ],
-    paraSubBulkBatch: [
-        'ancient_refinement_center'
     ],
     paraSubAssBatch: [
         'draco_circuit_assembler'

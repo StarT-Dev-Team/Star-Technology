@@ -894,12 +894,8 @@
     "gtceu.quantum_cooling": "量子冷却",
     "block.gtceu.cryostate_quantum_chiller": "極低温量子冷凍機",
     "block.gtceu.cryostate_quantum_chiller.tooltip.0": "§7発展的な物質状態操作と一括真空冷却を実行するための、絶対零度の極低温冷却剤を使用した処理が可能な、精密量子冷却機械。",
-
-    "block.gtceu.ancient_refinement_center": "古代製錬所",
-    "block.gtceu.ancient_refinement_center.tooltip.0": "§7古代の技術を利用して複数の資源生産を一つに統合した、非常に発展的な機械。",
+    
     "gtceu.aqueous_void_excavation": "液体奈落掘削",
-    "gtceu.bulk_void_excavation": "一括奈落掘削",
-    "gtceu.bulk_rock_filtrator": "一括岩石濾過",
 
     "gtceu.draco_infusion": "§dドラコニック注入",
     "block.gtceu.draco_infusion": "§dドラコニック注入装置",

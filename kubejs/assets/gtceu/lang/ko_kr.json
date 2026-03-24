@@ -1,6 +1,4 @@
 {
-  "block.gtceu.ancient_refinement_center": "고대 정제 센터",
-  "block.gtceu.ancient_refinement_center.tooltip.0": "§7고대 기술로 필요한 자원 생산기들을 합쳤습니다.",
   "block.gtceu.aqueous_transformation_processing_center": "액체 변환 처리 센터",
   "block.gtceu.aqueous_transformation_processing_center.tooltip.0": "§3§l멀티 스레드 탈수기",
   "block.gtceu.aqueous_transformation_processing_center.tooltip.1": "§7초고효율 액상 정제 시스템으로 수리학적 특성을 마음대로 조종하여, 자연적 한계를 훨씬 뛰어넘는 용해 및 응축 경로를 가속화합니다.",
@@ -424,8 +422,6 @@
   "gtceu.barrel_transformation": "통 변환",
   "gtceu.bessemer_forge": "베세머 용광로",
   "gtceu.bulk_ore_processing_array": "대량 광석 정제",
-  "gtceu.bulk_rock_filtrator": "대량 돌 필터링",
-  "gtceu.bulk_void_excavation": "대량 공허 채굴",
   "gtceu.chemical_skip": "화학 라인 감소",
   "gtceu.circuit_facility": "회로 설비",
   "gtceu.component_chamber": "부품 챔버",

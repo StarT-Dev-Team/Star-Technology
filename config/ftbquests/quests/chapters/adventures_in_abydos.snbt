@@ -2120,18 +2120,6 @@
 			y: 1.0d
 		}
 		{
-			dependencies: ["07AD6651D0B40E22"]
-			description: ["{ftbquests.abydos.ancient_refinement_center.description}"]
-			id: "413999F83FD85CF2"
-			tasks: [{
-				id: "173058FFEEC146AB"
-				item: "gtceu:ancient_refinement_center"
-				type: "item"
-			}]
-			x: 0.5d
-			y: 4.0d
-		}
-		{
 			dependencies: ["5ED2EA63EE112E24"]
 			id: "1341EFC24A45EFF8"
 			subtitle: "{ftbquests.abydos.runic_processor.subtitle}"

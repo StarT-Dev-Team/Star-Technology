@@ -858,11 +858,7 @@
     "block.gtceu.cryostate_quantum_chiller": "Cryostate Quantum Chiller",
     "block.gtceu.cryostate_quantum_chiller.tooltip.0": "§7A precision quantum cooling array capable of handling absolute-zero cryogenic coolants for advanced matter state manipulation and bulk vacuum freezing.",
 
-    "block.gtceu.ancient_refinement_center": "Ancient Refinement Center",
-    "block.gtceu.ancient_refinement_center.tooltip.0": "§7Ancient Technology utilized to combine all the needed resource generators.",
     "gtceu.aqueous_void_excavation": "Aqueous Void Excavation",
-    "gtceu.bulk_void_excavation": "Bulk Void Excavation",
-    "gtceu.bulk_rock_filtrator": "Bulk Rock Filtration",
 
     "gtceu.draco_infusion": "§dDraconic Infusion",
     "block.gtceu.draco_infusion": "§dDraconic Infusion Array",

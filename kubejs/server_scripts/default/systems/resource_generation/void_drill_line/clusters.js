@@ -41,5 +41,11 @@ global.not_hardmode(() => {
             .duration(640)
             .EUt(GTValues.VA[GTValues.LV]);
 
+        event.recipes.gtceu.aqueous_void_excavation(id('mining'))
+            .inputFluids('gtceu:drilling_fluid 25000')
+            .outputFluids('gtceu:rare_ore_residue 4000', 'gtceu:raw_ore_slurry 6000')
+            .duration(320)
+            .EUt(GTValues.VA[GTValues.EV]);
+
     });
 });
