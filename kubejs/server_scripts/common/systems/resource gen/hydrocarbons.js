@@ -25,18 +25,18 @@ ServerEvents.recipes(event => {
     });
 
     [
-        {type: 'oil_light', source: 'gtceu:bio_chaff'},
-        {type: 'oil', source: 'gtceu:wood_dust'},
-        {type: 'oil_heavy', source: '#minecraft:logs_that_burn'}
+        {type: 'oil_light', source: 'gtceu:bio_chaff', duration: 480},
+        {type: 'oil', source: 'gtceu:wood_dust', duration: 320},
+        {type: 'oil_heavy', source: '#minecraft:logs_that_burn', duration: 300}
     ].forEach(oil => {
-        const { type, source } = oil;
+        const { type, source, duration } = oil;
         event.recipes.gtceu.pyrolyse_oven(id(`${type}`))
             .itemInputs(`32x ${source}`)
             .itemOutputs('4x gtceu:ash_dust')
             .outputFluids(`gtceu:${type} 16000`)
-            .duration(100)
+            .duration(duration)
             .circuit(3)
-            .EUt(128);
+            .EUt((type != 'oil_heavy') ? 96 : 384);
     });
 
     chem(id('bacterial_sludge'))

@@ -41,7 +41,7 @@ global.not_hardmode(() => {
                 .EUt(GTValues.VHA[GTValues.LV]);
         };
 
-        potionRecipes(['3x thermal:corn', '3x minecraft:wheat', '2x minecraft:sugar'], 'sweetcord_beer'); // Haste
+        potionRecipes(['3x thermal:corn', '3x minecraft:wheat', '2x minecraft:sugar'], 'sweetcorn_beer'); // Haste
         potionRecipes(['6x minecraft:apple', '2x minecraft:sugar'], 'apple_cidar'); // Slow Falling
         potionRecipes(['4x minecraft:carrot', '2x minecraft:wheat', '2x minecraft:sugar'], 'carrot_ale'); // Night Vision
         potionRecipes(['6x #forge:berries', '2x minecraft:sugar'], 'berry_wine'); // Speed
@@ -49,7 +49,7 @@ global.not_hardmode(() => {
         potionRecipes(['#forge:crops/rice', 'minecraft:sugar'], 'sake'); // Reach, [custom effect?, Komaru related?]
 
         // .replaceIngredient() does not like template strings
-        event.shapeless(`4x kubejs:sweetcord_beer`, [`kubejs:sweetcord_beer_bucket`, 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle']).replaceIngredient(`kubejs:sweetcord_beer_bucket`, 'minecraft:bucket').id(`start:shapeless/sweetcord_beer`);
+        event.shapeless(`4x kubejs:sweetcorn_beer`, [`kubejs:sweetcorn_beer_bucket`, 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle']).replaceIngredient(`kubejs:sweetcorn_beer_bucket`, 'minecraft:bucket').id(`start:shapeless/sweetcorn_beer`);
         event.shapeless(`4x kubejs:apple_cidar`, [`kubejs:apple_cidar_bucket`, 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle']).replaceIngredient(`kubejs:apple_cidar_bucket`, 'minecraft:bucket').id(`start:shapeless/apple_cidar`);
         event.shapeless(`4x kubejs:carrot_ale`, [`kubejs:carrot_ale_bucket`, 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle']).replaceIngredient(`kubejs:carrot_ale_bucket`, 'minecraft:bucket').id(`start:shapeless/carrot_ale`);
         event.shapeless(`4x kubejs:berry_wine`, [`kubejs:berry_wine_bucket`, 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle', 'minecraft:glass_bottle']).replaceIngredient(`kubejs:berry_wine_bucket`, 'minecraft:bucket').id(`start:shapeless/berry_wine`);
