@@ -183,8 +183,14 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VA[GTValues.UHV])
         .circuit(7);
 
-    //Void Line
+    event.recipes.gtceu.laser_engraver(id('coordinate_crystal'))
+        .itemInputs('gtceu:exquisite_echo_shard_gem')
+        .notConsumable('gtceu:nether_star_lens')
+        .itemOutputs('kubejs:coordinate_crystal')
+        .duration(240)
+        .EUt(512);
 
+    //Void Line
     event.recipes.gtceu.extractor(id('echo_fluid'))
         .itemInputs('minecraft:echo_shard')
         .outputFluids('gtceu:echo_r 144')

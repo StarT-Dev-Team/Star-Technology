@@ -132,9 +132,6 @@
 
     "block.gtceu.molten_destabilizer.tooltip.0": "§7複雑な溶融化学物質を、小さな塊に分割して処理できる強力な機械。",
 
-    "block.gtceu.vibration_laser_engraver.tooltip.0": "§7精密なレーザーと振動を利用して、宝石、シリコンチップ、クリスタルを簡単に成形及び刻印し、必要に応じては変換できるマルチブロック機械。",
-    "block.gtceu.vibration_laser_engraver.tooltip.1": "§3並列制御§rユニットを使用可能§rかつ§cサブティック並列§rが可能§rかつ§2一括処理§rが可能かつ§bスループットブースト処理§rが可能",
-
     "block.gtceu.cyclonic_sifter.tooltip.0": "§7基本型の選別機に比べ、精度と強度に優れており、より発展的なレシピを処理可能な、発展型の選別機。",
 
     "block.gtceu.injection_mixer.tooltip.0": "§7基本型のミキサーに比べ、正確な混合物を作成し、より発展的なレシピを処理可能な、発展型のミキサー。",
@@ -529,9 +526,6 @@
 
     "gtceu.dimensional_destabiliser": "ディメンション不安定化装置",
     "block.gtceu.dimensional_destabiliser": "ディメンション不安定化装置",
-
-    "gtceu.vibration_laser_engraver": "振動型レーザー刻印機",
-    "block.gtceu.vibration_laser_engraver": "振動型レーザー刻印機",
 
     "gtceu.large_greens_extractor": "大型緑植物抽出機",
     "block.gtceu.large_greens_extractor": "大型緑植物抽出機",

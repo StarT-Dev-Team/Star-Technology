@@ -115,9 +115,6 @@
 
     "block.gtceu.molten_destabilizer.tooltip.0": "§7A powerful machine that can splice complex molten chemicals into smaller chunks for processing",
 
-    "block.gtceu.vibration_laser_engraver.tooltip.0": "§7A multiblock that uses precise lasers and vibrations to effortlessly reform and engrave gems, chips, and crystals, changing them in whatever way you need.",
-    "block.gtceu.vibration_laser_engraver.tooltip.1": "Can use §3Parallel§r hatches§r, has §cSubtick Parallels§r, §2Bulking§r, and §bThroughput Boosting",
-
     "block.gtceu.cyclonic_sifter.tooltip.0": "§7An advanced tier of sifter that is more precise and stronger than the basic tier, allowing it to run better recipes.",
 
     "block.gtceu.injection_mixer.tooltip.0": "§7An advanced tier of mixer that can create more precise mixtures than the basic tier, allowing it to run better recipes.",
@@ -491,9 +488,6 @@
 
     "gtceu.dimensional_destabiliser": "Dimensional Destabiliser",
     "block.gtceu.dimensional_destabiliser": "Dimensional Destabiliser",
-
-    "gtceu.vibration_laser_engraver": "Vibration Laser Engraver",
-    "block.gtceu.vibration_laser_engraver": "Vibration Laser Engraver",
 
     "gtceu.large_greens_extractor": "Large Greens Extractor",
     "block.gtceu.large_greens_extractor": "Large Greens Extractor",

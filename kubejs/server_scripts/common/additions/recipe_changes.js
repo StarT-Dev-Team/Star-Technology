@@ -224,4 +224,19 @@ ServerEvents.recipes(event => {
         .circuit(1)
         .duration(160)
         .EUt(GTValues.VA[GTValues.ZPM]);
+
+    event.recipes.gtceu.heat_chamber(id('tiny_purified_naquadah'))
+        .itemInputs('gtceu:tiny_enriched_naquadah_dust')
+        .inputFluids('gtceu:neon 120')
+        .itemOutputs('gtceu:tiny_purified_naquadah_dust')
+        .duration(480)
+        .EUt(16384);
+
+    event.remove({ id: /gtceu:implosion_compressor\/implode_dust_echo_shard_.*/})
+    event.recipes.gtceu.implosion_compressor(id('echo_shard'))
+        .itemInputs('gtceu:echo_shard_dust', '16x gtceu:industrial_tnt')
+        .itemOutputs('minecraft:echo_shard')
+        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
+        .duration(1000)
+        .EUt(GTValues.VA[GTValues.LuV]);
 });

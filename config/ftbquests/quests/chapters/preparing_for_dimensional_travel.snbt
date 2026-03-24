@@ -1038,23 +1038,6 @@
 			y: -3.5d
 		}
 		{
-			dependencies: ["7FFCAD92772A175F"]
-			description: ["{ftbquests.preparing_for_dimensional_travel.vibration_laser_engraver.description}"]
-			id: "1C81273869C0EC9F"
-			rewards: [{
-				id: "32925D70150DF477"
-				item: "kubejs:coin"
-				type: "item"
-			}]
-			tasks: [{
-				id: "51FFFC651CA18531"
-				item: "gtceu:vibration_laser_engraver"
-				type: "item"
-			}]
-			x: 5.0d
-			y: 1.5d
-		}
-		{
 			dependencies: [
 				"21B816D2C178C2D5"
 				"182D948925141764"

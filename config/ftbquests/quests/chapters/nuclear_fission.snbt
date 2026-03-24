@@ -456,11 +456,7 @@
 			id: "74476363CA71A782"
 			tasks: [{
 				id: "1F90AAA9B2DF5E5E"
-				item: {
-					Count: 1
-					id: "gtceu:tiny_naquadah_dust"
-					tag: { }
-				}
+				item: "gtceu:tiny_enriched_naquadah_dust"
 				type: "item"
 			}]
 			x: 17.5d
