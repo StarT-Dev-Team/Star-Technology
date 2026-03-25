@@ -223,7 +223,7 @@
 			y: 1.0d
 		}
 		{
-			dependencies: ["1C81273869C0EC9F"]
+			dependencies: ["13118B7518370623"]
 			description: ["{ftbquests.mechanics.bulking.description}"]
 			icon: "megacells:bulk_cell_component"
 			id: "33FE3C68B0BD21B1"

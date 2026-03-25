@@ -184,11 +184,11 @@ ServerEvents.recipes(event => {
         .circuit(7);
 
     event.recipes.gtceu.laser_engraver(id('coordinate_crystal'))
-        .itemInputs('gtceu:exquisite_echo_shard_gem')
+        .itemInputs('gtceu:exquisite_purified_naquadah_gem')
         .notConsumable('gtceu:nether_star_lens')
         .itemOutputs('kubejs:coordinate_crystal')
         .duration(240)
-        .EUt(512);
+        .EUt(GTValues.VHA[GTValues.ZPM]);
 
     //Void Line
     event.recipes.gtceu.extractor(id('echo_fluid'))
