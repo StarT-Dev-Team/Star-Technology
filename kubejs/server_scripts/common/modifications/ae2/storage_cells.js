@@ -56,6 +56,40 @@ ServerEvents.recipes(event => {
             .EUt(7);
     }
 
+    //Duals
+    let tierCons;
+    let cellType;
+    
+    ['dual_cell_housing', 'mega_dual_cell_housing'].forEach(type => {
+        event.remove({ output: `expandedae:${type}` });
+        tierCons = (type == 'dual_cell_housing') ? 'MV' : 'IV';
+        cellType = (type == 'dual_cell_housing') ? 'ae2:' : 'megacells:mega_';
+
+        event.recipes.gtceu.canner(id(`${type}`))
+            .itemInputs(`${cellType}item_cell_housing`, `${cellType}fluid_cell_housing`)
+            .itemOutputs(`expandedae:${type}`)
+            .duration(400)
+            .EUt(GTValues.VA[GTValues[tierCons]]);
+    });
+
+
+    ['1', '4', '16', '64', '256'].forEach(type => {
+        event.remove({ output: `expandedae:dual_storage_cell_${type}k` });
+        event.remove({ output: `expandedae:dual_storage_cell_${type}m` });
+
+        event.recipes.gtceu.canner(id(`dual_storage_cell_${type}k`))
+            .itemInputs('expandedae:dual_cell_housing', `ae2:cell_component_${type}k`)
+            .itemOutputs(`expandedae:dual_storage_cell_${type}k`)
+            .duration(400)
+            .EUt(GTValues.VA[GTValues.MV]);
+
+        event.recipes.gtceu.canner(id(`dual_storage_cell_${type}m`))
+            .itemInputs('expandedae:mega_dual_cell_housing', `megacells:cell_component_${type}m`)
+            .itemOutputs(`expandedae:dual_storage_cell_${type}m`)
+            .duration(400)
+            .EUt(GTValues.VA[GTValues.IV]);
+    });
+
     event.remove({id: 'megacells:cells/standard/bulk_item_cell'});
     event.recipes.gtceu.assembler(id('bulk_item_cell'))
         .itemInputs(`6x gtceu:netherite_certus_quartz_skystone_alloy_plate`,'megacells:bulk_cell_component','gtceu:laminated_glass','4x #gtceu:circuits/ev')

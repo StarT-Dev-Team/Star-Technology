@@ -188,6 +188,11 @@
 					item: "ae2:item_cell_housing"
 					type: "item"
 				}
+				{
+					id: "72E50CE9398743BA"
+					item: "expandedae:dual_cell_housing"
+					type: "item"
+				}
 			]
 			title: "{ftbquests.ae2.cell_housings.title}"
 			x: 9.0d
@@ -374,7 +379,7 @@
 					type: "item"
 				}
 			]
-			title: "{ftbquests.ae2.me_buses.title}"
+			title: "{ftbquests.ae2.gregtech_hatches.title}"
 			x: -3.0d
 			y: 7.0d
 		}
@@ -982,7 +987,13 @@
 					item: "megacells:mega_fluid_cell_housing"
 					type: "item"
 				}
+				{
+					id: "70C2A7683BC5B25A"
+					item: "expandedae:mega_dual_cell_housing"
+					type: "item"
+				}
 			]
+			title: "{ftbquests.ae2.mega_cell_housings.title}"
 			x: 3.0d
 			y: -7.0d
 		}
@@ -1757,6 +1768,93 @@
 			}]
 			x: 11.0d
 			y: -7.0d
+		}
+		{
+			dependencies: ["2519DA28EADD47D4"]
+			id: "32473F3391BBD84E"
+			tasks: [{
+				id: "22EA13C1116F4813"
+				item: "expandedae:giga_pattern_provider"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -1.0d
+		}
+		{
+			id: "795C46D5A4EFCCB8"
+			tasks: [
+				{
+					id: "3CA241990674F706"
+					item: "gtceu:me_stocking_input_bus"
+					type: "item"
+				}
+				{
+					id: "03B551AEB6D6C2F0"
+					item: "gtceu:me_stocking_input_hatch"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.ae2.gregtech_stocking_hatches.title}"
+			x: -7.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["4F37BFEF63998350"]
+			id: "5177CE4CC1DE1A04"
+			tasks: [
+				{
+					id: "62845C535A1F4BA6"
+					item: "expandedgt:dual_me_input_hatch"
+					type: "item"
+				}
+				{
+					id: "334635B3F4FCA032"
+					item: "expandedgt:dual_me_output_hatch"
+					type: "item"
+				}
+				{
+					id: "2513AA2B79D8B7DF"
+					item: "expandedgt:expanded_me_input_bus"
+					type: "item"
+				}
+				{
+					id: "7889E02404EBBC4C"
+					item: "expandedgt:expanded_me_input_hatch"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.ae2.expanded_hatches.title}"
+			x: -5.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["795C46D5A4EFCCB8"]
+			id: "1E15558A3C50312D"
+			tasks: [
+				{
+					id: "0CE17D4332D2B389"
+					item: "expandedgt:expanded_me_stocking_input_bus"
+					type: "item"
+				}
+				{
+					id: "64680ED94695160A"
+					item: "expandedgt:expanded_me_stocking_input_hatch"
+					type: "item"
+				}
+				{
+					id: "75507D03E5EC6795"
+					item: "expandedgt:me_tag_filter_stocking_bus"
+					type: "item"
+				}
+				{
+					id: "31FDEEC29455E859"
+					item: "expandedgt:me_tag_filter_stocking_hatch"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.ae2.expanded_stocking_hatches.title}"
+			x: -9.0d
+			y: 7.0d
 		}
 	]
 	title: "{ftbquests.ae2.title}"

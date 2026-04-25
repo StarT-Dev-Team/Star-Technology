@@ -389,6 +389,11 @@
 					item: "gtceu:machine_memory_card"
 					type: "item"
 				}
+				{
+					id: "415420D1D6962E4E"
+					item: "expandedgt:linked_terminal"
+					type: "item"
+				}
 			]
 			x: -2.0d
 			y: 0.5d

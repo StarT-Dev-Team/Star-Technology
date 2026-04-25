@@ -338,6 +338,7 @@ GTCEuStartupEvents.registry('gtceu:material', event => {
     matmod('wrought_iron', frame);
     matmod('red_alloy', spring);
     matmod('netherite', no_decomp);
+    matmod('naquadah', frame);
     matmod('uranium_triplatinum', fine_wire);
     matmod('samarium_iron_arsenic_oxide', fine_wire);
 
