@@ -13,7 +13,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
 GTCEuStartupEvents.registry('gtceu:machine', event => { // Filler pre-multi
 
     event.create('cryostate_quantum_chiller', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeTypes(['quantum_cooling', 'vacuum_freezer'])
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THROUGHPUT_BOOSTING, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('kubejs:subzero_casing'))

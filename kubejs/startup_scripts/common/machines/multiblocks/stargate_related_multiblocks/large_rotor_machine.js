@@ -14,7 +14,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('large_rotor_machine', 'multiblock')
         .machine((holder) => new $LayeredWorkableElectricMultiblockMachine(holder))
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('large_rotor_machine')
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))

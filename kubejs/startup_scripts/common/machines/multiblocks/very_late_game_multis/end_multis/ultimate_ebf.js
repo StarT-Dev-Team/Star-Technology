@@ -1,7 +1,7 @@
 GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('ultimate_ebf', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .machine((holder) => new $CoiledMulti(holder))
         .recipeType('electric_blast_furnace')
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.EBF_OVERCLOCK, $StarTRecipeModifiers.THROUGHPUT_BOOSTING, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])

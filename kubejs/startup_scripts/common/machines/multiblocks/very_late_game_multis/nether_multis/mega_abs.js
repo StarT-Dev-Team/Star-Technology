@@ -2,7 +2,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('mega_abs', 'multiblock')
         .machine((holder) => new $CoiledMulti(holder))
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('alloy_blast_smelter')
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.EBF_OVERCLOCK, GTRecipeModifiers.BATCH_MODE]) // Will have same issues with coils that the RHF has but that will be fixed later on.
         .appearanceBlock(() => Block.getBlock('kubejs:extreme_temperature_smelting_casing'))

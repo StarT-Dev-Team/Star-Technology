@@ -1,6 +1,6 @@
 GTCEuStartupEvents.registry('gtceu:machine', event => {
     event.create('large_me_assembler', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('me_assembler')
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('kubejs:fluix_steel_casing'))

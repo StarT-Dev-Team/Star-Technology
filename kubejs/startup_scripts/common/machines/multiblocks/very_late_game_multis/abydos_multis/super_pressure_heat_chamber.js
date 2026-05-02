@@ -12,7 +12,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
 GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('super_pressure_heat_chamber', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('pressure_heat_chamber')
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(GCYMBlocks.CASING_STRESS_PROOF)

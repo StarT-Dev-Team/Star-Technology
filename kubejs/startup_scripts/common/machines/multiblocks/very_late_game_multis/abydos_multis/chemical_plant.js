@@ -13,7 +13,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('chemical_plant', 'multiblock')
         .machine((holder) => new $CoiledMulti(holder))
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeTypes(['chemical_skip'])
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.CHEMICAL_REACTOR_OVERCLOCK, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('kubejs:peek_casing'))

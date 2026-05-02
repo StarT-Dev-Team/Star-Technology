@@ -8,7 +8,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
 
 GTCEuStartupEvents.registry('gtceu:machine', event => {
     event.create('exotic_tectonic_formation_apparatus', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .tooltips([
             Text.translate("block.start_core.gap"),
             Text.translate("gtceu.multiblock.exact_hatch_1.tooltip")

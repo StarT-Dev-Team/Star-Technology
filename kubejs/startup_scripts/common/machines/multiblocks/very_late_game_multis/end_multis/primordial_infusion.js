@@ -1,7 +1,7 @@
 GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('primordial_infusion', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .tooltips([
             Text.translate("block.gtceu.draco_infusion.tooltip.0"),
             Text.translate("block.gtceu.draco_infusion.tooltip.1"),

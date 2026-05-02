@@ -1,7 +1,7 @@
 GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('super_compact_heat_chamber', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('heat_chamber')
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THROUGHPUT_BOOSTING, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)

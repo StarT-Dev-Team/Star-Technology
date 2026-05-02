@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
         .category('gate_construction')
         .setEUIO('in')
         .setMaxIOSize(3, 1, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_REPLICATOR , FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_REPLICATOR, FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.COMPUTATION)
 
 });
@@ -12,21 +12,21 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
 GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('dimensional_finder', 'multiblock')
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('dimensional_finder')
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)
         .pattern(definition => FactoryBlockPattern.start()
-            .aisle('    B   B    ', '    B   B    ', '    B   B    ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '      C      ', '             ', '             ', '             ', '      C      ', '             ') 
-            .aisle('  DDEEEEEDD  ', '  DDEEEEEDD  ', '    B   B    ', '    F   F    ', '    F   F    ', '  GGF   FGG  ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '    H   H    ', '      H      ', '    H   H    ', '             ', '             ') 
-            .aisle('  DDEEEEEDD  ', '  DDEIIIEDD  ', '    B   B    ', '             ', '             ', '  GGGGGGGGG  ', '             ', '             ', '             ', '   GG   GG   ', '             ', '             ', '             ', '             ', '             ', '             ', '  H       H  ', '             ', '             ', '             ', '  H       H  ', '             ') 
-            .aisle(' BEEEEEEEEEB ', ' BEEBBBBBEEB ', ' BBBBJCJBBBB ', '  F BJBJB F  ', '  F BJCJB F  ', '  FGBIBIBGF  ', '    F   F    ', '    F   F    ', '    F   F    ', '   GGGGGGG   ', '             ', '             ', '             ', '    GG GG    ', '             ', '             ', '             ', '   C     C   ', '             ', '   C     C   ', '             ', '             ') 
-            .aisle('  EEEEEEEEE  ', '  EIBKKKBIE  ', '    JLLLJ    ', '    JLLLJ    ', '    JLLLJ    ', '   GIKBKIG   ', '     JCJ     ', '     JBJ     ', '     JCJ     ', '    GBBBG    ', '     F F     ', '     F F     ', '     F F     ', '    GGGGG    ', '             ', 'H           H', '             ', '             ', '             ', '             ', '             ', 'H           H') 
-            .aisle('  EEEEEEEEE  ', '  EIBKKKBIE  ', '    CLLLC    ', '    BLLLB    ', '    CLLLC    ', '   GBBBBBG   ', '     CMC     ', '     BMB     ', '     CMC     ', '    GBKBG    ', '      J      ', '      N      ', '      J      ', '     GKG     ', '      K      ', '      C      ', '             ', '             ', '  C   O   C  ', '             ', '             ', '             ') 
-            .aisle('  EEEEEEEEE  ', '  EIBKKKBIE  ', '    JLLLJ    ', '    JLLLJ    ', '    JLLLJ    ', '   GIKBKIG   ', '     JCJ     ', '     JBJ     ', '     JCJ     ', '    GBBBG    ', '     F F     ', '     F F     ', '     F F     ', '    GGGGG    ', '             ', 'H           H', '             ', '             ', '             ', '             ', '             ', 'H           H') 
-            .aisle(' BEEEEEEEEEB ', ' BEEBBBBBEEB ', ' BBBBJCJBBBB ', '  F BJBJB F  ', '  F BJCJB F  ', '  FGBIBIBGF  ', '    F   F    ', '    F   F    ', '    F   F    ', '   GGGGGGG   ', '             ', '             ', '             ', '    GG GG    ', '             ', '             ', '             ', '   C     C   ', '             ', '   C     C   ', '             ', '             ') 
-            .aisle('  DDEEEEEDD  ', '  DDEIIIEDD  ', '    B   B    ', '             ', '             ', '  GGGGGGGGG  ', '             ', '             ', '             ', '   GG   GG   ', '             ', '             ', '             ', '             ', '             ', '             ', '  H       H  ', '             ', '             ', '             ', '  H       H  ', '             ') 
-            .aisle('  DDEEEEEDD  ', '  DDEE@EEDD  ', '    B   B    ', '    F   F    ', '    F   F    ', '  GGF   FGG  ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '    H   H    ', '      H      ', '    H   H    ', '             ', '             ') 
-            .aisle('    B   B    ', '    B   B    ', '    B   B    ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '      C      ', '             ', '             ', '             ', '      C      ', '             ') 
+            .aisle('    B   B    ', '    B   B    ', '    B   B    ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '      C      ', '             ', '             ', '             ', '      C      ', '             ')
+            .aisle('  DDEEEEEDD  ', '  DDEEEEEDD  ', '    B   B    ', '    F   F    ', '    F   F    ', '  GGF   FGG  ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '    H   H    ', '      H      ', '    H   H    ', '             ', '             ')
+            .aisle('  DDEEEEEDD  ', '  DDEIIIEDD  ', '    B   B    ', '             ', '             ', '  GGGGGGGGG  ', '             ', '             ', '             ', '   GG   GG   ', '             ', '             ', '             ', '             ', '             ', '             ', '  H       H  ', '             ', '             ', '             ', '  H       H  ', '             ')
+            .aisle(' BEEEEEEEEEB ', ' BEEBBBBBEEB ', ' BBBBJCJBBBB ', '  F BJBJB F  ', '  F BJCJB F  ', '  FGBIBIBGF  ', '    F   F    ', '    F   F    ', '    F   F    ', '   GGGGGGG   ', '             ', '             ', '             ', '    GG GG    ', '             ', '             ', '             ', '   C     C   ', '             ', '   C     C   ', '             ', '             ')
+            .aisle('  EEEEEEEEE  ', '  EIBKKKBIE  ', '    JLLLJ    ', '    JLLLJ    ', '    JLLLJ    ', '   GIKBKIG   ', '     JCJ     ', '     JBJ     ', '     JCJ     ', '    GBBBG    ', '     F F     ', '     F F     ', '     F F     ', '    GGGGG    ', '             ', 'H           H', '             ', '             ', '             ', '             ', '             ', 'H           H')
+            .aisle('  EEEEEEEEE  ', '  EIBKKKBIE  ', '    CLLLC    ', '    BLLLB    ', '    CLLLC    ', '   GBBBBBG   ', '     CMC     ', '     BMB     ', '     CMC     ', '    GBKBG    ', '      J      ', '      N      ', '      J      ', '     GKG     ', '      K      ', '      C      ', '             ', '             ', '  C   O   C  ', '             ', '             ', '             ')
+            .aisle('  EEEEEEEEE  ', '  EIBKKKBIE  ', '    JLLLJ    ', '    JLLLJ    ', '    JLLLJ    ', '   GIKBKIG   ', '     JCJ     ', '     JBJ     ', '     JCJ     ', '    GBBBG    ', '     F F     ', '     F F     ', '     F F     ', '    GGGGG    ', '             ', 'H           H', '             ', '             ', '             ', '             ', '             ', 'H           H')
+            .aisle(' BEEEEEEEEEB ', ' BEEBBBBBEEB ', ' BBBBJCJBBBB ', '  F BJBJB F  ', '  F BJCJB F  ', '  FGBIBIBGF  ', '    F   F    ', '    F   F    ', '    F   F    ', '   GGGGGGG   ', '             ', '             ', '             ', '    GG GG    ', '             ', '             ', '             ', '   C     C   ', '             ', '   C     C   ', '             ', '             ')
+            .aisle('  DDEEEEEDD  ', '  DDEIIIEDD  ', '    B   B    ', '             ', '             ', '  GGGGGGGGG  ', '             ', '             ', '             ', '   GG   GG   ', '             ', '             ', '             ', '             ', '             ', '             ', '  H       H  ', '             ', '             ', '             ', '  H       H  ', '             ')
+            .aisle('  DDEEEEEDD  ', '  DDEE@EEDD  ', '    B   B    ', '    F   F    ', '    F   F    ', '  GGF   FGG  ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '    H   H    ', '      H      ', '    H   H    ', '             ', '             ')
+            .aisle('    B   B    ', '    B   B    ', '    B   B    ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '      C      ', '             ', '             ', '             ', '      C      ', '             ')
             .where(' ', Predicates.any())
             .where('B', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
             .where('C', Predicates.blocks('gtceu:fusion_glass'))
@@ -52,5 +52,5 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .build())
         .workableCasingModel('gtceu:block/casings/gcym/high_temperature_smelting_casing',
             'gtceu:block/machines/scanner');
-            
+
 });

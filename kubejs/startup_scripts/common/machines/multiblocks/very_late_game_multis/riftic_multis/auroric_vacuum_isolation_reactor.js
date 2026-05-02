@@ -2,7 +2,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('auroric_vacuum_isolation_reactor', 'multiblock')
         .machine((holder) => new $VacuumChemicalReactorMachine(holder))
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .tooltips([
             Text.translate("block.start_core.breaker_line")
         ])

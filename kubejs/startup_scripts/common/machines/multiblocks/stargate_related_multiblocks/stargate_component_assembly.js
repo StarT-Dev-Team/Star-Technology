@@ -14,7 +14,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('stargate_component_assembly', 'multiblock')
         .machine((holder) => new $LayeredWorkableElectricMultiblockMachine(holder))
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('stargate_component_assembly')
         .recipeModifiers([GTRecipeModifiers.OC_PERFECT])
         .appearanceBlock(() => Block.getBlock('kubejs:prismalium_casing'))

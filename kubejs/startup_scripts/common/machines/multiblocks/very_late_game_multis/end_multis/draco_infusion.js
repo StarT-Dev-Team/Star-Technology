@@ -13,7 +13,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('draco_infusion', 'multiblock')
         .machine((holder) => new $StarTDraconicInfusionMachine(holder))
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .recipeType('draco_infusion')
         .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))

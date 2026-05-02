@@ -23,7 +23,7 @@ global.addedByStarT = {
         'ulv_advanced_composter', 'exotic_tectonic_formation_apparatus', 'bacteria_synthesizer', 'bacterial_breeding_vat', 'bacterial_runic_mutator', 'bacterial_hydrocarbon_harvester',
         'essence_enchancer', 'essence_replicator', 'lv_mystical_greenhouse', 'mv_mystical_greenhouse', 'hv_mystical_greenhouse', 'ev_mystical_greenhouse', 'iv_mystical_greenhouse', 'luv_mystical_greenhouse', 'zpm_mystical_greenhouse', 'uv_mystical_greenhouse', 'uhv_mystical_greenhouse', 'uev_mystical_greenhouse', 'uiv_mystical_greenhouse', 'lv_essence_burner', 'mv_essence_burner', 'hv_essence_burner', 'ev_essence_burner', 'iv_essence_burner', 'luv_essence_burner', 'zpm_essence_burner', 'uv_essence_burner', 'uhv_essence_burner', 'uev_essence_burner', 'uiv_essence_burner',
         'titan_forge',
-        'luv_combustion_module', 'zpm_combustion_module', 'uv_combustion_module', 'uev_combustion_module', 'modular_combustion_frame'
+        'luv_combustion_module', 'zpm_combustion_module', 'uv_combustion_module', 'uev_combustion_module', 'modular_combustion_frame', 'nuclear_reactor'
     ],
     isCore: [
         'hellforge', 'fornaxs_infernal_rotary_engine', 'abyssal_harvester', 'abyssal_containment_room', 'luv_fusion_reactor', 'zpm_fusion_reactor', 'uv_fusion_reactor', 'uhv_fusion_reactor', 'uev_fusion_reactor', 'uiv_fusion_reactor',

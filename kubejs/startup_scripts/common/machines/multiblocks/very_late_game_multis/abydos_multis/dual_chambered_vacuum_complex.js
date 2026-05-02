@@ -2,7 +2,7 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 
     event.create('dual_chambered_vacuum_complex', 'multiblock')
         .machine((holder) => new $VacuumChemicalReactorMachine(holder))
-        .rotationState(RotationState.NON_Y_AXIS)
+        .rotationState(RotationState.ALL)
         .paginatedTooltips([[
             Text.translate("block.gtceu.vacuum_chemical_reaction_chamber.p1.0"),
             Text.translate("block.gtceu.vacuum_chemical_reaction_chamber.p1.1"),
