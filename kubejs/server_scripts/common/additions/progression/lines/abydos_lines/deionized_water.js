@@ -23,6 +23,7 @@ ServerEvents.recipes(event => {
         .inputFluids(`gtceu:benzene 1000`, `gtceu:ethylene 2000`)
         .outputFluids(`gtceu:divinylbenzene 1000`, `gtceu:hydrogen 4000`)
         .duration(80)
+        .circuit(2)
         .EUt(GTValues.VA[GTValues.LuV]);
 
     lcr(id(`dry_${beads}`))
