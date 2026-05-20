@@ -317,18 +317,11 @@
 			id: "475330A24EC07BBD"
 			shape: "gear"
 			size: 1.125d
-			tasks: [
-				{
-					id: "165BE80839990A5A"
-					item: "gtceu:riftion_injector"
-					type: "item"
-				}
-				{
-					id: "6103F412A745371B"
-					item: "kubejs:riftion_injection_core"
-					type: "item"
-				}
-			]
+			tasks: [{
+				id: "165BE80839990A5A"
+				item: "gtceu:riftion_injector"
+				type: "item"
+			}]
 			x: -2.0d
 			y: 5.5d
 		}
@@ -386,11 +379,6 @@
 				{
 					id: "4C52E9BB6CAF5446"
 					item: "gtceu:riftion_accelerator"
-					type: "item"
-				}
-				{
-					id: "5CE38771873AB467"
-					item: "kubejs:particle_rod_holder"
 					type: "item"
 				}
 				{

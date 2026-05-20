@@ -209,14 +209,14 @@
 			dependencies: ["2EDE996312B1C69E"]
 			description: ["{ftbquests.csg.classic_stargate_display.description}"]
 			hide_dependency_lines: true
+			icon: "effortlessbuilding:building_techniques_book"
 			id: "653AD979AE4D0581"
 			optional: true
 			size: 1.0d
 			tasks: [{
-				id: "080109B2F5298E4A"
-				item: "gtceu:classic_stargate_display"
-				optional_task: true
-				type: "item"
+				id: "226CB0D7781A07F3"
+				title: "{ftbquests.csg.classic_stargate_display.checkmark}"
+				type: "checkmark"
 			}]
 			title: "{ftbquests.csg.classic_stargate_display.title}"
 			x: -13.5d

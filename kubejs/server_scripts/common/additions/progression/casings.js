@@ -226,7 +226,7 @@ ServerEvents.recipes(event => {
 
     };
 
-    engine_intake('pallaridium','iridium','iridium','kubejs','gtceu:palladium_substation');
+    engine_intake('pallaridium','palladium','iridium','kubejs','gtceu:palladium_substation');
     engine_intake('enriched_naquadah','enriched_naquadah','enriched_naquadah','kubejs','kubejs:enriched_naquadah_machine_casing');
     engine_intake('nyanium','nyanium','nyanium','kubejs','kubejs:nyanium_machine_casing');
 

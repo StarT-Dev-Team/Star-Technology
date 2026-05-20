@@ -36,7 +36,6 @@ ServerEvents.recipes(event => {
                 solder,
                 lubricant,
                 cable,
-                superconductor,
                 battery
             },
             scaling: {
@@ -50,24 +49,21 @@ ServerEvents.recipes(event => {
             polarizer(id(`${tier}_energy_core`))
                 .itemInputs(`kubejs:${tier1}_energy_core`)
                 .itemOutputs(`kubejs:${tier}_energy_core`)
-                .duration(1200)
-                .EUt(EU * 2);
+                .duration(300)
+                .EUt(EU);
         }
 
         //Solar Cells
         assembler(id(`${tier}_solar_cell`))
-            .itemInputs(
-                `2x kubejs:${tier}_photovoltaic_cell`, `gtceu:${tierMaterial}_frame`, `2x gtceu:${cable}_double_cable`, 
-                `#gtceu:circuits/${tier}`
-            )
-            .inputFluids(`gtceu:epoxy ${scaler * 288}`)
+            .itemInputs(`2x kubejs:${tier}_photovoltaic_cell`, `gtceu:${tierMaterial}_frame`, `2x gtceu:${cable}_double_cable`)
+            .inputFluids(`gtceu:epoxy ${scaler * 144}`)
             .itemOutputs(`2x start_core:${tier}_solar_cell`)
             .duration(600)
             .EUt(EU * 2);
         
         //Photovoltaic Cells
         assembler(id(`${tier}_photovoltaic_cell`))
-            .itemInputs(`gtceu:double_${tierMaterial}_plate`,`kubejs:${tier}_energy_core`,`4x gtceu:fine_${superconductor}_wire`,`#gtceu:circuits/${tier}`)
+            .itemInputs(`gtceu:double_${tierMaterial}_plate`,`kubejs:${tier}_energy_core`,`#gtceu:circuits/${tier}`)
             .inputFluids(`gtceu:${solder} 576`)
             .itemOutputs(`kubejs:${tier}_photovoltaic_cell`)
             .duration(400)
