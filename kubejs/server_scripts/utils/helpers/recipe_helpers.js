@@ -316,3 +316,34 @@ ServerEvents.recipes(event => {
   }
   
 });
+
+
+const modRequirements = {
+    pipez: 'pipez',
+    itemcollectors: 'itemcollectors',
+    vintage: 'vintage',
+    create_new_age: 'create_new_age',
+    travelanchors: 'travelanchors',
+    fluxnetworks: 'fluxnetworks',
+    architects_palette: 'architects_palette',
+    xycraft_world: 'xycraft_world',
+    chipped: 'chipped',
+    framedblocks: 'framedblocks',
+    functionalstorage: 'functionalstorage',
+    effortlessbuilding: 'effortlessbuilding',
+    projectred: ['projectred_core', 'projectred_transmission', 'projectred_integration']
+};
+
+// Auto-generate all the wrapper functions
+Object.entries(modRequirements).forEach(([name, mod]) => {
+    const mods = Array.isArray(mod) ? mod : [mod];
+    /**
+     * @param {function} fun - Function to execute if current mod is loaded'.
+     */
+    global[`with_${name}`] = (fun) => {
+        if (mods.every(m => Platform.isLoaded(m))) {
+            fun();
+        }
+    };
+});
+
