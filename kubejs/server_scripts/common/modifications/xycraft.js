@@ -1,3 +1,4 @@
+global.with_xycraft_world(() => {
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -44,4 +45,5 @@ ServerEvents.recipes(event => {
         D: 'minecraft:deepslate'
     }).id('start:shaped/kivi');
 
+});
 });

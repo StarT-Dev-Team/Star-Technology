@@ -1,5 +1,6 @@
 //requires: create_new_age
-    global.not_hardmode(() => {
+global.not_hardmode(() => {
+    global.with_create_new_age(() => {
         
     ServerEvents.recipes(event => {
         const id = global.id;
@@ -80,5 +81,6 @@
             E: 'gtceu:energium_dust'
         }).id('start:shaped/neodymium_magnet');
 
+    });
     });
 });

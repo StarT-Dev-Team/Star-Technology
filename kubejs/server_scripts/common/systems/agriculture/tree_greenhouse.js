@@ -1,7 +1,7 @@
 ServerEvents.recipes(event => {
     const id = global.id;
 
-    [
+    let woodTypes = [
         { name: 'oak', sapling: 'oak_sapling', namespace: 'minecraft'},
         { name: 'dark_oak', sapling: 'dark_oak_sapling', namespace: 'minecraft'},
         { name: 'birch', sapling: 'birch_sapling', namespace: 'minecraft'},
@@ -9,9 +9,12 @@ ServerEvents.recipes(event => {
         { name: 'acacia', sapling: 'acacia_sapling', namespace: 'minecraft'},
         { name: 'jungle', sapling: 'jungle_sapling', namespace: 'minecraft'},
         { name: 'cherry', sapling: 'cherry_sapling', namespace: 'minecraft'},
-        { name: 'mangrove', sapling: 'mangrove_propagule', namespace: 'minecraft'},
-        { name: 'twisted', sapling: 'twisted_sapling', namespace: 'architects_palette'},
-    ].forEach(type => {
+        { name: 'mangrove', sapling: 'mangrove_propagule', namespace: 'minecraft'}
+    ];
+    global.with_architects_palette(() => {
+        woodTypes.push({ name: 'twisted', sapling: 'twisted_sapling', namespace: 'architects_palette'});
+    })
+    woodTypes.forEach(type => {
         event.recipes.gtceu.tree_greenhouse(id(`${type.name}_growing`))
             .notConsumable(`${type.namespace}:${type.sapling}`)
             .itemOutputs(`16x ${type.namespace}:${type.name}_log`)

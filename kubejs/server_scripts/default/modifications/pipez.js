@@ -1,4 +1,5 @@
 global.not_hardmode(() => {
+    global.with_pipez(() => {
 
     ServerEvents.recipes(event => {
         const id = global.id;
@@ -121,5 +122,6 @@ global.not_hardmode(() => {
             ).id(`start:shapeless/pipez_${tier}_upgrade_reset`);
         });
 
+    });
     });
 });

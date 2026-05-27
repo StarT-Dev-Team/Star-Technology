@@ -35,8 +35,10 @@ ServerEvents.recipes(event => {
         .duration(100 * size)
         .EUt(GTValues.VA[GTValues.LuV]);
     };
-    WarpedMaceration('#chipped:warped_roots', 1);
-    WarpedMaceration('#chipped:warped_fungus', 1);
+    global.with_chipped(() => {
+        WarpedMaceration('#chipped:warped_roots', 1);
+        WarpedMaceration('#chipped:warped_fungus', 1);
+    })
     WarpedMaceration('minecraft:warped_wart_block', 9);
     
     //Ancient Netherite

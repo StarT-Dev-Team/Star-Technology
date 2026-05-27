@@ -197,13 +197,6 @@ global.not_hardmode(() => {
             .add('minecraft:sea_pickle', 0.05)
             .add('kelp', 0.15)
             .add('minecraft:seagrass', 0.15)
-            // Waterlogged Dust Sieving
-            .input(csi.dust)
-            .add('xycraft_world:xychorium_gem_blue', 0.75)
-            .add('xycraft_world:xychorium_gem_red', 0.75)
-            .add('xycraft_world:xychorium_gem_green', 0.75)
-            .add('xycraft_world:xychorium_gem_light', 0.75)
-            .add('xycraft_world:xychorium_gem_dark', 0.75)
             // Gravel Sieving
             .input(csi.gravel)
             .waterlogged(false)
@@ -258,7 +251,21 @@ global.not_hardmode(() => {
             .add('exnihilosequentia:dripstone_pebble', 0.05)
             .add('exnihilosequentia:granite_pebble', 0.05)
             .add('exnihilosequentia:stone_pebble', 0.05)
-            .add('exnihilosequentia:tuff_pebble', 0.05)
+            .add('exnihilosequentia:tuff_pebble', 0.05);
+
+        global.with_xycraft_world(() => {
+            // Waterlogged Dust Sieving
+        SievingRecipeHandler
+            .input(csi.dust)
+            .add('xycraft_world:xychorium_gem_blue', 0.75)
+            .add('xycraft_world:xychorium_gem_red', 0.75)
+            .add('xycraft_world:xychorium_gem_green', 0.75)
+            .add('xycraft_world:xychorium_gem_light', 0.75)
+            .add('xycraft_world:xychorium_gem_dark', 0.75);
+
+        })
+
+        SievingRecipeHandler
             .build(event);
 
         //Dirts

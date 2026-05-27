@@ -1,3 +1,4 @@
+global.with_travelanchors(() => {
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -23,4 +24,5 @@ ServerEvents.recipes(event => {
         R: 'gtceu:iron_rod'
     }).id('start:shaped/travel_staff');
 
+});
 });

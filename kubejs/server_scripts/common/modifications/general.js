@@ -78,6 +78,7 @@ ServerEvents.recipes(event => {
     }).id('start:shaped/advanced_wireless_terminal');
 
     // Effortless Building Upgrade Accessibility
+    global.with_effortlessbuilding(() => {
     const reachUpgrade = (type,mat,dye,core) => {
         event.remove({output: `effortlessbuilding:reach_upgrade${type}`});
         event.shaped(Item.of(`effortlessbuilding:reach_upgrade${type}`), [
@@ -94,6 +95,7 @@ ServerEvents.recipes(event => {
     reachUpgrade('1','minecraft:slime_ball','minecraft:lime_dye',`minecraft:ender_pearl`);
     reachUpgrade('2','minecraft:glowstone_dust','minecraft:orange_dye',`effortlessbuilding:reach_upgrade1`);
     reachUpgrade('3','minecraft:amethyst_shard','minecraft:purple_dye',`effortlessbuilding:reach_upgrade2`);
+    });
 
     // Bingus
     event.shaped('bingus:floppa_orb', [

@@ -1,4 +1,5 @@
 
+global.with_projectred(() => {
 ServerEvents.recipes(event => {
 
     const core = (id) => `projectred_core:${id}`;
@@ -24,4 +25,5 @@ ServerEvents.tags('item', event => {
     event.remove('forge:dusts/electrotine', 'projectred_core:electrotine_dust');
     event.add('c:logic_gates', /projectred_integration:.*_gate/);
 
+});
 });

@@ -1,4 +1,5 @@
 global.not_hardmode(() => {
+    global.with_itemcollectors(() => {
 
     ServerEvents.recipes(event => {
     const id = global.id;
@@ -22,5 +23,6 @@ global.not_hardmode(() => {
             B: 'gtceu:black_bronze_plate'
         }).id('start:shaped/advanced_collectors');
 
+    });
     });
 });

@@ -1,4 +1,5 @@
 //requires: create_hypertube
+global.with_create_hypertube(() => {
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -20,4 +21,5 @@ ServerEvents.recipes(event => {
     assembler(['create:smart_chute', 'create_hypertube:hypertube', 'create:cogwheel'], 'create_hypertube:hypertube_entrance', 100, 30, 'hypertube_entrance');
     assembler(['create_hypertube:hypertube_entrance', 'gtceu:lv_voltage_coil', 'create:cogwheel'], 'create_hypertube:hypertube_accelerator', 100, 30, 'hypertube_accelerato');
 
+});
 });

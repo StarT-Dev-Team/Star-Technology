@@ -1,3 +1,4 @@
+global.with_fluxnetworks(() => {
 ServerEvents.recipes(event => {
     const id = global.id;
 
@@ -9,4 +10,5 @@ ServerEvents.recipes(event => {
     .EUt(1024)
     .circuit(1);
 
+});
 });
