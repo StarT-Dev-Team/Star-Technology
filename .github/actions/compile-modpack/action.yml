@@ -1,70 +1,61 @@
 name: Compile Modpack
+description: Compiles the Star Technology modpack into a distributable zip file
 
-on:
-  push:
-    branches: [ "*" ]
-  pull_request:
-    branches: [ "*" ]
+inputs:
+  branch_name:
+    description: Branch name used for naming the output artifact
+    required: true
 
-jobs:
-  compile:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Get branch name
-      id: branch
-      run: |
-        if [ "${{ github.event_name }}" == "pull_request" ]; then
-          echo "branch_name=${{ github.head_ref }}" >> $GITHUB_OUTPUT
-        else
-          echo "branch_name=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
-        fi
-        
+runs:
+  using: composite
+  steps:
     - name: Create compilation directory
+      shell: bash
       run: mkdir -p compile_output
-      
+
     - name: Create overrides directory structure
+      shell: bash
       run: |
         mkdir -p compile_output/overrides
-        
+
         # Copy specified folders to overrides
         cp -r config compile_output/overrides/
         cp -r defaultconfigs compile_output/overrides/
         cp -r kubejs compile_output/overrides/
         cp -r packmode compile_output/overrides/
         cp -r scripts compile_output/overrides/
-        
+
         # Copy specified files to overrides
         cp LICENSE compile_output/overrides/
         cp packmode_picker.py compile_output/overrides/
         cp packmode_picker.sh compile_output/overrides/
         cp README.md compile_output/overrides/
-        
+
     - name: Copy manifest and modlist from compile_data
+      shell: bash
       run: |
         cp compile_data/manifest.json compile_output/
         cp compile_data/modlist.html compile_output/
-        
+
     - name: Create zip file
+      shell: bash
       run: |
         cd compile_output
-        zip -r "../Star Technology-1.20.1-${{ steps.branch.outputs.branch_name }}.zip" .
+        zip -r "../Star Technology-1.20.1-${{ inputs.branch_name }}.zip" .
         cd ..
-        
+
     - name: Upload compiled modpack
       uses: actions/upload-artifact@v4
       with:
-        name: Star Technology-1.20.1-${{ steps.branch.outputs.branch_name }}
-        path: Star Technology-1.20.1-${{ steps.branch.outputs.branch_name }}.zip
+        name: Star Technology-1.20.1-${{ inputs.branch_name }}
+        path: Star Technology-1.20.1-${{ inputs.branch_name }}.zip
         retention-days: 30
-        
+
     - name: Display compilation info
+      shell: bash
       run: |
         echo "✅ Modpack compiled successfully!"
-        echo "📦 Artifact name: Star Technology-1.20.1-${{ steps.branch.outputs.branch_name }}"
-        echo "🏷️ Branch: ${{ steps.branch.outputs.branch_name }}"
-        echo "📁 Zip file: Star Technology-1.20.1-${{ steps.branch.outputs.branch_name }}.zip"
-        ls -la "Star Technology-1.20.1-${{ steps.branch.outputs.branch_name }}.zip"
+        echo "📦 Artifact name: Star Technology-1.20.1-${{ inputs.branch_name }}"
+        echo "🏷️ Branch: ${{ inputs.branch_name }}"
+        echo "📁 Zip file: Star Technology-1.20.1-${{ inputs.branch_name }}.zip"
+        ls -la "Star Technology-1.20.1-${{ inputs.branch_name }}.zip"

@@ -1,0 +1,32 @@
+name: Compile Modpack
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'build')
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Get branch name
+      id: branch
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "branch_name=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+        else
+          echo "branch_name=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Compile modpack
+      uses: ./.github/actions/compile-modpack
+      with:
+        branch_name: ${{ steps.branch.outputs.branch_name }}
