@@ -61,8 +61,4 @@ ItemEvents.tooltip(event => {
             event.add(`gtceu:${name}`, Text.translate(`block.gtceu.theta2Removals.tooltip`));
         }
     });
-
-    for (let x = 1; x <= 8; x++) {
-        event.add(`solarflux:sp_${x}`, Text.translate(`block.solarflux.sp.tooltip`));
-    }
 });
