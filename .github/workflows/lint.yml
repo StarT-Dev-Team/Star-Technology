@@ -45,7 +45,7 @@ jobs:
         id: prettier
         run: |
           # Write a diff of what Prettier would change
-          npx prettier --check kubejs/**/*.js 2>&1 | tee prettier-check.txt || true
+          npx prettier --check . 2>&1 | tee prettier-check.txt || true
 
           # Generate per-file diffs for the review suggestions
           mkdir -p prettier-diffs
