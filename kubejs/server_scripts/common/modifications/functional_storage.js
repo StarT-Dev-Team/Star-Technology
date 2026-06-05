@@ -72,7 +72,7 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/ender_drawer');
 
-    global.with_framedblocks(
+    global.withFramedBlocks(
         () => {
             ['1', '2', '4'].forEach((size) => {
                 event.remove({ output: `functionalstorage:framed_${size}` });

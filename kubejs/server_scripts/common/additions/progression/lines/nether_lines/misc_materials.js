@@ -41,7 +41,7 @@ ServerEvents.recipes((event) => {
         .circuit(1)
         .EUt(GTValues.VA[GTValues.UHV]);
 
-    const WarpedMaceration = (type, size) => {
+    const warpedMaceration = (type, size) => {
         event.recipes.gtceu
             .macerator(id(`warped_dust_nether_from_${type.split(':')[1]}`))
             .itemInputs(type)
@@ -49,17 +49,17 @@ ServerEvents.recipes((event) => {
             .duration(100 * size)
             .EUt(GTValues.VA[GTValues.LuV]);
     };
-    global.with_chipped(
+    global.withChipped(
         () => {
-            WarpedMaceration('#chipped:warped_roots', 1);
-            WarpedMaceration('#chipped:warped_fungus', 1);
+            warpedMaceration('#chipped:warped_roots', 1);
+            warpedMaceration('#chipped:warped_fungus', 1);
         },
         () => {
-            WarpedMaceration('minecraft:warped_roots', 1);
-            WarpedMaceration('minecraft:warped_fungus', 1);
+            warpedMaceration('minecraft:warped_roots', 1);
+            warpedMaceration('minecraft:warped_fungus', 1);
         }
     );
-    WarpedMaceration('minecraft:warped_wart_block', 9);
+    warpedMaceration('minecraft:warped_wart_block', 9);
 
     //Ancient Netherite
     event.recipes.gtceu
@@ -94,28 +94,28 @@ ServerEvents.recipes((event) => {
     [
         {
             stone: 'ae2:sky_stone_block',
-            consumed_solid: 'minecraft:stone',
-            consumed_amount: 16,
+            consumedSolid: 'minecraft:stone',
+            consumedAmount: 16,
             output: 32,
-            consumed_fluid: 'thermal:ender',
+            consumedFluid: 'thermal:ender',
             circ: 1,
             energy: GTValues.VHA[GTValues.HV],
         },
         {
             stone: 'kubejs:cryostone',
-            consumed_solid: 'minecraft:netherrack',
-            consumed_amount: 32,
+            consumedSolid: 'minecraft:netherrack',
+            consumedAmount: 32,
             output: 2,
-            consumed_fluid: 'gtceu:liquid_helium',
+            consumedFluid: 'gtceu:liquid_helium',
             circ: 2,
             energy: GTValues.VHA[GTValues.LuV],
         },
         {
             stone: 'kubejs:brimstone',
-            consumed_solid: 'minecraft:netherrack',
-            consumed_amount: 32,
+            consumedSolid: 'minecraft:netherrack',
+            consumedAmount: 32,
             output: 2,
-            consumed_fluid: 'gtceu:blaze',
+            consumedFluid: 'gtceu:blaze',
             circ: 3,
             energy: GTValues.VHA[GTValues.LuV],
         },
@@ -124,8 +124,8 @@ ServerEvents.recipes((event) => {
             .exotic_rock_crushing(id(type.stone.split(':')[1]))
             .notConsumable(`${type.stone}`)
             .notConsumableFluid('minecraft:lava 1000')
-            .itemInputs(`${type.consumed_amount}x ${type.consumed_solid}`)
-            .inputFluids(`${type.consumed_fluid} 500`)
+            .itemInputs(`${type.consumedAmount}x ${type.consumedSolid}`)
+            .inputFluids(`${type.consumedFluid} 500`)
             .circuit(`${type.circ}`)
             .itemOutputs(`${type.output}x ${type.stone}`)
             .duration(300)

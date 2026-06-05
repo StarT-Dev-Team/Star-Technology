@@ -2,7 +2,7 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     //Hell Forge Recipes
-    const HellForgeMat = (type, IngQuant, inputs, plasma, catalyst, HeatMK, eut, SecDurPerIng) => {
+    const hellForgeMat = (type, IngQuant, inputs, plasma, catalyst, HeatMK, eut, SecDurPerIng) => {
         event.recipes.gtceu
             .hellforge(id(`${type}`))
             .inputFluids(`gtceu:${plasma}_plasma ${IngQuant * 144}`)
@@ -34,7 +34,7 @@ ServerEvents.recipes((event) => {
             );
         }
     };
-    HellForgeMat(
+    hellForgeMat(
         'mythrolic_alloy',
         11,
         ['gtceu:mythril 720', 'gtceu:hsss 576', 'gtceu:darmstadtium 288'],
@@ -44,7 +44,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UEV],
         43.6
     );
-    HellForgeMat(
+    hellForgeMat(
         'magmada_alloy',
         8,
         ['gtceu:adamantine 576', 'gtceu:neutronium 144', 'gtceu:rtm_alloy 432'],
@@ -54,7 +54,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UEV],
         52.4
     );
-    HellForgeMat(
+    hellForgeMat(
         'starium_alloy',
         8,
         ['gtceu:nether_star_concentrate 576', 'gtceu:trinaquadalloy 288', 'gtceu:estalt 288'],
@@ -64,7 +64,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UEV],
         39.8
     );
-    HellForgeMat(
+    hellForgeMat(
         'enriched_pallarovium_alloy',
         17,
         ['gtceu:seaborgium 288', 'gtceu:palladium 1152', 'gtceu:enriched_estalt 432', 'gtceu:flerovium 576'],
@@ -74,7 +74,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UIV],
         37.4
     );
-    HellForgeMat(
+    hellForgeMat(
         'nyanium',
         14,
         [
@@ -89,7 +89,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UHV],
         76.8
     );
-    HellForgeMat(
+    hellForgeMat(
         'rhenium_super_composite_alloy',
         16,
         [
@@ -105,7 +105,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UXV],
         46.1
     );
-    HellForgeMat(
+    hellForgeMat(
         'abyssal_alloy',
         14,
         ['gtceu:xeproda 720', 'gtceu:blue_alloy 432', 'gtceu:void 576', 'gtceu:flerovium 144', 'gtceu:zapolgium 144'],
@@ -115,7 +115,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UIV],
         38.5
     );
-    HellForgeMat(
+    hellForgeMat(
         'chaotixic_alloy',
         24,
         [
@@ -131,7 +131,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UIV],
         43.7
     );
-    HellForgeMat(
+    hellForgeMat(
         'ohmderblux_alloy',
         23,
         [
@@ -147,7 +147,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UIV],
         46.9
     );
-    HellForgeMat(
+    hellForgeMat(
         'draconyallium',
         258,
         [
@@ -163,7 +163,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         16.0
     );
-    HellForgeMat(
+    hellForgeMat(
         'draco_abyssal',
         9,
         ['gtceu:draconyallium 144', 'gtceu:abyssal_alloy 432', 'gtceu:void 288', 'gtceu:ancient_runicalium 432'],
@@ -173,7 +173,7 @@ ServerEvents.recipes((event) => {
         GTValues.VHA[GTValues.UXV],
         39.4
     );
-    HellForgeMat(
+    hellForgeMat(
         'expetidalloy_d_17',
         17,
         [
@@ -188,7 +188,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         32.7
     );
-    HellForgeMat(
+    hellForgeMat(
         'rhenate_w',
         33,
         [
@@ -204,7 +204,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         34.3
     );
-    HellForgeMat(
+    hellForgeMat(
         'borealic_steel',
         20,
         [
@@ -221,7 +221,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         31.5
     );
-    HellForgeMat(
+    hellForgeMat(
         'ultispestalloy_cmsh',
         27,
         [
@@ -237,7 +237,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         29.4
     );
-    HellForgeMat(
+    hellForgeMat(
         'trikoductive_neutro_steel',
         17,
         [
@@ -253,7 +253,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         35.1
     );
-    HellForgeMat(
+    hellForgeMat(
         'melastrium_mox',
         13,
         ['gtceu:osmiridium 288', 'gtceu:astrenalloy_nx 1008', 'gtceu:melodium 432', 'gtceu:potin 144'],
@@ -263,7 +263,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         31.4
     );
-    HellForgeMat(
+    hellForgeMat(
         'hvga_steel',
         16,
         [
@@ -279,7 +279,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UXV],
         21.6
     );
-    HellForgeMat(
+    hellForgeMat(
         'mythrotight_carbide_steel',
         19,
         [
@@ -295,7 +295,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         36.7
     );
-    HellForgeMat(
+    hellForgeMat(
         'aerorelient_steel',
         17,
         [
@@ -311,7 +311,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         26.5
     );
-    HellForgeMat(
+    hellForgeMat(
         'zeroidic_trinate_steel',
         17,
         [
@@ -327,7 +327,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         41.1
     );
-    HellForgeMat(
+    hellForgeMat(
         'vastaqalloy_cr_4200x',
         15,
         [
@@ -343,7 +343,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         27.3
     );
-    HellForgeMat(
+    hellForgeMat(
         'soul_ascendant_cuperite',
         27,
         [
@@ -359,7 +359,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.UIV],
         13.8
     );
-    HellForgeMat(
+    hellForgeMat(
         'primordially_stellarized_weapon_grade_naquadah',
         160,
         [
@@ -402,22 +402,22 @@ ServerEvents.recipes((event) => {
 
     // Hyper Stellar Recipe
 
-    const HellforgeHeater = (type, origin, scaler, better) => {
+    const hellforgeHeater = (type, origin, scaler, better) => {
         event.recipes.gtceu
             .pressure_heat_chamber(id(type))
             .inputFluids(`gtceu:${origin} 50000`)
             .outputFluids(`start_core:${type} 5000`)
             .duration(1500)
-            .EUt(GTValues.VA[GTValues.UV] * 4 ** scaler);
+            .EUt(GTValues.VA[GTValues.UV] * Math.pow(4, scaler));
         event.recipes.gtceu
             .molten_destabilizing(id(better))
             .inputFluids(`start_core:${type} 10000`)
             .outputFluids(`gtceu:${origin} 70000`, `gtceu:infernal_concentrate 5000`, `start_core:${better} 2000`)
             .duration(1200)
-            .EUt(GTValues.VA[GTValues.UV] * 4 ** scaler);
+            .EUt(GTValues.VA[GTValues.UV] * Math.pow(4, scaler));
     };
-    HellforgeHeater('flamewake_solvent', 'superheated_infernal_concentrate', 1, 'cinderbrew_solvent');
-    HellforgeHeater('emberheart_nectar', 'sub_stellar_infernal_concentrate', 2, 'corefire_nectar');
+    hellforgeHeater('flamewake_solvent', 'superheated_infernal_concentrate', 1, 'cinderbrew_solvent');
+    hellforgeHeater('emberheart_nectar', 'sub_stellar_infernal_concentrate', 2, 'corefire_nectar');
 
     event.recipes.gtceu
         .manifold_centrifuge(id('infernal_tar_decomposition'))
@@ -453,7 +453,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate ${512 + scaler * 64}`)
             .itemOutputs(`96x kubejs:${type}_catalyst`)
             .duration(600)
-            .EUt(GTValues.VHA[GTValues.UV] * 4 ** scaler);
+            .EUt(GTValues.VHA[GTValues.UV] * Math.pow(4, scaler));
     };
     catalyst(
         'ascendant',

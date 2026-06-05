@@ -347,7 +347,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     // Fluid Pipes
     GTMaterials.NaquadahEnriched.setProperty(
         PropertyKey.FLUID_PIPE,
-        new FluidPipeProperties(8000, 500, true, true, true, false)
+        new $FluidPipeProperties(8000, 500, true, true, true, false)
     );
     GTMaterials.Netherite.setComponents('1x debris', '1x gold');
 
@@ -649,19 +649,19 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     // Materials
 
-    elemDust('uranium_233', 0x4fbb4f, [no_smelt]);
+    elemDust('uranium_233', 0x4fbb4f, [noSmelt]);
 
-    elemDustFluid('plutonium_238', 0xc13d3d, [no_smelt]);
+    elemDustFluid('plutonium_238', 0xc13d3d, [noSmelt]);
 
-    elemDust('plutonium_244', 0x951f1f, [no_smelt]);
+    elemDust('plutonium_244', 0x951f1f, [noSmelt]);
 
-    elemDust('americium_241', 0x1e492f, [no_smelt]);
+    elemDust('americium_241', 0x1e492f, [noSmelt]);
 
-    elemDust('curium_244', 0x6f4c46, [no_smelt]);
+    elemDust('curium_244', 0x6f4c46, [noSmelt]);
 
-    elemDust('californium_252', 0xa38783, [no_smelt]);
+    elemDust('californium_252', 0xa38783, [noSmelt]);
 
-    elemDust('einsteinium_253', 0xddbc4d, [no_smelt]);
+    elemDust('einsteinium_253', 0xddbc4d, [noSmelt]);
 
     elemIngotFluid('xeproda', 0x1a0d00, DULL, [15499, 'highest', VA('uev'), 2700], [fineWire]);
 
@@ -1078,7 +1078,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x001a1a,
         DULL,
         [10000, 'highest', VA('uiv'), 8000],
-        [rod, foil, plates, longRod, frame, noDecomp, no_abs_recipe, boltAndScrew, ring]
+        [rod, foil, plates, longRod, frame, noDecomp, noABSRecipe, boltAndScrew, ring]
     );
 
     //Extended Sculk
@@ -2140,7 +2140,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0xcfcab8,
         DULL,
         [5000, 'highest', VA('uhv'), 1800],
-        [foil, noDecomp, no_abs_recipe]
+        [foil, noDecomp, noABSRecipe]
     );
 
     compGem(
@@ -2244,9 +2244,9 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     //UEV Materials
     compDustLiquid('tungsten_disulfide', ['1x tungsten', '2x sulfur'], 0x928897, [noDecomp]);
 
-    event.create('warped').dust().color(0x4fbb85).flags([no_smelt]);
+    event.create('warped').dust().color(0x4fbb85).flags([noSmelt]);
 
-    compDust('hellfire_ash', ['1x mystery'], 0x5e4646, [no_smelt, noDecomp]);
+    compDust('hellfire_ash', ['1x mystery'], 0x5e4646, [noSmelt, noDecomp]);
 
     compLiquid('nether_star_concentrate', ['1x excited', '1x star', '1x excited'], 0xeeeeee, [noDecomp]);
 
@@ -2254,7 +2254,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     compLiquid('helish_concentrate', ['1x mystery'], 0x66a574, [noDecomp]);
 
-    elemLiquidSecColor('aurourium', 0x5d44de, 0xde44ce, SHINY, [], [noDecomp, fineWire, no_smelt]);
+    elemLiquidSecColor('aurourium', 0x5d44de, 0xde44ce, SHINY, [], [noDecomp, fineWire, noSmelt]);
 
     conductor(
         'cerium_tritelluride',
@@ -2290,7 +2290,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             noDecomp,
             rotor,
             fineWire,
-            no_abs_recipe,
+            noABSRecipe,
         ]
     );
 
@@ -2318,7 +2318,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             ring,
             foil,
             noDecomp,
-            no_abs_recipe
+            noABSRecipe
         );
 
     event
@@ -2332,7 +2332,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .blastTemp(17290, 'highest', VA('uev'), 600)
         .iconSet(SHINY) // Will Have Own in Theta? but that is a LOT of work
         .fluidPipeProperties(78500, 2500, true, true, true, true)
-        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noDecomp, no_abs_recipe);
+        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noDecomp, noABSRecipe);
 
     compIngotPlasma(
         'starium_alloy',
@@ -2351,7 +2351,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             smallGear,
             ring,
             noDecomp,
-            no_abs_recipe,
+            noABSRecipe,
             foil,
             densePlate,
         ]
@@ -2364,7 +2364,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         DULL,
         [17950, 'highest', VA('uev'), 600],
         [V('uev'), 32, 0, true],
-        [noDecomp, no_abs_recipe, fineWire, frame]
+        [noDecomp, noABSRecipe, fineWire, frame]
     );
 
     compDust('iron_titanium_oxide', ['3x iron', '2x titanium', '7x oxygen'], 0x82229b, [noDecomp]);
@@ -2404,7 +2404,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x68cf93,
         [],
         [8600, 'high', VA('zpm'), 1080],
-        [foil, noDecomp, no_abs_recipe]
+        [foil, noDecomp, noABSRecipe]
     );
 
     compLiquidStill('dragon_breath', ['1x dragon'], [noDecomp]);
@@ -2429,7 +2429,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         DULL,
         [14520, 'highest', VA('uhv'), 3200],
         [V('uiv'), 2, 36, false],
-        [spring, noDecomp, no_abs_recipe, ring]
+        [spring, noDecomp, noABSRecipe, ring]
     );
 
     conductorPlasma(
@@ -2445,7 +2445,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         DULL,
         [18850, 'highest', VA('uxv'), 600],
         [V('uiv'), 40, 0, true],
-        [noDecomp, no_abs_recipe, fineWire, boltAndScrew]
+        [noDecomp, noABSRecipe, fineWire, boltAndScrew]
     );
 
     event
@@ -2458,7 +2458,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .iconSet(SHINY)
         .blastTemp(18685, 'highest', VA('uiv'), 600)
         .cableProperties(V('uev'), 2, 4, false)
-        .flags(plates, frame, rod, boltAndScrew, round, longRod, gear, smallGear, ring, noDecomp, rotor, no_abs_recipe);
+        .flags(plates, frame, rod, boltAndScrew, round, longRod, gear, smallGear, ring, noDecomp, rotor, noABSRecipe);
 
     event
         .create('chaotixic_alloy')
@@ -2483,7 +2483,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             ring,
             foil,
             noDecomp,
-            no_abs_recipe
+            noABSRecipe
         );
 
     compIngotPlasma(
@@ -2492,7 +2492,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0xd0b660,
         SHINY,
         [18590, 'highest', VA('uiv'), 600],
-        [plates, frame, rod, boltAndScrew, round, longRod, gear, smallGear, ring, noDecomp, no_abs_recipe, densePlate]
+        [plates, frame, rod, boltAndScrew, round, longRod, gear, smallGear, ring, noDecomp, noABSRecipe, densePlate]
     );
 
     event.create('draconic_enrichment_serum').fluid().color(0xac97c5);
@@ -2507,7 +2507,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .secondaryColor(0x7817ec)
         .blastTemp(18880, 'highest', VA('uxv'), 600)
         .iconSet(SHINY)
-        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noDecomp, no_abs_recipe);
+        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noDecomp, noABSRecipe);
 
     event
         .create('draco_abyssal') //Shadowyrm
@@ -2519,7 +2519,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .secondaryColor(0x340e4d)
         .blastTemp(18880, 'highest', VA('uxv'), 600)
         .iconSet(SHINY)
-        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, fineWire, noDecomp, no_abs_recipe)
+        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, fineWire, noDecomp, noABSRecipe)
         .rotorStats(12800, 400, 50, 45000);
 
     //Threaded
@@ -2530,7 +2530,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x948da6,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     conductorPlasma(
@@ -2540,7 +2540,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
         [V('uiv'), 1, 192, false],
-        [noDecomp, no_abs_recipe, fineWire]
+        [noDecomp, noABSRecipe, fineWire]
     );
 
     compIngotPlasmaSecColor(
@@ -2557,7 +2557,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x70907c,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2567,7 +2567,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x2561b7,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe, foil]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe, foil]
     );
 
     compIngotPlasmaSecColor(
@@ -2577,7 +2577,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x4c487d,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2587,7 +2587,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x6a3f3f,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2603,7 +2603,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x83805a,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2613,7 +2613,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x37265e,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2623,7 +2623,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x50583e,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, rotor, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, rotor, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2633,7 +2633,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x534531,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2643,7 +2643,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x4b1146,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     compIngotPlasmaSecColor(
@@ -2659,7 +2659,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x3d075c,
         SHINY,
         [18880, 'highest', VA('uxv'), 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, no_abs_recipe]
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 
     //DES + PBD Line
@@ -2734,7 +2734,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         DULL,
         [18250, 'highest', VHA('uiv'), 1800],
         [V('uxv'), 7, 48, false],
-        [boltAndScrew, spring, smallSpring, no_abs_recipe, noDecomp, fineWire]
+        [boltAndScrew, spring, smallSpring, noABSRecipe, noDecomp, fineWire]
     );
 
     //Agriculture
@@ -2909,20 +2909,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .secondaryColor(0x489957)
         .blastTemp(18880, 'highest', VA('uxv'), 600)
         .iconSet(SHINY)
-        .flags(
-            plates,
-            frame,
-            rod,
-            densePlate,
-            longRod,
-            gear,
-            foil,
-            smallGear,
-            rotor,
-            fineWire,
-            noDecomp,
-            no_abs_recipe
-        );
+        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, fineWire, noDecomp, noABSRecipe);
 
     compGem(
         'aquariadic_rimuli_dragonix',

@@ -95,7 +95,7 @@ ServerEvents.recipes((event) => {
         .id('start:shaped/advanced_wireless_terminal');
 
     // Effortless Building Upgrade Accessibility
-    global.with_effortlessbuilding(() => {
+    global.withEffortlessBuilding(() => {
         const reachUpgrade = (type, mat, dye, core) => {
             event.remove({ output: `effortlessbuilding:reach_upgrade${type}` });
             event

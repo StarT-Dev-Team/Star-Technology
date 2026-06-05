@@ -11,6 +11,6 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${cFiber.plastic} 9`)
             .itemOutputs(`${32 * cFiber.scaler}x gtceu:carbon_fibers`)
             .duration(37)
-            .EUt(1920 * 2 ** cFiber.scaler);
+            .EUt(1920 * Math.pow(2, cFiber.scaler));
     });
 });

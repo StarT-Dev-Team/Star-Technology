@@ -330,7 +330,7 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .industrial_pump(id(`water_${tier}`))
             .notConsumable(`gtceu:${pumpTier}_electric_pump`)
-            .outputFluids(`minecraft:water ${3000 * 2 ** tier}`)
+            .outputFluids(`minecraft:water ${3000 * Math.pow(2, tier)}`)
             .duration(20);
     });
 

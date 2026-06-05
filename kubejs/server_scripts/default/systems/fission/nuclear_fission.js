@@ -38,16 +38,16 @@ global.notHardmode(() => {
                 .itemInputs(cell)
                 .itemInputs(composition)
                 .itemOutputs('kubejs:' + type + '_fuel_rod')
-                .duration(1200 / 2 ** tier)
-                .EUt(GTValues.VA[GTValues.HV] * 4 ** tier);
+                .duration(1200 / Math.pow(2, tier))
+                .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));
 
             event.recipes.gtceu
                 .centrifuge(id('depleted_' + type + '_fuel_rod_decomposition'))
                 .itemInputs('kubejs:depleted_' + type + '_fuel_rod')
                 .itemOutputs(cell)
                 .itemOutputs(decomposition)
-                .duration(1600 / 2 ** tier)
-                .EUt(GTValues.VHA[GTValues.HV] * 4 ** tier);
+                .duration(1600 / Math.pow(2, tier))
+                .EUt(GTValues.VHA[GTValues.HV] * Math.pow(4, tier));
         };
 
         nuclearRod(`thr`, 1, `4x ${$Th230}`, `4x ${$U235}`);

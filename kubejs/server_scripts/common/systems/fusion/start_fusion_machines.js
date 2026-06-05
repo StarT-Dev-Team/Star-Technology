@@ -255,7 +255,7 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:' + fluid)
             .itemOutputs('2x ' + output)
             .duration(400)
-            .EUt(GTValues.VA[GTValues.EV] * 4 ** tier)
+            .EUt(GTValues.VA[GTValues.EV] * Math.pow(4, tier))
             .cleanroom(clean);
         if (tier === 1) {
             fusionReflectorRecipe.itemInputs(`6x gtceu:trinium_foil`);
@@ -341,18 +341,18 @@ ServerEvents.recipes((event) => {
 
     // === Coils ===
     event.remove({ output: 'gtceu:superconducting_coil' });
-    let superconductingCoil = (tier, SuperCond, quant) => {
+    let superconductingCoil = (tier, superCond, quant) => {
         event.recipes.gtceu
             .assembler(id(`superconducting_coil_${tier}`))
             .itemInputs(
                 'gtceu:enriched_naquadah_frame',
-                `16x gtceu:${SuperCond}_double_wire`,
+                `16x gtceu:${superCond}_double_wire`,
                 '32x gtceu:niobium_titanium_foil'
             )
             .inputFluids('gtceu:trinium 1728')
-            .itemOutputs(`${2 ** (quant - 1)}x gtceu:superconducting_coil`)
+            .itemOutputs(`${Math.pow(2, quant - 1)}x gtceu:superconducting_coil`)
             .duration(100)
-            .EUt(GTValues.VA[GTValues.IV] * 4 ** quant);
+            .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, quant));
     };
     superconductingCoil('luv', 'indium_tin_barium_titanium_cuprate', 1);
     superconductingCoil('zpm', 'uranium_rhodium_dinaquadide', 2);

@@ -526,17 +526,17 @@ ServerEvents.recipes((event) => {
                     )
                     .inputFluids(
                         `gtceu:sodium_potassium ${math * 4000 + 12000}`,
-                        `gtceu:indium_tin_lead_cadmium_soldering_alloy ${1440 * 2 ** math}`
+                        `gtceu:indium_tin_lead_cadmium_soldering_alloy ${1440 * Math.pow(2, math)}`
                     )
                     .itemOutputs(`gtceu:${tier}_energy_${type}_hatch`)
                     .stationResearch((researchRecipeBuilder) =>
                         researchRecipeBuilder
                             .researchStack(Item.of(`gtceu:${tier1}_energy_${type}_hatch`))
-                            .EUt(122880 * 4 ** math)
+                            .EUt(122880 * Math.pow(4, math))
                             .CWUt(math * 64 + 64)
                     )
                     .duration(800)
-                    .EUt(491520 * 4 ** math);
+                    .EUt(491520 * Math.pow(4, math));
             }); //multi-amp and laser in large_energy_hatches_file
         }
 

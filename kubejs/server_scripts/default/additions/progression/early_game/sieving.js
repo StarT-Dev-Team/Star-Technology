@@ -185,7 +185,7 @@ global.notHardmode(() => {
             .add('minecraft:mangrove_propagule', 0.15)
             .add('exnihilosequentia:mycelium_spores', 0.2)
             // Rooted Dirt Sieving
-            .input(csi.rooted_dirt)
+            .input(csi.rootedDirt)
             .add('thermal:flax_seeds', 0.15)
             .add('minecraft:potato', 0.15)
             .add('minecraft:carrot', 0.15)
@@ -264,7 +264,7 @@ global.notHardmode(() => {
             .add('exnihilosequentia:stone_pebble', 0.05)
             .add('exnihilosequentia:tuff_pebble', 0.05);
 
-        global.with_xycraft_world(() => {
+        global.withXycraftWorld(() => {
             // Waterlogged Dust Sieving
             SIEVING_RECIPE_HANDLER.input(csi.dust)
                 .waterlogged(true)

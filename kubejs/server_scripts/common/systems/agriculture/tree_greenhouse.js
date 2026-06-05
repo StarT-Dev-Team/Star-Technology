@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         { name: 'cherry', sapling: 'cherry_sapling', namespace: 'minecraft' },
         { name: 'mangrove', sapling: 'mangrove_propagule', namespace: 'minecraft' },
     ];
-    global.with_architects_palette(() => {
+    global.withArchitectsPalette(() => {
         woodTypes.push({
             name: 'twisted',
             sapling: 'twisted_sapling',

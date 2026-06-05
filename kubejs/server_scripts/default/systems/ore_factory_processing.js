@@ -461,7 +461,7 @@ global.notHardmode(() => {
             hv: GTValues.VA[GTValues.HV],
             ev: GTValues.VA[GTValues.EV],
         };
-        const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilled_water : fluids.sodium_persulfate;
+        const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
         event.recipes.gtceu
             .electric_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -495,7 +495,7 @@ global.notHardmode(() => {
         event.recipes.gtceu
             .bulk_ore_processing_array(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 10))
-            .inputFluids(fluids.water_5x)
+            .inputFluids(fluids.water5x)
             .itemOutputs(dust(materialObj.material, 10))
             .itemOutputs(dust(materialObj.material, 10))
             .itemOutputs(dust(materialObj.secondary, 8))
@@ -516,8 +516,8 @@ global.notHardmode(() => {
             hv: GTValues.VHA[GTValues.HV],
             ev: GTValues.VHA[GTValues.EV],
         };
-        const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilled_water : fluids.sodium_persulfate;
-        const fluid5x = tier === 'lv' || tier === 'mv' ? fluids.distilled_water_5x : fluids.sodium_persulfate_5x;
+        const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
+        const fluid5x = tier === 'lv' || tier === 'mv' ? fluids.distilledWater5x : fluids.sodiumPersulfate5x;
         event.recipes.gtceu
             .plant_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -550,7 +550,7 @@ global.notHardmode(() => {
         event.recipes.gtceu
             .plant_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
-            .inputFluids(fluids.sodium_persulfate_5x)
+            .inputFluids(fluids.sodiumPersulfate5x)
             .itemOutputs(dust(materialObj.material, 1))
             .chancedOutput(dust(materialObj.material, 1), 8000, 0)
             .chancedOutput(dust(materialObj.secondary, 1), 6000, 0)
@@ -563,7 +563,7 @@ global.notHardmode(() => {
         event.recipes.gtceu
             .bulk_ore_processing_array(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 10))
-            .inputFluids(fluids.sodium_persulfate_25x)
+            .inputFluids(fluids.sodiumPersulfate25x)
             .itemOutputs(dust(materialObj.material, 10))
             .itemOutputs(dust(materialObj.material, 9))
             .itemOutputs(dust(materialObj.secondary, 7))

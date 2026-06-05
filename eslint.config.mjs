@@ -49,6 +49,11 @@ export default [
                 StartupEvents: "readonly",
                 ForgeEvents: "readonly",
                 WorldgenEvents: "readonly",
+                ServerLevel: "readonly",
+                Registries: "readonly",
+                HolderSet: "readonly",
+                ChunkPos: "readonly",
+                
                 // GTm Globals
                 $MultiblockMachineDefinition: "readonly",
                 GTRegistries: "readonly",

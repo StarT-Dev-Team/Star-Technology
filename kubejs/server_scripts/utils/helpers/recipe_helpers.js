@@ -322,8 +322,8 @@ const modRequirements = {
     architectsPalette: 'architects_palette',
     xycraftWorld: 'xycraft_world',
     chipped: 'chipped',
-    framedblocks: 'framedblocks',
-    effortlessbuilding: 'effortlessbuilding',
+    framedBlocks: 'framedblocks',
+    effortlessBuilding: 'effortlessbuilding',
 };
 
 // Auto-generate all the wrapper functions
@@ -334,7 +334,7 @@ Object.entries(modRequirements).forEach(([name, mod]) => {
      * @param {function} ifTrue - Function to execute if current mod is loaded'.
      * @param {function} ifFalse - Function to execute if current mod is NOT loaded'.
      */
-    global[`with_${name}`] = (ifTrue, ifFalse) => {
+    global[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = (ifTrue, ifFalse) => {
         if (mods.every((m) => Platform.isLoaded(m))) {
             if (ifTrue && typeof ifTrue === 'function') {
                 ifTrue();
