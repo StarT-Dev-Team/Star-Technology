@@ -1,0 +1,19 @@
+{
+  "name": "star-technology",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint kubejs/**/*.js",
+    "lint:fix": "eslint kubejs/**/*.js --fix",
+    "format": "prettier --check kubejs/**/*.js",
+    "format:fix": "prettier --write kubejs/**/*.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0"
+  }
+}

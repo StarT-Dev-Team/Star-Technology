@@ -1,0 +1,10 @@
+# Ignore everything except kubejs scripts
+*
+!kubejs/
+!kubejs/**
+*.md
+
+!.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

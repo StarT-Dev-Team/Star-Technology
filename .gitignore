@@ -70,3 +70,14 @@ config/konkrete/locals/en_us.local
 config/konkrete/locals/pl_pl.local
 config/konkrete/locals/pt_br.local
 config/skyblockbuilder/data/*
+
+# Linting stuff
+!package.json
+!eslint.config.mjs
+!.prettierignore
+!.prettierrc
+# wth is this jank
+!.vscode/
+.vscode/* 
+!.vscode/settings.json
+!.vscode/extensions.json
