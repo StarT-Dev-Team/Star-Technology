@@ -1,21 +1,28 @@
-
-GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
-
-    event.create('quantum_cooling')
+GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
+    event
+        .create('quantum_cooling')
         .category('extremely_advanced')
         .setEUIO('in')
         .setMaxIOSize(0, 0, 2, 2)
         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.COOLING);
-
 });
 
-GTCEuStartupEvents.registry('gtceu:machine', event => { // Filler pre-multi
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    // Filler pre-multi
+    // prettier-ignore
 
-    event.create('cryostate_quantum_chiller', 'multiblock')
+    event
+        .create('cryostate_quantum_chiller', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeTypes(['quantum_cooling', 'vacuum_freezer'])
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THROUGHPUT_BOOSTING, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
+            $StarTRecipeModifiers.BULK_PROCESSING,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:subzero_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle('       BBBBBBB       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       CCCCCCC       ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ')
@@ -39,26 +46,30 @@ GTCEuStartupEvents.registry('gtceu:machine', event => { // Filler pre-multi
             .aisle('    BBDDDDDDDDDBB    ', '      DDFFFFFDD      ', '      DDFCFCFDD      ', '      DDFCFCFDD      ', '      DDFCFCFDD      ', '      DDFCGCFDD      ', '    CCBBFFFFFBBCC    ', '        DEEED        ', '        DEFED        ', '        DEEED        ', '        DEEED        ', '        DEFED        ', '        DEEED        ', '     CCCBBBBBCCC     ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '     CCCBBBBBCCC     ', '        DDDDD        ')
             .aisle('     BBBDDDDDBBB     ', '        DEEED        ', '        DE@ED        ', '        DEEED        ', '        DEEED        ', '        DEEED        ', '     CCCBBBBBCCC     ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       CCCCCCC       ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '       CCCCCCC       ', '                     ')
             .aisle('       BBBBBBB       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       C     C       ', '       CCCCCCC       ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ', '                     ')
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-            .where('C', Predicates.blocks('gtceu:void_frame'))
-            .where('D', Predicates.blocks('kubejs:reinforced_cryostone_casing'))
-            .where('E', Predicates.blocks('kubejs:subzero_casing')
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1)))
-            .where('F', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-            .where('G', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-            .where('H', Predicates.blocks('gtceu:heat_vent'))
-            .where('I', Predicates.blocks('gtceu:cleanroom_glass'))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/nether_multis/subzero_casing',
-            'gtceu:block/multiblock/implosion_compressor');
-
-
+                .where(' ', Predicates.any())
+                .where('B', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
+                .where('C', Predicates.blocks('gtceu:void_frame'))
+                .where('D', Predicates.blocks('kubejs:reinforced_cryostone_casing'))
+                .where(
+                    'E',
+                    Predicates.blocks('kubejs:subzero_casing')
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                )
+                .where('F', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
+                .where('G', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
+                .where('H', Predicates.blocks('gtceu:heat_vent'))
+                .where('I', Predicates.blocks('gtceu:cleanroom_glass'))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/nether_multis/subzero_casing',
+            'gtceu:block/multiblock/implosion_compressor'
+        );
 });

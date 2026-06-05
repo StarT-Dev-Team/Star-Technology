@@ -1,6 +1,6 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
-
-    event.create('component_synthesis_forge')
+GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
+    event
+        .create('component_synthesis_forge')
         .category('extremely_advanced')
         .setEUIO('in')
         .setMaxIOSize(10, 1, 5, 0)
@@ -9,7 +9,8 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT)
         .setMaxTooltips(4);
 
-    event.create('component_part_synthesis_forge')
+    event
+        .create('component_part_synthesis_forge')
         .category('extremely_advanced')
         .setEUIO('in')
         .setMaxIOSize(6, 1, 2, 0)
@@ -17,20 +18,21 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
         .setSound(GTSoundEntries.ASSEMBLER)
         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT)
         .setMaxTooltips(4);
-
 });
 
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('multithreaded_component_synthesis_forge', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    // prettier-ignore
+    event
+        .create('multithreaded_component_synthesis_forge', 'multiblock')
         .machine((holder) => new $StarTThreadingCapableMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
-        .tooltips([ 
-            Text.translate("block.start_core.gap"),
-            Text.translate("block.kubejs.threading.tooltip")
-        ])
+        .tooltips([Text.translate('block.start_core.gap'), Text.translate('block.kubejs.threading.tooltip')])
         .recipeTypes(['component_synthesis_forge', 'component_part_synthesis_forge'])
-        .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THREADING_MACHINE, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.THREADING_MACHINE,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:nyanium_machine_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle('           BCBBBCB           ', '            C   C            ', '            C   C            ', '           BCBBBCB           ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ')
@@ -62,32 +64,39 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('       BBBBBBBBBBBBBBB       ', '         DDGGGGGGGDD         ', '         DDGG222GGDD         ', '       BBBBBF   FBBBBB       ', '                             ', '                             ', '                             ', '             AAA             ', '            A   A            ', '            A   A            ', '            A   A            ', '             AAA             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '             AAA             ', '            A   A            ', '            A   A            ', '            A   A            ', '             AAA             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '           BBBBBBB           ')
             .aisle('         BBBBBBBBBBB         ', '           DEEEEED           ', '           DEEEEED           ', '         BBBFFFFFBBB         ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ')
             .aisle('           BCBBBCB           ', '            C   C            ', '            C   C            ', '           BCBBBCB           ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ', '                             ')
-            .where('A', Predicates.blocks('gtceu:sturdy_machine_casing'))
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('kubejs:advanced_assembly_casing'))
-            .where('C', Predicates.blocks('kubejs:draco_assembly_grating'))
-            .where('D', Predicates.blocks('kubejs:nyanium_machine_casing'))
-            .where('E', Predicates.blocks('kubejs:nyanium_firebox_casing'))
-            .where('F', Predicates.blocks('start_core:fusion_casing_mk4'))
-            .where('G', Predicates.blocks('kubejs:superdense_assembly_machine_casing'))
-            .where('H', Predicates.blocks('start_core:advanced_fusion_coil'))
-            .where('I', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-            .where('J', Predicates.blocks('gtceu:uiv_rotor_holder'))
-            .where('K', Predicates.blocks('gtceu:palladium_substation'))
-            .where('L', Predicates.blocks('kubejs:draco_ware_casing'))
-            .where('M', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-            .where('P', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-            .where('Q', Predicates.blocks('start_core:threading_controller'))
-            .where('2', $StarTThreadingStatBlocks.threadingStatBlocks())
-            .where('0', Predicates.blocks('kubejs:nyanium_machine_casing')
-                .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.OPTICAL_DATA_RECEPTION).setMaxGlobalLimited(1).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
-                .or(Predicates.blocks('gtceu:uhv_stabilization_module').setExactLimit(1)))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/nyanium/casing',
-            'gtceu:block/machines/assembler');
+                .where('A', Predicates.blocks('gtceu:sturdy_machine_casing'))
+                .where(' ', Predicates.any())
+                .where('B', Predicates.blocks('kubejs:advanced_assembly_casing'))
+                .where('C', Predicates.blocks('kubejs:draco_assembly_grating'))
+                .where('D', Predicates.blocks('kubejs:nyanium_machine_casing'))
+                .where('E', Predicates.blocks('kubejs:nyanium_firebox_casing'))
+                .where('F', Predicates.blocks('start_core:fusion_casing_mk4'))
+                .where('G', Predicates.blocks('kubejs:superdense_assembly_machine_casing'))
+                .where('H', Predicates.blocks('start_core:advanced_fusion_coil'))
+                .where('I', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
+                .where('J', Predicates.blocks('gtceu:uiv_rotor_holder'))
+                .where('K', Predicates.blocks('gtceu:palladium_substation'))
+                .where('L', Predicates.blocks('kubejs:draco_ware_casing'))
+                .where('M', Predicates.blocks('kubejs:nyanium_pipe_casing'))
+                .where('P', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
+                .where('Q', Predicates.blocks('start_core:threading_controller'))
+                .where('2', $StarTThreadingStatBlocks.threadingStatBlocks())
+                .where(
+                    '0',
+                    Predicates.blocks('kubejs:nyanium_machine_casing')
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0))
+                        .or(
+                            Predicates.abilities(PartAbility.OPTICAL_DATA_RECEPTION)
+                                .setMaxGlobalLimited(1)
+                                .setPreviewCount(0)
+                        )
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
+                        .or(Predicates.blocks('gtceu:uhv_stabilization_module').setExactLimit(1))
+                )
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel('kubejs:block/casings/nyanium/casing', 'gtceu:block/machines/assembler');
 });

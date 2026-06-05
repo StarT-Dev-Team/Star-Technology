@@ -1,14 +1,18 @@
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('superior_particulate_isolation_nexus', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    // prettier-ignore
+    event
+        .create('superior_particulate_isolation_nexus', 'multiblock')
         .machine((holder) => new $StarTThreadingCapableMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
-        .tooltips([ 
-            Text.translate("block.start_core.gap"),
-            Text.translate("block.kubejs.threading.tooltip")
-        ])
+        .tooltips([Text.translate('block.start_core.gap'), Text.translate('block.kubejs.threading.tooltip')])
         .recipeTypes(['sifter', 'centrifuge', 'thermal_centrifuge'])
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THREADING_MACHINE, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.THREADING_MACHINE,
+            $StarTRecipeModifiers.BULK_PROCESSING,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:tectonic_defiance_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle(' BBB BBB BBB ', '             ', '             ', '             ', '             ', '             ', '             ', '     BBB     ', '  CBBBDBBBC  ', '  CBEEEEEBC  ', '  CBFFFFFBC  ', '  CBFFFFFBC  ', '  CBEEEEEBC  ', '  CBBBBBBBC  ', '             ', '             ', '             ')
@@ -25,26 +29,29 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('BBBBCBBBCBBBB', '  C   C   C  ', '      C      ', '             ', '             ', '             ', '             ', '   CGBBBGC   ', ' BBBGBBBGBBB ', ' BBBGGGGGBBB ', '   B     B   ', '   B     B   ', ' BBBGGGGGBBB ', ' BBBGBBBGBBB ', '   CGBBBGC   ', '             ', '             ')
             .aisle(' BBB BBB BBB ', '             ', '             ', '             ', '             ', '             ', '             ', '     BBB     ', '  CBBB@BBBC  ', '  CBEEEEEBC  ', '  CBFFFFFBC  ', '  CBFFFFFBC  ', '  CBEEEEEBC  ', '  CBBBBBBBC  ', '             ', '             ', '             ')
             .where('B', Predicates.blocks('kubejs:tectonic_defiance_casing')
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
-            .where(' ', Predicates.any())
-            .where('C', Predicates.blocks('gtceu:melastrium_mox_frame'))
-            .where('D', Predicates.blocks('start_core:threading_controller'))
-            .where('E', Predicates.blocks('kubejs:draco_assembly_grating'))
-            .where('F', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-            .where('G', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
-            .where('H', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-            .where('I', $StarTThreadingStatBlocks.threadingStatBlocks())
-            .where('J', Predicates.blocks('start_core:auxiliary_boosted_fusion_casing_mk2'))
-            .where('K', Predicates.blocks('start_core:advanced_fusion_coil'))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/threading/tectonic_defiance_casing',
-            'gtceu:block/machines/centrifuge');
-
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                )
+                .where(' ', Predicates.any())
+                .where('C', Predicates.blocks('gtceu:melastrium_mox_frame'))
+                .where('D', Predicates.blocks('start_core:threading_controller'))
+                .where('E', Predicates.blocks('kubejs:draco_assembly_grating'))
+                .where('F', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
+                .where('G', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
+                .where('H', Predicates.blocks('kubejs:nyanium_pipe_casing'))
+                .where('I', $StarTThreadingStatBlocks.threadingStatBlocks())
+                .where('J', Predicates.blocks('start_core:auxiliary_boosted_fusion_casing_mk2'))
+                .where('K', Predicates.blocks('start_core:advanced_fusion_coil'))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/threading/tectonic_defiance_casing',
+            'gtceu:block/machines/centrifuge'
+        );
 });

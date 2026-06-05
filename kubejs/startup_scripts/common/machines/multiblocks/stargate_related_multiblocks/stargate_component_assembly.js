@@ -1,18 +1,18 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
-
-    event.create('stargate_component_assembly')
+GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
+    event
+        .create('stargate_component_assembly')
         .category('gate_construction')
         .setEUIO('in')
         .setMaxIOSize(4, 1, 2, 0)
         .setProgressBar(GuiTextures.PROGRESS_BAR_MASS_FAB, FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.ASSEMBLER)
         .setLayered();
-
 });
 
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('stargate_component_assembly', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    // prettier-ignore
+    event
+        .create('stargate_component_assembly', 'multiblock')
         .machine((holder) => new $LayeredWorkableElectricMultiblockMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('stargate_component_assembly')
@@ -44,21 +44,26 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('BCCCB     BCCCB     BCCCB', ' DFDCEE EEC   CEE EECDFD ', ' DFFFFFFFFC   CFFFFFFFFD ', ' DFDCEE EEC   CEE EECDFD ', 'BCFCB     BCCCB     BCFCB', ' EFE       EFE       EFE ', ' EFE       EFE       EFE ', '  F         F         F  ', ' EFE       EFE       EFE ', ' EFE       EFE       EFE ', 'BCFCB     BCFCB     BCFCB', ' DFDCEE EECDFDCEE EECDFD ', ' DFFFFFFFFFFFFFFFFFFFFFD ', ' DDDCEE EECDDDCEE EECDDD ', 'B   B     B   B     B   B')
             .aisle('BCCCB     BCCCB     BCCCB', ' DDDC     C   C     CDDD ', ' DDDCEE EEC   CEE EECDDD ', ' DDDC     C   C     CDDD ', 'BCCCB     BCCCB     BCCCB', '  E         E         E  ', '  E         E         E  ', '                         ', '  E         E         E  ', '  E         E         E  ', 'BCCCB     BCCCB     BCCCB', ' DDDC     CDDDC     CDDD ', ' DDDCEE EECDDDCEE EECDDD ', ' DDDC     CDDDC     CDDD ', 'B   B     B   B     B   B')
             .aisle(' BBB       BBB       BBB ', 'B   B     B   B     B   B', 'B   B     B   B     B   B', 'B   B     B   B     B   B', ' BBB       BBB       BBB ', '                         ', '                         ', '                         ', '                         ', '                         ', ' BBB       BBB       BBB ', 'B   B     B   B     B   B', 'B   B     B   B     B   B', 'B   B     B   B     B   B', ' BBB       BBB       BBB ')
-            .where('B', Predicates.blocks('kubejs:enderium_casing'))
-            .where(' ', Predicates.any())
-            .where('C', Predicates.blocks('kubejs:prismalium_casing')
-                .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
-            .where('D', Predicates.blocks('gtceu:trinium_coil_block'))
-            .where('E', Predicates.blocks('gtceu:atomic_casing'))
-            .where('F', Predicates.blocks('kubejs:dragonsteel_casing'))
-            .where('G', Predicates.blocks('gtceu:fusion_glass'))
-            .where('H', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-            .where('I', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-            .where('J', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/superconductors/casing_prismalium',
-            'gtceu:block/multiblock/implosion_compressor');
-
+                .where('B', Predicates.blocks('kubejs:enderium_casing'))
+                .where(' ', Predicates.any())
+                .where(
+                    'C',
+                    Predicates.blocks('kubejs:prismalium_casing')
+                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                )
+                .where('D', Predicates.blocks('gtceu:trinium_coil_block'))
+                .where('E', Predicates.blocks('gtceu:atomic_casing'))
+                .where('F', Predicates.blocks('kubejs:dragonsteel_casing'))
+                .where('G', Predicates.blocks('gtceu:fusion_glass'))
+                .where('H', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
+                .where('I', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
+                .where('J', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/superconductors/casing_prismalium',
+            'gtceu:block/multiblock/implosion_compressor'
+        );
 });

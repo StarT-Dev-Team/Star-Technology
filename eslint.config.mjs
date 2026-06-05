@@ -103,6 +103,9 @@ export default [
                 $FormattingUtil: "readonly",
                 WidgetGroup: "readonly",
                 ProgressWidget: "readonly",
+                $StarTVacuumPumpPredicates: "readonly",
+                $StarTThreadingCapableMachine: "readonly",
+                $StarTThreadingStatBlocks: "readonly",
             },
         },
         rules: {
