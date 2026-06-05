@@ -1,7 +1,5 @@
-global.not_hardmode(() => {
-
-    ServerEvents.recipes(event => {
-
+global.notHardmode(() => {
+    ServerEvents.recipes((event) => {
         event.remove({ output: /gtceu:.*_energy_converter/ });
 
         const converterMaterials = {
@@ -64,22 +62,20 @@ global.not_hardmode(() => {
                 casing: 'gtceu:mythrolic_alloy',
                 cable: 'gtceu:cerium_tritelluride',
                 has64aConverter: true,
-            }
+            },
         };
 
-        function converterCraftingRecipe(amps, thickness){
+        function converterCraftingRecipe(amps, thickness) {
             for (const [tier, info] of Object.entries(converterMaterials)) {
-                event.shaped(Item.of(`gtceu:${tier}_${amps}a_energy_converter`), [
-                    '   ',
-                    'WCW',
-                    'WSW'
-                ], {
-                    W: `${info.superconductor}_${thickness}_wire`,
-                    C: `#gtceu:circuits/${tier}`,
-                    S: `gtceu:${tier}_machine_hull`
-                }).id(`start:shaped/${tier}_${amps}a_energy_converter`);
-            };
-        };
+                event
+                    .shaped(Item.of(`gtceu:${tier}_${amps}a_energy_converter`), ['   ', 'WCW', 'WSW'], {
+                        W: `${info.superconductor}_${thickness}_wire`,
+                        C: `#gtceu:circuits/${tier}`,
+                        S: `gtceu:${tier}_machine_hull`,
+                    })
+                    .id(`start:shaped/${tier}_${amps}a_energy_converter`);
+            }
+        }
 
         converterCraftingRecipe(1, 'single');
         converterCraftingRecipe(4, 'quadruple');
@@ -89,18 +85,23 @@ global.not_hardmode(() => {
         // 64A Converter Recipe
         for (const [tier, info] of Object.entries(converterMaterials)) {
             if (!info.has64aConverter) continue;
-            event.recipes.gtceu.assembler(`start_core:${tier}_64a_energy_converter`)
-                .itemInputs(`#gtceu:circuits/${tier}`, `16x ${info.superconductor}_hex_wire`, `gtceu:${tier}_machine_hull`)
+            event.recipes.gtceu
+                .assembler(`start_core:${tier}_64a_energy_converter`)
+                .itemInputs(
+                    `#gtceu:circuits/${tier}`,
+                    `16x ${info.superconductor}_hex_wire`,
+                    `gtceu:${tier}_machine_hull`
+                )
                 .itemOutputs(Item.of(`start_core:${tier}_64a_energy_converter`))
                 .duration(600)
-                .EUt(1625)
+                .EUt(1625);
         }
     });
 });
 
-BlockEvents.placed(event => {
-	let block = event.getBlock();
-	if (/^(?:gtceu|start_core):.*energy_converter$/.test(block.getId())) {
+BlockEvents.placed((event) => {
+    let block = event.getBlock();
+    if (/^(?:gtceu|start_core):.*energy_converter$/.test(block.getId())) {
         block.mergeEntityData({ energyContainer: { feToEu: true } });
-	};
+    }
 });

@@ -1,7 +1,8 @@
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
-    event.recipes.gtceu.wild_garden(id('flowers'))
+    event.recipes.gtceu
+        .wild_garden(id('flowers'))
         .itemInputs('minecraft:bone_meal')
         .chancedOutput('minecraft:dandelion', 800, 200)
         .chancedOutput('minecraft:poppy', 800, 200)
@@ -19,7 +20,8 @@ ServerEvents.recipes(event => {
         .EUt(global.vha['lv'])
         .circuit(0);
 
-    event.recipes.gtceu.wild_garden(id('tall_flowers_and_wither_rose'))
+    event.recipes.gtceu
+        .wild_garden(id('tall_flowers_and_wither_rose'))
         .itemInputs('minecraft:bone_meal')
         .chancedOutput('minecraft:torchflower_seeds', 200, 200)
         .chancedOutput('minecraft:pitcher_pod', 200, 200)
@@ -32,7 +34,8 @@ ServerEvents.recipes(event => {
         .EUt(global.vha['lv'])
         .circuit(1);
 
-    event.recipes.gtceu.wild_garden(id('wild_crops'))
+    event.recipes.gtceu
+        .wild_garden(id('wild_crops'))
         .itemInputs('minecraft:bone_meal')
         .chancedOutput('minecraft:glow_berries', 500, 200)
         .chancedOutput('farmersdelight:wild_cabbages', 800, 200)
@@ -43,7 +46,8 @@ ServerEvents.recipes(event => {
         .EUt(global.vha['lv'])
         .circuit(2);
 
-    event.recipes.gtceu.wild_garden(id('thermal_crops_1'))
+    event.recipes.gtceu
+        .wild_garden(id('thermal_crops_1'))
         .itemInputs('minecraft:bone_meal')
         .chancedOutput('thermal:barley_seeds', 800, 200)
         .chancedOutput('thermal:corn_seeds', 800, 200)
@@ -60,7 +64,8 @@ ServerEvents.recipes(event => {
         .EUt(global.vha['lv'])
         .circuit(3);
 
-    event.recipes.gtceu.wild_garden(id('thermal_crops_2'))
+    event.recipes.gtceu
+        .wild_garden(id('thermal_crops_2'))
         .itemInputs('minecraft:bone_meal')
         .chancedOutput('thermal:amaranth_seeds', 800, 200)
         .chancedOutput('thermal:sadiroot_seeds', 800, 200)
@@ -73,7 +78,8 @@ ServerEvents.recipes(event => {
         .EUt(global.vha['lv'])
         .circuit(4);
 
-    event.recipes.gtceu.wild_garden(id('sea_crops'))
+    event.recipes.gtceu
+        .wild_garden(id('sea_crops'))
         .itemInputs('minecraft:bone_meal')
         .chancedOutput('farmersdelight:wild_beetroots', 800, 200)
         .chancedOutput('minecraft:seagrass', 800, 200)
@@ -83,5 +89,4 @@ ServerEvents.recipes(event => {
         .duration(100)
         .EUt(global.vha['lv'])
         .circuit(5);
-
 });

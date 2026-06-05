@@ -1,6 +1,7 @@
-StartupEvents.registry('block', event => {
-    const KubeCasing = (type) => {
-        event.create(`${type}_casing`)
+StartupEvents.registry('block', (event) => {
+    const kubeCasing = (type) => {
+        event
+            .create(`${type}_casing`)
             .hardness(5)
             .resistance(1)
             .soundType('metal')
@@ -9,23 +10,23 @@ StartupEvents.registry('block', event => {
             .tagBlock('mineable/pickaxe')
             .tagBlock('minecraft:needs_iron_tool')
             .textureAll(`kubejs:block/casings/large_cubes/${type}_casing`);
-    }
+    };
 
-    KubeCasing('beryllium_aluminium_alloy');
-    KubeCasing('birmabright');
-    KubeCasing('beryllium_bronze');
-    KubeCasing('blue_steel');
-    KubeCasing('duralumin');
-    KubeCasing('elgiloy');
-    KubeCasing('hydronalium');
-    KubeCasing('kovar');
-    KubeCasing('red_steel');
-    KubeCasing('silicon_bronze');
-    KubeCasing('sterling_silver');
-    KubeCasing('zamak');
-    KubeCasing('tumbaga');
-    KubeCasing('silicone_rubber');
-    KubeCasing('black_steel');
-    KubeCasing('manganin');
-    KubeCasing('galvanized_steel');
+    kubeCasing('beryllium_aluminium_alloy');
+    kubeCasing('birmabright');
+    kubeCasing('beryllium_bronze');
+    kubeCasing('blue_steel');
+    kubeCasing('duralumin');
+    kubeCasing('elgiloy');
+    kubeCasing('hydronalium');
+    kubeCasing('kovar');
+    kubeCasing('red_steel');
+    kubeCasing('silicon_bronze');
+    kubeCasing('sterling_silver');
+    kubeCasing('zamak');
+    kubeCasing('tumbaga');
+    kubeCasing('silicone_rubber');
+    kubeCasing('black_steel');
+    kubeCasing('manganin');
+    kubeCasing('galvanized_steel');
 });

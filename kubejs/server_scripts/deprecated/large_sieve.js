@@ -1,4 +1,3 @@
-
 // ServerEvents.recipes(event => {
 //     const id = global.id;
 
@@ -21,10 +20,10 @@
 //     event.recipes.gtceu.large_sieve(id('sand_sieving'))
 //         .itemInputs('64x minecraft:sand')
 //         .itemOutputs('64x minecraft:diamond', '64x minecraft:emerald', '64x minecraft:amethyst_shard', '64x minecraft:quartz', '64x minecraft:lapis_lazuli',)
-//             // '64x minecraft:coal', '64x gtceu:crushed_diamond_ore', '64x gtceu:crushed_quartzite_ore', '64x gtceu:crushed_green_sapphire_ore', 
-//             // '64x gtceu:crushed_emerald_ore', '64x gtceu:crushed_saltpeter_ore', '64x gtceu:crushed_ruby_ore', '64x gtceu:crushed_realgar_ore', 
+//             // '64x minecraft:coal', '64x gtceu:crushed_diamond_ore', '64x gtceu:crushed_quartzite_ore', '64x gtceu:crushed_green_sapphire_ore',
+//             // '64x gtceu:crushed_emerald_ore', '64x gtceu:crushed_saltpeter_ore', '64x gtceu:crushed_ruby_ore', '64x gtceu:crushed_realgar_ore',
 //             // '64x gtceu:crushed_rock_salt_ore', '64x gtceu:crushed_salt_ore', '64x gtceu:crushed_certus_quartz_ore', '64x gtceu:crushed_sapphire_ore',
-//             // '64x gtceu:crushed_monazite_ore', '64x gtceu:crushed_topaz_ore', '64x gtceu:crushed_yellow_garnet_ore', '64x gtceu:crushed_red_garnet_ore', 
+//             // '64x gtceu:crushed_monazite_ore', '64x gtceu:crushed_topaz_ore', '64x gtceu:crushed_yellow_garnet_ore', '64x gtceu:crushed_red_garnet_ore',
 //             // '64x gtceu:crushed_apatite_ore', '64x gtceu:crushed_blue_topaz_ore', '64x gtceu:crushed_garnet_sand_ore','64x gtceu:crushed_zeolite_ore')
 //         .duration(400)
 //         .EUt(6400);
@@ -37,9 +36,9 @@
 
 //     event.recipes.gtceu.large_sieve(id('blackstone_sieving'))
 //         .itemInputs('64x exnihilosequentia:crushed_blackstone')
-//         .itemOutputs('64x gtceu:crushed_stibnite_ore', '64x gtceu:crushed_galena_ore',)// '64x gtceu:crushed_pentlandite_ore', '64x gtceu:crushed_bornite_ore', 
-//             // '64x gtceu:crushed_cobaltite_ore', '64x gtceu:crushed_chromite_ore', '64x gtceu:crushed_beryllium_ore', '64x gtceu:crushed_pitchblende_ore', 
-//             // '64x gtceu:crushed_ilmenite_ore', '64x gtceu:crushed_molybdenite_ore', '64x gtceu:crushed_bastnasite_ore', '64x gtceu:crushed_barite_ore', 
+//         .itemOutputs('64x gtceu:crushed_stibnite_ore', '64x gtceu:crushed_galena_ore',)// '64x gtceu:crushed_pentlandite_ore', '64x gtceu:crushed_bornite_ore',
+//             // '64x gtceu:crushed_cobaltite_ore', '64x gtceu:crushed_chromite_ore', '64x gtceu:crushed_beryllium_ore', '64x gtceu:crushed_pitchblende_ore',
+//             // '64x gtceu:crushed_ilmenite_ore', '64x gtceu:crushed_molybdenite_ore', '64x gtceu:crushed_bastnasite_ore', '64x gtceu:crushed_barite_ore',
 //             // '64x gtceu:crushed_cooperite_ore', '64x gtceu:crushed_naquadah_ore')
 //         .duration(400)
 //         .EUt(6400);

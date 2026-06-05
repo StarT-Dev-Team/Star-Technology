@@ -1,31 +1,27 @@
 // priority: 10
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
-    global.not_hardmode(() => {
-        event.shaped(Item.of('gtceu:large_farm'), [
-            'SPS',
-            'PBP',
-            'SPS'
-        ], {
-            S: 'gtceu:treated_wood_rod',
-            P: 'gtceu:treated_wood_planks',
-            B: 'minecraft:bone_meal'
-        }).id('start:shaped/large_farm');
+    global.notHardmode(() => {
+        event
+            .shaped(Item.of('gtceu:large_farm'), ['SPS', 'PBP', 'SPS'], {
+                S: 'gtceu:treated_wood_rod',
+                P: 'gtceu:treated_wood_planks',
+                B: 'minecraft:bone_meal',
+            })
+            .id('start:shaped/large_farm');
     });
 
-    event.shaped(Item.of('gtceu:hydroponic_garden'), [
-        'ABB',
-        'CDA',
-        'CEF'
-    ], {
-        A: 'gtceu:tungsten_single_cable',
-        B: '#gtceu:circuits/iv',
-        C: 'gtceu:iv_electric_pump',
-        D: 'gtceu:greenhouse',
-        E: 'gtceu:iv_field_generator',
-        F: 'gtceu:iv_robot_arm'
-    }).id('start:shaped/hydroponic_garden');
+    event
+        .shaped(Item.of('gtceu:hydroponic_garden'), ['ABB', 'CDA', 'CEF'], {
+            A: 'gtceu:tungsten_single_cable',
+            B: '#gtceu:circuits/iv',
+            C: 'gtceu:iv_electric_pump',
+            D: 'gtceu:greenhouse',
+            E: 'gtceu:iv_field_generator',
+            F: 'gtceu:iv_robot_arm',
+        })
+        .id('start:shaped/hydroponic_garden');
 
     // ==================== CROP DEFINITIONS ====================
     // To add a new crop, simply add an entry to this array with the following properties:
@@ -35,7 +31,7 @@ ServerEvents.recipes(event => {
     // - dimension: (optional) Required dimension for growing
     // - voltage: (optional) Required voltage tier (defaults to 'lv')
     // - skipLargeFarm: (optional) Set to true to skip Large Farm recipes
-    
+
     global.farmCropList = [
         // Vanilla crops with seeds
         { name: 'minecraft:wheat', seed: 'minecraft:wheat_seeds' },
@@ -44,7 +40,7 @@ ServerEvents.recipes(event => {
         { name: 'minecraft:beetroot', seed: 'minecraft:beetroot_seeds' },
         { name: 'minecraft:torchflower', seed: 'minecraft:torchflower_seeds' },
         { name: 'minecraft:pitcher_plant', seed: 'minecraft:pitcher_pod' },
-        
+
         // Vanilla crops without separate seeds
         { name: 'minecraft:nether_wart' },
         { name: 'minecraft:carrot' },
@@ -54,13 +50,13 @@ ServerEvents.recipes(event => {
         { name: 'minecraft:sweet_berries' },
         { name: 'minecraft:bamboo' },
         { name: 'minecraft:kelp' },
-        
+
         // Farmer's Delight crops
         { name: 'farmersdelight:onion' },
         { name: 'farmersdelight:tomato', seed: 'farmersdelight:tomato_seeds' },
         { name: 'farmersdelight:cabbage', seed: 'farmersdelight:cabbage_seeds' },
         { name: 'farmersdelight:rice_panicle', seed: 'farmersdelight:rice' },
-        
+
         // Thermal crops
         { name: 'thermal:amaranth', seed: 'thermal:amaranth_seeds' },
         { name: 'thermal:barley', seed: 'thermal:barley_seeds' },
@@ -81,7 +77,7 @@ ServerEvents.recipes(event => {
         { name: 'thermal:hops', seed: 'thermal:hops_seeds' },
         { name: 'thermal:tea', seed: 'thermal:tea_seeds' },
         { name: 'thermal:frost_melon', seed: 'thermal:frost_melon_seeds' },
-        
+
         // Vanilla flowers (small)
         { name: 'minecraft:dandelion' },
         { name: 'minecraft:poppy' },
@@ -97,40 +93,47 @@ ServerEvents.recipes(event => {
         { name: 'minecraft:lily_of_the_valley' },
         { name: 'minecraft:wither_rose' },
         { name: 'minecraft:pink_petals' },
-        
+
         // Vanilla flowers (tall)
         { name: 'minecraft:sunflower' },
         { name: 'minecraft:lilac' },
         { name: 'minecraft:rose_bush' },
         { name: 'minecraft:peony' },
-        
+
         // Vanilla special crops
         { name: 'minecraft:sugar_cane' },
         { name: 'minecraft:cactus' },
         { name: 'minecraft:seagrass' },
         { name: 'minecraft:sea_pickle' },
         { name: 'minecraft:lily_pad' },
-        
+
         // Special crops with custom requirements
-        { name: 'minecraft:chorus_fruit', seed: 'minecraft:chorus_flower', fluid: 'gtceu:ender_air 250', dimension: 'minecraft:the_end', voltage: 'hv', skipLargeFarm: true }
+        {
+            name: 'minecraft:chorus_fruit',
+            seed: 'minecraft:chorus_flower',
+            fluid: 'gtceu:ender_air 250',
+            dimension: 'minecraft:the_end',
+            voltage: 'hv',
+            skipLargeFarm: true,
+        },
     ];
 
     // ==================== HELPER FUNCTIONS ====================
-    
+
     /**
      * Get the seed item for a crop (defaults to crop name if no seed specified)
      */
     function getCropSeed(crop) {
         return crop.seed || crop.name;
     }
-    
+
     /**
      * Get the voltage tier for a crop (defaults to 'lv')
      */
     function getCropVoltage(crop) {
         return crop.voltage || 'lv';
     }
-    
+
     /**
      * Generate a recipe ID from crop name and suffix
      */
@@ -138,10 +141,10 @@ ServerEvents.recipes(event => {
         const parts = cropName.split(':');
         const namespace = parts[0];
         const itemName = parts[1];
-        const prefix = (namespace !== 'minecraft') ? '_' + namespace : '';
+        const prefix = namespace !== 'minecraft' ? '_' + namespace : '';
         return id(itemName + prefix + suffix);
     }
-    
+
     /**
      * Apply dimension requirement to a recipe if specified in crop config
      */
@@ -150,7 +153,7 @@ ServerEvents.recipes(event => {
             recipe.dimension(crop.dimension);
         }
     }
-    
+
     /**
      * Get fluid requirement for crop (with default amount)
      * For greenhouse, use the crop fluid or default
@@ -158,7 +161,7 @@ ServerEvents.recipes(event => {
     function getCropFluid(crop, defaultFluid) {
         return crop.fluid || defaultFluid;
     }
-    
+
     /**
      * Get fluid requirement for hydroponic garden
      * Doubles the amount if crop has custom fluid
@@ -175,27 +178,29 @@ ServerEvents.recipes(event => {
     }
 
     // ==================== RECIPE GENERATION ====================
-    
-    global.farmCropList.forEach(crop => {
+
+    global.farmCropList.forEach((crop) => {
         const cropName = crop.name;
         const seed = getCropSeed(crop);
         const voltage = getCropVoltage(crop);
         const euAmount = global.vha[voltage];
-        
+
         // ===== Large Farm Recipe =====
         if (!crop.skipLargeFarm) {
-            const largeFarmRecipe = event.recipes.gtceu.large_farm(generateRecipeId(cropName, '_harvest'))
+            const largeFarmRecipe = event.recipes.gtceu
+                .large_farm(generateRecipeId(cropName, '_harvest'))
                 .notConsumable(`8x ${seed}`)
                 .itemOutputs(`16x ${cropName}`)
                 .chancedOutput(`8x ${seed}`, 5000, 0)
                 .daytime()
                 .duration(800);
-            
+
             applyDimension(largeFarmRecipe, crop);
         }
-        
+
         // ===== Crop Greenhouse Recipes =====
-        const greenhouseBasic = event.recipes.gtceu.crop_greenhouse(generateRecipeId(cropName, '_harvest_no_fertilizer'))
+        const greenhouseBasic = event.recipes.gtceu
+            .crop_greenhouse(generateRecipeId(cropName, '_harvest_no_fertilizer'))
             .notConsumable(`8x ${seed}`)
             .inputFluids(getCropFluid(crop, 'minecraft:water 100'))
             .itemOutputs(`16x ${cropName}`)
@@ -204,7 +209,8 @@ ServerEvents.recipes(event => {
             .EUt(euAmount)
             .circuit(0);
 
-        const greenhouseBonemeal = event.recipes.gtceu.crop_greenhouse(generateRecipeId(cropName, '_harvest_bone_meal'))
+        const greenhouseBonemeal = event.recipes.gtceu
+            .crop_greenhouse(generateRecipeId(cropName, '_harvest_bone_meal'))
             .notConsumable(`8x ${seed}`)
             .chancedInput('minecraft:bone_meal', 7500, -500)
             .inputFluids(getCropFluid(crop, 'minecraft:water 100'))
@@ -214,7 +220,8 @@ ServerEvents.recipes(event => {
             .EUt(euAmount)
             .circuit(1);
 
-        const greenhouseCompost = event.recipes.gtceu.crop_greenhouse(generateRecipeId(cropName, '_harvest_compost'))
+        const greenhouseCompost = event.recipes.gtceu
+            .crop_greenhouse(generateRecipeId(cropName, '_harvest_compost'))
             .notConsumable(`8x ${seed}`)
             .chancedInput('thermal:compost', 7500, -500)
             .inputFluids(getCropFluid(crop, 'minecraft:water 100'))
@@ -224,7 +231,8 @@ ServerEvents.recipes(event => {
             .EUt(euAmount)
             .circuit(2);
 
-        const greenhouseFertilizer = event.recipes.gtceu.crop_greenhouse(generateRecipeId(cropName, '_harvest_fertilizer'))
+        const greenhouseFertilizer = event.recipes.gtceu
+            .crop_greenhouse(generateRecipeId(cropName, '_harvest_fertilizer'))
             .notConsumable(`8x ${seed}`)
             .chancedInput('gtceu:fertilizer', 7500, -500)
             .inputFluids(getCropFluid(crop, 'minecraft:water 100'))
@@ -233,9 +241,10 @@ ServerEvents.recipes(event => {
             .duration(600)
             .EUt(euAmount)
             .circuit(3);
-        
+
         // ===== Hydroponic Garden Recipes =====
-        const hydroponicNpk = event.recipes.gtceu.hydroponic_garden(generateRecipeId(cropName, '_harvest_npk'))
+        const hydroponicNpk = event.recipes.gtceu
+            .hydroponic_garden(generateRecipeId(cropName, '_harvest_npk'))
             .notConsumable(`8x ${seed}`)
             .inputFluids(getHydroponicFluid(crop))
             .itemOutputs(`64x ${cropName}`)
@@ -244,7 +253,8 @@ ServerEvents.recipes(event => {
             .EUt(euAmount)
             .circuit(0);
 
-        const hydroponicNrf = event.recipes.gtceu.hydroponic_garden(generateRecipeId(cropName, '_harvest_nrf'))
+        const hydroponicNrf = event.recipes.gtceu
+            .hydroponic_garden(generateRecipeId(cropName, '_harvest_nrf'))
             .notConsumable(`8x ${seed}`)
             .inputFluids(getHydroponicFluid(crop), 'gtceu:nutrient_rich_fertilizer_solution 100')
             .itemOutputs(`128x ${cropName}`)
@@ -253,7 +263,8 @@ ServerEvents.recipes(event => {
             .EUt(euAmount)
             .circuit(1);
 
-        const hydroponicBiostimulating = event.recipes.gtceu.hydroponic_garden(generateRecipeId(cropName, '_harvest_biostimulating'))
+        const hydroponicBiostimulating = event.recipes.gtceu
+            .hydroponic_garden(generateRecipeId(cropName, '_harvest_biostimulating'))
             .notConsumable(`8x ${seed}`)
             .inputFluids(getHydroponicFluid(crop), 'gtceu:biostimulating_mixture 100')
             .itemOutputs(`256x ${cropName}`)
@@ -273,57 +284,66 @@ ServerEvents.recipes(event => {
     });
 
     // Nutrient Rich Fertilizer Solution (NRF Solution)
-    event.recipes.gtceu.large_chemical_reactor(id('nutrient_rich_fertilizer_solution'))
-        .itemInputs('gtceu:tiny_phosphate_dust','gtceu:small_bone_dust')
-        .inputFluids('minecraft:water 900','gtceu:npk_solution 100')
+    event.recipes.gtceu
+        .large_chemical_reactor(id('nutrient_rich_fertilizer_solution'))
+        .itemInputs('gtceu:tiny_phosphate_dust', 'gtceu:small_bone_dust')
+        .inputFluids('minecraft:water 900', 'gtceu:npk_solution 100')
         .outputFluids('gtceu:nutrient_rich_fertilizer_solution 1000')
         .duration(200)
         .EUt(global.vha['ev']);
 
-    event.recipes.gtceu.large_chemical_reactor(id('nutrient_rich_fertilizer_solution_36x'))
-        .itemInputs('4x gtceu:phosphate_dust','9x minecraft:bone_meal')
-        .inputFluids('minecraft:water 32400','gtceu:npk_solution 3600')
+    event.recipes.gtceu
+        .large_chemical_reactor(id('nutrient_rich_fertilizer_solution_36x'))
+        .itemInputs('4x gtceu:phosphate_dust', '9x minecraft:bone_meal')
+        .inputFluids('minecraft:water 32400', 'gtceu:npk_solution 3600')
         .outputFluids('gtceu:nutrient_rich_fertilizer_solution 36000')
         .duration(200 * 36)
-        .EUt(global.vha['ev'])
+        .EUt(global.vha['ev']);
 
     // Biostimulating Mixture
-    event.recipes.gtceu.extractor(id('seaweed_oil'))
+    event.recipes.gtceu
+        .extractor(id('seaweed_oil'))
         .itemInputs('minecraft:kelp')
         .outputFluids('gtceu:seaweed_oil 36')
         .duration(100)
         .EUt(global.vha['hv']);
 
-    event.recipes.gtceu.distillery(id('distill_nutrient_rich_fertilizer_solution'))
+    event.recipes.gtceu
+        .distillery(id('distill_nutrient_rich_fertilizer_solution'))
         .inputFluids('gtceu:nutrient_rich_fertilizer_solution 100')
         .outputFluids('gtceu:liquefied_nutrient_paste 80')
         .chancedOutput('gtceu:fertilizer', 5000, 0)
         .duration(300)
         .EUt(global.vha['hv']);
 
-    event.recipes.gtceu.large_chemical_reactor(id('silicic_acid'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('silicic_acid'))
         .itemInputs('gtceu:silicon_dioxide_dust')
         .inputFluids('minecraft:water 1000')
         .outputFluids('gtceu:silicic_acid 1000')
         .duration(247)
         .EUt(global.vha['mv']);
 
-    event.recipes.gtceu.large_chemical_reactor(id('biostimulating_mixture'))
-        .inputFluids('gtceu:silicic_acid 150', 'gtceu:seaweed_oil 250', 'gtceu:liquefied_nutrient_paste 325', 'gtceu:fermented_biomass 25', 'gtceu:glycerol 250')
+    event.recipes.gtceu
+        .large_chemical_reactor(id('biostimulating_mixture'))
+        .inputFluids(
+            'gtceu:silicic_acid 150',
+            'gtceu:seaweed_oil 250',
+            'gtceu:liquefied_nutrient_paste 325',
+            'gtceu:fermented_biomass 25',
+            'gtceu:glycerol 250'
+        )
         .outputFluids('gtceu:biostimulating_mixture 1000')
         .duration(160)
         .EUt(global.vha['iv']);
 
     //Phyto Soil
-    event.remove({output: 'thermal:phytosoil'});
-    event.shaped('thermal:phytosoil', [
-        'CAC',
-        'ADA',
-        'CAC'
-    ], {
-        C: 'gtceu:charcoal_dust',
-        A: 'gtceu:small_apatite_dust',
-        D: 'minecraft:dirt'
-    }).id(id('phytosoil'));
-
+    event.remove({ output: 'thermal:phytosoil' });
+    event
+        .shaped('thermal:phytosoil', ['CAC', 'ADA', 'CAC'], {
+            C: 'gtceu:charcoal_dust',
+            A: 'gtceu:small_apatite_dust',
+            D: 'minecraft:dirt',
+        })
+        .id(id('phytosoil'));
 });

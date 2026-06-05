@@ -1,39 +1,43 @@
-global.not_hardmode(() => {
-    ServerEvents.recipes(event => {
-        const TIERS = [
-            "luv", "zpm", "uv", "uhv", "uev", "uiv"
-        ]
-        
+global.notHardmode(() => {
+    ServerEvents.recipes((event) => {
+        const TIERS = ['luv', 'zpm', 'uv', 'uhv', 'uev', 'uiv'];
+
         const COMPONENTS = [
-            "sensor", "emitter", "field_generator", "robot_arm", "electric_piston", "conveyor_module", "fluid_regulator", "electric_pump", 
-            "electric_motor"
+            'sensor',
+            'emitter',
+            'field_generator',
+            'robot_arm',
+            'electric_piston',
+            'conveyor_module',
+            'fluid_regulator',
+            'electric_pump',
+            'electric_motor',
         ];
 
         function getComponentOutputs(tier, component) {
             const checkRecyclingCount = global.checkRecyclingCount;
             let recycleOutputs = [];
-            let countTypes =[];
+            let countTypes = [];
             let details;
             let tierBracket;
 
-            if (tier == "luv" || tier == "zpm" || tier == "uv") {
-                countTypes = ["primCount", "cableCount", "wireCount", "foilCount"];
+            if (tier === 'luv' || tier === 'zpm' || tier === 'uv') {
+                countTypes = ['primCount', 'cableCount', 'wireCount', 'foilCount'];
                 details = {
                     totals: global.LUVToUVComponentRecycleCounts[component],
-                    materials: global.componentRecycleMaterials[tier]
-                }
-                tierBracket = "LUVToUV";
-            }
-            else {
-                countTypes = ["primCount", "cableCount", "secCount", "tertCount"];
+                    materials: global.componentRecycleMaterials[tier],
+                };
+                tierBracket = 'LUVToUV';
+            } else {
+                countTypes = ['primCount', 'cableCount', 'secCount', 'tertCount'];
                 details = {
                     totals: global.UHVPlusComponentRecycleCounts[component],
-                    materials: global.componentRecycleMaterials[tier]
-                }
-                tierBracket = "UHVPLUS"
+                    materials: global.componentRecycleMaterials[tier],
+                };
+                tierBracket = 'UHVPLUS';
             }
-            
-            countTypes.forEach(type => {
+
+            countTypes.forEach((type) => {
                 details.totals[type] = Math.floor(details.totals[type]);
             });
 
@@ -43,13 +47,15 @@ global.not_hardmode(() => {
             // sorts the final outputs
             let checkCount = 0;
             let flag = false;
-            
+
             while (!flag) {
-                if (checkCount == 3) {
+                if (checkCount === 3) {
                     flag = true;
                 }
-                if (tempObj.totals[tempObj.outputOrder[checkCount] + "Count"] != 0) {
-                    recycleOutputs.push(`${tempObj.totals[tempObj.outputOrder[checkCount] + "Count"]}x ${details.materials[tempObj.outputOrder[checkCount] + "Material"]}`);
+                if (tempObj.totals[tempObj.outputOrder[checkCount] + 'Count'] !== 0) {
+                    recycleOutputs.push(
+                        `${tempObj.totals[tempObj.outputOrder[checkCount] + 'Count']}x ${details.materials[tempObj.outputOrder[checkCount] + 'Material']}`
+                    );
                 }
 
                 checkCount++;
@@ -57,7 +63,7 @@ global.not_hardmode(() => {
 
             // sets the blockBools
             for (let n = 0; n < 4; n++) {
-                recycleOutputs.push(tempObj.blockBools[tempObj.outputOrder[n] + "Block"]);
+                recycleOutputs.push(tempObj.blockBools[tempObj.outputOrder[n] + 'Block']);
             }
 
             return recycleOutputs;
@@ -67,22 +73,23 @@ global.not_hardmode(() => {
             const id = global.id;
             const calculateDuration = global.calculateRecyclingDuration;
             const getFinalOutputs = global.getFinalRecycleOutputs;
-            
+
             //old recipe removals
             event.remove({ input: `gtceu:${tier}_${component}`, type: `gtceu:arc_furnace` });
 
-            const outputs = getFinalOutputs(getComponentOutputs(tier, component), "singleblock", false, false);
-            
-            event.recipes.gtceu.arc_furnace(id(`arc_${tier}_${component}`))
+            const outputs = getFinalOutputs(getComponentOutputs(tier, component), 'singleblock', false, false);
+
+            event.recipes.gtceu
+                .arc_furnace(id(`arc_${tier}_${component}`))
                 .itemInputs(`gtceu:${tier}_${component}`)
                 .itemOutputs(outputs)
                 .duration(calculateDuration(outputs))
                 .EUt(GTValues.VA[GTValues.LV])
                 .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
-        }
+        };
 
         const macRecipe = (tier, component) => {
-            const id = global.id;           
+            const id = global.id;
             const calculateDuration = global.calculateRecyclingDuration;
             const calculateVoltageMultiplier = global.calculateRecyclingVoltageMultiplier;
             const getFinalOutputs = global.getFinalRecycleOutputs;
@@ -90,21 +97,22 @@ global.not_hardmode(() => {
             //old recipe removals
             event.remove({ input: `gtceu:${tier}_${component}`, type: `gtceu:macerator` });
 
-            const outputs = getFinalOutputs(getComponentOutputs(tier, component), "singleblock", true, false);
+            const outputs = getFinalOutputs(getComponentOutputs(tier, component), 'singleblock', true, false);
 
-            event.recipes.gtceu.macerator(id(`macerate_${tier}_${component}`))
+            event.recipes.gtceu
+                .macerator(id(`macerate_${tier}_${component}`))
                 .itemInputs(`gtceu:${tier}_${component}`)
                 .itemOutputs(outputs)
                 .duration(calculateDuration(outputs))
                 .EUt(2 * calculateVoltageMultiplier(outputs))
                 .category(GTRecipeCategories.MACERATOR_RECYCLING);
-        }
+        };
 
-        TIERS.forEach(tier => {
-            COMPONENTS.forEach(component => {
+        TIERS.forEach((tier) => {
+            COMPONENTS.forEach((component) => {
                 arcRecipe(tier, component);
                 macRecipe(tier, component);
-            })
-        })
-    })
-})
+            });
+        });
+    });
+});

@@ -1,19 +1,10 @@
 {
-  "ldlib": {
-    "connection": "kubejs:block/casings/superconductors/casing_twinite_ctm"
-  },
-  "animation": {
-    "interpolate": true,
-    "frametime": 4,
-	"frames": [
-      0,
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-	  6
-	]
-  }
+    "ldlib": {
+        "connection": "kubejs:block/casings/superconductors/casing_twinite_ctm"
+    },
+    "animation": {
+        "interpolate": true,
+        "frametime": 4,
+        "frames": [0, 0, 1, 2, 3, 4, 5, 6]
+    }
 }

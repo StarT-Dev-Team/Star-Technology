@@ -1,7 +1,6 @@
-
-StartupEvents.registry('block', event => {
-
-    event.create('zalloy_coil_block', 'gtceu:coil')
+StartupEvents.registry('block', (event) => {
+    event
+        .create('zalloy_coil_block', 'gtceu:coil')
         .temperature(13499)
         .level(24)
         .energyDiscount(12)
@@ -12,7 +11,8 @@ StartupEvents.registry('block', event => {
         .requiresTool(true)
         .noValidSpawns(true);
 
-    event.create('magmada_alloy_coil_block', 'gtceu:coil')
+    event
+        .create('magmada_alloy_coil_block', 'gtceu:coil')
         .temperature(16199)
         .level(32)
         .energyDiscount(16)
@@ -23,7 +23,8 @@ StartupEvents.registry('block', event => {
         .requiresTool(true)
         .noValidSpawns(true);
 
-    event.create('abyssal_alloy_coil_block', 'gtceu:coil')
+    event
+        .create('abyssal_alloy_coil_block', 'gtceu:coil')
         .temperature(18888)
         .level(40)
         .energyDiscount(20)
@@ -34,7 +35,8 @@ StartupEvents.registry('block', event => {
         .requiresTool(true)
         .noValidSpawns(true);
 
-    event.create('rhenotax_coil', 'gtceu:active')
+    event
+        .create('rhenotax_coil', 'gtceu:active')
         .displayName('Rhenotax Coil')
         .hardness(3)
         .resistance(10)
@@ -44,6 +46,4 @@ StartupEvents.registry('block', event => {
         .requiresTool(true)
         .noValidSpawns(true)
         .bloom('kubejs:block/coils/rhenotax/coil');
-
 });
-

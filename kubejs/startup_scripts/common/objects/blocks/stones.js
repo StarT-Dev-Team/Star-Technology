@@ -1,6 +1,6 @@
-StartupEvents.registry('block', event => {
-
-    event.create('cryostone')
+StartupEvents.registry('block', (event) => {
+    event
+        .create('cryostone')
         .hardness(2)
         .resistance(2)
         .soundType('stone')
@@ -9,7 +9,8 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_stone_tool')
         .textureAll('kubejs:block/stones/cryostone');
 
-    event.create('brimstone')
+    event
+        .create('brimstone')
         .hardness(2)
         .resistance(2)
         .soundType('stone')
@@ -17,6 +18,4 @@ StartupEvents.registry('block', event => {
         .tagBlock('mineable/pickaxe')
         .tagBlock('minecraft:needs_stone_tool')
         .textureAll('kubejs:block/stones/brimstone');
-
-
 });

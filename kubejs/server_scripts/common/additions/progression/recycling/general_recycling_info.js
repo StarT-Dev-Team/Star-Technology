@@ -7,21 +7,21 @@ global.componentRecycleMaterials = {
         cableMaterial: `gtceu:${componentMaterials.luv.materials.cable}`,
         wireMaterial: `gtceu:${componentMaterials.luv.materials.wireMechanical}`,
         elctrlyzWireMaterial: `gtceu:${componentMaterials.luv.materials.elctrlyzWire}`,
-        foilMaterial: `gtceu:${componentMaterials.luv.materials.miscMaterial}`
+        foilMaterial: `gtceu:${componentMaterials.luv.materials.miscMaterial}`,
     },
     zpm: {
         primMaterial: `gtceu:${componentMaterials.zpm.materials.primMaterial}`,
         cableMaterial: `gtceu:${componentMaterials.zpm.materials.cable}`,
         wireMaterial: `gtceu:${componentMaterials.zpm.materials.wireMechanical}`,
         elctrlyzWireMaterial: `gtceu:${componentMaterials.zpm.materials.elctrlyzWire}`,
-        foilMaterial: `gtceu:${componentMaterials.zpm.materials.miscMaterial}`
+        foilMaterial: `gtceu:${componentMaterials.zpm.materials.miscMaterial}`,
     },
     uv: {
         primMaterial: `gtceu:${componentMaterials.uv.materials.primMaterial}`,
         cableMaterial: `gtceu:${componentMaterials.uv.materials.cable}`,
         wireMaterial: `gtceu:${componentMaterials.uv.materials.wireMechanical}`,
         elctrlyzWireMaterial: `gtceu:${componentMaterials.zpm.materials.elctrlyzWire}`,
-        foilMaterial: `gtceu:${componentMaterials.uv.materials.miscMaterial}`
+        foilMaterial: `gtceu:${componentMaterials.uv.materials.miscMaterial}`,
     },
     uhv: {
         primMaterial: `gtceu:${componentMaterials.uhv.materials.primMaterial}`,
@@ -29,7 +29,7 @@ global.componentRecycleMaterials = {
         wireMaterial: `gtceu:${componentMaterials.uhv.materials.wire}`,
         elctrlyzWireMaterial: `gtceu:${componentMaterials.zpm.materials.elctrlyzWire}`,
         secMaterial: `gtceu:${componentMaterials.uhv.materials.supMaterial}`,
-        tertMaterial: `gtceu:${componentMaterials.uhv.materials.wireMechanical}`
+        tertMaterial: `gtceu:${componentMaterials.uhv.materials.wireMechanical}`,
     },
     uev: {
         primMaterial: `gtceu:${componentMaterials.uev.materials.primMaterial}`,
@@ -37,7 +37,7 @@ global.componentRecycleMaterials = {
         wireMaterial: `gtceu:${componentMaterials.uev.materials.wire}`,
         elctrlyzWireMaterial: `gtceu:${componentMaterials.zpm.materials.elctrlyzWire}`,
         secMaterial: `gtceu:${componentMaterials.uev.materials.supMaterial}`,
-        tertMaterial: `gtceu:${componentMaterials.uev.materials.tierMaterial}`
+        tertMaterial: `gtceu:${componentMaterials.uev.materials.tierMaterial}`,
     },
     uiv: {
         primMaterial: `gtceu:${componentMaterials.uiv.materials.primMaterial}`,
@@ -45,583 +45,596 @@ global.componentRecycleMaterials = {
         wireMaterial: `gtceu:${componentMaterials.uiv.materials.wire}`,
         elctrlyzWireMaterial: `gtceu:${componentMaterials.zpm.materials.elctrlyzWire}`,
         secMaterial: `gtceu:${componentMaterials.uiv.materials.supMaterial}`,
-        tertMaterial: `gtceu:${componentMaterials.uiv.materials.tierMaterial}`
-    }
-}
+        tertMaterial: `gtceu:${componentMaterials.uiv.materials.tierMaterial}`,
+    },
+};
 
-
-
-global.LUVToUVComponentRecycleCounts = { 
+global.LUVToUVComponentRecycleCounts = {
     dreamlink_cover: {
         primCount: 6,
         cableCount: 2,
         wireCount: 0,
-        foilCount: 2
+        foilCount: 2,
     },
     sensor: {
         primCount: 6.5,
         cableCount: 1.5,
         wireCount: 4,
-        foilCount: 12
+        foilCount: 12,
     },
     emitter: {
         primCount: 6.5,
         cableCount: 1.5,
         wireCount: 4,
-        foilCount: 12
+        foilCount: 12,
     },
     field_generator: {
         primCount: 18,
         cableCount: 4,
         wireCount: 8,
-        foilCount: 24
+        foilCount: 24,
     },
     robot_arm: {
         primCount: 18.5,
         cableCount: 3,
         wireCount: 12,
-        foilCount: 0
+        foilCount: 0,
     },
     electric_piston: {
         primCount: 8,
         cableCount: 1,
         wireCount: 4,
-        foilCount: 0
+        foilCount: 0,
     },
     conveyor_module: {
         primCount: 7.5,
         cableCount: 1.5,
         wireCount: 8,
-        foilCount: 0
+        foilCount: 0,
     },
     fluid_regulator: {
         primCount: 1.5,
         cableCount: 1.5,
         wireCount: 0,
-        foilCount: 0
+        foilCount: 0,
     },
     electric_pump: {
         primCount: 1.5,
         cableCount: 1.5,
         wireCount: 0,
-        foilCount: 0
+        foilCount: 0,
     },
     electric_motor: {
         primCount: 2.5,
         cableCount: 0.5,
         wireCount: 4,
-        foilCount: 0
-    }
-}
+        foilCount: 0,
+    },
+};
 
 global.UHVPlusComponentRecycleCounts = {
     dreamlink_cover: {
         primCount: 9,
         cableCount: 5,
         secCount: 0,
-        tertCount: 2
+        tertCount: 2,
     },
     sensor: {
         primCount: 9,
         cableCount: 5,
         secCount: 0.5,
-        tertCount: 2
+        tertCount: 2,
     },
     emitter: {
         primCount: 9,
         cableCount: 5,
         secCount: 0.5,
-        tertCount: 2
+        tertCount: 2,
     },
     field_generator: {
         primCount: 31,
         cableCount: 15,
         secCount: 1.5,
-        tertCount: 2
+        tertCount: 2,
     },
     robot_arm: {
         primCount: 24,
         cableCount: 12,
         secCount: 4.5,
-        tertCount: 6
+        tertCount: 6,
     },
     electric_piston: {
         primCount: 13.5,
         cableCount: 4,
         secCount: 2.5,
-        tertCount: 3
+        tertCount: 3,
     },
     conveyor_module: {
         primCount: 13.5,
         cableCount: 6,
         secCount: 2,
-        tertCount: 4
+        tertCount: 4,
     },
     fluid_regulator: {
         primCount: 5.5,
         cableCount: 2,
         secCount: 4,
-        tertCount: 2
+        tertCount: 2,
     },
     electric_pump: {
         primCount: 5.5,
         cableCount: 2,
         secCount: 4,
-        tertCount: 2
+        tertCount: 2,
     },
     electric_motor: {
         primCount: 3,
         cableCount: 2,
         secCount: 0,
-        tertCount: 2
-    }
-}
+        tertCount: 2,
+    },
+};
 
-global.singleblockRecyclingDetails = { //if specialSingle = true, the next 3 are blank/unread
+global.singleblockRecyclingDetails = {
+    //if specialSingle = true, the next 3 are blank/unread
     electric_furnace: {
-        name: "electric_furnace",
+        name: 'electric_furnace',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     electric_blaster: {
-        name: "electric_blaster",
+        name: 'electric_blaster',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     electric_smoker: {
-        name: "electric_smoker",
+        name: 'electric_smoker',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     alloy_smelter: {
-        name: "alloy_smelter",
+        name: 'alloy_smelter',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     arc_furnace: {
-        name: "arc_furnace",
+        name: 'arc_furnace',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     electrolyzer: {
-        name: "electrolyzer",
+        name: 'electrolyzer',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     polarizer: {
-        name: "polarizer",
+        name: 'polarizer',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     charger_4x: {
-        name: "charger_4x",
+        name: 'charger_4x',
         specialSingle: true,
-        components: " ",
-        extraCasings: 0, 
-        extraCables: 0
+        components: ' ',
+        extraCasings: 0,
+        extraCables: 0,
     },
     assembler: {
-        name: "assembler",
+        name: 'assembler',
         specialSingle: false,
-        components: ["robot_arm", "robot_arm", "conveyor_module", "conveyor_module"],
+        components: ['robot_arm', 'robot_arm', 'conveyor_module', 'conveyor_module'],
         extraCasings: 0,
-        extraCables: 2
+        extraCables: 2,
     },
     autoclave: {
-        name: "autoclave",
+        name: 'autoclave',
         specialSingle: false,
-        components: ["electric_pump"],
+        components: ['electric_pump'],
         extraCasings: 4,
-        extraCables: 1
+        extraCables: 1,
     },
     bender: {
-        name: "bender",
+        name: 'bender',
         specialSingle: false,
-        components: ["electric_piston", "electric_piston", "electric_motor", "electric_motor"],
+        components: ['electric_piston', 'electric_piston', 'electric_motor', 'electric_motor'],
         extraCasings: 1,
-        extraCables: 1
+        extraCables: 1,
     },
     brewery: {
-        name: "brewery",
+        name: 'brewery',
         specialSingle: false,
-        components: ["electric_pump"],
+        components: ['electric_pump'],
         extraCasings: 0,
-        extraCables: 2
+        extraCables: 2,
     },
     canner: {
-        name: "canner",
+        name: 'canner',
         specialSingle: false,
-        components: ["electric_pump"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_pump'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     centrifuge: {
-        name: "centrifuge",
+        name: 'centrifuge',
         specialSingle: false,
-        components: ["electric_motor", "electric_motor"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_motor', 'electric_motor'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     chemical_bath: {
-        name: "chemical_bath",
+        name: 'chemical_bath',
         specialSingle: false,
-        components: ["conveyor_module", "conveyor_module", "electric_pump"],
-        extraCasings: 0, 
-        extraCables: 1
+        components: ['conveyor_module', 'conveyor_module', 'electric_pump'],
+        extraCasings: 0,
+        extraCables: 1,
     },
     chemical_reactor: {
-        name: "chemical_reactor",
+        name: 'chemical_reactor',
         specialSingle: false,
-        components: ["electric_motor"],
-        extraCasings: 4, 
-        extraCables: 1
+        components: ['electric_motor'],
+        extraCasings: 4,
+        extraCables: 1,
     },
     compressor: {
-        name: "compressor",
+        name: 'compressor',
         specialSingle: false,
-        components: ["electric_piston", "electric_piston"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_piston', 'electric_piston'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     cutter: {
-        name: "cutter",
+        name: 'cutter',
         specialSingle: false,
-        components: ["electric_motor", "conveyor_module"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_motor', 'conveyor_module'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     distillery: {
-        name: "distillery",
+        name: 'distillery',
         specialSingle: false,
-        components: ["electric_pump"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_pump'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     electromagnetic_separator: {
-        name: "electromagnetic_separator",
+        name: 'electromagnetic_separator',
         specialSingle: false,
-        components: ["conveyor_module"],
-        extraCasings: 0, 
-        extraCables: 10
+        components: ['conveyor_module'],
+        extraCasings: 0,
+        extraCables: 10,
     },
     extractor: {
-        name: "extractor",
+        name: 'extractor',
         specialSingle: false,
-        components: ["electric_piston", "electric_pump"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_piston', 'electric_pump'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     extruder: {
-        name: "extruder",
+        name: 'extruder',
         specialSingle: false,
-        components: ["electric_piston"],
-        extraCasings: 0, 
-        extraCables: 1
+        components: ['electric_piston'],
+        extraCasings: 0,
+        extraCables: 1,
     },
     fermenter: {
-        name: "fermenter",
+        name: 'fermenter',
         specialSingle: false,
-        components: ["electric_pump"],
-        extraCasings: 0, 
-        extraCables: 3
+        components: ['electric_pump'],
+        extraCasings: 0,
+        extraCables: 3,
     },
     fluid_heater: {
-        name: "fluid_heater",
+        name: 'fluid_heater',
         specialSingle: false,
-        components: ["electric_pump", "electric_pump"],
-        extraCasings: 0, 
-        extraCables: 1
+        components: ['electric_pump', 'electric_pump'],
+        extraCasings: 0,
+        extraCables: 1,
     },
     fluid_solidifier: {
-        name: "fluid_solidifier",
+        name: 'fluid_solidifier',
         specialSingle: false,
-        components: ["electric_pump", "electric_pump"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_pump', 'electric_pump'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     forge_hammer: {
-        name: "forge_hammer",
+        name: 'forge_hammer',
         specialSingle: false,
-        components: ["electric_piston"],
-        extraCasings: 0, 
-        extraCables: 3
+        components: ['electric_piston'],
+        extraCasings: 0,
+        extraCables: 3,
     },
     forming_press: {
-        name: "forming_press",
+        name: 'forming_press',
         specialSingle: false,
-        components: ["electric_piston", "electric_piston"],
+        components: ['electric_piston', 'electric_piston'],
         extraCasings: 0,
-        extraCables: 3
+        extraCables: 3,
     },
     lathe: {
-        name: "lathe",
+        name: 'lathe',
         specialSingle: false,
-        components: ["electric_motor", "electric_piston"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_motor', 'electric_piston'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     scanner: {
-        name: "scanner",
+        name: 'scanner',
         specialSingle: false,
-        components: ["emitter", "sensor"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['emitter', 'sensor'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     mixer: {
-        name: "mixer",
+        name: 'mixer',
         specialSingle: false,
-        components: ["electric_motor"],
+        components: ['electric_motor'],
         extraCasings: 4, // note: this would be the previous casing tier for ev and below
-        extraCables: 1
+        extraCables: 1,
     },
     ore_washer: {
-        name: "ore_washer",
+        name: 'ore_washer',
         specialSingle: false,
-        components: ["electric_motor"],
+        components: ['electric_motor'],
         extraCasings: 8, // note: this would be the previous casing tier for ev and below
-        extraCables: 2
+        extraCables: 2,
     },
     packer: {
-        name: "packer",
+        name: 'packer',
         specialSingle: false,
-        components: ["robot_arm", "conveyor_module"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['robot_arm', 'conveyor_module'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     laser_engraver: {
-        name: "laser_engraver",
+        name: 'laser_engraver',
         specialSingle: false,
-        components: ["electric_piston", "electric_piston", "emitter"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_piston', 'electric_piston', 'emitter'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     sifter: {
-        name: "sifter",
+        name: 'sifter',
         specialSingle: false,
-        components: ["electric_piston", "electric_piston"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_piston', 'electric_piston'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     thermal_centrifuge: {
-        name: "thermal_centrifuge",
+        name: 'thermal_centrifuge',
         specialSingle: false,
-        components: ["electric_motor", "electric_motor"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_motor', 'electric_motor'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     wiremill: {
-        name: "wiremill",
+        name: 'wiremill',
         specialSingle: false,
-        components: ["electric_motor", "electric_motor", "electric_motor", "electric_motor"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_motor', 'electric_motor', 'electric_motor', 'electric_motor'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     circuit_assembler: {
-        name: "circuit_assembler",
+        name: 'circuit_assembler',
         specialSingle: false,
-        components: ["conveyor_module", "conveyor_module", "robot_arm"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['conveyor_module', 'conveyor_module', 'robot_arm'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     macerator: {
-        name: "macerator",
+        name: 'macerator',
         specialSingle: false,
-        components: ["electric_motor", "electric_piston"],
-        extraCasings: 0, 
-        extraCables: 2
+        components: ['electric_motor', 'electric_piston'],
+        extraCasings: 0,
+        extraCables: 2,
     },
     gas_collector: {
-        name: "gas_collector",
+        name: 'gas_collector',
         specialSingle: false,
-        components: ["electric_pump", "electric_pump"],
-        extraCasings: 0, 
-        extraCables: 1
+        components: ['electric_pump', 'electric_pump'],
+        extraCasings: 0,
+        extraCables: 1,
     },
     rock_crusher: {
-        name: "rock_crusher",
+        name: 'rock_crusher',
         specialSingle: false,
-        components: ["electric_motor", "electric_piston"],
-        extraCasings: 0, 
-        extraCables: 2
-    }
-}
+        components: ['electric_motor', 'electric_piston'],
+        extraCasings: 0,
+        extraCables: 2,
+    },
+};
 
 global.coilRecycleDetails = {
     naquadah_coil_block: {
         materials: {
-            frameMaterial: "gtceu:hssg",
-            wireMaterial: "gtceu:naquadah",
-            foilMaterial: "gtceu:osmium"
+            frameMaterial: 'gtceu:hssg',
+            wireMaterial: 'gtceu:naquadah',
+            foilMaterial: 'gtceu:osmium',
         },
         counts: {
             frameCount: 4,
             wireCount: 8,
-            foilCount: 2
+            foilCount: 2,
         },
-        prefix: "gtceu:"
+        prefix: 'gtceu:',
     },
     trinium_coil_block: {
         materials: {
-            frameMaterial: "gtceu:hsse",
-            wireMaterial: "gtceu:trinium",
-            foilMaterial: "gtceu:enriched_naquadah"
+            frameMaterial: 'gtceu:hsse',
+            wireMaterial: 'gtceu:trinium',
+            foilMaterial: 'gtceu:enriched_naquadah',
         },
         counts: {
             frameCount: 4,
             wireCount: 8,
-            foilCount: 2
+            foilCount: 2,
         },
-        prefix: "gtceu:"
+        prefix: 'gtceu:',
     },
     tritanium_coil_block: {
-        materials: { 
-            frameMaterial: "gtceu:trinaquadalloy",
-            wireMaterial: "gtceu:tritanium",
-            foilMaterial: "gtceu:naquadria"
+        materials: {
+            frameMaterial: 'gtceu:trinaquadalloy',
+            wireMaterial: 'gtceu:tritanium',
+            foilMaterial: 'gtceu:naquadria',
         },
         counts: {
             frameCount: 4,
             wireCount: 8,
-            foilCount: 2
+            foilCount: 2,
         },
-        prefix: "gtceu:"
+        prefix: 'gtceu:',
     },
     zalloy_coil_block: {
         materials: {
-            frameMaterial: "gtceu:neutronium",
-            wireMaterial: "gtceu:zalloy",
-            foilMaterial: "gtceu:zirconium"
+            frameMaterial: 'gtceu:neutronium',
+            wireMaterial: 'gtceu:zalloy',
+            foilMaterial: 'gtceu:zirconium',
         },
         counts: {
             frameCount: 4,
             wireCount: 8,
-            foilCount: 2
+            foilCount: 2,
         },
-        prefix: "kubejs:"
+        prefix: 'kubejs:',
     },
     magmada_alloy_coil_block: {
         materials: {
-            frameMaterial: "gtceu:ancient_netherite",
-            wireMaterial: "gtceu:magmada_alloy",
-            foilMaterial: "gtceu:pure_netherite"
+            frameMaterial: 'gtceu:ancient_netherite',
+            wireMaterial: 'gtceu:magmada_alloy',
+            foilMaterial: 'gtceu:pure_netherite',
         },
         counts: {
             frameCount: 4,
             wireCount: 8,
-            foilCount: 2
+            foilCount: 2,
         },
-        prefix: "kubejs:"
+        prefix: 'kubejs:',
     },
     abyssal_alloy_coil_block: {
         materials: {
-            frameMaterial: "gtceu:draconyallium",
-            wireMaterial: "gtceu:abyssal_alloy",
-            foilMaterial: "gtceu:nyanium"
+            frameMaterial: 'gtceu:draconyallium',
+            wireMaterial: 'gtceu:abyssal_alloy',
+            foilMaterial: 'gtceu:nyanium',
         },
         counts: {
             frameCount: 4,
             wireCount: 8,
-            foilCount: 2
+            foilCount: 2,
         },
-        prefix: "kubejs:"
+        prefix: 'kubejs:',
     },
     rhenotax_coil: {
         materials: {
-            frameMaterial: "gtceu:astrenalloy_nx",
-            wireMaterial: "gtceu:rhenate_w",
-            foilMaterial: "gtceu:tantalum_carbide"
+            frameMaterial: 'gtceu:astrenalloy_nx',
+            wireMaterial: 'gtceu:rhenate_w',
+            foilMaterial: 'gtceu:tantalum_carbide',
         },
         counts: {
             frameCount: 4,
             wireCount: 8,
-            foilCount: 4
+            foilCount: 4,
         },
-        prefix: "kubejs:"
-    }
-}
+        prefix: 'kubejs:',
+    },
+};
 
 global.fusionCasingDetails = {
     fusion_casing: {
-        name: "fusion_casing",
-        prefix: "gtceu:",
-        field_generator_tier: "iv",
-        casing_tier: "luv"
+        name: 'fusion_casing',
+        prefix: 'gtceu:',
+        field_generator_tier: 'iv',
+        casing_tier: 'luv',
     },
     fusion_casing_mk2: {
-        name: "fusion_casing_mk2",
-        prefix: "gtceu:",
-        field_generator_tier: "luv",
-        casing_tier: "zpm"
+        name: 'fusion_casing_mk2',
+        prefix: 'gtceu:',
+        field_generator_tier: 'luv',
+        casing_tier: 'zpm',
     },
     fusion_casing_mk3: {
-        name: "fusion_casing_mk3",
-        prefix: "gtceu:",
-        field_generator_tier: "zpm",
-        casing_tier: "uv"
+        name: 'fusion_casing_mk3',
+        prefix: 'gtceu:',
+        field_generator_tier: 'zpm',
+        casing_tier: 'uv',
     },
     auxiliary_boosted_fusion_casing_mk1: {
-        name: "auxiliary_boosted_fusion_casing_mk1",
-        prefix: "start_core:",
-        field_generator_tier: "uv",
-        casing_tier: "uhv"
+        name: 'auxiliary_boosted_fusion_casing_mk1',
+        prefix: 'start_core:',
+        field_generator_tier: 'uv',
+        casing_tier: 'uhv',
     },
     fusion_casing_mk4: {
-        name: "fusion_casing_mk4",
-        prefix: "start_core:",
-        field_generator_tier: "uhv",
-        casing_tier: "uev"
+        name: 'fusion_casing_mk4',
+        prefix: 'start_core:',
+        field_generator_tier: 'uhv',
+        casing_tier: 'uev',
     },
     auxiliary_boosted_fusion_casing_mk2: {
-        name: "auxiliary_boosted_fusion_casing_mk2",
-        prefix: "start_core:",
-        field_generator_tier: "uev",
-        casing_tier: "uiv"
-    }
-}
+        name: 'auxiliary_boosted_fusion_casing_mk2',
+        prefix: 'start_core:',
+        field_generator_tier: 'uev',
+        casing_tier: 'uiv',
+    },
+};
 
 global.fusionCoilRecycleDetails = {
     fusion_coil: {
-        components: "ignored",
-        tierComponent: "iv",
-        plateMaterial: "gtceu:europium",
-        prefix: "gtceu:",
-        plateCount: 4
+        components: 'ignored',
+        tierComponent: 'iv',
+        plateMaterial: 'gtceu:europium',
+        prefix: 'gtceu:',
+        plateCount: 4,
     },
     auxiliary_fusion_coil_mk1: {
-        components: [ "field_generator", "field_generator", "field_generator", "field_generator", "electric_pump", "electric_pump" ],
-        tierComponent: "zpm",
-        plateMaterial: "gtceu:zircalloy_4",
-        prefix: "start_core:",
-        plateCount: 8
+        components: [
+            'field_generator',
+            'field_generator',
+            'field_generator',
+            'field_generator',
+            'electric_pump',
+            'electric_pump',
+        ],
+        tierComponent: 'zpm',
+        plateMaterial: 'gtceu:zircalloy_4',
+        prefix: 'start_core:',
+        plateCount: 8,
     },
     advanced_fusion_coil: {
-        components: [ "field_generator", "field_generator", "electric_pump"],
-        tierComponent: "uv",
-        plateMaterial: "gtceu:magmada_alloy",
-        prefix: "start_core:",
-        plateCount: 4
+        components: ['field_generator', 'field_generator', 'electric_pump'],
+        tierComponent: 'uv',
+        plateMaterial: 'gtceu:magmada_alloy',
+        prefix: 'start_core:',
+        plateCount: 4,
     },
     auxiliary_fusion_coil_mk2: {
-        components: [ "field_generator", "field_generator", "field_generator", "field_generator", "electric_pump", "electric_pump" ],
-        tierComponent: "uhv",
-        plateMaterial: "gtceu:abyssal_alloy",
-        prefix: "start_core:",
-        plateCount: 8
-    }
+        components: [
+            'field_generator',
+            'field_generator',
+            'field_generator',
+            'field_generator',
+            'electric_pump',
+            'electric_pump',
+        ],
+        tierComponent: 'uhv',
+        plateMaterial: 'gtceu:abyssal_alloy',
+        prefix: 'start_core:',
+        plateCount: 8,
+    },
 };
 
 global.casingMaterials = {
@@ -635,5 +648,5 @@ global.casingMaterials = {
     uv: `gtceu:${componentMaterials.uv.materials.tierMaterial}`,
     uhv: `gtceu:${componentMaterials.uhv.materials.tierMaterial}`,
     uev: `gtceu:${componentMaterials.uev.materials.tierMaterial}`,
-    uiv: `gtceu:${componentMaterials.uiv.materials.tierMaterial}`
-}
+    uiv: `gtceu:${componentMaterials.uiv.materials.tierMaterial}`,
+};

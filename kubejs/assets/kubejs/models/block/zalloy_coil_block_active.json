@@ -1,7 +1,7 @@
 {
-  "parent": "gtceu:block/cube_2_layer/all",
-  "textures": {
-    "bot_all": "kubejs:block/coils/zalloy/coil",
-    "top_all": "kubejs:block/coils/zalloy/coil_bloom"
-  }
+    "parent": "gtceu:block/cube_2_layer/all",
+    "textures": {
+        "bot_all": "kubejs:block/coils/zalloy/coil",
+        "top_all": "kubejs:block/coils/zalloy/coil_bloom"
+    }
 }

@@ -1,11 +1,9 @@
-
-GTCEuStartupEvents.registry('gtceu:element', event => {
-
+GTCEuStartupEvents.registry('gtceu:element', (event) => {
     const setCounts = (name, protons, neutrons) => {
         let elem = GTElements.get(name);
         elem.protons(protons);
         elem.neutrons(neutrons);
-    }
+    };
 
     [
         { name: 'Tritanium', protons: 125, neutrons: 198 },
@@ -13,7 +11,6 @@ GTCEuStartupEvents.registry('gtceu:element', event => {
         { name: 'Naquadah', protons: 154, neutrons: 252 },
         { name: 'Naquadria', protons: 154, neutrons: 248 },
         { name: 'NaquadahEnriched', protons: 154, neutrons: 254 },
-        { name: 'Duranium', protons: 123, neutrons: 112 }
-    ].forEach(e => setCounts(e.name, e.protons, e.neutrons));
-
+        { name: 'Duranium', protons: 123, neutrons: 112 },
+    ].forEach((e) => setCounts(e.name, e.protons, e.neutrons));
 });

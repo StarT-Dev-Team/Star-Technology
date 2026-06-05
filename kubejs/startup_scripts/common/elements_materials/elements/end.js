@@ -1,6 +1,4 @@
-
-GTCEuStartupEvents.registry('gtceu:element', event => {
-    
+GTCEuStartupEvents.registry('gtceu:element', (event) => {
     const elem = global.elementFunction(event);
 
     elem('xeproda', 146, 245, 'Xp');

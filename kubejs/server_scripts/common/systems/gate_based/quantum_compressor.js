@@ -1,9 +1,8 @@
-
 // ServerEvents.recipes(event => {
 
 //     const id = global.id;
 
-//     /* 
+//     /*
 //     **   Singularities
 //     **   =====================
 //     **   Properties must satisfy:
@@ -56,7 +55,7 @@
 //         //     .outputFluids(`gtceu:${typeA}_infusion 1`)
 //         //     .duration(40)
 //         //     .EUt(GTValues.VHA[GTValues.LuV]);
-        
+
 //         event.recipes.gtceu.quantum_compressor_extraction(id(`${name}_block_extraction`))
 //             .itemInputs(`${mat}_block`)
 //             .outputFluids(`gtceu:${typeA}_infusion 18`, `gtceu:${typeB}_infusion 6`)
@@ -64,5 +63,4 @@
 //             .EUt(GTValues.VHA[GTValues.LuV]);
 //    });
 
-   
 // });

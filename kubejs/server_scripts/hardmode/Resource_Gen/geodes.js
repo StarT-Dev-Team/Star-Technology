@@ -1,18 +1,19 @@
 // packmode: hard
 
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
-// Controller Recipes
+    // Controller Recipes
 
     // Filtrator
 
     // Sifter
 
-// Geodes
+    // Geodes
 
     // LV
-    event.recipes.gtceu.rock_filtrator(id('hm_lv_geodes'))
+    event.recipes.gtceu
+        .rock_filtrator(id('hm_lv_geodes'))
         .itemInputs('64x minecraft:gravel')
         .chancedInput('exnihilosequentia:string_mesh', 10, 0)
         .inputFluids('gtceu:distilled_water 1000')
@@ -24,7 +25,8 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VHA[GTValues.LV]);
 
     // MV
-    event.recipes.gtceu.rock_filtrator(id('hm_mv_geodes'))
+    event.recipes.gtceu
+        .rock_filtrator(id('hm_mv_geodes'))
         .itemInputs('64x minecraft:gravel')
         .chancedInput('exnihilosequentia:flint_mesh', 10, 0)
         .inputFluids('gtceu:distilled_water 1000')
@@ -36,7 +38,8 @@ ServerEvents.recipes(event => {
         .EUt(GTValues.VHA[GTValues.MV]);
 
     // HV
-    event.recipes.gtceu.rock_filtrator(id('hm_hv_geodes'))
+    event.recipes.gtceu
+        .rock_filtrator(id('hm_hv_geodes'))
         .itemInputs('64x minecraft:gravel')
         .chancedInput('exnihilosequentia:iron_mesh', 10, 0)
         .inputFluids('gtceu:distilled_water 1000')
@@ -49,60 +52,62 @@ ServerEvents.recipes(event => {
 
     // Certus Quartz Geode
 
-    event.recipes.gtceu.mixer(id('quartz_mixture'))
-        .itemInputs('2x gtceu:nether_quartz_dust','1x gtceu:quartzite_dust','2x minecraft:glowstone_dust')
+    event.recipes.gtceu
+        .mixer(id('quartz_mixture'))
+        .itemInputs('2x gtceu:nether_quartz_dust', '1x gtceu:quartzite_dust', '2x minecraft:glowstone_dust')
         .inputFluids('gtceu:distilled_water 1000')
         .outputFluids('gtceu:quartz_mixture 1000')
         .duration(400)
         .EUt(GTValues.VA[GTValues.HV]);
 
-    event.recipes.gtceu.autoclave(id('hm_certus_quartz_geode'))
+    event.recipes.gtceu
+        .autoclave(id('hm_certus_quartz_geode'))
         .itemInputs('1x kubejs:quartzite_geode')
         .inputFluids('gtceu:quartz_mixture 250')
         .itemOutputs('1x kubejs:certus_quartz_geode')
         .duration(300)
         .EUt(GTValues.VHA[GTValues.EV]);
 
-// Geode Processing
+    // Geode Processing
 
-    const geode_type = (geode,voltage,duration_modifier) => {
-    const fluid_type = (fluid_id,fluid,duration_multiplier,output_scaler) => {
+    const geodeType = (geode, voltage, durationModifier) => {
+        const fluidType = (fluidId, fluid, durationMultiplier, outputScaler) => {
+            // Raw
+            event.recipes.gtceu
+                .cutter(id(`hm_${geode}_geode_decomp_${fluid}`))
+                .itemInputs(`kubejs:${geode}_geode`)
+                .inputFluids(`${fluidId}:${fluid}`)
+                .chancedOutput(`gtceu:raw_${geode}`, 10000 * outputScaler, 0)
+                .itemOutputs('2x gtceu:stone_dust')
+                .duration(durationModifier * durationMultiplier * 300)
+                .EUt(voltage);
+        };
+        fluidType('minecraft', 'water', 2, 0.65);
+        fluidType('gtceu', 'distilled_water', 1.5, 0.75);
+        fluidType('gtceu', 'lubricant', 1, 0.7);
 
-    // Raw
-    event.recipes.gtceu.cutter(id(`hm_${geode}_geode_decomp_${fluid}`))
-        .itemInputs(`kubejs:${geode}_geode`)
-        .inputFluids(`${fluid_id}:${fluid}`)
-        .chancedOutput(`gtceu:raw_${geode}`, 10000 * output_scaler, 0)
-        .itemOutputs('2x gtceu:stone_dust')
-        .duration(duration_modifier * duration_multiplier * 300)
-        .EUt(voltage)
-    }    
-    fluid_type('minecraft','water',2,.65);
-    fluid_type('gtceu','distilled_water',1.5,.75);
-    fluid_type('gtceu','lubricant',1,.7);
+        event.recipes.gtceu
+            .macerator(id(`hm_${geode}_geode_decomp`))
+            .itemInputs(`kubejs:${geode}_geode`)
+            .itemOutputs(`gtceu:impure_${geode}_dust`)
+            .duration(durationModifier * 400)
+            .EUt(voltage);
+    };
 
-    event.recipes.gtceu.macerator(id(`hm_${geode}_geode_decomp`))
-        .itemInputs(`kubejs:${geode}_geode`)
-        .itemOutputs(`gtceu:impure_${geode}_dust`)
-        .duration(duration_modifier * 400)
-        .EUt(voltage) 
-    }
+    geodeType('quartzite', GTValues.VHA[GTValues.LV], 0.8);
+    geodeType('realgar', GTValues.VA[GTValues.LV], 0.9);
+    geodeType('emerald', GTValues.VA[GTValues.LV], 1.2);
+    geodeType('sapphire', GTValues.VA[GTValues.LV], 1);
 
-    geode_type('quartzite', GTValues.VHA[GTValues.LV], .8)
-    geode_type('realgar', GTValues.VA[GTValues.LV], .9)
-    geode_type('emerald', GTValues.VA[GTValues.LV], 1.2)
-    geode_type('sapphire', GTValues.VA[GTValues.LV], 1)
+    geodeType('green_sapphire', GTValues.VHA[GTValues.MV], 0.6);
+    geodeType('diamond', GTValues.VA[GTValues.MV], 1.6);
+    geodeType('spessartine', GTValues.VA[GTValues.MV], 1.2);
+    geodeType('ruby', GTValues.VHA[GTValues.MV], 1);
 
-    geode_type('green_sapphire', GTValues.VHA[GTValues.MV], .6)
-    geode_type('diamond', GTValues.VA[GTValues.MV], 1.6)
-    geode_type('spessartine', GTValues.VA[GTValues.MV], 1.2)
-    geode_type('ruby', GTValues.VHA[GTValues.MV], 1)
+    geodeType('topaz', GTValues.VA[GTValues.HV], 0.7);
+    geodeType('monazite', GTValues.VA[GTValues.HV], 0.9);
+    geodeType('apatite', GTValues.VHA[GTValues.HV], 0.8);
+    geodeType('blue_topaz', GTValues.VA[GTValues.HV], 0.7);
 
-    geode_type('topaz', GTValues.VA[GTValues.HV], .7)
-    geode_type('monazite', GTValues.VA[GTValues.HV], .9)
-    geode_type('apatite', GTValues.VHA[GTValues.HV], .8)
-    geode_type('blue_topaz', GTValues.VA[GTValues.HV], .7)
-
-    geode_type('certus_quartz', GTValues.VHA[GTValues.EV], .4)
-
+    geodeType('certus_quartz', GTValues.VHA[GTValues.EV], 0.4);
 });

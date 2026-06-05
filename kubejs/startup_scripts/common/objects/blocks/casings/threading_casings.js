@@ -1,8 +1,7 @@
-StartupEvents.registry('block', event => {
-
-    const ThreadingCasing = (type) => {
-
-        event.create(type)
+StartupEvents.registry('block', (event) => {
+    const threadingCasing = (type) => {
+        event
+            .create(type)
             .hardness(5)
             .resistance(10)
             .soundType('metal')
@@ -11,24 +10,24 @@ StartupEvents.registry('block', event => {
             .tagBlock('mineable/pickaxe')
             .tagBlock('minecraft:needs_diamond_tool')
             .textureAll(`kubejs:block/casings/threading/${type}`);
+    };
 
-    }
+    threadingCasing('ionic_engraving_casing');
+    threadingCasing('advanced_assembly_casing');
+    threadingCasing('aurouric_resilient_casing');
+    threadingCasing('atomic_convergence_casing');
+    threadingCasing('gravitationally_strained_stabilization_casing');
+    threadingCasing('inoculated_nuclei_seperation_casing');
+    threadingCasing('nuclei_seperators');
+    threadingCasing('subatomically_secure_casing');
+    threadingCasing('quantumly_resistant_casing');
+    threadingCasing('absolute_annihilation_casing');
+    threadingCasing('absolute_annihilators');
+    threadingCasing('tectonic_defiance_casing');
+    threadingCasing('true_revitilization_casing');
 
-    ThreadingCasing('ionic_engraving_casing');
-    ThreadingCasing('advanced_assembly_casing');
-    ThreadingCasing('aurouric_resilient_casing');
-    ThreadingCasing('atomic_convergence_casing');
-    ThreadingCasing('gravitationally_strained_stabilization_casing');
-    ThreadingCasing('inoculated_nuclei_seperation_casing');
-    ThreadingCasing('nuclei_seperators');
-    ThreadingCasing('subatomically_secure_casing');
-    ThreadingCasing('quantumly_resistant_casing');
-    ThreadingCasing('absolute_annihilation_casing');
-    ThreadingCasing('absolute_annihilators');
-    ThreadingCasing('tectonic_defiance_casing');
-    ThreadingCasing('true_revitilization_casing');
-
-    event.create('aurouric_polarization_cell', 'gtceu:active')
+    event
+        .create('aurouric_polarization_cell', 'gtceu:active')
         .hardness(5)
         .resistance(10)
         .soundType('metal')

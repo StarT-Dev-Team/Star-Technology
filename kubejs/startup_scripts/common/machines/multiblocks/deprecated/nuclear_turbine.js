@@ -14,7 +14,7 @@
 //         .recipeType('nuclear_turbine')
 //         .recipeModifier((machine, recipe) => LargeTurbineMachine.recipeModifier(machine, recipe), true)
 //         .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
-//         .pattern(definition => FactoryBlockPattern.start()  
+//         .pattern(definition => FactoryBlockPattern.start()
 //             .aisle('  HHH SSS HHH  ', '   H  SES  H   ', '  HHH SSS HHH  ')
 //             .aisle('  HHH SSS HHH  ', '  HHH  F  HHH  ', '  HHH SSS HHH  ')
 //             .aisle('  HHHHSSSHHHH  ', '   HHFSSSFHH   ', '  HHHHSSSHHHH  ')

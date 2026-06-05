@@ -1,4 +1,4 @@
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
     const dust1 = 'mysticalagriculture:inferium_essence';
@@ -7,11 +7,10 @@ ServerEvents.recipes(event => {
     const dust4 = 'mysticalagriculture:imperium_essence';
     const dust5 = 'mysticalagriculture:supremium_essence';
     const dust6 = 'mysticalagriculture:awakened_supremium_essence';
-    const dust7 = 'mysticalagradditions:insanium_essence';
 
     function greenHouseGrowing(type, dust) {
         let eut;
-        switch(dust) {
+        switch (dust) {
             case 'mysticalagriculture:inferium_essence': {
                 eut = 20;
                 break;
@@ -42,7 +41,8 @@ ServerEvents.recipes(event => {
             }
         }
 
-        event.recipes.gtceu.greenhouse_growing(id(`${type}_essence_growing`))
+        event.recipes.gtceu
+            .greenhouse_growing(id(`${type}_essence_growing`))
             .notConsumable(`mysticalagriculture:${type}_seeds`)
             .chancedInput(dust, 1000, 0)
             .chancedOutput(`mysticalagriculture:${type}_essence`, 7500, 500)
@@ -53,34 +53,83 @@ ServerEvents.recipes(event => {
 
     const tier1 = ['air', 'earth', 'fire', 'water', 'wood', 'stone', 'dirt', 'ice', 'nature', 'dye', 'coal'];
 
-    tier1.forEach(element => {
+    tier1.forEach((element) => {
         greenHouseGrowing(element, dust1);
     });
 
-    const tier2 = ['iron', 'copper', 'tin', 'nickel', 'lead', 'zinc', 'gold', 'diamond', 'redstone', 'glowstone', 'life',
-    'nether_quartz', 'lapis_lazuli', 'sulfur', 'amethyst', 'silver'];
+    const tier2 = [
+        'iron',
+        'copper',
+        'tin',
+        'nickel',
+        'lead',
+        'zinc',
+        'gold',
+        'diamond',
+        'redstone',
+        'glowstone',
+        'life',
+        'nether_quartz',
+        'lapis_lazuli',
+        'sulfur',
+        'amethyst',
+        'silver',
+    ];
 
-    tier2.forEach(element => {
+    tier2.forEach((element) => {
         greenHouseGrowing(element, dust2);
     });
 
-    const tier3 = ['emerald', 'certus_quartz', 'ruby', 'saltpeter', 'salts', 'garnet', 'apatite', 'sapphire', 'topaz',
-                    'enderman', 'slime', 'prismarine', 'realgar', 'lepidolite', 'cobaltite', 'antimony', 'aluminum'];
+    const tier3 = [
+        'emerald',
+        'certus_quartz',
+        'ruby',
+        'saltpeter',
+        'salts',
+        'garnet',
+        'apatite',
+        'sapphire',
+        'topaz',
+        'enderman',
+        'slime',
+        'prismarine',
+        'realgar',
+        'lepidolite',
+        'cobaltite',
+        'antimony',
+        'aluminum',
+    ];
 
-    tier3.forEach(element => {
+    tier3.forEach((element) => {
         greenHouseGrowing(element, dust3);
     });
 
-    const tier4 = ['monazite', 'uranium', 'chrome', 'molybdenum', 'tantalum', 'manganese', 'platinum', 'titanium', 'caesium',
-                    'blaze', 'blizz', 'blitz', 'basalz', 'cerium', 'chalcopyrite', 'niobium'];
+    const tier4 = [
+        'monazite',
+        'uranium',
+        'chrome',
+        'molybdenum',
+        'tantalum',
+        'manganese',
+        'platinum',
+        'titanium',
+        'caesium',
+        'blaze',
+        'blizz',
+        'blitz',
+        'basalz',
+        'cerium',
+        'chalcopyrite',
+        'niobium',
+    ];
 
-    tier4.forEach(element => {
+    tier4.forEach((element) => {
         greenHouseGrowing(element, dust4);
     });
 
     const tier5 = ['tungsten', 'barium'];
 
-    tier5.forEach(element => {
+    tier5.forEach((element) => {
         greenHouseGrowing(element, dust5);
     });
 

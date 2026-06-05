@@ -1,7 +1,6 @@
-global.not_hardmode(() => {
-
-    BlockEvents.rightClicked('minecraft:grass_block', event => {
-        if (event.player.isCrouching() && event.player.getMainHandItem() == null) {
+global.notHardmode(() => {
+    BlockEvents.rightClicked('minecraft:grass_block', (event) => {
+        if (event.player.isCrouching() && event.player.getMainHandItem() === null) {
             if (Math.random() < 0.75) {
                 event.block.popItemFromFace(Item.of('exnihilosequentia:stone_pebble'), 'up');
             }
@@ -14,6 +13,6 @@ global.not_hardmode(() => {
             if (Math.random() < 0.5) {
                 event.block.popItemFromFace(Item.of('exnihilosequentia:diorite_pebble'), 'up');
             }
-        } 
+        }
     });
 });

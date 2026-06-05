@@ -18,7 +18,7 @@
 //             .aisle('PPCPP', 'F   F', 'F   F', ' FFF ')
 //             .where('C', Predicates.controller(Predicates.blocks(definition.get())))
 //             .where('P', Predicates.blocks(GTBlocks.TREATED_WOOD_PLANK.get())
-//                 .or(Predicates.autoAbilities(definition.getRecipeTypes())))          
+//                 .or(Predicates.autoAbilities(definition.getRecipeTypes())))
 //             .where('G', Predicates.blocks('minecraft:grass_block'))
 //             .where('F', Predicates.blocks('gtceu:treated_wood_frame'))
 //             .where('#', Predicates.blocks('minecraft:air'))

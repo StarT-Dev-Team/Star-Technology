@@ -80,12 +80,11 @@
 //         .duration(240)
 //         .EUt(32);
 
-
 // });
 
 // //getting greens
 // BlockEvents.rightClicked('minecraft:grass_block', event => {
-//     if (event.player.isCrouching() && event.player.getMainHandItem() == 'minecraft:stick') {
+//     if (event.player.isCrouching() && event.player.getMainHandItem() === 'minecraft:stick') {
 //         if (Math.random() < 0.10) {
 //             event.block.popItemFromFace(Item.of('kubejs:ball_plants'), 'up');
 //         }
@@ -98,11 +97,10 @@
 //     }
 // });
 
-
 // //getting produce
 // BlockEvents.rightClicked('minecraft:grindstone', event => {
 //     //using plants
-//     if (event.player.isCrouching() && event.player.getMainHandItem() == 'kubejs:ball_plants') {
+//     if (event.player.isCrouching() && event.player.getMainHandItem() === 'kubejs:ball_plants') {
 //         if (Math.random() < 0.15) {
 //             event.block.popItemFromFace(Item.of('minecraft:bamboo'), 'up');
 //         }
@@ -134,7 +132,7 @@
 //         }
 //     }
 //     //using seeds
-//     if (event.player.isCrouching() && event.player.getMainHandItem() == 'kubejs:ball_seeds') {
+//     if (event.player.isCrouching() && event.player.getMainHandItem() === 'kubejs:ball_seeds') {
 //         if (Math.random() < 0.05) {
 //             event.block.popItemFromFace(Item.of('minecraft:wheat_seeds'), 'up');
 //         }
@@ -158,7 +156,7 @@
 //         }
 //     }
 //     //using roots
-//     if (event.player.isCrouching() && event.player.getMainHandItem() == 'kubejs:ball_roots') {
+//     if (event.player.isCrouching() && event.player.getMainHandItem() === 'kubejs:ball_roots') {
 //         if (Math.random() < 0.10) {
 //             event.block.popItemFromFace(Item.of('minecraft:carrot'), 'up');
 //         }
@@ -170,7 +168,7 @@
 //         }
 //     }
 //     //using compost
-//     if (event.player.isCrouching() && event.player.getMainHandItem() == 'kubejs:ball_compost') {
+//     if (event.player.isCrouching() && event.player.getMainHandItem() === 'kubejs:ball_compost') {
 //         if (Math.random() < 0.30) {
 //             event.block.popItemFromFace(Item.of('exnihilosequentia:mycelium_spores'), 'up');
 //         }

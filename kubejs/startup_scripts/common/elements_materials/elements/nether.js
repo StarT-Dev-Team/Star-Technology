@@ -1,6 +1,4 @@
-
-GTCEuStartupEvents.registry('gtceu:element', event => {
-    
+GTCEuStartupEvents.registry('gtceu:element', (event) => {
     const elem = global.elementFunction(event);
 
     elem('mythril', 133, 193, 'My');
@@ -10,6 +8,5 @@ GTCEuStartupEvents.registry('gtceu:element', event => {
     elem('calamatium', 135, 211, 'Ct');
     elem('isovol', 136, 221, 'Is');
     elem('ancient_netherite', 124, 195, 'Nr+');
-    elem('aurourium', 151, 251, '*A*')
-
+    elem('aurourium', 151, 251, '*A*');
 });

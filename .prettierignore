@@ -3,6 +3,7 @@
 !kubejs/
 !kubejs/**
 *.md
+eslint.config.mjs
 
 !.vscode/
 .vscode/*

@@ -1,30 +1,40 @@
-StartupEvents.registry('item', event => {
-    
+StartupEvents.registry('item', (event) => {
     // === Fragments ===
 
-    ['inferno','abyss','prismalic','riftic','primordial'].forEach(fragment => {
-        event.create(`${fragment}_fragment`)
+    ['inferno', 'abyss', 'prismalic', 'riftic', 'primordial'].forEach((fragment) => {
+        event
+            .create(`${fragment}_fragment`)
             .tooltip(Text.translate(`item.kubejs.${fragment}_fragment.tooltip`))
             .texture(`kubejs:item/stargate/gate_items/materials/fragment/${fragment}`)
-            .textureJson({ //temp
-                    layer0: `kubejs:item/stargate/gate_items/materials/fragment/${fragment}/base`,
-                    layer1: `kubejs:item/stargate/gate_items/materials/fragment/${fragment}/overlay`
+            .textureJson({
+                //temp
+                layer0: `kubejs:item/stargate/gate_items/materials/fragment/${fragment}/base`,
+                layer1: `kubejs:item/stargate/gate_items/materials/fragment/${fragment}/overlay`,
             });
     });
 
     // === Core ===
 
-    ['quantum','helish','voidic','draconic','prismafae_illuminatus','spatium_ruptura','primus_tempus','ascension'].forEach(core => {
-        event.create(`${core}_core`)
+    [
+        'quantum',
+        'helish',
+        'voidic',
+        'draconic',
+        'prismafae_illuminatus',
+        'spatium_ruptura',
+        'primus_tempus',
+        'ascension',
+    ].forEach((core) => {
+        event
+            .create(`${core}_core`)
             .tooltip(Text.translate(`item.kubejs.${core}_core.tooltip`))
             .textureJson({
                 layer0: `kubejs:item/stargate/gate_items/materials/core/${core}/base`,
-                layer1: `kubejs:item/stargate/gate_items/materials/core/${core}/overlay`
+                layer1: `kubejs:item/stargate/gate_items/materials/core/${core}/overlay`,
             });
-
     });
 
-//OLD
+    //OLD
     // === Cores and Fragments
     // event.create('empty_coordinate_core')
     //     .texture('kubejs:item/stargate/gate_items/empty_coordinate_core');
@@ -44,5 +54,4 @@ StartupEvents.registry('item', event => {
 
     // event.create('void_core')
     //     .texture('kubejs:item/stargate/gate_items/void_core');
-
 });

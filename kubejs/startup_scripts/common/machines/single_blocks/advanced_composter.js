@@ -1,5 +1,6 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
-    event.create('composting')
+GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
+    event
+        .create('composting')
         .category('primitive')
         .setEUIO('in')
         .setMaxIOSize(1, 1, 0, 0)
@@ -7,13 +8,16 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
         .setSound(GTSoundEntries.CHEMICAL);
 });
 
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-    event.create('advanced_composter', 'simple')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('advanced_composter', 'simple')
         .tiers(GTValues.ULV)
         .definition((tier, builder) => {
             return builder
                 .recipeType('composting')
-                .workableCasingModel('minecraft:block/stripped_dark_oak_log', 'gtceu:block/machines/advanced_composter');
-        }
-    );
+                .workableCasingModel(
+                    'minecraft:block/stripped_dark_oak_log',
+                    'gtceu:block/machines/advanced_composter'
+                );
+        });
 });

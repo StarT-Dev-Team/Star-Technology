@@ -1,4 +1,4 @@
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
     // event.recipes.gtceu.circuit_assembler(id('basic_energy_core'))
@@ -29,7 +29,7 @@ ServerEvents.recipes(event => {
     //     .EUt(30);
 
     // const SolarPanel = (type, material, base, tier, chip, wire, core) => {
-    //     let cell = (base == 'mirror') ? 'mirror' : `photovoltaic_cell_${type - 1}` ;
+    //     let cell = (base === 'mirror') ? 'mirror' : `photovoltaic_cell_${type - 1}` ;
     //     event.recipes.gtceu.assembler(id(`solar_generator_${type}`))
     //         .itemInputs(`gtceu:${material}_frame`, `solarflux:${cell}`, `#gtceu:circuits/${tier}`, `2x gtceu:${wire}_single_cable`, `2x gtceu:${material}_plate`)
     //         .inputFluids(`gtceu:soldering_alloy ${144 * type}`)
@@ -44,7 +44,7 @@ ServerEvents.recipes(event => {
     //         .EUt(30 * (4 ** (type - 1)));
 
     //     if (tier !== 'mv') {
-    //     let prior = (tier == 'hv') ? 'mirror' : `photovoltaic_cell_${type - 2}` ;
+    //     let prior = (tier === 'hv') ? 'mirror' : `photovoltaic_cell_${type - 2}` ;
     //     event.recipes.gtceu.circuit_assembler(id(`photovoltaic_cell_${type - 1}`))
     //         .itemInputs(`solarflux:${prior}`, `kubejs:${chip}_chip`, `1x #gtceu:circuits/${tier}`, `kubejs:${core}_energy_core`, `6x gtceu:fine_${wire}_wire`)
     //         .inputFluids(`gtceu:soldering_alloy ${72 * type}`)
@@ -53,7 +53,7 @@ ServerEvents.recipes(event => {
     //         .EUt(30 * (4 ** (type - 1)));
     //     }
     //     }
-    
+
     // SolarPanel('1','aluminium','mirror','mv','','copper','')
     // SolarPanel('2','stainless_steel','','hv','silicon','gold','basic')
     // SolarPanel('3','titanium','','ev','silicon','aluminium','regular')
@@ -75,5 +75,4 @@ ServerEvents.recipes(event => {
     //         .itemOutputs(`solarflux:sp_8`)
     //         .duration(300)
     //         .EUt(30 * (4 ** 7));
-
 });

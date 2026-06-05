@@ -1,163 +1,174 @@
-global.not_hardmode(() => {
-
-    ServerEvents.recipes(event => {
-
+global.notHardmode(() => {
+    ServerEvents.recipes((event) => {
         // Common sieve inputs
         const csi = {
-            'dirt': 'minecraft:dirt',
-            'gravel': 'minecraft:gravel',
-            'sand': 'minecraft:sand',
-            'dust': 'exnihilosequentia:dust',
-            'blackstone': 'exnihilosequentia:crushed_blackstone',
-            'mud': 'minecraft:mud',
-            'rooted_dirt': 'minecraft:rooted_dirt',
-            'mycelium': 'minecraft:mycelium',
-            'gran': 'exnihilosequentia:crushed_granite',
-            'dior': 'exnihilosequentia:crushed_diorite'
-        }
+            dirt: 'minecraft:dirt',
+            gravel: 'minecraft:gravel',
+            sand: 'minecraft:sand',
+            dust: 'exnihilosequentia:dust',
+            blackstone: 'exnihilosequentia:crushed_blackstone',
+            mud: 'minecraft:mud',
+            rootedDirt: 'minecraft:rooted_dirt',
+            mycelium: 'minecraft:mycelium',
+            gran: 'exnihilosequentia:crushed_granite',
+            dior: 'exnihilosequentia:crushed_diorite',
+        };
 
-        const SievingRecipeHandler = {
-            current_mesh: 'string',
-            is_waterlogged: false,
-            current_input: null,
+        const SIEVING_RECIPE_HANDLER = {
+            currentMesh: 'string',
+            isWaterlogged: false,
+            currentInput: null,
             recipes: [],
             /*
-            * Set the mesh type for subsequent recipes.
-            * @param {string} type - The type of mesh ('string', 'flint', 'iron', 'diamond', 'emerald', 'netherite').
-            * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
-            */
+             * Set the mesh type for subsequent recipes.
+             * @param {string} type - The type of mesh ('string', 'flint', 'iron', 'diamond', 'emerald', 'netherite').
+             * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+             */
             mesh: (type) => {
                 if (!['string', 'flint', 'iron', 'diamond', 'emerald', 'netherite'].includes(type)) {
                     console.warn(`Unknown mesh type: ${type}. Defaulting to 'string'.`);
                     type = 'string';
                 }
-                SievingRecipeHandler.current_mesh = type;
-                return SievingRecipeHandler;
+                SIEVING_RECIPE_HANDLER.currentMesh = type;
+                return SIEVING_RECIPE_HANDLER;
             },
             /*
-            * Set whether the sieve is waterlogged for subsequent recipes.
-            * @param {boolean} wl - True if waterlogged, false otherwise.
-            * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
-            */
+             * Set whether the sieve is waterlogged for subsequent recipes.
+             * @param {boolean} wl - True if waterlogged, false otherwise.
+             * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+             */
             waterlogged: (wl) => {
                 if (typeof wl !== 'boolean') {
                     console.warn(`Invalid waterlogged value: ${wl}. Defaulting to false.`);
                     wl = false;
                 }
-                SievingRecipeHandler.is_waterlogged = wl;
-                return SievingRecipeHandler;
+                SIEVING_RECIPE_HANDLER.isWaterlogged = wl;
+                return SIEVING_RECIPE_HANDLER;
             },
             /*
-            * Set the input block for subsequent recipes.
-            * Does not support extra rolls
-            * @param {string|null} input - The input block identifier. Use null for no input.
-            * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
-            */
+             * Set the input block for subsequent recipes.
+             * Does not support extra rolls
+             * @param {string|null} input - The input block identifier. Use null for no input.
+             * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+             */
             input: (input) => {
                 if (!input || typeof input !== 'string') {
                     console.warn(`Invalid input value: ${input}. Defaulting to null.`);
                     input = null;
                 }
-                SievingRecipeHandler.current_input = input;
-                return SievingRecipeHandler;
+                SIEVING_RECIPE_HANDLER.currentInput = input;
+                return SIEVING_RECIPE_HANDLER;
             },
             /*
-            * Add a sieving result with chance for the current input, mesh, and waterlogged state.
-            * @param {string} result - The result item/block identifier.
-            * @param {number} chance - The chance (0.0 to 1.0) of obtaining the result.
-            * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
-            */
+             * Add a sieving result with chance for the current input, mesh, and waterlogged state.
+             * @param {string} result - The result item/block identifier.
+             * @param {number} chance - The chance (0.0 to 1.0) of obtaining the result.
+             * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+             */
             add: (result, chance) => {
-                SievingRecipeHandler.recipes.push({ 
-                    input: SievingRecipeHandler.current_input,
+                SIEVING_RECIPE_HANDLER.recipes.push({
+                    input: SIEVING_RECIPE_HANDLER.currentInput,
                     result: result,
                     chance: chance,
-                    mesh: SievingRecipeHandler.current_mesh,
-                    waterlogged: SievingRecipeHandler.is_waterlogged
+                    mesh: SIEVING_RECIPE_HANDLER.currentMesh,
+                    waterlogged: SIEVING_RECIPE_HANDLER.isWaterlogged,
                 });
-                return SievingRecipeHandler;
+                return SIEVING_RECIPE_HANDLER;
             },
             /*
-            * Build and register all accumulated sieving recipes.
-            * @param {object} event - The event object to register recipes with.
-            * @returns {void}
-            */
+             * Build and register all accumulated sieving recipes.
+             * @param {object} event - The event object to register recipes with.
+             * @returns {void}
+             */
             build: (event) => {
-                SievingRecipeHandler.recipes.forEach(recipe => {
+                SIEVING_RECIPE_HANDLER.recipes.forEach((recipe) => {
                     event.custom({
-                        "type": `exnihilosequentia:sifting`,
-                        "input": recipe.input,
-                        "result": recipe.result,
-                        "rolls": [{
-                            chance: recipe.chance,
-                            mesh: recipe.mesh
-                        }],
-                        "waterlogged": recipe.waterlogged
+                        type: `exnihilosequentia:sifting`,
+                        input: recipe.input,
+                        result: recipe.result,
+                        rolls: [
+                            {
+                                chance: recipe.chance,
+                                mesh: recipe.mesh,
+                            },
+                        ],
+                        waterlogged: recipe.waterlogged,
                     });
                 });
-                SievingRecipeHandler.reset();
+                SIEVING_RECIPE_HANDLER.reset();
             },
             /*
-            * Reset the SievingRecipeHandler to its default state.
-            * @returns {void}
-            */
+             * Reset the SievingRecipeHandler to its default state.
+             * @returns {void}
+             */
             reset: () => {
-                SievingRecipeHandler.current_mesh = 'string';
-                SievingRecipeHandler.is_waterlogged = false;
-                SievingRecipeHandler.current_input = null;
-                SievingRecipeHandler.recipes = [];
-            }
-        }
+                SIEVING_RECIPE_HANDLER.currentMesh = 'string';
+                SIEVING_RECIPE_HANDLER.isWaterlogged = false;
+                SIEVING_RECIPE_HANDLER.currentInput = null;
+                SIEVING_RECIPE_HANDLER.recipes = [];
+            },
+        };
 
+        /*
         const id = global.id;
         const dirt = 'minecraft:dirt';
         const gravel = 'minecraft:gravel';
         const cdirt = 'minecraft:coarse_dirt';
         const sand = 'minecraft:sand';
         const dust = 'exnihilosequentia:dust';
-        const black = 'exnihilosequentia:crushed_blackstone'
-        const mud = 'minecraft:mud'
-        const rdirt = 'minecraft:rooted_dirt'
-        const myc = 'minecraft:mycelium'
+        const black = 'exnihilosequentia:crushed_blackstone';
+        const mud = 'minecraft:mud';
+        const rdirt = 'minecraft:rooted_dirt';
+        const myc = 'minecraft:mycelium';
+        */
 
+        /*
         const sieve = (mesh, chance, input, result, wlog) => {
-            event.custom({
-                "type": `exnihilosequentia:sifting`,
-                "input": input,
-                "result": result,
-                "rolls": [{
-                    chance: chance,
-                    mesh: mesh
-                }],
-                "waterlogged": wlog
-            }).id(`start:sifting/${input.split(':')[1]}_${result.split(':')[1]}`); // doesn't work, idk why
-        }
+            event
+                .custom({
+                    type: `exnihilosequentia:sifting`,
+                    input: input,
+                    result: result,
+                    rolls: [
+                        {
+                            chance: chance,
+                            mesh: mesh,
+                        },
+                    ],
+                    waterlogged: wlog,
+                })
+                .id(`start:sifting/${input.split(':')[1]}_${result.split(':')[1]}`); // doesn't work, idk why
+        };
+        */
 
+        /*
         function hammer(input, result) {
             event.custom({
-                "type": `exnihilosequentia:hammer`,
-                "input": input,
-                "results": [result]
-            })
+                type: `exnihilosequentia:hammer`,
+                input: input,
+                results: [result],
+            });
         }
+        */
 
+        /*
         function heat(block, heat) {
             event.custom({
-                "type": `exnihilosequentia:heat`,
-                "block": block,
-                "amount": heat
-            })
+                type: `exnihilosequentia:heat`,
+                block: block,
+                amount: heat,
+            });
         }
+        */
 
-        SievingRecipeHandler
-            .mesh('string') // Setting string for the following recipes
+        SIEVING_RECIPE_HANDLER.mesh('string') // Setting string for the following recipes
             .waterlogged(false)
             // Dirt Sieving
             .input(csi.dirt)
             .add('minecraft:cactus', 0.075)
             .add('minecraft:sunflower', 0.05)
             .add('minecraft:fern', 0.15)
-            .add('minecraft:sweet_berries', 0.10)
+            .add('minecraft:sweet_berries', 0.1)
             .add('minecraft:cocoa_beans', 0.05)
             .add('minecraft:oak_sapling', 0.075)
             .add('minecraft:cherry_sapling', 0.075)
@@ -166,7 +177,7 @@ global.not_hardmode(() => {
             .add('minecraft:jungle_sapling', 0.075)
             .add('minecraft:acacia_sapling', 0.075)
             .add('minecraft:dark_oak_sapling', 0.075)
-            .add('minecraft:rooted_dirt', 0.40)
+            .add('minecraft:rooted_dirt', 0.4)
             // Mud Sieving
             .input(csi.mud)
             .add('minecraft:sugar_cane', 0.1)
@@ -183,9 +194,9 @@ global.not_hardmode(() => {
             .add('minecraft:bamboo', 0.15)
             .add('minecraft:wheat_seeds', 0.15)
             .add('farmersdelight:rice_panicle', 0.05)
-            .add('minecraft:pumpkin_seeds', 0.10)
-            .add('minecraft:melon_seeds', 0.10)
-            .add(`kubejs:moss_ball`, .05)
+            .add('minecraft:pumpkin_seeds', 0.1)
+            .add('minecraft:melon_seeds', 0.1)
+            .add(`kubejs:moss_ball`, 0.05)
             // Waterlogged Sand Sieving
             .input(csi.sand)
             .waterlogged(true)
@@ -224,11 +235,11 @@ global.not_hardmode(() => {
             .add('minecraft:ender_pearl', 0.05)
             // Mycelium Sieving
             .input(csi.mycelium)
-            .add('minecraft:nether_wart', .01)
-            .add('minecraft:brown_mushroom', .05)
-            .add('minecraft:red_mushroom', .05)
-            .add('minecraft:dirt', .5)
-            .add('exnihilosequentia:mycelium_spores', .3)
+            .add('minecraft:nether_wart', 0.01)
+            .add('minecraft:brown_mushroom', 0.05)
+            .add('minecraft:red_mushroom', 0.05)
+            .add('minecraft:dirt', 0.5)
+            .add('exnihilosequentia:mycelium_spores', 0.3)
             // Pebbles
             .input(csi.gran)
             .add('exnihilosequentia:andesite_pebble', 0.05)
@@ -255,19 +266,16 @@ global.not_hardmode(() => {
 
         global.with_xycraft_world(() => {
             // Waterlogged Dust Sieving
-            SievingRecipeHandler
-                .input(csi.dust)
+            SIEVING_RECIPE_HANDLER.input(csi.dust)
                 .waterlogged(true)
                 .add('xycraft_world:xychorium_gem_blue', 0.75)
                 .add('xycraft_world:xychorium_gem_red', 0.75)
                 .add('xycraft_world:xychorium_gem_green', 0.75)
                 .add('xycraft_world:xychorium_gem_light', 0.75)
                 .add('xycraft_world:xychorium_gem_dark', 0.75);
-
         });
 
-        SievingRecipeHandler
-            .build(event);
+        SIEVING_RECIPE_HANDLER.build(event);
 
         //Dirts
         // sieve('string', 0.075, dirt, 'minecraft:cactus', false);
@@ -283,12 +291,12 @@ global.not_hardmode(() => {
         // sieve('string', 0.075, dirt, 'minecraft:acacia_sapling', false);
         // sieve('string', 0.075, dirt, 'minecraft:dark_oak_sapling', false);
         // sieve('string', 0.40, dirt, 'minecraft:rooted_dirt', false)
-        
-        // sieve('string', 0.1, mud, 'minecraft:sugar_cane', false);    
+
+        // sieve('string', 0.1, mud, 'minecraft:sugar_cane', false);
         // sieve('string', 0.25, mud, 'thermal:slime_mushroom_spores', false);
         // sieve('string', 0.15, mud, 'minecraft:mangrove_propagule', false);
         // sieve('string', 0.2, mud, 'exnihilosequentia:mycelium_spores', false);
-        
+
         // sieve('string', 0.15, rdirt, 'thermal:flax_seeds', false);
         // sieve('string', 0.15, rdirt, 'minecraft:potato', false);
         // sieve('string', 0.15, rdirt, 'minecraft:carrot', false);
@@ -309,29 +317,29 @@ global.not_hardmode(() => {
         // sieve('string', 0.05, sand, 'minecraft:sea_pickle', true);
         // sieve('string', 0.15, sand, 'kelp', true);
         // sieve('string', 0.15, sand, 'minecraft:seagrass', true);
-        
+
         // sieve('string', 0.75, dust, 'xycraft_world:xychorium_gem_blue', true);
         // sieve('string', 0.75, dust, 'xycraft_world:xychorium_gem_red', true);
         // sieve('string', 0.75, dust, 'xycraft_world:xychorium_gem_green', true);
         // sieve('string', 0.75, dust, 'xycraft_world:xychorium_gem_light', true);
         // sieve('string', 0.75, dust, 'xycraft_world:xychorium_gem_dark', true);
-    
+
         // //Sand, dust, gravel, and blackstone
         // sieve('string', 0.45, gravel, 'gtceu:crushed_iron_ore', false);
         // sieve('string', 0.25, gravel, 'gtceu:crushed_magnetite_ore', false);
         // sieve('string', 0.65, gravel, 'gtceu:crushed_copper_ore', false);
         // sieve('string', 0.3, gravel, 'gtceu:crushed_tin_ore', false);
         // sieve('string', 0.25, gravel, 'gtceu:crushed_sphalerite_ore', false);
-        
+
         // sieve('string', 0.4, black, 'gtceu:crushed_galena_ore', false);
         // sieve('string', 0.3, black, 'gtceu:crushed_stibnite_ore', false);
-        
+
         // sieve('string', 0.075, sand, 'minecraft:diamond', false);
         // sieve('string', 0.08, sand, 'minecraft:lapis_lazuli', false);
         // sieve('string', 0.1, sand, 'minecraft:amethyst_shard', false);
         // sieve('string', 0.05, sand, 'minecraft:emerald', false);
         // sieve('string', 0.2, sand, 'minecraft:quartz', false);
-        
+
         // sieve('string', 0.4, dust, 'minecraft:redstone', false);
         // sieve('string', 0.4, dust, 'minecraft:glowstone_dust', false);
         // sieve('string', 0.3, dust, 'gtceu:tiny_sulfur_dust', false);
@@ -344,7 +352,7 @@ global.not_hardmode(() => {
         // sieve('string', .5, myc, 'minecraft:dirt', false);
         // sieve('string', .3, myc, 'exnihilosequentia:mycelium_spores', false);
 
-    /*
+        /*
         sieve('flint', 0.1, gravel, 'gtceu:crushed_silver_ore', false);
         sieve('flint', 0.05, gravel, 'gtceu:crushed_gold_ore', false);
         sieve('flint', 0.2, black, 'gtceu:crushed_pentlandite_ore', false);
@@ -376,8 +384,8 @@ global.not_hardmode(() => {
         sieve('netherite', 0.01, black, 'gtceu:crushed_naquadah_ore', false);
     */
         // sand
-        
-    /*
+
+        /*
         sieve('flint', 0.075, sand, 'gtceu:crushed_diamond_ore', false);
         sieve('flint', 0.05, sand, 'gtceu:crushed_emerald_ore', false);
         sieve('flint', 0.1, sand, 'gtceu:crushed_green_sapphire_ore', false);
@@ -404,10 +412,10 @@ global.not_hardmode(() => {
         //sieve('diamond', 0.01, sand, 'mmt:sunstone', false);
     */
         // dust
-        
-    //   sieve('netherite', 0.01, dust, 'minecraft:echo_shard', false);
-    /*
+
+        //   sieve('netherite', 0.01, dust, 'minecraft:echo_shard', false);
+        /*
         sieve('flint', 0.25, dust, 'ae2:sky_dust', false);
-    */    
+    */
     });
 });
