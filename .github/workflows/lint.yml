@@ -168,19 +168,27 @@ jobs:
                 }
             }
 
+            const COMMENT_BODY_LIMIT = 300;
+            const INLINE_COMMENT_CAP = 20;
+
             const allComments = [...prettierComments, ...eslintComments];
 
             const cleanedComments = allComments
                 .filter(c => c.line > 0)
-                .map(({ start_line, line, ...rest }) => ({
+                .map(({ start_line, line, body, ...rest }) => ({
                     ...rest,
+                    body: body.length > COMMENT_BODY_LIMIT
+                        ? body.slice(0, COMMENT_BODY_LIMIT) + '\n\n_…truncated_'
+                        : body,
                     line,
                     ...(start_line && start_line < line ? { start_line, start_side: 'RIGHT' } : {}),
                     side: 'RIGHT',
                 }));
 
-            const hasIssues  = cleanedComments.length > 0;
-            const conclusion = hasIssues ? 'REQUEST_CHANGES' : 'APPROVE';
+            const inlineComments  = cleanedComments.slice(0, INLINE_COMMENT_CAP);
+            const omittedCount    = cleanedComments.length - inlineComments.length;
+            const hasIssues       = cleanedComments.length > 0;
+            const conclusion      = hasIssues ? 'REQUEST_CHANGES' : 'APPROVE';
 
             let summaryBody = hasIssues
                 ? [
@@ -188,9 +196,12 @@ jobs:
                     '',
                     `Found **${prettierComments.length}** formatting issue(s) and **${eslintComments.length}** lint issue(s).`,
                     '',
+                    omittedCount > 0
+                        ? `> Showing first **${inlineComments.length}** inline comment(s) — **${omittedCount}** additional issue(s) not shown.`
+                        : '',
                     '> Prettier suggestions can be committed directly from this review.',
                     '> Run `npm run format:fix && npm run lint:fix` locally to fix everything at once.',
-                  ].join('\n')
+                  ].filter(l => l !== '').join('\n')
                 : [
                     '## ✅ KubeJS Scripts Lint & Format Review',
                     '',
@@ -204,7 +215,7 @@ jobs:
                 commit_id:   headSha,
                 body:        summaryBody,
                 event:       conclusion,
-                comments:    cleanedComments.slice(0, 50), // GitHub hard limit
+                comments:    inlineComments,
             });
 
-            console.log(`Review posted: ${conclusion} with ${cleanedComments.length} comment(s).`);
+            console.log(`Review posted: ${conclusion} with ${inlineComments.length} inline comment(s) (${omittedCount} omitted).`);
