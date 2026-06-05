@@ -53,7 +53,7 @@ export default [
                 Registries: "readonly",
                 HolderSet: "readonly",
                 ChunkPos: "readonly",
-                
+
                 // GTm Globals
                 $MultiblockMachineDefinition: "readonly",
                 GTRegistries: "readonly",
@@ -114,8 +114,13 @@ export default [
                 $StarTThreadingStatBlocks: "readonly",
                 // Miscellaneous globals
                 Ponder: "readonly",
+                Direction: "readonly",
+                PonderTickingInstruction: "readonly",
+                PonderPointing: "readonly",
                 // Custom globals
                 ponderScenes: "writable",
+                ponderUtils: "readonly",
+                ponderMultis: "readonly",
             },
         },
         rules: {

@@ -181,8 +181,7 @@ ServerEvents.recipes((event) => {
         storageF,
         eu,
         lubricantM,
-        solderM,
-        componentMaterial
+        solderM
     ) => {
         const circuit = `#gtceu:circuits/${tier}`;
         const arm = `gtceu:${tier}_robot_arm`;
@@ -203,9 +202,7 @@ ServerEvents.recipes((event) => {
         const plate = `gtceu:${material}_plate`;
         const rod = `gtceu:${material}_rod`;
         const gear = `gtceu:${material}_gear`;
-        const smGear = `gtceu:small_${material}_gear`;
         const rodM = `gtceu:${magnetic}_rod`;
-        const spring = `gtceu:${wire}_spring`;
         const smSpring = `gtceu:small_${wire}_spring`;
         const rotor = `gtceu:${rotorM}_rotor`;
         const pipeNormal = `gtceu:${pipe}_normal_fluid_pipe`;

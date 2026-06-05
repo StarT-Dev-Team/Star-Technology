@@ -11,20 +11,20 @@
         revealBlocks,
         block,
     } = ponderUtils;
-    let { coke_oven } = ponderMultis;
+    let { cokeOven } = ponderMultis;
 
     defineScene('multiblock_wallsharing', (scene, util) => {
         resetScene(scene, 9, true);
 
         // create first coke oven
-        let cokeOven1 = computeMultiData(util, coke_oven(), [4, 2, 3]);
-        for (let block of cokeOven1.blocks) {
+        let oven = computeMultiData(util, cokeOven(), [4, 2, 3]);
+        for (let block of oven.blocks) {
             scene.world().setBlock(block.pos, block.state, false);
         }
 
         // show
         scene.idle(10);
-        scene.world().showSection(cokeOven1.cuboid, Direction.DOWN);
+        scene.world().showSection(oven.cuboid, Direction.DOWN);
 
         scene.overlay().showText(40).text('One of the most useful hidden features of Multiblocks is Wall Sharing');
 
@@ -32,10 +32,10 @@
         scene.addKeyframe();
 
         // move coke oven and recreate in new position
-        cokeOven1 = moveMulti(scene, cokeOven1, [2, 0, 0], 20);
+        oven = moveMulti(scene, oven, [2, 0, 0], 20);
 
         // create temporary coke oven
-        let cokeOvenTemp = computeMultiData(util, coke_oven(), [2, 2, 3]);
+        let cokeOvenTemp = computeMultiData(util, cokeOven(), [2, 2, 3]);
         for (let block of cokeOvenTemp.blocks) {
             scene.world().setBlock(block.pos, block.state, false);
         }
@@ -62,11 +62,11 @@
         scene.idle(10);
 
         // move coke oven again and recreate in new position
-        cokeOven1 = moveMulti(scene, cokeOven1, [-1, 0, 0], 20);
+        oven = moveMulti(scene, oven, [-1, 0, 0], 20);
         scene.idle(10);
 
         // build wall shared coke oven
-        let cokeOven2 = computeMultiData(util, coke_oven(), [3, 2, 3]);
+        let cokeOven2 = computeMultiData(util, cokeOven(), [3, 2, 3]);
         showSectionImmediately(scene, cokeOven2.cuboid);
         sortStrategy
             .spyral(util, cokeOven2.controller, cokeOven2.blocks)
@@ -139,7 +139,7 @@
         scene.addKeyframe();
 
         // build two other coke ovens
-        let cokeOven3 = computeMultiData(util, coke_oven(), [5, 4, 3]);
+        let cokeOven3 = computeMultiData(util, cokeOven(), [5, 4, 3]);
         showSectionImmediately(scene, cokeOven3.cuboid);
         sortStrategy
             .spyral(util, cokeOven3.controller, cokeOven3.blocks)
@@ -155,7 +155,7 @@
 
         scene.idle(10);
 
-        let cokeOven4 = computeMultiData(util, coke_oven(), [3, 4, 3]);
+        let cokeOven4 = computeMultiData(util, cokeOven(), [3, 4, 3]);
         showSectionImmediately(scene, cokeOven4.cuboid);
         sortStrategy
             .spyral(util, cokeOven4.controller, cokeOven4.blocks)
@@ -227,7 +227,7 @@
                 xFade *= 10 * (1 - fade);
                 yFade *= 10 * (1 - fade);
 
-                var poseStack = graphics.pose();
+                let poseStack = graphics.pose();
                 poseStack.pushPose();
                 poseStack.translate(sceneToScreen.x + xFade, sceneToScreen.y + yFade, 400);
                 poseStack.scale(0.7, 0.7, 1);
@@ -241,6 +241,7 @@
                     text.getVisualOrderText(),
                     $Float.valueOf(0),
                     $Float.valueOf(0),
+                    // eslint-disable-next-line id-match, no-undef
                     $Integer.valueOf(PonderPalette.WHITE.getColorObject().scaleAlpha(fade).getRGB()),
                     $Boolean.valueOf(false)
                 );

@@ -11,7 +11,6 @@ ServerEvents.recipes((event) => {
         const {
             tiers: { tier, tier1 },
             materials: {
-                tierMaterial,
                 primMaterial,
                 supMaterial,
                 wireMechanical,
@@ -53,7 +52,7 @@ ServerEvents.recipes((event) => {
                         .CWUt(cwuS)
                 );
             } else {
-                assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
+                assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
                     researchRecipeBuilder
                         .researchStack(Item.of(`gtceu:${tier1}_${type}`))
                         .EUt(EUtD)

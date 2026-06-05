@@ -122,7 +122,7 @@ BlockEvents.rightClicked('minecraft:grass_block', (event) => {
     const { hit, tool, get } = crucible;
 
     BlockEvents.rightClicked(hit, (event) => {
-        const { player, block, level, item } = event;
+        const { player, block, level } = event;
 
         if (!player.getMainHandItem().hasTag(tool)) return;
         if (player.getOffHandItem() !== null) return;
@@ -353,7 +353,7 @@ ServerEvents.recipes((event) => {
 // Jungle Wood Stripping (Bark + Resin)
 
 BlockEvents.rightClicked('minecraft:jungle_log', (event) => {
-    const { player, block, item, level } = event;
+    const { player, item } = event;
 
     if (!item.hasTag('minecraft:axes')) return;
 
@@ -454,7 +454,7 @@ BlockEvents.rightClicked('exnihilosequentia:dust', (event) => {
 });
 
 BlockEvents.rightClicked('minecraft:gold_block', (event) => {
-    const { player, block, item, hand, level } = event;
+    const { player, block, item } = event;
 
     if (item.id !== 'komarumod:komaru_powder') return;
     player.swing();
@@ -463,6 +463,7 @@ BlockEvents.rightClicked('minecraft:gold_block', (event) => {
     event.server.runCommandSilent(
         `execute at ${event.player.username} run summon minecraft:lightning_bolt ${Math.floor(event.block.x)} ${Math.floor(event.block.y)} ${Math.floor(event.block.z)}`
     );
+    // eslint-disable-next-line no-unused-vars
     event.server.scheduleInTicks(40, (ctx) => {
         event.server.runCommandSilent(
             `execute at ${event.player.username} run summon komarumod:komaru ${Math.floor(event.player.x)} ${Math.floor(event.player.y)} ${Math.floor(event.player.z)}`
@@ -477,7 +478,7 @@ BlockEvents.rightClicked('minecraft:gold_block', (event) => {
 });
 
 BlockEvents.rightClicked('minecraft:netherite_block', (event) => {
-    const { player, block, item, hand, level } = event;
+    const { player, block, item } = event;
 
     if (item.id !== 'komarumod:komaru_powder') return;
     player.swing();
@@ -492,21 +493,27 @@ BlockEvents.rightClicked('minecraft:netherite_block', (event) => {
     );
     event.player.potionEffects.add('minecraft:nausea', 100, 1);
     event.player.tell(`§kTruly§r is not yet pleased with you....`);
+    // eslint-disable-next-line no-unused-vars
     event.server.scheduleInTicks(100, (ctx) => {
         event.player.tell(`Now Die`);
+        // eslint-disable-next-line no-unused-vars
         event.server.scheduleInTicks(10, (ctx) => {
+            // eslint-disable-next-line no-unused-vars
             event.server.scheduleInTicks(3, (ctx) => {
                 event.server.runCommandSilent(
                     `execute at ${event.player.username} run summon minecraft:lightning_bolt ${Math.floor(event.player.x)} ${Math.floor(event.player.y)} ${Math.floor(event.player.z)}`
                 );
+                // eslint-disable-next-line no-unused-vars
                 event.server.scheduleInTicks(3, (ctx) => {
                     event.server.runCommandSilent(
                         `execute at ${event.player.username} run summon minecraft:lightning_bolt ${Math.floor(event.player.x)} ${Math.floor(event.player.y)} ${Math.floor(event.player.z)}`
                     );
+                    // eslint-disable-next-line no-unused-vars
                     event.server.scheduleInTicks(3, (ctx) => {
                         event.server.runCommandSilent(
                             `execute at ${event.player.username} run summon minecraft:lightning_bolt ${Math.floor(event.player.x)} ${Math.floor(event.player.y)} ${Math.floor(event.player.z)}`
                         );
+                        // eslint-disable-next-line no-unused-vars
                         event.server.scheduleInTicks(3, (ctx) => {
                             event.player.potionEffects.add('minecraft:instant_damage', 1, 99);
                         });

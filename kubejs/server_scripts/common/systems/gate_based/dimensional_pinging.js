@@ -116,6 +116,7 @@ const crystalfeed = (realmId, realm, message) => {
             event.server.runCommandSilent(
                 `execute at ${event.player.username} run playsound minecraft:block.enchantment_table.use player ${event.player.username} ~ ~ ~`
             );
+            // eslint-disable-next-line no-unused-vars
             event.server.scheduleInTicks(15, (ctx) => {
                 event.player.tell(Text.translate(message));
                 event.server.runCommand(

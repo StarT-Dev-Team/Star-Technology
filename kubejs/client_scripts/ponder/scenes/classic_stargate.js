@@ -10,7 +10,7 @@
         javaReflectionGetMethodByName,
         setPipeConnections,
     } = ponderUtils;
-    let { classic_stargate } = ponderMultis;
+    let { classicStargate } = ponderMultis;
 
     let $BlockStateProperties = Java.loadClass('net.minecraft.world.level.block.state.properties.BlockStateProperties');
     let $Boolean = Java.loadClass('java.lang.Boolean');
@@ -56,7 +56,7 @@
 
         scene.idle(5);
 
-        let csg = computeMultiData(util, classic_stargate(), [4, 1, 4]);
+        let csg = computeMultiData(util, classicStargate(), [4, 1, 4]);
 
         const steps = (() => {
             let centerBlock = [4, 4, 4];

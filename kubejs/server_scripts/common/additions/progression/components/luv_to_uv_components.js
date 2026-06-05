@@ -85,12 +85,11 @@ ServerEvents.recipes((event) => {
 
                     event.remove({ id: `gtceu:research_station/1_x_gtceu_${tier}_${type}` });
                 } else {
-                    assemblyLineRecipe = assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)'](
-                        (researchRecipeBuilder) =>
-                            researchRecipeBuilder
-                                .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                                .duration(duraD * 20)
-                                .EUt(EUtD)
+                    assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
+                        researchRecipeBuilder
+                            .researchStack(Item.of(`gtceu:${tier1}_${type}`))
+                            .duration(duraD * 20)
+                            .EUt(EUtD)
                     );
 
                     event.remove({ id: `gtceu:scanner/1_x_gtceu_${tier}_${type}` });
@@ -235,7 +234,7 @@ ServerEvents.recipes((event) => {
                 .cleanroom(CleanroomType.getByName('stabilized'));
 
             if (tier === 'uv') {
-                mtscfRecipe = mtscfRecipe.inputFluids(`gtceu:${tierFluid} ${576 * scalerMCSF * 0.75}`);
+                mtscfRecipe.inputFluids(`gtceu:${tierFluid} ${576 * scalerMCSF * 0.75}`);
             }
 
             event.recipes.gtceu

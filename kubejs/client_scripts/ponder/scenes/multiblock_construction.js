@@ -14,12 +14,12 @@
         sectionFromPositions,
         formMultiblock,
     } = ponderUtils;
-    let { electric_blast_furnace } = ponderMultis;
+    let { electricBlastFurnace } = ponderMultis;
 
     defineScene('multiblock_construction', (scene, util) => {
         resetScene(scene, 5, true);
 
-        let ebf = computeMultiData(util, electric_blast_furnace(true), [2, 1, 1]);
+        let ebf = computeMultiData(util, electricBlastFurnace(true), [2, 1, 1]);
         const steps = sortStrategy['controller_then_layers'](util, ebf.controller, ebf.blocks);
 
         revealBlocks(scene, steps[0]);

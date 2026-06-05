@@ -104,7 +104,7 @@ ServerEvents.recipes((event) => {
             } else {
                 let dataItem = getDataItem(cwuD);
 
-                cpaRecipe = cpaRecipe.stationResearch((researchRecipeBuilder) =>
+                cpaRecipe.stationResearch((researchRecipeBuilder) =>
                     researchRecipeBuilder.researchStack(Item.of(researched)).EUt(EUtD).CWUt(cwuD)
                 );
 

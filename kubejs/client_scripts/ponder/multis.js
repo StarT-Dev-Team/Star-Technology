@@ -1,6 +1,7 @@
 // priority: 90
 
 /** @global */
+// eslint-disable-next-line no-unused-vars
 let ponderMultis = (() => {
     let { block } = ponderUtils;
 
@@ -8,7 +9,7 @@ let ponderMultis = (() => {
         /**
          * @returns {MultiBlockStructure}
          */
-        coke_oven: () => {
+        cokeOven: () => {
             return {
                 pattern: [
                     ['XXX', 'XYX', 'XXX'],
@@ -29,7 +30,7 @@ let ponderMultis = (() => {
          * @param {Internal.BlockState | undefined} [coil]
          * @returns {MultiBlockStructure}
          */
-        electric_blast_furnace: (casingsOnly, coil) => {
+        electricBlastFurnace: (casingsOnly, coil) => {
             let casing = block('gtceu:heatproof_machine_casing');
             return {
                 pattern: [
@@ -57,7 +58,7 @@ let ponderMultis = (() => {
         /**
          * @returns {MultiBlockStructure}
          */
-        large_chemical_reactor: () => {
+        largeChemicalReactor: () => {
             return {
                 pattern: [
                     ['IXO', 'FSH', 'XMX'],
@@ -83,7 +84,7 @@ let ponderMultis = (() => {
         /**
          * @returns {MultiBlockStructure}
          */
-        classic_stargate: () => {
+        classicStargate: () => {
             return {
                 pattern: [[' RCBCR ', 'CR   RC', 'R     R', 'R     R', 'C     C', 'RR   RR', ' CRCRC ']],
                 controller: 'B',
