@@ -37,7 +37,7 @@ jobs:
       - name: Run ESLint
         id: eslint
         run: |
-          npx eslint kubejs/**/*.js \
+          npx eslint . \
             --format json \
             --output-file eslint-report.json || true
 
@@ -49,11 +49,12 @@ jobs:
 
           # Generate per-file diffs for the review suggestions
           mkdir -p prettier-diffs
-          while IFS= read -r file; do
-            # only process JS files under kubejs/
-            [[ "$file" == kubejs/*.js || "$file" == kubejs/**/*.js ]] || continue
+          mapfile -t changed_files < <(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- 'kubejs/**/*.js')
+          echo "Checking ${#changed_files[@]} changed file(s) for formatting..."
+          for file in "${changed_files[@]}"; do
             [[ -f "$file" ]] || continue
-            formatted=$(npx prettier "$file" 2>/dev/null)
+            echo "  formatting check: $file"
+            formatted=$(node_modules/.bin/prettier "$file" 2>/dev/null)
             original=$(cat "$file")
             if [ "$formatted" != "$original" ]; then
               # Save the formatted version - workflow script picks it up
@@ -61,7 +62,7 @@ jobs:
               echo "$formatted" > "prettier-diffs/${safe}.formatted"
               echo "$file" >> prettier-changed-files.txt
             fi
-          done < <(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'kubejs/**/*.js')
+          done
 
       - name: Post PR Review
         uses: actions/github-script@v7
