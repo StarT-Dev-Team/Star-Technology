@@ -572,7 +572,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:faetic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     riftEnh(id('riftic_stargate_rod'))
         .itemInputs('kubejs:kaleidoscopicly_infused_stargate_rod')
@@ -580,7 +580,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:riftic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     riftEnh(id('temporic_stargate_rod'))
         .itemInputs('kubejs:primordicly_infused_stargate_rod')
@@ -588,7 +588,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:temporic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     stargateComponent('dsg_ring')
         .layeredRecipe((layers) =>
