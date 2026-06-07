@@ -1,16 +1,5 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.tabSize": 4,
-    "prettier.tabWidth": 4,
-    "prettier.singleQuote": true,
-    "prettier.useEditorConfig": false,
-    "prettier.requireConfig": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.tabSize": 4
-    }
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
+    ]
 }
