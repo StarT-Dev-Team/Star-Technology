@@ -61,8 +61,8 @@ ServerEvents.recipes((event) => {
             },
             scaling: { scaler, EU },
             researchData: {
-                default: { cwuD, duraD, EUtD },
-                special: { cwuS, duraS, EUtS },
+                default: { cwuD, duraD, EUTD },
+                special: { cwuS, duraS, EUTS },
             },
         } = data;
 
@@ -85,7 +85,7 @@ ServerEvents.recipes((event) => {
                 let dataItem = getDataItem(cwuS);
 
                 cpaRecipe = cpaRecipe.stationResearch((researchRecipeBuilder) =>
-                    researchRecipeBuilder.researchStack(Item.of(researched)).EUt(EUtS).CWUt(cwuS)
+                    researchRecipeBuilder.researchStack(Item.of(researched)).EUt(EUTS).CWUt(cwuS)
                 );
 
                 event.recipes.gtceu
@@ -100,12 +100,12 @@ ServerEvents.recipes((event) => {
                     )
                     .CWUt(cwuS)
                     .totalCWU(cwuS * duraS * 20)
-                    .EUt(EUtD);
+                    .EUt(EUTD);
             } else {
                 let dataItem = getDataItem(cwuD);
 
                 cpaRecipe.stationResearch((researchRecipeBuilder) =>
-                    researchRecipeBuilder.researchStack(Item.of(researched)).EUt(EUtD).CWUt(cwuD)
+                    researchRecipeBuilder.researchStack(Item.of(researched)).EUt(EUTD).CWUt(cwuD)
                 );
 
                 event.recipes.gtceu
@@ -120,7 +120,7 @@ ServerEvents.recipes((event) => {
                     )
                     .CWUt(cwuD)
                     .totalCWU(cwuD * duraD * 20)
-                    .EUt(EUtD);
+                    .EUt(EUTD);
             }
         };
 

@@ -130,8 +130,8 @@ global.componentMaterials = {
             EU: GTValues.VA[GTValues.IV],
         },
         researchData: {
-            default: { ifDRS: false, cwuD: 0, duraD: 90, EUtD: GTValues.VA[GTValues.EV] },
-            special: { ifSRS: false, cwuS: 0, duraS: 60, EUtS: GTValues.VA[GTValues.IV] },
+            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[GTValues.EV] },
+            special: { ifSRS: false, cwuS: 0, duraS: 60, EUTS: GTValues.VA[GTValues.IV] },
         },
     },
 
@@ -173,8 +173,8 @@ global.componentMaterials = {
             EU: GTValues.VA[GTValues.LuV],
         },
         researchData: {
-            default: { ifDRS: false, cwuD: 0, duraD: 90, EUtD: GTValues.VA[GTValues.IV] },
-            special: { ifSRS: true, cwuS: 4, duraS: 90, EUtS: GTValues.VA[GTValues.LuV] },
+            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[GTValues.IV] },
+            special: { ifSRS: true, cwuS: 4, duraS: 90, EUTS: GTValues.VA[GTValues.LuV] },
         },
     },
 
@@ -217,8 +217,8 @@ global.componentMaterials = {
             EU: GTValues.VA[GTValues.ZPM],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 32, duraD: 180, EUtD: GTValues.VA[GTValues.ZPM] },
-            special: { ifSRS: true, cwuS: 48, duraS: 180, EUtS: GTValues.VA[GTValues.UV] },
+            default: { ifDRS: true, cwuD: 32, duraD: 180, EUTD: GTValues.VA[GTValues.ZPM] },
+            special: { ifSRS: true, cwuS: 48, duraS: 180, EUTS: GTValues.VA[GTValues.UV] },
         },
     },
 
@@ -262,8 +262,8 @@ global.componentMaterials = {
             EU: GTValues.VA[GTValues.UV],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 128, duraD: 180, EUtD: GTValues.VA[GTValues.UV] },
-            special: { ifSRS: true, cwuS: 144, duraS: 180, EUtS: GTValues.VA[GTValues.UV] },
+            default: { ifDRS: true, cwuD: 128, duraD: 180, EUTD: GTValues.VA[GTValues.UV] },
+            special: { ifSRS: true, cwuS: 144, duraS: 180, EUTS: GTValues.VA[GTValues.UV] },
         },
     },
 
@@ -306,8 +306,8 @@ global.componentMaterials = {
             EU: GTValues.VA[GTValues.UHV],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 160, duraD: 180, EUtD: GTValues.VA[GTValues.UHV] },
-            special: { ifSRS: true, cwuS: 176, duraS: 180, EUtS: GTValues.VA[GTValues.UHV] },
+            default: { ifDRS: true, cwuD: 160, duraD: 180, EUTD: GTValues.VA[GTValues.UHV] },
+            special: { ifSRS: true, cwuS: 176, duraS: 180, EUTS: GTValues.VA[GTValues.UHV] },
         },
     },
 
@@ -350,8 +350,8 @@ global.componentMaterials = {
             EU: GTValues.VA[GTValues.UEV],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 192, duraD: 180, EUtD: GTValues.VA[GTValues.UEV] },
-            special: { ifSRS: true, cwuS: 208, duraS: 180, EUtS: GTValues.VA[GTValues.UEV] },
+            default: { ifDRS: true, cwuD: 192, duraD: 180, EUTD: GTValues.VA[GTValues.UEV] },
+            special: { ifSRS: true, cwuS: 208, duraS: 180, EUTS: GTValues.VA[GTValues.UEV] },
         },
     },
 };

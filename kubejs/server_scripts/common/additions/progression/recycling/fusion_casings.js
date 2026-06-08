@@ -14,7 +14,7 @@ global.notHardmode(() => {
         event.remove({ input: /gtceu:.*fusion_casing.*/, type: 'gtceu:macerator' });
         event.remove({ input: /gtceu:.*fusion_casing.*/, type: 'gtceu:arc_furnace' });
 
-        function getFusionCasingRecycleOutputs(field_generator_tier, casing_tier) {
+        function getFusionCasingRecycleOutputs(fieldGeneratorTier, casingTier) {
             const componentRecycles = global.componentRecycleMaterials;
             const checkRecyclingCount = global.checkRecyclingCount;
             const casingMaterials = global.casingMaterials;
@@ -25,7 +25,7 @@ global.notHardmode(() => {
             let componentCounts;
             let blockType;
 
-            if (field_generator_tier === 'iv') {
+            if (fieldGeneratorTier === 'iv') {
                 //iv
                 recycleOutputs = [
                     '4x gtceu:rhodium_plated_palladium',
@@ -37,18 +37,14 @@ global.notHardmode(() => {
                     false,
                 ];
                 return recycleOutputs;
-            } else if (
-                field_generator_tier === 'luv' ||
-                field_generator_tier === 'zpm' ||
-                field_generator_tier === 'uv'
-            ) {
+            } else if (fieldGeneratorTier === 'luv' || fieldGeneratorTier === 'zpm' || fieldGeneratorTier === 'uv') {
                 //LUVToUV
-                componentCounts = global.LUVToUVComponentRecycleCounts.field_generator;
+                componentCounts = global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.fieldGenerator;
                 blockType = 'fusion_casing_LUVToUV';
                 materialTypes = ['casing', 'prim', 'cable', 'hullCable', 'wire'];
             } else {
                 //UHVPlus
-                componentCounts = global.UHVPlusComponentRecycleCounts.field_generator;
+                componentCounts = global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.fieldGenerator;
                 blockType = 'fusion_casing_UHVPLUS';
                 materialTypes = ['casing', 'prim', 'cable', 'hullCable', 'sec'];
             }
@@ -56,13 +52,13 @@ global.notHardmode(() => {
             materialTypes.forEach((type) => {
                 if (type === 'casing') {
                     tempTotals[type + 'Count'] = 8;
-                    materials[type + 'Material'] = casingMaterials[casing_tier];
+                    materials[type + 'Material'] = casingMaterials[casingTier];
                 } else if (type === 'hullCable') {
                     tempTotals[type + 'Count'] = 1;
-                    materials[type + 'Material'] = componentRecycles[casing_tier][type + 'Material'];
+                    materials[type + 'Material'] = componentRecycles[casingTier][type + 'Material'];
                 } else {
                     tempTotals[type + 'Count'] = componentCounts[type + 'Count'];
-                    materials[type + 'Material'] = componentRecycles[field_generator_tier][type + 'Material'];
+                    materials[type + 'Material'] = componentRecycles[fieldGeneratorTier][type + 'Material'];
                 }
             });
 
@@ -95,12 +91,12 @@ global.notHardmode(() => {
             return recycleOutputs;
         }
 
-        const arcRecipe = (name, prefix, field_generator_tier, casing_tier) => {
+        const arcRecipe = (name, prefix, fieldGeneratorTier, casingTier) => {
             const id = global.id;
             const calculateDuration = global.calculateRecyclingDuration;
             const getFinalOutputs = global.getFinalRecycleOutputs;
             const outputs = getFinalOutputs(
-                getFusionCasingRecycleOutputs(field_generator_tier, casing_tier),
+                getFusionCasingRecycleOutputs(fieldGeneratorTier, casingTier),
                 'fusion_casing',
                 false,
                 false
@@ -115,13 +111,13 @@ global.notHardmode(() => {
                 .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
         };
 
-        const macRecipe = (name, prefix, field_generator_tier, casing_tier) => {
+        const macRecipe = (name, prefix, fieldGeneratorTier, casingTier) => {
             const id = global.id;
             const calculateDuration = global.calculateRecyclingDuration;
             const calculateVoltageMultiplier = global.calculateRecyclingVoltageMultiplier;
             const getFinalOutputs = global.getFinalRecycleOutputs;
             const outputs = getFinalOutputs(
-                getFusionCasingRecycleOutputs(field_generator_tier, casing_tier),
+                getFusionCasingRecycleOutputs(fieldGeneratorTier, casingTier),
                 'fusion_casing',
                 true,
                 false
@@ -140,10 +136,10 @@ global.notHardmode(() => {
             const data = CASINGDETAILS[casingKey];
             if (!data) return;
 
-            const { name, prefix, field_generator_tier, casing_tier } = data;
+            const { name, prefix, fieldGeneratorTier, casingTier } = data;
 
-            arcRecipe(name, prefix, field_generator_tier, casing_tier);
-            macRecipe(name, prefix, field_generator_tier, casing_tier);
+            arcRecipe(name, prefix, fieldGeneratorTier, casingTier);
+            macRecipe(name, prefix, fieldGeneratorTier, casingTier);
         };
 
         CASINGS.forEach((casing) => {

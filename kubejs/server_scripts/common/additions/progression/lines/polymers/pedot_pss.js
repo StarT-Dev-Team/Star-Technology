@@ -74,8 +74,8 @@ ServerEvents.recipes((event) => {
         .duration(451)
         .EUt(GTValues.VA[GTValues.ZPM]);
 
-    const CRtype = [event.recipes.gtceu.large_chemical_reactor, event.recipes.gtceu.chemical_reactor];
-    CRtype.forEach((CR) => {
+    const crType = [event.recipes.gtceu.large_chemical_reactor, event.recipes.gtceu.chemical_reactor];
+    crType.forEach((CR) => {
         CR(id('dimethylformamide_synthesis'))
             .inputFluids('gtceu:dimethylamine 1000', 'gtceu:formic_acid 1000')
             .outputFluids('gtceu:dimethylformamide 1000', 'minecraft:water 1000')

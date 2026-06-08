@@ -28,8 +28,8 @@ ServerEvents.recipes((event) => {
             },
             scaling: { scaler, EU },
             researchData: {
-                default: { ifDRS, cwuD, duraD, EUtD },
-                special: { ifSRS, cwuS, duraS, EUtS },
+                default: { ifDRS, cwuD, duraD, EUTD },
+                special: { ifSRS, cwuS, duraS, EUTS },
             },
         } = data;
 
@@ -58,7 +58,7 @@ ServerEvents.recipes((event) => {
                     assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
                         researchRecipeBuilder
                             .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                            .EUt(EUtS)
+                            .EUt(EUTS)
                             .CWUt(cwuS)
                     );
 
@@ -69,7 +69,7 @@ ServerEvents.recipes((event) => {
                             researchRecipeBuilder
                                 .researchStack(Item.of(`gtceu:${tier1}_${type}`))
                                 .duration(duraS * 20)
-                                .EUt(EUtS)
+                                .EUt(EUTS)
                     );
 
                     event.remove({ id: `gtceu:scanner/1_x_gtceu_${tier}_${type}` });
@@ -79,7 +79,7 @@ ServerEvents.recipes((event) => {
                     assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
                         researchRecipeBuilder
                             .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                            .EUt(EUtD)
+                            .EUt(EUTD)
                             .CWUt(cwuD)
                     );
 
@@ -89,7 +89,7 @@ ServerEvents.recipes((event) => {
                         researchRecipeBuilder
                             .researchStack(Item.of(`gtceu:${tier1}_${type}`))
                             .duration(duraD * 20)
-                            .EUt(EUtD)
+                            .EUt(EUTD)
                     );
 
                     event.remove({ id: `gtceu:scanner/1_x_gtceu_${tier}_${type}` });

@@ -9,7 +9,7 @@ ServerEvents.recipes((event) => {
             glass: '_extra:soul_infused',
             gear: 'bronze',
             fluid: 'gtceu:tin 720',
-            Mod: 6,
+            mod: 6,
         },
         {
             tier: 'mv',
@@ -17,7 +17,7 @@ ServerEvents.recipes((event) => {
             glass: ':signalum',
             gear: 'steel',
             fluid: 'gtceu:redstone 720',
-            Mod: 12,
+            mod: 12,
         },
         {
             tier: 'hv',
@@ -25,7 +25,7 @@ ServerEvents.recipes((event) => {
             glass: ':lumium',
             gear: 'aluminium',
             fluid: 'gtceu:glowstone 720',
-            Mod: 24,
+            mod: 24,
         },
         {
             tier: 'ev',
@@ -33,7 +33,7 @@ ServerEvents.recipes((event) => {
             glass: ':enderium',
             gear: 'stainless_steel',
             fluid: 'thermal:ender 750',
-            Mod: 48,
+            mod: 48,
         },
     ].forEach((tier) => {
         event.recipes.gtceu
@@ -45,7 +45,7 @@ ServerEvents.recipes((event) => {
                 `#gtceu:circuits/${tier.tier}`
             )
             .itemOutputs(
-                Item.of(`kubejs:${tier.tier}_upgrade_kit`, `{AugmentData:{BaseMod:${tier.Mod}f,Type: Upgrade}}`)
+                Item.of(`kubejs:${tier.tier}_upgrade_kit`, `{AugmentData:{BaseMod:${tier.mod}f,Type: Upgrade}}`)
             )
             .inputFluids(tier.fluid)
             .duration(600)
@@ -108,42 +108,42 @@ ServerEvents.recipes((event) => {
     [
         {
             tier: 'mv',
-            last_tier: 'lv',
+            lastTier: 'lv',
             gear: 'gold',
             glass: 'signalum',
-            DynEA: 0.9,
-            DynP: 1,
-            DynEM: 1.3,
+            dynEA: 0.9,
+            dynP: 1,
+            dynEM: 1.3,
             energy: 'mv',
         },
         {
             tier: 'hv',
-            last_tier: 'mv',
+            lastTier: 'mv',
             gear: 'electrum',
             glass: 'lumium',
-            DynEA: 0.85,
-            DynP: 2,
-            DynEM: 1.45,
+            dynEA: 0.85,
+            dynP: 2,
+            dynEM: 1.45,
             energy: 'hv',
         },
         {
             tier: 'ev',
-            last_tier: 'hv',
+            lastTier: 'hv',
             gear: 'blue_alloy',
             glass: 'enderium',
-            DynEA: 0.8,
-            DynP: 3,
-            DynEM: 1.6,
+            dynEA: 0.8,
+            dynP: 3,
+            dynEM: 1.6,
             energy: 'ev',
         },
     ].forEach((tier) => {
         event.recipes.gtceu
             .assembler(id(`arc_augment_${tier.tier}`))
-            .itemInputs(`kubejs:${tier.last_tier}_arc_kit`, `2x gtceu:${tier.gear}_gear`, `thermal:${tier.glass}_glass`)
+            .itemInputs(`kubejs:${tier.lastTier}_arc_kit`, `2x gtceu:${tier.gear}_gear`, `thermal:${tier.glass}_glass`)
             .itemOutputs(
                 Item.of(
                     `kubejs:${tier.tier}_arc_kit`,
-                    `{AugmentData:{Type: Dynamo, DynamoEnergy:${tier.DynEA}f, DynamoPower:${tier.DynP}f}}`
+                    `{AugmentData:{Type: Dynamo, DynamoEnergy:${tier.dynEA}f, DynamoPower:${tier.dynP}f}}`
                 )
             )
             .duration(600)
@@ -151,9 +151,9 @@ ServerEvents.recipes((event) => {
 
         event.recipes.gtceu
             .assembler(id(`mci_augment_${tier.tier}`))
-            .itemInputs(`kubejs:${tier.last_tier}_mci_kit`, `2x gtceu:${tier.gear}_gear`, `thermal:${tier.glass}_glass`)
+            .itemInputs(`kubejs:${tier.lastTier}_mci_kit`, `2x gtceu:${tier.gear}_gear`, `thermal:${tier.glass}_glass`)
             .itemOutputs(
-                Item.of(`kubejs:${tier.tier}_mci_kit`, `{AugmentData:{Type: Dynamo, DynamoEnergy:${tier.DynEM}f}}`)
+                Item.of(`kubejs:${tier.tier}_mci_kit`, `{AugmentData:{Type: Dynamo, DynamoEnergy:${tier.dynEM}f}}`)
             )
             .duration(600)
             .EUt(global.va[tier.energy]);
@@ -163,32 +163,32 @@ ServerEvents.recipes((event) => {
     [
         {
             tier: 'lv',
-            last_tier: 'ulv',
+            lastTier: 'ulv',
             metal: 'soul_infused',
-            Max: 10,
-            Avg: 8,
-            Min: 4,
+            max: 10,
+            avg: 8,
+            min: 4,
             energy: 'lv',
         },
-        { tier: 'mv', last_tier: 'lv', metal: 'signalum', Max: 14, Avg: 12, Min: 6, energy: 'mv' },
-        { tier: 'hv', last_tier: 'mv', metal: 'lumium', Max: 18, Avg: 16, Min: 8, energy: 'hv' },
-        { tier: 'ev', last_tier: 'hv', metal: 'enderium', Max: 22, Avg: 20, Min: 10, energy: 'ev' },
-        { tier: 'iv', last_tier: 'ev', metal: 'shellite', Max: 26, Avg: 24, Min: 12, energy: 'iv' },
+        { tier: 'mv', lastTier: 'lv', metal: 'signalum', max: 14, avg: 12, min: 6, energy: 'mv' },
+        { tier: 'hv', lastTier: 'mv', metal: 'lumium', max: 18, avg: 16, min: 8, energy: 'hv' },
+        { tier: 'ev', lastTier: 'hv', metal: 'enderium', max: 22, avg: 20, min: 10, energy: 'ev' },
+        { tier: 'iv', lastTier: 'ev', metal: 'shellite', max: 26, avg: 24, min: 12, energy: 'iv' },
     ].forEach((foo) => {
         event.recipes.gtceu
             .alloy_smelter(id(`${foo.tier}_rfc_kit`))
-            .itemInputs(`kubejs:${foo.last_tier}_rfc_kit`, `2x gtceu:${foo.metal}_gear`)
+            .itemInputs(`kubejs:${foo.lastTier}_rfc_kit`, `2x gtceu:${foo.metal}_gear`)
             .itemOutputs(
-                Item.of(`kubejs:${foo.tier}_rfc_kit`, `{AugmentData:{Type: RF, RFMax:${foo.Avg}f, RFXfer:${foo.Avg}f}}`)
+                Item.of(`kubejs:${foo.tier}_rfc_kit`, `{AugmentData:{Type: RF, RFMax:${foo.avg}f, RFXfer:${foo.avg}f}}`)
             )
             .duration(600)
             .EUt(global.va[foo.energy]);
 
         event.recipes.gtceu
             .alloy_smelter(id(`${foo.tier}_rfs_kit`))
-            .itemInputs(`kubejs:${foo.last_tier}_rfs_kit`, `2x gtceu:${foo.metal}_gear`)
+            .itemInputs(`kubejs:${foo.lastTier}_rfs_kit`, `2x gtceu:${foo.metal}_gear`)
             .itemOutputs(
-                Item.of(`kubejs:${foo.tier}_rfs_kit`, `{AugmentData:{Type: RF, RFMax:${foo.Max}f, RFXfer:${foo.Min}f}}`)
+                Item.of(`kubejs:${foo.tier}_rfs_kit`, `{AugmentData:{Type: RF, RFMax:${foo.max}f, RFXfer:${foo.min}f}}`)
             )
             .duration(600)
             .EUt(global.va[foo.energy]);
@@ -197,7 +197,7 @@ ServerEvents.recipes((event) => {
             .alloy_smelter(id(`${foo.tier}_rft_kit`))
             .itemInputs(`kubejs:${foo.last_tier}_rft_kit`, `2x gtceu:${foo.metal}_gear`)
             .itemOutputs(
-                Item.of(`kubejs:${foo.tier}_rft_kit`, `{AugmentData:{Type: RF, RFMax:${foo.Min}f, RFXfer:${foo.Max}f}}`)
+                Item.of(`kubejs:${foo.tier}_rft_kit`, `{AugmentData:{Type: RF, RFMax:${foo.min}f, RFXfer:${foo.max}f}}`)
             )
             .duration(600)
             .EUt(global.va[foo.energy]);
@@ -205,7 +205,7 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .alloy_smelter(id(`${foo.tier}_fls_kit`))
             .itemInputs(`kubejs:${foo.last_tier}_fls_kit`, `2x gtceu:${foo.metal}_gear`)
-            .itemOutputs(Item.of(`kubejs:${foo.tier}_fls_kit`, `{AugmentData:{Type: Fluid, FluidMax:${foo.Avg}f}}`))
+            .itemOutputs(Item.of(`kubejs:${foo.tier}_fls_kit`, `{AugmentData:{Type: Fluid, FluidMax:${foo.avg}f}}`))
             .duration(600)
             .EUt(global.va[foo.energy]);
     });

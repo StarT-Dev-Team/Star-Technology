@@ -24,14 +24,14 @@ global.notHardmode(() => {
             if (tier === 'luv' || tier === 'zpm' || tier === 'uv') {
                 countTypes = ['primCount', 'cableCount', 'wireCount', 'foilCount'];
                 details = {
-                    totals: global.LUVToUVComponentRecycleCounts[component],
+                    totals: global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS[component],
                     materials: global.componentRecycleMaterials[tier],
                 };
                 tierBracket = 'LUVToUV';
             } else {
                 countTypes = ['primCount', 'cableCount', 'secCount', 'tertCount'];
                 details = {
-                    totals: global.UHVPlusComponentRecycleCounts[component],
+                    totals: global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS[component],
                     materials: global.componentRecycleMaterials[tier],
                 };
                 tierBracket = 'UHVPLUS';

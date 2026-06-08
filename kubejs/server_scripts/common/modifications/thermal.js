@@ -119,6 +119,7 @@ ServerEvents.recipes((event) => {
     event.custom({
         type: 'systeams:steam',
         ingredient: {
+            // eslint-disable-next-line id-match, camelcase
             fluid_tag: 'forge:steam',
             amount: 1000,
         },
@@ -140,6 +141,7 @@ ServerEvents.recipes((event) => {
     event.custom({
         type: 'systeams:boiling',
         ingredient: {
+            // eslint-disable-next-line id-match, camelcase
             fluid_tag: `forge:steam`,
             amount: 50,
         },
@@ -160,7 +162,7 @@ ServerEvents.recipes((event) => {
         .duration(20)
         .EUt(30);
 
-    const SysteamSteams = (type, prior, scale) => {
+    const systeamSteams = (type, prior, scale) => {
         event.recipes.gtceu
             .steam_turbine(id(`${type}`))
             .inputFluids(`systeams:${type} 640`)
@@ -197,9 +199,9 @@ ServerEvents.recipes((event) => {
                 .EUt(30);
         }
     };
-    SysteamSteams('steamier', 'steam', 1);
-    SysteamSteams('steamiest', 'steamier', 2);
-    SysteamSteams('steamiester', 'steamiest', 3);
+    systeamSteams('steamier', 'steam', 1);
+    systeamSteams('steamiest', 'steamier', 2);
+    systeamSteams('steamiester', 'steamiest', 3);
 
     event.recipes.gtceu
         .mixer(id('diatron_dust'))

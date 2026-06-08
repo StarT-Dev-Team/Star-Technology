@@ -57,11 +57,11 @@ ServerEvents.recipes((event) => {
     event.replaceInput({ input: 'minecraft:string' }, 'minecraft:string', '#forge:string');
 
     ['iron', 'gold', 'copper', 'tin', 'lead', 'platinum', 'aluminum'].forEach((ore) => {
-        let GT_id = ore === 'aluminum' ? 'aluminium' : ore;
+        let gtId = ore === 'aluminum' ? 'aluminium' : ore;
         event.replaceOutput(
             { output: `create:crushed_raw_${ore}` },
             `create:crushed_raw_${ore}`,
-            `gtceu:crushed_${GT_id}_ore`
+            `gtceu:crushed_${gtId}_ore`
         );
     });
 

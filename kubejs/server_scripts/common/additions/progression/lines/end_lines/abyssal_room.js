@@ -72,7 +72,7 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.UHV])
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
-    const BreathHormone = (type, fluid) => {
+    const breathHormone = (type, fluid) => {
         event.recipes.gtceu
             .autoclave(id(type))
             .itemInputs('kubejs:draco_peptide_amino_chain')
@@ -83,11 +83,11 @@ ServerEvents.recipes((event) => {
             .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
     };
 
-    BreathHormone('voidrenin', 'gtceu:echo_r 16');
-    BreathHormone('terrathroxin', 'gtceu:nether_tempered_basalz 16');
-    BreathHormone('stormcallin', 'gtceu:nether_tempered_blitz 16');
-    BreathHormone('cryokinase', 'gtceu:nether_tempered_blizz 16');
-    BreathHormone('ignisferin', 'gtceu:nether_tempered_blaze 16');
+    breathHormone('voidrenin', 'gtceu:echo_r 16');
+    breathHormone('terrathroxin', 'gtceu:nether_tempered_basalz 16');
+    breathHormone('stormcallin', 'gtceu:nether_tempered_blitz 16');
+    breathHormone('cryokinase', 'gtceu:nether_tempered_blizz 16');
+    breathHormone('ignisferin', 'gtceu:nether_tempered_blaze 16');
 
     event.recipes.gtceu
         .large_chemical_reactor(id('drac_peptide_amino_residue'))
@@ -98,7 +98,7 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UEV])
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
-    const GrowthHormone = (type, dust) => {
+    const growthHormone = (type, dust) => {
         event.recipes.gtceu
             .autoclave(id(type))
             .itemInputs(`gtceu:tiny_${dust}_dust`)
@@ -109,13 +109,13 @@ ServerEvents.recipes((event) => {
             .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
     };
 
-    GrowthHormone('hemavyrin', 'hematite');
-    GrowthHormone('aethermetin', 'glowstone');
-    GrowthHormone('metavorexin', 'rhenium');
-    GrowthHormone('dracotropin', 'enriched_naquadah');
-    GrowthHormone('pyrothyin', 'activated_nether');
+    growthHormone('hemavyrin', 'hematite');
+    growthHormone('aethermetin', 'glowstone');
+    growthHormone('metavorexin', 'rhenium');
+    growthHormone('dracotropin', 'enriched_naquadah');
+    growthHormone('pyrothyin', 'activated_nether');
 
-    let HormoneComplex = (type, inputs) => {
+    let hormoneComplex = (type, inputs) => {
         event.recipes.gtceu
             .injection_mixer(id(`${type}_hormone_complex`))
             .inputFluids(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4])
@@ -125,14 +125,14 @@ ServerEvents.recipes((event) => {
             .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
     };
 
-    HormoneComplex('breath', [
+    hormoneComplex('breath', [
         'gtceu:voidrenin 150',
         'gtceu:terrathroxin 75',
         'gtceu:stormcallin 100',
         'gtceu:cryokinase 75',
         'gtceu:ignisferin 100',
     ]);
-    HormoneComplex('growth', [
+    hormoneComplex('growth', [
         'gtceu:hemavyrin 100',
         'gtceu:aethermetin 100',
         'gtceu:metavorexin 100',

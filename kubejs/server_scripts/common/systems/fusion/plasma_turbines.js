@@ -224,42 +224,42 @@ ServerEvents.recipes((event) => {
     // Plasma Turbine Recipes
     event.remove({ type: 'gtceu:plasma_generator' });
 
-    const PlasmaTurbine = (type, duration, ifGas) => {
-        let Quantity = ifGas === true ? 5 : 1;
+    const plasmaTurbine = (type, duration, ifGas) => {
+        let quantity = ifGas === true ? 5 : 1;
         event.recipes.gtceu
             .plasma_generator(id(`${type}_from_${type}_plasma`))
-            .inputFluids(`gtceu:${type}_plasma ${Quantity}`)
-            .outputFluids(`gtceu:${type} ${Quantity}`)
+            .inputFluids(`gtceu:${type}_plasma ${quantity}`)
+            .outputFluids(`gtceu:${type} ${quantity}`)
             .duration(duration)
             .EUt(-2048);
     };
 
-    const PlasmaTurbineUnique = (type, output, duration, ifGas) => {
-        let Quantity = ifGas === true ? 5 : 1;
+    const plasmaTurbineUnique = (type, output, duration, ifGas) => {
+        let quantity = ifGas === true ? 5 : 1;
         event.recipes.gtceu
             .plasma_generator(id(`${output}_from_${type}_plasma`))
-            .inputFluids(`gtceu:${type}_plasma ${Quantity}`)
-            .outputFluids(`gtceu:${output} ${Quantity}`)
+            .inputFluids(`gtceu:${type}_plasma ${quantity}`)
+            .outputFluids(`gtceu:${output} ${quantity}`)
             .duration(duration)
             .EUt(-8192);
     };
 
-    PlasmaTurbine('nickel', 180, false);
-    PlasmaTurbine('iron', 135, false);
-    PlasmaTurbine('oxygen', 98, true);
-    PlasmaTurbine('nitrogen', 110, true);
-    PlasmaTurbine('argon', 116, true);
-    PlasmaTurbine('helium', 27, true);
-    PlasmaTurbine('americium', 984, false);
-    PlasmaTurbine('tin', 84, false);
-    PlasmaTurbineUnique('magmatic', 'infernal_concentrate', 748, false);
+    plasmaTurbine('nickel', 180, false);
+    plasmaTurbine('iron', 135, false);
+    plasmaTurbine('oxygen', 98, true);
+    plasmaTurbine('nitrogen', 110, true);
+    plasmaTurbine('argon', 116, true);
+    plasmaTurbine('helium', 27, true);
+    plasmaTurbine('americium', 984, false);
+    plasmaTurbine('tin', 84, false);
+    plasmaTurbineUnique('magmatic', 'infernal_concentrate', 748, false);
 
     // Draco-Abyssal Rotor
     ['draco_abyssal'].forEach((type) => {
         event.remove({ output: `gtceu:${type}_turbine_blade` });
         event.remove({ id: `gtceu:assembler/assemble_${type}_turbine_blade` });
     });
-    const TurbineBlade = (type, Fluid) => {
+    const turbineBlade = (type, Fluid) => {
         event.recipes.gtceu
             .assembler(id(`${type}_turbine_blade`))
             .itemInputs(`5x gtceu:double_${type}_plate`, `8x gtceu:${type}_foil`, `2x gtceu:${type}_screw`)
@@ -268,7 +268,7 @@ ServerEvents.recipes((event) => {
             .duration(50)
             .EUt(GTValues.VHA[GTValues.UEV]);
     };
-    TurbineBlade('draco_abyssal', 'gtceu:void 720');
+    turbineBlade('draco_abyssal', 'gtceu:void 720');
 
     event.recipes.gtceu
         .assembly_line(id('draco_abyssal_turbine_rotor'))

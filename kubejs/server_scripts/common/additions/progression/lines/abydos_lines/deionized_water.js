@@ -2,7 +2,7 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     let LCR = event.recipes.gtceu.large_chemical_reactor;
-    let ChemBath = event.recipes.gtceu.chemical_bath;
+    let chemBath = event.recipes.gtceu.chemical_bath;
     let cycSifter = event.recipes.gtceu.cyclonic_sifter;
     let beads = 'ion_exchange_resin_beads';
 
@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
         .duration(480)
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
-    ChemBath(id(beads))
+    chemBath(id(beads))
         .inputFluids(`gtceu:distilled_water 1000`)
         .itemInputs(`5x kubejs:dry_${beads}`)
         .itemOutputs(`5x kubejs:${beads}`)
@@ -60,7 +60,7 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
-    ChemBath(id(`dry_${beads}`))
+    chemBath(id(`dry_${beads}`))
         .inputFluids(`gtceu:sulfuric_acid 125`)
         .itemInputs(`4x kubejs:dirty_${beads}`)
         .itemOutputs(`4x kubejs:dry_${beads}`)

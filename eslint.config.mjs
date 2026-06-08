@@ -53,7 +53,9 @@ export default [
                 Registries: "readonly",
                 HolderSet: "readonly",
                 ChunkPos: "readonly",
-
+                BlockProperties: "readonly",
+                SectionPos: "readonly",
+                GuiTextureGroup: "readonly",
                 // GTm Globals
                 $MultiblockMachineDefinition: "readonly",
                 GTRegistries: "readonly",
@@ -112,6 +114,7 @@ export default [
                 $StarTVacuumPumpPredicates: "readonly",
                 $StarTThreadingCapableMachine: "readonly",
                 $StarTThreadingStatBlocks: "readonly",
+                $BoostedPlasmaTurbine: "readonly",
                 // Miscellaneous globals
                 Ponder: "readonly",
                 Direction: "readonly",

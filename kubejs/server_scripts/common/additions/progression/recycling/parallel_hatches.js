@@ -4,7 +4,7 @@ global.notHardmode(() => {
         let LUVTOUV;
         let UHVPLUS;
 
-        function getParallelRecycleOutputs(tier, absoluteBool, LUVToUV, UHVPlus) {
+        function getParallelRecycleOutputs(tier, absoluteBool, luvToUv, uhvPlus) {
             const checkRecyclingCount = global.checkRecyclingCount;
             const getComponentTotal = global.getComponentTotal;
             const componentRecycles = global.componentRecycleMaterials;
@@ -18,11 +18,11 @@ global.notHardmode(() => {
             let materialTypes;
             let blockType;
 
-            if (LUVToUV) {
+            if (luvToUv) {
                 tierBracket = 'LUVToUV';
                 materialTypes = ['casing', 'prim', 'cable', 'wire', 'foil'];
                 blockType = 'parallel_hatch_LUVToUV';
-            } else if (UHVPlus) {
+            } else if (uhvPlus) {
                 tierBracket = 'UHVPLUS';
                 materialTypes =
                     tier === 'uhv' ? ['casing', 'prim', 'cable', 'sec', 'tert'] : ['prim', 'cable', 'sec', 'tert'];

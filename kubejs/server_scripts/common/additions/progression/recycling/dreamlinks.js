@@ -26,8 +26,8 @@ global.notHardmode(() => {
 
             const coverCounts =
                 tier === 'uv'
-                    ? global.LUVToUVComponentRecycleCounts.dreamlink_cover
-                    : global.UHVPlusComponentRecycleCounts.dreamlink_cover;
+                    ? global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.dreamlinkCover
+                    : global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.dreamlinkCover;
             const tertMaterial = tier === 'uv' ? materials.foilMaterial : materials.tertMaterial;
             const tertCount = tier === 'uv' ? coverCounts.foilCount : coverCounts.tertCount;
 
@@ -80,8 +80,8 @@ global.notHardmode(() => {
 
             const coverCounts =
                 tier === 'uv'
-                    ? global.LUVToUVComponentRecycleCounts.dreamlink_cover
-                    : global.UHVPlusComponentRecycleCounts.dreamlink_cover;
+                    ? global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.dreamlinkCover
+                    : global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.dreamlinkCover;
             const tertMaterial = tier === 'uv' ? materials.foilMaterial : materials.tertMaterial;
             const tertCount = tier === 'uv' ? coverCounts.foilCount : coverCounts.tertCount;
 
