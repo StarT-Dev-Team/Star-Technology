@@ -329,7 +329,6 @@ const modRequirements = {
 };
 
 // Auto-generate all the wrapper functions
-// Similar to the packmode helpers
 Object.entries(modRequirements).forEach(([name, mod]) => {
     const mods = Array.isArray(mod) ? mod : [mod];
     /**

@@ -1,6 +1,6 @@
-# server_scripts/common/additions/
+# server_scripts/additions/
 
-New recipe additions shared by all packmodes.
+New recipe additions.
 
 ## Files
 

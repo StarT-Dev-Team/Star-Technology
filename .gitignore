@@ -6,7 +6,6 @@
 !defaultconfigs/
 !kubejs/
 !mods/panorama/
-!packmode/
 !panoramas/
 !scripts/
 !compile_data/
@@ -16,9 +15,6 @@
 !.gitattributes
 !.gitignore
 !LICENSE
-!packmode_picker.bat
-!packmode_picker.sh
-!packmode_picker.py
 !panorama.dat
 !README.md
 

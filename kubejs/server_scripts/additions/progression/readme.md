@@ -1,6 +1,6 @@
-# server_scripts/common/additions/progression/
+# server_scripts/additions/progression/
 
-Material processing chains and crafting recipes for the main progression path, shared by all packmodes.
+Material processing chains and crafting recipes for the main progression path.
 
 ## Root files
 

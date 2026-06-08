@@ -30,20 +30,15 @@ ServerEvents.recipes((event) => {
 
     //Coordinate Crystals
 
-    let abydosCrystal = event.recipes.gtceu
+    event.recipes.gtceu
         .dimensional_finder(id('abydos_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', '64x minecraft:sand', '16x gtceu:zpm_sensor')
         .inputFluids('gtceu:naquadria 7200')
         .itemOutputs('kubejs:abydos_coordinate_crystal')
         .CWUt(48)
         .totalCWU(576000)
-        .EUt(GTValues.VHA[GTValues.UV]);
-
-    if (global.packmode === 'abydos') {
-        abydosCrystal.dimension('sgjourney:abydos');
-    } else {
-        abydosCrystal.dimension('minecraft:overworld');
-    }
+        .EUt(GTValues.VHA[GTValues.UV])
+        .dimension('minecraft:overworld');
 
     event.recipes.gtceu
         .dimensional_finder(id('nether_coordinate_crystal'))

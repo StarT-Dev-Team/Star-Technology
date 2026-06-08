@@ -1,6 +1,6 @@
-# server_scripts/common/modifications/
+# server_scripts/modifications/
 
-Targeted modifications to existing mod recipes, shared by all packmodes.
+Targeted modifications to existing mod recipes.
 
 ## Files
 
