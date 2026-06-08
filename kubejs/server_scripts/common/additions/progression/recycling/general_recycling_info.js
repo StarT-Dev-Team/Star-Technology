@@ -49,8 +49,8 @@ global.componentRecycleMaterials = {
     },
 };
 
-global.LUVToUVComponentRecycleCounts = {
-    dreamlink_cover: {
+global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS = {
+    dreamlinkCover: {
         primCount: 6,
         cableCount: 2,
         wireCount: 0,
@@ -68,43 +68,43 @@ global.LUVToUVComponentRecycleCounts = {
         wireCount: 4,
         foilCount: 12,
     },
-    field_generator: {
+    fieldGenerator: {
         primCount: 18,
         cableCount: 4,
         wireCount: 8,
         foilCount: 24,
     },
-    robot_arm: {
+    robotArm: {
         primCount: 18.5,
         cableCount: 3,
         wireCount: 12,
         foilCount: 0,
     },
-    electric_piston: {
+    electricPiston: {
         primCount: 8,
         cableCount: 1,
         wireCount: 4,
         foilCount: 0,
     },
-    conveyor_module: {
+    conveyorModule: {
         primCount: 7.5,
         cableCount: 1.5,
         wireCount: 8,
         foilCount: 0,
     },
-    fluid_regulator: {
+    fluidRegulator: {
         primCount: 1.5,
         cableCount: 1.5,
         wireCount: 0,
         foilCount: 0,
     },
-    electric_pump: {
+    electricPump: {
         primCount: 1.5,
         cableCount: 1.5,
         wireCount: 0,
         foilCount: 0,
     },
-    electric_motor: {
+    electricMotor: {
         primCount: 2.5,
         cableCount: 0.5,
         wireCount: 4,
@@ -112,8 +112,8 @@ global.LUVToUVComponentRecycleCounts = {
     },
 };
 
-global.UHVPlusComponentRecycleCounts = {
-    dreamlink_cover: {
+global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS = {
+    dreamlinkCover: {
         primCount: 9,
         cableCount: 5,
         secCount: 0,
@@ -131,43 +131,43 @@ global.UHVPlusComponentRecycleCounts = {
         secCount: 0.5,
         tertCount: 2,
     },
-    field_generator: {
+    fieldGenerator: {
         primCount: 31,
         cableCount: 15,
         secCount: 1.5,
         tertCount: 2,
     },
-    robot_arm: {
+    robotArm: {
         primCount: 24,
         cableCount: 12,
         secCount: 4.5,
         tertCount: 6,
     },
-    electric_piston: {
+    electricPiston: {
         primCount: 13.5,
         cableCount: 4,
         secCount: 2.5,
         tertCount: 3,
     },
-    conveyor_module: {
+    conveyorModule: {
         primCount: 13.5,
         cableCount: 6,
         secCount: 2,
         tertCount: 4,
     },
-    fluid_regulator: {
+    fluidRegulator: {
         primCount: 5.5,
         cableCount: 2,
         secCount: 4,
         tertCount: 2,
     },
-    electric_pump: {
+    electricPump: {
         primCount: 5.5,
         cableCount: 2,
         secCount: 4,
         tertCount: 2,
     },
-    electric_motor: {
+    electricMotor: {
         primCount: 3,
         cableCount: 2,
         secCount: 0,
@@ -177,35 +177,35 @@ global.UHVPlusComponentRecycleCounts = {
 
 global.singleblockRecyclingDetails = {
     //if specialSingle = true, the next 3 are blank/unread
-    electric_furnace: {
+    electricFurnace: {
         name: 'electric_furnace',
         specialSingle: true,
         components: ' ',
         extraCasings: 0,
         extraCables: 0,
     },
-    electric_blaster: {
+    electricBlaster: {
         name: 'electric_blaster',
         specialSingle: true,
         components: ' ',
         extraCasings: 0,
         extraCables: 0,
     },
-    electric_smoker: {
+    electricSmoker: {
         name: 'electric_smoker',
         specialSingle: true,
         components: ' ',
         extraCasings: 0,
         extraCables: 0,
     },
-    alloy_smelter: {
+    alloySmelter: {
         name: 'alloy_smelter',
         specialSingle: true,
         components: ' ',
         extraCasings: 0,
         extraCables: 0,
     },
-    arc_furnace: {
+    arcFurnace: {
         name: 'arc_furnace',
         specialSingle: true,
         components: ' ',
@@ -226,7 +226,7 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 0,
     },
-    charger_4x: {
+    charger4x: {
         name: 'charger_4x',
         specialSingle: true,
         components: ' ',
@@ -275,14 +275,14 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 2,
     },
-    chemical_bath: {
+    chemicalBath: {
         name: 'chemical_bath',
         specialSingle: false,
         components: ['conveyor_module', 'conveyor_module', 'electric_pump'],
         extraCasings: 0,
         extraCables: 1,
     },
-    chemical_reactor: {
+    chemicalReactor: {
         name: 'chemical_reactor',
         specialSingle: false,
         components: ['electric_motor'],
@@ -310,7 +310,7 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 2,
     },
-    electromagnetic_separator: {
+    electromagneticSeparator: {
         name: 'electromagnetic_separator',
         specialSingle: false,
         components: ['conveyor_module'],
@@ -338,28 +338,28 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 3,
     },
-    fluid_heater: {
+    fluidHeater: {
         name: 'fluid_heater',
         specialSingle: false,
         components: ['electric_pump', 'electric_pump'],
         extraCasings: 0,
         extraCables: 1,
     },
-    fluid_solidifier: {
+    fluidSolidifier: {
         name: 'fluid_solidifier',
         specialSingle: false,
         components: ['electric_pump', 'electric_pump'],
         extraCasings: 0,
         extraCables: 2,
     },
-    forge_hammer: {
+    forgeHammer: {
         name: 'forge_hammer',
         specialSingle: false,
         components: ['electric_piston'],
         extraCasings: 0,
         extraCables: 3,
     },
-    forming_press: {
+    formingPress: {
         name: 'forming_press',
         specialSingle: false,
         components: ['electric_piston', 'electric_piston'],
@@ -387,7 +387,7 @@ global.singleblockRecyclingDetails = {
         extraCasings: 4, // note: this would be the previous casing tier for ev and below
         extraCables: 1,
     },
-    ore_washer: {
+    oreWasher: {
         name: 'ore_washer',
         specialSingle: false,
         components: ['electric_motor'],
@@ -401,7 +401,7 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 2,
     },
-    laser_engraver: {
+    laserEngraver: {
         name: 'laser_engraver',
         specialSingle: false,
         components: ['electric_piston', 'electric_piston', 'emitter'],
@@ -415,7 +415,7 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 2,
     },
-    thermal_centrifuge: {
+    thermalCentrifuge: {
         name: 'thermal_centrifuge',
         specialSingle: false,
         components: ['electric_motor', 'electric_motor'],
@@ -429,7 +429,7 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 2,
     },
-    circuit_assembler: {
+    circuitAssembler: {
         name: 'circuit_assembler',
         specialSingle: false,
         components: ['conveyor_module', 'conveyor_module', 'robot_arm'],
@@ -443,14 +443,14 @@ global.singleblockRecyclingDetails = {
         extraCasings: 0,
         extraCables: 2,
     },
-    gas_collector: {
+    gasCollector: {
         name: 'gas_collector',
         specialSingle: false,
         components: ['electric_pump', 'electric_pump'],
         extraCasings: 0,
         extraCables: 1,
     },
-    rock_crusher: {
+    rockCrusher: {
         name: 'rock_crusher',
         specialSingle: false,
         components: ['electric_motor', 'electric_piston'],
@@ -460,7 +460,7 @@ global.singleblockRecyclingDetails = {
 };
 
 global.coilRecycleDetails = {
-    naquadah_coil_block: {
+    naquadahCoilBlock: {
         materials: {
             frameMaterial: 'gtceu:hssg',
             wireMaterial: 'gtceu:naquadah',
@@ -473,7 +473,7 @@ global.coilRecycleDetails = {
         },
         prefix: 'gtceu:',
     },
-    trinium_coil_block: {
+    triniumCoilBlock: {
         materials: {
             frameMaterial: 'gtceu:hsse',
             wireMaterial: 'gtceu:trinium',
@@ -486,7 +486,7 @@ global.coilRecycleDetails = {
         },
         prefix: 'gtceu:',
     },
-    tritanium_coil_block: {
+    tritaniumCoilBlock: {
         materials: {
             frameMaterial: 'gtceu:trinaquadalloy',
             wireMaterial: 'gtceu:tritanium',
@@ -499,7 +499,7 @@ global.coilRecycleDetails = {
         },
         prefix: 'gtceu:',
     },
-    zalloy_coil_block: {
+    zalloyCoilBlock: {
         materials: {
             frameMaterial: 'gtceu:neutronium',
             wireMaterial: 'gtceu:zalloy',
@@ -512,7 +512,7 @@ global.coilRecycleDetails = {
         },
         prefix: 'kubejs:',
     },
-    magmada_alloy_coil_block: {
+    magmadaAlloyCoilBlock: {
         materials: {
             frameMaterial: 'gtceu:ancient_netherite',
             wireMaterial: 'gtceu:magmada_alloy',
@@ -525,7 +525,7 @@ global.coilRecycleDetails = {
         },
         prefix: 'kubejs:',
     },
-    abyssal_alloy_coil_block: {
+    abyssalAlloyCoilBlock: {
         materials: {
             frameMaterial: 'gtceu:draconyallium',
             wireMaterial: 'gtceu:abyssal_alloy',
@@ -538,7 +538,7 @@ global.coilRecycleDetails = {
         },
         prefix: 'kubejs:',
     },
-    rhenotax_coil: {
+    rhenotaxCoil: {
         materials: {
             frameMaterial: 'gtceu:astrenalloy_nx',
             wireMaterial: 'gtceu:rhenate_w',
@@ -554,53 +554,53 @@ global.coilRecycleDetails = {
 };
 
 global.fusionCasingDetails = {
-    fusion_casing: {
+    fusionCasing: {
         name: 'fusion_casing',
         prefix: 'gtceu:',
-        field_generator_tier: 'iv',
-        casing_tier: 'luv',
+        fieldGeneratorTier: 'iv',
+        casingTier: 'luv',
     },
-    fusion_casing_mk2: {
+    fusionCasingMk2: {
         name: 'fusion_casing_mk2',
         prefix: 'gtceu:',
-        field_generator_tier: 'luv',
-        casing_tier: 'zpm',
+        fieldGeneratorTier: 'luv',
+        casingTier: 'zpm',
     },
-    fusion_casing_mk3: {
+    fusionCasingMk3: {
         name: 'fusion_casing_mk3',
         prefix: 'gtceu:',
-        field_generator_tier: 'zpm',
-        casing_tier: 'uv',
+        fieldGeneratorTier: 'zpm',
+        casingTier: 'uv',
     },
-    auxiliary_boosted_fusion_casing_mk1: {
+    auxiliaryBoostedFusionCasingMk1: {
         name: 'auxiliary_boosted_fusion_casing_mk1',
         prefix: 'start_core:',
-        field_generator_tier: 'uv',
-        casing_tier: 'uhv',
+        fieldGeneratorTier: 'uv',
+        casingTier: 'uhv',
     },
-    fusion_casing_mk4: {
+    fusionCasingMk4: {
         name: 'fusion_casing_mk4',
         prefix: 'start_core:',
-        field_generator_tier: 'uhv',
-        casing_tier: 'uev',
+        fieldGeneratorTier: 'uhv',
+        casingTier: 'uev',
     },
-    auxiliary_boosted_fusion_casing_mk2: {
+    auxiliaryBoostedFusionCasingMk2: {
         name: 'auxiliary_boosted_fusion_casing_mk2',
         prefix: 'start_core:',
-        field_generator_tier: 'uev',
-        casing_tier: 'uiv',
+        fieldGeneratorTier: 'uev',
+        casingTier: 'uiv',
     },
 };
 
 global.fusionCoilRecycleDetails = {
-    fusion_coil: {
+    fusionCoil: {
         components: 'ignored',
         tierComponent: 'iv',
         plateMaterial: 'gtceu:europium',
         prefix: 'gtceu:',
         plateCount: 4,
     },
-    auxiliary_fusion_coil_mk1: {
+    auxiliaryFusionCoilMk1: {
         components: [
             'field_generator',
             'field_generator',
@@ -614,14 +614,14 @@ global.fusionCoilRecycleDetails = {
         prefix: 'start_core:',
         plateCount: 8,
     },
-    advanced_fusion_coil: {
+    advancedFusionCoil: {
         components: ['field_generator', 'field_generator', 'electric_pump'],
         tierComponent: 'uv',
         plateMaterial: 'gtceu:magmada_alloy',
         prefix: 'start_core:',
         plateCount: 4,
     },
-    auxiliary_fusion_coil_mk2: {
+    auxiliaryFusionCoilMk2: {
         components: [
             'field_generator',
             'field_generator',

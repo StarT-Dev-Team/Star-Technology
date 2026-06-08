@@ -33,7 +33,7 @@ ServerEvents.recipes((event) => {
         .duration(1800)
         .EUt(GTValues.VH[GTValues.UEV]);
 
-    cpaRecipe = cpaRecipe.stationResearch((researchRecipeBuilder) =>
+    cpaRecipe.stationResearch((researchRecipeBuilder) =>
         researchRecipeBuilder
             .researchStack(Item.of(`minecraft:recovery_compass`))
             .EUt(GTValues.VHA[GTValues.UHV])

@@ -11,7 +11,7 @@ let ponderUtils = (() => {
     let $MetaMachineBlockEntity = Java.loadClass('com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity');
     let $IMachineBlock = Java.loadClass('com.gregtechceu.gtceu.api.block.IMachineBlock');
     let $RelativeDirection = Java.loadClass('com.gregtechceu.gtceu.api.pattern.util.RelativeDirection');
-    let $RecipeLogic$Status = Java.loadClass('com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status');
+    let $RecipeLogicStatus = Java.loadClass('com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status');
     let $IPipeNode = Java.loadClass('com.gregtechceu.gtceu.api.pipenet.IPipeNode');
     let $InputWindowElement = Java.loadClass('net.createmod.ponder.foundation.element.InputWindowElement');
     let $ShowInputInstruction = Java.loadClass('net.createmod.ponder.foundation.instruction.ShowInputInstruction');
@@ -90,7 +90,7 @@ let ponderUtils = (() => {
 
         /** @satisfies {Record<string, SortStrategy>} */
         sortStrategy: {
-            controller_then_layers: (util, controller, blocks) => {
+            controllerThenLayers: (util, controller, blocks) => {
                 let groups = P.objectEntries(
                     P.groupBy(
                         blocks.map((block) => ({
@@ -103,7 +103,7 @@ let ponderUtils = (() => {
                 groups.sort((a, b) => a[0].layer - b[0].layer);
                 return groups.map((r) => r.map((x) => x.block));
             },
-            distance_from_controller: (util, controller, blocks) => {
+            distanceFromController: (util, controller, blocks) => {
                 let controllerVec = util.vector().centerOf(controller);
                 let groups = P.objectEntries(
                     P.groupBy(
@@ -117,7 +117,7 @@ let ponderUtils = (() => {
                 groups.sort((a, b) => a[0].distance - b[0].distance);
                 return groups.map((r) => r.map((x) => x.block));
             },
-            spyral_z: (util, controller, blocks) => {
+            spyralZ: (util, controller, blocks) => {
                 let bounds = [Infinity, Infinity, Infinity, -Infinity, -Infinity, -Infinity];
                 for (let block of blocks) {
                     if (block.pos.x < bounds[0]) bounds[0] = block.pos.x;
@@ -452,8 +452,8 @@ let ponderUtils = (() => {
             scene.world().modifyBlockEntity(controllerPosition, $MetaMachineBlockEntity, (be) => {
                 let metaMachine = be.getMetaMachine();
                 metaMachine.notifyStatusChanged(
-                    active ? $RecipeLogic$Status.IDLE : $RecipeLogic$Status.WORKING,
-                    active ? $RecipeLogic$Status.WORKING : $RecipeLogic$Status.IDLE
+                    active ? $RecipeLogicStatus.IDLE : $RecipeLogicStatus.WORKING,
+                    active ? $RecipeLogicStatus.WORKING : $RecipeLogicStatus.IDLE
                 );
             });
             P.triggerRerender(scene);
@@ -602,10 +602,10 @@ let ponderUtils = (() => {
         },
 
         instructions: {
-            ShowInputInstruction: $ShowInputInstruction,
-            ReplaceBlocksInstruction: $ReplaceBlocksInstruction,
-            DisplayWorldSectionInstruction: $DisplayWorldSectionInstruction,
-            FadeOutOfSceneInstruction: $FadeOutOfSceneInstruction,
+            showInputInstruction: $ShowInputInstruction,
+            replaceBlocksInstruction: $ReplaceBlocksInstruction,
+            displayWorldSectionInstruction: $DisplayWorldSectionInstruction,
+            fadeOutOfSceneInstruction: $FadeOutOfSceneInstruction,
         },
     };
 

@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "eslint kubejs/**/*.js",
-    "lint:fix": "eslint kubejs/**/*.js --fix",
-    "format": "prettier --check kubejs/**/*.js",
-    "format:fix": "prettier --write kubejs/**/*.js"
+    "lint": "eslint .",
+    "lint:errors": "eslint . --quiet",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

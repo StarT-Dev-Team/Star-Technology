@@ -1,7 +1,7 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    const IdRemoval = [
+    const idRemoval = [
         // Indium Line
         'gtceu:mixer/indium_concentrate',
         'gtceu:chemical_reactor/indium_concentrate_separation',
@@ -23,7 +23,7 @@ ServerEvents.recipes((event) => {
         'gtceu:macerator/macerate_maintenance_hatch',
     ];
 
-    IdRemoval.forEach((RecipeId) => {
+    idRemoval.forEach((RecipeId) => {
         event.remove({ id: RecipeId });
     });
 

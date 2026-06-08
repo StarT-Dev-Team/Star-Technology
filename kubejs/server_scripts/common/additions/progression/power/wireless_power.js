@@ -136,7 +136,7 @@ ServerEvents.recipes((event) => {
         ].forEach((hatch) => {
             let { amperage, scaling } = hatch;
 
-            let UVtierFluid = tier === 'uv' ? 1 : 2;
+            let uvTierFluid = tier === 'uv' ? 1 : 2;
 
             let prior =
                 amperage === 2
@@ -176,7 +176,7 @@ ServerEvents.recipes((event) => {
                 .EUt(EU * 4);
 
             if (amperage >= 64) {
-                recipe.inputFluids(`gtceu:${tierFluid} ${UVtierFluid * amperage * 36}`);
+                recipe.inputFluids(`gtceu:${tierFluid} ${uvTierFluid * amperage * 36}`);
             }
 
             if (amperage >= 256) {

@@ -20,54 +20,54 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.ZPM]);
 
     // VF Recipe Pull
-    event.forEachRecipe({ type: 'gtceu:vacuum_freezer' }, (VacParse) => {
-        let BulkVac = JSON.parse(VacParse.json);
-        let Duration = BulkVac.duration;
-        let EUt = BulkVac.tickInputs.eu[0].content;
-        let InItem = false;
-        let InFluid1 = false;
-        let InFluid2 = false;
-        let OutFluid = false;
-        let OutItem = false;
-        if (BulkVac.inputs.item?.length === 1) {
-            InItem = BulkVac.inputs.item[0].content;
+    event.forEachRecipe({ type: 'gtceu:vacuum_freezer' }, (vacParse) => {
+        let bulkVac = JSON.parse(vacParse.json);
+        let duration = bulkVac.duration;
+        let eut = bulkVac.tickInputs.eu[0].content;
+        let inItem = false;
+        let inFluid1 = false;
+        let inFluid2 = false;
+        let outFluid = false;
+        let outItem = false;
+        if (bulkVac.inputs.item?.length === 1) {
+            inItem = bulkVac.inputs.item[0].content;
         }
-        if (BulkVac.inputs.fluid?.length >= 1) {
-            InFluid1 = BulkVac.inputs.fluid[0].content;
+        if (bulkVac.inputs.fluid?.length >= 1) {
+            inFluid1 = bulkVac.inputs.fluid[0].content;
         }
-        if (BulkVac.inputs.fluid?.length === 2) {
-            InFluid2 = BulkVac.inputs.fluid[1].content;
+        if (bulkVac.inputs.fluid?.length === 2) {
+            inFluid2 = bulkVac.inputs.fluid[1].content;
         }
-        if (BulkVac.outputs.fluid?.length === 1) {
-            OutFluid = BulkVac.outputs.fluid[0].content;
+        if (bulkVac.outputs.fluid?.length === 1) {
+            outFluid = bulkVac.outputs.fluid[0].content;
         }
-        if (BulkVac.outputs.item?.length === 1) {
-            OutItem = BulkVac.outputs.item[0].content;
+        if (bulkVac.outputs.item?.length === 1) {
+            outItem = bulkVac.outputs.item[0].content;
         }
 
-        if (InItem) {
+        if (inItem) {
             // Cooling Molten to Liquid
-            if (InItem.ingredient.item === 'gtceu:ingot_casting_mold') {
-                if (!InFluid2) {
+            if (inItem.ingredient.item === 'gtceu:ingot_casting_mold') {
+                if (!inFluid2) {
                     // Cooled Without Fluid
                     event.recipes.gtceu
-                        .vacuum_freezer(id(`liquid_${InFluid1.value[0].tag.slice(13)}`))
+                        .vacuum_freezer(id(`liquid_${inFluid1.value[0].tag.slice(13)}`))
                         .notConsumable('kubejs:zalloyic_fluid_mold')
-                        .inputFluids(Fluid.of(`gtceu:${InFluid1.value[0].tag.slice(6)}`, InFluid1.amount))
-                        .outputFluids(Fluid.of(`gtceu:${InFluid1.value[0].tag.slice(13)}`, InFluid1.amount))
-                        .duration(Duration * 1.05)
-                        .EUt(EUt);
+                        .inputFluids(Fluid.of(`gtceu:${inFluid1.value[0].tag.slice(6)}`, inFluid1.amount))
+                        .outputFluids(Fluid.of(`gtceu:${inFluid1.value[0].tag.slice(13)}`, inFluid1.amount))
+                        .duration(duration * 1.05)
+                        .EUt(eut);
                 } else {
                     // Cooled With Fluid
                     event.recipes.gtceu
-                        .vacuum_freezer(id(`liquid_${InFluid1.value[0].tag.slice(13)}`))
+                        .vacuum_freezer(id(`liquid_${inFluid1.value[0].tag.slice(13)}`))
                         .notConsumable('kubejs:zalloyic_fluid_mold')
-                        .inputFluids(Fluid.of(`gtceu:${InFluid1.value[0].tag.slice(6)}`, InFluid1.amount))
-                        .inputFluids(Fluid.of(`gtceu:${InFluid2.value[0].tag.slice(6)}`, InFluid2.amount))
-                        .outputFluids(Fluid.of(`gtceu:${InFluid1.value[0].tag.slice(13)}`, InFluid1.amount))
-                        .outputFluids(Fluid.of(OutFluid.value[0].fluid, OutFluid.amount))
-                        .duration(Duration * 1.05)
-                        .EUt(EUt);
+                        .inputFluids(Fluid.of(`gtceu:${inFluid1.value[0].tag.slice(6)}`, inFluid1.amount))
+                        .inputFluids(Fluid.of(`gtceu:${inFluid2.value[0].tag.slice(6)}`, inFluid2.amount))
+                        .outputFluids(Fluid.of(`gtceu:${inFluid1.value[0].tag.slice(13)}`, inFluid1.amount))
+                        .outputFluids(Fluid.of(outFluid.value[0].fluid, outFluid.amount))
+                        .duration(duration * 1.05)
+                        .EUt(eut);
                 }
             }
         }
@@ -102,7 +102,7 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.UV]);
 
     // >15000K Cooling
-    const Material15000PlusAlloy = (type, dur) => {
+    const material15000PlusAlloy = (type, dur) => {
         event.remove({ id: `gtceu:vacuum_freezer/${type}` });
         event.recipes.gtceu
             .vacuum_freezer(id(`${type}_from_molten`))
@@ -134,28 +134,28 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VHA[GTValues.UEV]);
     };
 
-    Material15000PlusAlloy('mythrolic_alloy', 36.9);
-    Material15000PlusAlloy('magmada_alloy', 49.2);
-    Material15000PlusAlloy('starium_alloy', 29.55);
-    Material15000PlusAlloy('enriched_pallarovium_alloy', 31.5);
-    Material15000PlusAlloy('nyanium', 49.35);
-    Material15000PlusAlloy('rhenium_super_composite_alloy', 16.5);
-    Material15000PlusAlloy('abyssal_alloy', 61.5);
-    Material15000PlusAlloy('chaotixic_alloy', 29.25);
-    Material15000PlusAlloy('ohmderblux_alloy', 22.95);
-    Material15000PlusAlloy('draconyallium', 12.45);
-    Material15000PlusAlloy('draco_abyssal', 76.8);
-    Material15000PlusAlloy('expetidalloy_d_17', 12);
-    Material15000PlusAlloy('rhenate_w', 28.8);
-    Material15000PlusAlloy('borealic_steel', 54.3);
-    Material15000PlusAlloy('ultispestalloy_cmsh', 13.35);
-    Material15000PlusAlloy('trikoductive_neutro_steel', 38.25);
-    Material15000PlusAlloy('melastrium_mox', 23.85);
-    Material15000PlusAlloy('hvga_steel', 18.75);
-    Material15000PlusAlloy('mythrotight_carbide_steel', 13.5);
-    Material15000PlusAlloy('aerorelient_steel', 10.8);
-    Material15000PlusAlloy('zeroidic_trinate_steel', 32.85);
-    Material15000PlusAlloy('vastaqalloy_cr_4200x', 16.5);
-    Material15000PlusAlloy('soul_ascendant_cuperite', 4.35);
-    Material15000PlusAlloy('primordially_stellarized_weapon_grade_naquadah', 63);
+    material15000PlusAlloy('mythrolic_alloy', 36.9);
+    material15000PlusAlloy('magmada_alloy', 49.2);
+    material15000PlusAlloy('starium_alloy', 29.55);
+    material15000PlusAlloy('enriched_pallarovium_alloy', 31.5);
+    material15000PlusAlloy('nyanium', 49.35);
+    material15000PlusAlloy('rhenium_super_composite_alloy', 16.5);
+    material15000PlusAlloy('abyssal_alloy', 61.5);
+    material15000PlusAlloy('chaotixic_alloy', 29.25);
+    material15000PlusAlloy('ohmderblux_alloy', 22.95);
+    material15000PlusAlloy('draconyallium', 12.45);
+    material15000PlusAlloy('draco_abyssal', 76.8);
+    material15000PlusAlloy('expetidalloy_d_17', 12);
+    material15000PlusAlloy('rhenate_w', 28.8);
+    material15000PlusAlloy('borealic_steel', 54.3);
+    material15000PlusAlloy('ultispestalloy_cmsh', 13.35);
+    material15000PlusAlloy('trikoductive_neutro_steel', 38.25);
+    material15000PlusAlloy('melastrium_mox', 23.85);
+    material15000PlusAlloy('hvga_steel', 18.75);
+    material15000PlusAlloy('mythrotight_carbide_steel', 13.5);
+    material15000PlusAlloy('aerorelient_steel', 10.8);
+    material15000PlusAlloy('zeroidic_trinate_steel', 32.85);
+    material15000PlusAlloy('vastaqalloy_cr_4200x', 16.5);
+    material15000PlusAlloy('soul_ascendant_cuperite', 4.35);
+    material15000PlusAlloy('primordially_stellarized_weapon_grade_naquadah', 63);
 });

@@ -437,7 +437,7 @@ ServerEvents.recipes((event) => {
 
     // Helixes
 
-    const SpecialAssemblyHelix = (type, specializer) => {
+    const specialAssemblyHelix = (type, specializer) => {
         event.recipes.gtceu
             .assembly_line(id(`uhv_${type}_thread_helix`))
             .itemInputs(
@@ -460,9 +460,9 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VA[GTValues.UEV]);
     };
 
-    SpecialAssemblyHelix(`overdrive`, `transmission_assembly`);
-    SpecialAssemblyHelix(`coprocessor`, `catalyst_core`);
-    SpecialAssemblyHelix(`weaving`, `computational_matrix`);
+    specialAssemblyHelix(`overdrive`, `transmission_assembly`);
+    specialAssemblyHelix(`coprocessor`, `catalyst_core`);
+    specialAssemblyHelix(`weaving`, `computational_matrix`);
 
     event.recipes.gtceu
         .assembly_line(id(`uev_supreme_thread_helix`))

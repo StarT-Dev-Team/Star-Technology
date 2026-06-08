@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         }
     };
 
-    const assembler_rem = (id1, output, input, eu, circuit) => {
+    const assemblerRem = (id1, output, input, eu, circuit) => {
         event.remove({ output: `${output}` });
         assembler(id1, output, input, eu, circuit);
     };

@@ -1,8 +1,8 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    const CRtype = [event.recipes.gtceu.large_chemical_reactor, event.recipes.gtceu.chemical_reactor];
-    CRtype.forEach((CR) => {
+    const crType = [event.recipes.gtceu.large_chemical_reactor, event.recipes.gtceu.chemical_reactor];
+    crType.forEach((CR) => {
         CR(id('hexafluorobutadiene'))
             .inputFluids('gtceu:butadiene 500', 'gtceu:hydrofluoric_acid 3000')
             .outputFluids('gtceu:hexafluorobutadiene 500', 'gtceu:hydrogen 6000')

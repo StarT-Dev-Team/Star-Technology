@@ -24,8 +24,8 @@ ServerEvents.recipes((event) => {
         .duration(624)
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
-    const CRtype = [event.recipes.gtceu.large_chemical_reactor, event.recipes.gtceu.chemical_reactor];
-    CRtype.forEach((CR) => {
+    const crType = [event.recipes.gtceu.large_chemical_reactor, event.recipes.gtceu.chemical_reactor];
+    crType.forEach((CR) => {
         CR(id('methylamine'))
             .inputFluids('gtceu:ammonia 1000', 'gtceu:methanol 1000')
             .outputFluids('gtceu:methylamine 1000', 'minecraft:water 1000')

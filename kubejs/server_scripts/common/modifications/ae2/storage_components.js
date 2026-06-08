@@ -10,7 +10,7 @@ ServerEvents.recipes((event) => {
         .duration(400)
         .EUt(global.v['ulv']);
 
-    const storage_base = (higher, lower, voltage, wire, multiplier) => {
+    const storageBase = (higher, lower, voltage, wire, multiplier) => {
         event.remove({ output: higher });
         event.recipes.gtceu
             .me_assembler(higher.split(':')[1])
@@ -32,15 +32,15 @@ ServerEvents.recipes((event) => {
         'gtceu:laminated_glass'
     );
 
-    storage_base('ae2:cell_component_4k', 'ae2:cell_component_1k', 'lv', 'tin', 1);
-    storage_base('ae2:cell_component_16k', 'ae2:cell_component_4k', 'mv', 'copper', 2);
-    storage_base('ae2:cell_component_64k', 'ae2:cell_component_16k', 'hv', 'gold', 4);
-    storage_base('ae2:cell_component_256k', 'ae2:cell_component_64k', 'ev', 'aluminium', 8);
-    storage_base('megacells:cell_component_1m', 'ae2:cell_component_256k', 'iv', 'platinum', 16);
-    storage_base('megacells:cell_component_4m', 'megacells:cell_component_1m', 'luv', 'niobium_titanium', 32);
-    storage_base('megacells:cell_component_16m', 'megacells:cell_component_4m', 'zpm', 'vanadium_gallium', 64);
-    storage_base('megacells:cell_component_64m', 'megacells:cell_component_16m', 'uv', 'yttrium_barium_cuprate', 128);
-    storage_base('megacells:cell_component_256m', 'megacells:cell_component_64m', 'uhv', 'europium', 256);
+    storageBase('ae2:cell_component_4k', 'ae2:cell_component_1k', 'lv', 'tin', 1);
+    storageBase('ae2:cell_component_16k', 'ae2:cell_component_4k', 'mv', 'copper', 2);
+    storageBase('ae2:cell_component_64k', 'ae2:cell_component_16k', 'hv', 'gold', 4);
+    storageBase('ae2:cell_component_256k', 'ae2:cell_component_64k', 'ev', 'aluminium', 8);
+    storageBase('megacells:cell_component_1m', 'ae2:cell_component_256k', 'iv', 'platinum', 16);
+    storageBase('megacells:cell_component_4m', 'megacells:cell_component_1m', 'luv', 'niobium_titanium', 32);
+    storageBase('megacells:cell_component_16m', 'megacells:cell_component_4m', 'zpm', 'vanadium_gallium', 64);
+    storageBase('megacells:cell_component_64m', 'megacells:cell_component_16m', 'uv', 'yttrium_barium_cuprate', 128);
+    storageBase('megacells:cell_component_256m', 'megacells:cell_component_64m', 'uhv', 'europium', 256);
 
     event.recipes.gtceu
         .me_assembler(id('cell_component_1m_skip'))

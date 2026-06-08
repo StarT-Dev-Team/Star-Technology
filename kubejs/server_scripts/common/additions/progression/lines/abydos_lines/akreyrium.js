@@ -313,7 +313,7 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.LuV]);
 
     // Injection
-    const add_injection_recipe = (akreyType, amount, catalyst) => {
+    const addInjectionRecipe = (akreyType, amount, catalyst) => {
         event.recipes.gtceu
             .injection_mixer(id(`${akreyType}_${amount}_${catalyst}`))
             .itemInputs(`1x kubejs:${catalyst}_injection_catalyst`)
@@ -324,17 +324,17 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VHA[GTValues.UHV]);
     };
 
-    add_injection_recipe('tau', 1000, 'tau');
-    add_injection_recipe('muon', 200, 'tau');
-    add_injection_recipe('electron', 200, 'tau');
+    addInjectionRecipe('tau', 1000, 'tau');
+    addInjectionRecipe('muon', 200, 'tau');
+    addInjectionRecipe('electron', 200, 'tau');
 
-    add_injection_recipe('tau', 200, 'muon');
-    add_injection_recipe('muon', 1000, 'muon');
-    add_injection_recipe('electron', 200, 'muon');
+    addInjectionRecipe('tau', 200, 'muon');
+    addInjectionRecipe('muon', 1000, 'muon');
+    addInjectionRecipe('electron', 200, 'muon');
 
-    add_injection_recipe('tau', 200, 'electron');
-    add_injection_recipe('muon', 200, 'electron');
-    add_injection_recipe('electron', 1000, 'electron');
+    addInjectionRecipe('tau', 200, 'electron');
+    addInjectionRecipe('muon', 200, 'electron');
+    addInjectionRecipe('electron', 1000, 'electron');
 
     // Damaged fixing
     event.recipes.gtceu

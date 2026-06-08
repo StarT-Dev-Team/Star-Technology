@@ -152,13 +152,13 @@ ServerEvents.recipes((event) => {
 });
 
 //Gate Energy Resetting
-const Gates = ['classic', 'milky_way', 'pegasus'];
-Gates.forEach((gate) => {
+['classic', 'milky_way', 'pegasus'].forEach((gate) => {
     BlockEvents.rightClicked(`sgjourney:${gate}_stargate`, (event) => {
-        const { player, block, item, hand, level } = event;
+        const { player, block, item, level } = event;
 
         if (!item.hasTag('forge:tools/mallets')) return;
 
+        // eslint-disable-next-line id-match
         block.mergeEntityData({ Energy: 0 });
 
         level.playSound(null, block.pos, 'gtceu:computation', 'blocks');

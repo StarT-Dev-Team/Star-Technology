@@ -52,7 +52,9 @@ global.calculateRecyclingVoltageMultiplier = (itemOutputs) => {
 // breaks components down into their base materials
 global.getComponentTotal = (components, tierBracket) => {
     const componentRecycleCounts =
-        tierBracket === 'UHVPLUS' ? global.UHVPlusComponentRecycleCounts : global.LUVToUVComponentRecycleCounts;
+        tierBracket === 'UHVPLUS'
+            ? global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS
+            : global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS;
     const totalCountsTypes =
         tierBracket === 'UHVPLUS'
             ? ['primCount', 'cableCount', 'secCount', 'tertCount']

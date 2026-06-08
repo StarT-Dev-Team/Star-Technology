@@ -97,13 +97,13 @@ ServerEvents.recipes((event) => {
         .EUt(4*GTValues.VHA[GTValues.UXV])
         .dimension('minecraft:cavum_tenebrae');*/
 
-    const crystalDuping = (type, eutScale) => {
+    const crystalDuping = (type, EUTScale) => {
         event.recipes.gtceu
             .scanner(id(`${type}_crystal_duping`))
             .itemInputs('kubejs:coordinate_crystal', `kubejs:${type}_coordinate_crystal`)
             .itemOutputs(`2x kubejs:${type}_coordinate_crystal`)
             .duration(3000)
-            .EUt(GTValues.VHA[GTValues.ZPM] * Math.pow(4, eutScale));
+            .EUt(GTValues.VHA[GTValues.ZPM] * Math.pow(4, EUTScale));
     };
     crystalDuping('abydos', 0);
     crystalDuping('nether', 1);

@@ -80,7 +80,7 @@ global.notHardmode(() => {
             });
 
             const specialSingleOutputs = {
-                electric_furnace: [
+                electricFurnace: [
                     `8x ${materials.casingMaterial}`,
                     `4x ${materials.wireMaterial}`,
                     `2x ${materials.cableMaterial}`,
@@ -88,7 +88,7 @@ global.notHardmode(() => {
                     ' ',
                     ' ',
                 ],
-                electric_blast_furnace: [
+                electricBlastFurnace: [
                     `10x ${materials.casingMaterial}`,
                     `4x ${materials.wireMaterial}`,
                     `2x ${materials.cableMaterial}`,
@@ -96,7 +96,7 @@ global.notHardmode(() => {
                     ' ',
                     ' ',
                 ],
-                electric_smoker: [
+                electricSmoker: [
                     `8x ${materials.casingMaterial}`,
                     `6x ${materials.wireMaterial}`,
                     `2x ${materials.cableMaterial}`,
@@ -104,7 +104,7 @@ global.notHardmode(() => {
                     ' ',
                     ' ',
                 ],
-                alloy_smelter: [
+                alloySmelter: [
                     `8x ${materials.casingMaterial}`,
                     `6x ${materials.wireMaterial}`,
                     `2x ${materials.cableMaterial}`,
@@ -112,7 +112,7 @@ global.notHardmode(() => {
                     ' ',
                     ' ',
                 ],
-                arc_furnace: [
+                arcFurnace: [
                     `11x ${materials.casingMaterial}`,
                     `5x ${materials.cableMaterial}`,
                     `${graphite}`,
@@ -129,7 +129,7 @@ global.notHardmode(() => {
                     ' ',
                 ],
                 polarizer: [`18x ${materials.cableMaterial}`, `8x ${materials.casingMaterial}`, ' ', ' ', ' ', ' '],
-                charger_4x: [
+                charger4x: [
                     `8x ${materials.casingMaterial}`,
                     `8x ${materials.wireMaterial}`,
                     `2x ${materials.cableMaterial}`,

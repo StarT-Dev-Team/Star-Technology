@@ -25,8 +25,8 @@ ServerEvents.recipes((event) => {
             },
             scaling: { scaler, EU },
             researchData: {
-                default: { cwuD, EUtD },
-                special: { cwuS, EUtS },
+                default: { cwuD, EUTD },
+                special: { cwuS, EUTS },
             },
         } = data;
 
@@ -48,14 +48,14 @@ ServerEvents.recipes((event) => {
                 assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
                     researchRecipeBuilder
                         .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                        .EUt(EUtS)
+                        .EUt(EUTS)
                         .CWUt(cwuS)
                 );
             } else {
                 assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
                     researchRecipeBuilder
                         .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                        .EUt(EUtD)
+                        .EUt(EUTD)
                         .CWUt(cwuD)
                 );
             }
