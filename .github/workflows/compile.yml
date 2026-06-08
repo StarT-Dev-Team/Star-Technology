@@ -30,3 +30,4 @@ jobs:
       uses: ./.github/actions/compile-modpack
       with:
         branch_name: ${{ steps.branch.outputs.branch_name }}
+        discord_webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
