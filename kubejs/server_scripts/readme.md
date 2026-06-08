@@ -7,14 +7,15 @@ Handles recipe additions, recipe removals, tag modifications, loot tables, and o
 
 | Path | Description |
 |---|---|
-| [`common/`](common/) | Scripts that run in all packmodes. |
-| [`default/`](default/) | Scripts that run only in default packmode. |
-| [`hardmode/`](hardmode/) | Scripts that run only in hardmode packmode. |
+| [`additions/`](additions/) | New recipe additions — multiblock recipes and progression material chains. |
+| [`modifications/`](modifications/) | Targeted modifications to existing mod recipes (AE2, Thermal, Create, etc.). |
+| [`systems/`](systems/) | Custom gameplay systems implemented via GT recipes (fusion, agriculture, gate-based crafting, etc.). |
+| [`utils/`](utils/) | Tag additions, ore vein definitions, fluid vein definitions, loot table helpers, and utilities. |
 | [`deprecated/`](deprecated/) | Old scripts kept for reference; not part of the active load. |
 | [`utils/`](utils/) | Shared utility scripts (constants, helpers, tag loader, recipe helpers). |
 
-## Packmode filtering
+## Root files
 
-Scripts use `// packmode: hard` or `// packmode: default` at the top to restrict to a specific mode.  
-`common/` files have no restriction and always run.  
-The utility scripts in `utils/` are loaded at high priority (via `// priority:` comments) so they are available to all other scripts.
+| File | Description |
+|---|---|
+| [`mass_removals.js`](mass_removals.js) | Bulk removal of recipes that are unnecessary, replaced or gated by Star Technology (Thermal, Create, Ex Nihilo, Flux Networks, etc.) |
