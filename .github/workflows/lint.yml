@@ -188,7 +188,6 @@ jobs:
             const inlineComments  = cleanedComments.slice(0, INLINE_COMMENT_CAP);
             const omittedCount    = cleanedComments.length - inlineComments.length;
             const hasIssues       = cleanedComments.length > 0;
-            const conclusion      = hasIssues ? 'REQUEST_CHANGES' : 'APPROVE';
 
             let summaryBody = hasIssues
                 ? [
@@ -208,14 +207,56 @@ jobs:
                     'All scripts pass formatting and lint checks. Nice work!',
                   ].join('\n');
 
-            await github.rest.pulls.createReview({
-                owner,
-                repo,
-                pull_number: pullNumber,
-                commit_id:   headSha,
-                body:        summaryBody,
-                event:       conclusion,
-                comments:    inlineComments,
-            });
-
-            console.log(`Review posted: ${conclusion} with ${inlineComments.length} inline comment(s) (${omittedCount} omitted).`);
+            if (hasIssues) {
+                try {
+                    await github.rest.pulls.createReview({
+                        owner,
+                        repo,
+                        pull_number: pullNumber,
+                        commit_id:   headSha,
+                        body:        summaryBody,
+                        event:       'REQUEST_CHANGES',
+                        comments:    inlineComments,
+                    });
+                    console.log(`Review posted: REQUEST_CHANGES with ${inlineComments.length} inline comment(s) (${omittedCount} omitted).`);
+                } catch (error) {
+                    if (error.status === 422 && error.response?.data?.message?.includes('Unprocessable Entity')) {
+                        console.log('Inline comments failed to resolve, posting summary comment instead...');
+                        const detailsBody = [
+                            summaryBody,
+                            '',
+                            '<details><summary>Detailed Issues</summary>',
+                            '',
+                            '### ESLint Issues (' + eslintComments.length + ')',
+                            eslintComments.length > 0 
+                                ? eslintComments.map(c => `- **${c.path}:${c.line}** - ${c.body.split('\n')[0]}`).join('\n')
+                                : 'None',
+                            '',
+                            '### Prettier Formatting Issues (' + prettierComments.length + ')',
+                            prettierComments.length > 0
+                                ? prettierComments.map(c => `- **${c.path}:${c.line}**`).join('\n')
+                                : 'None',
+                            '',
+                            '</details>',
+                        ].join('\n');
+                        
+                        await github.rest.issues.createComment({
+                            owner,
+                            repo,
+                            issue_number: pullNumber,
+                            body:         detailsBody,
+                        });
+                        console.log(`Comment posted with ${eslintComments.length} eslint and ${prettierComments.length} prettier issues.`);
+                    } else {
+                        throw error;
+                    }
+                }
+            } else {
+                await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number: pullNumber,
+                    body:         summaryBody,
+                });
+                console.log(`Comment posted: All checks passed.`);
+            }
