@@ -59,6 +59,12 @@ runs:
       env:
         DISCORD_WEBHOOK_URL: ${{ inputs.discord_webhook_url }}
       run: |
+        # Only send notification if webhook URL is provided
+        if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+          echo "⚠️ Discord webhook URL not provided, skipping notification"
+          exit 0
+        fi
+
         # Calculate expiry date (retention-days from now)
         EXPIRY_DATE=$(date -u -d "+30 days" "+%Y-%m-%dT%H:%M:%SZ" 2>/dev/null || date -u -v+30d "+%Y-%m-%dT%H:%M:%SZ")
         EXPIRY_UNIX=$(date -u -d "+30 days" "+%s" 2>/dev/null || date -u -v+30d "+%s")
@@ -66,7 +72,7 @@ runs:
         RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
         ARTIFACT_NAME="Star Technology-1.20.1-${{ inputs.branch_name }}"
 
-        curl -s -X POST "$DISCORD_WEBHOOK_URL" \
+        RESPONSE=$(curl -s -X POST "$DISCORD_WEBHOOK_URL" \
           -H "Content-Type: application/json" \
           -d "{
             \"embeds\": [{
@@ -97,7 +103,16 @@ runs:
               ],
               \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
             }]
-          }"
+          }" -w "\n%{http_code}")
+        
+        HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+        if [ "$HTTP_CODE" = "204" ]; then
+          echo "✅ Discord notification sent successfully"
+        else
+          echo "❌ Failed to send Discord notification (HTTP $HTTP_CODE)"
+          echo "Response: $(echo "$RESPONSE" | head -n-1)"
+          exit 1
+        fi
 
     - name: Display compilation info
       shell: bash
