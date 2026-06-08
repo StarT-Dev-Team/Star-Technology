@@ -1,6 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
-    const getRecipeTier = global.getRecipeTier;
+    //const getRecipeTier = global.getRecipeTier;
 
     const assembler = event.recipes.gtceu.assembler;
     const polarizer = event.recipes.gtceu.polarizer;

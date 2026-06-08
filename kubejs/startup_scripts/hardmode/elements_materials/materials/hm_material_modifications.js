@@ -1,5 +1,5 @@
 // packmode: hard
-
+// eslint-disable-next-line no-unused-vars
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const matmod = (mat, flag) => {
         GTMaterials.get(mat).addFlags(flag);
@@ -23,7 +23,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     matmod('promethium', [plates]);
     /* eslint-enable no-undef */
 });
-
+// eslint-disable-next-line no-unused-vars
 GTCEuStartupEvents.materialModification((event) => {
     GTMaterials.get('yttrium_carbonate').setFormula('Y2(CO3)3');
     GTMaterials.get('platinum_salt').setFormula('(NH3)4PtCl6');

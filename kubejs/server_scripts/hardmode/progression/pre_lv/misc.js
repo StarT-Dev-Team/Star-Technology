@@ -29,6 +29,7 @@ ServerEvents.recipes((event) => {
         event.shaped(output, pattern, symbols).id(`start:shaped/${output.split(':')[1]}`);
     };
 
+    // eslint-disable-next-line no-unused-vars
     const replaceShapeless = (output, ingredients) => {
         event.remove({ type: 'minecraft:crafting_shapeless', output: output });
         event.shapeless(output, ingredients);

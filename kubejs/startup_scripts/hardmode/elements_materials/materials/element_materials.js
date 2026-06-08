@@ -1,5 +1,5 @@
 // packmode: hard
-
+// eslint-disable-next-line no-unused-vars
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     // Periodic table materials
     const element = global.periodicTableElement;

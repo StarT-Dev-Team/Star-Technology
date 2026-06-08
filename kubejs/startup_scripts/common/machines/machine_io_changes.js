@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
     // Change Fluid Heater IO (1 fluid output to 2)
     GTRecipeTypes.FLUID_HEATER_RECIPES.setMaxIOSize(1, 0, 1, 2);

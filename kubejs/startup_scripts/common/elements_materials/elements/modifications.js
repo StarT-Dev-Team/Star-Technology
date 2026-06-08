@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 GTCEuStartupEvents.registry('gtceu:element', (event) => {
     const setCounts = (name, protons, neutrons) => {
         let elem = GTElements.get(name);

@@ -37,7 +37,7 @@ LootJS.modifiers((event) => {
             .addLoot(templeLoot.loot);
     });
 
-    const nether = [
+    [
         'minecraft:chests/bastion_bridge',
         'minecraft:chests/bastion_hoglin_stable',
         'minecraft:chests/bastion_other',

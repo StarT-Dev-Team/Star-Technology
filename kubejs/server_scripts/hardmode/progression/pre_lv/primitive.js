@@ -494,6 +494,7 @@ ServerEvents.recipes((event) => {
             },
             'gtceu:gypsum_dust',
         ])
+        // eslint-disable-next-line no-unused-vars
         .modifyResult((grid, result) => {
             const bucket = grid.find('woodenbucket:wooden_bucket');
 

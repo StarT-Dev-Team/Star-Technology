@@ -15,6 +15,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('stabilization_module', 'custom')
         .machine(
+            // eslint-disable-next-line no-unused-vars
             (holder, tier) => new $CleaningMaintenanceHatchPartMachine(holder, CleanroomType.getByName('stabilized'))
         )
         .tiers(GTValues.UHV)

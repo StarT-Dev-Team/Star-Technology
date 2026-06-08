@@ -1,10 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 ServerEvents.recipes((event) => {
-    const id = global.id;
+    // const id = global.id;
 
     const researchBuilder = global.researchBuilder;
     // global.researchBuilder = (machineType, recId, inputsI, inputsF, outputsI, duration, cwuT, totalCWU, euT, researched)
     const riftAss = 'riftic_infusion_assembly';
-    const assLine = 'assembly_line';
+    // const assLine = 'assembly_line';
 
     researchBuilder(
         riftAss,

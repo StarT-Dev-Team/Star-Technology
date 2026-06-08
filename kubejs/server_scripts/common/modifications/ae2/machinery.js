@@ -11,6 +11,7 @@ ServerEvents.recipes((event) => {
         }
     };
 
+    // eslint-disable-next-line no-unused-vars
     const assemblerRem = (id1, output, input, eu, circuit) => {
         event.remove({ output: `${output}` });
         assembler(id1, output, input, eu, circuit);

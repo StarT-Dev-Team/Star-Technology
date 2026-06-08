@@ -4,6 +4,7 @@ const $IngotProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.m
 const $DustProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty');
 const $FluidProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty');
 const $BlastProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty');
+// eslint-disable-next-line no-unused-vars
 const $FluidPipeProperties = Java.loadClass(
     'com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidPipeProperties'
 );
