@@ -1,6 +1,6 @@
-# startup_scripts/common/objects/
+# startup_scripts/objects/
 
-Registers custom blocks, items, and mob effects shared by all packmodes.
+Registers custom blocks, items, and mob effects.
 
 ## Structure
 

@@ -1,4 +1,4 @@
-# server_scripts/common/additions/multiblock_recipes/
+# server_scripts/additions/multiblock_recipes/
 
 Recipes that run inside Star Technology's custom multiblock machines.
 

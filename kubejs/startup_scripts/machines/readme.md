@@ -1,6 +1,6 @@
-# startup_scripts/common/machines/
+# startup_scripts/machines/
 
-Registers all custom GregTech machines shared by all packmodes.
+Registers all custom GregTech machines.
 
 ## Files & Folders
 

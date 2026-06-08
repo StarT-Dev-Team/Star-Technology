@@ -14,13 +14,6 @@ KubeJS integrates with the modpack via three script lifecycles and two resource 
 | [`data/`](data/) | Acts as a datapack — loot tables, damage types, and structure NBT files. |
 | [`config/`](config/) | KubeJS config storage (`client.properties`, `common.properties`). |
 
-## Packmode system
-
-Scripts support three packmodes: **default**, **hard** and **abydos**.  
-Files inside `common/` subdirectories apply to all modes.  
-Files inside `default/` or `hardmode/` subdirectories are mode-specific.  
-The active packmode is read at startup via `global.packmode` (see [`startup_scripts/utils/helpers/packmode.js`](startup_scripts/utils/helpers/packmode.js)).
-
 ## Reload commands
 
 | Command | Reloads |

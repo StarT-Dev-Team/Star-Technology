@@ -1,6 +1,6 @@
-# server_scripts/common/systems/
+# server_scripts/systems/
 
-Custom gameplay systems implemented as server-side recipe/event scripts, shared by all packmodes.
+Custom gameplay systems implemented as server-side recipe/event scripts.
 
 ## Root files
 

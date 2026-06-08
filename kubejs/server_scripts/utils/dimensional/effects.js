@@ -2,30 +2,28 @@ PlayerEvents.tick((event) => {
     const { player } = event;
 
     // Sand Erosion
-    if (global.packmode !== 'abydos') {
-        (() => {
-            if (player.hasEffect('kubejs:sand_erosion')) {
-                let effects = ['minecraft:slowness'];
+    (() => {
+        if (player.hasEffect('kubejs:sand_erosion')) {
+            let effects = ['minecraft:slowness'];
 
-                if (player.age % 40 === 0) {
-                    effects.forEach((effect) => {
-                        player.potionEffects.add(effect, 60, 1, false, false);
-                    });
-                }
-
-                if (player.age % 100 === 0) {
-                    player.potionEffects.add('minecraft:hunger', 100, 2, false, false);
-                    event.server.runCommandSilent(
-                        `execute as ${event.player.username} run damage ${event.player.username} 2 kubejs:heat_exhaustion`
-                    );
-                }
-
-                if (player.age % 200 === 0) {
-                    player.tell(Text.translate('effects.sand_erosion.message'));
-                }
+            if (player.age % 40 === 0) {
+                effects.forEach((effect) => {
+                    player.potionEffects.add(effect, 60, 1, false, false);
+                });
             }
-        })();
-    }
+
+            if (player.age % 100 === 0) {
+                player.potionEffects.add('minecraft:hunger', 100, 2, false, false);
+                event.server.runCommandSilent(
+                    `execute as ${event.player.username} run damage ${event.player.username} 2 kubejs:heat_exhaustion`
+                );
+            }
+
+            if (player.age % 200 === 0) {
+                player.tell(Text.translate('effects.sand_erosion.message'));
+            }
+        }
+    })();
 
     // Radiation Poisoning
     if (player.hasEffect('kubejs:radiation_poisoning')) {

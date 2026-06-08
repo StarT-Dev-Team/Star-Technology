@@ -1,6 +1,6 @@
-# startup_scripts/common/elements_materials/
+# startup_scripts/elements_materials/
 
-Registers custom GregTech materials (alloys, elements, fluids) shared by all packmodes.
+Registers custom GregTech materials (alloys, elements, fluids).
 
 ## Structure
 

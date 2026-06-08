@@ -31,6 +31,5 @@ Scripts managing dimensional hazard systems (radiation, heat, etc.) applied when
 | File | Description |
 |---|---|
 | [`const_loader.js`](helpers/const_loader.js) | Loads Java class references needed in server scripts (StarT machine classes, fluid ingredient, structure locators, etc.). Loaded at priority 100,000. |
-| [`packmode_helpers.js`](helpers/packmode_helpers.js) | Server-side packmode utility functions. |
 | [`recipe_helpers.js`](helpers/recipe_helpers.js) | GT recipe helper functions: `global.calculateRecyclingDuration` and related recycling math utilities. |
 | [`tag_loader.js`](helpers/tag_loader.js) | Loads Java class references needed for tag manipulation (`ResourceLocation`, `Registries`, structure finders, etc.). Loaded at priority 100,000. |
