@@ -3,6 +3,7 @@
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     /* eslint-disable no-undef */
     // === Helpers ===
+    // eslint-disable-next-line no-unused-vars
     const elemDustFluid = (name, color, flags) => {
         event.create(name).dust().fluid().element(GTElements.get(name)).color(color).flags(flags);
     };
@@ -20,6 +21,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             event.create(name).ingot().fluid().element(GTElements.get(element)).color(color).iconSet(icon).flags(flags);
         }
     };
+    // eslint-disable-next-line no-unused-vars
     const elemIngotFluid = (name, color, icon, blasting, flags) => {
         if (blasting.includes(blasting[0])) {
             event
@@ -55,6 +57,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const compDust = (name, elements, color, flags) => {
         event.create(name).dust().components(elements).color(color).flags(flags);
     };
+    // eslint-disable-next-line no-unused-vars
     const dustNoComp = (name, color, flags) => {
         event.create(name).dust().color(color).flags(flags);
     };
@@ -75,6 +78,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const compGem = (name, elements, color, icon, flags) => {
         event.create(name).gem().components(elements).color(color).iconSet(icon).flags(flags);
     };
+    // eslint-disable-next-line no-unused-vars
     const conductorSuper = (name, elements, color, blasting, cable, rotorstat) => {
         event
             .create(name)

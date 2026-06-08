@@ -361,6 +361,7 @@
         ]);
     }
 
+    // eslint-disable-next-line no-unused-vars
     function playStargateChevronSound(scene, pos, index) {
         // TODO: not working...
         let $AbstractStargateEntity = Java.loadClass(

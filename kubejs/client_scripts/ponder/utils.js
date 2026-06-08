@@ -7,6 +7,7 @@
 let ponderScenes = {};
 
 /** @global */
+// eslint-disable-next-line no-unused-vars
 let ponderUtils = (() => {
     let $MetaMachineBlockEntity = Java.loadClass('com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity');
     let $IMachineBlock = Java.loadClass('com.gregtechceu.gtceu.api.block.IMachineBlock');
@@ -447,7 +448,7 @@ let ponderUtils = (() => {
          * @param {boolean} active
          */
         setMultiblockActiveState(scene, controllerPosition, active) {
-            let util = scene.scene.sceneBuildingUtil;
+            // let util = scene.scene.sceneBuildingUtil;
 
             scene.world().modifyBlockEntity(controllerPosition, $MetaMachineBlockEntity, (be) => {
                 let metaMachine = be.getMetaMachine();

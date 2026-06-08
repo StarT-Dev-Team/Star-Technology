@@ -22,7 +22,7 @@ ServerEvents.recipes((event) => {
     const asmdDiode = 'gtceu:advanced_smd_diode';
     const asmdInductor = 'gtceu:advanced_smd_inductor';
     const asmdTransistor = 'gtceu:advanced_smd_transistor';
-    const asmdResistor = 'gtceu:advanced_smd_resistor';
+    // const asmdResistor = 'gtceu:advanced_smd_resistor';
     const asmdCapacitor = 'gtceu:advanced_smd_capacitor';
 
     const lsmdDiode = 'kubejs:living_smd_diode';

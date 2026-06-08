@@ -42,6 +42,7 @@ ServerEvents.recipes((event) => {
             outFluid = bulkVac.outputs.fluid[0].content;
         }
         if (bulkVac.outputs.item?.length === 1) {
+            // eslint-disable-next-line no-unused-vars
             outItem = bulkVac.outputs.item[0].content;
         }
 

@@ -2,10 +2,10 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     const scalerMCSF = 32; //Should be 16n variant (cap64) //having from 64 given large quantities
-    const getDataItem = global.getDataItem;
+    // const getDataItem = global.getDataItem;
 
     // === Living SMDs ===
-    const livingSMD = (type, quantity, inputs, polymerAmount, cwu) => {
+    const livingSMD = (type, quantity, inputs, polymerAmount /*, cwu */) => {
         event.recipes.gtceu
             .assembler(id(`living_smd_${type}`))
             .itemInputs(inputs)
@@ -19,32 +19,32 @@ ServerEvents.recipes((event) => {
         'inductor',
         16,
         ['gtceu:naquadah_alloy_ring', '4x gtceu:fine_naquadria_wire', 'gtceu:ferrosilite_dust'],
-        144,
-        180
+        144
+        // 180
     );
 
     livingSMD(
         'transistor',
         16,
         ['2x gtceu:naquadah_foil', '8x gtceu:fine_trinium_wire', 'gtceu:pure_netherite_foil'],
-        144,
-        180
+        144
+        // 180
     );
 
     livingSMD(
         'capacitor',
         16,
         ['2x gtceu:polyimide_foil', '2x gtceu:trinaquadalloy_foil', 'gtceu:nether_star_foil'],
-        108,
-        180
+        108
+        // 180
     );
 
     livingSMD(
         'resistor',
         16,
         ['gtceu:silicon_carbide_dust', '6x gtceu:fine_yttrium_barium_cuprate_wire', '2x gtceu:duranium_foil'],
-        144,
-        180
+        144
+        // 180
     );
 
     livingSMD(
@@ -55,8 +55,8 @@ ServerEvents.recipes((event) => {
             'gtceu:naquadah_wafer',
             '6x gtceu:fine_indium_tin_barium_titanium_cuprate_wire',
         ],
-        288,
-        180
+        288
+        // 180
     );
 
     // === Draco-QMDs ===

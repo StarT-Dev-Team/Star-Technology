@@ -1,6 +1,6 @@
 //requires: xycraft_world
 ServerEvents.recipes((event) => {
-    const id = global.id;
+    // const id = global.id;
 
     event.replaceInput({ mod: 'xycraft_world' }, 'xycraft:aluminum_ingot', 'gtceu:aluminium_ingot');
     event.replaceInput({ mod: 'xycraft_world' }, '#forge:ingots/aluminum', 'gtceu:aluminium_ingot');

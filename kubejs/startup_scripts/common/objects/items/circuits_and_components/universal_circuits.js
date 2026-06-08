@@ -1,4 +1,5 @@
 StartupEvents.registry('item', (event) => {
+    // eslint-disable-next-line no-unused-vars
     const tierColors = [
         { tier: 'ULV', color: '§8' },
         { tier: 'LV', color: '§7' },

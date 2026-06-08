@@ -1,6 +1,6 @@
 //requires: travelanchors
 ServerEvents.recipes((event) => {
-    const id = global.id;
+    // const id = global.id;
 
     event.remove({ output: 'travelanchors:travel_anchor' });
     event.remove({ output: 'travelanchors:travel_staff' });

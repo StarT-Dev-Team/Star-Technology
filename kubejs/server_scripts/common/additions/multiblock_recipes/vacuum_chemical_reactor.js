@@ -2,7 +2,7 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     const pumpBlockTiers = (tier, rotor, casing) => {
-        let pumpRecipe = event
+        event
             .shaped(`start_core:${tier}_vacuum_pump`, ['ABA', 'CDC', 'ABA'], {
                 A: `gtceu:double_${casing}_plate`,
                 B: `gtceu:${rotor}_rotor`,
