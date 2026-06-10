@@ -1,5 +1,5 @@
 {
-  "ldlib": {
-    "connection": "kubejs:block/coils/magmada_alloy/coil_ctm"
-  }
+    "ldlib": {
+        "connection": "kubejs:block/coils/magmada_alloy/coil_ctm"
+    }
 }

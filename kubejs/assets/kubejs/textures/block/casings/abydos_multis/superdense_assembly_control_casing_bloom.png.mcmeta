@@ -1,7 +1,7 @@
 {
-	"animation":{
-		"frametime":1
-	},
+    "animation": {
+        "frametime": 1
+    },
     "ldlib": {
         "emissive": true
     },

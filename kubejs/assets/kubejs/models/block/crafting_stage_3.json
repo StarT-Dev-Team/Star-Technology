@@ -1,12 +1,12 @@
 {
-	"parent": "minecraft:block/cube",
-	"textures": {
-		"particle": "minecraft:block/stripped_jungle_log_top",
-		"down": "kubejs:block/hardmode/unformed_table_2_end",
-		"up": "kubejs:block/hardmode/unformed_table_3_top",
-		"north": "kubejs:block/hardmode/unformed_table_2_side",
-		"east": "kubejs:block/hardmode/unformed_table_2_side",
-		"south": "kubejs:block/hardmode/unformed_table_2_side",
-		"west": "kubejs:block/hardmode/unformed_table_2_side"
-	}
+    "parent": "minecraft:block/cube",
+    "textures": {
+        "particle": "minecraft:block/stripped_jungle_log_top",
+        "down": "kubejs:block/hardmode/unformed_table_2_end",
+        "up": "kubejs:block/hardmode/unformed_table_3_top",
+        "north": "kubejs:block/hardmode/unformed_table_2_side",
+        "east": "kubejs:block/hardmode/unformed_table_2_side",
+        "south": "kubejs:block/hardmode/unformed_table_2_side",
+        "west": "kubejs:block/hardmode/unformed_table_2_side"
+    }
 }

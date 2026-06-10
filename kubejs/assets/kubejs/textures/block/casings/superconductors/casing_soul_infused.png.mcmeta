@@ -1,28 +1,10 @@
 {
-  "ldlib": {
-    "connection": "kubejs:block/casings/superconductors/casing_soul_infused_ctm"
-  },
-  "animation": {
-    "interpolate": true,
-    "frametime": 4,
-        "frames": [
-		    { "index": 0, "time": 56 },
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16
-        ]
-  }
+    "ldlib": {
+        "connection": "kubejs:block/casings/superconductors/casing_soul_infused_ctm"
+    },
+    "animation": {
+        "interpolate": true,
+        "frametime": 4,
+        "frames": [{ "index": 0, "time": 56 }, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    }
 }

@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "kubejs:block/coils/abyssal_alloy/coil"
-  }
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "kubejs:block/coils/abyssal_alloy/coil"
+    }
 }

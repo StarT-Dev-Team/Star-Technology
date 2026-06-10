@@ -1,12 +1,11 @@
-(() => {
-
+() => {
     const config = {
-        creativeTabs: false
+        creativeTabs: false,
     };
 
     if (config.creativeTabs) {
         console.log('========================[Creative tabs]========================');
-        console.log(Utils.getRegistryIds("creative_mode_tab"));
-    }
 
-});
+        console.log(Utils.getRegistryIds('creative_mode_tab'));
+    }
+};

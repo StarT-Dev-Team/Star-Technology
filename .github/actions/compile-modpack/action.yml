@@ -1,0 +1,121 @@
+name: Compile Modpack
+description: Compiles the Star Technology modpack into a distributable zip file
+
+inputs:
+  branch_name:
+    description: Branch name used for naming the output artifact
+    required: true
+  discord_webhook_url:
+    description: Discord webhook URL for sending build notifications
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Create compilation directory
+      shell: bash
+      run: mkdir -p compile_output
+
+    - name: Create overrides directory structure
+      shell: bash
+      run: |
+        mkdir -p compile_output/overrides
+
+        # Copy specified folders to overrides
+        cp -r config compile_output/overrides/
+        cp -r defaultconfigs compile_output/overrides/
+        cp -r kubejs compile_output/overrides/
+        cp -r scripts compile_output/overrides/
+
+        # Copy specified files to overrides
+        cp LICENSE compile_output/overrides/
+        cp README.md compile_output/overrides/
+
+    - name: Copy manifest and modlist from compile_data
+      shell: bash
+      run: |
+        cp compile_data/manifest.json compile_output/
+        cp compile_data/modlist.html compile_output/
+
+    - name: Create zip file
+      shell: bash
+      run: |
+        cd compile_output
+        zip -r "../Star Technology-1.20.1-${{ inputs.branch_name }}.zip" .
+        cd ..
+
+    - name: Upload compiled modpack
+      uses: actions/upload-artifact@v4
+      with:
+        name: Star Technology-1.20.1-${{ inputs.branch_name }}
+        path: Star Technology-1.20.1-${{ inputs.branch_name }}.zip
+        retention-days: 30
+
+    - name: Send Discord notification
+      shell: bash
+      env:
+        DISCORD_WEBHOOK_URL: ${{ inputs.discord_webhook_url }}
+      run: |
+        # Only send notification if webhook URL is provided
+        if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+          echo "⚠️ Discord webhook URL not provided, skipping notification"
+          exit 0
+        fi
+
+        # Calculate expiry date (retention-days from now)
+        EXPIRY_DATE=$(date -u -d "+30 days" "+%Y-%m-%dT%H:%M:%SZ" 2>/dev/null || date -u -v+30d "+%Y-%m-%dT%H:%M:%SZ")
+        EXPIRY_UNIX=$(date -u -d "+30 days" "+%s" 2>/dev/null || date -u -v+30d "+%s")
+        
+        RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        ARTIFACT_NAME="Star Technology-1.20.1-${{ inputs.branch_name }}"
+
+        RESPONSE=$(curl -s -X POST "$DISCORD_WEBHOOK_URL" \
+          -H "Content-Type: application/json" \
+          -d "{
+            \"embeds\": [{
+              \"title\": \"✅ Build Ready: ${ARTIFACT_NAME}\",
+              \"description\": \"A new build has been compiled and uploaded.\",
+              \"color\": 5763719,
+              \"fields\": [
+                {
+                  \"name\": \"📦 Download Artifact\",
+                  \"value\": \"[View on GitHub Actions](${RUN_URL})\",
+                  \"inline\": false
+                },
+                {
+                  \"name\": \"⏳ Expires\",
+                  \"value\": \"<t:${EXPIRY_UNIX}:F> (<t:${EXPIRY_UNIX}:R>)\",
+                  \"inline\": false
+                },
+                {
+                  \"name\": \"🌿 Branch\",
+                  \"value\": \"\`${{ inputs.branch_name }}\`\",
+                  \"inline\": true
+                },
+                {
+                  \"name\": \"🔁 Run\",
+                  \"value\": \"[#${{ github.run_number }}](${RUN_URL})\",
+                  \"inline\": true
+                }
+              ],
+              \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+            }]
+          }" -w "\n%{http_code}")
+        
+        HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+        if [ "$HTTP_CODE" = "204" ]; then
+          echo "✅ Discord notification sent successfully"
+        else
+          echo "❌ Failed to send Discord notification (HTTP $HTTP_CODE)"
+          echo "Response: $(echo "$RESPONSE" | head -n-1)"
+          exit 1
+        fi
+
+    - name: Display compilation info
+      shell: bash
+      run: |
+        echo "✅ Modpack compiled successfully!"
+        echo "📦 Artifact name: Star Technology-1.20.1-${{ inputs.branch_name }}"
+        echo "🏷️ Branch: ${{ inputs.branch_name }}"
+        echo "📁 Zip file: Star Technology-1.20.1-${{ inputs.branch_name }}.zip"
+        ls -la "Star Technology-1.20.1-${{ inputs.branch_name }}.zip"

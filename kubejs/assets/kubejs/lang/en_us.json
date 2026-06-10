@@ -175,7 +175,7 @@
     "item.kubejs.fluix_lens": "Fluix Lens",
     "item.kubejs.acu_wafer.tooltip": "§7Raw Applied Computational Unit",
     "item.kubejs.acu_wafer": "ACU Wafer",
-    "item.kubejs.acu_chip.tooltip": "§7Applied Computation Unit", 
+    "item.kubejs.acu_chip.tooltip": "§7Applied Computation Unit",
     "item.kubejs.acu_chip": "ACU Chip",
 
     "item.kubejs.qram_wafer": "qRAM Wafer",
@@ -363,7 +363,7 @@
     "item.kubejs.csg_stargate_rod_base": "§bCSG§r Rod Base",
     "item.kubejs.csg_enscription_plate": "§bCSG§r Enscription Plate",
     "item.kubejs.csg_enscription_chip": "§bCSG§r Enscription Chip",
-    
+
     "item.kubejs.asg_field_stabiliser": "§6ASG§r Field Stabiliser",
     "item.kubejs.asg_energy_modulator": "§6ASG§r Energy Modulator",
     "item.kubejs.asg_stellar_dialer": "§6ASG§r Stellar Dialer",
@@ -376,7 +376,7 @@
     "item.kubejs.asg_stargate_rod_base": "§6ASG§r Rod Base",
     "item.kubejs.asg_enscription_plate": "§6ASG§r Enscription Plate",
     "item.kubejs.asg_enscription_chip": "§6ASG§r Enscription Chip",
-    
+
     "item.kubejs.dsg_field_stabiliser": "§5DSG§r Field Stabiliser",
     "item.kubejs.dsg_energy_modulator": "§5DSG§r Energy Modulator",
     "item.kubejs.dsg_stellar_dialer": "§5DSG§r Stellar Dialer",
@@ -450,7 +450,7 @@
     "item.kubejs.proto_lunarus_rune": "Proto Lunarus Rune",
     "item.kubejs.proto_lunarus_rune.tooltip": "§7Calls the Night",
     "item.kubejs.proto_rune.tooltip": "§7Runes at the extent of what you know... for now",
-    
+
     "item.kubejs.runic_reinforced_plating": "Runic Reinforced Plating",
     "item.kubejs.runic_reinforced_plating.tooltip": "§7Utilization of Strength",
     "item.kubejs.runic_pathway_plating": "Runic Pathway Plating",
@@ -474,7 +474,6 @@
     "item.kubejs.transcension_engraved_tenebrosus_sigil": "Transcension Engraved Tenebrosus Sigil",
     "item.kubejs.transcension_engraved_tenebrosus_sigil.tooltip": "§1§oDark",
     "item.kubejs.transcension_engraved_sigil.tooltip": "§7Runes made out of forbidden and elemental knowledge",
-
 
     "item.kubejs.runic_tablet_1": "Runic Tablet Fragment I",
     "item.kubejs.runic_tablet_2": "Runic Tablet Fragment II",
@@ -522,7 +521,7 @@
     "item.kubejs.runic_circuit_board": "Runic Convergence Circuit Board",
     "item.kubejs.runic_circuit_board.tooltip": "§7A Rune Engraved Board",
     "item.kubejs.runic_printed_circuit_board": "Runic Convergence Printed Circuit Board",
-    "item.kubejs.runic_printed_circuit_board.tooltip": "§7A Rune Engraved Circuit Board",    
+    "item.kubejs.runic_printed_circuit_board.tooltip": "§7A Rune Engraved Circuit Board",
     "item.kubejs.runic_convergence_processing_unit": "Runic Convergence Processing Unit",
     "item.kubejs.runic_convergence_processing_unit.tooltip": "§d§oNeuro-sama!§r§7's CPU",
     "item.kubejs.runic_processor": "Runic Processor",
@@ -559,7 +558,7 @@
     "item.kubejs.draconic_processor_mainframe": "Draconic Processor Mainframe",
     "item.kubejs.draconic_processor_mainframe.tooltip.0": "§7Dr.Conic's Greatest Creation",
     "item.kubejs.draconic_processor_mainframe.tooltip.1": "§5UIV-Tier Circuit",
-    
+
     "item.kubejs.abyssal_circuit_board": "Abyssal Circuit Board",
     "item.kubejs.abyssal_circuit_board.tooltip": "§7Abyss Touched Board",
     "item.kubejs.abyssal_printed_circuit_board": "Abyssal Printed Circuit Board",
@@ -648,7 +647,6 @@
     "block.kubejs.high_steam_machine_casing": "Sturdy Steam Machine Casing",
     "block.kubejs.refined_sand": "Refined Sand",
     "block.kubejs.refined_dust": "Refined Dust",
-
 
     "block.kubejs.crucible_stage_1": "Slightly Hollowed Log",
     "block.kubejs.crucible_stage_2": "Fairly Hollowed Log",
@@ -757,20 +755,20 @@
     "block.kubejs.threading.tooltip": "Has §5Threading§r",
     "block.kubejs.only_one_2a_hatch.tooltip": "§fAccepts Exactly §6One §f2§eA §fEnergy Hatch.",
 
-    "item.kubejs.basic_neutron_reflector" : "Basic Neutron Reflector",
-    "item.kubejs.basic_neutron_reflector.tooltip" : "§7Used for \"Simple\" Fusion Reactions",
-    "item.kubejs.advanced_neutron_reflector" : "Advanced Neutron Reflector",
-    "item.kubejs.advanced_neutron_reflector.tooltip" : "§7Stronger and more powerful.",
-    "item.kubejs.complex_neutron_reflector" : "Complex Neutron Reflector",
-    "item.kubejs.complex_neutron_reflector.tooltip" : "§7Capable of enabling Abydos Technologies.",
-    "item.kubejs.reinforced_neutron_reflector" : "Reinforced Neutron Reflector",
-    "item.kubejs.reinforced_neutron_reflector.tooltip" : "§7What is needed for pure neutronic substance.",
-    "item.kubejs.borealic_neutron_reflector" : "Borealic Neutron Reflector",
-    "item.kubejs.borealic_neutron_reflector.tooltip" : "§7The beginnings of stellar substances.",
-    "item.kubejs.dragonic_neutron_reflector" : "Dragonic Neutron Reflector",
-    "item.kubejs.dragonic_neutron_reflector.tooltip" : "§7Utilized for the most intense of plasmas.",
-    "item.kubejs.prismalic_neutron_reflector" : "Prismalic Neutron Reflector",
-    "item.kubejs.prismalic_neutron_reflector.tooltip" : "§7Prismalic Ascension: Initiated",
+    "item.kubejs.basic_neutron_reflector": "Basic Neutron Reflector",
+    "item.kubejs.basic_neutron_reflector.tooltip": "§7Used for \"Simple\" Fusion Reactions",
+    "item.kubejs.advanced_neutron_reflector": "Advanced Neutron Reflector",
+    "item.kubejs.advanced_neutron_reflector.tooltip": "§7Stronger and more powerful.",
+    "item.kubejs.complex_neutron_reflector": "Complex Neutron Reflector",
+    "item.kubejs.complex_neutron_reflector.tooltip": "§7Capable of enabling Abydos Technologies.",
+    "item.kubejs.reinforced_neutron_reflector": "Reinforced Neutron Reflector",
+    "item.kubejs.reinforced_neutron_reflector.tooltip": "§7What is needed for pure neutronic substance.",
+    "item.kubejs.borealic_neutron_reflector": "Borealic Neutron Reflector",
+    "item.kubejs.borealic_neutron_reflector.tooltip": "§7The beginnings of stellar substances.",
+    "item.kubejs.dragonic_neutron_reflector": "Dragonic Neutron Reflector",
+    "item.kubejs.dragonic_neutron_reflector.tooltip": "§7Utilized for the most intense of plasmas.",
+    "item.kubejs.prismalic_neutron_reflector": "Prismalic Neutron Reflector",
+    "item.kubejs.prismalic_neutron_reflector.tooltip": "§7Prismalic Ascension: Initiated",
 
     "block.kubejs.basic_reflector_casing": "Basic Neutron Reflector Casing",
     "block.kubejs.advanced_reflector_casing": "Advanced Neutron Reflector Casing",
@@ -814,7 +812,7 @@
     "item.kubejs.depleted_etu_fuel_rod": "Depleted ETU Fuel Rod",
     "item.kubejs.depleted_leu233_fuel_rod": "Depleted LEU-233 Fuel Rod",
     "item.kubejs.depleted_nqe_fuel_rod": "Depleted NQE Fuel Rod",
-    
+
     "block.kubejs.superdense_assembly_control_casing": "Superdense Assembly Control Casing",
     "block.kubejs.superdense_assembly_machine_casing": "Superdense Assembly Machine Casing",
     "block.kubejs.superdense_machine_casing": "Superdense Machine Casing",
@@ -850,7 +848,7 @@
     "block.kubejs.draconic_stargate_ring_block": "Draconic Stargate Ring Block",
     "block.kubejs.draconic_stargate_base_block": "Draconic Stargate Base Block",
     "block.kubejs.draconic_stargate_chevron_block": "Draconic Stargate Chevron Block",
-    
+
     "item.kubejs.zalloyic_empty_mold": "Zalloyic Empty Mold",
     "item.kubejs.zalloyic_fluid_mold": "Zalloyic Fluid Mold",
     "item.kubejs.moss_ball": "Moss Ball",
@@ -890,5 +888,4 @@
     "item.kubejs.coordinate_crystal": "Coordinate Crystal",
     "item.kubejs.worries_about_it": "§cDON'T§r Worry About It :)",
     "item.kubejs.runic_wave_generator": "Runic Wave Generator"
-
 }

@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "kubejs:block/coils/magmada_alloy/coil"
-  }
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "kubejs:block/coils/magmada_alloy/coil"
+    }
 }

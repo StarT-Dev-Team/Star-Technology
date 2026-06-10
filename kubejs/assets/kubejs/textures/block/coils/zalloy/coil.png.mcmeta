@@ -1,5 +1,5 @@
 {
-  "ldlib": {
-    "connection": "kubejs:block/coils/zalloy/coil_ctm"
-  }
+    "ldlib": {
+        "connection": "kubejs:block/coils/zalloy/coil_ctm"
+    }
 }

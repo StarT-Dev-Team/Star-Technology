@@ -393,7 +393,6 @@
     "material.gtceu.radiant_muon_infusion_flux": "Radiant §aMuon§r Infusion Flux",
     "material.gtceu.brilliant_muon_infusion_flux": "Brilliant §aMuon§r Infusion Flux",
 
-
     "material.gtceu.mono_phase_electron_infusion_flux": "Mono-Phase §dElectron§r Infusion Flux",
     "material.gtceu.di_phase_electron_infusion_agent": "Di-Phase §dElectron§r Infusion Agent",
     "material.gtceu.tri_phase_electron_infusion_agent": "Tri-Phase §dElectron§r Infusion Agent",
@@ -403,7 +402,6 @@
     "material.gtceu.beta_phase_electron_infusion_agent": "β-Phase §dElectron§r Infusion Agent",
     "material.gtceu.alpha_phase_electron_infusion_agent": "α-Phase §dElectron§r Infusion Agent",
     "material.gtceu.alternating_phase_electron_infusion_flux": "Alternating §dElectron§r Infusion Flux",
-
 
     "block.gtceu.cyclonic_sifter": "Cyclonic Sifter [CSf]",
     "gtceu.cyclonic_sifter": "Cyclonic Sifting",
@@ -1427,5 +1425,4 @@
     "block.gtceu.catto_shrine.tooltip.0": "§7§o5 Hours Nyan Cat",
     "block.gtceu.catto_shrine.tooltip.1": "§8§oMake your offerings known....",
     "gtceu.catto_shrine": "Catto Shrine"
-
 }

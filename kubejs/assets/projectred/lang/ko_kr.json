@@ -1,5 +1,4 @@
 {
-
     "item.projectred_core.screwdriver.tooltip": "Project Red의 레드스톤 부품(redstone components)를 이용하여 회전시킬 수 있습니다.",
 
     "item.projectred_integration.or_gate.tooltip": "세 개의 입력과 한 개의 출력이 있습니다.\n입력 중 최소 하나가 켜져 있어야 출력이 켜집니다.",
@@ -39,5 +38,4 @@
     "item.projectred_integration.segment_display_gate.tooltip": "한 개의 번들형 입력이 있습니다.\n묶인 입력 단자의 활성 채널을 기준으로 세그먼트를 표시합니다.",
     "item.projectred_integration.dec_randomizer_gate.tooltip": "한 개의 입력과 세 개의 출력이 있습니다.\n스크루드라이버로 왼쪽 출력의 비활성화가 가능합니다.\n신호를 수신하면 출력 단자 중 하나를 무작위로 선택하여 활성화합니다.",
     "item.projectred_integration.stacking_latch_gate.tooltip": "한 개의 입력과 한 개의 출력, 한 쌍의 공유되는 입출력이 있습니다.\n오른쪽이 \"쓰기\" 신호이고, 왼쪽이 \"유지\" 신호입니다. 쓰기 신호에 펄스가 입력되면 입력 상태가 저장되어 출력됩니다. 유지 신호에 펄스가 입력되면 다음 쓰기 펄스가 올 때까지 현재 상태가 유지됩니다. 쓰기 신호가 활성화된 상태에서 입력에 펄스가 입력되면, 다음 쓰기 펄스를 기다리지 않고 저장된 상태가 즉시 변경됩니다."
-
 }

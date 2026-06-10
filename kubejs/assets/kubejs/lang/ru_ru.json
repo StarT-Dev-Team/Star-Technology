@@ -175,7 +175,7 @@
     "item.kubejs.fluix_lens": "Флюисовая линза",
     "item.kubejs.acu_wafer.tooltip": "§7Необработанный AE2 вычислительный блок",
     "item.kubejs.acu_wafer": "Пластина ACU",
-    "item.kubejs.acu_chip.tooltip": "§7AE2 вычислительный блок", 
+    "item.kubejs.acu_chip.tooltip": "§7AE2 вычислительный блок",
     "item.kubejs.acu_chip": "Чип ACU",
 
     "item.kubejs.qram_wafer": "Пластина qRAM",
@@ -363,7 +363,7 @@
     "item.kubejs.csg_stargate_rod_base": "Основание стержня (§bCSG§r)",
     "item.kubejs.csg_enscription_plate": "Пластина для высекания (§bCSG§r)",
     "item.kubejs.csg_enscription_chip": "Чип для высекания (§bCSG§r)",
-    
+
     "item.kubejs.asg_field_stabiliser": "Стабилизатор поля (§6ASG§r)",
     "item.kubejs.asg_energy_modulator": "Модулятор энергии (§6ASG§r)",
     "item.kubejs.asg_stellar_dialer": "Звёздный наборный пульт (§6ASG§r)",
@@ -376,7 +376,7 @@
     "item.kubejs.asg_stargate_rod_base": "Основание стержня (§6ASG§r)",
     "item.kubejs.asg_enscription_plate": "Пластина для высекания (§6ASG§r)",
     "item.kubejs.asg_enscription_chip": "Чип для высекания (§6ASG§r)",
-    
+
     "item.kubejs.dsg_field_stabiliser": "Стабилизатор поля (§5DSG§r)",
     "item.kubejs.dsg_energy_modulator": "Модулятор энергии (§5DSG§r)",
     "item.kubejs.dsg_stellar_dialer": "Звёздный наборный пульт (§5DSG§r)",
@@ -450,7 +450,7 @@
     "item.kubejs.proto_lunarus_rune": "Проторуна Лунарис",
     "item.kubejs.proto_lunarus_rune.tooltip": "§7Призывает ночь",
     "item.kubejs.proto_rune.tooltip": "§7Руны на пределе того, что вы знаете... пока что",
-    
+
     "item.kubejs.runic_reinforced_plating": "Руническая укреплённая обшивка",
     "item.kubejs.runic_reinforced_plating.tooltip": "§7Обретение силы",
     "item.kubejs.runic_pathway_plating": "Руническая направляющая обшивка",
@@ -474,7 +474,6 @@
     "item.kubejs.transcension_engraved_tenebrosus_sigil": "Гравированный сигил трансцендентности: Тенебросус",
     "item.kubejs.transcension_engraved_tenebrosus_sigil.tooltip": "§1§oТьма",
     "item.kubejs.transcension_engraved_sigil.tooltip": "§7Руны, созданные из запретных и стихийных знаний",
-
 
     "item.kubejs.runic_tablet_1": "Осколок рунической таблички I",
     "item.kubejs.runic_tablet_2": "Осколок рунической таблички II",
@@ -522,7 +521,7 @@
     "item.kubejs.runic_circuit_board": "Подложка рунической конвергенции",
     "item.kubejs.runic_circuit_board.tooltip": "§7Плата с рунической гравировкой",
     "item.kubejs.runic_printed_circuit_board": "Электросхема рунической конвергенции",
-    "item.kubejs.runic_printed_circuit_board.tooltip": "§7Электронная схема с рунической гравировкой",    
+    "item.kubejs.runic_printed_circuit_board.tooltip": "§7Электронная схема с рунической гравировкой",
     "item.kubejs.runic_convergence_processing_unit": "Процессор рунической конвергенции",
     "item.kubejs.runic_convergence_processing_unit.tooltip": "Процессор §d§oNeuro-sama!§r",
     "item.kubejs.runic_processor": "Рунический процессор",
@@ -559,7 +558,7 @@
     "item.kubejs.draconic_processor_mainframe": "Драконий мейнфрейм",
     "item.kubejs.draconic_processor_mainframe.tooltip.0": "§7Величайшее творение Доктора Д. Раконик",
     "item.kubejs.draconic_processor_mainframe.tooltip.1": "§5Схема уровня UIV",
-    
+
     "item.kubejs.abyssal_circuit_board": "Пустотная подложка",
     "item.kubejs.abyssal_circuit_board.tooltip": "§7Холод небытия въелся в её текстуру, оставляя лишь омертвевший кремний.",
     "item.kubejs.abyssal_printed_circuit_board": "Пустотная электросхема",
@@ -756,20 +755,20 @@
     "block.kubejs.threading.tooltip": "Имеет §5многопоточность§r",
     "block.kubejs.only_one_2a_hatch.tooltip": "§fПринимает ровно §6один §fэнергетический разъем на §f2§eА§f.",
 
-    "item.kubejs.basic_neutron_reflector" : "Базовый нейтронный отражатель",
-    "item.kubejs.basic_neutron_reflector.tooltip" : "§7Используется для \"простых\" термоядерных реакций",
-    "item.kubejs.advanced_neutron_reflector" : "Улучшенный нейтронный отражатель",
-    "item.kubejs.advanced_neutron_reflector.tooltip" : "§7Крепче и мощнее.",
-    "item.kubejs.complex_neutron_reflector" : "Сложный нейтронный отражатель",
-    "item.kubejs.complex_neutron_reflector.tooltip" : "§7Способен открывать технологии Абидоса.",
-    "item.kubejs.reinforced_neutron_reflector" : "Укреплённый нейтронный отражатель",
-    "item.kubejs.reinforced_neutron_reflector.tooltip" : "§7То, что нужно для чистой нейтронной материи.",
-    "item.kubejs.borealic_neutron_reflector" : "Бореальный нейтронный отражатель",
-    "item.kubejs.borealic_neutron_reflector.tooltip" : "§7Зарождение звёздной материи.",
-    "item.kubejs.dragonic_neutron_reflector" : "Драконий нейтронный отражатель",
-    "item.kubejs.dragonic_neutron_reflector.tooltip" : "§7Используется для самой высокоинтенсивной плазмы.",
-    "item.kubejs.prismalic_neutron_reflector" : "Призмалиевый нейтронный отражатель",
-    "item.kubejs.prismalic_neutron_reflector.tooltip" : "§7Призмалиевое вознесение: Запущено",
+    "item.kubejs.basic_neutron_reflector": "Базовый нейтронный отражатель",
+    "item.kubejs.basic_neutron_reflector.tooltip": "§7Используется для \"простых\" термоядерных реакций",
+    "item.kubejs.advanced_neutron_reflector": "Улучшенный нейтронный отражатель",
+    "item.kubejs.advanced_neutron_reflector.tooltip": "§7Крепче и мощнее.",
+    "item.kubejs.complex_neutron_reflector": "Сложный нейтронный отражатель",
+    "item.kubejs.complex_neutron_reflector.tooltip": "§7Способен открывать технологии Абидоса.",
+    "item.kubejs.reinforced_neutron_reflector": "Укреплённый нейтронный отражатель",
+    "item.kubejs.reinforced_neutron_reflector.tooltip": "§7То, что нужно для чистой нейтронной материи.",
+    "item.kubejs.borealic_neutron_reflector": "Бореальный нейтронный отражатель",
+    "item.kubejs.borealic_neutron_reflector.tooltip": "§7Зарождение звёздной материи.",
+    "item.kubejs.dragonic_neutron_reflector": "Драконий нейтронный отражатель",
+    "item.kubejs.dragonic_neutron_reflector.tooltip": "§7Используется для самой высокоинтенсивной плазмы.",
+    "item.kubejs.prismalic_neutron_reflector": "Призмалиевый нейтронный отражатель",
+    "item.kubejs.prismalic_neutron_reflector.tooltip": "§7Призмалиевое вознесение: Запущено",
 
     "block.kubejs.basic_reflector_casing": "Корпус базового нейтронного отражателя",
     "block.kubejs.advanced_reflector_casing": "Корпус улучшенного нейтронного отражателя",
@@ -813,7 +812,7 @@
     "item.kubejs.depleted_etu_fuel_rod": "Обеднённый топливный стержень ETU",
     "item.kubejs.depleted_leu233_fuel_rod": "Обеднённый топливный стержень LEU-233",
     "item.kubejs.depleted_nqe_fuel_rod": "Обеднённый топливный стержень NQE",
-    
+
     "block.kubejs.superdense_assembly_control_casing": "Сверхплотный корпус контроля сборщика",
     "block.kubejs.superdense_assembly_machine_casing": "Сверхплотный корпус машины сборщика",
     "block.kubejs.superdense_machine_casing": "Сверхплотный корпус машины",
@@ -849,7 +848,7 @@
     "block.kubejs.draconic_stargate_ring_block": "Блок кольца драконьих Звёздных врат",
     "block.kubejs.draconic_stargate_base_block": "Блок основания драконьих Звёздных врат",
     "block.kubejs.draconic_stargate_chevron_block": "Блок шеврона драконьих Звёздных врат",
-    
+
     "item.kubejs.zalloyic_empty_mold": "Залоевая пустая форма",
     "item.kubejs.zalloyic_fluid_mold": "Залоевая жидкостная форма",
     "item.kubejs.moss_ball": "Мшистый шар",
@@ -889,5 +888,4 @@
     "item.kubejs.coordinate_crystal": "Кристалл координат",
     "item.kubejs.worries_about_it": "§cНЕ§r надо переживать :)",
     "item.kubejs.runic_wave_generator": "Генератор рунических волн"
-
 }
