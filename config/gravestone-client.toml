@@ -1,5 +1,0 @@
-#If this is set to true the players head will be rendered on the gravestone when there is a full block under it
-render_skull = true
-#The color of the text at the gravestone (Hex RGB)
-grave_text_color = "FFFFFF"
-
