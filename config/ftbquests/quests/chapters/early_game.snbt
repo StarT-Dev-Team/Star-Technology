@@ -2470,6 +2470,90 @@
 			x: 0.0d
 			y: -1.0d
 		}
+		{
+			dependencies: [
+				"3013B0CF1D1F3E20"
+				"6D23752791E9928A"
+			]
+			description: ["{ftbquests.early_game.tank_upgrades.description}"]
+			id: "293F2483DD241C36"
+			optional: true
+			tasks: [{
+				id: "43A1AEB95185384B"
+				item: {
+					Count: 1
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "kubejs:ulv_fls_kit"
+								tag: {
+									AugmentData: {
+										FluidMax: 4.0f
+										Type: "Fluid"
+									}
+								}
+							}
+							{
+								Count: 1b
+								id: "kubejs:lv_fls_kit"
+								tag: {
+									AugmentData: {
+										FluidMax: 8.0f
+										Type: "Fluid"
+									}
+								}
+							}
+							{
+								Count: 1b
+								id: "kubejs:mv_fls_kit"
+								tag: {
+									AugmentData: {
+										FluidMax: 12.0f
+										Type: "Fluid"
+									}
+								}
+							}
+							{
+								Count: 1b
+								id: "kubejs:hv_fls_kit"
+								tag: {
+									AugmentData: {
+										FluidMax: 16.0f
+										Type: "Fluid"
+									}
+								}
+							}
+							{
+								Count: 1b
+								id: "kubejs:ev_fls_kit"
+								tag: {
+									AugmentData: {
+										FluidMax: 20.0f
+										Type: "Fluid"
+									}
+								}
+							}
+							{
+								Count: 1b
+								id: "kubejs:iv_fls_kit"
+								tag: {
+									AugmentData: {
+										FluidMax: 24.0f
+										Type: "Fluid"
+									}
+								}
+							}
+						]
+					}
+				}
+				title: "{ftbquests.early_game.tank_upgrades.title}"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 4.5d
+		}
 	]
 	title: "{ftbquests.early_game.title}"
 }

@@ -2,7 +2,7 @@
     "animation": {
         "interpolate": true,
         "frames": [
-		    { "index": 0, "time": 360 },
+            { "index": 0, "time": 360 },
             { "index": 1, "time": 360 },
             { "index": 2, "time": 360 },
             { "index": 3, "time": 360 },

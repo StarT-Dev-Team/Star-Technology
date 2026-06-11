@@ -1,9 +1,9 @@
 {
-  "ldlib": {
-    "connection": "kubejs:block/casings/superconductors/casing_shellite_ctm"
-  },
-  "animation": {
-    "interpolate": false,
-    "frametime": 3
-  }
+    "ldlib": {
+        "connection": "kubejs:block/casings/superconductors/casing_shellite_ctm"
+    },
+    "animation": {
+        "interpolate": false,
+        "frametime": 3
+    }
 }

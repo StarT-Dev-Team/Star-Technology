@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "kubejs:block/casings/stargate_casings/inscribe_casing_base",
-    "side": "kubejs:block/casings/stargate_casings/inscribe_casing_side"
-  }
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "kubejs:block/casings/stargate_casings/inscribe_casing_base",
+        "side": "kubejs:block/casings/stargate_casings/inscribe_casing_side"
+    }
 }

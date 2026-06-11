@@ -12,7 +12,7 @@
 
     "block.gtceu.dimensional_finder.tooltip.0": "§7Пространственный импульс получен",
     "block.gtceu.dimensional_finder.tooltip.1": "§7Эта машина способна посылать импульсы в глубокий космос, записывая эхо на кристаллы, что иногда позволяет триангулировать местоположение региона на основе этих данных.",
-  
+
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.0": "§a§lОбработка акрейрия",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.1": "§7Устройство реинтеграции, разработанное для рекомбинации акрейрия. Путем сворачивания различных вариантов акрейрия через точную матрицу стабилизации поверх кристалла можно получить высокоочищенную и чистую форму акрейрия.",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.2": "§8-----------------------------------",
@@ -393,7 +393,6 @@
     "material.gtceu.radiant_muon_infusion_flux": "Лучистый инфузионный поток §aМюон§r-lepтонов",
     "material.gtceu.brilliant_muon_infusion_flux": "Сияющий инфузионный поток §aМюон§r-lepтонов",
 
-
     "material.gtceu.mono_phase_electron_infusion_flux": "Однофазный инфузионный поток §dэлектронов§r",
     "material.gtceu.di_phase_electron_infusion_agent": "Двухфазный инфузионный агент §dэлектронов§r",
     "material.gtceu.tri_phase_electron_infusion_agent": "Трёхфазный инфузионный агент §dэлектронов§r",
@@ -403,7 +402,6 @@
     "material.gtceu.beta_phase_electron_infusion_agent": "β-Фазный инфузионный агент §dэлектронов§r",
     "material.gtceu.alpha_phase_electron_infusion_agent": "α-Фазный инфузионный агент §dэлектронов§r",
     "material.gtceu.alternating_phase_electron_infusion_flux": "Переменно-фазный инфузионный поток §dэлектронов§r",
-
 
     "block.gtceu.cyclonic_sifter": "Циклонный просеиватель [CSf]",
     "gtceu.cyclonic_sifter": "Циклонное просеивание",
@@ -1427,5 +1425,4 @@
     "block.gtceu.catto_shrine.tooltip.0": "§7§o5 часов Ньян-кэта",
     "block.gtceu.catto_shrine.tooltip.1": "§8§oПусть о твоих подношениях узнают...",
     "gtceu.catto_shrine": "Кошачий алтарь"
-
 }

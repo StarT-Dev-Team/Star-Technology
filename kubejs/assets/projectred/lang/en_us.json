@@ -1,5 +1,4 @@
 {
-
     "item.projectred_core.screwdriver.tooltip": "Use on Project Red redstone components to rotate them.",
 
     "item.projectred_integration.or_gate.tooltip": "Has 3 inputs and 1 output.\nOutput is on if at least 1 input is on.",
@@ -39,5 +38,4 @@
     "item.projectred_integration.segment_display_gate.tooltip": "Has 1 bundled input\nDisplays segements based on the active channels in the bundled inputs.",
     "item.projectred_integration.dec_randomizer_gate.tooltip": "Has 1 input and 3 outputs\nUse a scewdriver to disable the right output\nWhen receiving a signal, randomly choses on of the outputs to enable.",
     "item.projectred_integration.stacking_latch_gate.tooltip": "Has 1 input, 1 output and 1 pair of shared IO\nTHe pair is the write signal, and left is the keep signal. When the write signal receives a pulse, the state of the input will be stored and outputted. When the keep signal receives a pulse, the current state will be kept until the next write pulse. If the input receives a pulse while the write signal is active, it will change the stored state immediately without waiting for the next write pulse."
-
 }

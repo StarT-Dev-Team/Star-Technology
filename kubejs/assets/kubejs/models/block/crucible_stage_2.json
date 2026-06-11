@@ -1,149 +1,109 @@
 {
-	"parent": "block/block",
-	"textures": {
-		"particle": "minecraft:block/stripped_jungle_log",
-		"top": "minecraft:block/stripped_jungle_log_top",
-		"bottom": "minecraft:block/stripped_jungle_log_top",
-		"side": "minecraft:block/stripped_jungle_log",
-		"inside": "minecraft:block/stripped_jungle_log"
-	},
-	"elements": [
-		{
-			"from": [
-				0,
-				0,
-				0
-			],
-			"to": [
-				16,
-				8,
-				16
-			],
-			"faces": {
-				"up": {
-					"texture": "#top"
-				},
-				"down": {
-					"texture": "#bottom",
-					"cullface": "down"
-				}
-			}
-		},
-		{
-			"from": [
-				0,
-				0,
-				0
-			],
-			"to": [
-				2,
-				16,
-				16
-			],
-			"faces": {
-				"up": {
-					"texture": "#top",
-					"cullface": "up"
-				},
-				"north": {
-					"texture": "#side",
-					"cullface": "north"
-				},
-				"south": {
-					"texture": "#side",
-					"cullface": "south"
-				},
-				"west": {
-					"texture": "#side",
-					"cullface": "west"
-				},
-				"east": {
-					"texture": "#side"
-				}
-			}
-		},
-		{
-			"from": [
-				14,
-				0,
-				0
-			],
-			"to": [
-				16,
-				16,
-				16
-			],
-			"faces": {
-				"up": {
-					"texture": "#top",
-					"cullface": "up"
-				},
-				"north": {
-					"texture": "#side",
-					"cullface": "north"
-				},
-				"south": {
-					"texture": "#side",
-					"cullface": "south"
-				},
-				"west": {
-					"texture": "#side"
-				},
-				"east": {
-					"texture": "#side",
-					"cullface": "east"
-				}
-			}
-		},
-		{
-			"from": [
-				2,
-				0,
-				0
-			],
-			"to": [
-				14,
-				16,
-				2
-			],
-			"faces": {
-				"up": {
-					"texture": "#top",
-					"cullface": "up"
-				},
-				"north": {
-					"texture": "#side",
-					"cullface": "north"
-				},
-				"south": {
-					"texture": "#side"
-				}
-			}
-		},
-		{
-			"from": [
-				2,
-				0,
-				14
-			],
-			"to": [
-				14,
-				16,
-				16
-			],
-			"faces": {
-				"up": {
-					"texture": "#top",
-					"cullface": "up"
-				},
-				"north": {
-					"texture": "#side"
-				},
-				"south": {
-					"texture": "#side",
-					"cullface": "south"
-				}
-			}
-		}
-	]
+    "parent": "block/block",
+    "textures": {
+        "particle": "minecraft:block/stripped_jungle_log",
+        "top": "minecraft:block/stripped_jungle_log_top",
+        "bottom": "minecraft:block/stripped_jungle_log_top",
+        "side": "minecraft:block/stripped_jungle_log",
+        "inside": "minecraft:block/stripped_jungle_log"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 8, 16],
+            "faces": {
+                "up": {
+                    "texture": "#top"
+                },
+                "down": {
+                    "texture": "#bottom",
+                    "cullface": "down"
+                }
+            }
+        },
+        {
+            "from": [0, 0, 0],
+            "to": [2, 16, 16],
+            "faces": {
+                "up": {
+                    "texture": "#top",
+                    "cullface": "up"
+                },
+                "north": {
+                    "texture": "#side",
+                    "cullface": "north"
+                },
+                "south": {
+                    "texture": "#side",
+                    "cullface": "south"
+                },
+                "west": {
+                    "texture": "#side",
+                    "cullface": "west"
+                },
+                "east": {
+                    "texture": "#side"
+                }
+            }
+        },
+        {
+            "from": [14, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "up": {
+                    "texture": "#top",
+                    "cullface": "up"
+                },
+                "north": {
+                    "texture": "#side",
+                    "cullface": "north"
+                },
+                "south": {
+                    "texture": "#side",
+                    "cullface": "south"
+                },
+                "west": {
+                    "texture": "#side"
+                },
+                "east": {
+                    "texture": "#side",
+                    "cullface": "east"
+                }
+            }
+        },
+        {
+            "from": [2, 0, 0],
+            "to": [14, 16, 2],
+            "faces": {
+                "up": {
+                    "texture": "#top",
+                    "cullface": "up"
+                },
+                "north": {
+                    "texture": "#side",
+                    "cullface": "north"
+                },
+                "south": {
+                    "texture": "#side"
+                }
+            }
+        },
+        {
+            "from": [2, 0, 14],
+            "to": [14, 16, 16],
+            "faces": {
+                "up": {
+                    "texture": "#top",
+                    "cullface": "up"
+                },
+                "north": {
+                    "texture": "#side"
+                },
+                "south": {
+                    "texture": "#side",
+                    "cullface": "south"
+                }
+            }
+        }
+    ]
 }

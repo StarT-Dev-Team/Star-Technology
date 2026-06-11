@@ -1,7 +1,7 @@
 {
-	"parent": "minecraft:block/cube_column",
-	"textures": {
-		"end": "kubejs:block/hardmode/unformed_table_1_end",
-		"side": "kubejs:block/hardmode/unformed_table_1_side"
-	}
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "kubejs:block/hardmode/unformed_table_1_end",
+        "side": "kubejs:block/hardmode/unformed_table_1_side"
+    }
 }

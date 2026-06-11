@@ -2,11 +2,9 @@
 /*
 
 # Add directories with soure code
-!config/
 !defaultconfigs/
 !kubejs/
 !mods/panorama/
-!packmode/
 !panoramas/
 !scripts/
 !compile_data/
@@ -16,57 +14,51 @@
 !.gitattributes
 !.gitignore
 !LICENSE
-!packmode_picker.bat
-!packmode_picker.sh
-!packmode_picker.py
 !panorama.dat
 !README.md
 
-# Specific exclusion
-config/embeddium-fingerprint.json
-config/embeddium-options.json
-config/embeddium++.toml
-config/fml.toml
-config/oculus.properties
+# Specific exclusion - config folder
+config/*
+# Keep directories
+!config/ae2/
+!config/almostunified/
+!config/crash_asistant/
+!config/defaultworldtype/
+!config/fancymenu/
+!config/ftbquests/
+!config/gamestages/
+!config/jade/
+!config/jei/
+!config/mysticalcustomization/
+!config/skyblockbuilder/
+# Keep files
+!config/badmobs-common.toml
+!config/bhmenu-client.toml
+!config/carryon-common.toml
+!config/chloride-client.json
+!config/colossalchests-common.toml
+!config/craftpresence.json
+!config/createlowheated-common.toml
+!config/emi.css
+!config/exnihilosequentia-common.toml
+!config/expatternprovider-common.toml
+!config/fluxnetworks-common.toml
+!config/gtceu.yaml
+!config/mysticalagriculture-common.toml
+!config/ProjectRed.cfg
+!config/sgjourney-common.toml
+!config/start_core.yaml
+!config/thermal-common.toml
+!config/toms_storage-common.toml
 
-config/jei/*
-config/worldedit/
-
-config/badmobs-common.toml
-config/extendedcrafting-common.toml
-config/mysticaladaptations-common.toml
-config/mysticalagradditions-common.toml
-config/mysticalagriculture-common.toml
-config/sgjourney-common.toml
-config/defaultworldtype/client-config.toml
-config/skyblockbuilder/data/dimensions.txt
-config/create_hypertube-client.toml
-config/betterfpsdist.json
-config/craftingtweaks-common.toml
-config/cucumber-tags.json
-config/fastsuite.cfg
-config/ftbbackups2.json
-config/gtceu.yaml
-config/guideme.toml
-config/immersive_optimization.json
-config/megacells.json
-config/modernfix-mixins.properties
-config/packetfixer.properties
-config/pccard-client.toml
-config/pccard-common.toml
-config/ponder-client.toml
-config/sidebar_buttons.json
-config/skyguis.json5
-config/ae2/common.json
-config/de/mari_023/ae2wtlib.json5
-config/fancymenu/legacy_checklist.txt
-config/fancymenu/options.txt
-config/fancymenu/user_variables.db
-config/hammerlib/tags/modded/solarflux.json
-config/fancymenu/ui_themes/dark.json
-config/fancymenu/ui_themes/light.json
-config/konkrete/locals/de_de.local
-config/konkrete/locals/en_us.local
-config/konkrete/locals/pl_pl.local
-config/konkrete/locals/pt_br.local
-config/skyblockbuilder/data/*
+# Linting stuff
+!package.json
+!package-lock.json
+!eslint.config.mjs
+!.prettierignore
+!.prettierrc
+# wth is this jank
+!.vscode/
+.vscode/* 
+!.vscode/settings.json
+!.vscode/extensions.json

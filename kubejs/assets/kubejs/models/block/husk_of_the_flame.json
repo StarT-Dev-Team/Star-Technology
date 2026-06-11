@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "kubejs:block/structures/husk_brick",
-    "side": "kubejs:block/structures/husk_of_the_flame_side"
-  }
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "kubejs:block/structures/husk_brick",
+        "side": "kubejs:block/structures/husk_of_the_flame_side"
+    }
 }

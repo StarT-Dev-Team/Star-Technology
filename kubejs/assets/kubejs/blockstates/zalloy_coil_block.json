@@ -1,10 +1,10 @@
 {
-  "variants": {
-    "active=false": {
-      "model": "kubejs:block/zalloy_coil_block"
-    },
-    "active=true": {
-      "model": "kubejs:block/zalloy_coil_block_active"
+    "variants": {
+        "active=false": {
+            "model": "kubejs:block/zalloy_coil_block"
+        },
+        "active=true": {
+            "model": "kubejs:block/zalloy_coil_block_active"
+        }
     }
-  }
 }

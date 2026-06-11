@@ -10,6 +10,7 @@
 	quests: [
 		{
 			dependencies: ["390CB178FC2D2CCC"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.multiblocks.description}"]
 			icon: "gtceu:electric_blast_furnace"
 			id: "73D5AA58DE5B72AA"
@@ -23,6 +24,7 @@
 		}
 		{
 			dependencies: ["390CB178FC2D2CCC"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.wall_sharing.description}"]
 			icon: "gtceu:multi_smelter"
 			id: "48374090EA89E869"
@@ -36,6 +38,7 @@
 		}
 		{
 			dependencies: ["5B70B63D4157594F"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.distinct_buses.description}"]
 			icon: "gtceu:mv_input_bus"
 			id: "2757CDEC1D8F5CCE"
@@ -50,6 +53,7 @@
 		}
 		{
 			dependencies: ["56BA79287C4DBE52"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.overclocking.description}"]
 			icon: "gtceu:lv_energy_input_hatch"
 			id: "34EDF98BDC245F77"
@@ -63,6 +67,7 @@
 		}
 		{
 			dependencies: ["5B70B63D4157594F"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.perfect_overclocking.description}"]
 			icon: "gtceu:ev_energy_input_hatch"
 			id: "0C78BD4A7A0B98E4"
@@ -76,6 +81,7 @@
 		}
 		{
 			dependencies: ["1820787D031EAB15"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.large_chemical_reactor_skips.description}"]
 			icon: "gtceu:large_chemical_reactor"
 			id: "0F4C5DF2922568B2"
@@ -92,6 +98,7 @@
 				"1820787D031EAB15"
 				"5B70B63D4157594F"
 			]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.lockable_fluid_hatches.description}"]
 			icon: "gtceu:mv_input_hatch"
 			id: "4A4275186719AD8D"
@@ -105,6 +112,7 @@
 		}
 		{
 			dependencies: ["3AF688ADC18E580C"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.superconductors.description}"]
 			icon: "gtceu:soul_infused_hex_wire"
 			id: "18080B4F89AD24D2"
@@ -118,6 +126,7 @@
 		}
 		{
 			dependencies: ["70875F86587758D7"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.cheaper_circuits.description}"]
 			icon: "gtceu:basic_integrated_circuit"
 			id: "6F7EE9A1BC718801"
@@ -142,6 +151,7 @@
 		}
 		{
 			dependencies: ["0742EF8F43044102"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.ghost_circuits.description}"]
 			icon: "kubejs:ulv_universal_circuit"
 			id: "2A608D87158DF4CB"
@@ -155,6 +165,7 @@
 		}
 		{
 			dependencies: ["2D1184752D7ACA66"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.machine_modes.description}"]
 			icon: "gtceu:lv_robot_arm"
 			id: "76CD29559C341985"
@@ -168,6 +179,7 @@
 		}
 		{
 			dependencies: ["0A6534BD104A2B08"]
+			dependency_requirement: "one_completed"
 			description: [
 				"{ftbquests.mechanics.parallels.description.1}"
 				"{@pagebreak}"
@@ -187,6 +199,7 @@
 		}
 		{
 			dependencies: ["141911C5DD68CD2A"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.wireless_power.description}"]
 			icon: "start_core:uhv_64a_dream_link_energy_hatch"
 			id: "2F63F0E239737E38"
@@ -204,6 +217,7 @@
 				"09C1739F3FE3298F"
 				"2027351D670E4CC6"
 			]
+			dependency_requirement: "one_completed"
 			description: [
 				"{ftbquests.mechanics.throughput_boosting.description.1}"
 				"{@pagebreak}"
@@ -221,6 +235,7 @@
 		}
 		{
 			dependencies: ["13118B7518370623"]
+			dependency_requirement: "one_completed"
 			description: [
 				"{ftbquests.mechanics.bulking.description.1}"
 				"{@pagebreak}"
@@ -238,6 +253,7 @@
 		}
 		{
 			dependencies: ["076F21506A7C19D5"]
+			dependency_requirement: "one_completed"
 			description: [
 				"{ftbquests.mechanics.threading.description.1}"
 				"{@pagebreak}"
@@ -283,6 +299,7 @@
 		}
 		{
 			dependencies: ["027C5CE3CFCB5649"]
+			dependency_requirement: "one_completed"
 			description: ["{ftbquests.mechanics.layered_inputs.description}"]
 			icon: "gtceu:large_rotor_machine"
 			id: "6AEB17C2D2AF5344"

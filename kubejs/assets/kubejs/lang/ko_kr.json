@@ -39,7 +39,7 @@
     "item.kubejs.carrot_ale_bucket": "당근 에일 양동이",
     "item.kubejs.berry_wine": "베리 와인",
     "item.kubejs.berry_wine.tooltip": "§6신속§7을 주는 클래식한 와인",
-     "fluid.kubejs.berry_wine": "베리 와인",
+    "fluid.kubejs.berry_wine": "베리 와인",
     "item.kubejs.berry_wine_bucket": "베리 와인 양동이",
     "item.kubejs.wheat_kvass": "밀 크바스",
     "item.kubejs.wheat_kvass.tooltip": "§6점프 강화§7를 주는 달고 신 크바스",
@@ -337,7 +337,7 @@
     "item.kubejs.zpm_photovoltaic_cell": "태양광 셀 IV",
     "item.kubejs.uv_photovoltaic_cell": "태양광 셀 V",
     "item.kubejs.uhv_photovoltaic_cell": "태양광 셀 VI",
-    
+
     "item.kubejs.field_stabiliser.tooltip": "§7중력 장이 붕괴하지 않게 도와줍니다.",
     "item.kubejs.energy_modulator.tooltip": "§7게이트가 §3폭발§7하지 않게 도와줍니다..",
     "item.kubejs.stellar_dialer.tooltip": "§7\"§o가장 가까운 자원 탐색중§r§7\"",
@@ -363,7 +363,7 @@
     "item.kubejs.csg_stargate_rod_base": "§bCSG§r 스타게이트 막대기 베이스",
     "item.kubejs.csg_enscription_plate": "§bCSG§r 기록판",
     "item.kubejs.csg_enscription_chip": "§bCSG§r 기록칩",
-    
+
     "item.kubejs.asg_field_stabiliser": "§6ASG§r 장 안정기",
     "item.kubejs.asg_energy_modulator": "§6ASG§r 전력 조절기",
     "item.kubejs.asg_stellar_dialer": "§6ASG§r 은하 다이얼 장치",
@@ -376,7 +376,7 @@
     "item.kubejs.asg_stargate_rod_base": "§6ASG§r 스타게이트 막대기 베이스",
     "item.kubejs.asg_enscription_plate": "§6ASG§r 기록판",
     "item.kubejs.asg_enscription_chip": "§6ASG§r 기록칩",
-    
+
     "item.kubejs.dsg_field_stabiliser": "§5DSG§r 장 안정기",
     "item.kubejs.dsg_energy_modulator": "§5DSG§r 전력 조절기",
     "item.kubejs.dsg_stellar_dialer": "§5DSG§r 은하 다이얼 장치",
@@ -443,7 +443,6 @@
     "item.kubejs.ascension_core": "§6승천의 코어",
     "item.kubejs.ascension_core.tooltip": "§7집중된 각성",
 
-
     "item.kubejs.proto_solarus_rune": "최초의 솔라루스 룬",
     "item.kubejs.proto_solarus_rune.tooltip": "§7낮을 부릅니다",
     "item.kubejs.proto_energized_rune": "최초로 충전된 룬",
@@ -451,7 +450,7 @@
     "item.kubejs.proto_lunarus_rune": "최초의 루나루스 룬",
     "item.kubejs.proto_lunarus_rune.tooltip": "§7밤을 부릅니다",
     "item.kubejs.proto_rune.tooltip": "§7당신이 아는 것을 연장시키는 룬",
-    
+
     "item.kubejs.runic_reinforced_plating": "루닉 보강된 판",
     "item.kubejs.runic_reinforced_plating.tooltip": "§7힘을 이용하기",
     "item.kubejs.runic_pathway_plating": "루닉 길이 새겨진 판",
@@ -475,7 +474,6 @@
     "item.kubejs.transcension_engraved_tenebrosus_sigil": "초월한 테네브로수스가 새겨진 인장",
     "item.kubejs.transcension_engraved_tenebrosus_sigil.tooltip": "§1§o어둠",
     "item.kubejs.transcension_engraved_sigil.tooltip": "§7잊혀지고 금지된 원소 지식으로 만들어진 룬",
-
 
     "item.kubejs.runic_tablet_1": "룬 타블렛 조각 I",
     "item.kubejs.runic_tablet_2": "룬 타블렛 조각 II",
@@ -523,7 +521,7 @@
     "item.kubejs.runic_circuit_board": "루닉 집중 회로 기판",
     "item.kubejs.runic_circuit_board.tooltip": "§7루닉 기술이 새겨진 기판",
     "item.kubejs.runic_printed_circuit_board": "프린트된 루닉 집중 회로 기판",
-    "item.kubejs.runic_printed_circuit_board.tooltip": "§7루닉 기술이 새겨진 회로 기판",    
+    "item.kubejs.runic_printed_circuit_board.tooltip": "§7루닉 기술이 새겨진 회로 기판",
     "item.kubejs.runic_convergence_processing_unit": "루닉 집중 처리 유닛",
     "item.kubejs.runic_convergence_processing_unit.tooltip": "§d§o뉴로-사마!§r§7의 CPU",
     "item.kubejs.runic_processor": "루닉 프로세서",
@@ -649,7 +647,6 @@
     "block.kubejs.high_steam_machine_casing": "단단한 증기 기계 케이싱",
     "block.kubejs.refined_sand": "정제된 모래",
     "block.kubejs.refined_dust": "정제된 가루",
-
 
     "block.kubejs.crucible_stage_1": "조금 빈 원목",
     "block.kubejs.crucible_stage_2": "반쯤 빈 원목",
@@ -815,5 +812,4 @@
     "item.kubejs.depleted_etu_fuel_rod": "고갈된 ETU 연료봉",
     "item.kubejs.depleted_leu233_fuel_rod": "고갈된 LEU-233 연료봉",
     "item.kubejs.depleted_nqe_fuel_rod": "고갈된 NQE 연료봉"
-    
 }

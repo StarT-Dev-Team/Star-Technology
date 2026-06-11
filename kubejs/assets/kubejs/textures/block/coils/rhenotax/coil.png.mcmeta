@@ -1,5 +1,5 @@
 {
-  "ldlib": {
-    "connection": "kubejs:block/coils/rhenotax/coil_ctm"
-  }
+    "ldlib": {
+        "connection": "kubejs:block/coils/rhenotax/coil_ctm"
+    }
 }

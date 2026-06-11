@@ -34,7 +34,7 @@
     "block.gtceu.runic_circuitry_assembling_station.tooltip.0": "§7기술과 마법의 경계를 넘나드는 기계로, 신비한 힘으로 단단한 판에 순수한 특이점으로 룬을 써 내려갑니다.",
 
     "block.gtceu.runic_inscribe_manipulate.tooltip.0": "§7더 고급의 루닉 각인기로, 여러 층을 가진 룬의 위에 그들의 힘을 융합, 또는 구조물 블록에 조립하여 세상에 힘을 행사하게 합니다.",
-    
+
     "block.gtceu.stargate_component_assembly.tooltip.0": "§7우주를 비틀어 열어버리는 힘을 가지는 고대 룬이 새겨진 엄청 강력한 블록을 만들 수 있는 능력을 위해 디자인된 거대한 구조물입니다.",
 
     "block.gtceu.chemical_plant.tooltip.0": "§7이 기계는 화학 공정을 하나의 기계에서 처리할 뿐만 아니라 더 진보된 화학 반응이 가능합니다.",
@@ -393,7 +393,6 @@
     "material.gtceu.radiant_muon_infusion_flux": "환한 §a뮤온§r 융합 플럭스",
     "material.gtceu.brilliant_muon_infusion_flux": "우월한 §a뮤온§r 융합 플럭스",
 
-
     "material.gtceu.mono_phase_electron_infusion_flux": "1상 §d전자§r 융합 플럭스",
     "material.gtceu.di_phase_electron_infusion_agent": "Di-상 §d전자§r 유동화제",
     "material.gtceu.tri_phase_electron_infusion_agent": "Tri-상 §d전자§r 융합 플럭스",
@@ -403,7 +402,6 @@
     "material.gtceu.beta_phase_electron_infusion_agent": "β-상 §d전자§r 유동화제",
     "material.gtceu.alpha_phase_electron_infusion_agent": "α-상 §d전자§r 유동화제",
     "material.gtceu.alternating_phase_electron_infusion_flux": "대체 §d전자§r 융합 플럭스",
-
 
     "block.gtceu.cyclonic_sifter": "사이클론 쉬프터 [CSf]",
     "gtceu.cyclonic_sifter": "사이클론 쉬프팅",
@@ -1427,5 +1425,4 @@
     "block.gtceu.catto_shrine.tooltip.0": "wip tooltip",
     "block.gtceu.catto_shrine.tooltip.1": "고양이 제작...기?",
     "gtceu.catto_shrine": "고양이 사원"
-
 }

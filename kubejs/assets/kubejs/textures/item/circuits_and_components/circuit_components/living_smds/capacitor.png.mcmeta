@@ -1,13 +1,13 @@
 {
     "animation": {
-      "frametime": 2,
-      "frames": [
-		{ "index": 0, "time": 60 },
-		1,
-		{ "index": 2, "time": 25 },
-		{ "index": 3, "time": 30 },
-		{ "index": 2, "time": 20 },
-		1
-      ]
+        "frametime": 2,
+        "frames": [
+            { "index": 0, "time": 60 },
+            1,
+            { "index": 2, "time": 25 },
+            { "index": 3, "time": 30 },
+            { "index": 2, "time": 20 },
+            1
+        ]
     }
 }

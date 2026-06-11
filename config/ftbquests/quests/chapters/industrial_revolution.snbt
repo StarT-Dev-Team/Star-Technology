@@ -418,9 +418,11 @@
 			dependencies: [
 				"0E88CB5E68212006"
 				"7CA424E05FB05DFF"
+				"234CE57A62FB8D82"
 			]
 			dependency_requirement: "one_completed"
 			description: ["{ftbquests.industrial_revolution.cobalt_dust.description}"]
+			hide_dependency_lines: true
 			id: "5D3B5EF195A3093B"
 			rewards: [{
 				id: "6EEC913BD06C07C4"
@@ -432,7 +434,7 @@
 				item: "gtceu:cobalt_dust"
 				type: "item"
 			}]
-			x: -3.0d
+			x: -7.0d
 			y: 2.5d
 		}
 		{
@@ -1314,7 +1316,7 @@
 				}
 			]
 			title: "{ftbquests.industrial_revolution.rare_earth_metals.title}"
-			x: -5.0d
+			x: -3.0d
 			y: 4.5d
 		}
 		{
@@ -1553,7 +1555,7 @@
 				type: "item"
 			}]
 			x: -3.0d
-			y: 4.5d
+			y: 2.5d
 		}
 		{
 			dependencies: [
