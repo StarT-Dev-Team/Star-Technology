@@ -62,7 +62,7 @@ const P = {
      * Combines an array of predicates into a single predicate using logical OR (`.or()`).
      * The first predicate in the array is used as the accumulator.
      *
-     * @param {object[]} preds - An array of two or more predicate objects to combine.
+     * @param {TracebilityPredicate[]} preds - An array of two or more predicate objects to combine.
      * @returns {TracebilityPredicate} A single combined predicate that matches if any of the inputs match.
      *
      * @example
