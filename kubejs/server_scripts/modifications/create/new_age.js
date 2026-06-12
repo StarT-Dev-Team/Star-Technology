@@ -1,97 +1,85 @@
 //requires: create_new_age
-global.notHardmode(() => {
-    ServerEvents.recipes((event) => {
-        const id = global.id;
 
-        const polarizer = (input, output, duration, eu, recipeID) => {
-            event.recipes.gtceu
-                .polarizer(id(recipeID))
-                .itemInputs(input)
-                .itemOutputs(output)
-                .duration(duration)
-                .EUt(eu);
-        };
+ServerEvents.recipes((event) => {
+    const id = global.id;
 
-        polarizer('minecraft:gold_ingot', 'create_new_age:overcharged_gold', 32, 16, 'energized_gold');
-        polarizer('gtceu:magnetic_iron_ingot', 'create_new_age:overcharged_iron', 16, 16, 'energized_iron');
-        polarizer('minecraft:diamond', 'create_new_age:overcharged_diamond', 160, 16, 'energized_diamond');
+    const polarizer = (input, output, duration, eu, recipeID) => {
+        event.recipes.gtceu.polarizer(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
+    };
 
-        const bender = (input, output, duration, eu, recipeID) => {
-            event.recipes.gtceu.bender(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
-        };
+    polarizer('minecraft:gold_ingot', 'create_new_age:overcharged_gold', 32, 16, 'energized_gold');
+    polarizer('gtceu:magnetic_iron_ingot', 'create_new_age:overcharged_iron', 16, 16, 'energized_iron');
+    polarizer('minecraft:diamond', 'create_new_age:overcharged_diamond', 160, 16, 'energized_diamond');
 
-        bender(
-            'create_new_age:overcharged_iron',
-            'create_new_age:overcharged_iron_sheet',
-            48,
-            24,
-            'overcharged_iron_plate'
-        );
-        bender(
-            'create_new_age:overcharged_gold',
-            'create_new_age:overcharged_golden_sheet',
-            196,
-            24,
-            'overcharged_gold_plate'
-        );
+    const bender = (input, output, duration, eu, recipeID) => {
+        event.recipes.gtceu.bender(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
+    };
 
-        const wiremill = (input, output, duration, eu, recipeID) => {
-            event.recipes.gtceu.wiremill(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
-        };
+    bender(
+        'create_new_age:overcharged_iron',
+        'create_new_age:overcharged_iron_sheet',
+        48,
+        24,
+        'overcharged_iron_plate'
+    );
+    bender(
+        'create_new_age:overcharged_gold',
+        'create_new_age:overcharged_golden_sheet',
+        196,
+        24,
+        'overcharged_gold_plate'
+    );
 
-        wiremill('gtceu:copper_plate', '4x create_new_age:copper_wire', 189, 7, 'copper_wire');
-        wiremill(
-            'create_new_age:overcharged_iron_sheet',
-            '4x create_new_age:overcharged_iron_wire',
-            321,
-            7,
-            'iron_wire'
-        );
-        wiremill(
-            'create_new_age:overcharged_golden_sheet',
-            '4x create_new_age:overcharged_golden_wire',
-            588,
-            7,
-            'gold_wire'
-        );
-        wiremill(
-            'create_new_age:overcharged_diamond',
-            '4x create_new_age:overcharged_diamond_wire',
-            764,
-            7,
-            'diamond_wire'
-        );
+    const wiremill = (input, output, duration, eu, recipeID) => {
+        event.recipes.gtceu.wiremill(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
+    };
 
-        event
-            .shaped(Item.of('create_new_age:carbon_brushes'), ['SCS', 'KsK', 'SSS'], {
-                S: 'gtceu:steel_plate',
-                C: '#gtceu:circuits/lv',
-                K: 'minecraft:charcoal',
-                s: 'create:shaft',
-            })
-            .id('start:shaped/carbon_brushes');
+    wiremill('gtceu:copper_plate', '4x create_new_age:copper_wire', 189, 7, 'copper_wire');
+    wiremill('create_new_age:overcharged_iron_sheet', '4x create_new_age:overcharged_iron_wire', 321, 7, 'iron_wire');
+    wiremill(
+        'create_new_age:overcharged_golden_sheet',
+        '4x create_new_age:overcharged_golden_wire',
+        588,
+        7,
+        'gold_wire'
+    );
+    wiremill(
+        'create_new_age:overcharged_diamond',
+        '4x create_new_age:overcharged_diamond_wire',
+        764,
+        7,
+        'diamond_wire'
+    );
 
-        event
-            .shaped(Item.of('create_new_age:magnetite_block'), ['SMS', 'MSM', 'SMS'], {
-                S: 'minecraft:stone',
-                M: 'gtceu:magnetite_dust',
-            })
-            .id('start:shaped/magnetite_block');
+    event
+        .shaped(Item.of('create_new_age:carbon_brushes'), ['SCS', 'KsK', 'SSS'], {
+            S: 'gtceu:steel_plate',
+            C: '#gtceu:circuits/lv',
+            K: 'minecraft:charcoal',
+            s: 'create:shaft',
+        })
+        .id('start:shaped/carbon_brushes');
 
-        event
-            .shaped(Item.of('3x create_new_age:redstone_magnet'), ['MRM', 'RBR', 'MRM'], {
-                B: 'create_new_age:magnetite_block',
-                R: 'minecraft:redstone',
-                M: 'gtceu:magnetite_dust',
-            })
-            .id('start:shaped/redstone_magnet');
+    event
+        .shaped(Item.of('create_new_age:magnetite_block'), ['SMS', 'MSM', 'SMS'], {
+            S: 'minecraft:stone',
+            M: 'gtceu:magnetite_dust',
+        })
+        .id('start:shaped/magnetite_block');
 
-        event
-            .shaped(Item.of('4x create_new_age:netherite_magnet'), ['MNM', 'NEN', 'MNM'], {
-                M: 'create_new_age:fluxuated_magnetite',
-                N: 'gtceu:neodymium_ingot',
-                E: 'gtceu:energium_dust',
-            })
-            .id('start:shaped/neodymium_magnet');
-    });
+    event
+        .shaped(Item.of('3x create_new_age:redstone_magnet'), ['MRM', 'RBR', 'MRM'], {
+            B: 'create_new_age:magnetite_block',
+            R: 'minecraft:redstone',
+            M: 'gtceu:magnetite_dust',
+        })
+        .id('start:shaped/redstone_magnet');
+
+    event
+        .shaped(Item.of('4x create_new_age:netherite_magnet'), ['MNM', 'NEN', 'MNM'], {
+            M: 'create_new_age:fluxuated_magnetite',
+            N: 'gtceu:neodymium_ingot',
+            E: 'gtceu:energium_dust',
+        })
+        .id('start:shaped/neodymium_magnet');
 });

@@ -2,15 +2,13 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    global.notHardmode(() => {
-        event
-            .shaped(Item.of('gtceu:large_farm'), ['SPS', 'PBP', 'SPS'], {
-                S: 'gtceu:treated_wood_rod',
-                P: 'gtceu:treated_wood_planks',
-                B: 'minecraft:bone_meal',
-            })
-            .id('start:shaped/large_farm');
-    });
+    event
+        .shaped(Item.of('gtceu:large_farm'), ['SPS', 'PBP', 'SPS'], {
+            S: 'gtceu:treated_wood_rod',
+            P: 'gtceu:treated_wood_planks',
+            B: 'minecraft:bone_meal',
+        })
+        .id('start:shaped/large_farm');
 
     event
         .shaped(Item.of('gtceu:hydroponic_garden'), ['ABB', 'CDA', 'CEF'], {
