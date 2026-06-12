@@ -12,12 +12,13 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GTBlocks.CASING_PALLADIUM_SUBSTATION)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' BCCCDDDCCCB ', ' B   BBB   B ', 'BBBBBBEBBBBBB', ' B   BBB   B ', ' BCCCDDDCCCB ')
-                .aisle(' B   BBB   B ', 'BBFFF   FFFBB', 'BBFFF   FFFBB', 'BBFFF   FFFBB', ' B   BBB   B ')
-                .aisle('BBBBBBBBBBBBB', 'BBFFF   FFFBB', 'GHHHHHHHHHHHG', 'BBFFF   FFFBB', 'BBBBBBBBBBBBB')
-                .aisle(' B   BBB   B ', 'BBFFF   FFFBB', 'BBFFF   FFFBB', 'BBFFF   FFFBB', ' B   BBB   B ')
-                .aisle(' BCCCDDDCCCB ', ' B   BBB   B ', 'BBBBBB@BBBBBB', ' B   BBB   B ', ' BCCCDDDCCCB ')
+            newFactoryBlockPattern([
+                ' BCCCDDDCCCB | B   BBB   B |BBBBBBEBBBBBB| B   BBB   B | BCCCDDDCCCB ',
+                ' B   BBB   B |BBFFF   FFFBB|BBFFF   FFFBB|BBFFF   FFFBB| B   BBB   B ',
+                'BBBBBBBBBBBBB|BBFFF   FFFBB|GHHHHHHHHHHHG|BBFFF   FFFBB|BBBBBBBBBBBBB',
+                ' B   BBB   B |BBFFF   FFFBB|BBFFF   FFFBB|BBFFF   FFFBB| B   BBB   B ',
+                ' BCCCDDDCCCB | B   BBB   B |BBBBBB@BBBBBB| B   BBB   B | BCCCDDDCCCB ',
+            ])
                 .where(' ', Predicates.any())
                 .where(
                     'B',

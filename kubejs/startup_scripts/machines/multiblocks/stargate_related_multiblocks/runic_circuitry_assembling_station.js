@@ -9,7 +9,6 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('runic_circuitry_assembling_station', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -20,18 +19,20 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:lumium_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('   BBCBB   ', '   B   B   ', '   C   C   ', '           ', '           ', '           ', '   C   C   ', '   B   B   ', '   BBCBB   ', '    BBB    ', '           ') 
-            .aisle(' BCBDDDBCB ', ' B  DDD  B ', ' C  DED  C ', '    C C    ', '           ', '    C C    ', ' C  DED  C ', ' B  DDD  B ', ' BCBDDDBCB ', '  BBBFBBB  ', '           ') 
-            .aisle(' CDDDGDDDC ', '  DDHHHDD  ', '  DDIIIDD  ', '  C III C  ', '    III    ', '  C III C  ', '  DDIIIDD  ', '  DDHHHDD  ', ' CDDDDDDDC ', ' BBFJEJFBB ', '    C C    ') 
-            .aisle('BBDDDGDDDBB', 'B DHKKKHD B', 'C DI   ID C', '   D   D   ', '   I   I   ', '   D   D   ', '  DI   ID C', 'B DHKKKHD B', 'BBDDDGDDDBB', ' BFEBBBEFB ', '    BBB    ') 
-            .aisle('BDDDGGGDDDB', ' DHKKKKKHD ', ' DI     ID ', ' CI     IC ', '  I     I  ', ' CI     IC ', 'CDI     ID ', ' DHKKKKKHD ', 'BDDDGGGDDDB', 'BBJBBLBBJBB', '  CBMJMBC  ') 
-            .aisle('CDGGGLGGGDC', ' DHKKLKKHD ', ' EI     IE ', '  I  N  I  ', '  I  O  I  ', '  I  N  I  ', ' EI     IE ', ' DHKKLKKHD ', 'CDDGGLGGDDC', 'BFEBLLLBEFB', '   BJJJB   ') 
-            .aisle('BDDDGGGDDDB', ' DHKKKKKHD ', ' DI     ID ', ' CI     IC ', '  I     I  ', ' CI     IC ', ' DI     ID ', ' DHKKKKKHD ', 'BDDDGGGDDDB', 'BBJBBLBBJBB', '  CBMJMBC  ') 
-            .aisle('BBDDDGDDDBB', 'B DHKKKHD B', 'C DI   ID C', '   D   D   ', '   I   I   ', '   D   D   ', 'C DI   ID C', 'B DHKKKHD B', 'BBDDDGDDDBB', ' BFEBBBEFB ', '    BBB    ') 
-            .aisle(' CDDDGDDDC ', '  DDHHHDD  ', '  DDIIIDD  ', '  C III C  ', '    III    ', '  C III C  ', '  DDIIIDD  ', '  DDHHHDD  ', ' CDDDDDDDC ', ' BBFJEJFBB ', '    C C    ') 
-            .aisle(' BCBDDDBCB ', ' B  D@D  B ', ' C  DED  C ', '    C C    ', '           ', '    C C    ', ' C  DED  C ', ' B  DDD  B ', ' BCBDDDBCB ', '  BBBFBBB  ', '           ') 
-            .aisle('   BBCBB   ', '   B   B   ', '   C   C   ', '           ', '           ', '           ', '   C   C   ', '   B   B   ', '   BBCBB   ', '    BBB    ', '           ') 
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '   BBCBB   |   B   B   |   C   C   |           |           |           |   C   C   |   B   B   |   BBCBB   |    BBB    |           ',
+                ' BCBDDDBCB | B  DDD  B | C  DED  C |    C C    |           |    C C    | C  DED  C | B  DDD  B | BCBDDDBCB |  BBBFBBB  |           ',
+                ' CDDDGDDDC |  DDHHHDD  |  DDIIIDD  |  C III C  |    III    |  C III C  |  DDIIIDD  |  DDHHHDD  | CDDDDDDDC | BBFJEJFBB |    C C    ',
+                'BBDDDGDDDBB|B DHKKKHD B|C DI   ID C|   D   D   |   I   I   |   D   D   |C DI   ID C|B DHKKKHD B|BBDDDGDDDBB| BFEBBBEFB |    BBB    ',
+                'BDDDGGGDDDB| DHKKKKKHD | DI     ID | CI     IC |  I     I  | CI     IC | DI     ID | DHKKKKKHD |BDDDGGGDDDB|BBJBBLBBJBB|  CBMJMBC  ',
+                'CDGGGLGGGDC| DHKKLKKHD | EI     IE |  I  N  I  |  I  O  I  |  I  N  I  | EI     IE | DHKKLKKHD |CDDGGLGGDDC|BFEBLLLBEFB|   BJJJB   ',
+                'BDDDGGGDDDB| DHKKKKKHD | DI     ID | CI     IC |  I     I  | CI     IC | DI     ID | DHKKKKKHD |BDDDGGGDDDB|BBJBBLBBJBB|  CBMJMBC  ',
+                'BBDDDGDDDBB|B DHKKKHD B|C DI   ID C|   D   D   |   I   I   |   D   D   |C DI   ID C|B DHKKKHD B|BBDDDGDDDBB| BFEBBBEFB |    BBB    ',
+                ' CDDDGDDDC |  DDHHHDD  |  DDIIIDD  |  C III C  |    III    |  C III C  |  DDIIIDD  |  DDHHHDD  | CDDDDDDDC | BBFJEJFBB |    C C    ',
+                ' BCBDDDBCB | B  D@D  B | C  DED  C |    C C    |           |    C C    | C  DED  C | B  DDD  B | BCBDDDBCB |  BBBFBBB  |           ',
+                '   BBCBB   |   B   B   |   C   C   |           |           |           |   C   C   |   B   B   |   BBCBB   |    BBB    |           ',
+            ])
                 .where(' ', Predicates.any())
                 .where('B', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
                 .where('C', Predicates.blocks('gtceu:trinaquadalloy_frame'))

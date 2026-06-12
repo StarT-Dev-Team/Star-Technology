@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('titan_forge', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -10,22 +9,24 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('     BCCCB     ', '     BBBBB     ', '               ', '               ', '               ', '               ', '     BBBBB     ', '      BBB      ')
-            .aisle('   BBBBDBBBB   ', '   EBFFFFFBE   ', '   E       E   ', '   E       E   ', '   EE     EE   ', '   E E   E E   ', '   EBFFFFFBE   ', '   BBBBGBBBB   ')
-            .aisle('  EBFBBDBBFBE  ', '  E BBFGFBB E  ', '    BB   BB    ', '  E  B   B  E  ', '     B   B     ', '    BB   BB    ', '  E BBFGFBB E  ', '  EBBBBDBBBBE  ')
-            .aisle(' BBFFFBDBFFFBB ', ' E HFFFGFFFH E ', ' E           E ', ' E           E ', ' E           E ', ' E           E ', ' E HFFFFFFFH E ', ' BBBFFFFFFFBBB ')
-            .aisle(' BFFFFBDBFFFFB ', ' BBFFIFGFIFFBB ', '  B         B  ', '               ', ' E           E ', '  B         B  ', ' BBFFEEFEEFFBB ', ' BBFFIIFIIFFBB ')
-            .aisle('BBBFFFFDFFFFBBB', 'BFBFIFFFFFIFBFB', '  B         B  ', '  B         B  ', '  B         B  ', ' EB         BE ', 'BFBFEFFFFFEFBFB', ' BBFIFFFFFIFBB ')
-            .aisle('CBBBBFFDFFBBBBC', 'BFFFFFBBBFFFFFB', '               ', '               ', '               ', '               ', 'BFFFEF F FEFFFB', 'BBBFIFEFEFIFBBB')
-            .aisle('CDDDDDDDDDDDDDC', 'BFGGGFBJBFGGGFB', '       J       ', '               ', '               ', '       J       ', 'BFGFFFFJFFFFGFB', 'BGDFFFFKFFFFDGB')
-            .aisle('CBBBBFFDFFBBBBC', 'BFFFFFBBBFFFFFB', '               ', '               ', '               ', '               ', 'BFFFEF F FEFFFB', 'BBBFIFEFEFIFBBB')
-            .aisle('BBBFFFFDFFFFBBB', 'BFBFIFFFFFIFBFB', '  B         B  ', '  B         B  ', '  B         B  ', ' EB         BE ', 'BFBFEFFFFFEFBFB', ' BBFIFFFFFIFBB ')
-            .aisle(' BFFFFBDBFFFFB ', ' BBFFIFGFIFFBB ', '  B         B  ', '               ', ' E           E ', '  B         B  ', ' BBFFEEFEEFFBB ', ' BBFFIIFIIFFBB ')
-            .aisle(' BBFFFBDBFFFBB ', ' E HFFFGFFFH E ', ' E           E ', ' E           E ', ' E           E ', ' E           E ', ' E HFFFFFFFH E ', ' BBBFFFFFFFBBB ')
-            .aisle('  EBFBBDBBFBE  ', '  E BBFGFBB E  ', '    BB   BB    ', '  E  B   B  E  ', '     B   B     ', '    BB   BB    ', '  E BBFGFBB E  ', '  EBBBBDBBBBE  ')
-            .aisle('   BBBBDBBBB   ', '   EBFFFFFBE   ', '   E       E   ', '   E       E   ', '   EE     EE   ', '   E E   E E   ', '   EBFFFFFBE   ', '   BBBBGBBBB   ')
-            .aisle('     BCCCB     ', '     BB@BB     ', '               ', '               ', '               ', '               ', '     BBBBB     ', '      BBB      ')
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '     BCCCB     |     BBBBB     |               |               |               |               |     BBBBB     |      BBB      ',
+                '   BBBBDBBBB   |   EBFFFFFBE   |   E       E   |   E       E   |   EE     EE   |   E E   E E   |   EBFFFFFBE   |   BBBBGBBBB   ',
+                '  EBFBBDBBFBE  |  E BBFGFBB E  |    BB   BB    |  E  B   B  E  |     B   B     |    BB   BB    |  E BBFGFBB E  |  EBBBBDBBBBE  ',
+                ' BBFFFBDBFFFBB | E HFFFGFFFH E | E           E | E           E | E           E | E           E | E HFFFFFFFH E | BBBFFFFFFFBBB ',
+                ' BFFFFBDBFFFFB | BBFFIFGFIFFBB |  B         B  |               | E           E |  B         B  | BBFFEEFEEFFBB | BBFFIIFIIFFBB ',
+                'BBBFFFFDFFFFBBB|BFBFIFFFFFIFBFB|  B         B  |  B         B  |  B         B  | EB         BE |BFBFEFFFFFEFBFB| BBFIFFFFFIFBB ',
+                'CBBBBFFDFFBBBBC|BFFFFFBBBFFFFFB|               |               |               |               |BFFFEF F FEFFFB|BBBFIFEFEFIFBBB',
+                'CDDDDDDDDDDDDDC|BFGGGFBJBFGGGFB|       J       |               |               |       J       |BFGFFFFJFFFFGFB|BGDFFFFKFFFFDGB',
+                'CBBBBFFDFFBBBBC|BFFFFFBBBFFFFFB|               |               |               |               |BFFFEF F FEFFFB|BBBFIFEFEFIFBBB',
+                'BBBFFFFDFFFFBBB|BFBFIFFFFFIFBFB|  B         B  |  B         B  |  B         B  | EB         BE |BFBFEFFFFFEFBFB| BBFIFFFFFIFBB ',
+                ' BFFFFBDBFFFFB | BBFFIFGFIFFBB |  B         B  |               | E           E |  B         B  | BBFFEEFEEFFBB | BBFFIIFIIFFBB ',
+                ' BBFFFBDBFFFBB | E HFFFGFFFH E | E           E | E           E | E           E | E           E | E HFFFFFFFH E | BBBFFFFFFFBBB ',
+                '  EBFBBDBBFBE  |  E BBFGFBB E  |    BB   BB    |  E  B   B  E  |     B   B     |    BB   BB    |  E BBFGFBB E  |  EBBBBDBBBBE  ',
+                '   BBBBDBBBB   |   EBFFFFFBE   |   E       E   |   E       E   |   EE     EE   |   E E   E E   |   EBFFFFFBE   |   BBBBGBBBB   ',
+                '     BCCCB     |     BB@BB     |               |               |               |               |     BBBBB     |      BBB      ',
+            ])
                 .where(' ', Predicates.any())
                 .where(
                     'B',

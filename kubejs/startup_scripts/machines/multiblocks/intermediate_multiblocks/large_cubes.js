@@ -22,10 +22,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             .recipeModifiers([GTRecipeModifiers.OC_PERFECT, GTRecipeModifiers.BATCH_MODE])
             .appearanceBlock(() => Block.getBlock(`kubejs:${casing}_casing`))
             .pattern((definition) =>
-                FactoryBlockPattern.start()
-                    .aisle('CCC', 'CCC', 'CCC')
-                    .aisle('CCC', 'C C', 'CCC')
-                    .aisle('CCC', 'CKC', 'CCC')
+                newFactoryBlockPattern(['CCC|CCC|CCC', 'CCC|C C|CCC', 'CCC|CKC|CCC'])
                     .where('K', Predicates.controller(Predicates.blocks(definition.get())))
                     .where(
                         'C',
@@ -70,10 +67,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([GTRecipeModifiers.OC_PERFECT, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('kubejs:red_steel_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('CCC', 'CCC', 'CCC')
-                .aisle('CCC', 'C C', 'CCC')
-                .aisle('CCC', 'CKC', 'CCC')
+            newFactoryBlockPattern(['CCC|CCC|CCC', 'CCC|C C|CCC', 'CCC|CKC|CCC'])
                 .where('K', Predicates.controller(Predicates.blocks(definition.get())))
                 .where(
                     'C',

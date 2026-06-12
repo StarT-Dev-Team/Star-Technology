@@ -10,7 +10,6 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('injection_mixer', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -21,12 +20,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:noble_mixing_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle(' BBB ', ' CCC ', ' BBB ', '  B  ', '     ', '  B  ', ' BBB ', '     ', '     ', '     ', '     ', '     ', '     ')
-            .aisle('BBDBB', 'CDDDC', 'BEEEB', ' FEF ', ' FGF ', ' FDF ', 'BDDDB', ' DFD ', '  F  ', '  C  ', '  C  ', '  C  ', '  D  ')
-            .aisle('BDDDB', 'CDGDC', 'BEGEB', 'BEGEB', ' GGG ', 'BDGDB', 'BDGDB', ' FGF ', ' FGF ', ' CHC ', ' CHC ', ' CHC ', ' DED ')
-            .aisle('BBDBB', 'CDDDC', 'BEEEB', ' FEF ', ' FGF ', ' FDF ', 'BDDDB', ' DFD ', '  F  ', '  C  ', '  C  ', '  C  ', '  D  ')
-            .aisle(' BBB ', ' C@C ', ' BBB ', '  B  ', '     ', '  B  ', ' BBB ', '     ', '     ', '     ', '     ', '     ', '     ')
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                ' BBB | CCC | BBB |  B  |     |  B  | BBB |     |     |     |     |     |     ',
+                'BBDBB|CDDDC|BEEEB| FEF | FGF | FDF |BDDDB| DFD |  F  |  C  |  C  |  C  |  D  ',
+                'BDDDB|CDGDC|BEGEB|BEGEB| GGG |BDGDB|BDGDB| FGF | FGF | CHC | CHC | CHC | DED ',
+                'BBDBB|CDDDC|BEEEB| FEF | FGF | FDF |BDDDB| DFD |  F  |  C  |  C  |  C  |  D  ',
+                ' BBB | C@C | BBB |  B  |     |  B  | BBB |     |     |     |     |     |     ',
+            ])
                 .where('B', Predicates.blocks('kubejs:noble_mixing_casing'))
                 .where(' ', Predicates.any())
                 .where(

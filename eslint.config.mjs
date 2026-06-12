@@ -121,6 +121,9 @@ export default [
                 PonderTickingInstruction: "readonly",
                 PonderPointing: "readonly",
                 // Custom globals
+                newFactoryBlockPattern: "writable",
+                newFactoryBlockPatternWithDirections: "writable",
+                blockPatternRepeatable: "writable",
                 ponderScenes: "writable",
                 ponderUtils: "readonly",
                 ponderMultis: "readonly",

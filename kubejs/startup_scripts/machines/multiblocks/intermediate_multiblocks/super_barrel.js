@@ -11,18 +11,19 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GTBlocks.CASING_PALLADIUM_SUBSTATION)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('    BBB    ', '           ', '           ', '           ', '    BBB    ')
-                .aisle('  BBBBBBB  ', '  C BBB C  ', '  C BDB C  ', '  C BBB C  ', '  BBBBBBB  ')
-                .aisle(' BBBBBBBBB ', ' CEEEEEEEC ', ' CEEEFEEEC ', ' CEEEEEEEC ', ' BBBBBBBBB ')
-                .aisle(' BBBBBBBBB ', '  EF   FE  ', '  E  F  E  ', '  E     E  ', ' BBGGGGGBB ')
-                .aisle('BBBBBBBBBBB', ' BE F F EB ', ' BE  F  EB ', ' BE     EB ', 'BBBGGGGGBBB')
-                .aisle('BBBBBBBBBBB', ' BE     EB ', ' DFFFFFFFD ', ' BE     EB ', 'BBBGGGGGBBB')
-                .aisle('BBBBBBBBBBB', ' BE F F EB ', ' BE  F  EB ', ' BE     EB ', 'BBBGGGGGBBB')
-                .aisle(' BBBBBBBBB ', '  EF   FE  ', '  E  F  E  ', '  E     E  ', ' BBGGGGGBB ')
-                .aisle(' BBBBBBBBB ', ' CEEEEEEEC ', ' CEEEFEEEC ', ' CEEEEEEEC ', ' BBBBBBBBB ')
-                .aisle('  BBBBBBB  ', '  C BBB C  ', '  C B@B C  ', '  C BBB C  ', '  BBBBBBB  ')
-                .aisle('    BBB    ', '           ', '           ', '           ', '    BBB    ')
+            newFactoryBlockPattern([
+                '    BBB    |           |           |           |    BBB    ',
+                '  BBBBBBB  |  C BBB C  |  C BDB C  |  C BBB C  |  BBBBBBB  ',
+                ' BBBBBBBBB | CEEEEEEEC | CEEEFEEEC | CEEEEEEEC | BBBBBBBBB ',
+                ' BBBBBBBBB |  EF   FE  |  E  F  E  |  E     E  | BBGGGGGBB ',
+                'BBBBBBBBBBB| BE F F EB | BE  F  EB | BE     EB |BBBGGGGGBBB',
+                'BBBBBBBBBBB| BE     EB | DFFFFFFFD | BE     EB |BBBGGGGGBBB',
+                'BBBBBBBBBBB| BE F F EB | BE  F  EB | BE     EB |BBBGGGGGBBB',
+                ' BBBBBBBBB |  EF   FE  |  E  F  E  |  E     E  | BBGGGGGBB ',
+                ' BBBBBBBBB | CEEEEEEEC | CEEEFEEEC | CEEEEEEEC | BBBBBBBBB ',
+                '  BBBBBBB  |  C BBB C  |  C B@B C  |  C BBB C  |  BBBBBBB  ',
+                '    BBB    |           |           |           |    BBB    ',
+            ])
                 .where(' ', Predicates.any())
                 .where(
                     'B',

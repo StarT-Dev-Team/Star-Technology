@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('atomic_materialization_plant', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -14,18 +13,22 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:cattomolymer_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('ABBCBBA    ', 'DAAAAAD    ', 'D     D    ', 'D     D    ', 'D     D    ', 'DAAAAAD    ', 'ABBCBBA    ', '           ', '           ', '           ', '           ')
-            .aisle('BAABAAB E  ', 'AEEEEEA F  ', ' AAAAAFFF  ', ' GGGGG     ', ' AAAAA     ', 'AGGGGGA    ', 'BDHHHDB    ', ' D   D     ', ' D   D     ', ' D   D     ', ' AAAAA     ')
-            .aisle('BAABAAB    ', 'AEIIIEA    ', ' ADDDA     ', ' G   G     ', ' ADDDA     ', 'AG   GA    ', 'BHAAAHB    ', '  AAA      ', '  MMM      ', '  AAA      ', ' ACCCA     ')
-            .aisle('CAAAAAC JJ ', 'AEIIIEA JJ ', ' ADFDADDJJ ', ' G F G  JJ ', ' ADFDA  JJ ', 'AG F GA JJ ', 'CHAFAHC JJ ', '  AFA   JJ ', '  MFM      ', '  AAA      ', ' ACCCA     ')
-            .aisle('BAABAAB JJ ', 'AEIIIEA JJ ', ' ADFDA  JJ ', ' G   G  JJ ', ' ADDDADDJJ ', 'AG   GA JJ ', 'BHAAAHB JJ ', '  AAA   JJ ', '  MEM      ', '  AAA      ', ' ACCCA     ')
-            .aisle('BAABAAB    ', 'AEEEEEA    ', ' ADFDA     ', ' GDDDG     ', ' ADDDA     ', 'AGGGGGA    ', 'BDHHHDB    ', ' D D D     ', ' D E D     ', ' D D D     ', ' AAAAA     ')
-            .aisle('ABAAAAA BBB', 'DAAEAEADABA', 'D AFAAAHAAA', 'D AAAGADABA', 'D AAAAA BBB', 'DAAAAAD    ', 'ABBCBEA    ', '           ', '   H       ', '           ', '           ')
-            .aisle('  ABABA BBB', '  ADGGAHAFA', '  AFGGF IFK', '  ADGGAHAFA', '  AAAAA BBB', '           ', '   D E     ', '           ', '   H       ', '           ', '           ')
-            .aisle('  ABABA BBB', '  AEDEADABA', '  LFDFAHAAA', '  AEDEADABA', '  AEAEA BBB', '   E E     ', '   HDE     ', '   H       ', '   H       ', '           ', '           ')
-            .aisle('  AAAA     ', '  AAHA     ', '  A@HA     ', '  AAHA     ', '  AAAA     ', '           ', '           ', '           ', '           ', '           ', '           ')
-            .where('A', Predicates.blocks('kubejs:cattomolymer_casing')
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                'ABBCBBA    |DAAAAAD    |D     D    |D     D    |D     D    |DAAAAAD    |ABBCBBA    |           |           |           |           ',
+                'BAABAAB E  |AEEEEEA F  | AAAAAFFF  | GGGGG     | AAAAA     |AGGGGGA    |BDHHHDB    | D   D     | D   D     | D   D     | AAAAA     ',
+                'BAABAAB    |AEIIIEA    | ADDDA     | G   G     | ADDDA     |AG   GA    |BHAAAHB    |  AAA      |  MMM      |  AAA      | ACCCA     ',
+                'CAAAAAC JJ |AEIIIEA JJ | ADFDADDJJ | G F G  JJ | ADFDA  JJ |AG F GA JJ |CHAFAHC JJ |  AFA   JJ |  MFM      |  AAA      | ACCCA     ',
+                'BAABAAB JJ |AEIIIEA JJ | ADFDA  JJ | G   G  JJ | ADDDADDJJ |AG   GA JJ |BHAAAHB JJ |  AAA   JJ |  MEM      |  AAA      | ACCCA     ',
+                'BAABAAB    |AEEEEEA    | ADFDA     | GDDDG     | ADDDA     |AGGGGGA    |BDHHHDB    | D D D     | D E D     | D D D     | AAAAA     ',
+                'ABAAAAA BBB|DAAEAEADABA|D AFAAAHAAA|D AAAGADABA|D AAAAA BBB|DAAAAAD    |ABBCBEA    |           |   H       |           |           ',
+                '  ABABA BBB|  ADGGAHAFA|  AFGGF IFK|  ADGGAHAFA|  AAAAA BBB|           |   D E     |           |   H       |           |           ',
+                '  ABABA BBB|  AEDEADABA|  LFDFAHAAA|  AEDEADABA|  AEAEA BBB|   E E     |   HDE     |   H       |   H       |           |           ',
+                '  AAAA     |  AAHA     |  A@HA     |  AAHA     |  AAAA     |           |           |           |           |           |           ',
+            ])
+                .where(
+                    'A',
+                    Predicates.blocks('kubejs:cattomolymer_casing')
                         .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
                         .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
                         .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))

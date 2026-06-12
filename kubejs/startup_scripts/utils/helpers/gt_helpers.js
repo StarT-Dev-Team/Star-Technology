@@ -72,3 +72,49 @@ global.chemicalOverclockDisplay = (controller, components) => {
         components.add(Component.translatable('gtceu.multiblock.chemical_reactor.energy', 100 - 5 * coilTier));
     }
 };
+
+/**
+ * @param {$RelativeDirection} charDir
+ * @param {$RelativeDirection} stringDir
+ * @param {$RelativeDirection} aisleDir
+ * @global
+ */
+const newFactoryBlockPatternWithDirections = (charDir, stringDir, aisleDir) => {
+    return (pattern, divider) => {
+        divider = divider || '|';
+        let ret = FactoryBlockPattern.start(charDir, stringDir, aisleDir);
+        for (let aisle of pattern) {
+            if (typeof aisle === 'string') {
+                let aisleParts = aisle.split(divider);
+                ret = ret.aisle.apply(ret, aisleParts);
+            } else {
+                aisle(ret);
+            }
+        }
+        return ret;
+    };
+};
+/**
+ * @param {number} min
+ * @param {number | undefined} max
+ * @global
+ */
+// eslint-disable-next-line no-unused-vars
+const blockPatternRepeatable = (min, max) => {
+    if (max) return (pattern) => pattern.setRepeatable(min, max);
+    return (pattern) => pattern.setRepeatable(min);
+};
+
+/**
+ * @param {(string | ((pattern: any) => void))[]} pattern
+ * @param {string} divider
+ * @global
+ */
+// eslint-disable-next-line no-unused-vars
+const newFactoryBlockPattern = (pattern, divider) => {
+    return newFactoryBlockPatternWithDirections(
+        $RelativeDirection.LEFT,
+        $RelativeDirection.UP,
+        $RelativeDirection.FRONT
+    )(pattern, divider);
+};

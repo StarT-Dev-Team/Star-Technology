@@ -9,7 +9,6 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('super_pressure_heat_chamber', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -20,20 +19,22 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(GCYMBlocks.CASING_STRESS_PROOF)
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('   BBBBBBB   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '   BBBBBBB   ', '     CCC     ')
-            .aisle('  BBCCCCCBB  ', '   DEEEEED   ', '   D EEE D   ', '      E      ', '   D EEE D   ', '   DEEFEED   ', '   D EEE D   ', '      E      ', '   D EEE D   ', '   DEEEEED   ', '  BBEEEEEBB  ', '     EEE     ')
-            .aisle(' BBCCCCCCCBB ', '   CC   CC   ', '             ', '  D       D  ', '      C      ', '   EECGCEE   ', '      C      ', '  D       D  ', '             ', '   CCCCCCC   ', ' BBEEEEEEEBB ', '      E      ')
-            .aisle('BBCCCCCCCCCBB', ' DC   D   CD ', ' D    H    D ', '     HHH     ', ' D   HHH   D ', ' DEE HGH EED ', ' D   HHH   D ', '     HHH     ', ' D    H    D ', ' DCCCCCCCCCD ', 'BBEEECCCEEEBB', '     CCC     ')
-            .aisle('BCCCCCCCCCCCB', ' EC       CE ', '     HHH     ', '    H   H    ', '    H   H    ', ' EE H G H EE ', '    H   H    ', '    H   H    ', '     HHH     ', ' ECCC   CCCE ', 'BEEEC   CEEEB', '    CCICC    ')
-            .aisle('BCCCCCCCCCCCB', ' E   HHH   E ', ' E  HHGHH  E ', '    H   H    ', ' E H     H E ', ' ECH  G  HCE ', ' E H     H E ', '    H   H    ', ' E  HHGHH  E ', ' ECC HHH CCE ', 'BEEC CCC CEEB', 'CE CCCICCC EC')
-            .aisle('BCCCCCCCCCCCB', ' E D HHH D E ', ' E DHGGGHD E ', ' E HH G HH E ', ' ECH  G  HCE ', ' FGGGGGGGGGF ', ' ECH  G  HCE ', ' E HH G HH E ', ' E  HGGGH  E ', ' ECC HGH CCE ', 'BEEC CGC CEEB', 'CEECIIIIICEEC')
-            .aisle('BCCCCCCCCCCCB', ' E   HHH   E ', ' E  HHGHH  E ', '    H   H    ', ' E H     H E ', ' ECH  G  HCE ', ' E H     H E ', '    H   H    ', ' E  HHGHH  E ', ' ECC HHH CCE ', 'BEEC CCC CEEB', 'CE CCCICCC EC')
-            .aisle('BCCCCCCCCCCCB', ' EC       CE ', '     HHH     ', '    H   H    ', '    H   H    ', ' EE H G H EE ', '    H   H    ', '    H   H    ', '     HHH     ', ' ECCC   CCCE ', 'BEEEC   CEEEB', '    CCICC    ')
-            .aisle('BBCCCCCCCCCBB', ' DC   D   CD ', ' D    H    D ', '     HHH     ', ' D   HHH   D ', ' DEE HGH EED ', ' D   HHH   D ', '     HHH     ', ' D    H    D ', ' DCCCCCCCCCD ', 'BBEEECCCEEEBB', '     CCC     ')
-            .aisle(' BBCCCCCCCBB ', '   CC    C   ', '             ', '  D       D  ', '      C      ', '   EECGCEE   ', '      C      ', '  D       D  ', '             ', '   CCCCCCC   ', ' BBEEEEEEEBB ', '      E      ')
-            .aisle('  BBCCCCCBB  ', '   DEEEEED   ', '   D EEE D   ', '      E      ', '   D EEE D   ', '   DEE@EED   ', '   D EEE D   ', '      E      ', '   D EEE D   ', '   DEEEEED   ', '  BBEEEEEBB  ', '     EEE     ')
-            .aisle('   BBBBBBB   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '   BBBBBBB   ', '     CCC     ')
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '   BBBBBBB   |             |             |             |             |             |             |             |             |             |   BBBBBBB   |     CCC     ',
+                '  BBCCCCCBB  |   DEEEEED   |   D EEE D   |      E      |   D EEE D   |   DEEFEED   |   D EEE D   |      E      |   D EEE D   |   DEEEEED   |  BBEEEEEBB  |     EEE     ',
+                ' BBCCCCCCCBB |   CC   CC   |             |  D       D  |      C      |   EECGCEE   |      C      |  D       D  |             |   CCCCCCC   | BBEEEEEEEBB |      E      ',
+                'BBCCCCCCCCCBB| DC   D   CD | D    H    D |     HHH     | D   HHH   D | DEE HGH EED | D   HHH   D |     HHH     | D    H    D | DCCCCCCCCCD |BBEEECCCEEEBB|     CCC     ',
+                'BCCCCCCCCCCCB| EC       CE |     HHH     |    H   H    |    H   H    | EE H G H EE |    H   H    |    H   H    |     HHH     | ECCC   CCCE |BEEEC   CEEEB|    CCICC    ',
+                'BCCCCCCCCCCCB| E   HHH   E | E  HHGHH  E |    H   H    | E H     H E | ECH  G  HCE | E H     H E |    H   H    | E  HHGHH  E | ECC HHH CCE |BEEC CCC CEEB|CE CCCICCC EC',
+                'BCCCCCCCCCCCB| E D HHH D E | E DHGGGHD E | E HH G HH E | ECH  G  HCE | FGGGGGGGGGF | ECH  G  HCE | E HH G HH E | E  HGGGH  E | ECC HGH CCE |BEEC CGC CEEB|CEECIIIIICEEC',
+                'BCCCCCCCCCCCB| E   HHH   E | E  HHGHH  E |    H   H    | E H     H E | ECH  G  HCE | E H     H E |    H   H    | E  HHGHH  E | ECC HHH CCE |BEEC CCC CEEB|CE CCCICCC EC',
+                'BCCCCCCCCCCCB| EC       CE |     HHH     |    H   H    |    H   H    | EE H G H EE |    H   H    |    H   H    |     HHH     | ECCC   CCCE |BEEEC   CEEEB|    CCICC    ',
+                'BBCCCCCCCCCBB| DC   D   CD | D    H    D |     HHH     | D   HHH   D | DEE HGH EED | D   HHH   D |     HHH     | D    H    D | DCCCCCCCCCD |BBEEECCCEEEBB|     CCC     ',
+                ' BBCCCCCCCBB |   CC    C   |             |  D       D  |      C      |   EECGCEE   |      C      |  D       D  |             |   CCCCCCC   | BBEEEEEEEBB |      E      ',
+                '  BBCCCCCBB  |   DEEEEED   |   D EEE D   |      E      |   D EEE D   |   DEE@EED   |   D EEE D   |      E      |   D EEE D   |   DEEEEED   |  BBEEEEEBB  |     EEE     ',
+                '   BBBBBBB   |             |             |             |             |             |             |             |             |             |   BBBBBBB   |     CCC     ',
+            ])
                 .where(' ', Predicates.any())
                 .where('B', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
                 .where('C', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))

@@ -10,11 +10,12 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:fluix_steel_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('AAFFFFFAA', 'ACCCCCCCA', 'AAFFFFFAA')
-                .aisle('AEEEEEEEA', 'FDDDDDDDF', 'AAAABAAAA')
-                .aisle('AFFAEAFFA', 'ACCCDCCCA', 'AFFABAFFA')
-                .aisle('   A@A   ', '   CCC   ', '   AAA   ')
+            newFactoryBlockPattern([
+                'AAFFFFFAA|ACCCCCCCA|AAFFFFFAA',
+                'AEEEEEEEA|FDDDDDDDF|AAAABAAAA',
+                'AFFAEAFFA|ACCCDCCCA|AFFABAFFA',
+                '   A@A   |   CCC   |   AAA   ',
+            ])
                 .where('@', Predicates.controller(Predicates.blocks(definition.get())))
                 .where(
                     'A',

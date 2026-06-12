@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('tree_synthesizer', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -10,16 +9,18 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('gtceu:robust_machine_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('AABBBBBAA', 'BBBBBBBBB', 'BCCCDCCCB', 'BCCCDCCCB', 'BCCCCCCCB', 'BCCCCCCCB', 'BCCCCCCCB', 'BCCCCCCCB', 'ECCCCCCCE', 'ECCCCCCCE', 'ECCCCCCCE', '#EECCCEE#', '#########')
-            .aisle('ABGGGGGBA', 'BGHHHHHGB', 'CG     GC', 'CG     GC', 'CG     GC', 'C       C', 'C       C', 'C       C', 'C   IIIIC', 'C   IIIIC', 'C       C', 'ECC   CCE', '###EEE###')
-            .aisle('BGBBGBBGB', 'BHHHHJJHB', 'C    KK C', 'C    KK C', 'C    KK C', 'C    KK C', 'C    KK C', 'C    KK C', 'C   IKKIC', 'C   IIIIC', 'C    II C', 'EC     CE', '##ECCCE##')
-            .aisle('BGBBGBBGB', 'BHHHHJJHB', 'C    KK C', 'C    KK C', 'C    KK C', 'C    KK C', 'C    KK C', 'C    KK C', 'C   IKKIC', 'C   IIIIC', 'C    II C', 'C       C', '#ECCCCCE#')
-            .aisle('BGGGGGGGB', 'BHHHHHHHB', 'D       D', 'D       D', 'C       C', 'C FFF   C', 'C  F    C', 'C       C', 'C   IIIIC', 'C   IIIIC', 'C       C', 'C       C', '#ECCDCCE#')
-            .aisle('BGBBGBBGB', 'BHHJHHHHB', 'C  L    C', 'C  L    C', 'C  L    C', 'C FLF   C', 'C FFF   C', 'C       C', 'C       C', 'C       C', 'C       C', 'C       C', '#ECCCCCE#')
-            .aisle('BGBBGBBGB', 'BHHHHHHHB', 'C       C', 'C       C', 'C       C', 'C FFF   C', 'C  F    C', 'C       C', 'C       C', 'C       C', 'C       C', 'EC     CE', '##ECCCE##')
-            .aisle('ABGGGGGBA', 'BGHHHHHGB', 'CG     GC', 'CG     GC', 'CG     GC', 'C       C', 'C       C', 'C       C', 'C       C', 'C       C', 'C       C', 'ECC   CCE', '###EEE###')
-            .aisle('AABBBBBAA', 'BBBB@BBBB', 'BCCCDCCCB', 'BCCCDCCCB', 'BCCCCCCCB', 'BCCCCCCCB', 'BCCCCCCCB', 'BCCCCCCCB', 'ECCCCCCCE', 'ECCCCCCCE', 'ECCCCCCCE', '#EECCCEE#', '#########')
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                'AABBBBBAA|BBBBBBBBB|BCCCDCCCB|BCCCDCCCB|BCCCCCCCB|BCCCCCCCB|BCCCCCCCB|BCCCCCCCB|ECCCCCCCE|ECCCCCCCE|ECCCCCCCE|#EECCCEE#|#########',
+                'ABGGGGGBA|BGHHHHHGB|CG     GC|CG     GC|CG     GC|C       C|C       C|C       C|C   IIIIC|C   IIIIC|C       C|ECC   CCE|###EEE###',
+                'BGBBGBBGB|BHHHHJJHB|C    KK C|C    KK C|C    KK C|C    KK C|C    KK C|C    KK C|C   IKKIC|C   IIIIC|C    II C|EC     CE|##ECCCE##',
+                'BGBBGBBGB|BHHHHJJHB|C    KK C|C    KK C|C    KK C|C    KK C|C    KK C|C    KK C|C   IKKIC|C   IIIIC|C    II C|C       C|#ECCCCCE#',
+                'BGGGGGGGB|BHHHHHHHB|D       D|D       D|C       C|C FFF   C|C  F    C|C       C|C   IIIIC|C   IIIIC|C       C|C       C|#ECCDCCE#',
+                'BGBBGBBGB|BHHJHHHHB|C  L    C|C  L    C|C  L    C|C FLF   C|C FFF   C|C       C|C       C|C       C|C       C|C       C|#ECCCCCE#',
+                'BGBBGBBGB|BHHHHHHHB|C       C|C       C|C       C|C FFF   C|C  F    C|C       C|C       C|C       C|C       C|EC     CE|##ECCCE##',
+                'ABGGGGGBA|BGHHHHHGB|CG     GC|CG     GC|CG     GC|C       C|C       C|C       C|C       C|C       C|C       C|ECC   CCE|###EEE###',
+                'AABBBBBAA|BBBB@BBBB|BCCCDCCCB|BCCCDCCCB|BCCCCCCCB|BCCCCCCCB|BCCCCCCCB|BCCCCCCCB|ECCCCCCCE|ECCCCCCCE|ECCCCCCCE|#EECCCEE#|#########',
+            ])
                 .where('A', Predicates.blocks('gtceu:tungstensteel_firebox_casing'))
                 .where(
                     'B',

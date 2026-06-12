@@ -32,11 +32,16 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start($RelativeDirection.BACK, $RelativeDirection.UP, $RelativeDirection.RIGHT)
-                .aisle('SSISS', 'SSDSS', '@SSSS', ' SSS ')
-                .aisle('SSISS', 'GCDCG', 'RACAR', ' SGS ')
-                .setRepeatable(3, 15)
-                .aisle('SSOSS', 'SSDSS', 'SSSSS', ' SSS ')
+            newFactoryBlockPatternWithDirections(
+                $RelativeDirection.BACK,
+                $RelativeDirection.UP,
+                $RelativeDirection.RIGHT
+            )([
+                'SSISS|SSDSS|@SSSS| SSS ',
+                'SSISS|GCDCG|RACAR| SGS ',
+                blockPatternRepeatable(3, 15),
+                'SSOSS|SSDSS|SSSSS| SSS ',
+            ])
                 .where('@', Predicates.controller(Predicates.blocks(definition.get())))
                 .where(
                     'S',

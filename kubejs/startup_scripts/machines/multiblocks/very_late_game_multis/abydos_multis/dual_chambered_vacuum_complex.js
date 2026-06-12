@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('dual_chambered_vacuum_complex', 'multiblock')
         .machine((holder) => new $VacuumChemicalReactorMachine(holder))
@@ -25,17 +24,19 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('     BBBBB     ', '     C   C     ', '     C   C     ', '     C   C     ', '     BBBBB     ', '               ', '               ', '               ')
-            .aisle('     BBBBBBBBB ', '      DDD    C ', '      DED    C ', '      DDD    C ', '     BBBBBBBBB ', '       F       ', '               ', '               ')
-            .aisle('CCBCCBBBBBBBBBB', 'C   C DDD DDDDC', 'B   B GHG DGGDC', 'C   C DDD DDDDC', 'CCBCCBBBBBBBBBB', '      FFF  FFF ', '               ', '               ')
-            .aisle('CBBBCBBBBBBBBBB', 'B   B DDD DDDD ', 'B   B GHG D  D ', 'B   B DHD DHHD ', 'CBBBCBBHBBBBHBB', '  F   FHFFFFHF ', '       H    H  ', '       HHHHHH  ')
-            .aisle('BBBBBBBBBBBBBBB', 'BDDDD DDD DDDD ', ' DIDD GHG EDDD ', 'BDDDD DDD DDDD ', 'BBBBBBBBBBBBBBB', '  F   FFF  FFF ', '               ', '               ')
-            .aisle('BBBBBBBBBBBBBBB', ' DDDD DDD DDDDB', ' DDDE GHG DDID ', ' DDDD DDD DDDDB', 'BBBBBBBBBBBBBBB', ' FFF  FFF   F  ', '               ', '               ')
-            .aisle('BBBBBBBBBBCBBBC', ' DDDD DDD B   B', ' D  D GHG B   B', ' DHHD DHD B   B', 'BBHBBBBHBBCBBBC', ' FHFFFFHF   F  ', '  H    H       ', '  HHHHHH       ')
-            .aisle('BBBBBBBBBBCCBCC', 'CDDDD DDD C   C', 'CDGGD GHG B   B', 'CDDDD DDD C   C', 'BBBBBBBBBBCCBCC', ' FFF  FFF      ', '               ', '               ')
-            .aisle(' BBBBBBBBB     ', ' C    DDD      ', ' C    DDD      ', ' C    DDD      ', ' BBBBBBBBB     ', '       F       ', '               ', '               ')
-            .aisle('     BBBBB     ', '     C B C     ', '     C @ C     ', '     C B C     ', '     BBBBB     ', '               ', '               ', '               ')
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '     BBBBB     |     C   C     |     C   C     |     C   C     |     BBBBB     |               |               |               ',
+                '     BBBBBBBBB |      DDD    C |      DED    C |      DDD    C |     BBBBBBBBB |       F       |               |               ',
+                'CCBCCBBBBBBBBBB|C   C DDD DDDDC|B   B GHG DGGDC|C   C DDD DDDDC|CCBCCBBBBBBBBBB|      FFF  FFF |               |               ',
+                'CBBBCBBBBBBBBBB|B   B DDD DDDD |B   B GHG D  D |B   B DHD DHHD |CBBBCBBHBBBBHBB|  F   FHFFFFHF |       H    H  |       HHHHHH  ',
+                'BBBBBBBBBBBBBBB|BDDDD DDD DDDD | DIDD GHG EDDD |BDDDD DDD DDDD |BBBBBBBBBBBBBBB|  F   FFF  FFF |               |               ',
+                'BBBBBBBBBBBBBBB| DDDD DDD DDDDB| DDDE GHG DDID | DDDD DDD DDDDB|BBBBBBBBBBBBBBB| FFF  FFF   F  |               |               ',
+                'BBBBBBBBBBCBBBC| DDDD DDD B   B| D  D GHG B   B| DHHD DHD B   B|BBHBBBBHBBCBBBC| FHFFFFHF   F  |  H    H       |  HHHHHH       ',
+                'BBBBBBBBBBCCBCC|CDDDD DDD C   C|CDGGD GHG B   B|CDDDD DDD C   C|BBBBBBBBBBCCBCC| FFF  FFF      |               |               ',
+                ' BBBBBBBBB     | C    DDD      | C    DDD      | C    DDD      | BBBBBBBBB     |       F       |               |               ',
+                '     BBBBB     |     C B C     |     C @ C     |     C B C     |     BBBBB     |               |               |               ',
+            ])
                 .where(' ', Predicates.any())
                 .where(
                     'B',

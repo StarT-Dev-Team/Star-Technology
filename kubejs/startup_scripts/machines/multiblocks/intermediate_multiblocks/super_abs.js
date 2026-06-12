@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('super_abs', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -13,16 +12,17 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-            .aisle('   AAA   ', '   AAA   ', '    B    ', '    B    ', '         ', '         ', '         ', '    B    ', '    B    ', '   AAA   ', '   AAA   ')
-            .aisle(' CCAAACC ', ' CCCCCCC ', ' B DDD B ', ' B DDD B ', '    B    ', '   CDC   ', '    B    ', ' B DDD B ', ' B DDD B ', ' CCCCCCC ', ' CCAAACC ')
-            .aisle(' CAAFAAC ', ' CFFFFFC ', '  DF FD  ', '  DF FD  ', '  BGFGB  ', '  DCDCD  ', '  BGFGB  ', '  DF FD  ', '  DF FD  ', ' CFFFFFC ', ' CAAFAAC ')
-            .aisle('AAACCCAAA', 'ACF   FCA', ' DF   FD ', ' DF   FD ', '  G   G  ', ' CC F CC ', '  G   G  ', ' DF   FD ', ' DF   FD ', 'ACF   FCA', 'AAAAFAAAA')
-            .aisle('AAFCFCFAA', 'ACF F FCA', 'BD  F  DB', 'BD  F  DB', ' BF F FB ', ' DDFFFDD ', ' BF F FB ', 'BD  F  DB', 'BD  F  DB', 'ACF F FCA', 'AAFFHFFAA')
-            .aisle('AAACCCAAA', 'ACF   FCA', ' DF   FD ', ' DF   FD ', '  G   G  ', ' CC F CC ', '  G   G  ', ' DF   FD ', ' DF   FD ', 'ACF   FCA', 'AAAAFAAAA')
-            .aisle(' CAAFAAC ', ' CFFFFFC ', '  DF FD  ', '  DF FD  ', '  BGFGB  ', '  DCDCD  ', '  BGFGB  ', '  DF FD  ', '  DF FD  ', ' CFFFFFC ', ' CAAFAAC ')
-            .aisle(' CCAAACC ', ' CCCCCCC ', ' B DDD B ', ' B DDD B ', '    B    ', '   CDC   ', '    B    ', ' B DDD B ', ' B DDD B ', ' CCCCCCC ', ' CCAAACC ')
-            .aisle('   AAA   ', '   A@A   ', '    B    ', '    B    ', '         ', '         ', '         ', '    B    ', '    B    ', '   AAA   ', '   AAA   ')
+            newFactoryBlockPattern([
+                '   AAA   |   AAA   |    B    |    B    |         |         |         |    B    |    B    |   AAA   |   AAA   ',
+                ' CCAAACC | CCCCCCC | B DDD B | B DDD B |    B    |   CDC   |    B    | B DDD B | B DDD B | CCCCCCC | CCAAACC ',
+                ' CAAFAAC | CFFFFFC |  DF FD  |  DF FD  |  BGFGB  |  DCDCD  |  BGFGB  |  DF FD  |  DF FD  | CFFFFFC | CAAFAAC ',
+                'AAACCCAAA|ACF   FCA| DF   FD | DF   FD |  G   G  | CC F CC |  G   G  | DF   FD | DF   FD |ACF   FCA|AAAAFAAAA',
+                'AAFCFCFAA|ACF F FCA|BD  F  DB|BD  F  DB| BF F FB | DDFFFDD | BF F FB |BD  F  DB|BD  F  DB|ACF F FCA|AAFFHFFAA',
+                'AAACCCAAA|ACF   FCA| DF   FD | DF   FD |  G   G  | CC F CC |  G   G  | DF   FD | DF   FD |ACF   FCA|AAAAFAAAA',
+                ' CAAFAAC | CFFFFFC |  DF FD  |  DF FD  |  BGFGB  |  DCDCD  |  BGFGB  |  DF FD  |  DF FD  | CFFFFFC | CAAFAAC ',
+                ' CCAAACC | CCCCCCC | B DDD B | B DDD B |    B    |   CDC   |    B    | B DDD B | B DDD B | CCCCCCC | CCAAACC ',
+                '   AAA   |   A@A   |    B    |    B    |         |         |         |    B    |    B    |   AAA   |   AAA   ',
+            ])
                 .where(
                     'A',
                     Predicates.blocks('gtceu:high_temperature_smelting_casing')

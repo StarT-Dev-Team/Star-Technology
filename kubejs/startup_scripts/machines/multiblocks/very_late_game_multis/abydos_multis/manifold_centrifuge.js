@@ -9,7 +9,6 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('manifold_centrifuge', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -20,14 +19,16 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:quake_proof_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('  D D  ', '  B B  ', '  BBB  ', '       ', '  BBB  ', '  CCC  ', '  BBB  ', '  D D  ', '       ', '       ', '       ')
-            .aisle(' D E D ', ' B E B ', ' BFEFB ', '  GGG  ', ' BBHBB ', ' CHHHC ', ' B   B ', ' D   D ', ' D   D ', ' D   D ', ' DD DD ')
-            .aisle('   E   ', 'B     B', 'BFFFFFB', ' GF FG ', 'BBIIIBB', 'CHFFFHC', 'B     B', 'D     D', '       ', '       ', ' D   D ')
-            .aisle(' EEEEE ', ' E   E ', 'BEFFFEB', ' G   G ', 'BHIHIHB', 'CHFFFHC', 'B     B', '       ', '       ', '       ', '       ')
-            .aisle('   E   ', 'B     B', 'BFFFFFB', ' GF FG ', 'BBIIIBB', 'CHFFFHC', 'B     B', 'D     D', '       ', '       ', ' D   D ')
-            .aisle(' D E D ', ' B E B ', ' BFEFB ', '  GGG  ', ' BBHBB ', ' CHHHC ', ' B   B ', ' D   D ', ' D   D ', ' D   D ', ' DD DD ')
-            .aisle('  D D  ', '  B B  ', '  BBB  ', '       ', '  BBB  ', '  C@C  ', '  BBB  ', '  D D  ', '       ', '       ', '       ')
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '  D D  |  B B  |  BBB  |       |  BBB  |  CCC  |  BBB  |  D D  |       |       |       ',
+                ' D E D | B E B | BFEFB |  GGG  | BBHBB | CHHHC | B   B | D   D | D   D | D   D | DD DD ',
+                '   E   |B     B|BFFFFFB| GF FG |BBIIIBB|CHFFFHC|B     B|D     D|       |       | D   D ',
+                ' EEEEE | E   E |BEFFFEB| G   G |BHIHIHB|CHFFFHC|B     B|       |       |       |       ',
+                '   E   |B     B|BFFFFFB| GF FG |BBIIIBB|CHFFFHC|B     B|D     D|       |       | D   D ',
+                ' D E D | B E B | BFEFB |  GGG  | BBHBB | CHHHC | B   B | D   D | D   D | D   D | DD DD ',
+                '  D D  |  B B  |  BBB  |       |  BBB  |  C@C  |  BBB  |  D D  |       |       |       ',
+            ])
                 .where(' ', Predicates.any())
                 .where('B', Predicates.blocks('kubejs:quake_proof_casing'))
                 .where(
