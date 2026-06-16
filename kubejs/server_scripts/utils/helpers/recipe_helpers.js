@@ -345,3 +345,30 @@ Object.entries(modRequirements).forEach(([name, mod]) => {
         }
     };
 });
+
+/**
+ * Implosion Compressor recipe helper
+ * @param {string} id recipe id
+ * @param {string} input item input
+ * @param {string} output item output
+ * @param {number} tier voltage tier
+ * @param {numer | undefined} durationMultiplier duration multiplier (default 0)
+ */
+const implosionHelper = (id, input, output, tier, durationMultiplier) => {
+    [
+        { name: 'tnt', explosive: '4x minecraft:tnt' },
+        { name: 'dynamite', explosive: '2x gtceu:dynamite' },
+        { name: 'itnt', explosive: 'gtceu:industrial_tnt' },
+        { name: 'powderbarrel', explosive: '8x gtceu:powderbarrel' },
+    ].forEach((explosive) => {
+        event.recipes.gtceu
+            .implosion_compressor(global.id(`${id}_${explosive.name}`))
+            .itemInputs(input, explosive.explosive)
+            .itemOutputs(output)
+            .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
+            .duration(100 * (durationMultiplier !== undefined) ? durationMultiplier : 1)
+            .EUt(GTValues.VHA[tier]);
+    });
+};
+
+global.implosion = implosionHelper;

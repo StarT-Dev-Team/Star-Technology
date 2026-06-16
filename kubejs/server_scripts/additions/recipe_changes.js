@@ -298,13 +298,7 @@ ServerEvents.recipes((event) => {
 
     //echo changes
     event.remove({ id: /gtceu:implosion_compressor\/implode_dust_echo_shard_.*/ });
-    event.recipes.gtceu
-        .implosion_compressor(id('echo_shard'))
-        .itemInputs('gtceu:echo_shard_dust', '16x gtceu:industrial_tnt')
-        .itemOutputs('minecraft:echo_shard')
-        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-        .duration(1000)
-        .EUt(GTValues.VA[GTValues.LuV]);
+    global.implosion('echo_shard', 'gtceu:echo_shard_dust', 'minecraft:echo_shard', GTValues.LuV);
 
     //naquadah changes
     event.remove({ id: 'gtceu:centrifuge/impure_naquadria_solution_separation' });

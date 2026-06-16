@@ -64,50 +64,42 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UXV]);
 
     event.remove({ type: 'gtceu:implosion_compressor', input: 'gtceu:naquadic_netherite_dust' });
-
-    event.recipes.gtceu
-        .implosion_compressor(id(`naquadic_netherite_dynamite`))
-        .itemInputs('gtceu:naquadic_netherite_dust', '3x gtceu:industrial_tnt')
-        .itemOutputs('gtceu:naquadic_netherite_gem')
-        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-        .duration(320)
-        .EUt(GTValues.VHA[GTValues.IV]);
+    global.implosion(
+        'naquadic_netherite',
+        'gtceu:naquadic_netherite_dust',
+        'gtceu:naquadic_netherite_gem',
+        GTValues.IV
+    );
 
     event.remove({
         type: 'gtceu:implosion_compressor',
         input: 'gtceu:runic_laser_source_base_dust',
     });
-
-    event.recipes.gtceu
-        .implosion_compressor(id(`runic_laser_source_base_dynamite`))
-        .itemInputs('gtceu:runic_laser_source_base_dust', '3x gtceu:industrial_tnt')
-        .itemOutputs('gtceu:runic_laser_source_base_gem')
-        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-        .duration(320)
-        .EUt(GTValues.VHA[GTValues.IV]);
+    global.implosion(
+        'runic_laser_source_base',
+        'gtceu:runic_laser_source_base_dust',
+        'gtceu:runic_laser_source_base_gem',
+        GTValues.IV
+    );
 
     event.remove({ type: 'gtceu:implosion_compressor', input: 'gtceu:akreyriadic_runixium_dust' });
-
-    event.recipes.gtceu
-        .implosion_compressor(id(`akreyriadic_runixium_industrial_tnt`))
-        .itemInputs('gtceu:akreyriadic_runixium_dust', '16x gtceu:industrial_tnt')
-        .itemOutputs('gtceu:akreyriadic_runixium_gem')
-        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-        .duration(800)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+    global.implosion(
+        'akreyriadic_runixium',
+        'gtceu:akreyriadic_runixium_dust',
+        'gtceu:akreyriadic_runixium_gem',
+        GTValues.LuV
+    );
 
     event.remove({
         type: 'gtceu:implosion_compressor',
         input: 'gtceu:aquariadic_rimuli_dragonix_dust',
     });
-
-    event.recipes.gtceu
-        .implosion_compressor(id(`aquariadic_rimuli_dragonix_industrial_tnt`))
-        .itemInputs('4x gtceu:aquariadic_rimuli_dragonix_dust', '64x gtceu:industrial_tnt', '64x gtceu:industrial_tnt')
-        .itemOutputs('gtceu:aquariadic_rimuli_dragonix_gem')
-        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-        .duration(1500)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+    global.implosion(
+        'aquariadic_rimuli_dragonix',
+        'gtceu:aquariadic_rimuli_dragonix_dust',
+        'gtceu:aquariadic_rimuli_dragonix_gem',
+        GTValues.UHV
+    );
 
     event.recipes.gtceu
         .laser_engraver(id('coordinate_crystal'))
