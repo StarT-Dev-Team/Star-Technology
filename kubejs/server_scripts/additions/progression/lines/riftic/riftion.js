@@ -50,7 +50,7 @@ ServerEvents.recipes((event) => {
         .outputFluids(`gtceu:riftion_plasma 250`)
         .duration(1200)
         .fusionStartEU(1500000000)
-        .addData('reflector_tier', 7)
+        .reflectorTier(7)
         .EUt(GTValues.VHA[GTValues.UIV]);
 
     for (let i = 0; i <= 2; i++) {

@@ -126,7 +126,7 @@ ServerEvents.recipes((event) => {
             .outputFluids(`gtceu:nether_tempered_${element} 144`)
             .duration(200)
             .EUt(GTValues.VHA[GTValues.ZPM])
-            .addData('reflector_tier', 4)
+            .reflectorTier(4)
             .fusionStartEU(800000000);
     });
 
