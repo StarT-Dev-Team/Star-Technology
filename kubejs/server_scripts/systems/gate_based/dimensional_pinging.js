@@ -9,10 +9,10 @@ ServerEvents.recipes((event) => {
         .assembly_line(id('dimensional_finder'))
         .itemInputs(
             'gtceu:zpm_scanner',
-            '16x gtceu:zpm_sensor',
-            '16x gtceu:zpm_emitter',
-            '16x gtceu:zpm_field_generator',
-            '16x gtceu:zpm_voltage_coil',
+            '12x gtceu:zpm_sensor',
+            '12x gtceu:zpm_emitter',
+            '12x gtceu:zpm_field_generator',
+            '12x gtceu:zpm_voltage_coil',
             '64x gtceu:fine_trinaquadalloy_wire',
             '64x gtceu:fine_trinaquadalloy_wire',
             '8x #gtceu:circuits/uv'
