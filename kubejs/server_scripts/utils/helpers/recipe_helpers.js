@@ -366,7 +366,7 @@ const implosionHelper = (id, input, output, tier, durationMultiplier) => {
             .itemInputs(input, explosive.explosive)
             .itemOutputs(output)
             .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-            .duration(100 * (durationMultiplier !== undefined) ? durationMultiplier : 1)
+            .duration(20 * (durationMultiplier !== undefined) ? durationMultiplier : 1)
             .EUt(GTValues.VHA[tier]);
     });
 };
