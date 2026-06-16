@@ -62,7 +62,7 @@ ServerEvents.recipes((event) => {
         .notConsumable(`ae2:sky_dust`)
         .itemOutputs(`ae2:sky_stone_block`)
         .adjacentFluids('minecraft:lava', 'thermal:ender')
-        .duration(48)
+        .duration(64)
         .EUt(84);
 
     event.recipes.gtceu
