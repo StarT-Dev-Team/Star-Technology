@@ -7,7 +7,13 @@ ServerEvents.recipes((event) => {
     event.remove({ id: 'create:crushing/blaze_rod' });
 
     [
-        { powder: 'blizz', item: 'cobalt_dust', fluid: 'fluorine', multiplier: 16, element: 'ice' },
+        {
+            powder: 'blizz',
+            item: 'cobalt_dust',
+            fluid: 'fluorine',
+            multiplier: 16,
+            element: 'ice',
+        },
         {
             powder: 'blitz',
             item: 'platinum_dust',
@@ -74,7 +80,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`8x ${shard.mod}:${shard.element}_charge`)
             .inputFluids(`gtceu:${shard.powder} 720`)
             .chancedOutput(`kubejs:${shard.element}_infused_shard`, 2000, 0)
-            .duration(1440)
+            .duration(720)
             .EUt(GTValues.VHA[GTValues.EV]);
 
         event.recipes.gtceu
@@ -156,7 +162,7 @@ ServerEvents.recipes((event) => {
             .itemInputs('kubejs:impure_nether_star', shard.explosive)
             .itemOutputs('minecraft:nether_star')
             .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-            .duration(200)
+            .duration(100)
             .EUt(GTValues.VHA[GTValues.EV]);
     });
 
