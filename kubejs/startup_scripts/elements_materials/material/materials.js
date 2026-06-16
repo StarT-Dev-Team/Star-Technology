@@ -1529,7 +1529,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     compDust('silicate', ['1x silicon', '4x oxygen'], 0xc0ba97, [noDecomp]);
 
-    compDust('pyrophosphate', ['2x phosphorus', '7x oxygen'], 0xc08b63, [noDecomp]);
+    compDust('pyrophosphate', ['2x phosphorus', '7x oxygen'], 0xc08b63, []);
 
     compDust('sulfur_hexafluoride', ['1x sulfur', '6x fluorine'], 0xc0ba63, [noDecomp]);
 
