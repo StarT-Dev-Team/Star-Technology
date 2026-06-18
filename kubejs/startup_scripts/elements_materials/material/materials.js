@@ -2849,4 +2849,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [noDecomp]
     );
     compLiquid(`fluorinated_ferrocene`, [`15x carbon`, `5x hydrogen`, `15x fluorine`, `1x iron`], 0x00aa00, [noDecomp]);
+
+    event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
 });
