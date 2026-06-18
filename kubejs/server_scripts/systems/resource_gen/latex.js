@@ -71,6 +71,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .fluid_solidifier(id('raw_rubber'))
+        .notConsumable('gtceu:ball_casting_mold')
         .inputFluids('thermal:latex 250')
         .itemOutputs('thermal:rubber')
         .duration(120)
@@ -87,7 +88,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .fluid_solifider(id('latex_sheet'))
-        .notConsumable('gtceu:plate_mold')
+        .notConsumable('gtceu:plate_casting_mold')
         .inputFluids('thermal:latex 144')
         .itemOutputs('gtceu:latex_plate')
         .duration(120)
