@@ -51,64 +51,64 @@ global.notHardmode(() => {
 
         // .replaceIngredient() does not like template strings
         event
-            .shapeless(`4x kubejs:sweetcorn_beer`, [
-                `kubejs:sweetcorn_beer_bucket`,
+            .shapeless('4x kubejs:sweetcorn_beer', [
+                'kubejs:sweetcorn_beer_bucket',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
             ])
-            .replaceIngredient(`kubejs:sweetcorn_beer_bucket`, 'minecraft:bucket')
-            .id(`start:shapeless/sweetcorn_beer`);
+            .replaceIngredient('kubejs:sweetcorn_beer_bucket', 'minecraft:bucket')
+            .id('start:shapeless/sweetcorn_beer');
         event
-            .shapeless(`4x kubejs:apple_cider`, [
-                `kubejs:apple_cider_bucket`,
+            .shapeless('4x kubejs:apple_cider', [
+                'kubejs:apple_cider_bucket',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
             ])
-            .replaceIngredient(`kubejs:apple_cider_bucket`, 'minecraft:bucket')
-            .id(`start:shapeless/apple_cider`);
+            .replaceIngredient('kubejs:apple_cider_bucket', 'minecraft:bucket')
+            .id('start:shapeless/apple_cider');
         event
-            .shapeless(`4x kubejs:carrot_ale`, [
-                `kubejs:carrot_ale_bucket`,
+            .shapeless('4x kubejs:carrot_ale', [
+                'kubejs:carrot_ale_bucket',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
             ])
-            .replaceIngredient(`kubejs:carrot_ale_bucket`, 'minecraft:bucket')
-            .id(`start:shapeless/carrot_ale`);
+            .replaceIngredient('kubejs:carrot_ale_bucket', 'minecraft:bucket')
+            .id('start:shapeless/carrot_ale');
         event
-            .shapeless(`4x kubejs:berry_wine`, [
-                `kubejs:berry_wine_bucket`,
+            .shapeless('4x kubejs:berry_wine', [
+                'kubejs:berry_wine_bucket',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
             ])
-            .replaceIngredient(`kubejs:berry_wine_bucket`, 'minecraft:bucket')
-            .id(`start:shapeless/berry_wine`);
+            .replaceIngredient('kubejs:berry_wine_bucket', 'minecraft:bucket')
+            .id('start:shapeless/berry_wine');
         event
-            .shapeless(`4x kubejs:wheat_kvass`, [
-                `kubejs:wheat_kvass_bucket`,
+            .shapeless('4x kubejs:wheat_kvass', [
+                'kubejs:wheat_kvass_bucket',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
             ])
-            .replaceIngredient(`kubejs:wheat_kvass_bucket`, 'minecraft:bucket')
-            .id(`start:shapeless/wheat_kvass`);
+            .replaceIngredient('kubejs:wheat_kvass_bucket', 'minecraft:bucket')
+            .id('start:shapeless/wheat_kvass');
         event
-            .shapeless(`4x kubejs:sake`, [
-                `kubejs:sake_bucket`,
+            .shapeless('4x kubejs:sake', [
+                'kubejs:sake_bucket',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
                 'minecraft:glass_bottle',
             ])
-            .replaceIngredient(`kubejs:sake_bucket`, 'minecraft:bucket')
-            .id(`start:shapeless/sake`);
+            .replaceIngredient('kubejs:sake_bucket', 'minecraft:bucket')
+            .id('start:shapeless/sake');
     });
 });

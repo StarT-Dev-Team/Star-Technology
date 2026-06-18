@@ -3,16 +3,16 @@ ServerEvents.recipes((event) => {
 
     global.notHardmode(() => {
         event.recipes.gtceu
-            .assembler(id(`modular_auto_scaling_node`))
-            .itemInputs('gtceu:uiv_energy_input_hatch', `2x #gtceu:circuits/uxv`)
+            .assembler(id('modular_auto_scaling_node'))
+            .itemInputs('gtceu:uiv_energy_input_hatch', '2x #gtceu:circuits/uxv')
             .itemOutputs('start_core:modular_auto_scaling_node')
             .circuit(3)
             .duration(5)
             .EUt(30);
 
         event.recipes.gtceu
-            .assembler(id(`modular_auto_scaling_terminal`))
-            .itemInputs('gtceu:uiv_energy_output_hatch', `2x #gtceu:circuits/uxv`)
+            .assembler(id('modular_auto_scaling_terminal'))
+            .itemInputs('gtceu:uiv_energy_output_hatch', '2x #gtceu:circuits/uxv')
             .itemOutputs('start_core:modular_auto_scaling_terminal')
             .circuit(3)
             .duration(5)
@@ -32,8 +32,8 @@ ServerEvents.recipes((event) => {
 
             ['2a', '4a', '16a', '64a'].forEach((amperage) => {
                 ['node', 'terminal'].forEach((outputHatch) => {
-                    let ioType = outputHatch === 'node' ? `input` : 'output';
-                    let ioPart = outputHatch === 'node' ? `sensor` : 'emitter';
+                    let ioType = outputHatch === 'node' ? 'input' : 'output';
+                    let ioPart = outputHatch === 'node' ? 'sensor' : 'emitter';
 
                     let inputHatch =
                         amperage === '2a'

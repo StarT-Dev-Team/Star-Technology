@@ -44,13 +44,13 @@ StartupEvents.registry('block', (event) => {
         .textureAll('kubejs:block/casings/basic/fluix_casing');
 
     event
-        .create(`polycarbonate_casing`)
+        .create('polycarbonate_casing')
         .hardness(5)
         .resistance(1)
-        .soundType(`metal`)
+        .soundType('metal')
         .requiresTool(true)
         .noValidSpawns(true)
-        .tagBlock(`mineable/pickaxe`)
-        .tagBlock(`minecraft:needs_iron_tool`)
-        .textureAll(`kubejs:block/casings/basic/machine_casing_polycarbonate`);
+        .tagBlock('mineable/pickaxe')
+        .tagBlock('minecraft:needs_iron_tool')
+        .textureAll('kubejs:block/casings/basic/machine_casing_polycarbonate');
 });

@@ -91,17 +91,17 @@ global.notHardmode(() => {
         });
 
         event.remove({ output: 'gtceu:wetware_printed_circuit_board' });
-        CR(id(`wetware_circuit_board_iron3`))
-            .itemInputs(`gtceu:wetware_circuit_board`, `12x gtceu:niobium_titanium_foil`)
-            .inputFluids(`gtceu:iron_iii_chloride 5000`)
-            .itemOutputs(`gtceu:wetware_printed_circuit_board`)
+        CR(id('wetware_circuit_board_iron3'))
+            .itemInputs('gtceu:wetware_circuit_board', '12x gtceu:niobium_titanium_foil')
+            .inputFluids('gtceu:iron_iii_chloride 5000')
+            .itemOutputs('gtceu:wetware_printed_circuit_board')
             .cleanroom(CleanroomType.CLEANROOM)
             .duration(1800)
             .EUt(480);
-        CR(id(`wetware_circuit_board_persulfate`))
-            .itemInputs(`gtceu:wetware_circuit_board`, `12x gtceu:niobium_titanium_foil`)
-            .inputFluids(`gtceu:sodium_persulfate 10000`)
-            .itemOutputs(`gtceu:wetware_printed_circuit_board`)
+        CR(id('wetware_circuit_board_persulfate'))
+            .itemInputs('gtceu:wetware_circuit_board', '12x gtceu:niobium_titanium_foil')
+            .inputFluids('gtceu:sodium_persulfate 10000')
+            .itemOutputs('gtceu:wetware_printed_circuit_board')
             .cleanroom(CleanroomType.CLEANROOM)
             .duration(1800)
             .EUt(480);

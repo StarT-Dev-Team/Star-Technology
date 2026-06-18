@@ -226,7 +226,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(`gtceu:${tier}_${type}`)
                 .itemOutputs(
                     Item.of(
-                        `start_core:component_data_core`,
+                        'start_core:component_data_core',
                         `{assembly_line_research:{research_id:"1x_gtceu_${tier}_${type}",research_type:"gtceu:component_synthesis_forge"}}`
                     )
                 )

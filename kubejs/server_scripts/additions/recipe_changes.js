@@ -65,7 +65,7 @@ ServerEvents.recipes((event) => {
                 W: '#forge:tools/wire_cutters',
                 F: '#forge:tools/files',
                 P: `gtceu:${material}_plate`,
-                S: `#forge:rods`,
+                S: '#forge:rods',
             })
             .id(`start:shaped/${material}_plunger`);
     });
@@ -266,10 +266,10 @@ ServerEvents.recipes((event) => {
 
     //certus fixes
     [
-        { name: `exquisite_certus_quartz_gem`, dustCount: 4 },
-        { name: `flawless_certus_quartz_gem`, dustCount: 2 },
+        { name: 'exquisite_certus_quartz_gem', dustCount: 4 },
+        { name: 'flawless_certus_quartz_gem', dustCount: 2 },
     ].forEach((item) => {
-        event.remove({ input: `gtceu:${item.name}`, type: `gtceu:macerator` });
+        event.remove({ input: `gtceu:${item.name}`, type: 'gtceu:macerator' });
 
         event.recipes.gtceu
             .macerator(id(`macerate_${item.name}`))

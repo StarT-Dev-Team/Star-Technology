@@ -33,10 +33,10 @@ global.notHardmode(() => {
         sbarrel('blackstone', 'exnihilosequentia:witch_water', 'minecraft:lava', 0);
 
         event.recipes.gtceu
-            .stone_barrel(id(`tempered_glass`))
-            .itemInputs(`minecraft:glass`)
-            .inputFluids(`minecraft:lava 1000`)
-            .itemOutputs(`gtceu:tempered_glass`)
+            .stone_barrel(id('tempered_glass'))
+            .itemInputs('minecraft:glass')
+            .inputFluids('minecraft:lava 1000')
+            .itemOutputs('gtceu:tempered_glass')
             .duration(600);
 
         const barrel = (output, item, fluid) => {

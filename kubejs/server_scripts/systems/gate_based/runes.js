@@ -155,8 +155,8 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .riftion_injector(id('dsg_dpu'))
-        .itemInputs('kubejs:dsg_enscription_chip', `16x kubejs:wild_riftion`)
-        .itemOutputs(`kubejs:dsg_dpu`)
+        .itemInputs('kubejs:dsg_enscription_chip', '16x kubejs:wild_riftion')
+        .itemOutputs('kubejs:dsg_dpu')
         .genericStartEU(12500000000) //consumes 12.5GEU to start the recipe
         .duration(100)
         .EUt(GTValues.VHA[GTValues.UXV]);
@@ -231,7 +231,7 @@ ServerEvents.recipes((event) => {
         let o = i === 6 ? 1 : i + 1;
         event.recipes.gtceu
             .scanner(id(`runic_tablet_${i}_to_${o}`))
-            .itemInputs(`16x gtceu:ancient_runicalium_foil`, `1x kubejs:runic_tablet_${i}`) //Gives more control over tablet type (reduced exploration rng)
+            .itemInputs('16x gtceu:ancient_runicalium_foil', `1x kubejs:runic_tablet_${i}`) //Gives more control over tablet type (reduced exploration rng)
             .inputFluids('gtceu:naquadria 1080')
             .itemOutputs(`kubejs:runic_tablet_${o}`)
             .duration(600)

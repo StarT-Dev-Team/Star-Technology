@@ -65,7 +65,7 @@ global.notHardmode(() => {
             event.recipes.gtceu
                 .mechanical_sieve(id(`${input.path}_sieving`))
                 .itemInputs(`64x ${input}`)
-                .notConsumable(`exnihilosequentia:string_mesh`)
+                .notConsumable('exnihilosequentia:string_mesh')
                 .itemOutputs(outputs)
                 .duration(800)
                 .EUt(GTValues.VA[GTValues.LV]);

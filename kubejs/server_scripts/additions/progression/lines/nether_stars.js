@@ -114,7 +114,7 @@ ServerEvents.recipes((event) => {
     ['blaze', 'blitz', 'blizz', 'basalz'].forEach((element) => {
         event.recipes.gtceu
             .heat_chamber(id(`energized_${element}`))
-            .itemInputs(`1x kubejs:energized_nether_star_shard`)
+            .itemInputs('1x kubejs:energized_nether_star_shard')
             .inputFluids(`gtceu:${element} 1728`)
             .outputFluids(`gtceu:energized_${element} 1728`)
             .duration(960)
@@ -122,7 +122,7 @@ ServerEvents.recipes((event) => {
 
         event.recipes.gtceu
             .reflector_fusion_reactor(id(`nether_tempered_${element}`))
-            .inputFluids(`gtceu:energized_${element} 216`, `gtceu:ancient_netherite 9`)
+            .inputFluids(`gtceu:energized_${element} 216`, 'gtceu:ancient_netherite 9')
             .outputFluids(`gtceu:nether_tempered_${element} 144`)
             .duration(200)
             .EUt(GTValues.VHA[GTValues.ZPM])

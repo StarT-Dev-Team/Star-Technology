@@ -751,7 +751,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.create
         .mechanical_crafting(
-            `sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}`,
+            'sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
             [
                 /* prettier-ignore-start */
                 ' CRCRC ',

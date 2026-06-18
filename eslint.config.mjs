@@ -152,6 +152,7 @@ export default [
             "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
             "no-console": "off",
             "no-redeclare": ["error", { "builtinGlobals": false }],
+            "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }]
         },
     },
     {

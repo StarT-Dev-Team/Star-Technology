@@ -75,7 +75,7 @@ global.notHardmode(() => {
             const getFinalOutputs = global.getFinalRecycleOutputs;
 
             //old recipe removals
-            event.remove({ input: `gtceu:${tier}_${component}`, type: `gtceu:arc_furnace` });
+            event.remove({ input: `gtceu:${tier}_${component}`, type: 'gtceu:arc_furnace' });
 
             const outputs = getFinalOutputs(getComponentOutputs(tier, component), 'singleblock', false, false);
 
@@ -95,7 +95,7 @@ global.notHardmode(() => {
             const getFinalOutputs = global.getFinalRecycleOutputs;
 
             //old recipe removals
-            event.remove({ input: `gtceu:${tier}_${component}`, type: `gtceu:macerator` });
+            event.remove({ input: `gtceu:${tier}_${component}`, type: 'gtceu:macerator' });
 
             const outputs = getFinalOutputs(getComponentOutputs(tier, component), 'singleblock', true, false);
 

@@ -412,7 +412,7 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .molten_destabilizing(id(better))
             .inputFluids(`start_core:${type} 10000`)
-            .outputFluids(`gtceu:${origin} 70000`, `gtceu:infernal_concentrate 5000`, `start_core:${better} 2000`)
+            .outputFluids(`gtceu:${origin} 70000`, 'gtceu:infernal_concentrate 5000', `start_core:${better} 2000`)
             .duration(1200)
             .EUt(GTValues.VA[GTValues.UV] * Math.pow(4, scaler));
     };

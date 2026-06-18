@@ -49,9 +49,9 @@ global.notHardmode(() => {
 
         //Usage
         event.recipes.gtceu
-            .latex_plantation(id(`latex`))
+            .latex_plantation(id('latex'))
             .notConsumable('gtceu:wood_screw')
-            .outputFluids(`thermal:latex 100`)
+            .outputFluids('thermal:latex 100')
             .duration(400);
 
         const latexType = [

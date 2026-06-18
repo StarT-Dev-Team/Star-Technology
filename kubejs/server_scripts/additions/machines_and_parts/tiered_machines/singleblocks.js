@@ -117,7 +117,7 @@ ServerEvents.recipes((event) => {
             event
                 .shaped(Item.of(`gtceu:${tier}_arc_furnace`), ['CGC', 'IHI', 'PPP'], {
                     I: `#gtceu:circuits/${tier}`,
-                    G: `gtceu:graphite_dust`,
+                    G: 'gtceu:graphite_dust',
                     C: `gtceu:${cable}_quadruple_cable`,
                     H: `gtceu:${tier}_machine_hull`,
                     P: `gtceu:${tierMaterial}_plate`,
@@ -409,7 +409,7 @@ ServerEvents.recipes((event) => {
                     I: `#gtceu:circuits/${tier}`,
                     H: `gtceu:${tier}_machine_hull`,
                     C: `gtceu:${cable}_single_cable`,
-                    F: `gtceu:item_filter`,
+                    F: 'gtceu:item_filter',
                     S: `gtceu:${tier}_electric_piston`,
                 })
                 .id(`start:shaped/${tier}_sifter`);

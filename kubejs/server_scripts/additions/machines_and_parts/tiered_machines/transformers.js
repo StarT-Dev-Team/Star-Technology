@@ -27,7 +27,7 @@ ServerEvents.recipes((event) => {
                 }); //maybe add to recycler helper?
 
                 let priorMachine =
-                    transformerData.amps === '1a' ? `machine_hull` : `transformer_${transformerData.prior}`;
+                    transformerData.amps === '1a' ? 'machine_hull' : `transformer_${transformerData.prior}`;
 
                 if (chip) {
                     event

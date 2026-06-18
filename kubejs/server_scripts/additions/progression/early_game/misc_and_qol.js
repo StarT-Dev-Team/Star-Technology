@@ -87,7 +87,7 @@ global.notHardmode(() => {
         event.smelting('minecraft:slime_ball', 'thermal:slime_mushroom_spores').id('start:smelting/slitake');
 
         event.remove({ id: 'minecraft:brick' });
-        event.smelting('minecraft:brick', 'gtceu:compressed_clay').id(`start:smelting/brick`);
+        event.smelting('minecraft:brick', 'gtceu:compressed_clay').id('start:smelting/brick');
 
         event.campfireCooking('gtceu:wrought_iron_ingot', 'minecraft:iron_ingot', 0, 400);
 
@@ -100,10 +100,10 @@ global.notHardmode(() => {
         });
 
         event
-            .shaped(Item.of(`minecraft:moss_block`), [`BB`, `BB`], {
-                B: `kubejs:moss_ball`,
+            .shaped(Item.of('minecraft:moss_block'), ['BB', 'BB'], {
+                B: 'kubejs:moss_ball',
             })
-            .id(`minecraft:moss_block`);
+            .id('minecraft:moss_block');
 
         //pebble compressor recipes
         [

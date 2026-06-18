@@ -112,28 +112,28 @@ ServerEvents.recipes((event) => {
         ].forEach((hatchScaleData) => {
             event
                 .shaped(Item.of(`gtceu:uhv_input_hatch_${hatchScaleData.type}`), ['P', 'H'], {
-                    H: `gtceu:uhv_input_hatch`,
+                    H: 'gtceu:uhv_input_hatch',
                     P: `gtceu:zapolgium_${hatchScaleData.pipe}_fluid_pipe`,
                 })
                 .id(`start:shaped/uhv_input_hatch_${hatchScaleData.type}`);
 
             event
                 .shaped(Item.of(`gtceu:uhv_input_hatch_${hatchScaleData.type}`), ['S', 'H'], {
-                    S: `#forge:tools/screwdrivers`,
+                    S: '#forge:tools/screwdrivers',
                     H: `gtceu:uhv_output_hatch_${hatchScaleData.type}`,
                 })
                 .id(`start:shaped/uhv_input_hatch_${hatchScaleData.type}_flip`);
 
             event
                 .shaped(Item.of(`gtceu:uhv_output_hatch_${hatchScaleData.type}`), ['H', 'P'], {
-                    H: `gtceu:uhv_output_hatch`,
+                    H: 'gtceu:uhv_output_hatch',
                     P: `gtceu:zapolgium_${hatchScaleData.pipe}_fluid_pipe`,
                 })
                 .id(`start:shaped/uhv_output_hatch_${hatchScaleData.type}`);
 
             event
                 .shaped(Item.of(`gtceu:uhv_output_hatch_${hatchScaleData.type}`), ['S', 'H'], {
-                    S: `#forge:tools/screwdrivers`,
+                    S: '#forge:tools/screwdrivers',
                     H: `gtceu:uhv_input_hatch_${hatchScaleData.type}`,
                 })
                 .id(`start:shaped/uhv_output_hatch_${hatchScaleData.type}_flip`);
