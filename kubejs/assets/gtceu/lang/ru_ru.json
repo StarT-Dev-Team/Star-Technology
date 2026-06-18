@@ -264,7 +264,7 @@
     "material.gtceu.zapolgium_hydroxide": "Гидроксид заполгия",
     "material.gtceu.lautarite": "Лаутарит",
     "material.gtceu.strontium_oxide": "Оксид стронция",
-    "material.gtceu.titanium_oxide": "Оксид титана",
+    "material.gtceu.titanium_oxide": "Диоксид титана",
     "material.gtceu.strontium_titanium_oxide": "Оксид стронция-титана",
     "material.gtceu.zalloy": "Залой",
     "material.gtceu.zircalloy_4": "Циркалой-4",
@@ -1059,7 +1059,7 @@
     "block.gtceu.uiv_me_assembler": "§2Эпический ME-сборщик III",
 
     "block.gtceu.large_me_assembler": "Большой ME-сборщик [LMEA]",
-    "block.gtceu.large_me_assembler.tooltip.0": "Большая версия ME-сборщика, способная поднять ваши производственные мощности на новый уровень",
+    "block.gtceu.large_me_assembler.tooltip.0": "§7Большая версия ME-сборщика, способная поднять ваши производственные мощности на новый уровень.",
 
     "material.gtceu.skystone": "Небесный камень",
     "material.gtceu.gold_skystone_alloy": "Золотой сплав небесного камня",
