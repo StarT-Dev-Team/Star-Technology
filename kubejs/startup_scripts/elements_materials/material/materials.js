@@ -1,5 +1,5 @@
 // priority: 100
-/* eslint-disable  */
+/* eslint-disable no-unused-vars  */
 // Icon Sets
 const DULL = GTMaterialIconSet.DULL;
 const METALLIC = GTMaterialIconSet.METALLIC;
@@ -233,12 +233,12 @@ GTCEuStartupEvents.materialModification((event) => {
     GTMaterials.get('zavaritskite').setFormula('(BiO)F');
     GTMaterials.get('acidic_water').setFormula('H2O*');
     GTMaterials.get('hydroiodic_acid').setFormula('HI*');
-    GTMaterials.get(`aerogel`).setFormula(`ᯓ(N78O21Ar9)ᯓ`);
-    GTMaterials.get(`thorium`).setFormula(`Th²³⁰`);
-    GTMaterials.get(`neptunium`).setFormula(`Np²³⁷`);
-    GTMaterials.get(`fermium`).setFormula(`Fm²⁵⁷`);
-    GTMaterials.get(`americium`).setFormula(`Am²⁴⁵`);
-    GTMaterials.get(`netherite_triselex_oxide`).setFormula(`Nr4Se3O2`);
+    GTMaterials.get('aerogel').setFormula('ᯓ(N78O21Ar9)ᯓ');
+    GTMaterials.get('thorium').setFormula('Th²³⁰');
+    GTMaterials.get('neptunium').setFormula('Np²³⁷');
+    GTMaterials.get('fermium').setFormula('Fm²⁵⁷');
+    GTMaterials.get('americium').setFormula('Am²⁴⁵');
+    GTMaterials.get('netherite_triselex_oxide').setFormula('Nr4Se3O2');
     GTMaterials.get('lepton_resonant_thallium_antimonide').setFormula('Tl{ℓ}Sb');
 });
 
@@ -1398,7 +1398,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [noDecomp, plates, rod, frame]
     );
 
-    const skystone_alloys = (material, color, icon) => {
+    const skystoneAlloys = (material, color, icon) => {
         event
             .create(`${material}_skystone_alloy`)
             .ingot()
@@ -1411,9 +1411,9 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             .flags(noDecomp, plates);
     };
 
-    skystone_alloys('gold', 0xcfbe38, 'METALLIC');
-    skystone_alloys('diamond', 0x9bd6d8, 'SHINY');
-    skystone_alloys('certus_quartz', 0x67d6db, 'DULL');
+    skystoneAlloys('gold', 0xcfbe38, 'METALLIC');
+    skystoneAlloys('diamond', 0x9bd6d8, 'SHINY');
+    skystoneAlloys('certus_quartz', 0x67d6db, 'DULL');
 
     compIngotLiquid(
         'fluix_steel',
@@ -1424,7 +1424,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [noDecomp, plates, rod, frame, foil]
     );
 
-    const netherite_skystone_alloys = (material, color, icon) => {
+    const netheriteSkystoneAlloys = (material, color, icon) => {
         event
             .create(`netherite_${material}_skystone_alloy`)
             .ingot()
@@ -1437,8 +1437,8 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             .blastTemp(4000, 'high', VA('iv'), 800);
     };
 
-    netherite_skystone_alloys('gold', 0x978b2d, 'METALLIC');
-    netherite_skystone_alloys('certus_quartz', 0x396a6c, 'DULL');
+    netheriteSkystoneAlloys('gold', 0x978b2d, 'METALLIC');
+    netheriteSkystoneAlloys('certus_quartz', 0x396a6c, 'DULL');
 
     // PEEK plastic Line
     compDust(
@@ -2703,15 +2703,15 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     event.create('acidic_bromine_exhaust').gas().color(0x8f681e).components('3x steam', '1x chlorine');
 
     //aerogel line
-    compLiquid(`linoleic_acid`, [`18x carbon`, `31x hydrogen`, `2x oxygen`], 0xdbdcdb, [noDecomp]);
-    compDust(`sodium_linoleate`, [`18x carbon`, `31x hydrogen`, `2x oxygen`, `sodium`], 0xe3ffff, [noDecomp]);
-    noCompFluid(`aerogel_solvent_mixture`, 0x9de4db);
-    compLiquid(`silicon_tetrachloride`, [`silicon`, `4x chlorine`], 0xdcdbdb, [noDecomp]);
-    compLiquid(`tetraethyl_orthosilicate`, [`silicon`, `8x carbon`, `20x hydrogen`, `4x oxygen`], 0xdbdbdb, [noDecomp]);
-    noCompFluid(`aerogel_precursor_solution`, 0xaebbbf);
+    compLiquid('linoleic_acid', ['18x carbon', '31x hydrogen', '2x oxygen'], 0xdbdcdb, [noDecomp]);
+    compDust('sodium_linoleate', ['18x carbon', '31x hydrogen', '2x oxygen', 'sodium'], 0xe3ffff, [noDecomp]);
+    noCompFluid('aerogel_solvent_mixture', 0x9de4db);
+    compLiquid('silicon_tetrachloride', ['silicon', '4x chlorine'], 0xdcdbdb, [noDecomp]);
+    compLiquid('tetraethyl_orthosilicate', ['silicon', '8x carbon', '20x hydrogen', '4x oxygen'], 0xdbdbdb, [noDecomp]);
+    noCompFluid('aerogel_precursor_solution', 0xaebbbf);
 
     event
-        .create(`aerogel`)
+        .create('aerogel')
         .components('1x air')
         .polymer()
         .ingot()
@@ -2720,21 +2720,21 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .flags(foil, plates);
 
     //Polycarbonate Line
-    compDust(`sodium_diphenoxide`, [`2x sodium`, `2x oxygen`, `15x carbon`, `16x hydrogen`], 0xfefefe, [noDecomp]);
-    compLiquid(`phosgene`, [`carbon`, `oxygen`, `2x chlorine`], 0xfdfefc, [noDecomp]);
+    compDust('sodium_diphenoxide', ['2x sodium', '2x oxygen', '15x carbon', '16x hydrogen'], 0xfefefe, [noDecomp]);
+    compLiquid('phosgene', ['carbon', 'oxygen', '2x chlorine'], 0xfdfefc, [noDecomp]);
     polymerFluidPipe(
-        `polycarbonate`,
-        [`3x oxygen`, `16x carbon`, `16x hydrogen`],
+        'polycarbonate',
+        ['3x oxygen', '16x carbon', '16x hydrogen'],
         0x202020,
         [388, 300, true, true, false, false],
         [noDecomp, foil, plates]
     );
 
     //De-Ionized Water Line
-    compLiquid(`purified_water`, [`2x hydrogen`, `oxygen`], 0x4a94ff, [noDecomp]);
-    compLiquid(`acidic_water`, [`2x hydrogen`, `oxygen`], 0x2e85ff, [noDecomp]);
-    compLiquid(`divinylbenzene`, [`10x carbon`, `10x hydrogen`], 0x9fb1b8, [noDecomp]);
-    compLiquid(`deionized_water`, [`2x hydrogen`, `oxygen`], 0x006aff, [noDecomp]);
+    compLiquid('purified_water', ['2x hydrogen', 'oxygen'], 0x4a94ff, [noDecomp]);
+    compLiquid('acidic_water', ['2x hydrogen', 'oxygen'], 0x2e85ff, [noDecomp]);
+    compLiquid('divinylbenzene', ['10x carbon', '10x hydrogen'], 0x9fb1b8, [noDecomp]);
+    compLiquid('deionized_water', ['2x hydrogen', 'oxygen'], 0x006aff, [noDecomp]);
 
     //Faematter + Filaments
     compLiquid('impure_faematter', ['1x mystery', '1x faetic', '1x mystery'], 0xe8bce7, [noDecomp]);
@@ -2817,38 +2817,38 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     //Combustion fuels and oxidizers
 
-    compLiquid(`kerosene`, [`12x carbon`, `26x hydrogen`], 0xe8d44d, [noDecomp]);
-    compLiquid(`hydrofined_kerosene`, [`12x carbon`, `26x hydrogen`], 0xf2ec9a, [noDecomp]);
-    compLiquid(`rp_1`, [`12x carbon`, `26x hydrogen`], 0xf2ec9a, [noDecomp]);
-    compLiquidTemp(`liquid_fluorine`, 85, [`2x fluorine`], 0xb5e0ff, [noDecomp]);
-    compLiquidTemp(`dioxygen_difluoride`, 110, [`2x oxygen`, `2x fluorine`], 0xe8f1ff, [noDecomp]);
-    compLiquid(`white_fuming_nitric_acid`, [`1x hydrogen`, `1x nitrogen`, `3x oxygen`], 0xfdfefc, [noDecomp]);
-    compLiquid(`red_fuming_nitric_acid`, [`1x hydrogen`, `1x nitrogen`, `3x oxygen`], 0xff0000, [noDecomp]);
-    compLiquid(`monomethylhydrazine`, [`1x carbon`, `6x hydrogen`, `2x nitrogen`], 0x9e9e9e, [noDecomp]);
+    compLiquid('kerosene', ['12x carbon', '26x hydrogen'], 0xe8d44d, [noDecomp]);
+    compLiquid('hydrofined_kerosene', ['12x carbon', '26x hydrogen'], 0xf2ec9a, [noDecomp]);
+    compLiquid('rp_1', ['12x carbon', '26x hydrogen'], 0xf2ec9a, [noDecomp]);
+    compLiquidTemp('liquid_fluorine', 85, ['2x fluorine'], 0xb5e0ff, [noDecomp]);
+    compLiquidTemp('dioxygen_difluoride', 110, ['2x oxygen', '2x fluorine'], 0xe8f1ff, [noDecomp]);
+    compLiquid('white_fuming_nitric_acid', ['1x hydrogen', '1x nitrogen', '3x oxygen'], 0xfdfefc, [noDecomp]);
+    compLiquid('red_fuming_nitric_acid', ['1x hydrogen', '1x nitrogen', '3x oxygen'], 0xff0000, [noDecomp]);
+    compLiquid('monomethylhydrazine', ['1x carbon', '6x hydrogen', '2x nitrogen'], 0x9e9e9e, [noDecomp]);
     compLiquid(
-        `sorbitol_hypergolic_fuel`,
-        [`6x carbon`, `20x hydrogen`, `6x oxygen`, `1x nitrogen`, `1x boron`],
+        'sorbitol_hypergolic_fuel',
+        ['6x carbon', '20x hydrogen', '6x oxygen', '1x nitrogen', '1x boron'],
         0xf5f5f5,
         [noDecomp]
     );
     compLiquid(
-        `ferrocenium_superoxide`,
-        [`15x carbon`, `5x hydrogen`, `15x fluorine`, `1x iron`, `2x oxygen`],
+        'ferrocenium_superoxide',
+        ['15x carbon', '5x hydrogen', '15x fluorine', '1x iron', '2x oxygen'],
         0xb87333,
         [noDecomp]
     );
-    compLiquid(`fuming_nitric_acid`, [`1x hydrogen`, `1x nitrogen`, `3x oxygen`], 0xf0f0f0, [noDecomp]);
-    compLiquid(`hydrazine`, [`2x nitrogen`, `4x hydrogen`], 0xc8c8c8, [noDecomp]);
-    compDust(`ammonia_borane`, [`1x nitrogen`, `1x boron`, `6x hydrogen`], 0xffffff, [noDecomp]);
-    compLiquid(`ferrocene`, [`10x carbon`, `10x hydrogen`, `1x iron`], 0xff8c00, [noDecomp]);
-    compLiquid(`hexafluorophosphoric_acid`, [`1x hydrogen`, `1x phosphorus`, `6x fluorine`], 0xe8e8ff, [noDecomp]);
+    compLiquid('fuming_nitric_acid', ['1x hydrogen', '1x nitrogen', '3x oxygen'], 0xf0f0f0, [noDecomp]);
+    compLiquid('hydrazine', ['2x nitrogen', '4x hydrogen'], 0xc8c8c8, [noDecomp]);
+    compDust('ammonia_borane', ['1x nitrogen', '1x boron', '6x hydrogen'], 0xffffff, [noDecomp]);
+    compLiquid('ferrocene', ['10x carbon', '10x hydrogen', '1x iron'], 0xff8c00, [noDecomp]);
+    compLiquid('hexafluorophosphoric_acid', ['1x hydrogen', '1x phosphorus', '6x fluorine'], 0xe8e8ff, [noDecomp]);
     compLiquid(
-        `iron_cyclopentadienyl_dichlorobenzene`,
-        [`16x carbon`, `14x hydrogen`, `1x iron`, `2x chlorine`, `1x phosphorus`, `6x fluorine`],
+        'iron_cyclopentadienyl_dichlorobenzene',
+        ['16x carbon', '14x hydrogen', '1x iron', '2x chlorine', '1x phosphorus', '6x fluorine'],
         0xcc6600,
         [noDecomp]
     );
-    compLiquid(`fluorinated_ferrocene`, [`15x carbon`, `5x hydrogen`, `15x fluorine`, `1x iron`], 0x00aa00, [noDecomp]);
+    compLiquid('fluorinated_ferrocene', ['15x carbon', '5x hydrogen', '15x fluorine', '1x iron'], 0x00aa00, [noDecomp]);
 
     event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
 });

@@ -97,6 +97,8 @@ export default [
                 ToolProperty: "readonly",
                 GTToolType: "readonly",
                 $FormattingUtil: "readonly",
+                $FluidPipeProperties: "readonly",
+                GTFluidState: "readonly",
                 // LDLib globals
                 GuiTextures: "readonly",
                 FillDirection: "readonly",
