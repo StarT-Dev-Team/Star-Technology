@@ -60,14 +60,14 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
-        const mechanicalSieving = (input, outputs) => {
-            event.recipes.gtceu
-                .mechanical_sieve(id(`${input.path}_sieving`))
-                .itemInputs(`64x ${input}`)
-                .notConsumable('exnihilosequentia:string_mesh')
-                .itemOutputs(outputs)
-                .duration(800)
-                .EUt(GTValues.VA[GTValues.LV]);
+    const mechanicalSieving = (input, outputs) => {
+        event.recipes.gtceu
+            .mechanical_sieve(id(`${input.path}_sieving`))
+            .itemInputs(`64x ${input}`)
+            .notConsumable('exnihilosequentia:string_mesh')
+            .itemOutputs(outputs)
+            .duration(800)
+            .EUt(GTValues.VA[GTValues.LV]);
 
         event.recipes.gtceu
             .large_sieve(id(`${input.path}_sieving`))

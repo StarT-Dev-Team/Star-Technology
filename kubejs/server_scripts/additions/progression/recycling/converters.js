@@ -77,7 +77,7 @@ ServerEvents.recipes((event) => {
             let converterPrefix = amps === 64 ? 'start_core' : 'gtceu';
 
             let cableArc = info.cable === 'gtceu:copper' ? 'gtceu:annealed_copper' : info.cable;
-            let outputsArc = [`8x ${info.casing}_ingot`, `${cableArc}_ingot`, `2x gtceu:tiny_ash_dust`];
+            let outputsArc = [`8x ${info.casing}_ingot`, `${cableArc}_ingot`, '2x gtceu:tiny_ash_dust'];
             let appendArc =
                 amps === 64
                     ? [`64x ${info.superconductor}_ingot`, `64x ${info.superconductor}_ingot`]
@@ -85,7 +85,7 @@ ServerEvents.recipes((event) => {
             outputsArc.splice.apply(outputsArc, [amps < 8 ? 1 : 0, 0].concat(appendArc));
 
             let cableMacerator = info.cable === 'minecraft:gold' ? 'gtceu:gold' : info.cable;
-            let outputsMacerator = [`8x ${info.casing}_dust`, `2x gtceu:rubber_dust`, `${cableMacerator}_dust`];
+            let outputsMacerator = [`8x ${info.casing}_dust`, '2x gtceu:rubber_dust', `${cableMacerator}_dust`];
             let appendMacerator =
                 amps === 64
                     ? [`64x ${info.superconductor}_dust`, `64x ${info.superconductor}_dust`]

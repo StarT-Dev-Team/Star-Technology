@@ -196,7 +196,7 @@ ServerEvents.recipes((event) => {
             if (tier === 'luv' || tier === 'zpm' || tier === 'uv') {
                 event.remove({
                     input: `gtceu:${tier}_${singleblock}`,
-                    type: `gtceu:arc_furnace`,
+                    type: 'gtceu:arc_furnace',
                 });
             }
 
@@ -235,7 +235,7 @@ ServerEvents.recipes((event) => {
             if (tier === 'luv' || tier === 'zpm' || tier === 'uv') {
                 event.remove({
                     input: `gtceu:${tier}_${singleblock}`,
-                    type: `gtceu:macerator`,
+                    type: 'gtceu:macerator',
                 });
             }
 
