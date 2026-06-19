@@ -12,5 +12,8 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.tabSize": 4
+    },
+    "[markdown]": {
+        "editor.wordWrap": "off"
     }
 }
