@@ -21,24 +21,26 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'BBBBB  CBBBBBC| HHH   B     B|DHHHD  B G G B| HGH   B     B|DHHHD  B G G B| HHH   B     B|BBBBB  CBBBBBC',
                 'BBFBB  BBBBBBB|B   B  BG G GB| D D   EG G GE|  E    CG G GC| D D   EG G GE|B   B  BG G GB|BBFBB  BBBBBBB',
                 '       BBCCCBB|       DBBBBBD|       BEBEBEB|       BCB@BCB|       BEBEBEB|       DBBBBBD|       BBCCCBB',
-            ]).whereDict({
-                ' ': Predicates.any(),
-                B: Predicates.blocks('kubejs:cattomolymer_casing')
-                    .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                    .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                    .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                    .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                    .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                    .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                    .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1)),
-                C: Predicates.blocks('kubejs:nyanium_heat_escape_casing'),
-                D: Predicates.blocks('gtceu:nyanium_frame'),
-                E: Predicates.blocks('kubejs:nyanium_engine_intake_casing'),
-                F: Predicates.blocks('kubejs:nyanium_firebox_casing'),
-                G: Predicates.blocks('kubejs:nyanium_pipe_casing'),
-                H: Predicates.heatingCoils(),
-                '@': Predicates.controller(Predicates.blocks(definition.get())),
-            })
+            ])
+                .whereDict({
+                    ' ': Predicates.any(),
+                    B: Predicates.blocks('kubejs:cattomolymer_casing')
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1)),
+                    C: Predicates.blocks('kubejs:nyanium_heat_escape_casing'),
+                    D: Predicates.blocks('gtceu:nyanium_frame'),
+                    E: Predicates.blocks('kubejs:nyanium_engine_intake_casing'),
+                    F: Predicates.blocks('kubejs:nyanium_firebox_casing'),
+                    G: Predicates.blocks('kubejs:nyanium_pipe_casing'),
+                    H: Predicates.heatingCoils(),
+                    '@': Predicates.controller(Predicates.blocks(definition.get())),
+                })
+                .build()
         )
         .workableCasingModel(
             'kubejs:block/casings/end_multis/cattomolymer_casing',

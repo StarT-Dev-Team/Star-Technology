@@ -15,20 +15,20 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('AAAAA', 'AAAAA', 'AAAAA')
                 .aisle('AAAAA', 'ABCCA', 'AADDA')
                 .aisle('AAAAA', 'A@DDA', 'AADDA')
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:beryllium_bronze_casing')
-                        .setMinGlobalLimited(5)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('B', Predicates.blocks('gtceu:steel_pipe_casing'))
-                .where('C', Predicates.blocks('gtceu:stainless_steel_gearbox'))
-                .where('D', Predicates.blocks('gtceu:tempered_glass'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('beryllium_bronze_casing', { min: 5 }),
+                        P.ability(PA.itemIn, { view: 1 }),
+                        P.ability(PA.itemOut, { view: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
+                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.maintenance, { max: 1 }),
+                    ]),
+                    B: P.gtBlock('steel_pipe_casing'),
+                    C: P.gtBlock('stainless_steel_gearbox'),
+                    D: P.gtBlock('tempered_glass'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(`kubejs:block/casings/large_cubes/beryllium_bronze_casing`, `gtceu:block/machines/cutter`);
