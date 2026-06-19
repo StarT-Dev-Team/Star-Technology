@@ -547,6 +547,36 @@ let calculatorDefinitions = (() => {
                 },
             },
             {
+                name: 'dist',
+                usage: formatOverloads('dist', [
+                    ['point1:vec2', 'point2:vec2'],
+                    ['point1:vec3', 'point2:vec3'],
+                ]),
+                description: 'returns the distance between 2 points',
+                implementation: [
+                    {
+                        arguments: ['vec2', 'vec2'],
+                        fn: (point1, point2) => ({
+                            t: 'number',
+                            v: Math.sqrt(
+                                Math.pow(point1.v[0] - point2.v[0], 2) + Math.pow(point1.v[1] - point2.v[1], 2)
+                            ),
+                        }),
+                    },
+                    {
+                        arguments: ['vec3', 'vec3'],
+                        fn: (point1, point2) => ({
+                            t: 'number',
+                            v: Math.sqrt(
+                                Math.pow(point1.v[0] - point2.v[0], 2) +
+                                    Math.pow(point1.v[1] - point2.v[1], 2) +
+                                    Math.pow(point1.v[2] - point2.v[2], 2)
+                            ),
+                        }),
+                    },
+                ],
+            },
+            {
                 name: 'oc',
                 usage: formatOverloads('oc', [['duration:number', 'overclocks:number']]),
                 description: 'returns the duration after the specified steps of normal overclock',
