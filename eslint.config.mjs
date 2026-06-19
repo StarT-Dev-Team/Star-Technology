@@ -128,6 +128,7 @@ export default [
                 ponderUtils: 'readonly',
                 ponderMultis: 'readonly',
                 P: 'writable',
+                PA: 'writable',
             },
         },
         rules: {

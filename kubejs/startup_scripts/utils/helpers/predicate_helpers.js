@@ -16,7 +16,7 @@
  * @returns {TracebilityPredicate} The configured predicate.
  */
 function applySettings(predicate, settings) {
-    if (settings === undefined) return;
+    if (settings === undefined) return predicate;
     if (settings.min) predicate = predicate.setMinGlobalLimited(settings.min);
     if (settings.max) predicate = predicate.setMaxGlobalLimited(settings.max);
     if (settings.exact) predicate = predicate.setExactLimit(settings.exact);
@@ -39,25 +39,106 @@ function applySettings(predicate, settings) {
  *   P.ability(PA.muffler, { exact: 1 }),
  *   P.block('gtceu:hv_machine_hull'),
  * ])
+ * @global
  */
 const P = {
+    /**
+     * @param {*} definition
+     * @returns {TracebilityPredicate}
+     */
     controller: (definition) => Predicates.controller(Predicates.blocks(definition.get())),
+    /**
+     * @param {string} id
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     block: (id, settings) => applySettings(Predicates.blocks(id), settings),
+    /**
+     * @param {string} id
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     kjsBlock: (id, settings) => applySettings(Predicates.blocks(`kubejs:${id}`), settings),
+    /**
+     * @param {string} id
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     gtBlock: (id, settings) => applySettings(Predicates.blocks(`gtceu:${id}`), settings),
+    /**
+     * @param {string} id
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     coreBlock: (id, settings) => applySettings(Predicates.blocks(`start_core:${id}`), settings),
+    /**
+     * @param {string} tag
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     blockTag: (tag, settings) => applySettings(Predicates.blockTag(tag), settings),
+    /**
+     * @param {string} id
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     fluid: (id, settings) => applySettings(Predicates.fluids(id), settings),
+    /**
+     * @param {string} tag
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     fluidTag: (tag, settings) => applySettings(Predicates.fluidTag(tag), settings),
+    /**
+     * @returns {TracebilityPredicate}
+     */
     any: () => Predicates.any(),
+    /**
+     * @returns {TracebilityPredicate}
+     */
     air: () => Predicates.air(),
-    ability: (type, settings) => applySettings(Predicates.abilities(type), settings),
+    /**
+     * @param {PartAbility | PartAbility[]} type
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
+    ability: (type, settings) =>
+        applySettings(Predicates.abilities.apply(Predicates, Array.isArray(type) ? type : [type]), settings),
+    /**
+     * @param {*} recipeTypes
+     * @returns {TracebilityPredicate}
+     */
+    autoAbilities: (recipeTypes) => Predicates.autoAbilities(recipeTypes),
+    /**
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     heatingCoil: (settings) => applySettings(Predicates.heatingCoils(), settings),
+    /**
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     cleanroomFilter: (settings) => applySettings(Predicates.cleanroomFilters(), settings),
+    /**
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     powerSubstationBattery: (settings) => applySettings(Predicates.powerSubstationBatteries(), settings),
-    frame: (settings) => applySettings(Predicates.frames(), settings),
+    /**
+     * @param {string | string[]} materials
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
+    frame: (materials, settings) =>
+        applySettings(
+            Predicates.frames.apply(Predicates, Array.isArray(materials) ? materials : [materials]),
+            settings
+        ),
+    /**
+     * @param {PredicateSettings} settings
+     * @returns {TracebilityPredicate}
+     */
     threadingBlocks: () => $StarTThreadingStatBlocks.threadingStatBlocks(),
-
     /**
      * Combines an array of predicates into a single predicate using logical OR (`.or()`).
      * The first predicate in the array is used as the accumulator.
@@ -78,6 +159,7 @@ const P = {
 /**
  * A mapping of `PartAbility` values,
  * used as the first argument to {@link P.ability}.
+ * @global
  */
 const PA = {
     // Items
