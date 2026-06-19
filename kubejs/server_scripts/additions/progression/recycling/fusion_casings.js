@@ -38,12 +38,12 @@ ServerEvents.recipes((event) => {
             return recycleOutputs;
         } else if (fieldGeneratorTier === 'luv' || fieldGeneratorTier === 'zpm' || fieldGeneratorTier === 'uv') {
             //LUVToUV
-            componentCounts = global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.fieldGenerator;
+            componentCounts = global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.field_generator;
             blockType = 'fusion_casing_LUVToUV';
             materialTypes = ['casing', 'prim', 'cable', 'hullCable', 'wire'];
         } else {
             //UHVPlus
-            componentCounts = global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.fieldGenerator;
+            componentCounts = global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.field_generator;
             blockType = 'fusion_casing_UHVPLUS';
             materialTypes = ['casing', 'prim', 'cable', 'hullCable', 'sec'];
         }

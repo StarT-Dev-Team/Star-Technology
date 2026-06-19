@@ -25,8 +25,8 @@ ServerEvents.recipes((event) => {
 
         const coverCounts =
             tier === 'uv'
-                ? global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.dreamlinkCover
-                : global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.dreamlinkCover;
+                ? global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.dreamlink_cover
+                : global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.dreamlink_cover;
         const tertMaterial = tier === 'uv' ? materials.foilMaterial : materials.tertMaterial;
         const tertCount = tier === 'uv' ? coverCounts.foilCount : coverCounts.tertCount;
 
@@ -79,8 +79,8 @@ ServerEvents.recipes((event) => {
 
         const coverCounts =
             tier === 'uv'
-                ? global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.dreamlinkCover
-                : global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.dreamlinkCover;
+                ? global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS.dreamlink_cover
+                : global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS.dreamlink_cover;
         const tertMaterial = tier === 'uv' ? materials.foilMaterial : materials.tertMaterial;
         const tertCount = tier === 'uv' ? coverCounts.foilCount : coverCounts.tertCount;
 

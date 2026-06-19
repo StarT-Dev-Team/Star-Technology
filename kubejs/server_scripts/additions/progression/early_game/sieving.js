@@ -358,7 +358,7 @@ ServerEvents.recipes((event) => {
         sieve('flint', 0.25, gravel, 'gtceu:crushed_chalcopyrite_ore', false);
         sieve('flint', 0.25, black, 'gtceu:crushed_bornite_ore', false);
         sieve('flint', 0.25, gravel, 'gtceu:crushed_cassiterite_ore', false);
-        
+
         sieve('iron', 0.12, gravel, 'gtceu:crushed_pyrolusite_ore', false);
         sieve('iron', 0.05, gravel, 'gtceu:crushed_lepidolite_ore', false);
         sieve('iron', 0.1, black, 'gtceu:crushed_cobaltite_ore', false);
