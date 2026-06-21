@@ -24,23 +24,24 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '  BBBBBBB  |  C BBB C  |  C B@B C  |  C BBB C  |  BBBBBBB  ',
                 '    BBB    |           |           |           |    BBB    ',
             ])
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:palladium_substation')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('C', Predicates.blocks('gtceu:rhodium_plated_palladium_frame'))
-                .where('D', Predicates.blocks('kubejs:pallaridium_engine_intake_casing'))
-                .where('E', Predicates.blocks('gtceu:clean_machine_casing'))
-                .where('F', Predicates.blocks('kubejs:pallaridium_pipe_casing'))
-                .where('G', Predicates.blocks('gtceu:fusion_glass'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    ' ': P.air(),
+                    B: P.anyOf([
+                        P.gtBlock('palladium_substation'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    C: P.gtBlock('rhodium_plated_palladium_frame'),
+                    D: P.kjsBlock('pallaridium_engine_intake_casing'),
+                    E: P.gtBlock('clean_machine_casing'),
+                    F: P.kjsBlock('pallaridium_pipe_casing'),
+                    G: P.gtBlock('fusion_glass'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

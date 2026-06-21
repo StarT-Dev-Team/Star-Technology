@@ -23,25 +23,25 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 ' CCAAACC | CCCCCCC | B DDD B | B DDD B |    B    |   CDC   |    B    | B DDD B | B DDD B | CCCCCCC | CCAAACC ',
                 '   AAA   |   A@A   |    B    |    B    |         |         |         |    B    |    B    |   AAA   |   AAA   ',
             ])
-                .where(
-                    'A',
-                    Predicates.blocks('gtceu:high_temperature_smelting_casing')
-                        .setMinGlobalLimited(5)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where(' ', Predicates.any())
-                .where('B', Predicates.blocks('gtceu:tungsten_frame'))
-                .where('C', Predicates.blocks('gtceu:heat_vent'))
-                .where('D', Predicates.heatingCoils())
-                .where('F', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('G', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('H', Predicates.abilities(PartAbility.MUFFLER))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.gtBlock('high_temperature_smelting_casing', { min: 5 }),
+                        P.ability(PA.itemIn, { view: 1 }),
+                        P.ability(PA.itemOut, { view: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
+                        P.ability(PA.fluidOut, { view: 1 }),
+                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.maintenance, { max: 1 }),
+                    ]),
+                    B: P.gtBlock('tungsten_frame'),
+                    C: P.gtBlock('heat_vent'),
+                    D: P.heatingCoil(),
+                    F: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    G: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    H: P.ability(PA.muffler),
+                    '@': P.controller(definition),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

@@ -39,20 +39,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                             P.ability(PA.maintenance, { exact: 1 }),
                             P.ability(PA.euOut2a, { exact: 1 }),
                         ]),
+                        ' ': P.air(),
                     })
-                    .where('K', Predicates.controller(Predicates.blocks(definition.get())))
-                    .where(
-                        'C',
-                        Predicates.blocks(`kubejs:${casing}_casing`)
-                            .setMinGlobalLimited(5)
-                            .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(1))
-                            .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(1))
-                            .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                            .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(1))
-                            .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                            .or(Predicates.abilities(PartAbility.INPUT_ENERGY_2A).setExactLimit(1))
-                    )
-                    .where(' ', Predicates.air())
                     .build()
             )
             .workableCasingModel(`kubejs:block/casings/large_cubes/${casing}_casing`, `gtceu:block/machines/${type}`);
