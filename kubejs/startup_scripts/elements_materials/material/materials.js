@@ -803,7 +803,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         'prismalium',
         ['8x naquadah', '4x mercury_barium_calcium_cuprate', '7x tungsten_carbide'],
         0x66ffff,
-        [9000, 'high', VA('zpm'), 2000],
+        [9000, 'high', VA('zpm'), 1800],
         [V('uv'), 48, 0, true],
         [1600, 260, 9, 20500]
     );
@@ -999,7 +999,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         ['5x trinium', '3x naquadah', '2x carbon'],
         0x281832,
         BRIGHT,
-        [8750, 'higher', VA('zpm'), 1200],
+        [8750, 'higher', VA('zpm'), 1000],
         [plates, rod, frame, fineWire, foil, densePlate]
     );
 
