@@ -13,32 +13,33 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .appearanceBlock(() => Block.getBlock('gtceu:robust_machine_casing'))
         .pattern((definition) =>
             FactoryBlockPattern.start()
-                .aisle('ABBBA', 'BBCBB', 'BCDCB', 'BBCBB', 'ABBBA')
-                .aisle('A B A', ' EEE ', 'BEFEB', ' EEE ', 'A B A')
-                .aisle('A B A', ' EEE ', 'BEFEB', ' EEE ', 'A B A')
-                .aisle('A B A', ' EEE ', 'BEFEB', ' EEE ', 'A B A')
-                .aisle('BBBBB', 'BBBBB', 'BBFBB', 'BBBBB', 'BBBBB')
-                .aisle('A B A', ' EEE ', 'BEFEB', ' EEE ', 'A B A')
-                .aisle('A B A', ' EEE ', 'BEFEB', ' EEE ', 'A B A')
-                .aisle('A B A', ' EEE ', 'BEFEB', ' EEE ', 'A B A')
-                .aisle('ABBBA', 'BBCBB', 'BC@CB', 'BBCBB', 'ABBBA')
-                .where(' ', Predicates.any())
-                .where('A', Predicates.blocks('gtceu:tungsten_steel_frame'))
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:robust_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('C', Predicates.blocks('gtceu:extreme_engine_intake_casing'))
-                .where('D', Predicates.abilities(PartAbility.MUFFLER))
-                .where('E', Predicates.heatingCoils())
-                .where('F', Predicates.blocks('gtceu:tungstensteel_pipe_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .aisle('ABBBA|BBCBB|BCDCB|BBCBB|ABBBA')
+                .aisle('A B A| EEE |BEFEB| EEE |A B A')
+                .aisle('A B A| EEE |BEFEB| EEE |A B A')
+                .aisle('A B A| EEE |BEFEB| EEE |A B A')
+                .aisle('BBBBB|BBBBB|BBFBB|BBBBB|BBBBB')
+                .aisle('A B A| EEE |BEFEB| EEE |A B A')
+                .aisle('A B A| EEE |BEFEB| EEE |A B A')
+                .aisle('A B A| EEE |BEFEB| EEE |A B A')
+                .aisle('ABBBA|BBCBB|BC@CB|BBCBB|ABBBA')
+                .whereDict({
+                    ' ': P.any(),
+                    A: P.gtBlock('tungsten_steel_frame'),
+                    B: P.anyOf(
+                        P.gtBlock('gtceu:robust_machine_casing'),
+                        P.abilities(PA.itemIn, { max: 2, prev: 1 }),
+                        P.abilities(PA.euIn, { max: 1, prev: 1 }),
+                        P.abilities(PA.itemOut, { max: 2, prev: 1 }),
+                        P.abilities(PA.fluidIn, { max: 2, prev: 1 }),
+                        P.abilities(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.abilities(PA.maintenance, { exact: 1 })
+                    ),
+                    C: P.gtBlock('extreme_engine_intake_casing'),
+                    D: P.abilities(PA.muffler),
+                    E: P.heatingCoil(),
+                    F: P.gtBlock('tungstensteel_pipe_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
