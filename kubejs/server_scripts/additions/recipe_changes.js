@@ -323,4 +323,12 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:enriched_naquadah_solution 3000')
         .duration(800)
         .EUt(GTValues.VHA[GTValues.IV]);
+
+    event
+        .remove({ id: /gtceu:.*\/hypochlorous_acid/ })
+        .inputFluids('minecraft:water 1000', 'gtceu:chlorine 2000')
+        .outputFluids('gtceu:hypochlorous_acid 1000', 'gtceu:hydrochloric_acid 1000')
+        .duration(120)
+        .EUt(30)
+        .circuit(1);
 });
