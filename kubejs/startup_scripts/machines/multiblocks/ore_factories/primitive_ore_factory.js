@@ -24,12 +24,12 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     C: P.controller(definition),
                     '#': Predicates.air(),
-                    F: P.anyOf(
+                    F: P.anyOf([
                         P.block(GTBlocks.CASING_PRIMITIVE_BRICKS.get()),
                         P.abilities(PA.itemIn, { max: 2, prev: 1 }),
                         P.abilities(PA.itemOut, { max: 2, prev: 1 }),
-                        P.abilities(PA.fluidIn, { max: 2, prev: 1 })
-                    ),
+                        P.abilities(PA.fluidIn, { max: 2, prev: 1 }),
+                    ]),
                     G: P.blocks(GTBlocks.CASING_BRONZE_PIPE.get()),
                     B: P.blocks('gtceu:bronze_machine_casing'),
                     ' ': P.any(),

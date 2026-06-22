@@ -32,15 +32,15 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '  BBB  |  A@A  |  AAA  |   A   |       |       |       |       |       ',
             ])
                 .whereDict({
-                    A: P.anyOf(
+                    A: P.anyOf([
                         P.kjsBlock('kubejs:enriched_naquadah_machine_casing', { min: 20 }),
                         P.ability(PA.itemIn, { prev: 1 }),
                         P.ability(PA.itemOut, { prev: 1 }),
                         P.ability(PA.fluidIn, { prev: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                         P.ability(PA.euIn, { max: 2 }),
-                        P.ability(PA.maintenance, { exact: 1 })
-                    ),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
                     ' ': P.any(),
                     '#': P.air(),
                     B: P.kjsBlock('kubejs:enriched_naquadah_firebox_casing'),

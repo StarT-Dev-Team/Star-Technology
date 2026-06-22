@@ -25,14 +25,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ])
                 .whereDict({
                     C: P.controller(definition),
-                    F: P.anyOf(
+                    F: P.anyOf([
                         P.block(GTBlocks.CASING_STEEL_SOLID.get()), //All Hatches have a max
                         P.abilities(PA.itemIn, { max: 2, prev: 1 }),
                         P.abilities(PA.itemOut, { max: 2, prev: 1 }),
                         P.abilities(PA.fluidIn, { max: 2, prev: 1 }),
                         P.abilities(PA.euIn, { max: 2 }),
-                        P.abilities(PA.maintenance, { exact: 1 })
-                    ),
+                        P.abilities(PA.maintenance, { exact: 1 }),
+                    ]),
                     M: P.abilities(PA.muffler),
                     P: P.block(GTBlocks.CASING_STEEL_PIPE.get()),
                     G: P.block(GTBlocks.CASING_STEEL_GEARBOX.get()),

@@ -25,13 +25,13 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ])
                 .whereDict({
                     C: P.controller(definition),
-                    F: P.anyOf(
+                    F: P.anyOf([
                         P.kjsBlock('high_steam_machine_casing', { min: 40 }),
                         P.gtBlock('gtceu:ulv_fluid_input', { max: 1, prev: 1 }), // Needs to be Core: Steam Fluid Input to not steam conflict
                         P.abilities(PA.steamIn, { max: 2, prev: 1 }),
                         P.abilities(PA.steam, { exact: 1 }),
-                        P.abilities(PA.steamOut, { max: 2, prev: 1 })
-                    ),
+                        P.abilities(PA.steamOut, { max: 2, prev: 1 }),
+                    ]),
                     G: P.blocks(GTBlocks.CASING_BRONZE_PIPE.get()),
                     '#': P.air(),
                     B: P.blocks('gtceu:steel_machine_casing'),

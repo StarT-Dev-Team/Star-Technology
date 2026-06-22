@@ -18,15 +18,15 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'AAAAA|AA@AA|ADDDA|ADDDA|AAAAA',
             ])
                 .whereDict({
-                    A: P.anyOf(
+                    A: P.anyOf([
                         P.gtBlock('frostproof_machine_casing', { min: 5 }),
                         P.abilities(PA.itemIn, { prev: 1 }),
                         P.abilities(PA.itemOut, { prev: 1 }),
                         P.abilities(PA.fluidIn, { prev: 1 }),
                         P.abilities(PA.fluidOut, { prev: 1 }),
                         P.abilities(PA.euIn, { max: 1 }),
-                        P.abilities(PA.maintenance, { exact: 1 })
-                    ),
+                        P.abilities(PA.maintenance, { exact: 1 }),
+                    ]),
                     B: P.gtBlock('extreme_engine_intake_casing'),
                     C: P.gtBlock('tungstensteel_pipe_casing'),
                     '#': P.air(),

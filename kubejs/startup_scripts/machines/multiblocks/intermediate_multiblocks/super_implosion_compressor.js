@@ -17,15 +17,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ])
                 .whereDict({
                     A: P.gtBlock('steel_firebox_casing'),
-                    B: P.anyOf(
+                    B: P.anyOf([
                         P.gtBlock('stress_proof_casing', { min: 5 }),
                         P.ability(PA.itemIn, { prev: 1 }),
                         P.ability(PA.itemOut, { prev: 1 }),
                         P.ability(PA.fluidIn, { prev: 1 }),
                         P.ability(PA.euIn, { max: 1 }),
-                        P.ability(PA.maintenance, { exact: 1 })
-                    ),
-
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
                     C: P.blocks('gtceu:stainless_steel_frame'),
                     D: P.heatingCoils(),
                     E: P.blocks('gtceu:steel_pipe_casing'),

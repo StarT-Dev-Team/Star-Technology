@@ -19,14 +19,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 ' BBB | A@A | AAA |  A  |     |     |     ',
             ])
                 .whereDict({
-                    A: P.anyOf(
+                    A: P.anyOf([
                         P.gtBlock('clean_machine_casing', { min: 5 }),
                         P.ability(PA.itemIn, { prev: 1 }),
                         P.ability(PA.itemOut, { prev: 1 }),
                         P.ability(PA.fluidIn, { prev: 1 }),
                         P.ability(PA.euIn, { max: 1 }),
-                        P.ability(PA.maintenance, { exact: 1 })
-                    ),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
                     B: P.gtBlock('steel_firebox_casing'),
                     ' ': P.any(),
                     '#': P.air(),

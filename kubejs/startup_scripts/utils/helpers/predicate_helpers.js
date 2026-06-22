@@ -105,6 +105,11 @@ const P = {
     ability: (type, settings) =>
         applySettings(Predicates.abilities.apply(Predicates, Array.isArray(type) ? type : [type]), settings),
     /**
+     * @param {Array} abilities all Part Abilities
+     * @returns {TracebilityPredicate}
+     */
+    abilityOr: (abilities) => P.anyOf(abilities.map(P.ability)),
+    /**
      * @param {*} recipeTypes
      * @returns {TracebilityPredicate}
      */

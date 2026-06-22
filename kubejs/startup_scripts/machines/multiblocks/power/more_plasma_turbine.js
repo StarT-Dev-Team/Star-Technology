@@ -29,28 +29,30 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([$StarTRecipeModifiers.BOOSTED_PLASMA_TURBINE])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('         ', 'FCC      ', 'FFCHH  CC', 'FCC      ', '         ')
-                .aisle('FCC      ', '  FECCXX ', '  FECEEF ', '  FECCXX ', 'FCC      ')
-                .aisle('FFCHH  CC', '  FECEEF ', '  RGGGGL ', '  FECEEF ', 'FFCHH  CC')
-                .aisle('FCC      ', '  FECCXX ', '  FECEEF ', '  FECCXX ', 'FCC      ')
-                .aisle('         ', 'FCC      ', 'FFCH@  CC', 'FCC      ', '         ')
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'H',
-                    Predicates.blocks('kubejs:enriched_naquadah_machine_casing')
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(1))
-                )
-                .where('F', Predicates.blocks('gtceu:void_frame'))
-                .where('C', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-                .where('E', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('X', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-                .where('G', Predicates.blocks('kubejs:enriched_naquadah_gearbox'))
-                .where('L', Predicates.abilities(PartAbility.OUTPUT_LASER))
-                .where('R', Predicates.abilities(PartAbility.ROTOR_HOLDER))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                '         |FCC      |FFCHH  CC|FCC      |         ',
+                'FCC      |  FECCXX |  FECEEF |  FECCXX |FCC      ',
+                'FFCHH  CC|  FECEEF |  RGGGGL |  FECEEF |FFCHH  CC',
+                'FCC      |  FECCXX |  FECEEF |  FECCXX |FCC      ',
+                '         |FCC      |FFCH@  CC|FCC      |         ',
+            ])
+                .whereDict({
+                    '@': P.controller(definition.get()),
+                    H: P.anyOf([
+                        P.kjsBlock('kubejs:enriched_naquadah_machine_casing'),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.itemIn, { prev: 1 }),
+                        P.ability(PA.itemOut, { prev: 1 }),
+                    ]),
+                    F: P.gtBlock('void_frame'),
+                    C: P.kjsBlock('enriched_naquadah_machine_casing'),
+                    E: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    X: P.kjsBlock('enriched_naquadah_heat_escape_casing'),
+                    G: P.kjsBlock('enriched_naquadah_gearbox'),
+                    L: P.ability(PA.laserOut),
+                    R: P.ability(PA.rotorHolder),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(
@@ -88,28 +90,30 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([$StarTRecipeModifiers.BOOSTED_PLASMA_TURBINE])
         .appearanceBlock(() => Block.getBlock('kubejs:nyanium_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('         ', 'FCC      ', 'FFCHH  CC', 'FCC      ', '         ')
-                .aisle('FCC      ', '  FECCXX ', '  FECEEF ', '  FECCXX ', 'FCC      ')
-                .aisle('FFCHH  CC', '  FECEEF ', '  RGGGGL ', '  FECEEF ', 'FFCHH  CC')
-                .aisle('FCC      ', '  FECCXX ', '  FECEEF ', '  FECCXX ', 'FCC      ')
-                .aisle('         ', 'FCC      ', 'FFCH@  CC', 'FCC      ', '         ')
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'H',
-                    Predicates.blocks('kubejs:nyanium_machine_casing')
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(1))
-                )
-                .where('F', Predicates.blocks('gtceu:draconyallium_frame'))
-                .where('C', Predicates.blocks('kubejs:nyanium_machine_casing'))
-                .where('E', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
-                .where('X', Predicates.blocks('kubejs:nyanium_heat_escape_casing'))
-                .where('G', Predicates.blocks('kubejs:nyanium_gearbox'))
-                .where('L', Predicates.abilities(PartAbility.OUTPUT_LASER))
-                .where('R', Predicates.abilities(PartAbility.ROTOR_HOLDER))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                '         |FCC      |FFCHH  CC|FCC      |         ',
+                'FCC      |  FECCXX |  FECEEF |  FECCXX |FCC      ',
+                'FFCHH  CC|  FECEEF |  RGGGGL |  FECEEF |FFCHH  CC',
+                'FCC      |  FECCXX |  FECEEF |  FECCXX |FCC      ',
+                '         |FCC      |FFCH@  CC|FCC      |         ',
+            ])
+                .whereDict({
+                    '@': P.controller(definition),
+                    H: P.anyOf([
+                        P.kjsBlock('nyanium_machine_casing'),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.fluidIn, { prev: 1 }),
+                        P.ability(PA.fluidOut, { prev: 1 }),
+                    ]),
+                    F: P.gtBlock('draconyallium_frame'),
+                    C: P.kjsBlock('nyanium_machine_casing'),
+                    E: P.kjsBlock('nyanium_engine_intake_casing'),
+                    X: P.kjsBlock('nyanium_heat_escape_casing'),
+                    G: P.kjsBlock('nyanium_gearbox'),
+                    L: P.ability(PA.laserOut),
+                    R: P.ability(PA.rotorHolder),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

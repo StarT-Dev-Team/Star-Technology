@@ -18,15 +18,15 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ])
                 .whereDict({
                     '@': P.controller(definition),
-                    A: P.anyOf(
+                    A: P.anyOf([
                         P.kjsBlock('fluix_steel_casing'),
                         P.ability(PA.itemIn, { max: 2 }),
                         P.ability(PA.fluidIn, { max: 2 }),
                         P.ability(PA.itemOut, { max: 2 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn, { max: 2 })
-                    ),
+                        P.ability(PA.euIn, { max: 2 }),
+                    ]),
                     B: P.gtBlock('assembly_line_grating'),
                     C: 'ae2:quartz_glass',
                     D: P.gtBlock('high_power_casing'),
