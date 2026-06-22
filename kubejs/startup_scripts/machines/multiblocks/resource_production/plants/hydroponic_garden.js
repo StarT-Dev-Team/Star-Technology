@@ -20,40 +20,42 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('gtceu:watertight_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('ABBBBBBBA', 'ABBCBCBBA', 'ABBBBBBBA', 'ADDDDDDDA', ' ADDDDDA ', '  AAAAA  ')
-                .aisle(' BBBBBBB ', ' BFGFGFB ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle(' BBBBBBB ', ' CGGGGGC ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle(' BBBBBBB ', ' BFGFGFB ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle('ABBBBBBBA', 'ABFGFGFBA', 'ABHHHHHBA', 'AD     DA', ' AIIIIIA ', '  AAAAA  ')
-                .aisle(' BBBBBBB ', ' CGGGGGC ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle(' BBBBBBB ', ' BFGFGFB ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle(' BBBBBBB ', ' CGGGGGC ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle('ABBBBBBBA', 'ABFGFGFBA', 'ABHHHHHBA', 'AD     DA', ' AIIIIIA ', '  AAAAA  ')
-                .aisle(' BBBBBBB ', ' BFGFGFB ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle(' BBBBBBB ', ' CGGGGGC ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle(' BBBBBBB ', ' BFGFGFB ', ' BHHHHHB ', ' D     D ', '  IIIII  ', '         ')
-                .aisle('ABBBBBBBA', 'ABBC@CBBA', 'ABBBBBBBA', 'ADDDDDDDA', ' ADDDDDA ', '  AAAAA  ')
-                .where('A', Predicates.blocks('gtceu:tungsten_carbide_frame'))
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:watertight_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(5).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(5).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('C', Predicates.blocks('gtceu:engine_intake_casing'))
-                .where('D', Predicates.blocks('gtceu:tempered_glass'))
-                .where('F', Predicates.blocks('minecraft:water'))
-                .where('G', Predicates.blocks('gtceu:titanium_pipe_casing'))
-                .where('H', Predicates.blocks('thermal:phytosoil_tilled'))
-                .where(' ', Predicates.any())
-                .where('#', Predicates.air())
-                .where('I', Predicates.blocks('gtceu:laminated_glass'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                'ABBBBBBBA|ABBCBCBBA|ABBBBBBBA|ADDDDDDDA| ADDDDDA |  AAAAA  ',
+                ' BBBBBBB | BFGFGFB | BHHHHHB | D     D |  IIIII  |         ',
+                ' BBBBBBB | CGGGGGC | BHHHHHB | D     D |  IIIII  |         ',
+                ' BBBBBBB | BFGFGFB | BHHHHHB | D     D |  IIIII  |         ',
+                'ABBBBBBBA|ABFGFGFBA|ABHHHHHBA|AD     DA| AIIIIIA |  AAAAA  ',
+                ' BBBBBBB | CGGGGGC | BHHHHHB | D     D |  IIIII  |         ',
+                ' BBBBBBB | BFGFGFB | BHHHHHB | D     D |  IIIII  |         ',
+                ' BBBBBBB | CGGGGGC | BHHHHHB | D     D |  IIIII  |         ',
+                'ABBBBBBBA|ABFGFGFBA|ABHHHHHBA|AD     DA| AIIIIIA |  AAAAA  ',
+                ' BBBBBBB | BFGFGFB | BHHHHHB | D     D |  IIIII  |         ',
+                ' BBBBBBB | CGGGGGC | BHHHHHB | D     D |  IIIII  |         ',
+                ' BBBBBBB | BFGFGFB | BHHHHHB | D     D |  IIIII  |         ',
+                'ABBBBBBBA|ABBC@CBBA|ABBBBBBBA|ADDDDDDDA| ADDDDDA |  AAAAA  ',
+            ])
+                .whereDict({
+                    A: P.gtBlock('gtceu:tungsten_carbide_frame'),
+                    B: P.anyOf([
+                        P.gtBlock('gtceu:watertight_casing'),
+                        P.ability(PA.itemIn, { max: 5, prev: 1 }),
+                        P.ability(PA.EXPORT_ITEMS, { max: 2, prev: 0 }),
+                        P.ability(PA.IMPORT_FLUIDS, { max: 5, prev: 1 }),
+                        P.ability(PA.INPUT_ENERGY, { max: 2, prev: 0 }),
+                        P.ability(PA.PARALLEL_HATCH, { max: 1 }),
+                        P.ability(PA.MAINTENANCE, { exact: 1 }),
+                    ]),
+                    C: P.gtBlock('gtceu:engine_intake_casing'),
+                    D: P.gtBlock('gtceu:tempered_glass'),
+                    F: P.fluid('minecraft:water'),
+                    G: P.gtBlock('gtceu:titanium_pipe_casing'),
+                    H: P.block('thermal:phytosoil_tilled'),
+                    ' ': P.any(),
+                    '#': P.air(),
+                    I: P.gtBlock('gtceu:laminated_glass'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel('gtceu:block/casings/gcym/watertight_casing', 'gtceu:block/machines/extruder');

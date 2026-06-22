@@ -20,26 +20,28 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('TTOTT', 'FTTTF', 'F   F', 'F   F', 'F   F', 'F   F', 'TTTTT')
-                .aisle('TPPPT', 'TTFTT', ' SSS ', '  S  ', '  S  ', ' SSS ', 'TTFTT')
-                .aisle('TFPFT', 'TFPFT', ' SPS ', ' S S ', ' S S ', ' SPS ', 'TFIFT')
-                .aisle('TTTTT', 'TTFTT', ' SSS ', '  S  ', '  S  ', ' SSS ', 'TTFTT')
-                .aisle('TTCTT', 'FTTTF', 'F   F', 'F   F', 'F   F', 'F   F', 'TTTTT')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'T',
-                    Predicates.blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                )
-                .where('S', Predicates.blocks(GCYMBlocks.CASING_STRESS_PROOF.get()))
-                .where('F', Predicates.blocks('gtceu:tungsten_steel_frame'))
-                .where('P', Predicates.blocks(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()))
-                .where('I', Predicates.abilities(PartAbility.IMPORT_ITEMS))
-                .where('O', Predicates.abilities(PartAbility.EXPORT_ITEMS))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                'TTOTT|FTTTF|F   F|F   F|F   F|F   F|TTTTT',
+                'TPPPT|TTFTT| SSS |  S  |  S  | SSS |TTFTT',
+                'TFPFT|TFPFT| SPS | S S | S S | SPS |TFIFT',
+                'TTTTT|TTFTT| SSS |  S  |  S  | SSS |TTFTT',
+                'TTCTT|FTTTF|F   F|F   F|F   F|F   F|TTTTT',
+            ])
+                .whereDict({
+                    C: P.controller(P.blocks(definition.get())),
+                    T: P.anyOf([
+                        P.block(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
+                            .or(P.ability(PA.maintenance).setExactLimit(1))
+                            .or(P.ability(PA.parallelHatch).setMaxGlobalLimited(1))
+                            .or(P.ability(PA.euIn).setMaxGlobalLimited(2)),
+                    ]),
+                    S: P.block(GCYMBlocks.CASING_STRESS_PROOF.get()),
+                    F: P.gtBlock('gtceu:tungsten_steel_frame'),
+                    P: P.block(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()),
+                    I: P.ability(PA.itemIn),
+                    O: P.ability(PA.itemOut),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

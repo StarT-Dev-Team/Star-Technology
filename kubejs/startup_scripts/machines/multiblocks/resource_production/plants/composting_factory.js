@@ -20,29 +20,31 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('gtceu:robust_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' ABA ', ' CDC ', ' CDC ', ' CDC ', ' CBC ')
-                .aisle('AABAA', 'CE EC', 'CE EC', 'CE EC', 'CCBCC')
-                .aisle('BBCBB', 'D F D', 'D F D', 'D F D', 'BBGBB')
-                .aisle('AABAA', 'CE EC', 'CE EC', 'CE EC', 'CCBCC')
-                .aisle(' ABA ', ' CDC ', ' C@C ', ' CDC ', ' CBC ')
-                .where(' ', Predicates.any())
-                .where('A', Predicates.blocks('gtceu:tungstensteel_firebox_casing'))
-                .where('B', Predicates.blocks('gtceu:secure_maceration_casing'))
-                .where(
-                    'C',
-                    Predicates.blocks('gtceu:robust_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('D', Predicates.blocks('thermal:enderium_glass'))
-                .where('E', Predicates.blocks('gtceu:tungstensteel_gearbox'))
-                .where('F', Predicates.blocks('gtceu:tungstensteel_pipe_casing'))
-                .where('G', Predicates.blocks('gtceu:extreme_engine_intake_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                ' ABA | CDC | CDC | CDC | CBC ',
+                'AABAA|CE EC|CE EC|CE EC|CCBCC',
+                'BBCBB|D F D|D F D|D F D|BBGBB',
+                'AABAA|CE EC|CE EC|CE EC|CCBCC',
+                ' ABA | CDC | C@C | CDC | CBC ',
+            ])
+                .whereDict({
+                    ' ': P.any(),
+                    A: P.gtBlock('tungstensteel_firebox_casing'),
+                    B: P.gtBlock('secure_maceration_casing'),
+                    C: P.anyOf([
+                        P.gtBlock('robust_machine_casing'),
+                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    D: P.block('thermal:enderium_glass'),
+                    E: P.gtBlock('tungstensteel_gearbox'),
+                    F: P.gtBlock('tungstensteel_pipe_casing'),
+                    G: P.gtBlock('extreme_engine_intake_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

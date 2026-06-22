@@ -19,94 +19,31 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(
-                    ' SFS ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     '
-                )
-                .aisle(
-                    'SSSSS',
-                    ' ERE ',
-                    ' EGE ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     '
-                )
-                .aisle(
-                    'FSSSF',
-                    'ERRRE',
-                    'EGHGE',
-                    'EEGEE',
-                    ' EGE ',
-                    ' EGE ',
-                    ' EGE ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  '
-                )
-                .aisle(
-                    'SSSSS',
-                    ' ERE ',
-                    ' EGE ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     '
-                )
-                .aisle(
-                    ' SCS ',
-                    '  E  ',
-                    '  E  ',
-                    '  E  ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     ',
-                    '     '
-                )
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'S',
-                    Predicates.blocks('gtceu:robust_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(4).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(4).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('F', Predicates.blocks('gtceu:tungstensteel_firebox_casing'))
-                .where('R', Predicates.blocks('gtceu:rtm_alloy_coil_block'))
-                .where('E', Predicates.blocks('gtceu:tungsten_steel_frame'))
-                .where('G', Predicates.blocks('gtceu:tungstensteel_gearbox'))
-                .where('H', Predicates.blocks('gtceu:stress_proof_casing'))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                ' SFS |  E  |  E  |  E  |     |     |     |     |     |     |     |     ',
+                'SSSSS| ERE | EGE |  E  |  E  |  E  |  E  |     |     |     |     |     ',
+                'FSSSF|ERRRE|EGHGE|EEGEE| EGE | EGE | EGE |  E  |  E  |  E  |  E  |  E  ',
+                'SSSSS| ERE | EGE |  E  |  E  |  E  |  E  |     |     |     |     |     ',
+                ' SCS |  E  |  E  |  E  |     |     |     |     |     |     |     |     ',
+            ])
+                .whereDict({
+                    C: P.controller(definition),
+                    S: P.anyOf([
+                        P.gtBlock('robust_machine_casing'),
+                        P.abilities(PA.fluidIn, { max: 1, prev: 1 }),
+                        P.abilities(PA.itemIn, { max: 4, prev: 1 }),
+                        P.abilities(PA.fluidOut, { max: 4, prev: 1 }),
+                        P.abilities(PA.maintenance, { exact: 1 }),
+                        P.abilities(PA.euIn, { max: 2, prev: 1 }),
+                        P.abilities(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    F: P.gtBlock('tungstensteel_firebox_casing'),
+                    R: P.gtBlock('rtm_alloy_coil_block'),
+                    E: P.gtBlock('tungsten_steel_frame'),
+                    G: P.gtBlock('tungstensteel_gearbox'),
+                    H: P.gtBlock('stress_proof_casing'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

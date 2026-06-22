@@ -16,29 +16,30 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_PERFECT, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(GTBlocks.CASING_INVAR_HEATPROOF)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('IIIII', '     ', '     ', '     ', 'IIIII')
-                .aisle('ISSSI', ' FGF ', ' FGF ', ' FGF ', 'ISSSI')
-                .aisle('ISSSI', ' G G ', ' G G ', ' G G ', 'ISSSI')
-                .aisle('ISSSI', ' FGF ', ' FGF ', ' FGF ', 'ISSSI')
-                .aisle('IICII', '     ', '     ', '     ', 'IIIII')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'I',
-                    Predicates.blocks(GTBlocks.CASING_INVAR_HEATPROOF.get())
-                        .setMinGlobalLimited(23)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('S', Predicates.blocks(GTBlocks.FIREBOX_STEEL.get()))
-                .where('F', Predicates.blocks(Block.getBlock('gtceu:aluminium_frame')))
-                .where('G', Predicates.blocks('thermal:obsidian_glass'))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                'IIIII|     |     |     |IIIII',
+                'ISSSI| FGF | FGF | FGF |ISSSI',
+                'ISSSI| G G | G G | G G |ISSSI',
+                'ISSSI| FGF | FGF | FGF |ISSSI',
+                'IICII|     |     |     |IIIII',
+            ])
+                .whereDict({
+                    C: P.controller(P.blocks(definition.get())),
+                    I: P.anyOf([
+                        P.block(GTBlocks.CASING_INVAR_HEATPROOF.get(), { min: 25 }),
+                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    S: P.block(GTBlocks.FIREBOX_STEEL.get()),
+                    F: P.gtBlock('aluminium_frame'),
+                    G: P.block('thermal:obsidian_glass'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(
