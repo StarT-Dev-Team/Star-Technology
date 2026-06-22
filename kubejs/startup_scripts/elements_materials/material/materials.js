@@ -1052,7 +1052,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         ['7x naquadria', '4x pure_netherite', '6x trinaquadalloy', '12x fluorine'],
         0xccff33,
         DULL,
-        [9001, 'highest', VA('zpm'), 3000],
+        [9001, 'highest', VA('zpm'), 2400],
         [foil, plates, rod, frame]
     );
 
