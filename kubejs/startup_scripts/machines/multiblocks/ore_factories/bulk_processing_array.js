@@ -22,103 +22,34 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(
-                    '  BBB  ',
-                    '  AAA  ',
-                    '  AAA  ',
-                    '   A   ',
-                    '       ',
-                    '       ',
-                    '       ',
-                    '       ',
-                    '       '
-                )
-                .aisle(
-                    ' BAAAB ',
-                    ' ACDCA ',
-                    ' A###A ',
-                    '  A#A  ',
-                    '  AAA  ',
-                    '   A   ',
-                    '       ',
-                    '       ',
-                    '       '
-                )
-                .aisle(
-                    'BAAAAAB',
-                    'AC#D#CA',
-                    'A#####A',
-                    ' A###A ',
-                    ' A###A ',
-                    '  A#A  ',
-                    '  AAA  ',
-                    '   A   ',
-                    '   E   '
-                )
-                .aisle(
-                    'BAAAAAB',
-                    'ADDDDDA',
-                    'A##D##A',
-                    'A##D##A',
-                    ' A#D#A ',
-                    ' A#D#A ',
-                    '  ADA  ',
-                    '  AMA  ',
-                    '  E E  '
-                )
-                .aisle(
-                    'BAAAAAB',
-                    'AC#D#CA',
-                    'A#####A',
-                    ' A###A ',
-                    ' A###A ',
-                    '  A#A  ',
-                    '  AAA  ',
-                    '   A   ',
-                    '   E   '
-                )
-                .aisle(
-                    ' BAAAB ',
-                    ' ACDCA ',
-                    ' A###A ',
-                    '  A#A  ',
-                    '  AAA  ',
-                    '   A   ',
-                    '       ',
-                    '       ',
-                    '       '
-                )
-                .aisle(
-                    '  BBB  ',
-                    '  A@A  ',
-                    '  AAA  ',
-                    '   A   ',
-                    '       ',
-                    '       ',
-                    '       ',
-                    '       ',
-                    '       '
-                )
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:enriched_naquadah_machine_casing')
-                        .setMinGlobalLimited(20)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where(' ', Predicates.any())
-                .where('#', Predicates.air())
-                .where('B', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-                .where('C', Predicates.blocks('kubejs:enriched_naquadah_gearbox'))
-                .where('D', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('E', Predicates.blocks('kubejs:noble_mixing_casing'))
-                .where('M', Predicates.abilities(PartAbility.MUFFLER))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                '  BBB  |  AAA  |  AAA  |   A   |       |       |       |       |       ',
+                ' BAAAB | ACDCA | A###A |  A#A  |  AAA  |   A   |       |       |       ',
+                'BAAAAAB|AC#D#CA|A#####A| A###A | A###A |  A#A  |  AAA  |   A   |   E   ',
+                'BAAAAAB|ADDDDDA|A##D##A|A##D##A| A#D#A | A#D#A |  ADA  |  AMA  |  E E  ',
+                'BAAAAAB|AC#D#CA|A#####A| A###A | A###A |  A#A  |  AAA  |   A   |   E   ',
+                ' BAAAB | ACDCA | A###A |  A#A  |  AAA  |   A   |       |       |       ',
+                '  BBB  |  A@A  |  AAA  |   A   |       |       |       |       |       ',
+            ])
+                .whereDict({
+                    A: P.anyOf(
+                        P.kjsBlock('kubejs:enriched_naquadah_machine_casing', { min: 20 }),
+                        P.ability(PA.itemIn, { prev: 1 }),
+                        P.ability(PA.itemOut, { prev: 1 }),
+                        P.ability(PA.fluidIn, { prev: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                        P.ability(PA.euIn, { max: 2 }),
+                        P.ability(PA.maintenance, { exact: 1 })
+                    ),
+                    ' ': P.any(),
+                    '#': P.air(),
+                    B: P.kjsBlock('kubejs:enriched_naquadah_firebox_casing'),
+                    C: P.kjsBlock('kubejs:enriched_naquadah_gearbox'),
+                    D: P.kjsBlock('kubejs:enriched_naquadah_pipe_casing'),
+                    E: P.kjsBlock('kubejs:noble_mixing_casing'),
+                    M: P.ability(PartAbility.MUFFLER),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel('kubejs:block/casings/naquadah/casing', 'kubejs:block/multiblock/primitive_blast_furnace');

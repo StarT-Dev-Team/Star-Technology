@@ -14,24 +14,26 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeType('primitive_ore_processing')
         .appearanceBlock(GTBlocks.CASING_PRIMITIVE_BRICKS)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' FFF ', ' FFF ', ' FFF ', '  F  ', '     ', '     ', '     ')
-                .aisle('FFFFF', 'FG#GF', 'F###F', ' F#F ', ' FFF ', '  F  ', '  B  ')
-                .aisle('FFFFF', 'F###F', 'F###F', 'F###F', ' F#F ', ' F#F ', ' B B ')
-                .aisle('FFFFF', 'FG#GF', 'F###F', ' F#F ', ' FFF ', '  F  ', '  B  ')
-                .aisle(' FFF ', ' FCF ', ' FFF ', '  F  ', '     ', '     ', '     ')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where('#', Predicates.air())
-                .where(
-                    'F',
-                    Predicates.blocks(GTBlocks.CASING_PRIMITIVE_BRICKS.get())
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                )
-                .where('G', Predicates.blocks(GTBlocks.CASING_BRONZE_PIPE.get()))
-                .where('B', Predicates.blocks('gtceu:bronze_machine_casing'))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                ' FFF | FFF | FFF |  F  |     |     |     ',
+                'FFFFF|FG#GF|F###F| F#F | FFF |  F  |  B  ',
+                'FFFFF|F###F|F###F|F###F| F#F | F#F | B B ',
+                'FFFFF|FG#GF|F###F| F#F | FFF |  F  |  B  ',
+                ' FFF | FCF | FFF |  F  |     |     |     ',
+            ])
+                .whereDict({
+                    C: P.controller(definition),
+                    '#': Predicates.air(),
+                    F: P.anyOf(
+                        P.block(GTBlocks.CASING_PRIMITIVE_BRICKS.get()),
+                        P.abilities(PA.itemIn, { max: 2, prev: 1 }),
+                        P.abilities(PA.itemOut, { max: 2, prev: 1 }),
+                        P.abilities(PA.fluidIn, { max: 2, prev: 1 })
+                    ),
+                    G: P.blocks(GTBlocks.CASING_BRONZE_PIPE.get()),
+                    B: P.blocks('gtceu:bronze_machine_casing'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

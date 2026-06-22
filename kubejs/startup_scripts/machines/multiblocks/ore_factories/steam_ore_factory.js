@@ -16,34 +16,27 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .appearanceBlock(() => Block.getBlock('kubejs:high_steam_machine_casing'))
         .recipeModifier($StarTRecipeModifiers.START_STEAM_PARALLEL)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' FFF ', ' FFF ', ' FFF ', '  F  ', '     ', '     ', '     ')
-                .aisle('FFFFF', 'FG#GF', 'F###F', ' F#F ', ' FFF ', '  F  ', '  B  ')
-                .aisle('FFFFF', 'F###F', 'F###F', 'F###F', ' F#F ', ' F#F ', ' B B ')
-                .aisle('FFFFF', 'FG#GF', 'F###F', ' F#F ', ' FFF ', '  F  ', '  B  ')
-                .aisle(' FFF ', ' FCF ', ' FFF ', '  F  ', '     ', '     ', '     ')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'F',
-                    Predicates.blocks('kubejs:high_steam_machine_casing')
-                        .setMinGlobalLimited(40)
-                        .or(Predicates.blocks('gtceu:ulv_fluid_input').setPreviewCount(1).setMaxGlobalLimited(1)) // Needs to be Core: Steam Fluid Input to not steam conflict
-                        .or(
-                            Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS)
-                                .setPreviewCount(1)
-                                .setMaxGlobalLimited(2)
-                        )
-                        .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
-                        .or(
-                            Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS)
-                                .setPreviewCount(1)
-                                .setMaxGlobalLimited(2)
-                        )
-                )
-                .where('G', Predicates.blocks(GTBlocks.CASING_BRONZE_PIPE.get()))
-                .where('#', Predicates.air())
-                .where('B', Predicates.blocks('gtceu:steel_machine_casing'))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                ' FFF | FFF | FFF |  F  |     |     |     ',
+                'FFFFF|FG#GF|F###F| F#F | FFF |  F  |  B  ',
+                'FFFFF|F###F|F###F|F###F| F#F | F#F | B B ',
+                'FFFFF|FG#GF|F###F| F#F | FFF |  F  |  B  ',
+                ' FFF | FCF | FFF |  F  |     |     |     ',
+            ])
+                .whereDict({
+                    C: P.controller(definition),
+                    F: P.anyOf(
+                        P.kjsBlock('high_steam_machine_casing', { min: 40 }),
+                        P.gtBlock('gtceu:ulv_fluid_input', { max: 1, prev: 1 }), // Needs to be Core: Steam Fluid Input to not steam conflict
+                        P.abilities(PA.steamIn, { max: 2, prev: 1 }),
+                        P.abilities(PA.steam, { exact: 1 }),
+                        P.abilities(PA.steamOut, { max: 2, prev: 1 })
+                    ),
+                    G: P.blocks(GTBlocks.CASING_BRONZE_PIPE.get()),
+                    '#': P.air(),
+                    B: P.blocks('gtceu:steel_machine_casing'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(
