@@ -324,8 +324,9 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUt(GTValues.VHA[GTValues.IV]);
 
-    event
-        .remove({ id: /gtceu:.*\/hypochlorous_acid/ })
+    event.remove({ id: /gtceu:.*\/hypochlorous_acid/ });
+    event.recipes.gtceu
+        .chemical_reactor(id('hypochlorous_acid'))
         .inputFluids('minecraft:water 1000', 'gtceu:chlorine 2000')
         .outputFluids('gtceu:hypochlorous_acid 1000', 'gtceu:hydrochloric_acid 1000')
         .duration(120)
