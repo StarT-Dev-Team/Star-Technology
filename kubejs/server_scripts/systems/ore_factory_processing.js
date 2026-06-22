@@ -19,7 +19,12 @@ ServerEvents.recipes((event) => {
         ],
 
         lv: [
-            { material: 'coal', secondary: 'carbon', tertiary: 'thorium', quaternary: 'graphite' }, // check
+            {
+                material: 'coal',
+                secondary: 'carbon',
+                tertiary: 'thorium',
+                quaternary: 'graphite',
+            }, // check
             {
                 material: 'sodalite',
                 secondary: 'lazurite',
@@ -38,8 +43,18 @@ ServerEvents.recipes((event) => {
                 tertiary: 'iron',
                 quaternary: 'sulfur',
             },
-            { material: 'silver', secondary: 'gold', tertiary: 'lead', quaternary: 'sulfur' },
-            { material: 'gold', secondary: 'silver', tertiary: 'copper', quaternary: 'nickel' },
+            {
+                material: 'silver',
+                secondary: 'gold',
+                tertiary: 'lead',
+                quaternary: 'sulfur',
+            },
+            {
+                material: 'gold',
+                secondary: 'silver',
+                tertiary: 'copper',
+                quaternary: 'nickel',
+            },
             {
                 material: 'diamond',
                 secondary: 'carbon',
@@ -82,7 +97,12 @@ ServerEvents.recipes((event) => {
                 tertiary: 'opal',
                 quaternary: 'barite',
             }, // check
-            { material: 'rock_salt', secondary: 'salt', tertiary: 'salt', quaternary: 'borax' },
+            {
+                material: 'rock_salt',
+                secondary: 'salt',
+                tertiary: 'salt',
+                quaternary: 'borax',
+            },
             {
                 material: 'saltpeter',
                 secondary: 'salt',
@@ -102,7 +122,12 @@ ServerEvents.recipes((event) => {
                 tertiary: 'amethyst',
                 quaternary: 'amethyst',
             },
-            { material: 'sulfur', secondary: 'sulfur', tertiary: 'sulfur', quaternary: 'sulfur' },
+            {
+                material: 'sulfur',
+                secondary: 'sulfur',
+                tertiary: 'sulfur',
+                quaternary: 'sulfur',
+            },
             // { material: 'redstone', secondary: 'cinnabar', tertiary: 'rare_earth', quaternary: 'ruby' }, // not gonna rewrite entire thing just for an MA ore (is minecraft:redstone not gtceu:redstone_dust)
             {
                 material: 'lapis',
@@ -207,14 +232,24 @@ ServerEvents.recipes((event) => {
                 tertiary: 'pyrite',
                 quaternary: 'cobalt',
             },
-            { material: 'bornite', secondary: 'gold', tertiary: 'cadmium', quaternary: 'cobalt' },
+            {
+                material: 'bornite',
+                secondary: 'gold',
+                tertiary: 'cadmium',
+                quaternary: 'cobalt',
+            },
             {
                 material: 'barite',
                 secondary: 'pyrite',
                 tertiary: 'pyrite',
                 quaternary: 'chalcopyrite',
             }, // check
-            { material: 'cassiterite', secondary: 'tin', tertiary: 'tin', quaternary: 'bismuth' },
+            {
+                material: 'cassiterite',
+                secondary: 'tin',
+                tertiary: 'tin',
+                quaternary: 'bismuth',
+            },
             {
                 material: 'tantalite',
                 secondary: 'manganese',
@@ -266,7 +301,12 @@ ServerEvents.recipes((event) => {
                 tertiary: 'thorium',
                 quaternary: 'uraninite',
             },
-            { material: 'ilmenite', secondary: 'iron', tertiary: 'iron', quaternary: 'rutile' },
+            {
+                material: 'ilmenite',
+                secondary: 'iron',
+                tertiary: 'iron',
+                quaternary: 'rutile',
+            },
             {
                 material: 'molybdenite',
                 secondary: 'molybdenum',
@@ -286,7 +326,12 @@ ServerEvents.recipes((event) => {
                 tertiary: 'sulfur',
                 quaternary: 'cobalt',
             },
-            { material: 'chromite', secondary: 'iron', tertiary: 'magnesium', quaternary: 'iron' },
+            {
+                material: 'chromite',
+                secondary: 'iron',
+                tertiary: 'magnesium',
+                quaternary: 'iron',
+            },
         ],
 
         iv: [
@@ -584,50 +629,6 @@ ServerEvents.recipes((event) => {
             .duration(300)
             .EUt(GTValues.VA[GTValues.LV]);
     };
-
-    /* Final Product */
-    // Controllers
-    event
-        .shaped(Item.of('gtceu:primitive_ore_factory'), ['HRS', 'PBR', 'FRS'], {
-            H: '#forge:tools/hammers',
-            R: 'gtceu:brass_rod',
-            S: 'gtceu:brass_screw',
-            P: 'gtceu:brass_plate',
-            B: 'gtceu:firebricks',
-            F: '#forge:tools/screwdrivers',
-        })
-        .id('start:shaped/primitive_ore_factory');
-
-    event
-        .shaped(Item.of('gtceu:steam_ore_factory'), ['HRS', 'PBR', 'FRS'], {
-            H: '#forge:tools/hammers',
-            R: 'gtceu:invar_rod',
-            S: 'gtceu:invar_screw',
-            P: 'gtceu:invar_plate',
-            B: 'kubejs:high_steam_machine_casing',
-            F: '#forge:tools/screwdrivers',
-        })
-        .id('start:shaped/steam_ore_factory');
-
-    event
-        .shaped(Item.of('gtceu:electric_ore_factory'), ['GCG', 'PLP', 'WPW'], {
-            G: 'gtceu:bronze_gear',
-            C: '#gtceu:circuits/lv',
-            P: 'gtceu:steel_plate',
-            L: 'gtceu:lv_machine_hull',
-            W: 'gtceu:tin_single_cable',
-        })
-        .id('start:shaped/electric_ore_factory');
-
-    event
-        .shaped(Item.of('gtceu:ore_processing_plant'), ['GCG', 'PLP', 'WPW'], {
-            G: 'gtceu:tungsten_carbide_gear',
-            C: '#gtceu:circuits/iv',
-            P: 'gtceu:tungsten_carbide_plate',
-            L: 'gtceu:iv_machine_hull',
-            W: 'gtceu:platinum_single_cable',
-        })
-        .id('start:shaped/ore_processing_plant');
 
     /* Final Product */
     // Controllers
