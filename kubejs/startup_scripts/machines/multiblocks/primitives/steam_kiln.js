@@ -15,25 +15,18 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('BBB', 'BBB', 'BBB', '#B#', '#A#')
                 .aisle('BBB', 'BCB', 'B#B', 'B#B', 'A#A')
                 .aisle('BBB', 'BDB', 'BBB', '#B#', '#A#')
-                .where('A', Predicates.blocks('gtceu:bronze_machine_casing'))
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:steam_machine_casing')
-                        .or(
-                            Predicates.abilities(PartAbility.STEAM_IMPORT_ITEMS)
-                                .setPreviewCount(1)
-                                .setMaxGlobalLimited(2)
-                        )
-                        .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1))
-                        .or(
-                            Predicates.abilities(PartAbility.STEAM_EXPORT_ITEMS)
-                                .setPreviewCount(1)
-                                .setMaxGlobalLimited(2)
-                        )
-                )
-                .where('#', Predicates.any())
-                .where('C', Predicates.blocks('farmersdelight:stove'))
-                .where('D', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.gtBlock('bronze_machine_casing'),
+                    B: P.anyOf([
+                        P.gtBlock('steam_machine_casing'),
+                        P.ability(PA.steamIn, { max: 2, prev: 1 }),
+                        P.ability(PA.steam, { exact: 1 }),
+                        P.ability(PA.steamOut, { max: 2, prev: 1 }),
+                    ]),
+                    '#': P.any(),
+                    C: P.block('farmersdelight:stove'),
+                    D: P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

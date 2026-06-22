@@ -18,17 +18,18 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('DDD', 'PPP', 'PPP', 'PPP')
                 .aisle('DDD', 'P P', 'P P', 'P P')
                 .aisle('DDD', 'PCP', 'PPP', 'PPP')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'P',
-                    Predicates.blocks(GTBlocks.TREATED_WOOD_PLANK.get())
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                )
-                .where('D', Predicates.blocks(GTBlocks.CASING_PUMP_DECK.get()))
-                .where(' ', Predicates.air())
+                .whereDict({
+                    C: P.controller(definition),
+                    P: P.anyOf([
+                        P.block(GTBlocks.TREATED_WOOD_PLANK.get()),
+                        P.ability(PartAbility.IMPORT_ITEMS, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.EXPORT_ITEMS, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.IMPORT_FLUIDS, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.EXPORT_FLUIDS, { max: 2, prev: 1 }),
+                    ]),
+                    D: P.block(GTBlocks.CASING_PUMP_DECK.get()),
+                    ' ': P.air(),
+                })
                 .build()
         )
         .workableCasingModel('gtceu:block/treated_wood_planks', 'gtceu:block/machines/brewery')

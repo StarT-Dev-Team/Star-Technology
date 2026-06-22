@@ -18,17 +18,18 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('DDD', 'PPP', 'PPP', 'PPP')
                 .aisle('DDD', 'P P', 'P P', 'P P')
                 .aisle('DDD', 'PCP', 'PPP', 'PPP')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'P',
-                    Predicates.blocks('minecraft:stone')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                )
-                .where('D', Predicates.blocks('minecraft:stone_bricks'))
-                .where(' ', Predicates.air())
+                .where({
+                    C: P.controller(definition),
+                    P: P.anyOf([
+                        P.block('minecraft:stone'),
+                        P.ability(PA.itemin, { max: 2, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                    ]),
+                    D: P.blocks('minecraft:stone_bricks'),
+                    ' ': P.air(),
+                })
                 .build()
         )
         .workableCasingModel('minecraft:block/stone', 'kubejs:block/multiblock/primitive_blast_furnace')
