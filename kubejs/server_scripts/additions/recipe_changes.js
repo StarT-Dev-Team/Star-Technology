@@ -332,4 +332,11 @@ ServerEvents.recipes((event) => {
         .duration(120)
         .EUt(30)
         .circuit(1);
+
+    // TODO: combe back to this decision in theta 3 to see if there is a better fit
+    event.replaceInput(
+        { id: 'gtceu:shaped/lv_cutter' },
+        'gtceu:cobalt_brass_buzz_saw_blade',
+        'gtceu:steel_buzz_saw_blade'
+    );
 });
