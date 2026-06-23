@@ -34,27 +34,28 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '     NFFFN     |     NN@NN     |      NNN      |               |               |               |               |               |               |               |               |               |               |               |       V       |   TT     TT   |               |               |               |               |               ',
                 '               |               |               |               |               |               |               |               |               |               |               |               |               |               |               |     TTTTT     |               |               |               |               |               ',
             ])
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'N',
-                    Predicates.blocks('kubejs:enriched_naquadah_machine_casing')
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('M', Predicates.blocks('gtceu:atomic_casing'))
-                .where('A', Predicates.blocks('gtceu:assembly_line_grating'))
-                .where('H', Predicates.blocks('gtceu:high_power_casing'))
-                .where('F', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-                .where('V', Predicates.blocks('gtceu:void_frame'))
-                .where('P', Predicates.blocks('kubejs:runic_pathway_casing'))
-                .where('G', Predicates.blocks('kubejs:reinforced_fusion_glass'))
-                .where('T', Predicates.blocks('gtceu:trinium_coil_block'))
-                .where('U', Predicates.blocks('kubejs:shellite_casing'))
-                .where('C', Predicates.blocks('kubejs:core_casing'))
-                .where('O', Predicates.abilities(PartAbility.EXPORT_ITEMS))
-                .where('I', Predicates.abilities(PartAbility.IMPORT_FLUIDS))
-                .where('0', Predicates.blocks('gtceu:ulv_input_bus'))
-                .where(' ', Predicates.any())
+                .whereDict({
+                    '@': P.controller(definition),
+                    N: P.anyOf([
+                        P.kjsBlock('enriched_naquadah_machine_casing'),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    M: P.gtBlock('atomic_casing'),
+                    A: P.gtBlock('assembly_line_grating'),
+                    H: P.gtBlock('high_power_casing'),
+                    F: P.kjsBlock('enriched_naquadah_firebox_casing'),
+                    V: P.gtBlock('void_frame'),
+                    P: P.kjsBlock('runic_pathway_casing'),
+                    G: P.kjsBlock('reinforced_fusion_glass'),
+                    T: P.gtBlock('trinium_coil_block'),
+                    U: P.kjsBlock('shellite_casing'),
+                    C: P.kjsBlock('core_casing'),
+                    O: P.ability(PA.itemOut),
+                    I: P.ability(PA.fluidIn),
+                    0: P.gtBlock('ulv_input_bus'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel('kubejs:block/casings/naquadah/casing', 'kubejs:block/multiblock/draco_infusion');

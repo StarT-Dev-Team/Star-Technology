@@ -33,7 +33,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.kjsBlock('extreme_temperature_smelting_casing'),
                         P.autoAbilities(definition.getRecipeTypes()),
                         P.ability(PartAbility.PARALLEL_HATCH, { max: 1 }),
-                        P.ability(PartAbility.MAINTENANCE, { exact: 1 }),
+                        P.ability(P.maintenance, { exact: 1 }),
                     ]),
                     F: P.kjsBlock('enriched_naquadah_heat_escape_casing'),
                     G: P.kjsBlock('enriched_naquadah_pipe_casing'),

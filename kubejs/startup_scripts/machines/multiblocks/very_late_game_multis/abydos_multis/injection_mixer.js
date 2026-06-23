@@ -28,21 +28,22 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'BBDBB|CDDDC|BEEEB| FEF | FGF | FDF |BDDDB| DFD |  F  |  C  |  C  |  C  |  D  ',
                 ' BBB | C@C | BBB |  B  |     |  B  | BBB |     |     |     |     |     |     ',
             ])
-                .where('B', Predicates.blocks('kubejs:noble_mixing_casing'))
-                .where(' ', Predicates.any())
-                .where(
-                    'C',
-                    Predicates.blocks('gtceu:fusion_glass')
-                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('D', Predicates.blocks('gtceu:atomic_casing'))
-                .where('E', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('F', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-                .where('G', Predicates.blocks('kubejs:enriched_naquadah_gearbox'))
-                .where('H', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    B: P.kjsBlock('noble_mixing_casing'),
+                    ' ': P.any(),
+                    C: P.anyOf([
+                        P.gtBlock('fusion_glass'),
+                        P.autoAbilities(definition.getRecipeTypes()),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    D: P.gtBlock('atomic_casing'),
+                    E: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    F: P.kjsBlock('enriched_naquadah_machine_casing'),
+                    G: P.kjsBlock('enriched_naquadah_gearbox'),
+                    H: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel('kubejs:block/casings/abydos_multis/noble_mixing_casing', 'gtceu:block/machines/mixer');

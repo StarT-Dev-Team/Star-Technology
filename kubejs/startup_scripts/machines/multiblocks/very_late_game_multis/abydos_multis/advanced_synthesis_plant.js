@@ -19,39 +19,35 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK])
         .appearanceBlock(() => Block.getBlock('kubejs:peek_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('    FHHHF', '    TFOFT', '    T   T', '    T   T', '    T   T', '    FFFFF')
-                .aisle('    HFFFH', '    F P F', '     FFF ', '     MMM ', '     FFF ', '    FEEEF')
-                .aisle('    HFFFH', '    FPPPF', '     F F ', '     M M ', '     F F ', '    FEEEF')
-                .aisle('    HFFFH', '    F P F', '     FFF ', '     MMM ', '     FFF ', '    FEEEF')
-                .aisle('FHHHFFFFF', 'TFFFFPPPT', 'T   TFFFT', 'T   T   T', 'T   T   T', 'FFFFFFFFF')
-                .aisle('HFFFFFFFH', 'F P P P F', ' FFFFFGF ', ' MMM     ', ' FFF     ', 'FEEEF   F')
-                .aisle('HFFFFFFFH', 'IPPPPPPPF', ' F  FGGF ', ' M M     ', ' F F     ', 'FEEEF   F')
-                .aisle('HFFFFFFFH', 'F P P P F', ' FFFFFFF ', ' MMM     ', ' FFF     ', 'FEEEF   F')
-                .aisle('FHHHFHHHF', 'TFFFTF@FT', 'T   T   T', 'T   T   T', 'T   T   T', 'FFFFFFFFF')
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'F',
-                    Predicates.blocks('kubejs:peek_casing')
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('H', Predicates.blocks(GCYMBlocks.HEAT_VENT.get()))
-                .where('M', Predicates.blocks(GCYMBlocks.MOLYBDENUM_DISILICIDE_COIL_BLOCK.get()))
-                .where('E', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('P', Predicates.blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
-                .where('T', Predicates.blocks('gtceu:tungsten_frame'))
-                .where('G', Predicates.blocks('gtceu:laminated_glass'))
-                .where(' ', Predicates.any())
-                .where(
-                    'O',
-                    Predicates.abilities(PartAbility.EXPORT_ITEMS).or(Predicates.abilities(PartAbility.EXPORT_FLUIDS))
-                )
-                .where(
-                    'I',
-                    Predicates.abilities(PartAbility.IMPORT_FLUIDS).or(Predicates.abilities(PartAbility.IMPORT_ITEMS))
-                )
+            newFactoryBlockPattern([
+                '    FHHHF|    TFOFT|    T   T|    T   T|    T   T|    FFFFF',
+                '    HFFFH|    F P F|     FFF |     MMM |     FFF |    FEEEF',
+                '    HFFFH|    FPPPF|     F F |     M M |     F F |    FEEEF',
+                '    HFFFH|    F P F|     FFF |     MMM |     FFF |    FEEEF',
+                'FHHHFFFFF|TFFFFPPPT|T   TFFFT|T   T   T|T   T   T|FFFFFFFFF',
+                'HFFFFFFFH|F P P P F| FFFFFGF | MMM     | FFF     |FEEEF   F',
+                'HFFFFFFFH|IPPPPPPPF| F  FGGF | M M     | F F     |FEEEF   F',
+                'HFFFFFFFH|F P P P F| FFFFFFF | MMM     | FFF     |FEEEF   F',
+                'FHHHFHHHF|TFFFTF@FT|T   T   T|T   T   T|T   T   T|FFFFFFFFF',
+            ])
+                .whereDict({
+                    '@': P.controller(definition),
+                    F: P.anyOf([
+                        P.kjsBlock('peek_casing'),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn).setMaxGlobalLimited(2),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    H: P.block(GCYMBlocks.HEAT_VENT.get()),
+                    M: P.block(GCYMBlocks.MOLYBDENUM_DISILICIDE_COIL_BLOCK.get()),
+                    E: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    P: P.block(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()),
+                    T: P.gtBlock('tungsten_frame'),
+                    G: P.gtBlock('laminated_glass'),
+                    ' ': P.any(),
+                    O: P.abilityOr(PA.itemOut, PA.fluidOut),
+                    I: P.abilityOr(PA.fluidIn, PA.itemIn),
+                })
                 .build()
         )
         .workableCasingModel(

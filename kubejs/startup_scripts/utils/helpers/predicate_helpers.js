@@ -140,10 +140,13 @@ const P = {
             settings
         ),
     /**
-     * @param {PredicateSettings} settings
      * @returns {TracebilityPredicate}
      */
     threadingBlocks: () => $StarTThreadingStatBlocks.threadingStatBlocks(),
+    /**
+     * @returns {TracebilityPredicate}
+     */
+    vacuumPumps: () => $StarTVacuumPumpPredicates.vacuumPumps(),
     /**
      * Combines an array of predicates into a single predicate using logical OR (`.or()`).
      * The first predicate in the array is used as the accumulator.
