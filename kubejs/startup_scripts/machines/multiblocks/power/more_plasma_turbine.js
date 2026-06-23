@@ -39,7 +39,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     '@': P.controller(definition.get()),
                     H: P.anyOf([
-                        P.kjsBlock('kubejs:enriched_naquadah_machine_casing'),
+                        P.kjsBlock('enriched_naquadah_machine_casing'),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.itemIn, { prev: 1 }),
                         P.ability(PA.itemOut, { prev: 1 }),

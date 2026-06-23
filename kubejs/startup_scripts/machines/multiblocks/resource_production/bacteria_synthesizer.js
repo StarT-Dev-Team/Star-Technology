@@ -44,7 +44,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     F: P.gtBlock('molybdenum_disilicide_coil_block'),
                     G: P.kjsBlock('pallaridium_engine_intake_casing'),
                     H: P.anyOf([
-                        P.kjsBlock('kubejs:peek_casing'),
+                        P.kjsBlock('peek_casing'),
                         P.ability(PA.itemIn, { max: 2, prev: 1 }),
                         P.ability(PA.fluidIn, { max: 2, prev: 1 }),
                         P.ability(PA.fluidOut, { max: 2, prev: 1 }),

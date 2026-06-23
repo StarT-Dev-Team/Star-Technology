@@ -27,7 +27,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.itemOut, { max: 2, prev: 1 }),
                     ]),
                     D: P.block('minecraft:farmland'),
-                    F: P.gtBlock('gtceu:treated_wood_frame'),
+                    F: P.gtBlock('treated_wood_frame'),
                     W: P.fluid('minecraft:water'),
                     ' ': P.any(),
                 })

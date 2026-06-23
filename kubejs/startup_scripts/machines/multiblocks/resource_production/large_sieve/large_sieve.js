@@ -36,7 +36,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                             .or(P.ability(PA.euIn).setMaxGlobalLimited(2)),
                     ]),
                     S: P.block(GCYMBlocks.CASING_STRESS_PROOF.get()),
-                    F: P.gtBlock('gtceu:tungsten_steel_frame'),
+                    F: P.gtBlock('tungsten_steel_frame'),
                     P: P.block(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()),
                     I: P.ability(PA.itemIn),
                     O: P.ability(PA.itemOut),

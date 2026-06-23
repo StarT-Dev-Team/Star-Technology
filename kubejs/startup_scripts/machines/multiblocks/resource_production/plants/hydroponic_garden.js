@@ -36,9 +36,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'ABBBBBBBA|ABBC@CBBA|ABBBBBBBA|ADDDDDDDA| ADDDDDA |  AAAAA  ',
             ])
                 .whereDict({
-                    A: P.gtBlock('gtceu:tungsten_carbide_frame'),
+                    A: P.gtBlock('tungsten_carbide_frame'),
                     B: P.anyOf([
-                        P.gtBlock('gtceu:watertight_casing'),
+                        P.gtBlock('watertight_casing'),
                         P.ability(PA.itemIn, { max: 5, prev: 1 }),
                         P.ability(PA.EXPORT_ITEMS, { max: 2, prev: 0 }),
                         P.ability(PA.IMPORT_FLUIDS, { max: 5, prev: 1 }),
@@ -46,14 +46,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.PARALLEL_HATCH, { max: 1 }),
                         P.ability(PA.MAINTENANCE, { exact: 1 }),
                     ]),
-                    C: P.gtBlock('gtceu:engine_intake_casing'),
-                    D: P.gtBlock('gtceu:tempered_glass'),
+                    C: P.gtBlock('engine_intake_casing'),
+                    D: P.gtBlock('tempered_glass'),
                     F: P.fluid('minecraft:water'),
-                    G: P.gtBlock('gtceu:titanium_pipe_casing'),
+                    G: P.gtBlock('titanium_pipe_casing'),
                     H: P.block('thermal:phytosoil_tilled'),
                     ' ': P.any(),
                     '#': P.air(),
-                    I: P.gtBlock('gtceu:laminated_glass'),
+                    I: P.gtBlock('laminated_glass'),
                     '@': P.controller(definition),
                 })
                 .build()

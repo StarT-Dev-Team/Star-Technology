@@ -22,9 +22,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'AABBBBBAA|BBBB@BBBB|BCCCDCCCB|BCCCDCCCB|BCCCCCCCB|BCCCCCCCB|BCCCCCCCB|BCCCCCCCB|ECCCCCCCE|ECCCCCCCE|ECCCCCCCE|#EECCCEE#|#########',
             ])
                 .whereDict({
-                    A: P.gtBlock('gtceu:tungstensteel_firebox_casing'),
+                    A: P.gtBlock('tungstensteel_firebox_casing'),
                     B: P.anyOf([
-                        P.gtBlock('gtceu:robust_machine_casing'),
+                        P.gtBlock('robust_machine_casing'),
                         P.ability(PA.itemIn, { max: 5, prev: 1 }),
                         P.ability(PA.itemOut, { max: 2, prev: 1 }),
                         P.ability(PA.fluidIn, { max: 5, prev: 1 }),
@@ -33,12 +33,12 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.parallelHatch, { max: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
-                    C: P.gtBlock('gtceu:laminated_glass'),
-                    D: P.gtBlock('gtceu:extreme_engine_intake_casing'),
-                    E: P.gtBlock('gtceu:blue_steel_frame'),
+                    C: P.gtBlock('laminated_glass'),
+                    D: P.gtBlock('extreme_engine_intake_casing'),
+                    E: P.gtBlock('blue_steel_frame'),
                     '#': P.any(),
                     F: P.block('minecraft:oak_leaves'),
-                    G: P.gtBlock('gtceu:tungstensteel_pipe_casing'),
+                    G: P.gtBlock('tungstensteel_pipe_casing'),
                     H: P.block('minecraft:grass_block'),
                     I: P.block('minecraft:spruce_leaves'),
                     J: P.block('minecraft:dirt'),

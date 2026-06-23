@@ -26,7 +26,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     ' ': P.any(),
                     A: P.gtBlock('tungsten_steel_frame'),
                     B: P.anyOf([
-                        P.gtBlock('gtceu:robust_machine_casing'),
+                        P.gtBlock('robust_machine_casing'),
                         P.abilities(PA.itemIn, { max: 2, prev: 1 }),
                         P.abilities(PA.euIn, { max: 1, prev: 1 }),
                         P.abilities(PA.itemOut, { max: 2, prev: 1 }),

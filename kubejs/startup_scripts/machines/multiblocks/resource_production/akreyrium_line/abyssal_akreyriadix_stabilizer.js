@@ -35,19 +35,19 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ])
                 .whereDict({
                     ' ': P.any(),
-                    B: P.kjsBlock('kubejs:nyanium_machine_casing'),
-                    C: P.gtBlock('gtceu:draconyallium_frame'),
+                    B: P.kjsBlock('nyanium_machine_casing'),
+                    C: P.gtBlock('draconyallium_frame'),
                     D: P.anyOf([
-                        P.kjsBlock('kubejs:draco_resilient_fusion_glass'),
+                        P.kjsBlock('draco_resilient_fusion_glass'),
                         P.ability(PA.euIn, { max: 2, prev: 1 }),
                         P.ability(PA.itemOut, { max: 2 }),
                         P.ability(PA.fluidOut, { max: 2 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
-                    E: P.kjsBlock('kubejs:draco_ware_casing'),
-                    F: P.kjsBlock('kubejs:draco_assembly_grating'),
-                    G: P.kjsBlock('kubejs:dragonsteel_casing'),
+                    E: P.kjsBlock('draco_ware_casing'),
+                    F: P.kjsBlock('draco_assembly_grating'),
+                    G: P.kjsBlock('dragonsteel_casing'),
                     H: P.abilityOr([PA.itemIn, PA.fluidIn]),
                     '@': P.controller(definition),
                 })

@@ -32,7 +32,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     '@': P.controller(definition),
                     H: P.anyOf([
-                        P.gtBlock('gtceu:high_temperature_smelting_casing')
+                        P.gtBlock('high_temperature_smelting_casing')
                             .or(P.ability(PA.itemIn, { max: 2, prev: 1 }).setMaxGlobalLimited(2).setPreviewCount(1))
                             .or(P.ability(PA.itemOut, { max: 2, prev: 1 }).setMaxGlobalLimited(2).setPreviewCount(1))
                             .or(P.ability(PA.maintenance, { exact: 1 }).setExactLimit(1))
