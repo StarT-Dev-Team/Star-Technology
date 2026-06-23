@@ -28,22 +28,22 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             .aisle('  BCCCB       BCCCB  ', '  BC CB       BC CB  ', '   CCC         CCC   ', '                     ', '                     ', '                     ', '   CCC         CCC   ', '  BC CB       BC CB  ', '  BCCCB       BCCCB  ')
                 .where(' ', P.any())
                 .where(
-                    'B',
-                    P.kjsBlock('advanced_assembly_casing')
-                        .or(P.ability(PA.itemIn).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(P.ability(PA.itemOut).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(P.ability(PA.fluidIn).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(P.ability(PA.fluidOut).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(P.ability(PA.parallelHatch, {max:1}))
-                        .or(P.ability(PA.euIn).setMaxGlobalLimited(1))
-                        .or(P.ability(PA.maintenance, {exact:1}))
-                )
+                    'B', P.anyOf([
+                    P.kjsBlock('advanced_assembly_casing'),
+                        P.ability(PA.itemIn, {max:20,prev:1}),
+                        P.ability(PA.itemOut, {max:20,prev:1}),
+                        P.ability(PA.fluidIn, {max:20,prev:1}),
+                        P.ability(PA.fluidOut, {max:20,prev:1}),
+                        P.ability(PA.parallelHatch, {max:1}),
+                        P.ability(PA.euIn).setMaxGlobalLimited(1),
+                        P.ability(PA.maintenance, {exact:1}),
+                ]))
                 .where('C', P.kjsBlock('draco_assembly_grating'))
-                .where('D', $StarTThreadingStatBlocks.threadingStatBlocks())
+                .where('D', P.threadingBlocks())
                 .where('E', P.kjsBlock('draco_resilient_fusion_glass'))
                 .where('F', P.kjsBlock('nyanium_pipe_casing'))
-                .where('G', P.block('start_core:advanced_fusion_coil'))
-                .where('H', P.block('start_core:threading_controller'))
+                .where('G', P.coreBlock('advanced_fusion_coil'))
+                .where('H', P.coreBlock('threading_controller'))
                 .where('I', P.gtBlock('uiv_rotor_holder'))
                 .where('J', P.kjsBlock('superdense_assembly_machine_casing'))
                 .where('K', P.kjsBlock('superdense_assembly_control_casing'))

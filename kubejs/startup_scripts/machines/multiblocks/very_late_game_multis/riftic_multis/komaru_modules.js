@@ -67,7 +67,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     B: P.kjsBlock('superdense_assembly_control_casing'),
                     C: P.kjsBlock('primordial_assembly_grating'),
                     D: P.kjsBlock('draco_resilient_fusion_glass'),
-                    E: P.block('start_core:advanced_fusion_coil'),
+                    E: P.coreBlock('advanced_fusion_coil'),
                     F: P.ability(PA.modAutoNode),
                     '@': P.controller(definition),
                 })
@@ -107,7 +107,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     B: P.kjsBlock('superdense_assembly_control_casing'),
                     C: P.kjsBlock('primordial_assembly_grating'),
                     D: P.kjsBlock('draco_resilient_fusion_glass'),
-                    E: P.block('start_core:advanced_fusion_coil'),
+                    E: P.coreBlock('advanced_fusion_coil'),
                     F: P.ability(PA.modAutoNode),
                     '@': P.controller(definition),
                 })
@@ -147,7 +147,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     B: P.kjsBlock('superdense_assembly_control_casing'),
                     C: P.kjsBlock('primordial_assembly_grating'),
                     D: P.kjsBlock('draco_resilient_fusion_glass'),
-                    E: P.block('start_core:advanced_fusion_coil'),
+                    E: P.coreBlock('advanced_fusion_coil'),
                     F: P.ability(PA.modAutoNode),
                     '@': P.controller(definition),
                 })
@@ -192,7 +192,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     B: P.kjsBlock('superdense_assembly_control_casing'),
                     C: P.kjsBlock('primordial_assembly_grating'),
                     D: P.kjsBlock('draco_resilient_fusion_glass'),
-                    E: P.block('start_core:advanced_fusion_coil'),
+                    E: P.coreBlock('advanced_fusion_coil'),
                     F: P.ability(PA.modAutoNode),
                     '@': P.controller(definition),
                 })
@@ -233,7 +233,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     B: P.kjsBlock('superdense_assembly_control_casing'),
                     C: P.kjsBlock('primordial_assembly_grating'),
                     D: P.kjsBlock('draco_resilient_fusion_glass'),
-                    E: P.block('start_core:advanced_fusion_coil'),
+                    E: P.coreBlock('advanced_fusion_coil'),
                     F: P.ability(PA.modAutoNode),
                     '@': P.controller(definition),
                 })

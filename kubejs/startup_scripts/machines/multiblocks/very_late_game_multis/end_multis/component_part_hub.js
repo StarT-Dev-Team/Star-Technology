@@ -39,7 +39,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     D: P.kjsBlock('draco_assembly_grating'),
                     E: P.kjsBlock('draco_ware_casing'),
                     F: P.kjsBlock('draco_resilient_fusion_glass'),
-                    G: P.block('start_core:advanced_fusion_coil'),
+                    G: P.coreBlock('advanced_fusion_coil'),
                     H: P.kjsBlock('superdense_assembly_machine_casing'),
                     I: P.kjsBlock('nyanium_machine_casing'),
                     J: P.kjsBlock('superdense_assembly_control_casing'),

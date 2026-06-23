@@ -52,7 +52,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     D: P.kjsBlock('nyanium_heat_escape_casing'),
                     E: P.kjsBlock('nyanium_engine_intake_casing'),
                     F: P.kjsBlock('nyanium_pipe_casing'),
-                    G: P.block('start_core:advanced_fusion_coil'),
+                    G: P.coreBlock('advanced_fusion_coil'),
                     H: P.kjsBlock('draco_resilient_fusion_glass'),
                     I: P.kjsBlock('core_casing'),
                     J: P.kjsBlock('nyanium_gearbox'),

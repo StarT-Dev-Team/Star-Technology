@@ -52,7 +52,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.euIn, { max: 2, prev: 1 }),
                     ]),
                     E: P.kjsBlock('aberration_casing'),
-                    F: P.block('start_core:auxiliary_boosted_fusion_casing_mk2'),
+                    F: P.coreBlock('auxiliary_boosted_fusion_casing_mk2'),
                     G: P.kjsBlock('nyanium_engine_intake_casing'),
                     H: P.kjsBlock('prismalic_reflector_casing'),
                     I: P.kjsBlock('nyanium_pipe_casing'),

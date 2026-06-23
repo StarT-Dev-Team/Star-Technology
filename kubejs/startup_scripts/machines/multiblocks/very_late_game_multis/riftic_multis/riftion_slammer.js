@@ -44,7 +44,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.kjsBlock('draco_ware_casing'),
                     D: P.ability(PA.itemOut),
                     E: P.kjsBlock('nyanium_pipe_casing'),
-                    F: P.block('start_core:auxiliary_fusion_coil_mk2'),
+                    F: P.coreBlock('auxiliary_fusion_coil_mk2'),
                     G: P.anyOf([P.kjsBlock('nyanium_machine_casing'), P.ability(PA.euIn, { max: 2, prev: 1 })]),
                     H: P.kjsBlock('aberration_casing'),
                     I: P.kjsBlock('draco_resilient_fusion_glass'),
