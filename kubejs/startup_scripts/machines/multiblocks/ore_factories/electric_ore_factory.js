@@ -37,7 +37,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     P: P.block(GTBlocks.CASING_STEEL_PIPE.get()),
                     G: P.block(GTBlocks.CASING_STEEL_GEARBOX.get()),
                     A: P.block(GTBlocks.FIREBOX_STEEL.get()),
-                    B: P.block('gtceu:bronze_machine_casing'),
+                    B: P.gtBlock('bronze_machine_casing'),
                     ' ': P.any(),
                 })
                 .build()

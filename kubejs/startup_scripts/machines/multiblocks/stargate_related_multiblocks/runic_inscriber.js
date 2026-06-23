@@ -33,28 +33,29 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 ' BBBBDDBDDBBBB |     DEDED     |               |     DEDED     |     CCCCC     |               |               |               |               |               |     CCCCC     |     DEDED     |               |     DEDED     |     B   B     ',
                 '    BBB@BBB    |     B   B     |     B   B     |     B   B     |     C   C     |               |               |               |               |               |     C   C     |     B   B     |     B   B     |     B   B     |     B   B     ',
             ])
-                .where('A', Predicates.blocks('minecraft:stone'))
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('kubejs:stellarium_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                )
-                .where('C', Predicates.blocks('gtceu:void_frame'))
-                .where('D', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-                .where('E', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('F', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('G', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-                .where('H', Predicates.blocks('kubejs:reinforced_fusion_glass'))
-                .where('I', Predicates.blocks('kubejs:ancient_runicalium_casing'))
-                .where('J', Predicates.blocks('gtceu:fusion_coil'))
-                .where('K', Predicates.blocks('thermal_extra:dragonsteel_glass'))
-                .where('L', Predicates.blocks('kubejs:inscribe_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.block('minecraft:stone'),
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.kjsBlock('stellarium_casing'),
+                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 1, prev: 1 }),
+                        P.ability(PA.fluidIn, { max: 1, prev: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn, { max: 2 }),
+                    ]),
+                    C: P.gtBlock('void_frame'),
+                    D: P.kjsBlock('enriched_naquadah_machine_casing'),
+                    E: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    F: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    G: P.kjsBlock('enriched_naquadah_heat_escape_casing'),
+                    H: P.kjsBlock('reinforced_fusion_glass'),
+                    I: P.kjsBlock('ancient_runicalium_casing'),
+                    J: P.gtBlock('fusion_coil'),
+                    K: P.block('thermal_extra:dragonsteel_glass'),
+                    L: P.kjsBlock('inscribe_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

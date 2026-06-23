@@ -45,22 +45,23 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'BCCCB     BCCCB     BCCCB| DDDC     C   C     CDDD | DDDCEE EEC   CEE EECDDD | DDDC     C   C     CDDD |BCCCB     BCCCB     BCCCB|  E         E         E  |  E         E         E  |                         |  E         E         E  |  E         E         E  |BCCCB     BCCCB     BCCCB| DDDC     CDDDC     CDDD | DDDCEE EECDDDCEE EECDDD | DDDC     CDDDC     CDDD |B   B     B   B     B   B',
                 ' BBB       BBB       BBB |B   B     B   B     B   B|B   B     B   B     B   B|B   B     B   B     B   B| BBB       BBB       BBB |                         |                         |                         |                         |                         | BBB       BBB       BBB |B   B     B   B     B   B|B   B     B   B     B   B|B   B     B   B     B   B| BBB       BBB       BBB ',
             ])
-                .where('B', Predicates.blocks('kubejs:enderium_casing'))
-                .where(' ', Predicates.any())
-                .where(
-                    'C',
-                    Predicates.blocks('kubejs:prismalium_casing')
-                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('D', Predicates.blocks('gtceu:trinium_coil_block'))
-                .where('E', Predicates.blocks('gtceu:atomic_casing'))
-                .where('F', Predicates.blocks('kubejs:dragonsteel_casing'))
-                .where('G', Predicates.blocks('gtceu:fusion_glass'))
-                .where('H', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-                .where('I', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('J', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    B: P.kjsBlock('enderium_casing'),
+                    ' ': P.any(),
+                    C: P.anyOf([
+                        P.kjsBlock('prismalium_casing'),
+                        P.autoAbilities(definition.getRecipeTypes()),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    D: P.gtBlock('trinium_coil_block'),
+                    E: P.gtBlock('atomic_casing'),
+                    F: P.kjsBlock('dragonsteel_casing'),
+                    G: P.gtBlock('fusion_glass'),
+                    H: P.kjsBlock('enriched_naquadah_machine_casing'),
+                    I: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    J: P.kjsBlock('enriched_naquadah_heat_escape_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

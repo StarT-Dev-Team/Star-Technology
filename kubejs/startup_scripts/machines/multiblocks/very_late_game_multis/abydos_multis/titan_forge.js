@@ -27,24 +27,25 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '   BBBBDBBBB   |   EBFFFFFBE   |   E       E   |   E       E   |   EE     EE   |   E E   E E   |   EBFFFFFBE   |   BBBBGBBBB   ',
                 '     BCCCB     |     BB@BB     |               |               |               |               |     BBBBB     |      BBB      ',
             ])
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('kubejs:enriched_naquadah_machine_casing')
-                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('C', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-                .where('D', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('E', Predicates.blocks('gtceu:naquadah_alloy_frame'))
-                .where('F', Predicates.blocks('kubejs:tritanic_blasting_casing'))
-                .where('G', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-                .where('H', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('I', Predicates.blocks('gtceu:tritanium_coil_block'))
-                .where('J', Predicates.blocks('gtceu:high_temperature_smelting_casing'))
-                .where('K', Predicates.abilities(PartAbility.MUFFLER))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.kjsBlock('enriched_naquadah_machine_casing'),
+                        Predicates.autoAbilities(definition.getRecipeTypes()),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    C: P.kjsBlock('enriched_naquadah_firebox_casing'),
+                    D: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    E: P.gtBlock('naquadah_alloy_frame'),
+                    F: P.kjsBlock('tritanic_blasting_casing'),
+                    G: P.kjsBlock('enriched_naquadah_heat_escape_casing'),
+                    H: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    I: P.gtBlock('tritanium_coil_block'),
+                    J: P.gtBlock('high_temperature_smelting_casing'),
+                    K: P.ability(PA.muffler),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel('kubejs:block/casings/naquadah/casing', 'gtceu:block/machines/bender');

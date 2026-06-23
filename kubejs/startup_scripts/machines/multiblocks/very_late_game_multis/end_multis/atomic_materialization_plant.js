@@ -26,31 +26,32 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '  ABABA BBB|  AEDEADABA|  LFDFAHAAA|  AEDEADABA|  AEAEA BBB|   E E     |   HDE     |   H       |   H       |           |           ',
                 '  AAAA     |  AAHA     |  A@HA     |  AAHA     |  AAAA     |           |           |           |           |           |           ',
             ])
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:cattomolymer_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('B', Predicates.blocks('gtceu:heat_vent'))
-                .where('C', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
-                .where(' ', Predicates.any())
-                .where('D', Predicates.blocks('gtceu:draco_abyssal_frame'))
-                .where('E', Predicates.blocks('gtceu:ptfe_pipe_casing'))
-                .where('F', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-                .where('G', Predicates.blocks('kubejs:rhenotax_coil'))
-                .where('H', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('I', Predicates.blocks('kubejs:abyssal_inductor_hull'))
-                .where('J', Predicates.blocks('kubejs:noble_mixing_casing'))
-                .where('K', Predicates.abilities(PartAbility.MUFFLER))
-                .where('L', Predicates.blocks('gtceu:uev_rotor_holder'))
-                .where('M', Predicates.heatingCoils())
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('cattomolymer_casing'),
+                        P.ability(PA.itemIn, { max: 8, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 8, prev: 1 }),
+                        P.ability(PA.fluidIn, { max: 8, prev: 1 }),
+                        P.ability(PA.fluidOut, { max: 8, prev: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    B: P.gtBlock('heat_vent'),
+                    C: P.kjsBlock('nyanium_engine_intake_casing'),
+                    ' ': P.any(),
+                    D: P.gtBlock('draco_abyssal_frame'),
+                    E: P.gtBlock('ptfe_pipe_casing'),
+                    F: P.kjsBlock('nyanium_pipe_casing'),
+                    G: P.kjsBlock('rhenotax_coil'),
+                    H: P.kjsBlock('draco_resilient_fusion_glass'),
+                    I: P.kjsBlock('abyssal_inductor_hull'),
+                    J: P.kjsBlock('noble_mixing_casing'),
+                    K: P.ability(PA.muffler),
+                    L: P.gtBlock('uev_rotor_holder'),
+                    M: P.heatingCoil(),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

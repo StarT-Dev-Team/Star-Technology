@@ -37,32 +37,27 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 ' BBBBBBBBB     | C    DDD      | C    DDD      | C    DDD      | BBBBBBBBB     |       F       |               |               ',
                 '     BBBBB     |     C B C     |     C @ C     |     C B C     |     BBBBB     |               |               |               ',
             ])
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('kubejs:enriched_naquadah_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(
-                            Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setMinGlobalLimited(1)
-                        )
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(
-                            Predicates.abilities($StarTPartAbility.REDSTONE_INTERFACE)
-                                .setMaxGlobalLimited(4)
-                                .setPreviewCount(0)
-                        )
-                )
-                .where('C', Predicates.blocks('gtceu:naquadah_alloy_frame'))
-                .where('D', Predicates.blocks('kubejs:polycarbonate_casing'))
-                .where('E', Predicates.blocks('gtceu:molybdenum_disilicide_coil_block'))
-                .where('F', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-                .where('G', Predicates.blocks('kubejs:reinforced_fusion_glass'))
-                .where('H', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('I', $StarTVacuumPumpPredicates.vacuumPumps())
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.kjsBlock('enriched_naquadah_machine_casing'),
+                        P.ability(PA.fluidIn, { max: 8, prev: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.variadicsInterface, { max: 4, prev: 1 }),
+                    ]),
+                    C: P.gtBlock('naquadah_alloy_frame'),
+                    D: P.kjsBlock('polycarbonate_casing'),
+                    E: P.gtBlock('molybdenum_disilicide_coil_block'),
+                    F: P.kjsBlock('enriched_naquadah_firebox_casing'),
+                    G: P.kjsBlock('reinforced_fusion_glass'),
+                    H: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    I: P.vacuumPumps(),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel('kubejs:block/casings/naquadah/casing', 'gtceu:block/machines/chemical_reactor');

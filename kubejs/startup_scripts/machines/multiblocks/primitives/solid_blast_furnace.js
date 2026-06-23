@@ -27,7 +27,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     C: P.controller(definition),
                     P: P.anyOf([
-                        P.block('kubejs:high_steam_machine_casing', { min: 15 }),
+                        P.kjsBlock('high_steam_machine_casing', { min: 15 }),
                         P.abilities(PA.itemIn, { max: 2, prev: 1 }),
                         P.abilities(PA.itemOut, { max: 2, prev: 1 }),
                     ]),

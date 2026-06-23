@@ -35,22 +35,23 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '  BBCCCCCBB  |   DEEEEED   |   D EEE D   |      E      |   D EEE D   |   DEE@EED   |   D EEE D   |      E      |   D EEE D   |   DEEEEED   |  BBEEEEEBB  |     EEE     ',
                 '   BBBBBBB   |             |             |             |             |             |             |             |             |             |   BBBBBBB   |     CCC     ',
             ])
-                .where(' ', Predicates.any())
-                .where('B', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-                .where('C', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-                .where('D', Predicates.blocks('gtceu:hsla_steel_frame'))
-                .where(
-                    'E',
-                    Predicates.blocks('gtceu:stress_proof_casing')
-                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('F', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-                .where('G', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('H', Predicates.blocks('kubejs:signalum_casing'))
-                .where('I', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    ' ': P.any(),
+                    B: P.kjsBlock('enriched_naquadah_firebox_casing'),
+                    C: P.kjsBlock('enriched_naquadah_machine_casing'),
+                    D: P.gtBlock('hsla_steel_frame'),
+                    E: P.anyOf([
+                        P.gtBlock('stress_proof_casing'),
+                        P.autoAbilities(definition.getRecipeTypes()),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    F: P.kjsBlock('enriched_naquadah_heat_escape_casing'),
+                    G: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    H: P.kjsBlock('signalum_casing'),
+                    I: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
