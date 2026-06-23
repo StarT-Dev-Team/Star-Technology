@@ -68,7 +68,8 @@ ServerEvents.recipes((event) => {
         'naquadic_netherite',
         'gtceu:naquadic_netherite_dust',
         'gtceu:naquadic_netherite_gem',
-        GTValues.IV
+        GTValues.IV,
+        event
     );
 
     event.remove({
@@ -79,7 +80,8 @@ ServerEvents.recipes((event) => {
         'runic_laser_source_base',
         'gtceu:runic_laser_source_base_dust',
         'gtceu:runic_laser_source_base_gem',
-        GTValues.IV
+        GTValues.IV,
+        event
     );
 
     event.remove({ type: 'gtceu:implosion_compressor', input: 'gtceu:akreyriadic_runixium_dust' });
@@ -87,7 +89,8 @@ ServerEvents.recipes((event) => {
         'akreyriadic_runixium',
         'gtceu:akreyriadic_runixium_dust',
         'gtceu:akreyriadic_runixium_gem',
-        GTValues.LuV
+        GTValues.LuV,
+        event
     );
 
     event.remove({
@@ -98,7 +101,8 @@ ServerEvents.recipes((event) => {
         'aquariadic_rimuli_dragonix',
         'gtceu:aquariadic_rimuli_dragonix_dust',
         'gtceu:aquariadic_rimuli_dragonix_gem',
-        GTValues.UHV
+        GTValues.UHV,
+        event
     );
 
     event.recipes.gtceu

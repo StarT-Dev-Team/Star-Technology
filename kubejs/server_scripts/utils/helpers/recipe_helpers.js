@@ -354,7 +354,7 @@ Object.entries(modRequirements).forEach(([name, mod]) => {
  * @param {number} tier voltage tier
  * @param {numer | undefined} durationMultiplier duration multiplier (default 0)
  */
-const implosionHelper = (id, input, output, tier, durationMultiplier) => {
+const implosionHelper = (id, input, output, tier, durationMultiplier, event) => {
     [
         { name: 'tnt', explosive: '4x minecraft:tnt' },
         { name: 'dynamite', explosive: '2x gtceu:dynamite' },
