@@ -11,29 +11,30 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' EEHEE ', ' N   N ', ' N   N ', ' N   N ', ' N   N ', ' EEHEE ')
-                .aisle('EEEHEEE', 'N FSF N', 'N MMM N', 'N MMM N', 'N FSF N', 'EEEHEEE')
-                .aisle('EEHHHEE', ' FEEEF ', ' M M M ', ' M M M ', ' FEEEF ', 'EEHHHEE')
-                .aisle('HHHHHHH', ' SEEES ', ' MMMMM ', ' MMMMM ', ' SEEES ', 'HHHOHHH')
-                .aisle('EEHHHEE', ' FEEEF ', ' M M M ', ' M M M ', ' FEEEF ', 'EEHHHEE')
-                .aisle('EEEHEEE', 'N FSF N', 'N MMM N', 'N MMM N', 'N FSF N', 'EEEHEEE')
-                .aisle(' EE@EE ', ' N   N ', ' N   N ', ' N   N ', ' N   N ', ' EEHEE ')
-                .where('@', P.controller(definition))
-                .where('E', P.kjsBlock('enderium_casing'))
-                .where('N', P.gtBlock('neutronium_frame'))
-                .where(
-                    'H',
-                    P.block(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING.get())
-                        .setMinGlobalLimited(22)
-                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                        .or(P.ability(PA.maintenance, { exact: 1 }))
-                        .or(P.ability(PA.parallelHatch, { max: 1 }))
-                )
-                .where('M', P.kjsBlock('zalloy_coil_block'))
-                .where('S', P.kjsBlock('enriched_naquadah_engine_intake_casing'))
-                .where('F', P.kjsBlock('enriched_naquadah_firebox_casing'))
-                .where('O', P.ability(PA.muffler))
+            newFactoryBlockPattern([
+                ' EEHEE | N   N | N   N | N   N | N   N | EEHEE ',
+                'EEEHEEE|N FSF N|N MMM N|N MMM N|N FSF N|EEEHEEE',
+                'EEHHHEE| FEEEF | M M M | M M M | FEEEF |EEHHHEE',
+                'HHHHHHH| SEEES | MMMMM | MMMMM | SEEES |HHHOHHH',
+                'EEHHHEE| FEEEF | M M M | M M M | FEEEF |EEHHHEE',
+                'EEEHEEE|N FSF N|N MMM N|N MMM N|N FSF N|EEEHEEE',
+                ' EE@EE | N   N | N   N | N   N | N   N | EEHEE ',
+            ])
+                .whereDict({
+                    '@': P.controller(definition),
+                    E: P.kjsBlock('enderium_casing'),
+                    N: P.gtBlock('neutronium_frame'),
+                    H: P.anyOf([
+                        P.block(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING.get(), { min: 22 }),
+                        P.autoAbilities(definition.getRecipeTypes()),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    M: P.kjsBlock('zalloy_coil_block'),
+                    S: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    F: P.kjsBlock('enriched_naquadah_firebox_casing'),
+                    O: P.ability(PA.muffler),
+                })
                 .build()
         )
         .workableCasingModel(
