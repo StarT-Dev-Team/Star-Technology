@@ -272,7 +272,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(`kubejs:${tier}_${type}`)
                 .itemOutputs(
                     Item.of(
-                        `start_core:component_data_core`,
+                        'start_core:component_data_core',
                         `{assembly_line_research:{research_id:"1x_kubejs_${tier}_${type}",research_type:"gtceu:component_part_synthesis_forge"}}`
                     )
                 )

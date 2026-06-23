@@ -78,10 +78,10 @@ ServerEvents.recipes((event) => {
     });
 
     event.recipes.gtceu
-        .heat_chamber(id(`enriched_estaltadyne_mixture_to_solution`))
-        .inputFluids(`gtceu:enriched_estaltadyne_mixture 500`)
-        .itemInputs(`3x gtceu:small_activated_nether_dust`, '7x gtceu:tiny_activated_nether_dust')
-        .outputFluids(`gtceu:enriched_estaltadyne_solution 500`)
+        .heat_chamber(id('enriched_estaltadyne_mixture_to_solution'))
+        .inputFluids('gtceu:enriched_estaltadyne_mixture 500')
+        .itemInputs('3x gtceu:small_activated_nether_dust', '7x gtceu:tiny_activated_nether_dust')
+        .outputFluids('gtceu:enriched_estaltadyne_solution 500')
         .itemOutputs('3x gtceu:small_atomic_nether_sludge_dust', '7x gtceu:tiny_atomic_nether_sludge_dust')
         .duration(1200)
         .EUt(GTValues.VHA[GTValues.UHV]);

@@ -27,7 +27,7 @@ StartupEvents.registry('item', (event) => {
             .texture(`kubejs:item/progression/riftic/singularity/${riftion[i]}`)
             .textureJson({
                 layer0: `kubejs:item/progression/riftic/singularity/${riftion[i]}/base`,
-                layer1: `kubejs:item/progression/riftic/singularity/overlay`,
+                layer1: 'kubejs:item/progression/riftic/singularity/overlay',
                 layer2: `kubejs:item/progression/riftic/singularity/${riftion[i]}/orbit_1`,
                 layer3: `kubejs:item/progression/riftic/singularity/${riftion[i]}/orbit_2`,
             })
@@ -46,10 +46,10 @@ StartupEvents.registry('item', (event) => {
     }
 
     event
-        .create(`wild_riftion`)
+        .create('wild_riftion')
         .textureJson({
             layer0: 'kubejs:item/progression/riftic/riftion/wild',
-            layer1: `kubejs:item/progression/riftic/riftion/wild_id`,
+            layer1: 'kubejs:item/progression/riftic/riftion/wild_id',
         })
         .tooltip('ψ§k?§r §7|§r q§k?§r §7|§r s=§d1/3'); //spin is fixed and known for NM, HM however.... Far:tm:
 });

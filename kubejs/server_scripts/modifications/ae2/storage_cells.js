@@ -120,7 +120,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .assembler(id('bulk_item_cell'))
         .itemInputs(
-            `6x gtceu:netherite_certus_quartz_skystone_alloy_plate`,
+            '6x gtceu:netherite_certus_quartz_skystone_alloy_plate',
             'megacells:bulk_cell_component',
             'gtceu:laminated_glass',
             '4x #gtceu:circuits/ev'
@@ -293,7 +293,7 @@ ServerEvents.recipes((event) => {
                 'gtceu:sky_steel_frame',
                 `ae2:spatial_cell_component_${tier}`,
                 '8x gtceu:ram_chip',
-                `4x gtceu:certus_quartz_skystone_alloy_plate`
+                '4x gtceu:certus_quartz_skystone_alloy_plate'
             )
             .inputFluids('gtceu:soldering_alloy 144')
             .itemOutputs(`ae2:spatial_storage_cell_${tier}`)
@@ -342,7 +342,7 @@ ServerEvents.recipes((event) => {
 
     //Singularity
     event.recipes.gtceu
-        .draco_infusion(id(`singularity_crafting_storage`))
+        .draco_infusion(id('singularity_crafting_storage'))
         .itemInputs(
             '3x megacells:256m_crafting_storage',
             '8x gtceu:double_netherite_certus_quartz_skystone_alloy_plate',
@@ -352,8 +352,8 @@ ServerEvents.recipes((event) => {
             '8x gtceu:double_netherite_gold_skystone_alloy_plate',
             '8x gtceu:gravi_star'
         )
-        .inputFluids(`gtceu:indium_tin_lead_cadmium_soldering_alloy 576`)
-        .itemOutputs(`expandedae:singularity_crafting_storage`)
+        .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576')
+        .itemOutputs('expandedae:singularity_crafting_storage')
         .duration(1200)
         .EUt(GTValues.VHA[GTValues.UIV]);
 });

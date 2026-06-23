@@ -22,7 +22,7 @@ ServerEvents.recipes((event) => {
             .outputFluids(`gtceu:${type} ${outputQuant}`)
             .duration(DurationSeconds * 20)
             .fusionStartEU(StartMEU * 1000000)
-            .addData('reflector_tier', reflectorTier)
+            .reflectorTier(reflectorTier)
             .EUt(EUt);
     };
 

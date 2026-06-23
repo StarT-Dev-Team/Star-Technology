@@ -153,7 +153,7 @@ ServerEvents.recipes((event) => {
 
     // === True Synthesis Plant ===
     event.recipes.gtceu
-        .assembly_line(id(`true_synthesis_array`))
+        .assembly_line(id('true_synthesis_array'))
         .itemInputs(
             'gtceu:uiv_machine_hull',
             '4x gtceu:uiv_sensor',

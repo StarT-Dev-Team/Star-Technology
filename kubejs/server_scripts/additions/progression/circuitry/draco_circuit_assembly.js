@@ -32,10 +32,10 @@ ServerEvents.recipes((event) => {
             '8x gtceu:calamatium_screw'
         )
         .inputFluids(
-            `gtceu:indium_tin_lead_cadmium_soldering_alloy 125000`,
+            'gtceu:indium_tin_lead_cadmium_soldering_alloy 125000',
             `${PEDOT_PSS} 75000`,
             `${SGM} 50000`,
-            `gtceu:isovol 28800`
+            'gtceu:isovol 28800'
         )
         .itemOutputs('gtceu:draco_circuit_assembler')
         .duration(4800)
@@ -143,8 +143,8 @@ ServerEvents.recipes((event) => {
             '2x kubejs:draconic_processor_assembly',
             `8x ${dio}`,
             '48x kubejs:qram_chip',
-            `16x kubejs:hyper_nor_memory_chip`,
-            `32x kubejs:hyper_nand_memory_chip`,
+            '16x kubejs:hyper_nor_memory_chip',
+            '32x kubejs:hyper_nand_memory_chip',
             '16x gtceu:void_foil',
             '4x gtceu:neutronium_tiny_fluid_pipe',
             `32x ${PEDOT_PSS}_foil`,
@@ -170,9 +170,9 @@ ServerEvents.recipes((event) => {
             `24x ${dio}`,
             `24x ${res}`,
             `24x ${tra}`,
-            `32x gtceu:void_foil`,
+            '32x gtceu:void_foil',
             '1x gtceu:energy_module',
-            `64x gtceu:aerogel_foil`,
+            '64x gtceu:aerogel_foil',
             '32x gtceu:polonium_bismide_single_wire',
             '4x gtceu:aurourium_plate',
         ],
@@ -256,8 +256,8 @@ ServerEvents.recipes((event) => {
             '2x kubejs:abyssal_processor_assembly',
             `16x ${dio}`,
             '24x kubejs:stellar_ram_chip',
-            `32x kubejs:hyper_nor_memory_chip`,
-            `64x kubejs:hyper_nand_memory_chip`,
+            '32x kubejs:hyper_nor_memory_chip',
+            '64x kubejs:hyper_nand_memory_chip',
             '8x gtceu:hvga_steel_bolt',
             '32x gtceu:draconyallium_foil',
             '4x gtceu:nyanium_tiny_fluid_pipe',

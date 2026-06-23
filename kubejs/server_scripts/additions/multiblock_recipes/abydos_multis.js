@@ -22,7 +22,7 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UHV]);
 
     event.recipes.gtceu
-        .assembly_line(id(`advanced_synthesis_plant`))
+        .assembly_line(id('advanced_synthesis_plant'))
         .itemInputs(
             'gtceu:zpm_machine_hull',
             '4x gtceu:zpm_sensor',

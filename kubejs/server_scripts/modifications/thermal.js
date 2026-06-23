@@ -129,11 +129,11 @@ ServerEvents.recipes((event) => {
     event.custom({
         type: 'systeams:boiling',
         ingredient: {
-            fluid: `minecraft:water`,
+            fluid: 'minecraft:water',
             amount: 100,
         },
         result: {
-            fluid: `systeams:steam`,
+            fluid: 'systeams:steam',
             amount: 400,
         },
     });
@@ -142,11 +142,11 @@ ServerEvents.recipes((event) => {
         type: 'systeams:boiling',
         ingredient: {
             // eslint-disable-next-line id-match, camelcase
-            fluid_tag: `forge:steam`,
+            fluid_tag: 'forge:steam',
             amount: 50,
         },
         result: {
-            fluid: `systeams:steamier`,
+            fluid: 'systeams:steamier',
             amount: 100,
         },
     });
@@ -156,9 +156,9 @@ ServerEvents.recipes((event) => {
     steamToIer.add('value', { tag: 'forge:steam' });
 
     event.recipes.gtceu
-        .fluid_heater(id(`steam_tag`))
+        .fluid_heater(id('steam_tag'))
         .inputFluids(FluidIngredientJS.of(steamToIer))
-        .outputFluids(`systeams:steamier 1000`)
+        .outputFluids('systeams:steamier 1000')
         .duration(20)
         .EUt(30);
 

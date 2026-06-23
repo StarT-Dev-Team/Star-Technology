@@ -48,9 +48,9 @@ ServerEvents.recipes((event) => {
 
     //Usage
     event.recipes.gtceu
-        .latex_plantation(id(`latex`))
+        .latex_plantation(id('latex'))
         .notConsumable('gtceu:wood_screw')
-        .outputFluids(`thermal:latex 100`)
+        .outputFluids('thermal:latex 100')
         .duration(400);
 
     const latexType = [
@@ -71,15 +71,9 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .fluid_solidifier(id('raw_rubber'))
+        .notConsumable('gtceu:ball_casting_mold')
         .inputFluids('thermal:latex 250')
         .itemOutputs('thermal:rubber')
-        .duration(120)
-        .EUt(8);
-
-    event.recipes.gtceu
-        .extractor(id('latex_extraction'))
-        .itemInputs('thermal:rubber')
-        .outputFluids('thermal:latex 250')
         .duration(120)
         .EUt(8);
 
@@ -88,5 +82,22 @@ ServerEvents.recipes((event) => {
         .itemInputs('3x thermal:rubber', 'gtceu:sulfur_dust')
         .outputFluids('gtceu:rubber 576')
         .duration(240)
+        .EUt(8);
+
+    event.recipes.create.pressing('gtceu:latex_plate', 'thermal:rubber').id('start:pressing/latex_sheets');
+
+    event.recipes.gtceu
+        .fluid_solidifier(id('latex_sheet'))
+        .notConsumable('gtceu:plate_casting_mold')
+        .inputFluids('thermal:latex 144')
+        .itemOutputs('gtceu:latex_plate')
+        .duration(120)
+        .EUt(8);
+
+    event.recipes.gtceu
+        .extractor(id('latex_extraction'))
+        .itemInputs('thermal:rubber')
+        .outputFluids('thermal:latex 250')
+        .duration(120)
         .EUt(8);
 });

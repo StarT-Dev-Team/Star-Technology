@@ -3,7 +3,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.create
         .mechanical_crafting(
-            `start_core:komaru`,
+            'start_core:komaru',
             [
                 '   G G   ',
                 '  GGFGG  ',

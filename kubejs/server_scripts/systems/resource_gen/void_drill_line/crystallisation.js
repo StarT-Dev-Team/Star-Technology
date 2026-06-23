@@ -4,16 +4,16 @@ ServerEvents.recipes((event) => {
     //alternate production
     event.recipes.gtceu
         .mixer(id('molten_ore_mixture_recycling'))
-        .inputFluids(`minecraft:lava 32000`)
-        .itemInputs(`32x gtceu:stone_dust`, `16x #forge:crushed_ores`)
+        .inputFluids('minecraft:lava 32000')
+        .itemInputs('32x gtceu:stone_dust', '16x #forge:crushed_ores')
         .outputFluids('gtceu:molten_ore_mixture 6000')
         .duration(800)
         .EUt(GTValues.VA[GTValues.EV]);
 
     event.recipes.gtceu
         .mixer(id('molten_ore_mixture_looping'))
-        .inputFluids(`minecraft:lava 48000`)
-        .itemInputs(`48x gtceu:stone_dust`, `2x gtceu:metal_mixture_dust`)
+        .inputFluids('minecraft:lava 48000')
+        .itemInputs('48x gtceu:stone_dust', '2x gtceu:metal_mixture_dust')
         .outputFluids('gtceu:molten_ore_mixture 20000')
         .duration(600)
         .EUt(GTValues.VA[GTValues.IV]);

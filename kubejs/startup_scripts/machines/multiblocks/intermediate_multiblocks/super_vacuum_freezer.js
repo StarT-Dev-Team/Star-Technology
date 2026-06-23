@@ -36,7 +36,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .build()
         )
         .workableCasingModel(
-            `gtceu:block/casings/solid/machine_casing_frost_proof`,
-            `gtceu:block/multiblock/vacuum_freezer`
+            'gtceu:block/casings/solid/machine_casing_frost_proof',
+            'gtceu:block/multiblock/vacuum_freezer'
         );
 });

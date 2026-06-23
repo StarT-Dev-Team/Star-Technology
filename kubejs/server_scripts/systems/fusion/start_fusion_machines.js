@@ -258,13 +258,13 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VA[GTValues.EV] * Math.pow(4, tier))
             .cleanroom(clean);
         if (tier === 1) {
-            fusionReflectorRecipe.itemInputs(`6x gtceu:trinium_foil`);
+            fusionReflectorRecipe.itemInputs('6x gtceu:trinium_foil');
         } else if (2 <= tier && tier <= 5) {
             fusionReflectorRecipe.itemInputs(`${12 * (tier - 1)}x gtceu:trinium_foil`);
         } else if (tier === 6) {
-            fusionReflectorRecipe.itemInputs(`64x gtceu:trinium_foil`);
+            fusionReflectorRecipe.itemInputs('64x gtceu:trinium_foil');
         } else if (tier === 7) {
-            fusionReflectorRecipe.itemInputs(`64x gtceu:trinium_foil`, `32x gtceu:trinium_foil`);
+            fusionReflectorRecipe.itemInputs('64x gtceu:trinium_foil', '32x gtceu:trinium_foil');
         }
     };
 

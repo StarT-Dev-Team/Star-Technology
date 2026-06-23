@@ -46,44 +46,44 @@ ServerEvents.recipes((event) => {
             event.recipes.gtceu
                 .solid_blast_furnace(id(`${naming}_${coal}_to_steel_dust`))
                 .itemInputs(`${feType}_ingot`, `2x gtceu:${coal}_dust`)
-                .itemOutputs('gtceu:steel_ingot', `gtceu:tiny_dark_ash_dust`)
+                .itemOutputs('gtceu:steel_ingot', 'gtceu:tiny_dark_ash_dust')
                 .duration(baseTime);
 
             event.recipes.gtceu
                 .solid_blast_furnace(id(`${naming}_${coal}_to_steel`))
                 .itemInputs(`${feType}_ingot`, `2x minecraft:${coal}`)
-                .itemOutputs('gtceu:steel_ingot', `gtceu:tiny_dark_ash_dust`)
+                .itemOutputs('gtceu:steel_ingot', 'gtceu:tiny_dark_ash_dust')
                 .duration(baseTime);
         });
 
         event.recipes.gtceu
             .solid_blast_furnace(id(`${naming}_coal_to_steel_block`))
-            .itemInputs(`${feType}_block`, `2x minecraft:coal_block`)
-            .itemOutputs('gtceu:steel_block', `gtceu:dark_ash_dust`)
+            .itemInputs(`${feType}_block`, '2x minecraft:coal_block')
+            .itemOutputs('gtceu:steel_block', 'gtceu:dark_ash_dust')
             .duration(baseTime * 9);
 
         event.recipes.gtceu
             .solid_blast_furnace(id(`${naming}_charcoal_to_steel_block`))
-            .itemInputs(`${feType}_block`, `2x gtceu:charcoal_block`)
-            .itemOutputs('gtceu:steel_block', `gtceu:dark_ash_dust`)
+            .itemInputs(`${feType}_block`, '2x gtceu:charcoal_block')
+            .itemOutputs('gtceu:steel_block', 'gtceu:dark_ash_dust')
             .duration(baseTime * 9);
 
         event.recipes.gtceu
             .solid_blast_furnace(id(`${naming}_coke_to_steel_block`))
-            .itemInputs(`${feType}_block`, `gtceu:coke_block`)
-            .itemOutputs('gtceu:steel_block', `gtceu:ash_dust`)
+            .itemInputs(`${feType}_block`, 'gtceu:coke_block')
+            .itemOutputs('gtceu:steel_block', 'gtceu:ash_dust')
             .duration(baseTime * 9 * cokeScaler);
 
         event.recipes.gtceu
             .solid_blast_furnace(id(`${naming}_coke_to_steel_dust`))
-            .itemInputs(`${feType}_ingot`, `gtceu:coke_dust`)
-            .itemOutputs('gtceu:steel_ingot', `gtceu:ash_dust`)
+            .itemInputs(`${feType}_ingot`, 'gtceu:coke_dust')
+            .itemOutputs('gtceu:steel_ingot', 'gtceu:ash_dust')
             .duration(baseTime * cokeScaler);
 
         event.recipes.gtceu
             .solid_blast_furnace(id(`${naming}_coke_to_steel`))
-            .itemInputs(`${feType}_ingot`, `gtceu:coke_gem`)
-            .itemOutputs('gtceu:steel_ingot', `gtceu:ash_dust`)
+            .itemInputs(`${feType}_ingot`, 'gtceu:coke_gem')
+            .itemOutputs('gtceu:steel_ingot', 'gtceu:ash_dust')
             .duration(baseTime * cokeScaler);
     };
     ironType('minecraft:iron', 720, 5 / 6);

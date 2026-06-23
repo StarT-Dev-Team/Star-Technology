@@ -517,7 +517,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.create
         .mechanical_crafting(
-            `sgjourney:milky_way_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}`,
+            'sgjourney:milky_way_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
             [' CRCRC ', 'RR   RR', 'C     C', 'R     R', 'R     R', 'CR   RC', ' RCBCR '],
             {
                 R: 'kubejs:ancient_stargate_ring_block',

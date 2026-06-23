@@ -90,7 +90,7 @@ ServerEvents.recipes((event) => {
         event
             .shaped(Item.of(`${casingId}:${type}_turbine_casing`, 2), ['PHP', 'PFP', 'PWP'], {
                 P: `gtceu:${material}_plate`,
-                F: `gtceu:steel_turbine_casing`,
+                F: 'gtceu:steel_turbine_casing',
                 H: '#forge:tools/hammers',
                 W: '#forge:tools/wrenches',
             })
@@ -98,7 +98,7 @@ ServerEvents.recipes((event) => {
 
         event.recipes.gtceu
             .assembler(id(`${type}_turbine_casing`))
-            .itemInputs(`6x gtceu:${material}_plate`, `gtceu:steel_turbine_casing`)
+            .itemInputs(`6x gtceu:${material}_plate`, 'gtceu:steel_turbine_casing')
             .itemOutputs(`2x ${casingId}:${type}_turbine_casing`)
             .duration(50)
             .EUt(16)
@@ -433,14 +433,14 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
-    event.shaped('2x kubejs:superdense_assembly_control_casing', [`PGP`, `AFA`, `PGP`], {
+    event.shaped('2x kubejs:superdense_assembly_control_casing', ['PGP', 'AFA', 'PGP'], {
         P: 'gtceu:double_neutronium_plate',
         G: 'gtceu:pure_netherite_gear',
         A: 'gtceu:uhv_robot_arm',
         F: 'gtceu:zircalloy_4_frame',
     });
 
-    event.shaped('2x kubejs:superdense_assembly_machine_casing', [`CUC`, `SFE`, `CMC`], {
+    event.shaped('2x kubejs:superdense_assembly_machine_casing', ['CUC', 'SFE', 'CMC'], {
         C: '#gtceu:circuits/uv',
         U: 'gtceu:uhpic_chip',
         S: 'gtceu:uhv_sensor',
@@ -464,21 +464,21 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UHV]);
 
     event.recipes.gtceu
-        .assembler(id(`polycarbonate_casing`))
-        .itemInputs(`gtceu:clean_machine_casing`)
-        .inputFluids(`gtceu:polycarbonate 216`)
-        .itemOutputs(`kubejs:polycarbonate_casing`)
+        .assembler(id('polycarbonate_casing'))
+        .itemInputs('gtceu:clean_machine_casing')
+        .inputFluids('gtceu:polycarbonate 216')
+        .itemOutputs('kubejs:polycarbonate_casing')
         .duration(200)
         .EUt(GTValues.VHA[GTValues.LuV]);
 
     event
-        .shaped(Item.of(`2x gtceu:palladium_substation`), ['PHP', 'PFP', 'PWP'], {
-            P: `gtceu:palladium_plate`,
-            F: `gtceu:iridium_frame`,
+        .shaped(Item.of('2x gtceu:palladium_substation'), ['PHP', 'PFP', 'PWP'], {
+            P: 'gtceu:palladium_plate',
+            F: 'gtceu:iridium_frame',
             H: '#forge:tools/hammers',
             W: '#forge:tools/wrenches',
         })
-        .id(`start:shaped/palladium_substation`);
+        .id('start:shaped/palladium_substation');
 
     const hermeticCasing = (tier) => {
         const casingMaterial = global.componentMaterials[tier].materials.tierMaterial;

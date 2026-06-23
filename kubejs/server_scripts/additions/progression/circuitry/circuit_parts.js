@@ -84,7 +84,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`kubejs:living_smd_${type}`)
             .itemOutputs(
                 Item.of(
-                    `start_core:data_dna_disk`,
+                    'start_core:data_dna_disk',
                     `{assembly_line_research:{research_id:"1x_kubejs_living_smd_${type}",research_type:"gtceu:component_part_assembly"}}`
                 )
             )
@@ -158,7 +158,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`kubejs:${type}`)
             .itemOutputs(
                 Item.of(
-                    `start_core:component_data_core`,
+                    'start_core:component_data_core',
                     `{assembly_line_research:{research_id:"1x_kubejs_${type}",research_type:"gtceu:component_part_synthesis_forge"}}`
                 )
             )
@@ -183,7 +183,7 @@ ServerEvents.recipes((event) => {
     );
 
     dracoQMDInMCSF(
-        `draconic_qmd_transistor`,
+        'draconic_qmd_transistor',
         16,
         [
             `${2 * scalerMCSF * 0.75}x gtceu:ancient_netherite_foil`,
@@ -198,7 +198,7 @@ ServerEvents.recipes((event) => {
     );
 
     dracoQMDInMCSF(
-        `draconic_qmd_capacitor`,
+        'draconic_qmd_capacitor',
         16,
         [
             `${scalerMCSF * 0.75 * 2}x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_foil`,
@@ -213,7 +213,7 @@ ServerEvents.recipes((event) => {
     );
 
     dracoQMDInMCSF(
-        `draconic_qmd_resistor`,
+        'draconic_qmd_resistor',
         16,
         [
             `${scalerMCSF * 0.75}x gtceu:diamane_dust`,
@@ -228,7 +228,7 @@ ServerEvents.recipes((event) => {
     );
 
     dracoQMDInMCSF(
-        `draconic_qmd_diode`,
+        'draconic_qmd_diode',
         32,
         [
             `${scalerMCSF * 0.75 * 2}x gtceu:silicon_carbide_over_bismuth_tritelluride_dust`,

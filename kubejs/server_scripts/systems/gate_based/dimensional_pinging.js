@@ -9,10 +9,10 @@ ServerEvents.recipes((event) => {
         .assembly_line(id('dimensional_finder'))
         .itemInputs(
             'gtceu:zpm_scanner',
-            '16x gtceu:zpm_sensor',
-            '16x gtceu:zpm_emitter',
-            '16x gtceu:zpm_field_generator',
-            '16x gtceu:zpm_voltage_coil',
+            '12x gtceu:zpm_sensor',
+            '12x gtceu:zpm_emitter',
+            '12x gtceu:zpm_field_generator',
+            '12x gtceu:zpm_voltage_coil',
             '64x gtceu:fine_trinaquadalloy_wire',
             '64x gtceu:fine_trinaquadalloy_wire',
             '8x #gtceu:circuits/uv'
@@ -34,9 +34,9 @@ ServerEvents.recipes((event) => {
         .dimensional_finder(id('abydos_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', '64x minecraft:sand', '16x gtceu:zpm_sensor')
         .inputFluids('gtceu:naquadria 7200')
-        .itemOutputs('kubejs:abydos_coordinate_crystal')
+        .chancedOutput('kubejs:abydos_coordinate_crystal', 500, 0)
         .CWUt(48)
-        .totalCWU(576000)
+        .totalCWU(230400)
         .EUt(GTValues.VHA[GTValues.UV])
         .dimension('minecraft:overworld');
 
@@ -44,9 +44,9 @@ ServerEvents.recipes((event) => {
         .dimensional_finder(id('nether_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', '64x minecraft:netherrack', '16x gtceu:uv_sensor')
         .inputFluids('minecraft:lava 50000')
-        .itemOutputs('kubejs:nether_coordinate_crystal')
+        .chancedOutput('kubejs:nether_coordinate_crystal', 500, 0)
         .CWUt(192)
-        .totalCWU(2304000)
+        .totalCWU(921600)
         .EUt(GTValues.VHA[GTValues.UEV])
         .dimension('sgjourney:abydos');
 
@@ -54,9 +54,9 @@ ServerEvents.recipes((event) => {
         .dimensional_finder(id('end_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', '64x minecraft:end_stone', '16x gtceu:uhv_sensor')
         .inputFluids('gtceu:echo_r 7200')
-        .itemOutputs('kubejs:end_coordinate_crystal')
+        .chancedOutput('kubejs:end_coordinate_crystal', 500, 0)
         .CWUt(384)
-        .totalCWU(4608000)
+        .totalCWU(1843200)
         .EUt(GTValues.VA[GTValues.UIV])
         .dimension('minecraft:the_nether');
 

@@ -31,5 +31,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 })
                 .build()
         )
-        .workableCasingModel(`kubejs:block/casings/large_cubes/beryllium_bronze_casing`, `gtceu:block/machines/cutter`);
+        .workableCasingModel('kubejs:block/casings/large_cubes/beryllium_bronze_casing', 'gtceu:block/machines/cutter');
 });

@@ -142,7 +142,7 @@ ServerEvents.recipes((event) => {
                 amperage === 2
                     ? '2a_dream_link_cover_item'
                     : amperage === 4
-                      ? `2a_dream_link_energy_hatch`
+                      ? '2a_dream_link_energy_hatch'
                       : `${amperage / 4}a_dream_link_energy_hatch`;
 
             let inputHatch =
