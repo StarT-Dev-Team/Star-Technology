@@ -29,12 +29,12 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('cattomolymer_casing'),
-                        P.ability(PA.itemIn, { max: 8, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 8, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 8, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 8, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 8, view: 1 }),
+                        P.ability(PA.itemOut, { max: 8, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 8, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 8, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     B: P.gtBlock('heat_vent'),

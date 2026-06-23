@@ -10,6 +10,12 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    /**
+     * @param {string} type
+     * @param {string} casing
+     * @param {string=} name
+     * @param {string=} recipeType
+     */
     const largeCube = (type, casing, name, recipeType) => {
         name = name || `t_large_${type}`;
         recipeType = recipeType || type;

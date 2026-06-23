@@ -38,9 +38,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     A: P.kjsBlock('nyanium_heat_escape_casing'),
                     B: P.anyOf([
                         P.kjsBlock('ionic_engraving_casing'),
-                        P.ability(PA.itemIn, { max: 20, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 20, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 20, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 20, view: 1 }),
+                        P.ability(PA.itemOut, { max: 20, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 20, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                         P.ability(PA.euIn, { max: 2 }),
                         P.ability(PA.maintenance, { exact: 1 }),

@@ -38,10 +38,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('superdense_machine_casing'),
-                        P.ability(PA.fluidIn, { max: 4, prev: 1 }),
-                        P.ability(PA.itemIn, { max: 8, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 1, prev: 1 }),
-                        P.ability(PA.euIn, { max: 1, prev: 1 }),
+                        P.ability(PA.fluidIn, { max: 4, view: 1 }),
+                        P.ability(PA.itemIn, { max: 8, view: 1 }),
+                        P.ability(PA.itemOut, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
                         P.gtBlock('uhv_stabilization_module', { exact: 1 }),
                     ]),
                     B: P.gtBlock('computer_heat_vent'),

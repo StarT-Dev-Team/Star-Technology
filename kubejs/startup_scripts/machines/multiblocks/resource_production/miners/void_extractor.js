@@ -22,11 +22,11 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     C: P.controller(definition),
                     S: P.anyOf([
-                        P.blocks('gtceu:solid_machine_casing'),
-                        P.ability(PA.fluidIn, { max: 1, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 2 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 2 }),
-                        P.ability(PA.euIn, { max: 2, prev: 2 }),
+                        P.gtBlock('solid_machine_casing'),
+                        P.ability(PA.fluidIn, { max: 1, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 2 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 2 }),
+                        P.ability(PA.euIn, { max: 2, view: 2 }),
                     ]),
                     F: P.gtBlock('steel_frame'),
                     G: P.gtBlock('steel_gearbox'),

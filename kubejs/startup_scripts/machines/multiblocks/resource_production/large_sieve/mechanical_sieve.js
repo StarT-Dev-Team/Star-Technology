@@ -26,9 +26,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.controller(definition),
                     W: P.anyOf([
                         P.kjsBlock('treatedwood_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.euIn, { max: 1, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
                     ]),
                     F: P.gtBlock('treated_wood_frame'),
                     M: P.kjsBlock('meshblock'),

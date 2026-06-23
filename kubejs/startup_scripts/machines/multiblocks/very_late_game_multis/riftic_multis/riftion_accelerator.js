@@ -47,9 +47,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.kjsBlock('draco_resilient_fusion_glass'),
                     D: P.anyOf([
                         P.kjsBlock('primordial_ware_casing'),
-                        P.gtBlock('ulv_input_bus', { max: 1, prev: 1 }),
-                        P.ability(PA.compIn, { exact: 1, prev: 1 }),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.gtBlock('ulv_input_bus', { max: 1, view: 1 }),
+                        P.ability(PA.compIn, { exact: 1, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                     ]),
                     E: P.kjsBlock('aberration_casing'),
                     F: P.coreBlock('auxiliary_boosted_fusion_casing_mk2'),

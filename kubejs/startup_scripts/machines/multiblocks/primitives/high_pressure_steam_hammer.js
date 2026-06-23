@@ -14,11 +14,11 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('high_steam_machine_casing'),
-                        P.ability(PA.steamIn, { max: 2, prev: 1 }),
+                        P.ability(PA.steamIn, { max: 2, view: 1 }),
                         P.ability(PA.steam, { exact: 1 }),
-                        P.ability(PA.steamOut, { max: 2, prev: 1 }),
+                        P.ability(PA.steamOut, { max: 2, view: 1 }),
                     ]),
-                    '#': P.blocks('minecraft:air'),
+                    '#': P.block('minecraft:air'),
                     '@': P.controller(definition),
                 })
                 .build()

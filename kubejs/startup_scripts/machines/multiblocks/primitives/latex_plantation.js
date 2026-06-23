@@ -14,9 +14,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .appearanceBlock(GTBlocks.CASING_PRIMITIVE_BRICKS)
         .pattern((definition) =>
             newFactoryBlockPattern([
-                'BOB|SSS|###|###|###|#L#|###',
-                'BDB|BGB|#G#|#G#|#G#|LGL|#L#',
-                'BIB|BCB|SSS|###|###|#L#|###',
+                'BOB|SSS|   |   |   | L |   ',
+                'BDB|BGB| G | G | G |LGL| L ',
+                'BIB|BCB|SSS|   |   | L |   ',
             ])
                 .whereDict({
                     C: P.controller(definition),
@@ -27,7 +27,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     L: P.block('minecraft:jungle_leaves'),
                     G: P.block('minecraft:jungle_log'),
                     D: P.block('minecraft:dirt'),
-                    '#': P.any(),
+                    ' ': P.any(),
                 })
                 .build()
         )

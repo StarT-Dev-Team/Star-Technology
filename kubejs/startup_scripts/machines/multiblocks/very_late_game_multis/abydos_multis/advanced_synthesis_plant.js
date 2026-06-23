@@ -35,7 +35,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     F: P.anyOf([
                         P.kjsBlock('peek_casing'),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn).setMaxGlobalLimited(2),
+                        P.ability(PA.euIn, { max: 2 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     H: P.block(GCYMBlocks.HEAT_VENT.get()),
@@ -45,8 +45,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     T: P.gtBlock('tungsten_frame'),
                     G: P.gtBlock('laminated_glass'),
                     ' ': P.any(),
-                    O: P.abilityOr(PA.itemOut, PA.fluidOut),
-                    I: P.abilityOr(PA.fluidIn, PA.itemIn),
+                    O: P.abilityOr([PA.itemOut, PA.fluidOut]),
+                    I: P.abilityOr([PA.fluidIn, PA.itemIn]),
                 })
                 .build()
         )

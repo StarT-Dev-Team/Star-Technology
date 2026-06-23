@@ -33,10 +33,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     ' ': P.any(),
                     B: P.anyOf([
                         P.kjsBlock('gravitationally_strained_stabilization_casing'),
-                        P.ability(PA.itemIn, { max: 20, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 20, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 20, view: 1 }),
+                        P.ability(PA.itemOut, { max: 20, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
-                        P.ability(PA.euIn, { max: 2 }).setMaxGlobalLimited(2),
+                        P.ability(PA.euIn, { max: 2 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     C: P.gtBlock('abyssal_alloy_frame'),

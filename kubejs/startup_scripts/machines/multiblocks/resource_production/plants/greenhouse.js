@@ -42,14 +42,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'HHHCHHH| FGGGF | FGGGF | FGGGF |  FFF  ',
             ])
                 .whereDict({
-                    C: P.controller(P.blocks(definition.get())),
+                    C: P.controller(definition),
                     H: P.anyOf([
                         P.block(GTBlocks.CASING_STEEL_SOLID.get(), { min: 14 }),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     B: P.gtBlock('soul_infused_block'),

@@ -20,10 +20,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.gtBlock('frostproof_machine_casing', { min: 5 }),
-                        P.ability(PA.itemIn, { prev: 1 }),
-                        P.ability(PA.itemOut, { prev: 1 }),
-                        P.ability(PA.fluidIn, { prev: 1 }),
-                        P.ability(PA.fluidOut, { prev: 1 }),
+                        P.ability(PA.itemIn, { view: 1 }),
+                        P.ability(PA.itemOut, { view: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
+                        P.ability(PA.fluidOut, { view: 1 }),
                         P.ability(PA.euIn, { max: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),

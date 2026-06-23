@@ -32,19 +32,19 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     '@': P.controller(definition),
                     H: P.anyOf([
-                        P.gtBlock('high_temperature_smelting_casing')
-                            .or(P.ability(PA.itemIn, { max: 2, prev: 1 }).setMaxGlobalLimited(2).setPreviewCount(1))
-                            .or(P.ability(PA.itemOut, { max: 2, prev: 1 }).setMaxGlobalLimited(2).setPreviewCount(1))
-                            .or(P.ability(PA.maintenance, { exact: 1 }).setExactLimit(1))
-                            .or(P.ability(PA.fluidIn, { max: 2, prev: 1 }).setMaxGlobalLimited(2).setPreviewCount(1))
-                            .or(P.ability(PA.fluidOut, { max: 2, prev: 1 }).setMaxGlobalLimited(2).setPreviewCount(1))
-                            .or(P.ability(PA.parallelHatch, { max: 1 }).setMaxGlobalLimited(1)),
+                        P.gtBlock('high_temperature_smelting_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     V: P.gtBlock('heat_vent'),
                     G: P.gtBlock('laminated_glass'),
                     P: P.gtBlock('tungstensteel_pipe_casing'),
                     E: P.kjsBlock('pallaridium_engine_intake_casing'),
-                    X: P.abilityOr([P.ability(PA.euOut), P.ability(PA.laserOut)]),
+                    X: P.abilityOr([PA.euOut, PA.laserOut]),
                     ' ': P.any(),
                 })
                 .build()

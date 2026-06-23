@@ -34,9 +34,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('enriched_naquadah_machine_casing', { min: 20 }),
-                        P.ability(PA.itemIn, { prev: 1 }),
-                        P.ability(PA.itemOut, { prev: 1 }),
-                        P.ability(PA.fluidIn, { prev: 1 }),
+                        P.ability(PA.itemIn, { view: 1 }),
+                        P.ability(PA.itemOut, { view: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                         P.ability(PA.euIn, { max: 2 }),
                         P.ability(PA.maintenance, { exact: 1 }),
@@ -47,7 +47,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.kjsBlock('enriched_naquadah_gearbox'),
                     D: P.kjsBlock('enriched_naquadah_pipe_casing'),
                     E: P.kjsBlock('noble_mixing_casing'),
-                    M: P.ability(PartAbility.MUFFLER),
+                    M: P.ability(PA.muffler),
                     '@': P.controller(definition),
                 })
                 .build()

@@ -22,10 +22,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.controller(definition),
                     P: P.anyOf([
                         P.block(GTBlocks.TREATED_WOOD_PLANK.get()),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
                     ]),
                     D: P.block(GTBlocks.CASING_PUMP_DECK.get()),
                     ' ': P.air(),
@@ -51,7 +51,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         type: 'fluid',
                         index: 0,
                         pos: [24, 29],
-                        texture: GuiTextureGroup(
+                        texture: new GuiTextureGroup(
                             GuiTextures.PRIMITIVE_SLOT,
                             GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.getSubTexture(0, 0.04, 1, 0.22)
                         ),
@@ -63,7 +63,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         type: 'fluid',
                         index: 0,
                         pos: [114, 38],
-                        texture: GuiTextureGroup(
+                        texture: new GuiTextureGroup(
                             GuiTextures.PRIMITIVE_SLOT,
                             GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.getSubTexture(0, 0.04, 1, 0.22)
                         ),

@@ -19,9 +19,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     A: P.gtBlock('bronze_machine_casing'),
                     B: P.anyOf([
                         P.gtBlock('steam_machine_casing'),
-                        P.ability(PA.steamIn, { max: 2, prev: 1 }),
+                        P.ability(PA.steamIn, { max: 2, view: 1 }),
                         P.ability(PA.steam, { exact: 1 }),
-                        P.ability(PA.steamOut, { max: 2, prev: 1 }),
+                        P.ability(PA.steamOut, { max: 2, view: 1 }),
                     ]),
                     '#': P.any(),
                     C: P.block('farmersdelight:stove'),

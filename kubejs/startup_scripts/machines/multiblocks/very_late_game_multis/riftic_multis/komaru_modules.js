@@ -57,10 +57,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('primordial_ware_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
@@ -97,10 +97,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('primordial_ware_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
@@ -137,10 +137,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('primordial_ware_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
@@ -182,10 +182,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('primordial_ware_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.compIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
@@ -223,10 +223,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     A: P.anyOf([
                         P.kjsBlock('primordial_ware_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.compIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),

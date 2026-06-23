@@ -48,19 +48,19 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     A: P.anyOf([
                         P.kjsBlock('cattomolymer_casing'),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn).setMaxGlobalLimited(2),
+                        P.ability(PA.euIn, { max: 2 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     B: P.kjsBlock('nyanium_heat_escape_casing'),
                     ' ': P.any(),
                     C: P.gtBlock('draconyallium_frame'),
-                    D: P.abilityOr(PA.fluidIn, PA.itemIn),
+                    D: P.abilityOr([PA.fluidIn, PA.itemIn]),
                     E: P.kjsBlock('nyanium_pipe_casing'),
                     F: P.kjsBlock('nyanium_engine_intake_casing'),
                     G: P.kjsBlock('rhenotax_coil'),
                     H: P.kjsBlock('nyanium_machine_casing'),
                     I: P.kjsBlock('nyanium_firebox_casing'),
-                    J: P.abilityOr(PA.itemOut, PA.fluidOut),
+                    J: P.abilityOr([PA.itemOut, PA.fluidOut]),
                     '@': P.controller(definition),
                 })
                 .build()

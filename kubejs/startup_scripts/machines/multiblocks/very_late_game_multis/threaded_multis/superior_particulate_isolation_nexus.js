@@ -32,12 +32,12 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     B: P.anyOf([
                         P.kjsBlock('tectonic_defiance_casing'),
-                        P.ability(PA.itemIn, { max: 20, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 20, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 20, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 20, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 20, view: 1 }),
+                        P.ability(PA.itemOut, { max: 20, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 20, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 20, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
-                        P.ability(PA.euIn).setMaxGlobalLimited(2),
+                        P.ability(PA.euIn, { max: 2 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     ' ': P.any(),

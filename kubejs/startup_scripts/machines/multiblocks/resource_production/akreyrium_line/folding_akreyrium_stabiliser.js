@@ -37,7 +37,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     M: P.gtBlock('ulv_input_bus'),
                     X: P.anyOf([
                         P.gtBlock('fusion_glass'),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                         P.abilityOr([PA.itemOut, PA.fluidIn, PA.fluidOut]),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),

@@ -37,12 +37,12 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '         |FCC      |FFCH@  CC|FCC      |         ',
             ])
                 .whereDict({
-                    '@': P.controller(definition.get()),
+                    '@': P.controller(definition),
                     H: P.anyOf([
                         P.kjsBlock('enriched_naquadah_machine_casing'),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.itemIn, { prev: 1 }),
-                        P.ability(PA.itemOut, { prev: 1 }),
+                        P.ability(PA.itemIn, { view: 1 }),
+                        P.ability(PA.itemOut, { view: 1 }),
                     ]),
                     F: P.gtBlock('void_frame'),
                     C: P.kjsBlock('enriched_naquadah_machine_casing'),
@@ -102,8 +102,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     H: P.anyOf([
                         P.kjsBlock('nyanium_machine_casing'),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.fluidIn, { prev: 1 }),
-                        P.ability(PA.fluidOut, { prev: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
+                        P.ability(PA.fluidOut, { view: 1 }),
                     ]),
                     F: P.gtBlock('draconyallium_frame'),
                     C: P.kjsBlock('nyanium_machine_casing'),

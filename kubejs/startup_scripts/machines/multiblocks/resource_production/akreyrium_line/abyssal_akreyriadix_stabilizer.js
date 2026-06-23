@@ -39,7 +39,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.gtBlock('draconyallium_frame'),
                     D: P.anyOf([
                         P.kjsBlock('draco_resilient_fusion_glass'),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                         P.ability(PA.itemOut, { max: 2 }),
                         P.ability(PA.fluidOut, { max: 2 }),
                         P.ability(PA.maintenance, { exact: 1 }),

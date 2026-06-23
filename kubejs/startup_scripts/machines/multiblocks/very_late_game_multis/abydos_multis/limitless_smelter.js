@@ -27,10 +27,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     A: P.gtBlock('tungsten_frame'),
                     B: P.anyOf([
                         P.gtBlock('high_temperature_smelting_casing'),
-                        P.ability(PA.itemIn, { max: 8, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 8, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 8, view: 1 }),
+                        P.ability(PA.itemOut, { max: 8, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     ' ': P.any(),

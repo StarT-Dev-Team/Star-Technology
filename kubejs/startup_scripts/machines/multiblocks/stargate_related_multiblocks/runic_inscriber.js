@@ -38,9 +38,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     ' ': P.any(),
                     B: P.anyOf([
                         P.kjsBlock('stellarium_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 1, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 1, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 1, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 1, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.euIn, { max: 2 }),
                     ]),

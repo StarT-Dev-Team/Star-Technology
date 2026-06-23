@@ -73,10 +73,25 @@ global.chemicalOverclockDisplay = (controller, components) => {
     }
 };
 
+/** @typedef {(pattern: internal.com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern) => void} FactoryBlockPatternConsumer */
+
 /**
- * @param {$RelativeDirection} charDir
- * @param {$RelativeDirection} stringDir
- * @param {$RelativeDirection} aisleDir
+ * @param {number} min
+ * @param {number | undefined} max
+ * @returns {FactoryBlockPatternConsumer}
+ * @global
+ */
+// eslint-disable-next-line no-unused-vars
+const blockPatternRepeatable = (min, max) => {
+    if (max) return (pattern) => pattern.setRepeatable(min, max);
+    return (pattern) => pattern.setRepeatable(min);
+};
+
+/**
+ * @param {InstanceType<typeof $RelativeDirection>} charDir
+ * @param {InstanceType<typeof $RelativeDirection>} stringDir
+ * @param {InstanceType<typeof $RelativeDirection>} aisleDir
+ * @returns {typeof newFactoryBlockPattern}
  * @global
  */
 const newFactoryBlockPatternWithDirections = (charDir, stringDir, aisleDir) => {
@@ -94,20 +109,11 @@ const newFactoryBlockPatternWithDirections = (charDir, stringDir, aisleDir) => {
         return ret;
     };
 };
-/**
- * @param {number} min
- * @param {number | undefined} max
- * @global
- */
-// eslint-disable-next-line no-unused-vars
-const blockPatternRepeatable = (min, max) => {
-    if (max) return (pattern) => pattern.setRepeatable(min, max);
-    return (pattern) => pattern.setRepeatable(min);
-};
 
 /**
- * @param {(string | ((pattern: any) => void))[]} pattern
- * @param {string} divider
+ * @param {(string | FactoryBlockPatternConsumer)[]} pattern
+ * @param {string} [divider]
+ * @returns {internal.com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern}
  * @global
  */
 // eslint-disable-next-line no-unused-vars

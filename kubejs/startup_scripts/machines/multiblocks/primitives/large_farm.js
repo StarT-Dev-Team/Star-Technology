@@ -23,8 +23,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.controller(definition),
                     P: P.anyOf([
                         P.block(GTBlocks.TREATED_WOOD_PLANK.get()),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
                     ]),
                     D: P.block('minecraft:farmland'),
                     F: P.gtBlock('treated_wood_frame'),

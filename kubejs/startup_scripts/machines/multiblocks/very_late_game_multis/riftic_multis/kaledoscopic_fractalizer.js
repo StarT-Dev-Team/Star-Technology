@@ -41,7 +41,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     ' ': P.any(),
                     B: P.anyOf([
                         P.kjsBlock('aberration_casing'),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     C: P.gtBlock('hvga_steel_frame'),
@@ -53,7 +53,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     I: P.kjsBlock('draco_ware_casing'),
                     J: P.kjsBlock('draco_resilient_fusion_glass'),
                     K: P.anyOf([
-                        P.abilityOr(PA.fluidIn_1X, PA.fluidIn_4X, PA.fluidIn_9X),
+                        P.abilityOr([PA.fluidIn1x, PA.fluidIn4x, PA.fluidIn9x]),
                         P.gtBlock('me_stocking_input_hatch'),
                         P.gtBlock('me_input_hatch'),
                     ]),

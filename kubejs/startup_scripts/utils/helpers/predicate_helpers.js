@@ -11,9 +11,9 @@
 /**
  * Applies optional min/max/exact/preview settings to a predicate instance.
  *
- * @param {object} predicate - The TracebilityPredicate object to configure.
+ * @param {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate} predicate - The TraceabilityPredicate object to configure.
  * @param {PredicateSettings} [settings] - Optional constraint settings.
- * @returns {TracebilityPredicate} The configured predicate.
+ * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate} The configured predicate.
  */
 function applySettings(predicate, settings) {
     if (settings === undefined) return predicate;
@@ -43,96 +43,96 @@ function applySettings(predicate, settings) {
  */
 const P = {
     /**
-     * @param {*} definition
-     * @returns {TracebilityPredicate}
+     * @param {internal.com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition} definition
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     controller: (definition) => Predicates.controller(Predicates.blocks(definition.get())),
     /**
-     * @param {string} id
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {string | } id
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     block: (id, settings) => applySettings(Predicates.blocks(id), settings),
     /**
      * @param {string} id
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     kjsBlock: (id, settings) => applySettings(Predicates.blocks(`kubejs:${id}`), settings),
     /**
      * @param {string} id
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     gtBlock: (id, settings) => applySettings(Predicates.blocks(`gtceu:${id}`), settings),
     /**
      * @param {string} id
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     coreBlock: (id, settings) => applySettings(Predicates.blocks(`start_core:${id}`), settings),
     /**
      * @param {string} tag
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     blockTag: (tag, settings) => applySettings(Predicates.blockTag(tag), settings),
     /**
      * @param {string} id
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     fluid: (id, settings) => applySettings(Predicates.fluids(id), settings),
     /**
      * @param {string} tag
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     fluidTag: (tag, settings) => applySettings(Predicates.fluidTag(tag), settings),
     /**
-     * @returns {TracebilityPredicate}
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     any: () => Predicates.any(),
     /**
-     * @returns {TracebilityPredicate}
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     air: () => Predicates.air(),
     /**
-     * @param {PartAbility | PartAbility[]} type
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.PartAbility | internal.com.gregtechceu.gtceu.api.machine.multiblock.PartAbility[]} type
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     ability: (type, settings) =>
-        applySettings(Predicates.abilities.apply(Predicates, Array.isArray(type) ? type : [type]), settings),
+        applySettings(Predicates.abilities.call(Predicates, Array.isArray(type) ? type : [type]), settings),
     /**
-     * @param {Array} abilities all Part Abilities
-     * @returns {TracebilityPredicate}
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.PartAbility[]} abilities all PartAbilities
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
-    abilityOr: (abilities) => P.anyOf(abilities.map(P.ability)),
+    abilityOr: (abilities) => P.anyOf(abilities.map((a) => P.ability(a))),
     /**
      * @param {*} recipeTypes
-     * @returns {TracebilityPredicate}
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     autoAbilities: (recipeTypes) => Predicates.autoAbilities(recipeTypes),
     /**
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     heatingCoil: (settings) => applySettings(Predicates.heatingCoils(), settings),
     /**
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     cleanroomFilter: (settings) => applySettings(Predicates.cleanroomFilters(), settings),
     /**
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     powerSubstationBattery: (settings) => applySettings(Predicates.powerSubstationBatteries(), settings),
     /**
      * @param {string | string[]} materials
-     * @param {PredicateSettings} settings
-     * @returns {TracebilityPredicate}
+     * @param {PredicateSettings} [settings]
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     frame: (materials, settings) =>
         applySettings(
@@ -140,19 +140,19 @@ const P = {
             settings
         ),
     /**
-     * @returns {TracebilityPredicate}
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     threadingBlocks: () => $StarTThreadingStatBlocks.threadingStatBlocks(),
     /**
-     * @returns {TracebilityPredicate}
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     vacuumPumps: () => $StarTVacuumPumpPredicates.vacuumPumps(),
     /**
      * Combines an array of predicates into a single predicate using logical OR (`.or()`).
      * The first predicate in the array is used as the accumulator.
      *
-     * @param {TracebilityPredicate[]} preds - An array of two or more predicate objects to combine.
-     * @returns {TracebilityPredicate} A single combined predicate that matches if any of the inputs match.
+     * @param {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate[]} preds - An array of two or more predicate objects to combine.
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate} A single combined predicate that matches if any of the inputs match.
      *
      * @example
      * P.anyOf([

@@ -44,9 +44,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     ' ': P.any(),
                     B: P.anyOf([
                         P.kjsBlock('gravitationally_strained_stabilization_casing'),
-                        P.ability(PA.itemIn, { max: 4, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 4, prev: 1 }),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 4, view: 1 }),
+                        P.ability(PA.itemOut, { max: 4, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                     ]),
                     C: P.gtBlock('stellarium_frame'),
                     D: P.kjsBlock('nyanium_heat_escape_casing'),

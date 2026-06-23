@@ -33,9 +33,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     B: P.gtBlock('secure_maceration_casing'),
                     C: P.anyOf([
                         P.gtBlock('robust_machine_casing'),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),

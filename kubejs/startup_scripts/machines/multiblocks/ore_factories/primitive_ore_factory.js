@@ -23,15 +23,15 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ])
                 .whereDict({
                     C: P.controller(definition),
-                    '#': Predicates.air(),
+                    '#': P.air(),
                     F: P.anyOf([
                         P.block(GTBlocks.CASING_PRIMITIVE_BRICKS.get()),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
                     ]),
-                    G: P.blocks(GTBlocks.CASING_BRONZE_PIPE.get()),
-                    B: P.blocks('gtceu:bronze_machine_casing'),
+                    G: P.block(GTBlocks.CASING_BRONZE_PIPE.get()),
+                    B: P.block('gtceu:bronze_machine_casing'),
                     ' ': P.any(),
                 })
                 .build()
@@ -59,7 +59,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         type: 'fluid',
                         index: 0,
                         pos: [73, 62],
-                        texture: GuiTextureGroup(
+                        texture: new GuiTextureGroup(
                             GuiTextures.PRIMITIVE_SLOT,
                             GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.getSubTexture(0, 0.04, 1, 0.22)
                         ),

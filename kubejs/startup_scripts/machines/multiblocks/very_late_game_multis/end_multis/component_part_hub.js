@@ -27,10 +27,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .whereDict({
                     B: P.anyOf([
                         P.kjsBlock('advanced_assembly_casing'),
-                        P.ability(PA.fluidIn, { max: 4, prev: 1 }),
-                        P.ability(PA.itemIn, { max: 8, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 1, prev: 1 }),
-                        P.ability(PA.euIn, { max: 1, prev: 1 }),
+                        P.ability(PA.fluidIn, { max: 4, view: 1 }),
+                        P.ability(PA.itemIn, { max: 8, view: 1 }),
+                        P.ability(PA.itemOut, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
                         P.ability(PA.optIn, { exact: 1 }),
                         P.gtBlock('uhv_stabilization_module', { exact: 1 }),
                     ]),

@@ -24,14 +24,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'IICII|     |     |     |IIIII',
             ])
                 .whereDict({
-                    C: P.controller(P.blocks(definition.get())),
+                    C: P.controller(definition),
                     I: P.anyOf([
                         P.block(GTBlocks.CASING_INVAR_HEATPROOF.get(), { min: 25 }),
-                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
-                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidIn, { max: 2, prev: 1 }),
-                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
-                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
