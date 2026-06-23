@@ -48,7 +48,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.kjsBlock('enriched_naquadah_machine_casing'),
                         P.ability(PA.fluidIn, { max: 3, prev: 1 }),
                         P.ability(PA.euIn, { max: 2, prev: 1 }),
-                        P.ability(PA.data, { exact: 1 }),
+                        P.ability(PA.optIn, { exact: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     G: P.kjsBlock('draco_resilient_fusion_glass'),

@@ -39,7 +39,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidIn, { max: 3, prev: 1 }),
                         P.ability(PA.euIn, { max: 2, prev: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.data, { exact: 1 }),
+                        P.ability(PA.optIn, { exact: 1 }),
                     ]),
                     G: P.gtBlock('fusion_glass'),
                     I: P.gtBlock('ulv_input_bus'),

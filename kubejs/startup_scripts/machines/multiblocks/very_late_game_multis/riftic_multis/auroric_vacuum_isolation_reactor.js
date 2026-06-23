@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('auroric_vacuum_isolation_reactor', 'multiblock')
         .machine((holder) => new $VacuumChemicalReactorMachine(holder))
@@ -26,43 +25,40 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:absolute_annihilation_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('abbba abbba abbba abbba b bbbbb b', 'b   b b   b b   b b   b b bbbbb b', 'b   b b   b b   b b   b bbbbbbbbb', 'b   b b   b b   b b   b a b   b a', 'abbba abbba abbba abbba a b   b a', '                        a b   b a', '                        bbbbbbbbb', '                          b   b  ', '                          b   b  ', '                          b   b  ', '                          bbbbb  ', '                          b   b  ', '                          b   b  ', '                          b   b  ', '                         bbbbbbb ')
-            .aisle('abbba abbba abbba abbba bdbbbbbdb', 'b   b b   b b   b b   b bddbbbddb', 'b   b b   b b   b b   b bbdddddbb', 'b   b b   b b   b b   b  ddddddd ', 'abbba abbba abbba abbba  ddddddd ', 'a   a a   a a   a a   a  ddddddd ', 'a   a a   a a   a a   a bdddddddb', 'a   a a   a a   a a   a  bdeeedb ', 'a   a a   a a   a a   a  bdeeedb ', 'a   a a   a a   a a   a  bdeeedb ', 'bbbbb bbbbb bbbbb bbbbb  bdddddb ', '                         bdddddb ', '                         bbdfdbb ', ' bbb   bbb   bbb   bbb   bbdddbb ', '                         bgggggb ')
-            .aisle('bbbbb bbbbb bbbbb bbbbb bbbbbbbbb', 'bdddbdbdddbdbdddbdbdddbdddddddddb', 'bdhdbdbdhdbdbdhdbdbdhdbdddd   ddb', 'bdddbdbdddbdbdddbdbdddbdddd   ddb', 'bbbbb bbbbb bbbbb bbbbb  dd   ddb', ' ddd   ddd   ddd   ddd   dd   ddb', ' ded   ded   ded   ded  bdd   ddb', ' ded   ded   ded   ded   bd   db ', ' ded   ded   ded   ded   bd   db ', ' ddd   ddd   ddd   ddd   bd   db ', 'bbbbb bbbbb bbbbb bbbbb  bdbbbdb ', ' did   did   did   did    d   d  ', ' did   did   did   did    d   d  ', 'bgggb bgggb bgggb bgggb   d   d  ', '                         bgggggb ')
-            .aisle('bbbbb bbbbb bbbbb bbbbb bbbbbbbbb', 'bbbbbdbbbbbdbbbbbdbbbbbdddddjdddb', 'bbbbb bbbbb bbbbb bbbbb  dd j ddb', 'bbbbbdbbbbbdbbbbbdbbbbbdddd j dd ', 'bbbbb bbbbb bbbbb bbbbb  dd j dd ', ' ddd   ddd   ddd   ddd   dd j dd ', ' e e   e e   e e   e e  bdd j ddb', ' e e   e e   e e   e e   bd j db ', ' e e   e e   e e   e e   bd j db ', ' djd   djd   djd   djd   bd j db ', 'bbjbb bbjbb bbjbb bbjbb  bdbjbdb ', ' djd   djd   djd   djd    d   d  ', ' djjjjjjjjjjjjjjjjjjjjjjjjjjj f  ', 'bgkgb bgkgb bgkgb bgkgb   d j d  ', '                         bggkggb ')
-            .aisle('bbbbb bbbbb bbbbb bbbbb bbbbbbbbb', 'bdddbdbdddbdbdddbdbdddbdddddddddb', 'bdhdbdbdhdbdbdhdbdbdhdbdddd   ddb', 'bdddbdbdddbdbdddbdbdddbdddd   ddb', 'bbbbb bbbbb bbbbb bbbbb  dd   ddb', ' ddd   ddd   ddd   ddd   dd   ddb', ' ded   ded   ded   ded  bdd   ddb', ' ded   ded   ded   ded   bd   db ', ' ded   ded   ded   ded   bd   db ', ' ddd   ddd   ddd   ddd   bd   db ', 'bbbbb bbbbb bbbbb bbbbb  bdbbbdb ', ' did   did   did   did    d   d  ', ' did   did   did   did    d   d  ', 'bgggb bgggb bgggb bgggb   d   d  ', '                         bgggggb ')
-            .aisle('abbba abbba abbba abbba bdbbbbbdb', 'b   b b   b b   b b   b bddbbbddb', 'b   b b   b b   b b   b bbdddddbb', 'b   b b   b b   b b   b  ddddddd ', 'abbba abbba abbba abbba  dddlddd ', 'a   a a   a a   a a   a  ddddddd ', 'a   a a   a a   a a   a bdddddddb', 'a   a a   a a   a a   a  bdeeedb ', 'a   a a   a a   a a   a  bdeeedb ', 'a   a a   a a   a a   a  bdeeedb ', 'bbbbb bbbbb bbbbb bbbbb  bdddddb ', '                         bdddddb ', '                         bbdfdbb ', ' bbb   bbb   bbb   bbb   bbdddbb ', '                         bgggggb ')
-            .aisle('abbba abbba abbba abbba b bbbbb b', 'b   b b   b b   b b   b b bbbbb b', 'b   b b   b b   b b   b bbbbbbbbb', 'b   b b   b b   b b   b a b   b a', 'abbba abbba abbba abbba a b   b a', '                        a b   b a', '                        bbbbbbbbb', '                          b   b  ', '                          b   b  ', '                          b   b  ', '                          bbbbb  ', '                          b   b  ', '                          b   b  ', '                          b   b  ', '                         bbbbbbb ')
-                .where('a', P.gtBlock('draco_abyssal_frame'))
-                .where('b', P.kjsBlock('aberration_casing'))
-                .where('c', P.any())
-                .where(
-                    'd',
-                    P.kjsBlock('absolute_annihilation_casing')
-                        .or(P.ability(PA.fluidIn).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(P.ability(PA.fluidOut).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(P.ability(PA.itemIn).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(P.ability(PA.itemOut).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(
-                            P.ability(PA.euIn).setMaxGlobalLimited(2).setMinGlobalLimited(1)
-                        )
-                        .or(P.ability(PA.maintenance, {exact:1}))
-                        .or(P.ability(PA.parallelHatch, {max:1}))
-                        .or(
-                            P.ability($StarTPartAbility.REDSTONE_INTERFACE)
-                                .setMaxGlobalLimited(4)
-                                .setPreviewCount(0)
-                        )
-                )
-                .where('e', P.kjsBlock('draco_resilient_fusion_glass'))
-                .where('f', P.kjsBlock('nyanium_heat_escape_casing'))
-                .where('g', P.kjsBlock('nyanium_machine_casing'))
-                .where('h', $StarTVacuumPumpPredicates.vacuumPumps())
-                .where('i', P.kjsBlock('rhenotax_coil'))
-                .where('j', P.kjsBlock('nyanium_pipe_casing'))
-                .where('k', P.kjsBlock('nyanium_engine_intake_casing'))
-                .where('l', P.controller(definition))
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                'abbba abbba abbba abbba b bbbbb b|b   b b   b b   b b   b b bbbbb b|b   b b   b b   b b   b bbbbbbbbb|b   b b   b b   b b   b a b   b a|abbba abbba abbba abbba a b   b a|                        a b   b a|                        bbbbbbbbb|                          b   b  |                          b   b  |                          b   b  |                          bbbbb  |                          b   b  |                          b   b  |                          b   b  |                         bbbbbbb ',
+                'abbba abbba abbba abbba bdbbbbbdb|b   b b   b b   b b   b bddbbbddb|b   b b   b b   b b   b bbdddddbb|b   b b   b b   b b   b  ddddddd |abbba abbba abbba abbba  ddddddd |a   a a   a a   a a   a  ddddddd |a   a a   a a   a a   a bdddddddb|a   a a   a a   a a   a  bdeeedb |a   a a   a a   a a   a  bdeeedb |a   a a   a a   a a   a  bdeeedb |bbbbb bbbbb bbbbb bbbbb  bdddddb |                         bdddddb |                         bbdfdbb | bbb   bbb   bbb   bbb   bbdddbb |                         bgggggb ',
+                'bbbbb bbbbb bbbbb bbbbb bbbbbbbbb|bdddbdbdddbdbdddbdbdddbdddddddddb|bdhdbdbdhdbdbdhdbdbdhdbdddd   ddb|bdddbdbdddbdbdddbdbdddbdddd   ddb|bbbbb bbbbb bbbbb bbbbb  dd   ddb| ddd   ddd   ddd   ddd   dd   ddb| ded   ded   ded   ded  bdd   ddb| ded   ded   ded   ded   bd   db | ded   ded   ded   ded   bd   db | ddd   ddd   ddd   ddd   bd   db |bbbbb bbbbb bbbbb bbbbb  bdbbbdb | did   did   did   did    d   d  | did   did   did   did    d   d  |bgggb bgggb bgggb bgggb   d   d  |                         bgggggb ',
+                'bbbbb bbbbb bbbbb bbbbb bbbbbbbbb|bbbbbdbbbbbdbbbbbdbbbbbdddddjdddb|bbbbb bbbbb bbbbb bbbbb  dd j ddb|bbbbbdbbbbbdbbbbbdbbbbbdddd j dd |bbbbb bbbbb bbbbb bbbbb  dd j dd | ddd   ddd   ddd   ddd   dd j dd | e e   e e   e e   e e  bdd j ddb| e e   e e   e e   e e   bd j db | e e   e e   e e   e e   bd j db | djd   djd   djd   djd   bd j db |bbjbb bbjbb bbjbb bbjbb  bdbjbdb | djd   djd   djd   djd    d   d  | djjjjjjjjjjjjjjjjjjjjjjjjjjj f  |bgkgb bgkgb bgkgb bgkgb   d j d  |                         bggkggb ',
+                'bbbbb bbbbb bbbbb bbbbb bbbbbbbbb|bdddbdbdddbdbdddbdbdddbdddddddddb|bdhdbdbdhdbdbdhdbdbdhdbdddd   ddb|bdddbdbdddbdbdddbdbdddbdddd   ddb|bbbbb bbbbb bbbbb bbbbb  dd   ddb| ddd   ddd   ddd   ddd   dd   ddb| ded   ded   ded   ded  bdd   ddb| ded   ded   ded   ded   bd   db | ded   ded   ded   ded   bd   db | ddd   ddd   ddd   ddd   bd   db |bbbbb bbbbb bbbbb bbbbb  bdbbbdb | did   did   did   did    d   d  | did   did   did   did    d   d  |bgggb bgggb bgggb bgggb   d   d  |                         bgggggb ',
+                'abbba abbba abbba abbba bdbbbbbdb|b   b b   b b   b b   b bddbbbddb|b   b b   b b   b b   b bbdddddbb|b   b b   b b   b b   b  ddddddd |abbba abbba abbba abbba  dddlddd |a   a a   a a   a a   a  ddddddd |a   a a   a a   a a   a bdddddddb|a   a a   a a   a a   a  bdeeedb |a   a a   a a   a a   a  bdeeedb |a   a a   a a   a a   a  bdeeedb |bbbbb bbbbb bbbbb bbbbb  bdddddb |                         bdddddb |                         bbdfdbb | bbb   bbb   bbb   bbb   bbdddbb |                         bgggggb ',
+                'abbba abbba abbba abbba b bbbbb b|b   b b   b b   b b   b b bbbbb b|b   b b   b b   b b   b bbbbbbbbb|b   b b   b b   b b   b a b   b a|abbba abbba abbba abbba a b   b a|                        a b   b a|                        bbbbbbbbb|                          b   b  |                          b   b  |                          b   b  |                          bbbbb  |                          b   b  |                          b   b  |                          b   b  |                         bbbbbbb ',
+            ])
+                .whereDict({
+                    a: P.gtBlock('draco_abyssal_frame'),
+                    b: P.kjsBlock('aberration_casing'),
+                    c: P.any(),
+                    d: P.anyOf([
+                        P.kjsBlock('absolute_annihilation_casing'),
+                        P.ability(PA.fluidIn, { max: 8, prev: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                        P.ability(PA.variadicsInterface, { max: 4, prev: 1 }),
+                    ]),
+                    e: P.kjsBlock('draco_resilient_fusion_glass'),
+                    f: P.kjsBlock('nyanium_heat_escape_casing'),
+                    g: P.kjsBlock('nyanium_machine_casing'),
+                    h: P.vacuumPumps(),
+                    i: P.kjsBlock('rhenotax_coil'),
+                    j: P.kjsBlock('nyanium_pipe_casing'),
+                    k: P.kjsBlock('nyanium_engine_intake_casing'),
+                    l: P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
