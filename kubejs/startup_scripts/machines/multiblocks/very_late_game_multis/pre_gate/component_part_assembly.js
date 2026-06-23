@@ -19,34 +19,39 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start($RelativeDirection.BACK, $RelativeDirection.UP, $RelativeDirection.RIGHT)
-                .aisle('SSISS', '@SSSS', ' SSS ')
-                .aisle('HAIAH', 'GLCLG', ' GSG ')
-                .aisle('HAIAH', 'GCCCG', ' GSG ')
-                .aisle('SSISS', 'SCLCS', ' SSS ')
-                .aisle('HAIAH', 'GCCCG', ' GSG ')
-                .aisle('HAIAH', 'GLCLG', ' GSG ')
-                .aisle('SSOSS', 'SSSSS', ' SSS ')
-                .where('@', P.controller(definition))
-                .where(
-                    'S',
-                    P.kjsBlock('enriched_naquadah_machine_casing')
-                        .or(P.ability(PA.fluidIn).setMaxGlobalLimited(3).setPreviewCount(0))
-                        .or(P.ability(PA.euIn).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(P.ability(PA.maintenance, { exact: 1 }))
-                        .or(P.ability(PartAbility.OPTICAL_DATA_RECEPTION).setExactLimit(1))
-                )
-                .where('G', P.gtBlock('fusion_glass'))
-                .where('I', P.gtBlock('ulv_input_bus'))
-                .where(
-                    'O',
-                    P.ability(PA.itemOut).addTooltips(Component.translatable('gtceu.multiblock.pattern.location_end'))
-                )
-                .where('H', P.gtBlock('sturdy_machine_casing'))
-                .where('A', P.gtBlock('assembly_line_grating'))
-                .where('L', P.gtBlock('assembly_line_unit'))
-                .where('C', P.gtBlock('fusion_coil'))
-                .where(' ', P.any())
+            newFactoryBlockPatternWithDirections(
+                $RelativeDirection.BACK,
+                $RelativeDirection.UP,
+                $RelativeDirection.RIGHT
+            )([
+                'SSISS|@SSSS| SSS ',
+                'HAIAH|GLCLG| GSG ',
+                'HAIAH|GCCCG| GSG ',
+                'SSISS|SCLCS| SSS ',
+                'HAIAH|GCCCG| GSG ',
+                'HAIAH|GLCLG| GSG ',
+                'SSOSS|SSSSS| SSS ',
+            ])
+                .whereDict({
+                    '@': P.controller(definition),
+                    S: P.anyOf([
+                        P.kjsBlock('enriched_naquadah_machine_casing'),
+                        P.ability(PA.fluidIn, { max: 3, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.data, { exact: 1 }),
+                    ]),
+                    G: P.gtBlock('fusion_glass'),
+                    I: P.gtBlock('ulv_input_bus'),
+                    O: P.ability(PA.itemOut).addTooltips(
+                        Component.translatable('gtceu.multiblock.pattern.location_end')
+                    ),
+                    H: P.gtBlock('sturdy_machine_casing'),
+                    A: P.gtBlock('assembly_line_grating'),
+                    L: P.gtBlock('assembly_line_unit'),
+                    C: P.gtBlock('fusion_coil'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         ['partSorter(java.util.function.Function)']((mc) => $AssemblyLineMulti.partSorter(mc))

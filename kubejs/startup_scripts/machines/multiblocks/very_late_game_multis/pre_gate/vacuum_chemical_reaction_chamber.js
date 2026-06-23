@@ -24,37 +24,39 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('gtceu:palladium_substation'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('AAABB     ', 'C   C     ', 'C   C     ', 'C   C     ', 'AAABB     ')
-                .aisle('ABBBB     ', ' DDD      ', ' DDD      ', ' DDD      ', 'ABBBB     ')
-                .aisle('ABBBBBBBCC', ' DDD   BBC', ' E D    BB', ' DDD   BBC', 'ABBBBBBBCC')
-                .aisle('ABBBBBBBBC', ' DDDDFDD  ', ' E DDFDD  ', ' DDDDFDD  ', 'ABBBBBBBBC')
-                .aisle('ABBBBBBBBB', ' DDDDDDD  ', ' EGGGGGH  ', ' DGDDDGD  ', 'ABIIIIIBBB')
-                .aisle('ABBBBBBBBC', ' DDDDFDD  ', ' E DDFDD  ', ' DDDDFDD  ', 'ABBBBBBBBC')
-                .aisle('ABBBBBBBCC', ' DDD   BBC', ' E D    BB', ' DDD   BBC', 'ABBBBBBBCC')
-                .aisle('ABBBB     ', ' DDD      ', ' DDD      ', ' DDD      ', 'ABBBB     ')
-                .aisle('AAABB     ', 'CBBBC     ', 'CB@BC     ', 'CBBBC     ', 'AAABB     ')
-                .where('A', P.kjsBlock('pallaridium_firebox_casing'))
-                .where(
-                    'B',
-                    P.gtBlock('palladium_substation')
-                        .or(P.ability(PA.fluidIn).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(P.ability(PA.fluidOut).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(P.ability(PA.itemIn).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(P.ability(PA.itemOut).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(P.ability(PA.euIn).setMaxGlobalLimited(2).setMinGlobalLimited(1))
-                        .or(P.ability(PA.maintenance, { exact: 1 }))
-                        .or(P.ability($StarTPartAbility.REDSTONE_INTERFACE).setMaxGlobalLimited(4).setPreviewCount(0))
-                )
-                .where(' ', P.any())
-                .where('C', P.gtBlock('tungsten_carbide_frame'))
-                .where('D', P.kjsBlock('polycarbonate_casing'))
-                .where('E', P.gtBlock('fusion_glass'))
-                .where('F', P.gtBlock('molybdenum_disilicide_coil_block'))
-                .where('G', P.kjsBlock('pallaridium_pipe_casing'))
-                .where('H', $StarTVacuumPumpPredicates.vacuumPumps())
-                .where('I', P.kjsBlock('pallaridium_engine_intake_casing'))
-                .where('@', P.controller(definition))
+            newFactoryBlockPattern([
+                'AAABB     |C   C     |C   C     |C   C     |AAABB     ',
+                'ABBBB     | DDD      | DDD      | DDD      |ABBBB     ',
+                'ABBBBBBBCC| DDD   BBC| E D    BB| DDD   BBC|ABBBBBBBCC',
+                'ABBBBBBBBC| DDDDFDD  | E DDFDD  | DDDDFDD  |ABBBBBBBBC',
+                'ABBBBBBBBB| DDDDDDD  | EGGGGGH  | DGDDDGD  |ABIIIIIBBB',
+                'ABBBBBBBBC| DDDDFDD  | E DDFDD  | DDDDFDD  |ABBBBBBBBC',
+                'ABBBBBBBCC| DDD   BBC| E D    BB| DDD   BBC|ABBBBBBBCC',
+                'ABBBB     | DDD      | DDD      | DDD      |ABBBB     ',
+                'AAABB     |CBBBC     |CB@BC     |CBBBC     |AAABB     ',
+            ])
+                .whereDict({
+                    A: P.kjsBlock('pallaridium_firebox_casing'),
+                    B: P.anyOf([
+                        P.gtBlock('palladium_substation'),
+                        P.ability(PA.fluidIn, { max: 8, prev: 0 }),
+                        P.ability(PA.fluidOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, prev: 0 }),
+                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.euIn, { max: 2, prev: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.variadicsInterface, { max: 4, prev: 1 }),
+                    ]),
+                    ' ': P.any(),
+                    C: P.gtBlock('tungsten_carbide_frame'),
+                    D: P.kjsBlock('polycarbonate_casing'),
+                    E: P.gtBlock('fusion_glass'),
+                    F: P.gtBlock('molybdenum_disilicide_coil_block'),
+                    G: P.kjsBlock('pallaridium_pipe_casing'),
+                    H: P.vacuumPumps(),
+                    I: P.kjsBlock('pallaridium_engine_intake_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
