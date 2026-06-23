@@ -18,33 +18,35 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
-        .create('industrial_barrel', 'multiblock')
+        .create('industrial_barrel|multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .recipeTypes(['industrial_barrel_aqueous', 'industrial_barrel_magmatic'])
+        .recipeTypes(['industrial_barrel_aqueous|industrial_barrel_magmatic'])
         .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('FCCCF', 'FCCCF', 'FCCCF', 'FCCCF')
-                .aisle('CCCCC', 'CPFPC', 'C   C', 'CGGGC')
-                .aisle('CCCCC', 'CF FC', 'C   C', 'CGGGC')
-                .aisle('CCCCC', 'CPFPC', 'C   C', 'CGGGC')
-                .aisle('FCCCF', 'FC@CF', 'FCCCF', 'FCCCF')
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'C',
-                    Predicates.blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('F', Predicates.blocks('gtceu:black_steel_frame'))
-                .where('P', Predicates.blocks(GTBlocks.CASING_STEEL_PIPE.get()))
-                .where('G', Predicates.blocks('gtceu:laminated_glass'))
-                .where(' ', Predicates.air())
+            newFactoryBlockPattern([
+                'FCCCF|FCCCF|FCCCF|FCCCF',
+                'CCCCC|CPFPC|C   C|CGGGC',
+                'CCCCC|CF FC|C   C|CGGGC',
+                'CCCCC|CPFPC|C   C|CGGGC',
+                'FCCCF|FC@CF|FCCCF|FCCCF',
+            ])
+                .whereDict({
+                    '@': P.controller(definition),
+                    C: P.anyOf([
+                        P.block(GTBlocks.CASING_STAINLESS_CLEAN.get()),
+                        P.ability(PartAbility.IMPORT_ITEMS, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.INPUT_ENERGY, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.EXPORT_ITEMS, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.IMPORT_FLUIDS, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.EXPORT_FLUIDS, { max: 2, prev: 1 }),
+                        P.ability(PartAbility.MAINTENANCE, { exact: 1 }),
+                    ]),
+                    F: P.gtBlock('black_steel_frame'),
+                    P: P.block(GTBlocks.CASING_STEEL_PIPE.get()),
+                    G: P.gtBlock('laminated_glass'),
+                    ' ': P.air(),
+                })
                 .build()
         )
         .workableCasingModel(
