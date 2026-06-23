@@ -28,8 +28,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.controller(definition),
                     P: P.anyOf([
                         P.kjsBlock('high_steam_machine_casing', { min: 15 }),
-                        P.abilities(PA.itemIn, { max: 2, prev: 1 }),
-                        P.abilities(PA.itemOut, { max: 2, prev: 1 }),
+                        P.ability(PA.itemIn, { max: 2, prev: 1 }),
+                        P.ability(PA.itemOut, { max: 2, prev: 1 }),
                     ]),
                     D: P.blocks('gtceu:steel_firebox_casing'),
                     ' ': P.any(),
