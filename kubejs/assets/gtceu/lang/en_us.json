@@ -1424,5 +1424,7 @@
     "block.gtceu.catto_shrine": "Catto Shrine [ᗢSh]",
     "block.gtceu.catto_shrine.tooltip.0": "§7§o5 Hours Nyan Cat",
     "block.gtceu.catto_shrine.tooltip.1": "§8§oMake your offerings known....",
-    "gtceu.catto_shrine": "Catto Shrine"
+    "gtceu.catto_shrine": "Catto Shrine",
+
+    "material.gtceu.latex": "Latex"
 }

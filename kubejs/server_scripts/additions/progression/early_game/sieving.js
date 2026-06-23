@@ -82,7 +82,7 @@ ServerEvents.recipes((event) => {
         build: (event) => {
             SIEVING_RECIPE_HANDLER.recipes.forEach((recipe) => {
                 event.custom({
-                    type: `exnihilosequentia:sifting`,
+                    type: 'exnihilosequentia:sifting',
                     input: recipe.input,
                     result: recipe.result,
                     rolls: [
@@ -195,7 +195,7 @@ ServerEvents.recipes((event) => {
         .add('farmersdelight:rice_panicle', 0.05)
         .add('minecraft:pumpkin_seeds', 0.1)
         .add('minecraft:melon_seeds', 0.1)
-        .add(`kubejs:moss_ball`, 0.05)
+        .add('kubejs:moss_ball', 0.05)
         // Waterlogged Sand Sieving
         .input(csi.sand)
         .waterlogged(true)

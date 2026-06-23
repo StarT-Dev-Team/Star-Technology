@@ -50,7 +50,8 @@ global.componentRecycleMaterials = {
 };
 
 global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS = {
-    dreamlinkCover: {
+    // eslint-disable-next-line id-match, camelcase
+    dreamlink_cover: {
         primCount: 6,
         cableCount: 2,
         wireCount: 0,
@@ -68,43 +69,50 @@ global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS = {
         wireCount: 4,
         foilCount: 12,
     },
-    fieldGenerator: {
+    // eslint-disable-next-line id-match, camelcase
+    field_generator: {
         primCount: 18,
         cableCount: 4,
         wireCount: 8,
         foilCount: 24,
     },
-    robotArm: {
+    // eslint-disable-next-line id-match, camelcase
+    robot_arm: {
         primCount: 18.5,
         cableCount: 3,
         wireCount: 12,
         foilCount: 0,
     },
-    electricPiston: {
+    // eslint-disable-next-line id-match, camelcase
+    electric_piston: {
         primCount: 8,
         cableCount: 1,
         wireCount: 4,
         foilCount: 0,
     },
-    conveyorModule: {
+    // eslint-disable-next-line id-match, camelcase
+    conveyor_module: {
         primCount: 7.5,
         cableCount: 1.5,
         wireCount: 8,
         foilCount: 0,
     },
-    fluidRegulator: {
+    // eslint-disable-next-line id-match, camelcase
+    fluid_regulator: {
         primCount: 1.5,
         cableCount: 1.5,
         wireCount: 0,
         foilCount: 0,
     },
-    electricPump: {
+    // eslint-disable-next-line id-match, camelcase
+    electric_pump: {
         primCount: 1.5,
         cableCount: 1.5,
         wireCount: 0,
         foilCount: 0,
     },
-    electricMotor: {
+    // eslint-disable-next-line id-match, camelcase
+    electric_motor: {
         primCount: 2.5,
         cableCount: 0.5,
         wireCount: 4,
@@ -113,7 +121,8 @@ global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS = {
 };
 
 global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS = {
-    dreamlinkCover: {
+    // eslint-disable-next-line id-match, camelcase
+    dreamlink_cover: {
         primCount: 9,
         cableCount: 5,
         secCount: 0,
@@ -131,43 +140,50 @@ global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS = {
         secCount: 0.5,
         tertCount: 2,
     },
-    fieldGenerator: {
+    // eslint-disable-next-line id-match, camelcase
+    field_generator: {
         primCount: 31,
         cableCount: 15,
         secCount: 1.5,
         tertCount: 2,
     },
-    robotArm: {
+    // eslint-disable-next-line id-match, camelcase
+    robot_arm: {
         primCount: 24,
         cableCount: 12,
         secCount: 4.5,
         tertCount: 6,
     },
-    electricPiston: {
+    // eslint-disable-next-line id-match, camelcase
+    electric_piston: {
         primCount: 13.5,
         cableCount: 4,
         secCount: 2.5,
         tertCount: 3,
     },
-    conveyorModule: {
+    // eslint-disable-next-line id-match, camelcase
+    conveyor_module: {
         primCount: 13.5,
         cableCount: 6,
         secCount: 2,
         tertCount: 4,
     },
-    fluidRegulator: {
+    // eslint-disable-next-line id-match, camelcase
+    fluid_regulator: {
         primCount: 5.5,
         cableCount: 2,
         secCount: 4,
         tertCount: 2,
     },
-    electricPump: {
+    // eslint-disable-next-line id-match, camelcase
+    electric_pump: {
         primCount: 5.5,
         cableCount: 2,
         secCount: 4,
         tertCount: 2,
     },
-    electricMotor: {
+    // eslint-disable-next-line id-match, camelcase
+    electric_motor: {
         primCount: 3,
         cableCount: 2,
         secCount: 0,
@@ -593,14 +609,16 @@ global.fusionCasingDetails = {
 };
 
 global.fusionCoilRecycleDetails = {
-    fusionCoil: {
+    // eslint-disable-next-line id-match, camelcase
+    fusion_coil: {
         components: 'ignored',
         tierComponent: 'iv',
         plateMaterial: 'gtceu:europium',
         prefix: 'gtceu:',
         plateCount: 4,
     },
-    auxiliaryFusionCoilMk1: {
+    // eslint-disable-next-line id-match, camelcase
+    auxiliary_fusion_coil_mk1: {
         components: [
             'field_generator',
             'field_generator',
@@ -614,14 +632,16 @@ global.fusionCoilRecycleDetails = {
         prefix: 'start_core:',
         plateCount: 8,
     },
-    advancedFusionCoil: {
+    // eslint-disable-next-line id-match, camelcase
+    advanced_fusion_coil: {
         components: ['field_generator', 'field_generator', 'electric_pump'],
         tierComponent: 'uv',
         plateMaterial: 'gtceu:magmada_alloy',
         prefix: 'start_core:',
         plateCount: 4,
     },
-    auxiliaryFusionCoilMk2: {
+    // eslint-disable-next-line id-match, camelcase
+    auxiliary_fusion_coil_mk2: {
         components: [
             'field_generator',
             'field_generator',

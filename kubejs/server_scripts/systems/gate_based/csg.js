@@ -376,7 +376,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.create
         .mechanical_crafting(
-            `sgjourney:classic_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}`,
+            'sgjourney:classic_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
             [' CRCRC ', 'RR   RR', 'C     C', 'R     R', 'R     R', 'CR   RC', ' RCBCR '],
             {
                 R: 'sgjourney:classic_stargate_ring_block',

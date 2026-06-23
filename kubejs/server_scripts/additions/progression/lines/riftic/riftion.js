@@ -45,12 +45,12 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.UIV]);
 
     event.recipes.gtceu
-        .reflector_fusion_reactor(id(`riftion_plasma_from_riftion_extract_and_neutronium`))
-        .inputFluids(`gtceu:riftion_extract 5000`, `gtceu:neutronium 432`)
-        .outputFluids(`gtceu:riftion_plasma 250`)
+        .reflector_fusion_reactor(id('riftion_plasma_from_riftion_extract_and_neutronium'))
+        .inputFluids('gtceu:riftion_extract 5000', 'gtceu:neutronium 432')
+        .outputFluids('gtceu:riftion_plasma 250')
         .duration(1200)
         .fusionStartEU(1500000000)
-        .addData('reflector_tier', 7)
+        .reflectorTier(7)
         .EUt(GTValues.VHA[GTValues.UIV]);
 
     for (let i = 0; i <= 2; i++) {
@@ -84,25 +84,25 @@ ServerEvents.recipes((event) => {
             .riftion_slammer(id(riftion[i] + '_stabilization'))
             .itemInputs(`32x kubejs:up_${riftion[i]}_riftion`, `32x kubejs:down_${riftion[i]}_riftion`)
             .itemOutputsRanged(`kubejs:neutral_${riftion[i]}_riftion`, 0, 72)
-            .itemOutputsRanged(`kubejs:wild_riftion`, 0, 56)
+            .itemOutputsRanged('kubejs:wild_riftion', 0, 56)
             .genericStartEU(50000000000) //consumes 50GEU to start the recipe
             .duration(20)
             .EUt(GTValues.VHA[GTValues.UIV]);
 
         event.recipes.gtceu
             .riftion_slammer(id(riftion[i] + '_flipping_down'))
-            .itemInputs(`32x kubejs:up_${riftion[i]}_riftion`, `32x kubejs:wild_riftion`)
+            .itemInputs(`32x kubejs:up_${riftion[i]}_riftion`, '32x kubejs:wild_riftion')
             .itemOutputsRanged(`kubejs:down_${riftion[i]}_riftion`, 0, 56)
-            .itemOutputsRanged(`kubejs:wild_riftion`, 0, 72)
+            .itemOutputsRanged('kubejs:wild_riftion', 0, 72)
             .genericStartEU(50000000000) //consumes 50GEU to start the recipe
             .duration(20)
             .EUt(GTValues.VHA[GTValues.UIV]);
 
         event.recipes.gtceu
             .riftion_slammer(id(riftion[i] + '_flipping_up'))
-            .itemInputs(`32x kubejs:down_${riftion[i]}_riftion`, `32x kubejs:wild_riftion`)
+            .itemInputs(`32x kubejs:down_${riftion[i]}_riftion`, '32x kubejs:wild_riftion')
             .itemOutputsRanged(`kubejs:up_${riftion[i]}_riftion`, 0, 56)
-            .itemOutputsRanged(`kubejs:wild_riftion`, 0, 72)
+            .itemOutputsRanged('kubejs:wild_riftion', 0, 72)
             .genericStartEU(50000000000) //consumes 50GEU to start the recipe
             .duration(20)
             .EUt(GTValues.VHA[GTValues.UIV]);

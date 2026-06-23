@@ -25,7 +25,7 @@ ServerEvents.recipes((event) => {
                 input: `gtceu:${tier}_transformer_${transformerData.amps}`,
             }); //maybe add to recycler helper?
 
-            let priorMachine = transformerData.amps === '1a' ? `machine_hull` : `transformer_${transformerData.prior}`;
+            let priorMachine = transformerData.amps === '1a' ? 'machine_hull' : `transformer_${transformerData.prior}`;
 
             if (chip) {
                 event

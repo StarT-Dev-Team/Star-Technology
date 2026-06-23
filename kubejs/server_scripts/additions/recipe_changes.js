@@ -65,7 +65,7 @@ ServerEvents.recipes((event) => {
                 W: '#forge:tools/wire_cutters',
                 F: '#forge:tools/files',
                 P: `gtceu:${material}_plate`,
-                S: `#forge:rods`,
+                S: '#forge:rods',
             })
             .id(`start:shaped/${material}_plunger`);
     });
@@ -266,10 +266,10 @@ ServerEvents.recipes((event) => {
 
     //certus fixes
     [
-        { name: `exquisite_certus_quartz_gem`, dustCount: 4 },
-        { name: `flawless_certus_quartz_gem`, dustCount: 2 },
+        { name: 'exquisite_certus_quartz_gem', dustCount: 4 },
+        { name: 'flawless_certus_quartz_gem', dustCount: 2 },
     ].forEach((item) => {
-        event.remove({ input: `gtceu:${item.name}`, type: `gtceu:macerator` });
+        event.remove({ input: `gtceu:${item.name}`, type: 'gtceu:macerator' });
 
         event.recipes.gtceu
             .macerator(id(`macerate_${item.name}`))
@@ -298,13 +298,7 @@ ServerEvents.recipes((event) => {
 
     //echo changes
     event.remove({ id: /gtceu:implosion_compressor\/implode_dust_echo_shard_.*/ });
-    event.recipes.gtceu
-        .implosion_compressor(id('echo_shard'))
-        .itemInputs('gtceu:echo_shard_dust', '16x gtceu:industrial_tnt')
-        .itemOutputs('minecraft:echo_shard')
-        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-        .duration(1000)
-        .EUt(GTValues.VA[GTValues.LuV]);
+    global.implosion('echo_shard', 'gtceu:echo_shard_dust', 'minecraft:echo_shard', GTValues.LuV, 1, event);
 
     //naquadah changes
     event.remove({ id: 'gtceu:centrifuge/impure_naquadria_solution_separation' });
@@ -329,4 +323,20 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:enriched_naquadah_solution 3000')
         .duration(800)
         .EUt(GTValues.VHA[GTValues.IV]);
+
+    event.remove({ id: /gtceu:.*\/hypochlorous_acid/ });
+    event.recipes.gtceu
+        .chemical_reactor(id('hypochlorous_acid'))
+        .inputFluids('minecraft:water 1000', 'gtceu:chlorine 2000')
+        .outputFluids('gtceu:hypochlorous_acid 1000', 'gtceu:hydrochloric_acid 1000')
+        .duration(120)
+        .EUt(30)
+        .circuit(1);
+
+    // TODO: combe back to this decision in theta 3 to see if there is a better fit
+    event.replaceInput(
+        { id: 'gtceu:shaped/lv_cutter' },
+        'gtceu:cobalt_brass_buzz_saw_blade',
+        'gtceu:steel_buzz_saw_blade'
+    );
 });

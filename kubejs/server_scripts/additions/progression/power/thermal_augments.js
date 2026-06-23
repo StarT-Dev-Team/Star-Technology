@@ -195,7 +195,7 @@ ServerEvents.recipes((event) => {
 
         event.recipes.gtceu
             .alloy_smelter(id(`${foo.tier}_rft_kit`))
-            .itemInputs(`kubejs:${foo.last_tier}_rft_kit`, `2x gtceu:${foo.metal}_gear`)
+            .itemInputs(`kubejs:${foo.lastTier}_rft_kit`, `2x gtceu:${foo.metal}_gear`)
             .itemOutputs(
                 Item.of(`kubejs:${foo.tier}_rft_kit`, `{AugmentData:{Type: RF, RFMax:${foo.min}f, RFXfer:${foo.max}f}}`)
             )
@@ -204,7 +204,7 @@ ServerEvents.recipes((event) => {
 
         event.recipes.gtceu
             .alloy_smelter(id(`${foo.tier}_fls_kit`))
-            .itemInputs(`kubejs:${foo.last_tier}_fls_kit`, `2x gtceu:${foo.metal}_gear`)
+            .itemInputs(`kubejs:${foo.lastTier}_fls_kit`, `2x gtceu:${foo.metal}_gear`)
             .itemOutputs(Item.of(`kubejs:${foo.tier}_fls_kit`, `{AugmentData:{Type: Fluid, FluidMax:${foo.avg}f}}`))
             .duration(600)
             .EUt(global.va[foo.energy]);

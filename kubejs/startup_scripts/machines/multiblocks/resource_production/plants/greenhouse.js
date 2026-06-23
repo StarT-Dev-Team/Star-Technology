@@ -44,7 +44,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .where(
                     'H',
                     Predicates.blocks(GTBlocks.CASING_STEEL_SOLID.get())
-                        .setMinGlobalLimited(14)
+                        .setMinGlobalLimited(12)
                         .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
                         .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
                         .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))

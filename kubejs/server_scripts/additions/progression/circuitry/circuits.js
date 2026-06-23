@@ -334,15 +334,15 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .circuit_assembler(id('wetware_circuit_board'))
         .itemInputs(
-            `16x gtceu:multilayer_fiber_reinforced_circuit_board`,
+            '16x gtceu:multilayer_fiber_reinforced_circuit_board',
             'gtceu:petri_dish',
             'gtceu:luv_electric_pump',
             'gtceu:luv_sensor',
             '2x #gtceu:circuits/iv',
             '16x gtceu:osmiridium_foil'
         )
-        .inputFluids(`gtceu:sterilized_growth_medium 4000`)
-        .itemOutputs(`16x gtceu:wetware_circuit_board`)
+        .inputFluids('gtceu:sterilized_growth_medium 4000')
+        .itemOutputs('16x gtceu:wetware_circuit_board')
         .duration(1200)
         .cleanroom(CleanroomType.CLEANROOM)
         .EUt(GTValues.VA[GTValues.LuV]);
@@ -350,15 +350,15 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .circuit_assembler(id('runic_circuit_board'))
         .itemInputs(
-            `32x gtceu:wetware_circuit_board`,
+            '32x gtceu:wetware_circuit_board',
             '1x start_core:enriched_naquadah_fluid_cell',
             'gtceu:zpm_electric_pump',
             'gtceu:zpm_sensor',
             '2x #gtceu:circuits/luv',
             '16x gtceu:naquadah_alloy_foil'
         )
-        .inputFluids(`gtceu:runic_convergence_infusion 7500`)
-        .itemOutputs(`32x kubejs:runic_circuit_board`)
+        .inputFluids('gtceu:runic_convergence_infusion 7500')
+        .itemOutputs('32x kubejs:runic_circuit_board')
         .duration(1200)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(GTValues.VA[GTValues.ZPM]);
@@ -366,15 +366,15 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .circuit_assembler(id('runic_convergence_processing_unit'))
         .itemInputs(
-            `1x kubejs:runic_printed_circuit_board`,
+            '1x kubejs:runic_printed_circuit_board',
             '4x gtceu:uhpic_chip',
             '8x gtceu:polyether_ether_ketone_small_fluid_pipe',
             '8x gtceu:trinaquadalloy_plate',
             '16x gtceu:polybenzimidazole_foil',
             '8x gtceu:zircalloy_4_bolt'
         )
-        .inputFluids(`gtceu:runic_convergence_infusion 250`)
-        .itemOutputs(`1x kubejs:runic_convergence_processing_unit`)
+        .inputFluids('gtceu:runic_convergence_infusion 250')
+        .itemOutputs('1x kubejs:runic_convergence_processing_unit')
         .duration(600)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUt(GTValues.VA[GTValues.UV]);

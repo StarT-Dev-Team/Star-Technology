@@ -40,7 +40,7 @@ ServerEvents.recipes((event) => {
         const { materials, counts, prefix } = COILRECYCLEDETAILS[coil];
 
         // removes old recipes
-        event.remove({ input: prefix + coil, type: `gtceu:arc_furnace` });
+        event.remove({ input: prefix + coil, type: 'gtceu:arc_furnace' });
 
         // makes new recipes
         const outputs = getFinalOutputs(getCoilRecycleOutputs(materials, counts), 'coil', false, false);
@@ -63,7 +63,7 @@ ServerEvents.recipes((event) => {
         const { materials, counts, prefix } = COILRECYCLEDETAILS[coil];
 
         // removes old recipes
-        event.remove({ input: prefix + coil, type: `gtceu:macerator` });
+        event.remove({ input: prefix + coil, type: 'gtceu:macerator' });
 
         // makes new recipes
         const outputs = getFinalOutputs(getCoilRecycleOutputs(materials, counts), 'coil', true, false);
