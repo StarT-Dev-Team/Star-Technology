@@ -12,16 +12,17 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('gtceu:robust_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('ABBBA|BBCBB|BCDCB|BBCBB|ABBBA')
-                .aisle('A B A| EEE |BEFEB| EEE |A B A')
-                .aisle('A B A| EEE |BEFEB| EEE |A B A')
-                .aisle('A B A| EEE |BEFEB| EEE |A B A')
-                .aisle('BBBBB|BBBBB|BBFBB|BBBBB|BBBBB')
-                .aisle('A B A| EEE |BEFEB| EEE |A B A')
-                .aisle('A B A| EEE |BEFEB| EEE |A B A')
-                .aisle('A B A| EEE |BEFEB| EEE |A B A')
-                .aisle('ABBBA|BBCBB|BC@CB|BBCBB|ABBBA')
+            newFactoryBlockPattern([
+                'ABBBA|BBCBB|BCDCB|BBCBB|ABBBA',
+                'A B A| EEE |BEFEB| EEE |A B A',
+                'A B A| EEE |BEFEB| EEE |A B A',
+                'A B A| EEE |BEFEB| EEE |A B A',
+                'BBBBB|BBBBB|BBFBB|BBBBB|BBBBB',
+                'A B A| EEE |BEFEB| EEE |A B A',
+                'A B A| EEE |BEFEB| EEE |A B A',
+                'A B A| EEE |BEFEB| EEE |A B A',
+                'ABBBA|BBCBB|BC@CB|BBCBB|ABBBA',
+            ])
                 .whereDict({
                     ' ': P.any(),
                     A: P.gtBlock('tungsten_steel_frame'),
