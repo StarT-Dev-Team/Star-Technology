@@ -69,6 +69,10 @@ ServerEvents.recipes((event) => {
         'gtceu:naquadic_netherite_dust',
         'gtceu:naquadic_netherite_gem',
         GTValues.IV,
+<<<<<<< HEAD
+=======
+        1,
+>>>>>>> c42c827c (fix ic helper)
         event
     );
 
@@ -81,6 +85,10 @@ ServerEvents.recipes((event) => {
         'gtceu:runic_laser_source_base_dust',
         'gtceu:runic_laser_source_base_gem',
         GTValues.IV,
+<<<<<<< HEAD
+=======
+        1,
+>>>>>>> c42c827c (fix ic helper)
         event
     );
 
@@ -90,6 +98,10 @@ ServerEvents.recipes((event) => {
         'gtceu:akreyriadic_runixium_dust',
         'gtceu:akreyriadic_runixium_gem',
         GTValues.LuV,
+<<<<<<< HEAD
+=======
+        1,
+>>>>>>> c42c827c (fix ic helper)
         event
     );
 
@@ -102,6 +114,10 @@ ServerEvents.recipes((event) => {
         'gtceu:aquariadic_rimuli_dragonix_dust',
         'gtceu:aquariadic_rimuli_dragonix_gem',
         GTValues.UHV,
+<<<<<<< HEAD
+=======
+        1,
+>>>>>>> c42c827c (fix ic helper)
         event
     );
 

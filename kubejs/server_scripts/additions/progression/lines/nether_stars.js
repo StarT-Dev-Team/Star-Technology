@@ -150,7 +150,11 @@ ServerEvents.recipes((event) => {
         .duration(300)
         .EUt(GTValues.VA[GTValues.IV]);
 
+<<<<<<< HEAD
     global.implosion('nether_star', 'kubejs:impure_nether_star', 'minecraft:nether_star', GTValues.EV, event);
+=======
+    global.implosion('nether_star', 'kubejs:impure_nether_star', 'minecraft:nether_star', GTValues.EV, 1, event);
+>>>>>>> c42c827c (fix ic helper)
 
     event.recipes.gtceu
         .forge_hammer(id('nether_star_shard'))

@@ -298,7 +298,11 @@ ServerEvents.recipes((event) => {
 
     //echo changes
     event.remove({ id: /gtceu:implosion_compressor\/implode_dust_echo_shard_.*/ });
+<<<<<<< HEAD
     global.implosion('echo_shard', 'gtceu:echo_shard_dust', 'minecraft:echo_shard', GTValues.LuV, event);
+=======
+    global.implosion('echo_shard', 'gtceu:echo_shard_dust', 'minecraft:echo_shard', GTValues.LuV, 1, event);
+>>>>>>> c42c827c (fix ic helper)
 
     //naquadah changes
     event.remove({ id: 'gtceu:centrifuge/impure_naquadria_solution_separation' });
