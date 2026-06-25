@@ -2,20 +2,20 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     event
-        .shaped('gtceu:ulv_barrel', ['ADA', 'ACA', 'ADA'], {
+        .shaped('gtceu:barrel', ['ADA', 'ACA', 'ADA'], {
             A: '#forge:stripped_logs',
             C: 'woodenbucket:wooden_bucket',
             D: '#minecraft:wooden_slabs',
         })
-        .id('start:shaped/ulv_barrel');
+        .id('start:shaped/barrel');
 
     event
-        .shaped('gtceu:ulv_stone_barrel', ['ADA', 'ACA', 'ADA'], {
+        .shaped('gtceu:stone_barrel', ['ADA', 'ACA', 'ADA'], {
             A: '#forge:stone',
             C: 'minecraft:bucket',
             D: 'minecraft:stone_slab',
         })
-        .id('start:shaped/ulv_stone_barrel');
+        .id('start:shaped/stone_barrel');
 
     const sbarrel = (output, fluidcons, nconsfluid, circ) => {
         event.recipes.gtceu
@@ -117,7 +117,7 @@ ServerEvents.recipes((event) => {
         .shaped(Item.of('gtceu:large_barrel'), ['PSP', 'IBI', 'PSP'], {
             P: 'gtceu:treated_wood_planks',
             S: 'gtceu:treated_wood_rod',
-            B: 'gtceu:ulv_barrel',
+            B: 'gtceu:barrel',
             I: 'gtceu:wrought_iron_plate',
         })
         .id('start:shaped/large_barrel');
@@ -126,7 +126,7 @@ ServerEvents.recipes((event) => {
         .shaped(Item.of('gtceu:large_stone_barrel'), ['PSP', 'IBI', 'PSP'], {
             P: 'minecraft:stone',
             S: 'gtceu:treated_wood_rod',
-            B: 'gtceu:ulv_stone_barrel',
+            B: 'gtceu:stone_barrel',
             I: 'gtceu:wrought_iron_plate',
         })
         .id('start:shaped/large_stone_barrel');
