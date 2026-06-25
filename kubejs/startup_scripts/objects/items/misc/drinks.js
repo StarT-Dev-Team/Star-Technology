@@ -28,6 +28,10 @@ const potions = [
 ];
 
 StartupEvents.registry('item', (event) => {
+    /**
+     * @param {string} itemID
+     * @param {{ id: string, duration: number, amplifier: number }} effect
+     */
     const potionItem = (itemID, effect) => {
         event
             .create(itemID)

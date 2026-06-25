@@ -156,6 +156,13 @@ namespace internal.net.minecraft.world.level.block {
 namespace internal.net.minecraft.world.item {
     import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
 
+    class Item {
+        static getId(item: Item__Wrapper): int;
+        static byId(id: number): Item;
+    }
+
+    type Item__Wrapper = Item;
+
     class ItemStack {
         isEmpty(): boolean;
         getItem(): Item;
@@ -166,6 +173,46 @@ namespace internal.net.minecraft.world.item {
     type ItemStack__WrapperString = '' | '-' | `#${string}` | `@${string}` | `%${string}` | string;
     type ItemStack__WrapperStringWithCount = `${number}x ${ItemStack__WrapperString}`;
     type ItemStack__Wrapper = ItemStack | ResourceLocation__Wrapper | RegExp | ItemStack__WrapperStringWithCount;
+
+    type UseAnim__EnumKeys =
+        | 'NONE'
+        | 'EAT'
+        | 'DRINK'
+        | 'BLOCK'
+        | 'BOW'
+        | 'SPEAR'
+        | 'CROSSBOW'
+        | 'SPYGLASS'
+        | 'TOOT_HORN'
+        | 'BRUSH'
+        | 'CUSTOM';
+
+    class UseAnim {
+        static NONE: UseAnim;
+        static EAT: UseAnim;
+        static DRINK: UseAnim;
+        static BLOCK: UseAnim;
+        static BOW: UseAnim;
+        static SPEAR: UseAnim;
+        static CROSSBOW: UseAnim;
+        static SPYGLASS: UseAnim;
+        static TOOT_HORN: UseAnim;
+        static BRUSH: UseAnim;
+        static CUSTOM: UseAnim;
+    }
+
+    type UseAnim__Wrapper = UseAnim | UseAnim__EnumKeys | Lowercase<UseAnim__EnumKeys>;
+
+    type Rarity__EnumKeys = 'COMMON' | 'UNCOMMON' | 'RARE' | 'EPIC';
+
+    class Rarity {
+        static COMMON: Rarity;
+        static UNCOMMON: Rarity;
+        static RARE: Rarity;
+        static EPIC: Rarity;
+    }
+
+    type Rarity__Wrapper = Rarity | Rarity__EnumKeys | Lowercase<Rarity__EnumKeys>;
 }
 
 namespace internal.net.minecraft.world.item.crafting {

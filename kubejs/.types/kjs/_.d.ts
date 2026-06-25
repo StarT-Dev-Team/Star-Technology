@@ -14,6 +14,13 @@ namespace internal.kjs {
         _default: BasicMobEffect$Builder;
         basic: BasicMobEffect$Builder;
     }
+
+    import BasicItemJS$Builder = dev.latvian.mods.kubejs.item.custom.BasicItemJS$Builder;
+
+    interface ItemRegistry {
+        _default: BasicItemJS$Builder;
+        basic: BasicItemJS$Builder;
+    }
 }
 
 namespace internal.kjs.kubejs {
@@ -35,10 +42,12 @@ namespace internal.kjs.kubejs {
 
     import RegistryEventJS = dev.latvian.mods.kubejs.registry.RegistryEventJS;
     import Block = net.minecraft.world.level.block.Block;
+    import Item = net.minecraft.world.item.Item;
 
     interface StartupEvents {
         registry(key: 'block', callback: (event: RegistryEventJS<Block, BlockTypeRegistry>) => void): void;
         registry(key: 'mob_effect', callback: (event: RegistryEventJS<MobEffect, MobEffectRegistry>) => void): void;
+        registry(key: 'item', callback: (event: RegistryEventJS<Item, ItemRegistry>) => void): void;
     }
 
     import BlockModificationEventJS = dev.latvian.mods.kubejs.block.BlockModificationEventJS;
