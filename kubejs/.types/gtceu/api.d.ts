@@ -1,4 +1,4 @@
-declare namespace internal.com.gregtechceu.gtceu.api {
+namespace internal.com.gregtechceu.gtceu.api {
     const GTValues: {
         M: number;
 
@@ -61,7 +61,7 @@ declare namespace internal.com.gregtechceu.gtceu.api {
     };
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.capability {
+namespace internal.com.gregtechceu.gtceu.api.capability {
     const __IControllable: unique symbol;
     interface IControllable {
         [__IControllable]: 0;
@@ -78,7 +78,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability {
     };
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
+namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
     import Enum = internal.java.lang.Enum;
 
     type IO__EnumKeys = 'IN' | 'OUT' | 'BOTH' | 'NONE';
@@ -98,7 +98,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
     type IO__Wrapper = IO | IO__EnumKeys | Lowercase<IO__EnumKeys>;
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.recipe {
+namespace internal.com.gregtechceu.gtceu.api.recipe {
     class GTRecipe {}
 
     class GTRecipeType {
@@ -107,11 +107,11 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
 
     type GTRecipeType__Wrapper = string | GTRecipeType;
 }
-declare namespace internal.com.gregtechceu.gtceu.api.recipe.category {
+namespace internal.com.gregtechceu.gtceu.api.recipe.category {
     class GTRecipeCategory {}
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
+namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
     import MetaMachine = machine.MetaMachine;
     import GTRecipe = recipe.GTRecipe;
 
@@ -139,7 +139,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
     };
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.data {
+namespace internal.com.gregtechceu.gtceu.api.data {
     declare class RotationState {
         static ALL: RotationState;
         static NONE: RotationState;
@@ -148,7 +148,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.data {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.data.chemical {
+namespace internal.com.gregtechceu.gtceu.api.data.chemical {
     class Element {
         protons(): number;
         protons(protons: number): this;
@@ -168,11 +168,18 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.block {
+namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
+    class Material {
+        get materialInfo(): MaterialInfo;
+        getMaterialInfo(): MaterialInfo;
+    }
+}
+
+namespace internal.com.gregtechceu.gtceu.api.block {
     interface IMachineBlock extends EntityBlock {}
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.machine {
+namespace internal.com.gregtechceu.gtceu.api.machine {
     import GTRecipeType = recipe.GTRecipeType;
     import GTRecipeType__Wrapper = recipe.GTRecipeType__Wrapper;
     import IMachineBlock = block.IMachineBlock;
@@ -196,7 +203,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.machine.property {
+namespace internal.com.gregtechceu.gtceu.api.machine.property {
     import BooleanProperty = net.minecraft.world.level.block.state.properties.BooleanProperty;
     import EnumProperty = net.minecraft.world.level.block.state.properties.EnumProperty;
 
@@ -221,7 +228,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.property {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
+namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
     import MetaMachine = internal.com.gregtechceu.gtceu.api.machine.MetaMachine;
 
     class PartAbility {
@@ -297,7 +304,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock.part {
+namespace internal.com.gregtechceu.gtceu.api.machine.multiblock.part {
     import IMultiPart = feature.multiblock.IMultiPart;
 
     interface MultiblockPartMachine extends IMultiPart {}
@@ -308,7 +315,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock.part {
     class TieredIOPartMachine extends TieredPartMachine {}
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.machine.feature.multiblock {
+namespace internal.com.gregtechceu.gtceu.api.machine.feature.multiblock {
     const __IMultiPart: unique symbol;
     interface IMultiPart {
         [__IMultiPart]: 0;
@@ -317,7 +324,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.feature.multiblock 
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.pattern {
+namespace internal.com.gregtechceu.gtceu.api.pattern {
     import RelativeDirection = util.RelativeDirection;
     import Block = internal.net.minecraft.world.level.block.Block;
 
@@ -407,7 +414,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
+namespace internal.com.gregtechceu.gtceu.api.pattern.util {
     class RelativeDirection {
         static UP: RelativeDirection;
         static DOWN: RelativeDirection;
@@ -418,7 +425,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
+namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
     import Supplier = java.util.function_.Supplier;
 
@@ -477,11 +484,11 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.sound {
+namespace internal.com.gregtechceu.gtceu.api.sound {
     abstract class SoundEntry {}
 }
 
-declare namespace internal.com.gregtechceu.gtceu.api.gui {
+namespace internal.com.gregtechceu.gtceu.api.gui {
     import ResourceTexture = com.lowdragmc.lowdraglib.gui.texture.ResourceTexture;
     import ResourceBorderTexture = com.lowdragmc.lowdraglib.gui.texture.ResourceBorderTexture;
 
@@ -754,7 +761,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.gui {
     }
 }
 
-declare namespace internal.kjs {
+namespace internal.kjs {
     interface LoadableClasses {
         'com.gregtechceu.gtceu.api.pattern.util.RelativeDirection': typeof internal.com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
         'com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;

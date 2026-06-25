@@ -52,6 +52,7 @@ namespace internal.kjs {
 
 declare const RotationState: typeof internal.com.gregtechceu.gtceu.api.data.RotationState;
 
+declare const GTMaterials: typeof internal.com.gregtechceu.gtceu.common.data.GTMaterials;
 declare const GTElements: typeof internal.com.gregtechceu.gtceu.common.data.GTElements;
 declare const GTRecipeTypes: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 declare const GTRecipeModifiers: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeModifiers;

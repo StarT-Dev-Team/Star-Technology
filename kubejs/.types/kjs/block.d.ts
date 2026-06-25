@@ -76,6 +76,13 @@ namespace internal.dev.latvian.mods.kubejs.block {
         blockEntity(callback: Consumer__Wrapper<BlockEntityInfo>): this;
         pickBlock(pickBlockCallback: Consumer__Wrapper<PickBlockCallbackJS>): this;
     }
+
+    import EventJS = event.EventJS;
+    import BlockStatePredicate__Wrapper = block.state.BlockStatePredicate__Wrapper;
+
+    class BlockModificationEventJS extends EventJS {
+        modify(predicate: BlockStatePredicate__Wrapper, c: Consumer__Wrapper<Block>): void;
+    }
 }
 
 namespace internal.dev.latvian.mods.kubejs.block.custom {
@@ -84,4 +91,40 @@ namespace internal.dev.latvian.mods.kubejs.block.custom {
     class BasicBlockJS extends Block {}
 
     class BasicBlockJS$Builder extends BlockBuilder {}
+}
+
+namespace internal.dev.latvian.mods.kubejs.block.state {
+    import Predicate = java.util.function_.Predicate;
+    import Block = net.minecraft.world.level.block.Block;
+    import BlockState = net.minecraft.world.level.block.state.BlockState;
+    import TagKey = net.minecraft.tags.TagKey;
+
+    interface BlockStatePredicate extends Predicate<BlockState> {
+        testBlock(block: Block): boolean;
+    }
+    type BlockStatePredicate$Simple__EnumKeys = 'ALL' | 'NONE';
+
+    interface BlockStatePredicate$Simple extends BlockStatePredicate {}
+    class BlockStatePredicate$Simple implements BlockStatePredicate {
+        static ALL: BlockStatePredicate;
+        static NONE: BlockStatePredicate;
+    }
+
+    type BlockStatePredicate$Simple__Wrapper =
+        | BlockStatePredicate$Simple
+        | BlockStatePredicate$Simple__EnumKeys
+        | Lowercase<BlockStatePredicate$Simple__EnumKeys>;
+
+    type BlockStatePredicate__Wrapper =
+        | BlockStatePredicate
+        | BlockStatePredicate$Simple
+        | null
+        | { or: BlockStatePredicate__Wrapper }
+        | { not: BlockStatePredicate__Wrapper }
+        | Block
+        | BlockState
+        | TagKey<Block>
+        | RegExp
+        | string
+        | BlockStatePredicate__Wrapper[];
 }

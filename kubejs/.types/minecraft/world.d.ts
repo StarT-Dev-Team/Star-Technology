@@ -1,8 +1,39 @@
 namespace internal.net.minecraft.world.level.block {
     import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
+    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
 
     class Block {
         static getBlock(resourceLocation: ResourceLocation__Wrapper): Block;
+
+        get id(): string;
+        getId(): string;
+        get mod(): string;
+        getMod(): string;
+
+        setHasCollision(v: boolean): void;
+        set hasCollision(v: boolean): void;
+        setExplosionResistance(v: float): void;
+        set explosionResistance(v: float): void;
+        setIsRandomlyTicking(v: boolean): void;
+        set isRandomlyTicking(v: boolean): void;
+        setRandomTickCallback(callback: Consumer__Wrapper<RandomTickCallbackJS>): void;
+        set randomTickCallback(callback: Consumer__Wrapper<RandomTickCallbackJS>): void;
+        setSoundType(v: SoundType__Wrapper): void;
+        set soundType(v: SoundType__Wrapper): void;
+        setFriction(v: float): void;
+        set friction(v: float): void;
+        setSpeedFactor(v: float): void;
+        set speedFactor(v: float): void;
+        setJumpFactor(v: float): void;
+        set jumpFactor(v: float): void;
+        setNameKey(key: String): void;
+        set nameKey(key: String): void;
+        setDestroySpeed(v: number): void;
+        set destroySpeed(v: number): void;
+        setLightEmission(v: number): void;
+        set lightEmission(v: number): void;
+        setRequiresTool(v: boolean): void;
+        set requiresTool(v: boolean): void;
     }
 
     class SoundType {
@@ -167,4 +198,40 @@ namespace internal.net.minecraft.world.level.block.state.properties {
 
 namespace internal.net.minecraft.world.level.material {
     abstract class Fluid {}
+}
+
+namespace internal.net.minecraft.world.effect {
+    class MobEffect {}
+
+    type MobEffectCategory__EnumKeys = 'BENEFICIAL' | 'HARMFUL' | 'NEUTRAL';
+
+    class MobEffectCategory {
+        static BENEFICIAL: MobEffectCategory;
+        static HARMFUL: MobEffectCategory;
+        static NEUTRAL: MobEffectCategory;
+    }
+
+    type MobEffectCategory__Wrapper =
+        | MobEffectCategory
+        | MobEffectCategory__EnumKeys
+        | Lowercase<MobEffectCategory__EnumKeys>;
+}
+
+namespace internal.net.minecraft.world.entity {
+    class LivingEntity {}
+}
+
+namespace internal.net.minecraft.world.entity.ai.attributes {
+    type AttributeModifier$Operation__EnumKeys = 'ADDITION' | 'MULTIPLY_BASE' | 'MULTIPLY_TOTAL';
+
+    class AttributeModifier$Operation {
+        static ADDITION: AttributeModifier$Operation;
+        static MULTIPLY_BASE: AttributeModifier$Operation;
+        static MULTIPLY_TOTAL: AttributeModifier$Operation;
+    }
+
+    type AttributeModifier$Operation__Wrapper =
+        | AttributeModifier$Operation
+        | AttributeModifier$Operation__EnumKeys
+        | Lowercase<AttributeModifier$Operation__EnumKeys>;
 }

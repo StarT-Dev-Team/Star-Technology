@@ -70,4 +70,20 @@ declare namespace internal.java.util.function_ {
     }
 
     type Consumer__Wrapper<T> = Consumer<T> | Consumer<T>['accept'];
+
+    const __Predicate: unique symbol;
+    interface Predicate<T> {
+        [__Predicate]: 0;
+        test(t: T): boolean;
+        and(other: Predicate__Wrapper<T>): Predicate<T>;
+        negate(): Predicate<T>;
+        or(other: Predicate__Wrapper<T>): Predicate<T>;
+    }
+
+    const Predicate: {
+        isEqual<T>(target: T): Predicate<T>;
+        not<T>(target: Predicate__Wrapper<T>): Predicate<T>;
+    };
+
+    type Predicate__Wrapper = Predicate | Predicate['test'];
 }

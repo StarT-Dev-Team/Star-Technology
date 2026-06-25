@@ -113,5 +113,6 @@ namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.block {
         tier(tier: number): this;
         material(material: Supplier__Wrapper<Material>): this;
         texture(texture: string): this;
+        coilMaterial(material: Supplier__Wrapper<Material>): this;
     }
 }

@@ -1,21 +1,4 @@
-declare namespace internal.com.startechnology.start_core.recipe {
-    import RecipeModifier = internal.com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
-
-    class StarTRecipeModifiers {
-        static ABSOLUTE_PARALLEL: RecipeModifier;
-        static HELL_FORGE_OC: RecipeModifier;
-        static BULK_PROCESSING: RecipeModifier;
-        static THROUGHPUT_BOOSTING: RecipeModifier;
-        static LARGE_TURBINE: RecipeModifier;
-        static BOOSTED_PLASMA_TURBINE: RecipeModifier;
-        static THREADING_MACHINE: RecipeModifier;
-        static START_STEAM_PARALLEL: RecipeModifier;
-        static VACUUM_CHEMICAL_REACTION_CHAMBER: RecipeModifier;
-        static FAKE_FUSION_OVERCLOCK: RecipeModifier;
-        static REFLECTOR_FUSION_REACTOR: RecipeModifier;
-    }
-}
-declare namespace internal.com.startechnology.start_core.machine {
+namespace internal.com.startechnology.start_core.machine {
     import PartAbility = com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 
     class StarTPartAbility {
@@ -46,7 +29,7 @@ declare namespace internal.com.startechnology.start_core.machine {
     }
 }
 
-declare namespace internal.com.startechnology.start_core.machine.threading {
+namespace internal.com.startechnology.start_core.machine.threading {
     import TraceabilityPredicate = gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
@@ -59,7 +42,7 @@ declare namespace internal.com.startechnology.start_core.machine.threading {
     }
 }
 
-declare namespace internal.com.startechnology.start_core.machine.vacuum_pump {
+namespace internal.com.startechnology.start_core.machine.vacuum_pump {
     import TraceabilityPredicate = internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 
     class StarTVacuumPumpPredicates {
@@ -67,19 +50,19 @@ declare namespace internal.com.startechnology.start_core.machine.vacuum_pump {
     }
 }
 
-declare namespace internal.com.startechnology.start_core.machine.steam {
+namespace internal.com.startechnology.start_core.machine.steam {
     import SteamParallelMultiblockMachine = com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine;
 
     class StarTSteamParallelMultiblockMachine extends SteamParallelMultiblockMachine {}
 }
 
-declare namespace internal.com.startechnology.start_core.machine.boosting {
+namespace internal.com.startechnology.start_core.machine.boosting {
     import LargeTurbineMachine = com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
 
     class BoostedPlasmaTurbine extends LargeTurbineMachine {}
 }
 
-declare namespace internal.com.startechnology.start_core.machine.komaru {
+namespace internal.com.startechnology.start_core.machine.komaru {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
     class StarTKomaruFrameMachine extends WorkableElectricMultiblockMachine {
@@ -89,7 +72,7 @@ declare namespace internal.com.startechnology.start_core.machine.komaru {
     }
 }
 
-declare namespace internal.com.startechnology.start_core.machine.draconic_infusion {
+namespace internal.com.startechnology.start_core.machine.draconic_infusion {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
     class StarTDraconicInfusionMachine extends WorkableElectricMultiblockMachine {
@@ -97,7 +80,7 @@ declare namespace internal.com.startechnology.start_core.machine.draconic_infusi
     }
 }
 
-declare namespace internal.com.startechnology.start_core.machine.vcrc {
+namespace internal.com.startechnology.start_core.machine.vcrc {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
     class VacuumChemicalReactionChamberMachine extends WorkableElectricMultiblockMachine {
@@ -105,9 +88,8 @@ declare namespace internal.com.startechnology.start_core.machine.vcrc {
     }
 }
 
-declare namespace internal.kjs {
+namespace internal.kjs {
     interface LoadableClasses {
-        'com.startechnology.start_core.recipe.StarTRecipeModifiers': typeof internal.com.startechnology.start_core.recipe.StarTRecipeModifiers;
         'com.startechnology.start_core.machine.StarTPartAbility': typeof internal.com.startechnology.start_core.machine.StarTPartAbility;
         'com.startechnology.start_core.machine.threading.StarTThreadingStatsPredicate': typeof internal.com.startechnology.start_core.machine.threading.StarTThreadingStatsPredicate;
         'com.startechnology.start_core.machine.vacuum_pump.StarTVacuumPumpPredicates': typeof internal.com.startechnology.start_core.machine.vacuum_pump.StarTVacuumPumpPredicates;
