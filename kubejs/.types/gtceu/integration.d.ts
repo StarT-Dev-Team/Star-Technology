@@ -17,10 +17,11 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
         setIconSupplier(iconSupplier: SupplierWrapper<ItemStack>): this;
     }
 
+    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
     import Component = net.minecraft.network.chat.Component;
 
     class ElementBuilder extends BuilderBase<Element> {
-        constructor(id: ResourceLocationWrapper);
+        constructor(id: ResourceLocation__Wrapper);
         get name(): string;
         translatableName(translatableName: Component): this;
         protons(protons: number): this;
@@ -35,10 +36,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
     import GTRecipeType__Wrapper = api.recipe.GTRecipeType__Wrapper;
 
     class GTRecipeCategoryBuilder extends BuilderBase<GTRecipeCategory> {
-        constructor(id: ResourceLocationWrapper);
+        constructor(id: ResourceLocation__Wrapper);
         recipeType(recipeType: GTRecipeType__Wrapper): this;
         icon(icon: IGuiTexture): this;
-        setCustomIcon(location: ResourceLocationWrapper): this;
+        setCustomIcon(location: ResourceLocation__Wrapper): this;
         setItemIcon(itemStacks: ItemStackWrapper[]): this;
         setItemIcon(...itemStacks: ItemStackWrapper[]): this;
     }

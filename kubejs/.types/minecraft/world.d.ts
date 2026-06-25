@@ -1,8 +1,8 @@
 declare namespace internal.net.minecraft.world.level.block {
-    import ResourceLocation = internal.net.minecraft.resources.ResourceLocation;
+    import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
 
     class Block {
-        static getBlock(resourceLocation: ResourceLocation): Block;
+        static getBlock(resourceLocation: ResourceLocation__Wrapper): Block;
     }
 }
 

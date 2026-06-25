@@ -410,13 +410,13 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
-    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
     import Supplier = java.util.function_.Supplier;
 
     interface BuilderBase<T> extends Supplier<T> {}
     abstract class BuilderBase<T> implements Supplier<T> {
-        id: ResourceLocation;
-        constructor(id: ResourceLocation);
+        id: ResourceLocation__Wrapper;
+        constructor(id: ResourceLocation__Wrapper);
     }
 
     import BlockPattern = pattern.BlockPattern;
@@ -446,8 +446,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         recipeModifiers(...modifiers: RecipeModifierWrapper[]): this;
         appearanceBlock(block: SupplierWrapper<Block>): this;
         regressWhenWaiting(regressWhenWaiting: boolean): this;
-        workableCasingModel(baseCasing: ResourceLocationWrapper, workableModel: ResourceLocationWrapper): this;
-        workableTieredHullModel(workableModel: ResourceLocationWrapper): this;
+        workableCasingModel(baseCasing: ResourceLocation__Wrapper, workableModel: ResourceLocation__Wrapper): this;
+        workableTieredHullModel(workableModel: ResourceLocation__Wrapper): this;
         editableUI(ui: EditableMachineUI): this;
         modelPropertyBool(property: Property<boolean>, defaultValue: boolean): this;
         modelPropertyInt(property: Property<boolean>, defaultValue: number): this;
