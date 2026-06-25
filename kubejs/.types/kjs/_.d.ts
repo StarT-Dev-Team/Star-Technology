@@ -1,5 +1,37 @@
 namespace internal.kjs {
     interface LoadableClasses {}
+
+    import BasicBlockJS$Builder = dev.latvian.mods.kubejs.block.custom.BasicBlockJS$Builder;
+
+    interface BlockTypeRegistry {
+        _default: BasicBlockJS$Builder;
+        basic: BasicBlockJS$Builder;
+    }
+}
+
+namespace internal.kjs.kubejs {
+    import InformationJEIEventJS = dev.latvian.mods.kubejs.integration.forge.jei.InformationJEIEventJS;
+    import HideJEIEventJS = dev.latvian.mods.kubejs.integration.forge.jei.HideJEIEventJS;
+    import ItemStack = net.minecraft.world.item.ItemStack;
+    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
+
+    interface JEIEvents {
+        information(callback: (event: InformationJEIEventJS) => void): void;
+        hideItems(callback: (event: HideJEIEventJS<ItemStack, ItemStack__Wrapper>) => void): void;
+    }
+
+    import ItemTooltipEventJS = dev.latvian.mods.kubejs.item.ItemTooltipEventJS;
+
+    interface ItemEvents {
+        tooltip(callback: (event: ItemTooltipEventJS) => void): void;
+    }
+
+    import RegistryEventJS = dev.latvian.mods.kubejs.registry.RegistryEventJS;
+    import Block = net.minecraft.world.level.block.Block;
+
+    interface StartupEvents {
+        registry(key: 'block', callback: (event: RegistryEventJS<Block, BlockTypeRegistry>) => void): void;
+    }
 }
 
 const Java: {
@@ -7,3 +39,7 @@ const Java: {
 };
 
 const Item: typeof internal.dev.latvian.mods.kubejs.bindings.ItemWrapper;
+
+const StartupEvents: internal.kjs.kubejs.StartupEvents;
+const ItemEvents: internal.kjs.kubejs.ItemEvents;
+const JEIEvents: internal.kjs.kubejs.JEIEvents;

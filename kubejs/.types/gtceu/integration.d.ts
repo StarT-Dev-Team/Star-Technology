@@ -93,3 +93,25 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
         tiers(...tiers: number[]): this;
     }
 }
+
+namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.block {
+    import BlockBuilder = dev.latvian.mods.kubejs.block.BlockBuilder;
+
+    class ActiveBlockBuilder extends BlockBuilder {
+        simple(base: string): this;
+        firebox(bottom: string, side: string, top: string): this;
+        bloom(base: string): this;
+    }
+
+    import Material = api.data.chemical.material.Material;
+    import Supplier__Wrapper = java.util.function_.Supplier__Wrapper;
+
+    class CoilBlockBuilder extends BlockBuilder {
+        temperature(temperature: number): this;
+        level(level: number): this;
+        energyDiscount(energyDiscount: number): this;
+        tier(tier: number): this;
+        material(material: Supplier__Wrapper<Material>): this;
+        texture(texture: string): this;
+    }
+}

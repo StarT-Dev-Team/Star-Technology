@@ -33,10 +33,20 @@ declare namespace internal.kjs.gtceu {
     }
 
     interface StartupEvents {
-        registry(key: 'gtceu:machine', event: (context: MachineEventContext) => void);
-        registry(key: 'gtceu:recipe_type', event: (context: RecipeTypeEventContext) => void);
-        registry(key: 'gtceu:element', event: (context: ElementEventContext) => void);
-        registry(key: 'gtceu:recipe_category', event: (context: RecipeCategoryEventContext) => void);
+        registry(key: 'gtceu:machine', event: (context: MachineEventContext) => void): void;
+        registry(key: 'gtceu:recipe_type', event: (context: RecipeTypeEventContext) => void): void;
+        registry(key: 'gtceu:element', event: (context: ElementEventContext) => void): void;
+        registry(key: 'gtceu:recipe_category', event: (context: RecipeCategoryEventContext) => void): void;
+    }
+}
+
+namespace internal.kjs {
+    import ActiveBlockBuilder = com.gregtechceu.gtceu.integration.kjs.builders.block.ActiveBlockBuilder;
+    import CoilBlockBuilder = com.gregtechceu.gtceu.integration.kjs.builders.block.CoilBlockBuilder;
+
+    interface BlockTypeRegistry {
+        'gtceu:active': ActiveBlockBuilder;
+        'gtceu:coil': CoilBlockBuilder;
     }
 }
 

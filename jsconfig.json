@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "checkJs": true,
-        "lib": ["ES2015"]
+        "lib": ["ES2016"]
     },
     "include": [
         "kubejs/client_scripts/**/*.js",

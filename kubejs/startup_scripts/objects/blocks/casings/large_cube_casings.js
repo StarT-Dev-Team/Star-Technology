@@ -1,4 +1,5 @@
 StartupEvents.registry('block', (event) => {
+    /** @param {string} type */
     const kubeCasing = (type) => {
         event
             .create(`${type}_casing`)
