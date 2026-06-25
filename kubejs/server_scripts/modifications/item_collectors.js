@@ -1,4 +1,5 @@
 //requires: itemcollectors
+
 ServerEvents.recipes((event) => {
     event
         .shaped(Item.of('itemcollectors:basic_collector'), [' P ', ' S ', 'SSS'], {

@@ -19,233 +19,40 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GCYMBlocks.CASING_STRESS_PROOF)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(
-                    '    BBBBB    ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    '  BBBBBBBBB  ',
-                    '      C      ',
-                    '      C      ',
-                    '      C      ',
-                    '      C      ',
-                    '      C      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    ' BBBBBDBBBBB ',
-                    '     CCC     ',
-                    '     CCC     ',
-                    '     CCC     ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    ' BBBBBEBBBBB ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    'BBBBBBBBBBBBB',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      '
-                )
-                .aisle(
-                    'BBBBBFFFBBBBB',
-                    '  C       C  ',
-                    '  C       C  ',
-                    '  C       C  ',
-                    '             ',
-                    '      G      ',
-                    '     GGG     ',
-                    '      G      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    'BBDEBFDFBEDBB',
-                    ' CCE     ECC ',
-                    ' CCE     ECC ',
-                    ' CCE  G  ECC ',
-                    ' CEE  G  EEC ',
-                    ' CE  GGG  EC ',
-                    '  E  GAG  E  ',
-                    '  E  GGG  E  ',
-                    '  EE  G  EE  ',
-                    '   E  G  E   ',
-                    '   EE   EE   ',
-                    '    E   E    ',
-                    '    E   E    ',
-                    '    E   E    '
-                )
-                .aisle(
-                    'BBBBBFFFBBBBB',
-                    '  C       C  ',
-                    '  C       C  ',
-                    '  C       C  ',
-                    '             ',
-                    '      G      ',
-                    '     GGG     ',
-                    '      G      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    'BBBBBBBBBBBBB',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      '
-                )
-                .aisle(
-                    ' BBBBBEBBBBB ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    ' BBBBBDBBBBB ',
-                    '     CCC     ',
-                    '     CCC     ',
-                    '     CCC     ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '      E      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    '  BBBBBBBBB  ',
-                    '      C      ',
-                    '      C      ',
-                    '      C      ',
-                    '      C      ',
-                    '      C      ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .aisle(
-                    '    BB@BB    ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             ',
-                    '             '
-                )
-                .where('A', Predicates.blocks('gtceu:nether_star_block'))
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:stress_proof_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
-                )
-                .where('C', Predicates.blocks('gtceu:tungsten_carbide_frame'))
-                .where('D', Predicates.blocks('gtceu:molybdenum_disilicide_coil_block'))
-                .where('E', Predicates.blocks('gtceu:nonconducting_casing'))
-                .where('F', Predicates.blocks('gtceu:assembly_line_grating'))
-                .where('G', Predicates.blocks('thermal_extra:shellite_glass'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                '    BBBBB    |             |             |             |             |             |             |             |             |             |             |             |             |             ',
+                '  BBBBBBBBB  |      C      |      C      |      C      |      C      |      C      |             |             |             |             |             |             |             |             ',
+                ' BBBBBDBBBBB |     CCC     |     CCC     |     CCC     |      E      |      E      |      E      |      E      |      E      |             |             |             |             |             ',
+                ' BBBBBEBBBBB |      E      |      E      |      E      |      E      |             |             |             |      E      |      E      |      E      |             |             |             ',
+                'BBBBBBBBBBBBB|             |             |             |             |             |             |             |             |             |      E      |      E      |      E      |      E      ',
+                'BBBBBFFFBBBBB|  C       C  |  C       C  |  C       C  |             |      G      |     GGG     |      G      |             |             |             |             |             |             ',
+                'BBDEBFDFBEDBB| CCE     ECC | CCE     ECC | CCE  G  ECC | CEE  G  EEC | CE  GGG  EC |  E  GAG  E  |  E  GGG  E  |  EE  G  EE  |   E  G  E   |   EE   EE   |    E   E    |    E   E    |    E   E    ',
+                'BBBBBFFFBBBBB|  C       C  |  C       C  |  C       C  |             |      G      |     GGG     |      G      |             |             |             |             |             |             ',
+                'BBBBBBBBBBBBB|             |             |             |             |             |             |             |             |             |      E      |      E      |      E      |      E      ',
+                ' BBBBBEBBBBB |      E      |      E      |      E      |      E      |             |             |             |      E      |      E      |      E      |             |             |             ',
+                ' BBBBBDBBBBB |     CCC     |     CCC     |     CCC     |      E      |      E      |      E      |      E      |      E      |             |             |             |             |             ',
+                '  BBBBBBBBB  |      C      |      C      |      C      |      C      |      C      |             |             |             |             |             |             |             |             ',
+                '    BB@BB    |             |             |             |             |             |             |             |             |             |             |             |             |             ',
+            ])
+                .whereDict({
+                    A: P.gtBlock('nether_star_block'),
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.gtBlock('stress_proof_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                    ]),
+                    C: P.gtBlock('tungsten_carbide_frame'),
+                    D: P.gtBlock('molybdenum_disilicide_coil_block'),
+                    E: P.gtBlock('nonconducting_casing'),
+                    F: P.gtBlock('assembly_line_grating'),
+                    G: P.block('thermal_extra:shellite_glass'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel('gtceu:block/casings/gcym/stress_proof_casing', 'gtceu:block/multiblock/fusion_reactor');

@@ -16,26 +16,28 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('gtceu:high_temperature_smelting_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('ABBBA', 'A B A', 'A A A', 'A B A', 'ABBBA')
-                .aisle('BBBBB', ' CCC ', ' CCC ', ' CCC ', 'BBBBB')
-                .aisle('BBBBB', 'BC CB', 'AC CA', 'BC CB', 'BBDBB')
-                .aisle('BBBBB', ' CCC ', ' CCC ', ' CCC ', 'BBBBB')
-                .aisle('AB@BA', 'A B A', 'A A A', 'A B A', 'ABBBA')
-                .where('A', Predicates.blocks('gtceu:tungsten_frame'))
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:high_temperature_smelting_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where(' ', Predicates.any())
-                .where('C', Predicates.heatingCoils())
-                .where('D', Predicates.abilities(PartAbility.MUFFLER))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                'ABBBA|A B A|A A A|A B A|ABBBA',
+                'BBBBB| CCC | CCC | CCC |BBBBB',
+                'BBBBB|BC CB|AC CA|BC CB|BBDBB',
+                'BBBBB| CCC | CCC | CCC |BBBBB',
+                'AB@BA|A B A|A A A|A B A|ABBBA',
+            ])
+                .whereDict({
+                    A: P.gtBlock('tungsten_frame'),
+                    B: P.anyOf([
+                        P.gtBlock('high_temperature_smelting_casing'),
+                        P.ability(PA.itemIn, { max: 8, view: 1 }),
+                        P.ability(PA.itemOut, { max: 8, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    ' ': P.any(),
+                    C: P.heatingCoil(),
+                    D: P.ability(PA.muffler),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

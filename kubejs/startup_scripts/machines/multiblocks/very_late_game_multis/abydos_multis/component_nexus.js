@@ -22,38 +22,40 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:superdense_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('ABBBABBBAAABBBA    ', 'ACCCACCCADACCCA    ', '        AAA        ')
-                .aisle('AEEEAEEEFFFEEEA    ', 'AGHGAGHGAIAGHGA    ', 'ACCCACCCAJACCCA    ')
-                .aisle('AFFFFFFFFEFFFFA    ', 'IIIIIIIIIIIIIII    ', 'AAAAAAAAAJAAAAA    ')
-                .aisle('AEEEAEEEFFFEEEA    ', 'AGHGAGHGAIAGHGA    ', 'ACCCACCCAJACCCA    ')
-                .aisle('ABBBABBBAFABBBA    ', 'ACCCACCCAIACCCA    ', '        AJA        ')
-                .aisle('        AFA        ', '        AIA        ', '        AJA        ')
-                .aisle('    ABBBAFABBBABBBA', '    ACCCAIACCCACCCA', '        AJA        ')
-                .aisle('    AEEEFFFEEEAEEEA', '    AGHGAIAGHGAGHGA', '    ACCCAJACCCACCCA')
-                .aisle('    AFFFFEFFFFFFFFA', '    IIIIIIIIIIIIIII', '    AAAAAJAAAAAAAAA')
-                .aisle('    AEEEFFFEEEAEEEA', '    AGHGAIAGHGAGHGA', '    ACCCAJACCCACCCA')
-                .aisle('    ABBBAAABBBABBBA', '    ACCCA@ACCCACCCA', '        AAA        ')
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:superdense_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(4).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.blocks('gtceu:uhv_stabilization_module').setExactLimit(1))
-                )
-                .where('B', Predicates.blocks('gtceu:computer_heat_vent'))
-                .where(' ', Predicates.any())
-                .where('C', Predicates.blocks('gtceu:fusion_glass'))
-                .where('D', Predicates.blocks('gtceu:uhv_rotor_holder'))
-                .where('E', Predicates.blocks('gtceu:assembly_line_grating'))
-                .where('F', Predicates.blocks('gtceu:advanced_computer_casing'))
-                .where('G', Predicates.blocks('gtceu:fusion_coil'))
-                .where('H', Predicates.blocks('gtceu:assembly_line_unit'))
-                .where('I', Predicates.blocks('kubejs:superdense_assembly_machine_casing'))
-                .where('J', Predicates.blocks('gtceu:superconducting_coil'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                'ABBBABBBAAABBBA    |ACCCACCCADACCCA    |        AAA        ',
+                'AEEEAEEEFFFEEEA    |AGHGAGHGAIAGHGA    |ACCCACCCAJACCCA    ',
+                'AFFFFFFFFEFFFFA    |IIIIIIIIIIIIIII    |AAAAAAAAAJAAAAA    ',
+                'AEEEAEEEFFFEEEA    |AGHGAGHGAIAGHGA    |ACCCACCCAJACCCA    ',
+                'ABBBABBBAFABBBA    |ACCCACCCAIACCCA    |        AJA        ',
+                '        AFA        |        AIA        |        AJA        ',
+                '    ABBBAFABBBABBBA|    ACCCAIACCCACCCA|        AJA        ',
+                '    AEEEFFFEEEAEEEA|    AGHGAIAGHGAGHGA|    ACCCAJACCCACCCA',
+                '    AFFFFEFFFFFFFFA|    IIIIIIIIIIIIIII|    AAAAAJAAAAAAAAA',
+                '    AEEEFFFEEEAEEEA|    AGHGAIAGHGAGHGA|    ACCCAJACCCACCCA',
+                '    ABBBAAABBBABBBA|    ACCCA@ACCCACCCA|        AAA        ',
+            ])
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('superdense_machine_casing'),
+                        P.ability(PA.fluidIn, { max: 4, view: 1 }),
+                        P.ability(PA.itemIn, { max: 8, view: 1 }),
+                        P.ability(PA.itemOut, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.gtBlock('uhv_stabilization_module', { exact: 1 }),
+                    ]),
+                    B: P.gtBlock('computer_heat_vent'),
+                    ' ': P.any(),
+                    C: P.gtBlock('fusion_glass'),
+                    D: P.gtBlock('uhv_rotor_holder'),
+                    E: P.gtBlock('assembly_line_grating'),
+                    F: P.gtBlock('advanced_computer_casing'),
+                    G: P.gtBlock('fusion_coil'),
+                    H: P.gtBlock('assembly_line_unit'),
+                    I: P.kjsBlock('superdense_assembly_machine_casing'),
+                    J: P.gtBlock('superconducting_coil'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('subatomic_particle_lattice_isolation_terminal', 'multiblock')
         .machine((holder) => new $StarTThreadingCapableMachine(holder))
@@ -14,37 +13,40 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:inoculated_nuclei_seperation_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('      BBBBBBBBB      ', '      BBBBBBBBB      ', '      BBB   BBB      ', '      BBB   BBB      ', '      BBB   BBB      ', '      BBBBBBBBB      ', '                     ') 
-            .aisle(' BBBBBBBBBBBBBBBBBBB ', ' BBBBBBBBBBBBBBBBBBB ', ' B   BBBBCDCBBBB   B ', ' B   BBBBDEDBBBB   B ', ' B   BBBBCDCBBBB   B ', ' BBBBBBBBBBBBBBBBBBB ', '       BBBBBBB       ') 
-            .aisle('BBBBBBBBBBBBBBBBBBBBB', 'BBBBBBBBBBFBBBBBBBBBB', 'BBGGGBBBBBFBBBBBGGGBB', 'BBGGGBBBFFFFFBBBGGGBB', 'BBGGGBBBBBFBBBBBGGGBB', 'BBBBBBBBBBFBBBBBBBBBB', '  BBBBBBBBBBBBBBBBB  ') 
-            .aisle('BBBBBBBBBBBBBBBBBBBBB', 'BBDDDBBBBBBBBBBBDDDBB', 'BB   BBBBBBBBBBB   BB', 'BB   BFFFBFBFFFB   BB', 'BB   BBBBBBBBBBB   BB', 'BBBBBBBBBBBBBBBBBBBBB', ' BBBBBBBBBBBBBBBBBBB ') 
-            .aisle('BBBBBBBBBBBBBBBBBBBBB', 'BBFFFBBBBBBBBBBBFFFBB', ' CHHHBBBBBBBBBBBHHHC ', ' D   DFBBBFBBBFD   D ', ' CHHHBBBBBBBBBBBHHHC ', 'BBBBBBBBBBBBBBBBBBBBB', ' BBBBBBBBBBBBBBBBBBB ') 
-            .aisle('BBBBBBBBBBBBBBBBBBBBB', 'BBFFFFFBBBBBBBFFFFFBB', ' DHHHBFBBBBBBBFBHHHD ', ' D   DFFFFFFFFFD   D ', ' DHHHBFBBBBBBBFBHHHD ', 'BBBBBFFBBBBBBBFFBBBBB', ' BBBBBBBBBBBBBBBBBBB ') 
-            .aisle('BBBBBBBBBBBBBBBBBBBBB', 'BBFFFBBBBBBBBBBBFFFBB', ' CHHHBBBBBBBBBBBHHHC ', ' D   DFBBBFBBBFD   D ', ' CHHHBBBBBBBBBBBHHHC ', 'BBBBBBBBBBBBBBBBBBBBB', ' BBBBBBBBBBBBBBBBBBB ') 
-            .aisle('BBBBBBBBBBBBBBBBBBBBB', 'BBDDDBBBBBBBBBBBDDDBB', 'BB   BBBBBBBBBBB   BB', 'BB   BFFFBFBFFFB   BB', 'BB   BBBBBBBBBBB   BB', 'BBDDDBBBBBBBBBBBDDDBB', ' BBBBBBBBBBBBBBBBBBB ') 
-            .aisle('BBBBBBBBBBBBBBBBBBBBB', 'BBBBBBBBBBFBBBBBBBBBB', 'BBGGGBBBBBFBBBBBGGGBB', 'BBGGGBBBFFFFFBBBGGGBB', 'BBGGGBBBBBFBBBBBGGGBB', 'BBBBBBBBBBFBBBBBBBBBB', '  BBBBBBBBBBBBBBBBB  ') 
-            .aisle(' BBBBBBBBBBBBBBBBBBB ', ' BBBBBBBBBBBBBBBBBBB ', ' B   BBBBBBBBBBB   B ', ' B   BBBBB@BBBBB   B ', ' B   BBBBBBBBBBB   B ', ' BBBBBBBBBBBBBBBBBBB ', '       BBBBBBB       ') 
-            .aisle('      BBBBBBBBB      ', '      BBBBBBBBB      ', '      BBB   BBB      ', '      BBB   BBB      ', '      BBB   BBB      ', '      BBBBBBBBB      ', '                     ') 
-                .where('A', Predicates.blocks('minecraft:stone'))
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('kubejs:inoculated_nuclei_seperation_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('C', $StarTThreadingStatBlocks.threadingStatBlocks())
-                .where('D', Predicates.blocks('kubejs:draco_assembly_grating'))
-                .where('E', Predicates.blocks('start_core:threading_controller'))
-                .where('F', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-                .where('G', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('H', Predicates.blocks('kubejs:nuclei_seperators'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '      BBBBBBBBB      |      BBBBBBBBB      |      BBB   BBB      |      BBB   BBB      |      BBB   BBB      |      BBBBBBBBB      |                     ',
+                ' BBBBBBBBBBBBBBBBBBB | BBBBBBBBBBBBBBBBBBB | B   BBBBCDCBBBB   B | B   BBBBDEDBBBB   B | B   BBBBCDCBBBB   B | BBBBBBBBBBBBBBBBBBB |       BBBBBBB       ',
+                'BBBBBBBBBBBBBBBBBBBBB|BBBBBBBBBBFBBBBBBBBBB|BBGGGBBBBBFBBBBBGGGBB|BBGGGBBBFFFFFBBBGGGBB|BBGGGBBBBBFBBBBBGGGBB|BBBBBBBBBBFBBBBBBBBBB|  BBBBBBBBBBBBBBBBB  ',
+                'BBBBBBBBBBBBBBBBBBBBB|BBDDDBBBBBBBBBBBDDDBB|BB   BBBBBBBBBBB   BB|BB   BFFFBFBFFFB   BB|BB   BBBBBBBBBBB   BB|BBBBBBBBBBBBBBBBBBBBB| BBBBBBBBBBBBBBBBBBB ',
+                'BBBBBBBBBBBBBBBBBBBBB|BBFFFBBBBBBBBBBBFFFBB| CHHHBBBBBBBBBBBHHHC | D   DFBBBFBBBFD   D | CHHHBBBBBBBBBBBHHHC |BBBBBBBBBBBBBBBBBBBBB| BBBBBBBBBBBBBBBBBBB ',
+                'BBBBBBBBBBBBBBBBBBBBB|BBFFFFFBBBBBBBFFFFFBB| DHHHBFBBBBBBBFBHHHD | D   DFFFFFFFFFD   D | DHHHBFBBBBBBBFBHHHD |BBBBBFFBBBBBBBFFBBBBB| BBBBBBBBBBBBBBBBBBB ',
+                'BBBBBBBBBBBBBBBBBBBBB|BBFFFBBBBBBBBBBBFFFBB| CHHHBBBBBBBBBBBHHHC | D   DFBBBFBBBFD   D | CHHHBBBBBBBBBBBHHHC |BBBBBBBBBBBBBBBBBBBBB| BBBBBBBBBBBBBBBBBBB ',
+                'BBBBBBBBBBBBBBBBBBBBB|BBDDDBBBBBBBBBBBDDDBB|BB   BBBBBBBBBBB   BB|BB   BFFFBFBFFFB   BB|BB   BBBBBBBBBBB   BB|BBDDDBBBBBBBBBBBDDDBB| BBBBBBBBBBBBBBBBBBB ',
+                'BBBBBBBBBBBBBBBBBBBBB|BBBBBBBBBBFBBBBBBBBBB|BBGGGBBBBBFBBBBBGGGBB|BBGGGBBBFFFFFBBBGGGBB|BBGGGBBBBBFBBBBBGGGBB|BBBBBBBBBBFBBBBBBBBBB|  BBBBBBBBBBBBBBBBB  ',
+                ' BBBBBBBBBBBBBBBBBBB | BBBBBBBBBBBBBBBBBBB | B   BBBBBBBBBBB   B | B   BBBBB@BBBBB   B | B   BBBBBBBBBBB   B | BBBBBBBBBBBBBBBBBBB |       BBBBBBB       ',
+                '      BBBBBBBBB      |      BBBBBBBBB      |      BBB   BBB      |      BBB   BBB      |      BBB   BBB      |      BBBBBBBBB      |                     ',
+            ])
+                .whereDict({
+                    A: P.block('minecraft:stone'),
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.kjsBlock('inoculated_nuclei_seperation_casing'),
+                        P.ability(PA.itemIn, { max: 20, view: 1 }),
+                        P.ability(PA.itemOut, { max: 20, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 20, view: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    C: P.threadingBlocks(),
+                    D: P.kjsBlock('draco_assembly_grating'),
+                    E: P.coreBlock('threading_controller'),
+                    F: P.kjsBlock('nyanium_pipe_casing'),
+                    G: P.kjsBlock('draco_resilient_fusion_glass'),
+                    H: P.kjsBlock('nuclei_seperators'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

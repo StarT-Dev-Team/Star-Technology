@@ -1,5 +1,4 @@
 // note: this code is assuming all casing materials from uev+ are the same as the component tertiary material
-
 ServerEvents.recipes((event) => {
     const TIERS = ['luv', 'zpm', 'uv', 'uhv', 'uev', 'uiv'];
     const SINGLEBLOCKS = [
@@ -80,7 +79,8 @@ ServerEvents.recipes((event) => {
         });
 
         const specialSingleOutputs = {
-            electricFurnace: [
+            // eslint-disable-next-line id-match, camelcase
+            electric_furnace: [
                 `8x ${materials.casingMaterial}`,
                 `4x ${materials.wireMaterial}`,
                 `2x ${materials.cableMaterial}`,
@@ -88,7 +88,8 @@ ServerEvents.recipes((event) => {
                 ' ',
                 ' ',
             ],
-            electricBlastFurnace: [
+            // eslint-disable-next-line id-match, camelcase
+            electric_blast_furnace: [
                 `10x ${materials.casingMaterial}`,
                 `4x ${materials.wireMaterial}`,
                 `2x ${materials.cableMaterial}`,
@@ -96,7 +97,8 @@ ServerEvents.recipes((event) => {
                 ' ',
                 ' ',
             ],
-            electricSmoker: [
+            // eslint-disable-next-line id-match, camelcase
+            electric_smoker: [
                 `8x ${materials.casingMaterial}`,
                 `6x ${materials.wireMaterial}`,
                 `2x ${materials.cableMaterial}`,
@@ -104,7 +106,8 @@ ServerEvents.recipes((event) => {
                 ' ',
                 ' ',
             ],
-            alloySmelter: [
+            // eslint-disable-next-line id-match, camelcase
+            alloy_smelter: [
                 `8x ${materials.casingMaterial}`,
                 `6x ${materials.wireMaterial}`,
                 `2x ${materials.cableMaterial}`,
@@ -112,7 +115,8 @@ ServerEvents.recipes((event) => {
                 ' ',
                 ' ',
             ],
-            arcFurnace: [
+            // eslint-disable-next-line id-match, camelcase
+            arc_furnace: [
                 `11x ${materials.casingMaterial}`,
                 `5x ${materials.cableMaterial}`,
                 `${graphite}`,

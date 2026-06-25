@@ -54,22 +54,23 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('AFA', 'ADA', 'ADA', 'AAA')
                 .aisle('ABA', 'CEC', 'CEC', 'CCC')
                 .aisle('AAA', 'A@A', 'AAA', 'AAA')
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:primordial_ware_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('B', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-                .where('C', Predicates.blocks('kubejs:primordial_assembly_grating'))
-                .where('D', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('E', Predicates.blocks('start_core:advanced_fusion_coil'))
-                .where('F', Predicates.abilities($StarTPartAbility.MODULAR_AUTO_SCALING_NODE_CONDUIT))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('primordial_ware_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    B: P.kjsBlock('superdense_assembly_control_casing'),
+                    C: P.kjsBlock('primordial_assembly_grating'),
+                    D: P.kjsBlock('draco_resilient_fusion_glass'),
+                    E: P.coreBlock('advanced_fusion_coil'),
+                    F: P.ability(PA.modAutoNode),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
@@ -93,22 +94,23 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('AFA', 'ADA', 'ADA', 'AAA')
                 .aisle('ABA', 'CEC', 'CEC', 'CCC')
                 .aisle('AAA', 'A@A', 'AAA', 'AAA')
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:primordial_ware_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('B', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-                .where('C', Predicates.blocks('kubejs:primordial_assembly_grating'))
-                .where('D', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('E', Predicates.blocks('start_core:advanced_fusion_coil'))
-                .where('F', Predicates.abilities($StarTPartAbility.MODULAR_AUTO_SCALING_NODE_CONDUIT))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('primordial_ware_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    B: P.kjsBlock('superdense_assembly_control_casing'),
+                    C: P.kjsBlock('primordial_assembly_grating'),
+                    D: P.kjsBlock('draco_resilient_fusion_glass'),
+                    E: P.coreBlock('advanced_fusion_coil'),
+                    F: P.ability(PA.modAutoNode),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
@@ -132,22 +134,23 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('AFA', 'ADA', 'ADA', 'AAA')
                 .aisle('ABA', 'CEC', 'CEC', 'CCC')
                 .aisle('AAA', 'A@A', 'AAA', 'AAA')
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:primordial_ware_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('B', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-                .where('C', Predicates.blocks('kubejs:primordial_assembly_grating'))
-                .where('D', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('E', Predicates.blocks('start_core:advanced_fusion_coil'))
-                .where('F', Predicates.abilities($StarTPartAbility.MODULAR_AUTO_SCALING_NODE_CONDUIT))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('primordial_ware_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    B: P.kjsBlock('superdense_assembly_control_casing'),
+                    C: P.kjsBlock('primordial_assembly_grating'),
+                    D: P.kjsBlock('draco_resilient_fusion_glass'),
+                    E: P.coreBlock('advanced_fusion_coil'),
+                    F: P.ability(PA.modAutoNode),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
@@ -176,22 +179,23 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('CCC', 'DED', 'DED', 'DED', 'AFA')
                 .aisle('CCC', 'CBC', 'CBC', 'CBC', 'ABA')
                 .aisle('CCC', 'A@A', 'AAA', 'AAA', 'AAA')
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:primordial_ware_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.OPTICAL_DATA_RECEPTION).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('B', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-                .where('C', Predicates.blocks('kubejs:primordial_assembly_grating'))
-                .where('D', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('E', Predicates.blocks('start_core:advanced_fusion_coil'))
-                .where('F', Predicates.abilities($StarTPartAbility.MODULAR_AUTO_SCALING_NODE_CONDUIT))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('primordial_ware_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.compIn, { exact: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    B: P.kjsBlock('superdense_assembly_control_casing'),
+                    C: P.kjsBlock('primordial_assembly_grating'),
+                    D: P.kjsBlock('draco_resilient_fusion_glass'),
+                    E: P.coreBlock('advanced_fusion_coil'),
+                    F: P.ability(PA.modAutoNode),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
@@ -216,22 +220,23 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('CCC', 'DED', 'DED', 'DED', 'AFA')
                 .aisle('CCC', 'CBC', 'CBC', 'CBC', 'ABA')
                 .aisle('CCC', 'A@A', 'AAA', 'AAA', 'AAA')
-                .where(
-                    'A',
-                    Predicates.blocks('kubejs:primordial_ware_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                        .or(Predicates.abilities(PartAbility.COMPUTATION_DATA_RECEPTION).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('B', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-                .where('C', Predicates.blocks('kubejs:primordial_assembly_grating'))
-                .where('D', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('E', Predicates.blocks('start_core:advanced_fusion_coil'))
-                .where('F', Predicates.abilities($StarTPartAbility.MODULAR_AUTO_SCALING_NODE_CONDUIT))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .whereDict({
+                    A: P.anyOf([
+                        P.kjsBlock('primordial_ware_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.compIn, { exact: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    B: P.kjsBlock('superdense_assembly_control_casing'),
+                    C: P.kjsBlock('primordial_assembly_grating'),
+                    D: P.kjsBlock('draco_resilient_fusion_glass'),
+                    E: P.coreBlock('advanced_fusion_coil'),
+                    F: P.ability(PA.modAutoNode),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

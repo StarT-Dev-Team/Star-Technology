@@ -57,8 +57,10 @@ config/*
 !eslint.config.mjs
 !.prettierignore
 !.prettierrc
+!jsconfig.json
+
 # wth is this jank
 !.vscode/
-.vscode/* 
+.vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json

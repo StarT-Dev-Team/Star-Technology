@@ -1,5 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('incomprehensible_chemical_reactor', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -13,33 +12,36 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:cattomolymer_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('       BBCCCBB', '       DBBBBBD', '       BEBEBEB', '       BCBCBCB', '       BEBEBEB', '       DBBBBBD', '       BBCCCBB')
-            .aisle('BBFBB  BBBBBBB', 'B   B  BG G GB', ' D D   EG G GE', '  E    CG G GC', ' D D   EG G GE', 'B   B  BG G GB', 'BBFBB  BBBBBBB')
-            .aisle('BBBBB  CBBBBBC', ' HHH   B     B', 'DHHHD  B G G B', ' HGH   B     B', 'DHHHD  B G G B', ' HHH   B     B', 'BBBBB  CBBBBBC')
-            .aisle('FBCBF  CBBBBBC', ' HGH   BG G GB', ' HGH   EG G GE', 'EGGGGGGGG G GC', ' HGH   EG G GE', ' HGH   BG G GB', 'FBCBF  CBBBBBC')
-            .aisle('BBBBB  CBBBBBC', ' HHH   B     B', 'DHHHD  B G G B', ' HGH   B     B', 'DHHHD  B G G B', ' HHH   B     B', 'BBBBB  CBBBBBC')
-            .aisle('BBFBB  BBBBBBB', 'B   B  BG G GB', ' D D   EG G GE', '  E    CG G GC', ' D D   EG G GE', 'B   B  BG G GB', 'BBFBB  BBBBBBB')
-            .aisle('       BBCCCBB', '       DBBBBBD', '       BEBEBEB', '       BCB@BCB', '       BEBEBEB', '       DBBBBBD', '       BBCCCBB')
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('kubejs:cattomolymer_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('C', Predicates.blocks('kubejs:nyanium_heat_escape_casing'))
-                .where('D', Predicates.blocks('gtceu:nyanium_frame'))
-                .where('E', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
-                .where('F', Predicates.blocks('kubejs:nyanium_firebox_casing'))
-                .where('G', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-                .where('H', Predicates.heatingCoils())
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '       BBCCCBB|       DBBBBBD|       BEBEBEB|       BCBCBCB|       BEBEBEB|       DBBBBBD|       BBCCCBB',
+                'BBFBB  BBBBBBB|B   B  BG G GB| D D   EG G GE|  E    CG G GC| D D   EG G GE|B   B  BG G GB|BBFBB  BBBBBBB',
+                'BBBBB  CBBBBBC| HHH   B     B|DHHHD  B G G B| HGH   B     B|DHHHD  B G G B| HHH   B     B|BBBBB  CBBBBBC',
+                'FBCBF  CBBBBBC| HGH   BG G GB| HGH   EG G GE|EGGGGGGGG G GC| HGH   EG G GE| HGH   BG G GB|FBCBF  CBBBBBC',
+                'BBBBB  CBBBBBC| HHH   B     B|DHHHD  B G G B| HGH   B     B|DHHHD  B G G B| HHH   B     B|BBBBB  CBBBBBC',
+                'BBFBB  BBBBBBB|B   B  BG G GB| D D   EG G GE|  E    CG G GC| D D   EG G GE|B   B  BG G GB|BBFBB  BBBBBBB',
+                '       BBCCCBB|       DBBBBBD|       BEBEBEB|       BCB@BCB|       BEBEBEB|       DBBBBBD|       BBCCCBB',
+            ])
+                .whereDict({
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.kjsBlock('cattomolymer_casing'),
+                        P.ability(PA.itemIn, { max: 8, view: 1 }),
+                        P.ability(PA.itemOut, { max: 8, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 8, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 8, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    C: P.kjsBlock('nyanium_heat_escape_casing'),
+                    D: P.gtBlock('nyanium_frame'),
+                    E: P.kjsBlock('nyanium_engine_intake_casing'),
+                    F: P.kjsBlock('nyanium_firebox_casing'),
+                    G: P.kjsBlock('nyanium_pipe_casing'),
+                    H: P.heatingCoil(),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

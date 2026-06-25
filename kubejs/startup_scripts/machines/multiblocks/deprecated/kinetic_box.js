@@ -17,7 +17,7 @@
 //             .aisle('SSS', 'SCS', '   ')
 //             .where('C', Predicates.controller(Predicates.blocks(definition.get())))
 //             .where('S', Predicates.blocks(GTBlocks.CASING_STEEL_SOLID.get()))
-//             .where('P', Predicates.abilities(PartAbility.INPUT_ENERGY).setExactLimit(1)
+//             .where('P', Predicates.abilities(PA.euIn).setExactLimit(1)
 //                 .or(Predicates.abilities(PartAbility.OUTPUT_KINETIC).setExactLimit(1)))
 //             .where('G', Predicates.blocks(GTBlocks.CASING_STEEL_GEARBOX.get()))
 //             .where(' ', Predicates.any())

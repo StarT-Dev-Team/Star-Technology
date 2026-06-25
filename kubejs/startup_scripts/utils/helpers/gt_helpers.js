@@ -72,3 +72,55 @@ global.chemicalOverclockDisplay = (controller, components) => {
         components.add(Component.translatable('gtceu.multiblock.chemical_reactor.energy', 100 - 5 * coilTier));
     }
 };
+
+/** @typedef {(pattern: internal.com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern) => void} FactoryBlockPatternConsumer */
+
+/**
+ * @param {number} min
+ * @param {number | undefined} max
+ * @returns {FactoryBlockPatternConsumer}
+ * @global
+ */
+// eslint-disable-next-line no-unused-vars
+const blockPatternRepeatable = (min, max) => {
+    if (max) return (pattern) => pattern.setRepeatable(min, max);
+    return (pattern) => pattern.setRepeatable(min);
+};
+
+/**
+ * @param {InstanceType<typeof $RelativeDirection>} charDir
+ * @param {InstanceType<typeof $RelativeDirection>} stringDir
+ * @param {InstanceType<typeof $RelativeDirection>} aisleDir
+ * @returns {typeof newFactoryBlockPattern}
+ * @global
+ */
+const newFactoryBlockPatternWithDirections = (charDir, stringDir, aisleDir) => {
+    return (pattern, divider) => {
+        divider = divider || '|';
+        let ret = FactoryBlockPattern.start(charDir, stringDir, aisleDir);
+        for (let aisle of pattern) {
+            if (typeof aisle === 'string') {
+                let aisleParts = aisle.split(divider);
+                ret = ret.aisle.apply(ret, aisleParts);
+            } else {
+                aisle(ret);
+            }
+        }
+        return ret;
+    };
+};
+
+/**
+ * @param {(string | FactoryBlockPatternConsumer)[]} pattern
+ * @param {string} [divider]
+ * @returns {internal.com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern}
+ * @global
+ */
+// eslint-disable-next-line no-unused-vars
+const newFactoryBlockPattern = (pattern, divider) => {
+    return newFactoryBlockPatternWithDirections(
+        $RelativeDirection.LEFT,
+        $RelativeDirection.UP,
+        $RelativeDirection.FRONT
+    )(pattern, divider);
+};

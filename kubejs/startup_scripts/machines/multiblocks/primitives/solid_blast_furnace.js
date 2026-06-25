@@ -24,16 +24,16 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('DDD', 'PPP', 'PPP', 'PPP')
                 .aisle('DDD', 'P P', 'P P', 'P P')
                 .aisle('DDD', 'PCP', 'PPP', 'PPP')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'P',
-                    Predicates.blocks('kubejs:high_steam_machine_casing')
-                        .setMinGlobalLimited(15)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                )
-                .where('D', Predicates.blocks('gtceu:steel_firebox_casing'))
-                .where(' ', Predicates.any())
+                .whereDict({
+                    C: P.controller(definition),
+                    P: P.anyOf([
+                        P.kjsBlock('high_steam_machine_casing', { min: 15 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                    ]),
+                    D: P.block('gtceu:steel_firebox_casing'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

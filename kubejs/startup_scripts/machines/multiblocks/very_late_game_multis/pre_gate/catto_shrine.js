@@ -10,7 +10,6 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('catto_shrine', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
@@ -18,45 +17,48 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeType('catto_shrine')
         .recipeModifier(GTRecipeModifiers.OC_PERFECT)
         .appearanceBlock(() => Block.getBlock('gtceu:palladium_substation'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('AAAAAAAAAAAAA', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ') 
-            .aisle('ABAABAAABAABA', '   C     C   ', '   C     C   ', '   C     C   ', '   C     C   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ') 
-            .aisle('AADDAAAAADDAA', '  DD     DD  ', '  DDD   DDD  ', '  DDDD DDDD  ', '   C DDD C   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ') 
-            .aisle('AADAAAAAAADAA', ' CD       DC ', ' CD       DC ', ' CD       DC ', ' CC       CC ', '   CAAAAAC   ', '             ', '             ', '             ', '             ', '      E      ', '             ', '             ') 
-            .aisle('ABAAFFAFFAABA', '    FFFFF    ', '  D  FFF  D  ', '  D  GGG  D  ', '     FFF     ', '   AFFFFFA   ', '             ', '             ', '      E      ', '      E      ', '      E      ', '             ', '             ') 
-            .aisle('AAAAFFAFFAAAA', '    FFFFF    ', '    FH HF    ', '  D GH HG D  ', '  D FH HF D  ', '   AFFFFFA   ', '     I I     ', '     J J     ', '     KEK     ', '             ', '             ', '             ', '             ') 
-            .aisle('AAAAAAAAAAAAA', '    FFFFF    ', '    F H F    ', '    G H G    ', '  D F H F D  ', '   AFFFFFA   ', '             ', '             ', '     KIK     ', '     KEK     ', '     KLK     ', '     KEK     ', '             ') 
-            .aisle('AAAAFFAFFAAAA', '    FFFFF    ', '    FH HF    ', '  D GH HG D  ', '  D FH HF D  ', '   AFFFFFA   ', '     I I     ', '     J J     ', '     KIK     ', '     JJJ     ', '     KMK     ', '     KLK     ', '     J J     ') 
-            .aisle('ABAAFFAFFAABA', '    FFFFF    ', '  D  F@F  D  ', '  D  GGG  D  ', '     FFF     ', '   AFFFFFA   ', '             ', '             ', '             ', '     INI     ', '     OJO     ', '     KKK     ', '             ') 
-            .aisle('AADAAAAAAADAA', ' CD       DC ', ' CD       DC ', ' CD       DC ', ' CC       CC ', '   CAAAAAC   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ') 
-            .aisle('AADDAAAAADDAA', '  DD     DD  ', '  DDD   DDD  ', '  DDDD DDDD  ', '   C DDD C   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ') 
-            .aisle('ABAABAAABAABA', '   C     C   ', '   C     C   ', '   C     C   ', '   C     C   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ') 
-            .aisle('AAAAAAAAAAAAA', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ') 
-                .where('A', Predicates.blocks('gtceu:assembly_line_grating'))
-                .where(' ', Predicates.any())
-                .where('B', Predicates.blocks('gtceu:extreme_engine_intake_casing'))
-                .where('C', Predicates.blocks('gtceu:europium_frame'))
-                .where('D', Predicates.blocks('gtceu:large_scale_assembler_casing'))
-                .where('E', Predicates.blocks('minecraft:black_wool'))
-                .where(
-                    'F',
-                    Predicates.blocks('gtceu:palladium_substation')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
-                )
-                .where('G', Predicates.blocks('gtceu:fusion_glass'))
-                .where('H', Predicates.blocks('gtceu:superconducting_coil'))
-                .where('I', Predicates.blocks('minecraft:white_wool'))
-                .where('J', Predicates.blocks('minecraft:light_gray_wool'))
-                .where('K', Predicates.blocks('minecraft:gray_wool'))
-                .where('L', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('M', Predicates.blocks('gtceu:advanced_computer_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where('N', Predicates.blocks('minecraft:pink_wool'))
-                .where('O', Predicates.heatingCoils())
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                'AAAAAAAAAAAAA|             |             |             |             |             |             |             |             |             |             |             |             ',
+                'ABAABAAABAABA|   C     C   |   C     C   |   C     C   |   C     C   |             |             |             |             |             |             |             |             ',
+                'AADDAAAAADDAA|  DD     DD  |  DDD   DDD  |  DDDD DDDD  |   C DDD C   |             |             |             |             |             |             |             |             ',
+                'AADAAAAAAADAA| CD       DC | CD       DC | CD       DC | CC       CC |   CAAAAAC   |             |             |             |             |      E      |             |             ',
+                'ABAAFFAFFAABA|    FFFFF    |  D  FFF  D  |  D  GGG  D  |     FFF     |   AFFFFFA   |             |             |      E      |      E      |      E      |             |             ',
+                'AAAAFFAFFAAAA|    FFFFF    |    FH HF    |  D GH HG D  |  D FH HF D  |   AFFFFFA   |     I I     |     J J     |     KEK     |             |             |             |             ',
+                'AAAAAAAAAAAAA|    FFFFF    |    F H F    |    G H G    |  D F H F D  |   AFFFFFA   |             |             |     KIK     |     KEK     |     KLK     |     KEK     |             ',
+                'AAAAFFAFFAAAA|    FFFFF    |    FH HF    |  D GH HG D  |  D FH HF D  |   AFFFFFA   |     I I     |     J J     |     KIK     |     JJJ     |     KMK     |     KLK     |     J J     ',
+                'ABAAFFAFFAABA|    FFFFF    |  D  F@F  D  |  D  GGG  D  |     FFF     |   AFFFFFA   |             |             |             |     INI     |     OJO     |     KKK     |             ',
+                'AADAAAAAAADAA| CD       DC | CD       DC | CD       DC | CC       CC |   CAAAAAC   |             |             |             |             |             |             |             ',
+                'AADDAAAAADDAA|  DD     DD  |  DDD   DDD  |  DDDD DDDD  |   C DDD C   |             |             |             |             |             |             |             |             ',
+                'ABAABAAABAABA|   C     C   |   C     C   |   C     C   |   C     C   |             |             |             |             |             |             |             |             ',
+                'AAAAAAAAAAAAA|             |             |             |             |             |             |             |             |             |             |             |             ',
+            ])
+                .whereDict({
+                    A: P.gtBlock('assembly_line_grating'),
+                    ' ': P.any(),
+                    B: P.gtBlock('extreme_engine_intake_casing'),
+                    C: P.gtBlock('europium_frame'),
+                    D: P.gtBlock('large_scale_assembler_casing'),
+                    E: P.block('minecraft:black_wool'),
+                    F: P.anyOf([
+                        P.gtBlock('palladium_substation'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 1, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                    ]),
+                    G: P.gtBlock('fusion_glass'),
+                    H: P.gtBlock('superconducting_coil'),
+                    I: P.block('minecraft:white_wool'),
+                    J: P.block('minecraft:light_gray_wool'),
+                    K: P.block('minecraft:gray_wool'),
+                    L: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    M: P.gtBlock('advanced_computer_casing'),
+                    '@': P.controller(definition),
+                    N: P.block('minecraft:pink_wool'),
+                    O: P.heatingCoil(),
+                })
                 .build()
         )
         .workableCasingModel(

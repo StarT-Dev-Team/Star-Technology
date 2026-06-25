@@ -13,19 +13,22 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeType('latex_plantation')
         .appearanceBlock(GTBlocks.CASING_PRIMITIVE_BRICKS)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('BOB', 'SSS', '###', '###', '###', '#L#', '###')
-                .aisle('BDB', 'BGB', '#G#', '#G#', '#G#', 'LGL', '#L#')
-                .aisle('BIB', 'BCB', 'SSS', '###', '###', '#L#', '###')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where('B', Predicates.blocks('minecraft:bricks'))
-                .where('O', Predicates.abilities(PartAbility.EXPORT_FLUIDS).or(Predicates.blocks('minecraft:bricks')))
-                .where('I', Predicates.abilities(PartAbility.IMPORT_ITEMS).or(Predicates.blocks('minecraft:bricks')))
-                .where('S', Predicates.blocks('minecraft:brick_slab'))
-                .where('L', Predicates.blocks('minecraft:jungle_leaves'))
-                .where('G', Predicates.blocks('minecraft:jungle_log'))
-                .where('D', Predicates.blocks('minecraft:dirt'))
-                .where('#', Predicates.any())
+            newFactoryBlockPattern([
+                'BOB|SSS|   |   |   | L |   ',
+                'BDB|BGB| G | G | G |LGL| L ',
+                'BIB|BCB|SSS|   |   | L |   ',
+            ])
+                .whereDict({
+                    C: P.controller(definition),
+                    B: P.block('minecraft:bricks'),
+                    O: P.anyOf([P.ability(PA.fluidOut), P.block('minecraft:bricks')]),
+                    I: P.anyOf([P.ability(PA.itemIn), P.block('minecraft:bricks')]),
+                    S: P.block('minecraft:brick_slab'),
+                    L: P.block('minecraft:jungle_leaves'),
+                    G: P.block('minecraft:jungle_log'),
+                    D: P.block('minecraft:dirt'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel('minecraft:block/bricks', 'gtceu:block/machines/extractor')
