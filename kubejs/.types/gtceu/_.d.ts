@@ -64,10 +64,3 @@ declare const CleanroomType: typeof internal.com.gregtechceu.gtceu.api.machine.m
 declare const Predicates: typeof internal.com.gregtechceu.gtceu.api.pattern.Predicates;
 
 declare const GuiTextures: typeof internal.com.gregtechceu.gtceu.api.gui.GuiTextures;
-
-type RecipeModifierWrapper =
-    | internal.com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier
-    | ((
-          machine: internal.com.gregtechceu.gtceu.api.machine.MetaMachine,
-          recipe: internal.com.gregtechceu.gtceu.api.recipe.GTRecipe
-      ) => internal.com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction);

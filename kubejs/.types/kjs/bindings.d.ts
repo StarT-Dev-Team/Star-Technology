@@ -37,14 +37,15 @@ declare namespace internal.dev.latvian.mods.kubejs.bindings {
     }
 
     import ItemStack = net.minecraft.world.item.ItemStack;
+    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
     import CompoundTag = net.minecraft.nbt.CompoundTag;
 
     const ItemWrapper: {
-        of(in_: ItemStackWrapper): ItemStack;
-        of(in_: ItemStackWrapper, count: number): ItemStack;
-        of(in_: ItemStackWrapper, tag: CompoundTag): ItemStack;
-        of(in_: ItemStackWrapper, count: number, tag: CompoundTag): ItemStack;
-        withNBT(in_: ItemStackWrapper, nbt: CompoundTag): ItemStack;
+        of(in_: ItemStack__Wrapper): ItemStack;
+        of(in_: ItemStack__Wrapper, count: number): ItemStack;
+        of(in_: ItemStack__Wrapper, tag: CompoundTag): ItemStack;
+        of(in_: ItemStack__Wrapper, count: number, tag: CompoundTag): ItemStack;
+        withNBT(in_: ItemStack__Wrapper, nbt: CompoundTag): ItemStack;
         getList(): ItemStack[];
     };
 }

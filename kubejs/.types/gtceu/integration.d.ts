@@ -1,8 +1,10 @@
 declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
     import BuilderBase = api.registry.registrate.BuilderBase;
     import ResourceTexture = lowdragmc.lowdraglib.gui.texture.ResourceTexture;
-    import IGuiTexture = com.lowdragmc.lowdraglib.gui.texture.IGuiTexture;
-    import IO__Wrapper = internal.com.gregtechceu.gtceu.api.capability.recipe.IO__Wrapper;
+    import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
+    import IO__Wrapper = api.capability.recipe.IO__Wrapper;
+    import Supplier__Wrapper = java.util.function_.Supplier__Wrapper;
+    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
 
     class GTRecipeTypeBuilder extends BuilderBase<GTRecipeType> {
         category(category: string): this;
@@ -14,7 +16,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
         setLayered(): this;
         setSlotOverlay(isOutput: boolean, isFluid: boolean, slotOverlay: IGuiTexture): this;
         setHasResearchSlot(hasResearchSlot: boolean): this;
-        setIconSupplier(iconSupplier: SupplierWrapper<ItemStack>): this;
+        setIconSupplier(iconSupplier: Supplier__Wrapper<ItemStack>): this;
     }
 
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
@@ -34,14 +36,15 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
 
     import GTRecipeCategory = api.recipe.category.GTRecipeCategory;
     import GTRecipeType__Wrapper = api.recipe.GTRecipeType__Wrapper;
+    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
 
     class GTRecipeCategoryBuilder extends BuilderBase<GTRecipeCategory> {
         constructor(id: ResourceLocation__Wrapper);
         recipeType(recipeType: GTRecipeType__Wrapper): this;
         icon(icon: IGuiTexture): this;
         setCustomIcon(location: ResourceLocation__Wrapper): this;
-        setItemIcon(itemStacks: ItemStackWrapper[]): this;
-        setItemIcon(...itemStacks: ItemStackWrapper[]): this;
+        setItemIcon(itemStacks: ItemStack__Wrapper[]): this;
+        setItemIcon(...itemStacks: ItemStack__Wrapper[]): this;
     }
 }
 
@@ -54,15 +57,15 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
         constructor(id: ResourceLocation, tieredBuilder: KJSTieredMachineBuilder);
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
-        machine(machine: TieredCreationFunctionWrapper): this;
-        definition(defintiion: DefinitionFunctionWrapper): this;
+        machine(machine: TieredCreationFunction__Wrapper): this;
+        definition(defintiion: DefinitionFunction__Wrapper): this;
     }
 
     import MachineBuilder = api.registry.registrate.MachineBuilder;
 
-    type DefinitionFunctionWrapper =
-        | ((tier: number, builder: MachineBuilder<unknown>) => void)
-        | KJSTieredMachineBuilder$DefinitionFunction;
+    type DefinitionFunction__Wrapper =
+        | KJSTieredMachineBuilder$DefinitionFunction
+        | ((tier: number, builder: MachineBuilder<unknown>) => void);
 
     const __KJSTieredMachineBuilder$DefinitionFunction: unique symbol;
 
@@ -75,14 +78,12 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     import IMachineBlockEntity = api.machine.IMachineBlockEntity;
     import Int2IntFunction__Wrapper = it.unimi.dsi.fastutil.ints.Int2IntFunction__Wrapper;
 
-    type TieredCreationFunctionWrapper = (
-        holder: IMachineBlockEntity,
-        tier: number,
-        tankScaling: Int2IntFunction__Wrapper
-    ) => MetaMachine;
+    type TieredCreationFunction__Wrapper =
+        | KJSTieredMachineBuilder$TieredCreationFunction
+        | ((holder: IMachineBlockEntity, tier: number, tankScaling: Int2IntFunction__Wrapper) => MetaMachine);
 
     interface KJSTieredMachineBuilder$TieredCreationFunction {
-        create(holder: IMachineBlockEntity, tier: number, tankScaling: Int2IntFunctionWrapper): MetaMachine;
+        create(holder: IMachineBlockEntity, tier: number, tankScaling: Int2IntFunction__Wrapper): MetaMachine;
     }
 
     class KJSTieredMachineBuilder extends BuilderBase<MachineDefinition[]> {}

@@ -112,14 +112,23 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.category {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
-    import api = internal.com.gregtechceu.gtceu.api;
+    import MetaMachine = machine.MetaMachine;
+    import GTRecipe = recipe.GTRecipe;
 
+    const __RecipeModifier: unique symbol;
     interface RecipeModifier {
-        getModifier(machine: api.machine.MetaMachine, recipe: api.recipe.GTRecipe): ModifierFunction;
+        [__RecipeModifier]: 0;
+        getModifier(machine: MetaMachine, recipe: GTRecipe): ModifierFunction;
     }
 
+    type RecipeModifier__Wrapper =
+        | RecipeModifier
+        | ((machine: MetaMachine, recipe: internal.com.gregtechceu.gtceu.GTRecipe) => ModifierFunction);
+
+    const __ModifierFunction: unique symbol;
     interface ModifierFunction {
-        apply(recipe: api.recipe.GTRecipe): api.recipe.GTRecipe | null;
+        [__ModifierFunction]: 0;
+        apply(recipe: GTRecipe): GTRecipe | null;
     }
 
     const ModifierFunction: {
@@ -419,6 +428,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         constructor(id: ResourceLocation__Wrapper);
     }
 
+    import Function__Wrapper = java.util.function_.Function__Wrapper;
+    import Supplier__Wrapper = java.util.function_.Supplier__Wrapper;
     import BlockPattern = pattern.BlockPattern;
     import MetaMachine = machine.MetaMachine;
     import MultiblockMachineDefinition = machine.MultiblockMachineDefinition;
@@ -427,9 +438,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     import Comparator = java.util.Comparator;
     import Property = net.minecraft.world.level.block.state.properties.Property;
     import PartAbility = machine.multiblock.PartAbility;
+    import RecipeModifier__Wrapper = recipe.modifier.RecipeModifier__Wrapper;
 
     class MachineBuilder<T extends MachineDefinition> extends BuilderBase<T> {
-        machine(machine: FunctionWrapper<IMachineBlockEntity, MetaMachine>): this;
+        machine(machine: Function__Wrapper<IMachineBlockEntity, MetaMachine>): this;
         rotationState(state: RotationState): this;
         tooltips(components: Component[]): this;
         paginatedTooltips(pages: Component[][]): this;
@@ -440,11 +452,11 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         abilities(abilities: PartAbility[]): this;
         recipeTypes(types: GTRecipeType__Wrapper[]): this;
         recipeTypes(...types: GTRecipeType__Wrapper[]): this;
-        recipeModifier(modifiers: RecipeModifierWrapper): this;
-        recipeModifier(modifiers: RecipeModifierWrapper, alwaysRecheck: boolean): this;
-        recipeModifiers(modifiers: RecipeModifierWrapper[]): this;
-        recipeModifiers(...modifiers: RecipeModifierWrapper[]): this;
-        appearanceBlock(block: SupplierWrapper<Block>): this;
+        recipeModifier(modifiers: RecipeModifier__Wrapper): this;
+        recipeModifier(modifiers: RecipeModifier__Wrapper, alwaysRecheck: boolean): this;
+        recipeModifiers(modifiers: RecipeModifier__Wrapper[]): this;
+        recipeModifiers(...modifiers: RecipeModifier__Wrapper[]): this;
+        appearanceBlock(block: Supplier__Wrapper<Block>): this;
         regressWhenWaiting(regressWhenWaiting: boolean): this;
         workableCasingModel(baseCasing: ResourceLocation__Wrapper, workableModel: ResourceLocation__Wrapper): this;
         workableTieredHullModel(workableModel: ResourceLocation__Wrapper): this;
@@ -453,13 +465,15 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         modelPropertyInt(property: Property<boolean>, defaultValue: number): this;
     }
 
+    import BiConsumer__Wrapper = java.util.function_.BiConsumer__Wrapper;
+
     class MultiblockMachineBuilder extends MachineBuilder<MultiblockMachineDefinition> {
         generator(generator: boolean): this;
-        pattern(pattern: FunctionWrapper<MultiblockMachineDefinition, BlockPattern>): this;
+        pattern(pattern: Function__Wrapper<MultiblockMachineDefinition, BlockPattern>): this;
         'partSorter(java.util.function.Function)': (
-            fn: FunctionWrapper<MultiblockControllerMachine, Comparator<IMultiPart>>
+            fn: Function__Wrapper<MultiblockControllerMachine, Comparator<IMultiPart>>
         ) => this;
-        additionalDisplay(additionalDisplay: BiConsumerWrapper<IMultiController, Component[]>): this;
+        additionalDisplay(additionalDisplay: BiConsumer__Wrapper<IMultiController, Component[]>): this;
     }
 }
 
