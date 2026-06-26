@@ -34,9 +34,9 @@ module internal.dev.latvian.mods.kubejs.item {
         burnTime(v: number): this;
         containerItem(id: ResourceLocation__Wrapper): this;
         // subtypes(fn: Function<ItemStack, Collection<ItemStack>> )
-        rarity(v: Rarity__Wrapper);
+        rarity(v: Rarity__Wrapper): this;
         // glow(boolean v)
-        tooltip(text: Component__Wrapper);
+        tooltip(text: Component__Wrapper): this;
         // group(@Nullable String g)
         // color(int index, ItemTintFunction color)
         // color(ItemTintFunction callback)

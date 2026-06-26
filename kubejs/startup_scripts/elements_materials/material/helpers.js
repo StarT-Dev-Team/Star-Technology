@@ -94,6 +94,9 @@ global.flags = {
     notAlloy: GTMaterialFlags.DISABLE_ALLOY_PROPERTY,
 };
 
+/** @typedef {'ulv' | 'lv' | 'mv' | 'hv' | 'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv' | 'uxv' | 'opv' | 'max'} GTTier */
+
+/** @type {Record<GTTier, number>} */
 global.v = {
     ulv: GTValues.V[GTValues.ULV],
     lv: GTValues.V[GTValues.LV],
@@ -112,6 +115,7 @@ global.v = {
     max: GTValues.V[GTValues.MAX],
 };
 
+/** @type {Record<GTTier, number>} */
 global.va = {
     ulv: GTValues.VA[GTValues.ULV],
     lv: GTValues.VA[GTValues.LV],
@@ -130,6 +134,7 @@ global.va = {
     max: GTValues.VA[GTValues.MAX],
 };
 
+/** @type {Record<GTTier, number>} */
 global.vh = {
     ulv: GTValues.VH[GTValues.ULV],
     lv: GTValues.VH[GTValues.LV],
@@ -148,6 +153,7 @@ global.vh = {
     max: GTValues.VH[GTValues.MAX],
 };
 
+/** @type {Record<GTTier, number>} */
 global.vha = {
     ulv: GTValues.VHA[GTValues.ULV],
     lv: GTValues.VHA[GTValues.LV],
