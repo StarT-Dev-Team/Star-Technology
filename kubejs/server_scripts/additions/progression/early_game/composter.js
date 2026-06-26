@@ -2,20 +2,20 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     event
-        .shaped('gtceu:ulv_advanced_composter', ['PRP', 'PGP', 'ISI'], {
+        .shaped('gtceu:advanced_composter', ['PRP', 'PGP', 'ISI'], {
             P: 'gtceu:treated_wood_slab',
             G: 'minecraft:glass',
             R: 'gtceu:iron_gear',
             I: 'gtceu:iron_plate',
             S: 'thermal:redstone_servo',
         })
-        .id('start:shaped/ulv_advanced_composter');
+        .id('start:shaped/advanced_composter');
 
     event
         .shaped('gtceu:composting_factory', ['AAB', 'BCD', 'EFE'], {
             A: '#gtceu:circuits/iv',
             B: 'gtceu:iv_electric_piston',
-            C: 'gtceu:ulv_advanced_composter',
+            C: 'gtceu:advanced_composter',
             D: 'gtceu:iv_conveyor_module',
             E: 'gtceu:tungsten_single_cable',
             F: 'gtceu:iv_electric_motor',

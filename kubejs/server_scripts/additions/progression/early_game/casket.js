@@ -2,14 +2,14 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     event
-        .shaped('gtceu:ulv_casket', ['RPR', 'SMS', 'TTT'], {
+        .shaped('gtceu:casket', ['RPR', 'SMS', 'TTT'], {
             T: 'gtceu:treated_wood_slab',
             M: 'exnihilosequentia:string_mesh',
             R: 'gtceu:rubber_ring',
             P: 'gtceu:wrought_iron_plate',
             S: 'gtceu:treated_wood_rod',
         })
-        .id(id('shaped/ulv_casket'));
+        .id(id('shaped/casket'));
 
     const fermenting = (input, outputItem, outputFluid, duration, recipeID, circuit) => {
         const recipe = event.recipes.gtceu.fermenting(id(recipeID));

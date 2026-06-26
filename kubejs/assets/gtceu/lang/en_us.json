@@ -498,9 +498,9 @@
     "gtceu.barrel": "Barrel Soaking",
     "gtceu.barrel_composting": "Barrel Composting",
     "gtceu.barrel_transformation": "Barrel Transformation",
-    "block.gtceu.ulv_barrel": "Wooden Barrel [WB]",
+    "block.gtceu.barrel": "Wooden Barrel [WB]",
     "gtceu.stone_barrel": "Barrel Formation",
-    "block.gtceu.ulv_stone_barrel": "Stone Barrel [SB]",
+    "block.gtceu.stone_barrel": "Stone Barrel [SB]",
     "gtceu.gate_assembly": "Stargate Assembly",
     "block.gtceu.gate_assembly": "Runic Stargate Assembler [RSA]",
     "material.gtceu.thorium_plut_duranide_241": "Thorium Plut-Duranide 241",
@@ -585,9 +585,9 @@
     "material.gtceu.astatine_bis_tritelluride_cobo_selenium": "Astatine Bis-Tritelluride Cobo-Selenium",
     "material.gtceu.iron_titanium_oxide": "Iron Titanium Oxide",
 
-    "block.gtceu.ulv_advanced_composter": "Advanced Composter [AC]",
+    "block.gtceu.advanced_composter": "Advanced Composter [AC]",
     "gtceu.composting": "Composting",
-    "block.gtceu.ulv_casket": "Fermenting Casket [FC]",
+    "block.gtceu.casket": "Fermenting Casket [FC]",
     "gtceu.fermenting": "Fermenting",
 
     "material.gtceu.warped": "Warped",
