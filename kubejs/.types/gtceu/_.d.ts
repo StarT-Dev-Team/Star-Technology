@@ -115,6 +115,7 @@ namespace internal.kjs {
         distillation_tower: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         centrifuge: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         canner: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        packer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         research_station: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         distillery: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         fluid_solidifier: (id: ResourceLocation__Wrapper) => GTRecipeJS;
@@ -141,6 +142,13 @@ namespace internal.kjs {
         autoclave: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         arc_furnace: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         alloy_smelter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        extruder: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        rock_breaker: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        alloy_blast_smelter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        wiremill: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        bender: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        combustion_generator: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        steam_turbine: (id: ResourceLocation__Wrapper) => GTRecipeJS;
     }
 
     interface RecipeFunctions {

@@ -159,6 +159,8 @@ namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
     import LayeredRecipeInfo$JSBuilder = data.recipe.builder.LayeredRecipeInfo$JSBuilder;
     import ExtendedOutputItem__Wrapper = components.ExtendedOutputItem__Wrapper;
     import GTRecipeCategory__Wrapper = api.recipe.category.GTRecipeCategory__Wrapper;
+    import Fluid__Wrapper = net.minecraft.world.level.material.Fluid__Wrapper;
+    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
 
     class GTRecipeSchema$GTRecipeJS extends RecipeJS {
         #com_gregtechceu_gtceu_integration_kjs_recipe_GTRecipeSchema$GTRecipeJS: unique symbol;
@@ -203,6 +205,10 @@ namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         addMaterialInfo(item: boolean): this;
         addMaterialInfo(item: boolean, flui: boolean): this;
         removePreviousMaterialInfo(): this;
+        adjacentFluids(...fluids: Fluid__Wrapper[]): this;
+        dimension(dimension: ResourceLocation__Wrapper): this;
+        dimension(dimension: ResourceLocation__Wrapperm, reverse: boolean): this;
+        daytime(): this;
     }
 
     class GTShapedRecipeSchema$ShapedRecipeJS extends RecipeJS {

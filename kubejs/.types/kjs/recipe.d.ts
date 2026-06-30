@@ -29,6 +29,11 @@ namespace internal.dev.latvian.mods.kubejs.recipe {
             match: ReplacementMatch__Wrapper,
             with_: InputReplacement__Wrapper
         ): void;
+        replaceOutput(
+            filter: RecipeFilter__Wrapper,
+            match: ReplacementMatch__Wrapper,
+            with_: OutputReplacement__Wrapper
+        ): void;
 
         custom(json: object): void;
     }
@@ -61,6 +66,14 @@ namespace internal.dev.latvian.mods.kubejs.recipe {
     import InputItem__Wrapper = item.InputItem__Wrapper;
 
     type InputReplacement__Wrapper = InputReplacement | InputItem__Wrapper;
+
+    interface OutputReplacement {
+        readonly __dev_latvian_mods_kubejs_recipe_OutputReplacement: unique symbol;
+    }
+
+    import OutputItem__Wrapper = item.OutputItem__Wrapper;
+
+    type OutputReplacement__Wrapper = OutputReplacement | OutputItem__Wrapper;
 }
 
 namespace internal.dev.latvian.mods.kubejs.recipe.ingredientaction {
@@ -114,6 +127,7 @@ namespace internal.dev.latvian.mods.kubejs.recipe.filter {
               id?: ResourceLocation__Wrapper | RegExp;
               type?: ResourceLocation__Wrapper;
               group?: string;
+              mod?: string;
               input?: ReplacementMatch__Wrapper;
               output?: ReplacementMatch__Wrapper;
           };

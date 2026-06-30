@@ -48,5 +48,13 @@ namespace internal.kjs {
         kaleidoscopic_fractalizer(id: ResourceLocation__Wrapper): GTRecipeJS;
         supreme_chemistry(id: ResourceLocation__Wrapper): GTRecipeJS;
         modular_rocket_module(id: ResourceLocation__Wrapper): GTRecipeJS;
+        catto_shrine(id: ResourceLocation__Wrapper): GTRecipeJS;
+        me_assembler(id: ResourceLocation__Wrapper): GTRecipeJS;
+        large_farm(id: ResourceLocation__Wrapper): GTRecipeJS;
+        crop_greenhouse(id: ResourceLocation__Wrapper): GTRecipeJS;
+        hydroponic_garden(id: ResourceLocation__Wrapper): GTRecipeJS;
+        industrial_fishery(id: ResourceLocation__Wrapper): GTRecipeJS;
+        tree_greenhouse(id: ResourceLocation__Wrapper): GTRecipeJS;
+        wild_garden(id: ResourceLocation__Wrapper): GTRecipeJS;
     }
 }

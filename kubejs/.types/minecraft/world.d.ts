@@ -42,7 +42,6 @@ namespace internal.net.minecraft.world.level.block {
         set requiresTool(v: boolean): void;
     }
 
-    // TODO: can't find where Block.class wrapper is registered!
     type Block__Wrapper = Block | string;
 
     class SoundType {
@@ -166,17 +165,25 @@ namespace internal.net.minecraft.world.item {
     import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
 
     class Item {
+        readonly __net_minecraft_world_item_Item: unique symbol;
         static getId(item: Item__Wrapper): int;
         static byId(id: number): Item;
     }
 
     type Item__Wrapper = Item;
 
+    import OutputItem = dev.latvian.mods.kubejs.item.OutputItem;
+    import Ingredient = crafting.Ingredient;
+
     class ItemStack {
+        readonly __net_minecraft_world_item_ItemStack: unique symbol;
         isEmpty(): boolean;
         getItem(): Item;
         getCount(): number;
         setCount(count: number): void;
+        weakNBT(): Ingredient;
+        strongNBT(): Ingredient;
+        withChance(chance: number): OutputItem;
     }
 
     type ItemStack__WrapperString = '' | '-' | `#${string}` | `@${string}` | `%${string}` | string;
@@ -257,7 +264,11 @@ namespace internal.net.minecraft.world.level.block.state.properties {
 }
 
 namespace internal.net.minecraft.world.level.material {
-    abstract class Fluid {}
+    class Fluid {
+        readonly __net_minecraft_world_level_material_Fluid: unique symbol;
+    }
+
+    type Fluid__Wrapper = Fluid | string;
 
     class FlowingFluid extends Fluid {}
 }

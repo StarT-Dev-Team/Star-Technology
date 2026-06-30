@@ -40,9 +40,14 @@ ServerEvents.recipes((event) => {
     });
 
     //Coating ae2 cables with rubber for covered cable
+
+    /**
+     * @param {string} rubber
+     * @param {number} amount
+     */
     const rubberType = (rubber, amount) => {
         event.recipes.gtceu
-            .assembler(id(`${rubber.path}_covered_cable`))
+            .assembler(id(`${rubber}_covered_cable`))
             .itemInputs('ae2:fluix_glass_cable')
             .inputFluids(`${rubber} ${amount}`)
             .itemOutputs('ae2:fluix_covered_cable')
@@ -57,6 +62,11 @@ ServerEvents.recipes((event) => {
     rubberType('gtceu:perfluoroelastomer_rubber', 18);
 
     //greging cable anchors
+
+    /**
+     * @param {string} wire
+     * @param {number} amount
+     */
     const metaltype = (wire, amount) => {
         event.recipes.gtceu
             .cutter(id(`${wire}_cable_anchor`))

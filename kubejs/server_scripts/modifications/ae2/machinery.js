@@ -1,6 +1,15 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /** @typedef {internal.dev.latvian.mods.kubejs.item.InputItem__Wrapper} ItemInput */
+
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {ItemInput[]} input
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     const assembler = (id1, output, input, eu, circuit) => {
         const recipe = event.recipes.gtceu.assembler(id(`${id1}`));
 
@@ -11,12 +20,27 @@ ServerEvents.recipes((event) => {
         }
     };
 
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {ItemInput[]} input
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     // eslint-disable-next-line no-unused-vars
     const assemblerRem = (id1, output, input, eu, circuit) => {
         event.remove({ output: `${output}` });
         assembler(id1, output, input, eu, circuit);
     };
 
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {string | string[]} inputit
+     * @param {string | string[]} inputfl
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     const assemblerFluid = (id1, output, inputit, inputfl, eu, circuit) => {
         const recipe = event.recipes.gtceu.assembler(id(`${id1}`));
 
@@ -27,11 +51,23 @@ ServerEvents.recipes((event) => {
         }
     };
 
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {string | string[]} inputit
+     * @param {string | string[]} inputfl
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     const assemblerFluidRem = (id1, output, inputit, inputfl, eu, circuit) => {
         event.remove({ output: `${output}` });
         assemblerFluid(id1, output, inputit, inputfl, eu, circuit);
     };
 
+    /**
+     * @param {string} item
+     * @param {string} input
+     */
     const extended = (item, input) => {
         assemblerFluidRem(
             `extended_${item}`,
@@ -47,6 +83,10 @@ ServerEvents.recipes((event) => {
         );
     };
 
+    /**
+     * @param {string} item
+     * @param {string} input
+     */
     const assemblerspecex = (item, input) => {
         assemblerFluidRem(
             `${item}_storage_bus`,
@@ -349,6 +389,11 @@ ServerEvents.recipes((event) => {
         .duration(40)
         .EUt(16);
 
+    /**
+     * @param {string} output
+     * @param {[string, string, string] | [string, string]} pattern
+     * @param {Record<string, string>} key
+     */
     const shapedRecipeRem = (output, pattern, key) => {
         event.remove({ output: `${output}` });
         event.shaped(`${output}`, pattern, key).id(`start:shaped/ae/${output.split(':')[1]}`);
@@ -594,19 +639,12 @@ ServerEvents.recipes((event) => {
         GTValues.VA[GTValues.EV]
     );
 
-    //ME Hatches
-    let consTier;
-    let input;
-    let casingMaterial;
-    let pipeMaterial;
-    let circuit;
-    let recId;
-    let fluidMulti;
+    // ME Hatches
 
-    ['luv', 'zpm'].forEach((tier) => {
-        casingMaterial = global.casingMaterials[tier];
-        consTier = tier === 'luv' ? 'ZPM' : 'UV';
-        input = tier === 'luv' ? 'input' : 'stocking_input';
+    /** @type {const} */ (['luv', 'zpm']).forEach((tier) => {
+        const casingMaterial = global.casingMaterials[tier];
+        const consTier = tier === 'luv' ? 'ZPM' : 'UV';
+        const input = tier === 'luv' ? 'input' : 'stocking_input';
 
         ['bus', 'hatch'].forEach((type) => {
             assembler(
@@ -623,26 +661,22 @@ ServerEvents.recipes((event) => {
         });
     });
 
-    ['luv'].forEach((tier) => {
+    /** @type {const} */ (['luv']).forEach((tier) => {
         //to allow for dual stockings to be thrown into this when done
-        casingMaterial = global.casingMaterials[tier];
-        pipeMaterial = tier === 'luv' ? 'gtceu:niobium_titanium' : 'gtceu:polybenzimidazole';
-        fluidMulti = tier === 'luv' ? 7 : 8;
-        consTier = tier === 'luv' ? 'ZPM' : 'UV';
+        const casingMaterial = global.casingMaterials[tier];
+        const pipeMaterial = tier === 'luv' ? 'gtceu:niobium_titanium' : 'gtceu:polybenzimidazole';
+        const fluidMulti = tier === 'luv' ? 7 : 8;
+        const consTier = tier === 'luv' ? 'ZPM' : 'UV';
 
-        ['input', 'output'].forEach((io) => {
-            recId =
+        /** @type {const} */ (['input', 'output']).forEach((io) => {
+            const recId =
                 io === 'input' && tier === 'luv'
                     ? 'input'
                     : io === 'input' && tier === 'luv'
                       ? 'stocking_input'
                       : 'output';
-            input = tier === 'luv' ? 'input' : 'stocking_input';
-            circuit = io === 'input' ? 1 : 2;
-
-            if (io === 'output' && tier === 'zpm') {
-                return;
-            }
+            const input = tier === 'luv' ? 'input' : 'stocking_input';
+            const circuit = io === 'input' ? 1 : 2;
 
             assemblerFluid(
                 `dual_me_${recId}_hatch`,
@@ -770,6 +804,12 @@ ServerEvents.recipes((event) => {
     assemblerspecex('precise', 'gtceu:mv_robot_arm');
 
     //Replaced Inputs
+
+    /**
+     * @param {string} recId
+     * @param {string} target
+     * @param {string} replace
+     */
     const repIn = (recId, target, replace) => {
         event.replaceInput({ id: recId }, target, replace);
     };

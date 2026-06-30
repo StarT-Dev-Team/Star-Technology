@@ -5,6 +5,8 @@ namespace internal.dev.latvian.mods.kubejs.server.tag {
         readonly __dev_latvian_mods_kubejs_server_tag_TagEventJS: unique symbol;
         add(tag: ResourceLocation__Wrapper, filters: TagEventFilter__Wrapper[]): TagWrapper;
         add(tag: ResourceLocation__Wrapper, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
+        remove(tag: ResourceLocation__Wrapper, filters: TagEventFilter__Wrapper[]): TagWrapper;
+        remove(tag: ResourceLocation__Wrapper, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
     }
 
     interface TagEventFilter {

@@ -111,14 +111,14 @@ module internal.dev.latvian.mods.kubejs.item {
 
     interface InputItem extends IngredientSupplierKJS {}
     class InputItem implements IngredientSupplierKJS {
-        #dev_latvian_mods_kubejs_item_InputItem: unique symbol;
+        readonly __dev_latvian_mods_kubejs_item_InputItem: unique symbol;
         static of(ingredient: Ingredient__Wrapper, count: number): InputItem;
     }
 
     type InputItem__Wrapper = InputItem | ItemStack | Ingredient__Wrapper;
 
     class OutputItem {
-        #dev_latvian_mods_kubejs_item_OutputItem: unique symbol;
+        readonly __dev_latvian_mods_kubejs_item_OutputItem: unique symbol;
     }
 
     type OutputItem__Wrapper = OutputItem | ItemStack | Ingredient__Wrapper;

@@ -49,7 +49,10 @@ namespace internal.kjs {
             key: Record<string, InputItem__Wrapper>
         ) => ShapedRecipeJS;
         // shaped: constructor((recipe, schemaType, keys, from) -> ((ShapedRecipeJS) recipe).set2DValues(from), RESULT, INGREDIENTS)
-        crafting_shapeless: (result: OutputItem__Wrapper, ingredients: InputItem__Wrapper[]) => ShapedRecipeJS;
+        crafting_shapeless: (
+            result: OutputItem__Wrapper,
+            ingredients: InputItem__Wrapper | InputItem__Wrapper[]
+        ) => ShapedRecipeJS;
         smelting: (
             result: OutputItem__Wrapper,
             ingredient: InputItem__Wrapper,
@@ -84,6 +87,8 @@ namespace internal.kjs {
     interface RecipeFunctions {
         kubejs: RecipeFunctions_kubejs;
         minecraft: RecipeFunctions_minecraft;
+        shaped: RecipeFunctions_minecraft['crafting_shaped'];
+        shapeless: RecipeFunctions_minecraft['crafting_shapeless'];
     }
 }
 

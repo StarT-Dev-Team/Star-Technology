@@ -84,6 +84,14 @@ ServerEvents.recipes((event) => {
 
     event.remove({ mod: 'placeablemaxwell' });
 
+    /**
+     * @param {string} name
+     * @param {GTTier} tier
+     * @param {string} dye
+     * @param {string} dye2
+     * @param {string} wire
+     * @param {number} scaler
+     */
     const cat = (name, tier, dye, dye2, wire, scaler) => {
         event.recipes.gtceu
             .catto_shrine(id(name))
