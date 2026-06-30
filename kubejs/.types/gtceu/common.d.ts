@@ -800,70 +800,85 @@ namespace internal.com.gregtechceu.gtceu.common.data {
 
     import GTRecipeType = api.recipe.GTRecipeType;
 
-    class GTRecipeTypes {
-        static STEAM: string;
-        static ELECTRIC: string;
-        static GENERATOR: string;
-        static MULTIBLOCK: string;
-        static DUMMY: string;
+    const GTRecipeTypes: {
+        STEAM: string;
+        ELECTRIC: string;
+        GENERATOR: string;
+        MULTIBLOCK: string;
+        DUMMY: string;
 
-        static STEAM_BOILER_RECIPES: GTRecipeType;
-        static FURNACE_RECIPES: GTRecipeType;
-        static BLAST_FURNACE_RECIPES: GTRecipeType;
-        static SMOKING_FURNACE_RECIPES: GTRecipeType;
-        static ALLOY_SMELTER_RECIPES: GTRecipeType;
-        static ARC_FURNACE_RECIPES: GTRecipeType;
-        static ASSEMBLER_RECIPES: GTRecipeType;
-        static AUTOCLAVE_RECIPES: GTRecipeType;
-        static BENDER_RECIPES: GTRecipeType;
-        static BREWING_RECIPES: GTRecipeType;
-        static MACERATOR_RECIPES: GTRecipeType;
-        static CANNER_RECIPES: GTRecipeType;
-        static CENTRIFUGE_RECIPES: GTRecipeType;
-        static CHEMICAL_BATH_RECIPES: GTRecipeType;
-        static CHEMICAL_RECIPES: GTRecipeType;
-        static COMPRESSOR_RECIPES: GTRecipeType;
-        static CUTTER_RECIPES: GTRecipeType;
-        static DISTILLERY_RECIPES: GTRecipeType;
-        static ELECTROLYZER_RECIPES: GTRecipeType;
-        static ELECTROMAGNETIC_SEPARATOR_RECIPES: GTRecipeType;
-        static EXTRACTOR_RECIPES: GTRecipeType;
-        static EXTRUDER_RECIPES: GTRecipeType;
-        static FERMENTING_RECIPES: GTRecipeType;
-        static FLUID_HEATER_RECIPES: GTRecipeType;
-        static FLUID_SOLIDFICATION_RECIPES: GTRecipeType;
-        static FORGE_HAMMER_RECIPES: GTRecipeType;
-        static FORMING_PRESS_RECIPES: GTRecipeType;
-        static LATHE_RECIPES: GTRecipeType;
-        static MIXER_RECIPES: GTRecipeType;
-        static ORE_WASHER_RECIPES: GTRecipeType;
-        static PACKER_RECIPES: GTRecipeType;
-        static POLARIZER_RECIPES: GTRecipeType;
-        static LASER_ENGRAVER_RECIPES: GTRecipeType;
-        static SIFTER_RECIPES: GTRecipeType;
-        static THERMAL_CENTRIFUGE_RECIPES: GTRecipeType;
-        static WIREMILL_RECIPES: GTRecipeType;
-        static CIRCUIT_ASSEMBLER_RECIPES: GTRecipeType;
-        static GAS_COLLECTOR_RECIPES: GTRecipeType;
-        static AIR_SCRUBBER_RECIPES: GTRecipeType;
-        static ROCK_BREAKER_RECIPES: GTRecipeType;
-        static COMBUSTION_GENERATOR_FUELS: GTRecipeType;
-        static GAS_TURBINE_FUELS: GTRecipeType;
-        static STEAM_TURBINE_FUELS: GTRecipeType;
-        static PLASMA_GENERATOR_FUELS: GTRecipeType;
-        static LARGE_BOILER_RECIPES: GTRecipeType;
-        static COKE_OVEN_RECIPES: GTRecipeType;
-        static PRIMITIVE_BLAST_FURNACE_RECIPES: GTRecipeType;
-        static BLAST_RECIPES: GTRecipeType;
-        static DISTILLATION_RECIPES: GTRecipeType;
-        static PYROLYSE_RECIPES: GTRecipeType;
-        static CRACKING_RECIPES: GTRecipeType;
-        static IMPLOSION_RECIPES: GTRecipeType;
-        static VACUUM_RECIPES: GTRecipeType;
-        static ASSEMBLY_LINE_RECIPES: GTRecipeType;
+        STEAM_BOILER_RECIPES: GTRecipeType;
+        FURNACE_RECIPES: GTRecipeType;
+        BLAST_FURNACE_RECIPES: GTRecipeType;
+        SMOKING_FURNACE_RECIPES: GTRecipeType;
+        ALLOY_SMELTER_RECIPES: GTRecipeType;
+        ARC_FURNACE_RECIPES: GTRecipeType;
+        ASSEMBLER_RECIPES: GTRecipeType;
+        AUTOCLAVE_RECIPES: GTRecipeType;
+        BENDER_RECIPES: GTRecipeType;
+        BREWING_RECIPES: GTRecipeType;
+        MACERATOR_RECIPES: GTRecipeType;
+        CANNER_RECIPES: GTRecipeType;
+        CENTRIFUGE_RECIPES: GTRecipeType;
+        CHEMICAL_BATH_RECIPES: GTRecipeType;
+        CHEMICAL_RECIPES: GTRecipeType;
+        COMPRESSOR_RECIPES: GTRecipeType;
+        CUTTER_RECIPES: GTRecipeType;
+        DISTILLERY_RECIPES: GTRecipeType;
+        ELECTROLYZER_RECIPES: GTRecipeType;
+        ELECTROMAGNETIC_SEPARATOR_RECIPES: GTRecipeType;
+        EXTRACTOR_RECIPES: GTRecipeType;
+        EXTRUDER_RECIPES: GTRecipeType;
+        FERMENTING_RECIPES: GTRecipeType;
+        FLUID_HEATER_RECIPES: GTRecipeType;
+        FLUID_SOLIDFICATION_RECIPES: GTRecipeType;
+        FORGE_HAMMER_RECIPES: GTRecipeType;
+        FORMING_PRESS_RECIPES: GTRecipeType;
+        LATHE_RECIPES: GTRecipeType;
+        MIXER_RECIPES: GTRecipeType;
+        ORE_WASHER_RECIPES: GTRecipeType;
+        PACKER_RECIPES: GTRecipeType;
+        POLARIZER_RECIPES: GTRecipeType;
+        LASER_ENGRAVER_RECIPES: GTRecipeType;
+        SIFTER_RECIPES: GTRecipeType;
+        THERMAL_CENTRIFUGE_RECIPES: GTRecipeType;
+        WIREMILL_RECIPES: GTRecipeType;
+        CIRCUIT_ASSEMBLER_RECIPES: GTRecipeType;
+        GAS_COLLECTOR_RECIPES: GTRecipeType;
+        AIR_SCRUBBER_RECIPES: GTRecipeType;
+        ROCK_BREAKER_RECIPES: GTRecipeType;
+        COMBUSTION_GENERATOR_FUELS: GTRecipeType;
+        GAS_TURBINE_FUELS: GTRecipeType;
+        STEAM_TURBINE_FUELS: GTRecipeType;
+        PLASMA_GENERATOR_FUELS: GTRecipeType;
+        LARGE_BOILER_RECIPES: GTRecipeType;
+        COKE_OVEN_RECIPES: GTRecipeType;
+        PRIMITIVE_BLAST_FURNACE_RECIPES: GTRecipeType;
+        BLAST_RECIPES: GTRecipeType;
+        DISTILLATION_RECIPES: GTRecipeType;
+        PYROLYSE_RECIPES: GTRecipeType;
+        CRACKING_RECIPES: GTRecipeType;
+        IMPLOSION_RECIPES: GTRecipeType;
+        VACUUM_RECIPES: GTRecipeType;
+        ASSEMBLY_LINE_RECIPES: GTRecipeType;
 
-        static get(name: string): GTRecipeType;
-    }
+        get(name: string): GTRecipeType;
+    };
+
+    import GTRecipeCategory = api.recipe.category.GTRecipeCategory;
+
+    const GTRecipeCategories: {
+        ORE_CRUSHING: GTRecipeCategory;
+        ORE_FORGING: GTRecipeCategory;
+        ORE_BATHING: GTRecipeCategory;
+        CHEM_DYES: GTRecipeCategory;
+        INGOT_MOLDING: GTRecipeCategory;
+        ARC_FURNACE_RECYCLING: GTRecipeCategory;
+        MACERATOR_RECYCLING: GTRecipeCategory;
+        EXTRACTOR_RECYCLING: GTRecipeCategory;
+
+        get(name: string): GTRecipeCategory;
+    };
 
     import RecipeModifier = internal.com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
 

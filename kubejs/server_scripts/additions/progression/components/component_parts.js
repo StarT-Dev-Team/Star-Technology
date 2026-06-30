@@ -31,6 +31,9 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /**
+     * @param {'uhv' | 'uev'| 'uiv'} tierKey
+     */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
         if (!data) return;
@@ -59,17 +62,29 @@ ServerEvents.recipes((event) => {
                 glass,
                 superconductor,
             },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { cwuD, duraD, EUTD },
-                special: { cwuS, duraS, EUTS },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = data;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { cwuD, duraD, EUTD },
+            special: { cwuS, duraS, EUTS },
+        } = tierResearchData || { default: { cwuD: 0, duraD: 0, EUTD: 0 }, special: { cwuS: 0, duraS: 0, EUTS: 0 } };
 
+        /** @param {number} base */
         const b2exponentialMultiplier = (base) => base * Math.pow(2, scaler);
+        /** @param {number} base */
         const scaled = (base) => base * scaler;
+
         const getDataItem = global.getDataItem;
 
+        /**
+         * @param {string} type
+         * @param {string[]} inputs
+         * @param {string[]} fluids
+         * @param {number} duration
+         * @param {string} researched
+         */
         const componentPart = (type, inputs, fluids, duration, researched) => {
             let typeSpecial = ['computational_matrix', 'catalyst_core'].includes(type);
 
@@ -218,8 +233,8 @@ ServerEvents.recipes((event) => {
             'catalyst_core',
             [
                 `4x gtceu:${primMaterial}_rod`,
-                glass,
-                catalyst,
+                glass || '',
+                catalyst || '',
                 `32x gtceu:fine_${superconductor}_wire`,
                 `gtceu:${tier1}_emitter`,
                 `4x gtceu:${supMaterial}_ring`,
@@ -250,6 +265,12 @@ ServerEvents.recipes((event) => {
             `kubejs:${priorTier}_micropower_router`
         );
 
+        /**
+         * @param {string} type
+         * @param {string[]} inputs
+         * @param {string[]} fluids
+         * @param {number} duration
+         */
         const mtscfComponentPart = (type, inputs, fluids, duration) => {
             event.recipes.gtceu
                 .component_part_synthesis_forge(id(`${tier}_${type}`))
@@ -369,7 +390,7 @@ ServerEvents.recipes((event) => {
             [
                 `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_rod`,
                 `${scalerMCSF * 0.75}x ${glass}`,
-                `${scalerMCSF * 0.75}x ${catalyst.split(' ')[1]}`,
+                `${scalerMCSF * 0.75}x ${(catalyst || '').split(' ')[1]}`,
                 `${0.5 * scalerMCSF * 0.75}x gtceu:${superconductor}_wire_spool`,
                 `${1 * scalerMCSF * 0.75}x gtceu:${tier1}_emitter`,
                 `${4 * scalerMCSF * 0.75}x gtceu:${supMaterial}_ring`,

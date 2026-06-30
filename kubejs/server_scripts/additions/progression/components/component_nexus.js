@@ -3,6 +3,7 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /** @param {'luv' | 'zpm' | 'uv'} tierKey */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
         if (!data) return;
@@ -23,9 +24,15 @@ ServerEvents.recipes((event) => {
                 primMagnet,
                 miscMaterial,
             },
-            scaling: { scaler, EU },
+            scaling: tierScalingData,
         } = data;
+        const { scaler, EU } = tierScalingData || { scaler: 1, EU: 1 };
 
+        /**
+         * @param {string} type
+         * @param {string[]} inputs
+         * @param {string[]} fluids
+         */
         const componentTypesNexus = (type, inputs, fluids) => {
             let nexusRecipe = event.recipes.gtceu
                 .component_nexus(id(`${tier}_${type}`))
@@ -121,7 +128,7 @@ ServerEvents.recipes((event) => {
             [
                 `1x gtceu:${primMaterial}_frame`,
                 `6x gtceu:${primMaterial}_plate`,
-                catalyst,
+                catalyst || '',
                 `2x gtceu:${tier}_emitter`,
                 `2x #gtceu:circuits/${tier}`,
                 `128x gtceu:fine_${superconductor}_wire`,
@@ -136,7 +143,7 @@ ServerEvents.recipes((event) => {
                 `1x gtceu:${primMaterial}_frame`,
                 `1x gtceu:${tier}_electric_motor`,
                 `4x gtceu:long_${primMaterial}_rod`,
-                catalyst,
+                catalyst || '',
                 `2x #gtceu:circuits/${tier}`,
                 `96x gtceu:${miscMaterial}_foil`,
                 `4x gtceu:${cable}_single_cable`,
@@ -150,7 +157,7 @@ ServerEvents.recipes((event) => {
                 `1x gtceu:${primMaterial}_frame`,
                 `1x gtceu:${tier}_electric_motor`,
                 `4x gtceu:${primMaterial}_plate`,
-                catalyst,
+                catalyst || '',
                 `2x #gtceu:circuits/${tier}`,
                 `96x gtceu:${miscMaterial}_foil`,
                 `4x gtceu:${cable}_single_cable`,

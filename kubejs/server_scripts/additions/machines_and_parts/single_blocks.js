@@ -24,7 +24,7 @@ ServerEvents.recipes((event) => {
             event
                 .shaped(`gtceu:${voltage}_mystical_greenhouse`, ['CGE', 'PHP', 'cMc'], {
                     C: `#gtceu:circuits/${voltage}`,
-                    G: tierComponents.glass,
+                    G: tierComponents.glass || '',
                     E: `gtceu:${voltage}_emitter`,
                     P: `gtceu:${tierComponents.tierMaterial}_plate`,
                     H: `gtceu:${voltage}_machine_hull`,
@@ -37,7 +37,7 @@ ServerEvents.recipes((event) => {
                 .shaped(`gtceu:${voltage}_essence_burner`, ['CRE', 'GHG', 'cPc'], {
                     C: `#gtceu:circuits/${voltage}`,
                     R: `gtceu:${tierComponents.rotorMaterial}_rotor`,
-                    G: tierComponents.glass,
+                    G: tierComponents.glass || '',
                     E: `gtceu:${voltage}_emitter`,
                     H: `gtceu:${voltage}_machine_hull`,
                     P: `gtceu:${voltage}_electric_pump`,
@@ -53,7 +53,7 @@ ServerEvents.recipes((event) => {
                     C: `gtceu:${voltage}_electric_motor`,
                     D: `gtceu:${tierComponents.wire}_quadruple_wire`,
                     E: `gtceu:${voltage}_machine_hull`,
-                    F: tierComponents.grind,
+                    F: tierComponents.grind || '',
                     G: 'minecraft:anvil',
                     H: `#gtceu:circuits/${voltage}`,
                 })

@@ -21,8 +21,9 @@ ServerEvents.recipes((event) => {
         const {
             tiers: { tier },
             materials: { tierMaterial, cable, solder },
-            scaling: { scaler, EU },
+            scaling: tierScalingData,
         } = tierData;
+        const { scaler, EU } = tierScalingData || { scaler: 1, EU: 1 };
 
         [
             { type: 'input', laserType: 'target', laserPart: 'sensor' },

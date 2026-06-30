@@ -40,7 +40,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${tierFluid} 576`)
             .itemOutputs(`start_core:${tier}_absolute_parallel_hatch`)
             .duration(320)
-            .EUt(GTValues.VA[GTValues[/** @type {Uppercase<typeof tier>} */ (tier.toUpperCase())]]);
+            .EUt(GTValues.VA[GTValues[/** @type {'UHV' | 'UEV' | 'UIV'} */ (tier.toUpperCase())]]);
     }
 
     postUVMachines('uhv', 'kubejs:uepic_chip');

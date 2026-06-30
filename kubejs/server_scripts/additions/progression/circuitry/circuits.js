@@ -31,6 +31,15 @@ ServerEvents.recipes((event) => {
     const lsmdResistor = 'kubejs:living_smd_resistor';
     const lsmdCapacitor = 'kubejs:living_smd_capacitor';
 
+    /**
+     * @param {number} quant
+     * @param {string} type
+     * @param {string} mod
+     * @param {string[]} inputs
+     * @param {number} eu
+     * @param {number} dura
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     */
     const circuitAssembler = (quant, type, mod, inputs, eu, dura, clean) => {
         event.recipes.gtceu
             .circuit_assembler(id(type))
@@ -41,6 +50,15 @@ ServerEvents.recipes((event) => {
             .EUt(eu);
     };
 
+    /**
+     * @param {string} type
+     * @param {string} mod
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {number} eut
+     * @param {number} dura
+     * @param {string} toScan
+     */
     const assemblyLineCircuitNoRS = (type, mod, inputs, fluids, eut, dura, toScan) => {
         event.recipes.gtceu
             .assembly_line(id(type))
@@ -57,6 +75,18 @@ ServerEvents.recipes((event) => {
             .EUt(eut);
     };
 
+    /**
+     * @param {number} quant
+     * @param {string} type
+     * @param {string} mod
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {number} eut
+     * @param {number} dura
+     * @param {string} from
+     * @param {number} cwu
+     * @param {number} eutFrom
+     */
     const assemblyLineCircuitRS = (quant, type, mod, inputs, fluids, eut, dura, from, cwu, eutFrom) => {
         event.recipes.gtceu
             .assembly_line(id(type))
@@ -84,7 +114,7 @@ ServerEvents.recipes((event) => {
             `8x ${asmdDiode}`,
             '8x gtceu:platinum_single_wire',
         ],
-        'gtceu:soldering_alloy 576',
+        ['gtceu:soldering_alloy 576'],
         30720,
         600,
         'gtceu:quantum_processor_computer'
@@ -102,7 +132,7 @@ ServerEvents.recipes((event) => {
             '32x gtceu:nand_memory_chip',
             '24x gtceu:fine_niobium_titanium_wire',
         ],
-        'gtceu:soldering_alloy 576',
+        ['gtceu:soldering_alloy 576'],
         30720,
         400,
         'gtceu:crystal_processor_assembly'
@@ -124,7 +154,7 @@ ServerEvents.recipes((event) => {
             '12x gtceu:niobium_titanium_single_wire',
             '4x gtceu:yttrium_barium_cuprate_plate',
         ],
-        'gtceu:soldering_alloy 1152',
+        ['gtceu:soldering_alloy 1152'],
         61440,
         1000,
         'gtceu:crystal_processor_computer',
@@ -588,6 +618,13 @@ ServerEvents.recipes((event) => {
         draconic: 1,
     };
 
+    /**
+     * @param {string} modID
+     * @param {string} output
+     * @param {keyof typeof WAFER_DURATION} waferTier
+     * @param {string} lens
+     * @param {boolean} lensIsTag
+     */
     const dracoWaferEngraving = (modID, output, waferTier, lens, lensIsTag) => {
         let duration = WAFER_DURATION[waferTier];
         let quantity = WAFER_QUANTITY[waferTier];

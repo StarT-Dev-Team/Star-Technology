@@ -4,10 +4,11 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /**
+     * @param {'luv' | 'zpm' | 'uv'} tierKey
+     */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
-        if (!data) return;
-
         const {
             tiers: { tier, tier1, tier2 },
             materials: {
@@ -26,16 +27,28 @@ ServerEvents.recipes((event) => {
                 primMagnet,
                 miscMaterial,
             },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { ifDRS, cwuD, duraD, EUTD },
-                special: { ifSRS, cwuS, duraS, EUTS },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = data;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { ifDRS, cwuD, duraD, EUTD },
+            special: { ifSRS, cwuS, duraS, EUTS },
+        } = tierResearchData || {
+            default: { ifDRS: false, cwuD: 0, duraD: 0, EUTD: 0 },
+            special: { ifSRS: false, cwuS: 0, duraS: 0, EUTS: 0 },
+        };
 
+        /** @param {number} base */
         const b2exponentialMultiplier = (base) => base * Math.pow(2, scaler);
+        /** @param {number} base */
         const scaled = (base) => base * scaler;
 
+        /**
+         * @param {string} type
+         * @param {string[]} inputs
+         * @param {string[]} fluids
+         */
         const componentTypesAssemblyLine = (type, inputs, fluids) => {
             event.remove({ id: `gtceu:assembly_line/${type}_${tier}` });
 
@@ -177,7 +190,7 @@ ServerEvents.recipes((event) => {
             [
                 `1x gtceu:${primMaterial}_frame`,
                 `6x gtceu:${primMaterial}_plate`,
-                catalyst,
+                catalyst || '',
                 `2x gtceu:${tier}_emitter`,
                 `2x #gtceu:circuits/${tier}`,
                 `64x gtceu:fine_${superconductor}_wire`,
@@ -193,7 +206,7 @@ ServerEvents.recipes((event) => {
                 `1x gtceu:${primMaterial}_frame`,
                 `1x gtceu:${tier}_electric_motor`,
                 `4x gtceu:long_${primMaterial}_rod`,
-                catalyst,
+                catalyst || '',
                 `2x #gtceu:circuits/${tier}`,
                 `64x gtceu:${miscMaterial}_foil`,
                 `32x gtceu:${miscMaterial}_foil`,
@@ -208,7 +221,7 @@ ServerEvents.recipes((event) => {
                 `1x gtceu:${primMaterial}_frame`,
                 `1x gtceu:${tier}_electric_motor`,
                 `4x gtceu:${primMaterial}_plate`,
-                catalyst,
+                catalyst || '',
                 `2x #gtceu:circuits/${tier}`,
                 `64x gtceu:${miscMaterial}_foil`,
                 `32x gtceu:${miscMaterial}_foil`,
@@ -217,6 +230,11 @@ ServerEvents.recipes((event) => {
             [`gtceu:${solder} ${b2exponentialMultiplier(144)}`]
         );
 
+        /**
+         * @param {string} type
+         * @param {string[]} inputs
+         * @param {string[]} fluids
+         */
         const assemblyComponentMtCSF = (type, inputs, fluids) => {
             let mtscfRecipe = event.recipes.gtceu
                 .component_synthesis_forge(id(`${tier}_${type}`))
@@ -344,7 +362,7 @@ ServerEvents.recipes((event) => {
             [
                 `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
                 `${6 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${scalerMCSF * 0.75 * catalyst[0]}x ${catalyst.split(' ')[1]}`,
+                `${scalerMCSF * 0.75 * +(catalyst || '')[0]}x ${(catalyst || '').split(' ')[1]}`,
                 `${2 * scalerMCSF * 0.75}x gtceu:${tier}_emitter`,
                 `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
                 `${2 * scalerMCSF * 0.75}x gtceu:${superconductor}_wire_spool`,
@@ -359,7 +377,7 @@ ServerEvents.recipes((event) => {
                 `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
                 `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
                 `${4 * scalerMCSF * 0.75}x gtceu:long_${primMaterial}_rod`,
-                `${scalerMCSF * 0.75 * catalyst[0]}x ${catalyst.split(' ')[1]}`,
+                `${scalerMCSF * 0.75 * +(catalyst || '')[0]}x ${(catalyst || '').split(' ')[1]}`,
                 `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
                 `${1.5 * scalerMCSF * 0.75}x gtceu:${miscMaterial}_foil_ream`,
                 `${4 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
@@ -373,7 +391,7 @@ ServerEvents.recipes((event) => {
                 `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
                 `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
                 `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${scalerMCSF * 0.75 * catalyst[0]}x ${catalyst.split(' ')[1]}`,
+                `${scalerMCSF * 0.75 * +(catalyst || '')[0]}x ${(catalyst || '').split(' ')[1]}`,
                 `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
                 `${1.5 * scalerMCSF * 0.75}x gtceu:${miscMaterial}_foil_ream`,
                 `${4 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,

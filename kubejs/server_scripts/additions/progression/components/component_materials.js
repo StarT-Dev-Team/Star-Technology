@@ -1,7 +1,7 @@
 // priority: 1000
 
 /**
- * @satisfies {Record<Exclude<GTTier, 'uxv' | 'opv' | 'max'>, import("./component_materials_type").ComponentMaterial>}
+ * @type {Record<Exclude<GTTier, 'uxv' | 'opv' | 'max'>, import("./component_materials_type").ComponentMaterial>}
  */
 global.componentMaterials = /** @type {const} */ ({
     ulv: {

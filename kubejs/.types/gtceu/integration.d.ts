@@ -158,10 +158,12 @@ namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
     import CleanroomType = api.machine.multiblock.CleanroomType;
     import LayeredRecipeInfo$JSBuilder = data.recipe.builder.LayeredRecipeInfo$JSBuilder;
     import ExtendedOutputItem__Wrapper = components.ExtendedOutputItem__Wrapper;
+    import GTRecipeCategory__Wrapper = api.recipe.category.GTRecipeCategory__Wrapper;
 
     class GTRecipeSchema$GTRecipeJS extends RecipeJS {
         #com_gregtechceu_gtceu_integration_kjs_recipe_GTRecipeSchema$GTRecipeJS: unique symbol;
 
+        category(category: GTRecipeCategory__Wrapper): this;
         itemInputs(...inputs: InputItem__Wrapper[]): this;
         itemInputs(inputs: InputItem__Wrapper[]): this;
         inputFluids(...inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
@@ -174,7 +176,13 @@ namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         notConsumableFluid(itemStack: ItemStack__Wrapper): this;
         outputFluids(...inputs: FluidStackJS__Wrapper[]): this;
         outputFluids(inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
+        fluidOutputs(...inputs: FluidStackJS__Wrapper[]): this;
+        fluidOutputs(inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
+        chancedInput(stack: InputItem__Wrapper, chance: number, tierChanceBoost: number): this;
         chancedOutput(stack: ExtendedOutputItem__Wrapper, chance: number, tierChanceBoost: number): this;
+        chancedFluidOutput(stack: FluidStackJS__Wrapper, chance: number, tierChanceBoost: number): this;
+        itemOutputsRanged(stack: ExtendedOutputItem__Wrapper, min: number, max: number): this;
+        outputFluidsRanged(output: FluidStackJS__Wrapper, min: number, max: number): this;
         duration(duration: number): this;
         EUt(eut: EnergyStack$WithIO__Wrapper): this;
         circuit(configuration: number): this;
@@ -182,10 +190,24 @@ namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         'scannerResearch(java.util.function.UnaryOperator)'(
             research: UnaryOperator__Wrapper<ResearchRecipeBuilder$ScannerRecipeBuilder>
         ): this;
-        cleanroom(cleanroomType: CleanroomType): this;
+        cleanroom(cleanroomType: CleanroomType | null): this;
         layeredRecipe(config: Consumer__Wrapper<LayeredRecipeInfo$JSBuilder>): this;
         CWUt(cwu: number): this;
+        blastFurnaceTemp(blastTemp: number): this;
         totalCWU(cwu: number): this;
+        fusionStartEU(startEU: number): this;
+        genericStartEU(startEU: number): this;
+        reflectorTier(reflectorTier: number): this;
+        vacuumLevel(vacuumLevel: number): this;
+        disableDistilleryRecipes(disable: boolean): this;
+        addMaterialInfo(item: boolean): this;
+        addMaterialInfo(item: boolean, flui: boolean): this;
+        removePreviousMaterialInfo(): this;
+    }
+
+    class GTShapedRecipeSchema$ShapedRecipeJS extends RecipeJS {
+        readonly __com_gregtechceu_gtceu_integration_kjs_recipe_GTShapedRecipeSchema$ShapedRecipeJS: unique symbol;
+        addMaterialInfo(): this;
     }
 }
 

@@ -72,6 +72,10 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.UHV])
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
+    /**
+     * @param {string} type
+     * @param {string} fluid
+     */
     const breathHormone = (type, fluid) => {
         event.recipes.gtceu
             .autoclave(id(type))
@@ -98,6 +102,10 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UEV])
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
+    /**
+     * @param {string} type
+     * @param {string} dust
+     */
     const growthHormone = (type, dust) => {
         event.recipes.gtceu
             .autoclave(id(type))
@@ -115,6 +123,10 @@ ServerEvents.recipes((event) => {
     growthHormone('dracotropin', 'enriched_naquadah');
     growthHormone('pyrothyin', 'activated_nether');
 
+    /**
+     * @param {string} type
+     * @param {[string, string, string, string, string]} inputs
+     */
     let hormoneComplex = (type, inputs) => {
         event.recipes.gtceu
             .injection_mixer(id(`${type}_hormone_complex`))

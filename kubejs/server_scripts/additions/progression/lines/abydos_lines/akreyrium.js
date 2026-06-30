@@ -313,6 +313,12 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.LuV]);
 
     // Injection
+
+    /**
+     * @param {string} akreyType
+     * @param {number} amount
+     * @param {string} catalyst
+     */
     const addInjectionRecipe = (akreyType, amount, catalyst) => {
         event.recipes.gtceu
             .injection_mixer(id(`${akreyType}_${amount}_${catalyst}`))

@@ -2,7 +2,7 @@ namespace internal.kjs {
     import GTRecipeJS = com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS;
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
 
-    interface RecipeFunctionsGtceu {
+    interface RecipeFunctions_gtceu {
         chemical_skip(id: ResourceLocation__Wrapper): GTRecipeJS;
         ordered_chemistry(id: ResourceLocation__Wrapper): GTRecipeJS;
         large_rock_crusher(id: ResourceLocation__Wrapper): GTRecipeJS;
@@ -11,5 +11,42 @@ namespace internal.kjs {
         industrial_barrel_magmatic(id: ResourceLocation__Wrapper): GTRecipeJS;
         industrial_barrel_aqueous(id: ResourceLocation__Wrapper): GTRecipeJS;
         riftic_infusion_assembly(id: ResourceLocation__Wrapper): GTRecipeJS;
+        barrel(id: ResourceLocation__Wrapper): GTRecipeJS;
+        barrel_composting(id: ResourceLocation__Wrapper): GTRecipeJS;
+        barrel_transformation(id: ResourceLocation__Wrapper): GTRecipeJS;
+        stone_barrel(id: ResourceLocation__Wrapper): GTRecipeJS;
+        component_part_assembly(id: ResourceLocation__Wrapper): GTRecipeJS;
+        component_part_synthesis_forge(id: ResourceLocation__Wrapper): GTRecipeJS;
+        component_synthesis_forge(id: ResourceLocation__Wrapper): GTRecipeJS;
+        draco_infusion(id: ResourceLocation__Wrapper): GTRecipeJS;
+        draco_circuit_assembler(id: ResourceLocation__Wrapper): GTRecipeJS;
+        draco_bulk_circuiter(id: ResourceLocation__Wrapper): GTRecipeJS;
+        component_nexus(id: ResourceLocation__Wrapper): GTRecipeJS;
+        kiln(id: ResourceLocation__Wrapper): GTRecipeJS;
+        steam_kiln(id: ResourceLocation__Wrapper): GTRecipeJS;
+        solid_blast_furnace(id: ResourceLocation__Wrapper): GTRecipeJS;
+        fermenting(id: ResourceLocation__Wrapper): GTRecipeJS;
+        rimula_extraction(id: ResourceLocation__Wrapper): GTRecipeJS;
+        magmatic_drill(id: ResourceLocation__Wrapper): GTRecipeJS;
+        voidic_refinement(id: ResourceLocation__Wrapper): GTRecipeJS;
+        cyclonic_sifter(id: ResourceLocation__Wrapper): GTRecipeJS;
+        manifold_centrifuge(id: ResourceLocation__Wrapper): GTRecipeJS;
+        injection_mixer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        pressure_heat_chamber(id: ResourceLocation__Wrapper): GTRecipeJS;
+        hellforge(id: ResourceLocation__Wrapper): GTRecipeJS;
+        folding_akreyrium_stabiliser(id: ResourceLocation__Wrapper): GTRecipeJS;
+        abyssal_akreyriadix_stabiliser(id: ResourceLocation__Wrapper): GTRecipeJS;
+        vacuum_chemical_reaction_chamber(id: ResourceLocation__Wrapper): GTRecipeJS;
+        molten_destabilizing(id: ResourceLocation__Wrapper): GTRecipeJS;
+        heat_chamber(id: ResourceLocation__Wrapper): GTRecipeJS;
+        forming_press(id: ResourceLocation__Wrapper): GTRecipeJS;
+        exotic_rock_crushing(id: ResourceLocation__Wrapper): GTRecipeJS;
+        riftion_injector(id: ResourceLocation__Wrapper): GTRecipeJS;
+        reflector_fusion_reactor(id: ResourceLocation__Wrapper): GTRecipeJS;
+        riftion_accelerator(id: ResourceLocation__Wrapper): GTRecipeJS;
+        riftion_slammer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        kaleidoscopic_fractalizer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        supreme_chemistry(id: ResourceLocation__Wrapper): GTRecipeJS;
+        modular_rocket_module(id: ResourceLocation__Wrapper): GTRecipeJS;
     }
 }

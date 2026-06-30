@@ -1,10 +1,28 @@
 namespace internal.dev.latvian.mods.kubejs.fluid {
+    import ReplacementMatch = recipe.ReplacementMatch;
+
+    interface FluidLike extends ReplacementMatch {
+        readonly __dev_latvian_mods_kubejs_fluid_FluidLike: unique symbol;
+        getAmount(): number;
+        get amount(): number;
+        isEmpty(): boolean;
+        copy(): this;
+        matches(other: FluidLike): boolean;
+    }
+
+    interface InputFluid extends FluidLike {
+        readonly __dev_latvian_mods_kubejs_fluid_InputFluid: unique symbol;
+    }
+
     import FluidStack = architectury.fluid.FluidStack;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
     import Fluid = net.minecraft.world.level.material.Fluid;
+    import InputReplacement = recipe.InputReplacement;
 
-    abstract class FluidStackJS {
+    interface FluidStackJS extends FluidLike, InputReplacement {}
+    class FluidStackJS implements FluidLike, InputReplacement {
+        readonly __dev_latvian_mods_kubejs_fluid_FluidStackJS: unique symbol;
         getId(): string;
         getTags(): Collection<ResourceLocation>;
         getFluidStack(): FluidStack;

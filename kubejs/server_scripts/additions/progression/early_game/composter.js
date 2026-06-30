@@ -22,6 +22,10 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/composting_factory');
 
+    /**
+     * @param {number} odds
+     * @param {string} fuel
+     */
     const composting = (odds, fuel) => {
         event.recipes.gtceu
             .composting(id(fuel.split(':')[1]))

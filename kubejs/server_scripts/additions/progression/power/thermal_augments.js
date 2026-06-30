@@ -2,7 +2,7 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     // Upgrade augments
-    [
+    /** @type {const} */ ([
         {
             tier: 'lv',
             plate: 'silver',
@@ -35,7 +35,7 @@ ServerEvents.recipes((event) => {
             fluid: 'thermal:ender 750',
             mod: 48,
         },
-    ].forEach((tier) => {
+    ]).forEach((tier) => {
         event.recipes.gtceu
             .assembler(id(`${tier.tier}_kit`))
             .itemInputs(
@@ -105,7 +105,7 @@ ServerEvents.recipes((event) => {
         .id('start:shaped/ulv_fls_kit');
 
     // ARC's and MCI's
-    [
+    /** @type {const} */ ([
         {
             tier: 'mv',
             lastTier: 'lv',
@@ -136,7 +136,7 @@ ServerEvents.recipes((event) => {
             dynEM: 1.6,
             energy: 'ev',
         },
-    ].forEach((tier) => {
+    ]).forEach((tier) => {
         event.recipes.gtceu
             .assembler(id(`arc_augment_${tier.tier}`))
             .itemInputs(`kubejs:${tier.lastTier}_arc_kit`, `2x gtceu:${tier.gear}_gear`, `thermal:${tier.glass}_glass`)
@@ -160,7 +160,7 @@ ServerEvents.recipes((event) => {
     });
 
     // RFC's, RFS', RFT's and FLS's
-    [
+    /** @type {const} */ ([
         {
             tier: 'lv',
             lastTier: 'ulv',
@@ -174,7 +174,7 @@ ServerEvents.recipes((event) => {
         { tier: 'hv', lastTier: 'mv', metal: 'lumium', max: 18, avg: 16, min: 8, energy: 'hv' },
         { tier: 'ev', lastTier: 'hv', metal: 'enderium', max: 22, avg: 20, min: 10, energy: 'ev' },
         { tier: 'iv', lastTier: 'ev', metal: 'shellite', max: 26, avg: 24, min: 12, energy: 'iv' },
-    ].forEach((foo) => {
+    ]).forEach((foo) => {
         event.recipes.gtceu
             .alloy_smelter(id(`${foo.tier}_rfc_kit`))
             .itemInputs(`kubejs:${foo.lastTier}_rfc_kit`, `2x gtceu:${foo.metal}_gear`)

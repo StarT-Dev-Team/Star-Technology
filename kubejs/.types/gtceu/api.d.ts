@@ -138,6 +138,8 @@ namespace internal.com.gregtechceu.gtceu.api.recipe.category {
     class GTRecipeCategory {
         readonly __com_gregtechceu_gtceu_api_recipe_category_GTRecipeCategory: unique symbol;
     }
+
+    type GTRecipeCategory__Wrapper = GTRecipeCategory | string;
 }
 
 namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient {

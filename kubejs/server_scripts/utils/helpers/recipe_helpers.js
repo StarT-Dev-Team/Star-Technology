@@ -254,12 +254,19 @@ global.getFinalRecycleOutputs = (outputs, blockType, macBool, specialBool) => {
     return finalOutputs;
 };
 
+/**
+ *
+ * @param {GTTier} tier
+ * @returns {'ULV' | 'LV' | 'MV' | 'HV' | 'EV' | 'IV' | 'LuV' | 'ZPM' | 'UV' | 'UHV' | 'UEV' | 'UIV' | 'UXV' | 'OpV' | 'MAX'}
+ */
 global.getRecipeTier = (tier) => {
     const recipeTier = tier === 'luv' ? 'LuV' : tier === 'opv' ? 'OpV' : tier.toUpperCase();
-
-    return recipeTier;
+    return /** @type {any} */ (recipeTier);
 };
 
+/**
+ * @param {number} cwu
+ */
 global.getDataItem = (cwu) =>
     cwu >= 320
         ? 'start_core:component_data_core'
@@ -271,7 +278,7 @@ global.getDataItem = (cwu) =>
 
 /**
  *
- * @param {keyof internal.kjs.RecipeFunctionsGtceu} machineType
+ * @param {keyof internal.kjs.RecipeFunctions_gtceu} machineType
  * @param {string} recId
  * @param {string[]} inputsI
  * @param {string[]} inputsF
@@ -360,10 +367,10 @@ const modRequirements = {
 Object.entries(modRequirements).forEach(([name, mod]) => {
     const mods = Array.isArray(mod) ? mod : [mod];
     /**
-     * @param {function} ifTrue - Function to execute if current mod is loaded'.
-     * @param {function} ifFalse - Function to execute if current mod is NOT loaded'.
+     * @param {() => void} ifTrue Function to execute if current mod is loaded'.
+     * @param {() => void} ifFalse Function to execute if current mod is NOT loaded'.
      */
-    global[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = (ifTrue, ifFalse) => {
+    const fn = (ifTrue, ifFalse) => {
         if (mods.every((m) => Platform.isLoaded(m))) {
             if (ifTrue && typeof ifTrue === 'function') {
                 ifTrue();
@@ -372,6 +379,8 @@ Object.entries(modRequirements).forEach(([name, mod]) => {
             ifFalse();
         }
     };
+
+    /** @type {any} */ (global)[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = fn;
 });
 
 /**
@@ -380,7 +389,8 @@ Object.entries(modRequirements).forEach(([name, mod]) => {
  * @param {string} input item input
  * @param {string} output item output
  * @param {number} tier voltage tier
- * @param {numer | undefined} durationMultiplier duration multiplier (default 0)
+ * @param {number | undefined} durationMultiplier duration multiplier (default 0)
+ * @param {internal.dev.latvian.mods.kubejs.recipe.RecipesEventJS} event
  */
 const implosionHelper = (id, input, output, tier, durationMultiplier, event) => {
     [
@@ -394,7 +404,7 @@ const implosionHelper = (id, input, output, tier, durationMultiplier, event) => 
             .itemInputs(input, explosive.explosive)
             .itemOutputs(output)
             .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-            .duration(20 * (durationMultiplier !== undefined) ? durationMultiplier : 1)
+            .duration(20 * (durationMultiplier !== undefined ? durationMultiplier : 1))
             .EUt(GTValues.VHA[tier]);
     });
 };

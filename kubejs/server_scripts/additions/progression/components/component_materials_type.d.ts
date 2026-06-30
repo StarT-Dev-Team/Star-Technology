@@ -1,5 +1,10 @@
 export interface ComponentMaterial {
-    tiers: { tier: GTTier; tier0?: GTTier; tier1?: GTTier; tier2?: GTTier };
+    tiers: {
+        tier: GTTier;
+        tier0?: GTTier;
+        tier1?: GTTier;
+        tier2?: GTTier;
+    };
     materials: {
         tierMaterial: string;
         primMaterial?: string;

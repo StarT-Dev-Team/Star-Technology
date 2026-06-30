@@ -13,8 +13,9 @@ ServerEvents.recipes((event) => {
         const {
             tiers: { tier },
             materials: { tierMaterial, plastic, pipeMaterial, fluidStorage, itemStorage },
-            scaling: { scaler },
+            scaling: tierScalingData,
         } = tierData;
+        const { scaler } = tierScalingData || { scaler: 1 };
 
         [
             { typeIO: 'input', circ: 1 },
@@ -26,7 +27,7 @@ ServerEvents.recipes((event) => {
 
             event.recipes.gtceu
                 .assembler(id(`${tier}_${ioData.typeIO}_bus`))
-                .itemInputs(`gtceu:${tier}_machine_hull`, itemStorage)
+                .itemInputs(`gtceu:${tier}_machine_hull`, itemStorage || '')
                 .inputFluids(`gtceu:${plastic} ${216 + scaler * 36}`)
                 .itemOutputs(`gtceu:${tier}_${ioData.typeIO}_bus`)
                 .duration(300)
@@ -35,7 +36,7 @@ ServerEvents.recipes((event) => {
 
             event.recipes.gtceu
                 .assembler(id(`${tier}_${ioData.typeIO}_hatch`))
-                .itemInputs(`gtceu:${tier}_machine_hull`, fluidStorage)
+                .itemInputs(`gtceu:${tier}_machine_hull`, fluidStorage || '')
                 .inputFluids(`gtceu:${plastic} ${216 + scaler * 36}`)
                 .itemOutputs(`gtceu:${tier}_${ioData.typeIO}_hatch`)
                 .duration(300)

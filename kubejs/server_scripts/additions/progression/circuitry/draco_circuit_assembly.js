@@ -49,6 +49,17 @@ ServerEvents.recipes((event) => {
 
     // === Draconic Circuits ===
 
+    /**
+     *
+     * @param {string} type
+     * @param {string} output
+     * @param {string[]} ItemIn
+     * @param {string[]} FluidIn
+     * @param {number} Dur
+     * @param {number} eu
+     * @param {string} researchItem
+     * @param {number} cwu
+     */
     const dracoCircuitAssembler = (type, output, ItemIn, FluidIn, Dur, eu, researchItem, cwu) => {
         event.recipes.gtceu
             .draco_circuit_assembler(id(type))
@@ -316,6 +327,15 @@ ServerEvents.recipes((event) => {
 
     // === Bulk Circuits ===
 
+    /**
+     * @param {number} quant
+     * @param {string} output
+     * @param {string[]} ItemIn
+     * @param {string[]} FluidIn
+     * @param {number} Dur
+     * @param {number} eu
+     * @param {number} cwu
+     */
     const dracoBulkCircuiter = (quant, output, ItemIn, FluidIn, Dur, eu, cwu) => {
         event.recipes.gtceu
             .draco_bulk_circuiter(id(output.split(':')[1]))
@@ -362,7 +382,7 @@ ServerEvents.recipes((event) => {
             '2x gtceu:red_alloy_bolt',
             '2x gtceu:fine_tin_wire',
         ],
-        'gtceu:soldering_alloy 72',
+        ['gtceu:soldering_alloy 72'],
         200,
         GTValues.VA[GTValues.HV] / 3.5,
         4
@@ -371,7 +391,7 @@ ServerEvents.recipes((event) => {
         12,
         'kubejs:lv_universal_circuit',
         ['gtceu:plastic_printed_circuit_board', 'gtceu:soc', '2x gtceu:fine_copper_wire', '2x gtceu:tin_bolt'],
-        'gtceu:soldering_alloy 72',
+        ['gtceu:soldering_alloy 72'],
         25,
         GTValues.VA[GTValues.IV] / 3.5,
         12
@@ -385,7 +405,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:fine_red_alloy_wire',
             '4x gtceu:annealed_copper_bolt',
         ],
-        'gtceu:soldering_alloy 72',
+        ['gtceu:soldering_alloy 72'],
         25,
         GTValues.VA[GTValues.LuV] / 3.5,
         24
@@ -399,7 +419,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:fine_electrum_wire',
             '4x gtceu:platinum_bolt',
         ],
-        'gtceu:soldering_alloy 72',
+        ['gtceu:soldering_alloy 72'],
         25,
         GTValues.VA[GTValues.ZPM] / 3.5,
         64
@@ -413,7 +433,7 @@ ServerEvents.recipes((event) => {
             '12x gtceu:fine_platinum_wire',
             '8x gtceu:niobium_titanium_bolt',
         ],
-        'gtceu:soldering_alloy 72',
+        ['gtceu:soldering_alloy 72'],
         25,
         GTValues.VA[GTValues.UV] / 3.5,
         96
@@ -427,7 +447,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:fine_niobium_titanium_wire',
             '8x gtceu:yttrium_barium_cuprate_bolt',
         ],
-        'gtceu:soldering_alloy 72',
+        ['gtceu:soldering_alloy 72'],
         50,
         GTValues.VA[GTValues.UV] / 3.5,
         128
@@ -441,7 +461,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:fine_yttrium_barium_cuprate_wire',
             '8x gtceu:naquadah_bolt',
         ],
-        'gtceu:soldering_alloy 72',
+        ['gtceu:soldering_alloy 72'],
         50,
         GTValues.VA[GTValues.UHV] / 3.5,
         144

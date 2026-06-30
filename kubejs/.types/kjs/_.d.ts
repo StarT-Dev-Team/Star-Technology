@@ -37,18 +37,53 @@ namespace internal.kjs {
         basic: FluidBuilder;
     }
 
+    import CookingRecipeSchema__Impl = dev.latvian.mods.kubejs.recipe.schema.minecraft.CookingRecipeSchema__Impl;
     import ShapedRecipeJS = dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedRecipeSchema$ShapedRecipeJS;
     import InputItem__Wrapper = dev.latvian.mods.kubejs.item.InputItem__Wrapper;
     import OutputItem__Wrapper = dev.latvian.mods.kubejs.item.OutputItem__Wrapper;
 
-    interface RecipeFunctions {
-        shaped: (
+    interface RecipeFunctions_minecraft {
+        crafting_shaped: (
             result: OutputItem__Wrapper,
             pattern: string[],
             key: Record<string, InputItem__Wrapper>
         ) => ShapedRecipeJS;
-        shapeless: (result: OutputItem__Wrapper, ingredients: InputItem__Wrapper[]) => ShapedRecipeJS;
         // shaped: constructor((recipe, schemaType, keys, from) -> ((ShapedRecipeJS) recipe).set2DValues(from), RESULT, INGREDIENTS)
+        crafting_shapeless: (result: OutputItem__Wrapper, ingredients: InputItem__Wrapper[]) => ShapedRecipeJS;
+        smelting: (
+            result: OutputItem__Wrapper,
+            ingredient: InputItem__Wrapper,
+            xp?: number,
+            cookingTime?: number
+        ) => CookingRecipeSchema__Impl;
+        blasting: (
+            result: OutputItem__Wrapper,
+            ingredient: InputItem__Wrapper,
+            xp?: number,
+            cookingTime?: number
+        ) => CookingRecipeSchema__Impl;
+        smoking: (
+            result: OutputItem__Wrapper,
+            ingredient: InputItem__Wrapper,
+            xp?: number,
+            cookingTime?: number
+        ) => CookingRecipeSchema__Impl;
+        campfire_cooking: (
+            result: OutputItem__Wrapper,
+            ingredient: InputItem__Wrapper,
+            xp?: number,
+            cookingTime?: number
+        ) => CookingRecipeSchema__Impl;
+    }
+
+    interface RecipeFunctions_kubejs {
+        shaped: RecipeFunctions_minecraft['crafting_shaped'];
+        shapeless: RecipeFunctions_minecraft['crafting_shapeless'];
+    }
+
+    interface RecipeFunctions {
+        kubejs: RecipeFunctions_kubejs;
+        minecraft: RecipeFunctions_minecraft;
     }
 }
 
@@ -87,9 +122,11 @@ namespace internal.kjs.kubejs {
     }
 
     import RecipesEventJS = dev.latvian.mods.kubejs.recipe.RecipesEventJS;
+    import TagEventJS = dev.latvian.mods.kubejs.server.tag.TagEventJS;
 
     interface ServerEvents {
         recipes(callback: (event: RecipesEventJS) => void): void;
+        tags(key: 'item', callback: (event: TagEventJS) => void): void;
     }
 
     import BlockModificationEventJS = dev.latvian.mods.kubejs.block.BlockModificationEventJS;
@@ -107,6 +144,7 @@ const Java: {
 
 const Item: typeof internal.dev.latvian.mods.kubejs.bindings.ItemWrapper;
 const Ingredient: typeof internal.dev.latvian.mods.kubejs.bindings.IngredientWrapper;
+const Fluid: typeof internal.dev.latvian.mods.kubejs.bindings.FluidWrapper;
 
 const StartupEvents: internal.kjs.kubejs.StartupEvents;
 const ServerEvents: internal.kjs.kubejs.ServerEvents;

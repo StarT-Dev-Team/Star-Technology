@@ -480,6 +480,9 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/palladium_substation');
 
+    /**
+     * @param {keyof typeof global.componentMaterials} tier
+     */
     const hermeticCasing = (tier) => {
         const casingMaterial = global.componentMaterials[tier].materials.tierMaterial;
         const pipeMaterial = global.componentMaterials[tier].materials.pipeMaterial;
@@ -507,7 +510,7 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VH[GTValues.LV]);
     };
 
-    ['luv', 'zpm', 'uv', 'uhv'].forEach((tier) => {
+    /** @type {const} */ (['luv', 'zpm', 'uv', 'uhv']).forEach((tier) => {
         hermeticCasing(tier);
     });
 

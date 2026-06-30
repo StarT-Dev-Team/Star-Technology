@@ -99,8 +99,14 @@ namespace internal.kjs {
 
     import GTRecipeJS = com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS;
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
+    import GTShapedRecipeSchema$ShapedRecipeJS = com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$ShapedRecipeJS;
 
-    interface RecipeFunctionsGtceu {
+    interface RecipeFunctions_gtceu {
+        shaped: (
+            result: OutputItem__Wrapper,
+            pattern: string[],
+            key: Record<string, InputItem__Wrapper>
+        ) => GTShapedRecipeSchema$ShapedRecipeJS;
         assembler: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         assembly_line: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         fluid_heater: (id: ResourceLocation__Wrapper) => GTRecipeJS;
@@ -110,10 +116,35 @@ namespace internal.kjs {
         centrifuge: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         canner: (id: ResourceLocation__Wrapper) => GTRecipeJS;
         research_station: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        distillery: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        fluid_solidifier: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        vacuum_freezer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        circuit_assembler: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        mixer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        extractor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        forge_hammer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        electrolyzer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        electric_blast_furnace: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        cutter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        laser_engraver: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        coke_oven: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        fermenter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        composting: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        composting_factory: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        compressor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        implosion_compressor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        brewery: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        electromagnetic_separator: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        polarizer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        chemical_bath: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        macerator: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        autoclave: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        arc_furnace: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        alloy_smelter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
     }
 
     interface RecipeFunctions {
-        gtceu: RecipeFunctionsGtceu;
+        gtceu: RecipeFunctions_gtceu;
     }
 }
 
@@ -122,6 +153,7 @@ const RotationState: typeof internal.com.gregtechceu.gtceu.api.data.RotationStat
 const GTMaterials: typeof internal.com.gregtechceu.gtceu.common.data.GTMaterials;
 const GTElements: typeof internal.com.gregtechceu.gtceu.common.data.GTElements;
 const GTRecipeTypes: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeTypes;
+const GTRecipeCategories: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeCategories;
 const GTRecipeModifiers: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 const GTSoundEntries: typeof internal.com.gregtechceu.gtceu.common.data.GTSoundEntries;
 const GCYMBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GCYMBlocks;

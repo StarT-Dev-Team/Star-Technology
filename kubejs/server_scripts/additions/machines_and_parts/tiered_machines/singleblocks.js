@@ -36,8 +36,9 @@ ServerEvents.recipes((event) => {
                 buzz,
                 chip,
             },
-            scaling: { scaler },
+            scaling: tierScalingData,
         } = tierData;
+        const { scaler } = tierScalingData || { scaler: 1 };
 
         let math = scaler - 3;
 
