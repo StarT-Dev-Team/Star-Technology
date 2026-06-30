@@ -3,40 +3,88 @@ declare namespace internal.kjs.gtceu {
     import KJSWrappingTieredMachineBuilder = com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingTieredMachineBuilder;
     import MultiblockMachineBuilder = com.gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder;
 
-    interface MachineEventContext {
-        create(key: string, kind?: 'simple'): KJSWrappingTieredMachineBuilder;
-        create(key: string, kind: 'custom'): KJSWrappingTieredMachineBuilder;
-        create(key: string, kind: 'steam'): GTCEuSteamMachineBuilder;
-        create(key: string, kind: 'generator'): KJSWrappingTieredMachineBuilder;
-        create(key: string, kind: 'multiblock'): MultiblockMachineBuilder;
-        create(key: string, kind: 'tiered_multiblock'): KJSWrappingMultiblockBuilder;
-        create(key: string, kind: 'primitive_singleblock'): GTCEuMachineBuilder;
-        create(key: string, kind: 'primitive'): MultiblockMachineBuilder;
+    interface MachineRegistry {
+        _default: KJSWrappingTieredMachineBuilder;
+        simple: KJSWrappingTieredMachineBuilder;
+        steam: GTCEuSteamMachineBuilder;
+        generator: KJSWrappingTieredMachineBuilder;
+        multiblock: MultiblockMachineBuilder;
+        tiered_multiblock: KJSWrappingMultiblockBuilder;
+        primitive_singleblock: GTCEuMachineBuilder;
+        primitive: MultiblockMachineBuilder;
     }
 
     import GTRecipeTypeBuilder = com.gregtechceu.gtceu.integration.kjs.builders.GTRecipeTypeBuilder;
 
-    interface RecipeTypeEventContext {
-        create(key: string): GTRecipeTypeBuilder;
+    interface RecipeTypeRegistry {
+        _default: GTRecipeTypeBuilder;
+        basic: GTRecipeTypeBuilder;
     }
 
     import ElementBuilder = com.gregtechceu.gtceu.integration.kjs.builders.ElementBuilder;
 
-    interface ElementEventContext {
-        create(key: string, kind?: 'basic'): ElementBuilder;
+    interface ElementRegistry {
+        _default: ElementBuilder;
+        basic: ElementBuilder;
     }
 
     import GTRecipeCategoryBuilder = com.gregtechceu.gtceu.integration.kjs.builders.GTRecipeCategoryBuilder;
 
-    interface RecipeCategoryEventContext {
-        create(key: string, kind?: 'basic'): GTRecipeCategoryBuilder;
+    interface RecipeCategoryRegistry {
+        _default: GTRecipeCategoryBuilder;
+        basic: GTRecipeCategoryBuilder;
     }
 
+    import WorldGenLayerBuilder = com.gregtechceu.gtceu.integration.kjs.builders.WorldGenLayerBuilder;
+
+    interface WorldGenLayerRegistry {
+        _default: WorldGenLayerBuilder;
+        basic: WorldGenLayerBuilder;
+    }
+
+    import MaterialIconSet = com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
+    import MaterialIconSetBuilder = com.gregtechceu.gtceu.integration.kjs.builders.MaterialIconSetBuilder;
+
+    interface MaterialIconSetRegistry {
+        _default: MaterialIconSetBuilder;
+        basic: MaterialIconSetBuilder;
+    }
+
+    import Material = com.gregtechceu.gtceu.api.data.chemical.material.Material;
+    import Material$Builder = com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder;
+
+    interface MaterialRegistry {
+        _default: Material$Builder;
+        basic: Material$Builder;
+    }
+
+    import GTRegistryEventJS = com.gregtechceu.gtceu.integration.kjs.events.GTRegistryEventJS;
+    import IWorldGenLayer = com.gregtechceu.gtceu.api.data.worldgen.IWorldGenLayer;
+
     interface StartupEvents {
-        registry(key: 'gtceu:machine', event: (context: MachineEventContext) => void): void;
-        registry(key: 'gtceu:recipe_type', event: (context: RecipeTypeEventContext) => void): void;
-        registry(key: 'gtceu:element', event: (context: ElementEventContext) => void): void;
-        registry(key: 'gtceu:recipe_category', event: (context: RecipeCategoryEventContext) => void): void;
+        registry(
+            key: 'gtceu:machine',
+            callback: (event: GTRegistryEventJS<MachineDefinition, MachineRegistry>) => void
+        ): void;
+        registry(
+            key: 'gtceu:recipe_type',
+            callback: (event: GTRegistryEventJS<GTRecipeType, RecipeTypeRegistry>) => void
+        ): void;
+        registry(key: 'gtceu:element', callback: (event: GTRegistryEventJS<Element, ElementRegistry>) => void): void;
+        registry(
+            key: 'gtceu:recipe_category',
+            callback: (event: GTRegistryEventJS<GTRecipeCategory, RecipeCategoryRegistry>) => void
+        ): void;
+        registry(
+            key: 'gtceu:world_gen_layer',
+            callback: (event: GTRegistryEventJS<IWorldGenLayer, WorldGenLayerRegistry>) => void
+        ): void;
+        registry(
+            key: 'gtceu:material_icon_set',
+            callback: (event: GTRegistryEventJS<MaterialIconSet, MaterialIconSetRegistry>) => void
+        ): void;
+        registry(key: 'gtceu:material', callback: (event: GTRegistryEventJS<Material, MaterialRegistry>) => void): void;
+        materialModification(callback: (event: MaterialModificationEventJS) => void): void;
     }
 }
 
@@ -48,30 +96,50 @@ namespace internal.kjs {
         'gtceu:active': ActiveBlockBuilder;
         'gtceu:coil': CoilBlockBuilder;
     }
+
+    import GTRecipeJS = com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS;
+    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
+
+    interface RecipeFunctionsGtceu {
+        assembler: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        assembly_line: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        fluid_heater: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        chemical_reactor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        large_chemical_reactor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        distillation_tower: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        centrifuge: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        canner: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        research_station: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+    }
+
+    interface RecipeFunctions {
+        gtceu: RecipeFunctionsGtceu;
+    }
 }
 
-declare const RotationState: typeof internal.com.gregtechceu.gtceu.api.data.RotationState;
+const RotationState: typeof internal.com.gregtechceu.gtceu.api.data.RotationState;
 
-declare const GTMaterials: typeof internal.com.gregtechceu.gtceu.common.data.GTMaterials;
-declare const GTElements: typeof internal.com.gregtechceu.gtceu.common.data.GTElements;
-declare const GTRecipeTypes: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeTypes;
-declare const GTRecipeModifiers: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
-declare const GTSoundEntries: typeof internal.com.gregtechceu.gtceu.common.data.GTSoundEntries;
-declare const GCYMBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GCYMBlocks;
-declare const GTBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GTBlocks;
-
-declare const GCYMMachines: typeof internal.com.gregtechceu.gtceu.common.data.machines.GCYMMachines;
-
-declare const GTCEuStartupEvents: internal.kjs.gtceu.StartupEvents;
-
-declare const GTValues: typeof internal.com.gregtechceu.gtceu.api.GTValues;
-
-declare const FactoryBlockPattern: typeof internal.com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
-
-declare const PartAbility: typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
-
-declare const CleanroomType: typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
-
-declare const Predicates: typeof internal.com.gregtechceu.gtceu.api.pattern.Predicates;
-
-declare const GuiTextures: typeof internal.com.gregtechceu.gtceu.api.gui.GuiTextures;
+const GTMaterials: typeof internal.com.gregtechceu.gtceu.common.data.GTMaterials;
+const GTElements: typeof internal.com.gregtechceu.gtceu.common.data.GTElements;
+const GTRecipeTypes: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeTypes;
+const GTRecipeModifiers: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
+const GTSoundEntries: typeof internal.com.gregtechceu.gtceu.common.data.GTSoundEntries;
+const GCYMBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GCYMBlocks;
+const GTBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GTBlocks;
+const GCYMMachines: typeof internal.com.gregtechceu.gtceu.common.data.machines.GCYMMachines;
+const GTCEuStartupEvents: internal.kjs.gtceu.StartupEvents;
+const GTValues: typeof internal.com.gregtechceu.gtceu.api.GTValues;
+const GTMaterialIconSet: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
+const GTMaterialFlags: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
+const FactoryBlockPattern: typeof internal.com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
+const PartAbility: typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
+const CleanroomType: typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
+const Predicates: typeof internal.com.gregtechceu.gtceu.api.pattern.Predicates;
+const GuiTextures: typeof internal.com.gregtechceu.gtceu.api.gui.GuiTextures;
+const ChemicalHelper: typeof internal.com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+const PropertyKey: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+const ToolProperty: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
+const GTToolType: typeof internal.com.gregtechceu.gtceu.api.item.tool.GTToolType;
+const GTFluidBuilder: typeof internal.com.gregtechceu.gtceu.api.fluids.FluidBuilder;
+const GTFluidState: typeof internal.com.gregtechceu.gtceu.api.fluids.FluidState;
+const GTFluidStorageKeys: typeof internal.com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;

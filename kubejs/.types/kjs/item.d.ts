@@ -28,27 +28,27 @@ module internal.dev.latvian.mods.kubejs.item {
     import Rarity__Wrapper = net.minecraft.world.item.Rarity__Wrapper;
 
     class ItemBuilder extends BuilderBase<Item> {
-        maxStackSize(v: number): this;
+        maxStackSize(maxStackSize: number): this;
         unstackable(): this;
-        maxDamage(v: number): this;
-        burnTime(v: number): this;
-        containerItem(id: ResourceLocation__Wrapper): this;
+        maxDamage(maxDamage: number): this;
+        burnTime(burnTime: number): this;
+        containerItem(containerItem: ResourceLocation__Wrapper): this;
         // subtypes(fn: Function<ItemStack, Collection<ItemStack>> )
-        rarity(v: Rarity__Wrapper): this;
-        // glow(boolean v)
-        tooltip(text: Component__Wrapper): this;
+        rarity(rarity: Rarity__Wrapper): this;
+        glow(glow: boolean): this;
+        tooltip(tooltip: Component__Wrapper): this;
         // group(@Nullable String g)
         // color(int index, ItemTintFunction color)
         // color(ItemTintFunction callback)
-        texture(tex: string): this;
-        texture(key: string, tex: string): this;
-        // textureJson(JsonObject json)
-        // modelJson(JsonObject json)
-        // parentModel(String m)
+        texture(texture: string): this;
+        texture(key: string, texture: string): this;
+        textureJson(texture: object): this;
+        modelJson(model: object): this;
+        parentModel(parentModel: string): this;
         // barColor(Function<ItemStack, Color> barColor)
         // barWidth(ToIntFunction<ItemStack> barWidth)
         // name(NameCallback name)
-        food(b: Consumer__Wrapper<FoodBuilder>): this;
+        food(food: Consumer__Wrapper<FoodBuilder>): this;
         // fireResistant(boolean isFireResistant)
         // fireResistant()
         // modifyAttribute(ResourceLocation attribute, String identifier, double d, AttributeModifier.Operation operation)
@@ -85,6 +85,48 @@ module internal.dev.latvian.mods.kubejs.item {
         getItem(): ItemStack;
         get item(): ItemStack;
     }
+
+    import ArmorMaterial = net.minecraft.world.item.ArmorMaterial;
+
+    class MutableArmorTier extends ArmorMaterial {
+        setDurabilityMultiplier(durabilityMultiplier: number): this;
+        set durabilityMultiplier(durabilityMultiplier: number): void;
+        setSlotProtections(setSlotProtections: number[]): this;
+        set slotProtections(setSlotProtections: number[]): void;
+        setEnchantmentValue(enchantmentValue: number): this;
+        set enchantmentValue(enchantmentValue: number): void;
+        setEquipSound(soundEvent: SoundEvent): this;
+        set equipSound(soundEvent: SoundEvent): void;
+        setRepairIngredient(Ingredient: Ingredient): this;
+        set repairIngredient(Ingredient: Ingredient): void;
+        setName(name: string): this;
+        set name(name: string): void;
+        setToughness(toughness: number): this;
+        set toughness(toughness: number): void;
+        setKnockbackResistance(knockbackResistance: number): this;
+        set knockbackResistance(knockbackResistance: number): void;
+    }
+
+    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
+
+    interface InputItem extends IngredientSupplierKJS {}
+    class InputItem implements IngredientSupplierKJS {
+        #dev_latvian_mods_kubejs_item_InputItem: unique symbol;
+        static of(ingredient: Ingredient__Wrapper, count: number): InputItem;
+    }
+
+    type InputItem__Wrapper = InputItem | ItemStack | Ingredient__Wrapper;
+
+    class OutputItem {
+        #dev_latvian_mods_kubejs_item_OutputItem: unique symbol;
+    }
+
+    type OutputItem__Wrapper = OutputItem | ItemStack | Ingredient__Wrapper;
+
+    import Iterable = java.util.Iterable;
+
+    interface ItemStackSet extends Iterable<ItemStack> {}
+    class ItemStackSet implements Iterable<ItemStack> {}
 }
 
 module internal.dev.latvian.mods.kubejs.item.custom {
@@ -93,4 +135,36 @@ module internal.dev.latvian.mods.kubejs.item.custom {
     class BasicItemJS extends Item {}
 
     class BasicItemJS$Builder extends ItemBuilder {}
+
+    import StartupEventJS = event.StartupEventJS;
+    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
+    import MutableA = java.util.function_.Consumer__Wrapper;
+    import ArmorMaterial__Wrapper = net.minecraft.world.item.ArmorMaterial__Wrapper;
+
+    class ItemArmorTierRegistryEventJS extends StartupEventJS {
+        add(id: string, parent: string, tier: Consumer__Wrapper<MutableArmorTier>): this;
+        add(id: string, tier: Consumer__Wrapper<MutableArmorTier>): this;
+    }
+
+    class ArmorItemBuilder extends ItemBuilder {
+        tier(tier: ArmorMaterial__Wrapper): this;
+        modifyTier(tier: Consumer__Wrapper<MutableArmorTier>): this;
+    }
+
+    class ArmorItemBuilder$Helmet extends ArmorItemBuilder {}
+
+    class ArmorItemBuilder$Chestplate extends ArmorItemBuilder {}
+
+    class ArmorItemBuilder$Leggings extends ArmorItemBuilder {}
+
+    class ArmorItemBuilder$Boots extends ArmorItemBuilder {}
+}
+
+module internal.dev.latvian.mods.kubejs.item.creativetab {
+    import EventJS = event.EventJS;
+    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
+
+    class CreativeTabEvent extends EventJS {
+        remove(ingredient: Ingredient__Wrapper): void;
+    }
 }

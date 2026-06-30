@@ -13,4 +13,8 @@ namespace internal.net.minecraft.core {
     }
 
     type Direction__Wrapper = Direction | Direction__EnumKeys | Lowercase<Direction__EnumKeys>;
+
+    class BlockPos {
+        readonly __net_minecraft_core_BlockPos: unique symbol;
+    }
 }

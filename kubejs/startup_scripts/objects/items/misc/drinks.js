@@ -56,6 +56,10 @@ StartupEvents.registry('item', (event) => {
 });
 
 StartupEvents.registry('fluid', (event) => {
+    /**
+     * @param {string} fluidID
+     * @param {number} color
+     */
     const potionFluid = (fluidID, color) => {
         event.create(fluidID).thinTexture(color).noBlock();
     };

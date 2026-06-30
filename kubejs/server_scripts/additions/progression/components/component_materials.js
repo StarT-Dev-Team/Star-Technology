@@ -1,6 +1,9 @@
 // priority: 1000
 
-global.componentMaterials = {
+/**
+ * @satisfies {Record<Exclude<GTTier, 'uxv' | 'opv' | 'max'>, import("./component_materials_type").ComponentMaterial>}
+ */
+global.componentMaterials = /** @type {const} */ ({
     ulv: {
         tiers: { tier: 'ulv' },
         materials: {
@@ -354,4 +357,4 @@ global.componentMaterials = {
             special: { ifSRS: true, cwuS: 208, duraS: 180, EUTS: GTValues.VA[GTValues.UEV] },
         },
     },
-};
+});

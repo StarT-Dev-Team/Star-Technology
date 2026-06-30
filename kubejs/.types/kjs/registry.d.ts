@@ -1,7 +1,7 @@
 namespace internal.dev.latvian.mods.kubejs.registry {
     import StartupEventJS = event.StartupEventJS;
 
-    class RegistryEventJS<T, TBuilder extends Record<string, BlockBuilder<T>>> extends StartupEventJS {
+    class RegistryEventJS<T, TBuilder extends Record<string, BuilderBase<T>>> extends StartupEventJS {
         create<B extends Exclude<keyof TBuilder, '_default'>>(id: string, type: B): TBuilder[B];
         create(id: string): TBuilder['_default'];
     }

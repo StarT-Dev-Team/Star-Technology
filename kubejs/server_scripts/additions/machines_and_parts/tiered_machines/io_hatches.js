@@ -5,9 +5,9 @@ ServerEvents.recipes((event) => {
 
     //UV/UHV Regular IO, No UEV or higher as they all scale the same as UHV as of current
 
+    /** @param {'luv' | 'zpm' | 'uv' | 'uhv'} tierKey */
     function tierIOHatches(tierKey) {
         const tierData = components[tierKey];
-
         if (!tierData) return;
 
         const {
@@ -17,8 +17,8 @@ ServerEvents.recipes((event) => {
         } = tierData;
 
         [
-            { typeIO: 'input', circ: '1' },
-            { typeIO: 'output', circ: '2' },
+            { typeIO: 'input', circ: 1 },
+            { typeIO: 'output', circ: 2 },
         ].forEach((ioData) => {
             event.remove({ output: `gtceu:${tier}_${ioData.typeIO}_hatch` });
             event.remove({ output: `gtceu:${tier}_dual_${ioData.typeIO}_hatch` });

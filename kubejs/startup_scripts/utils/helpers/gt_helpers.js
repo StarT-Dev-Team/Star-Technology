@@ -1,44 +1,52 @@
 // priority: 1000
 
+/** @param {internal.net.minecraft.world.item.ItemStack__Wrapper} item */
 global.getGtMaterial = (item) => {
     // eslint-disable-next-line id-match, no-undef
-    const ms = ChemicalHelper['getMaterialStack(net.minecraft.world.item.ItemStack)'](
-        item instanceof Item ? item : Item.of(item)
-    );
+    const ms = ChemicalHelper['getMaterialStack(net.minecraft.world.item.ItemStack)'](Item.of(item));
     if (!ms || ms.isEmpty()) return null;
     return ms;
 };
 
+/**
+ * @param {internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController} controller
+ * @param {internal.java.util.List<internal.net.minecraft.network.chat.Component>} components
+ */
 global.coilMachineTempDisplay = (controller, components) => {
     if (controller instanceof $CoiledMulti && controller.isFormed()) {
         components.add(
             Component.translatable(
                 'gtceu.multiblock.blast_furnace.max_temperature',
                 Component.literal(
-                    `§c${$FormattingUtil.formatNumbers(controller.getCoilType().getCoilTemperature() + 100 * Math.max(0, controller.getTier() - GTValues.MV))}K§r`
+                    `§c${$FormattingUtil.formatNumbers(controller.coilType.coilTemperature + 100 * Math.max(0, controller.tier - GTValues.MV))}K§r`
                 )
             )
         );
     }
 };
 
+/**
+ * @param {internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController} controller
+ * @param {internal.java.util.List<internal.net.minecraft.network.chat.Component>} components
+ */
 global.multiSmelterParallelDisplay = (controller, components) => {
     if (controller instanceof $CoiledMulti && controller.isFormed()) {
         components.add(
-            Component.translatable(
-                'gtceu.multiblock.multi_furnace.heating_coil_level',
-                controller.getCoilType().getLevel()
-            )
+            Component.translatable('gtceu.multiblock.multi_furnace.heating_coil_level', controller.coilType.level)
         );
         components.add(
             Component.translatable(
                 'gtceu.multiblock.multi_furnace.heating_coil_discount',
-                controller.getCoilType().getEnergyDiscount()
+                controller.coilType.energyDiscount
             )
         );
     }
 };
 
+/**
+ * @param {internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController} controller
+ * @param {internal.java.util.List<internal.net.minecraft.network.chat.Component>} components
+ */
 global.crackerOverclockDisplay = (controller, components) => {
     if (controller instanceof $CoiledMulti && controller.isFormed()) {
         const coilTier = controller.getCoilTier();
@@ -53,21 +61,28 @@ global.crackerOverclockDisplay = (controller, components) => {
     }
 };
 
+/**
+ * @param {internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController} controller
+ * @param {internal.java.util.List<internal.net.minecraft.network.chat.Component>} components
+ */
 global.pyrolyseOvenOverclockDisplay = (controller, components) => {
     if (controller instanceof $CoiledMulti && controller.isFormed()) {
         components.add(
             Component.translatable(
                 'gtceu.multiblock.pyrolyse_oven.speed',
-                controller.getCoilTier() === 0 ? 75 : 50 * (controller.getCoilTier() + 1)
+                controller.coilTier === 0 ? 75 : 50 * (controller.coilTier + 1)
             )
         );
     }
 };
 
+/**
+ * @param {internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController} controller
+ * @param {internal.java.util.List<internal.net.minecraft.network.chat.Component>} components
+ */
 global.chemicalOverclockDisplay = (controller, components) => {
     if (controller instanceof $CoiledMulti && controller.isFormed()) {
-        const coilTier = controller.getCoilTier();
-
+        const coilTier = controller.coilTier;
         components.add(Component.translatable('gtceu.multiblock.chemical_reactor.speed', 75 + coilTier * 25));
         components.add(Component.translatable('gtceu.multiblock.chemical_reactor.energy', 100 - 5 * coilTier));
     }

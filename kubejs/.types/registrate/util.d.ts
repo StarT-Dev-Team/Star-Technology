@@ -1,9 +1,13 @@
-declare namespace internal.com.tterrag.registrate.util.entry {
-    import Block = internal.net.minecraft.world.level.block.Block;
+namespace internal.com.tterrag.registrate.util.entry {
+    import Block = net.minecraft.world.level.block.Block;
+    import Supplier = java.util.function_.Supplier;
 
-    class RegistryEntry<T> implements internal.java.util.function_.Suppler<T> {
-        get(): T;
+    interface RegistryEntry<T> extends Supplier<T> {
+        getUnchecked(): T | null;
+        is(entry: T): boolean;
     }
+
+    class RegistryEntry<T> implements Supplier<T> {}
 
     class ItemProviderEntry<T extends ItemLike> extends RegistryEntry<T> {}
 

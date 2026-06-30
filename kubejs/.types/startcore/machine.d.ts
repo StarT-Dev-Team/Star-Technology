@@ -88,6 +88,17 @@ namespace internal.com.startechnology.start_core.machine.vcrc {
     }
 }
 
+namespace internal.com.startechnology.start_core.machine.abyssal_containment {
+    import CleanroomMachine = gregtechceu.gtceu.common.machine.multiblock.electric.CleanroomMachine;
+    import CleanroomType = gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
+
+    class StarTAbyssalContainmentMachine extends CleanroomMachine {
+        constructor(holder: IMachineBlockEntity, ...args: any[]);
+
+        static ABYSSAL_CONTAINMENT_ROOM: CleanroomType;
+    }
+}
+
 namespace internal.kjs {
     interface LoadableClasses {
         'com.startechnology.start_core.machine.StarTPartAbility': typeof internal.com.startechnology.start_core.machine.StarTPartAbility;
@@ -99,5 +110,6 @@ namespace internal.kjs {
         'com.startechnology.start_core.machine.komaru.StarTKomaruFrameMachine': typeof internal.com.startechnology.start_core.machine.komaru.StarTKomaruFrameMachine;
         'com.startechnology.start_core.machine.draconic_infusion.StarTDraconicInfusionMachine': typeof internal.com.startechnology.start_core.machine.draconic_infusion.StarTDraconicInfusionMachine;
         'com.startechnology.start_core.machine.vcrc.VacuumChemicalReactionChamberMachine': typeof internal.com.startechnology.start_core.machine.vcrc.VacuumChemicalReactionChamberMachine;
+        'com.startechnology.start_core.machine.abyssal_containment.StarTAbyssalContainmentMachine': typeof internal.com.startechnology.start_core.machine.abyssal_containment.StarTAbyssalContainmentMachine;
     }
 }

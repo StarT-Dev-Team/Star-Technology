@@ -1150,10 +1150,15 @@ namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.electric {
     import MultiblockControllerMachine = api.machine.multiblock.MultiblockControllerMachine;
 
     class AssemblyLineMachine extends WorkableElectricMultiblockMachine {
+        readonly __com_gregtechceu_gtceu_common_machine_multiblock_electric_AssemblyLineMachine: unique symbol;
         constructor(holder: IMachineBlockEntity, allowCircuitSlots: boolean);
         constructor(holder: IMachineBlockEntity);
 
         static partSorter(mc: MultiblockControllerMachine): Comparator<IMultiPart>;
+    }
+
+    class CleanroomMachine extends WorkableElectricMultiblockMachine {
+        readonly __com_gregtechceu_gtceu_common_machine_multiblock_electric_CleanroomMachine: unique symbol;
     }
 }
 
@@ -1173,5 +1178,6 @@ namespace internal.kjs {
         'com.gregtechceu.gtceu.common.machine.multiblock.electric.AssemblyLineMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.electric.AssemblyLineMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.part.CleaningMaintenanceHatchPartMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.part.CleaningMaintenanceHatchPartMachine;
+        'com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
     }
 }

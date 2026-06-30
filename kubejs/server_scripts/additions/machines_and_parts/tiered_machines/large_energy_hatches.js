@@ -10,9 +10,12 @@ ServerEvents.recipes((event) => {
 
     const components = global.componentMaterials;
 
+    /**
+     * @param {'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv'} tierKey
+     * @param {'gtceu' | 'kubejs'} coilMod
+     */
     function highAmphatches(tierKey, coilMod) {
         const tierData = components[tierKey];
-
         if (!tierData) return;
 
         const {

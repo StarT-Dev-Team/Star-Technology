@@ -16,10 +16,11 @@ ServerEvents.recipes((event) => {
 
     const components = global.componentMaterials;
 
+    /**
+     * @param {'uhv' | 'uev' | 'uiv'} tierKey
+     */
     function postUVMachines(tierKey) {
         const tierData = components[tierKey];
-
-        if (!tierData) return;
 
         const {
             tiers: { tier, tier0, tier1 },
@@ -543,10 +544,11 @@ ServerEvents.recipes((event) => {
     postUVMachines('uev');
     postUVMachines('uiv');
 
+    /**
+     * @param {'luv' | 'zpm' | 'uv'} tierKey
+     */
     function luvUVMachines(tierKey) {
         const tierData = components[tierKey];
-
-        if (!tierData) return;
 
         const {
             tiers: { tier },

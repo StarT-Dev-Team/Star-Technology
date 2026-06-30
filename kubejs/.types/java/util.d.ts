@@ -1,4 +1,4 @@
-declare namespace internal.java.util {
+namespace internal.java.util {
     const __Comparator: unique symbol;
     interface Comparator<T> {
         [__Comparator]: 0;
@@ -37,43 +37,38 @@ declare namespace internal.java.util {
     }
 }
 
-declare namespace internal.java.util.function_ {
-    const __Supplier: unique symbol;
+namespace internal.java.util.function_ {
     interface Supplier<T> {
-        [__Supplier]: 0;
+        readonly __java_util_function_Supplier: unique symbol;
         get(): T;
     }
 
     type Supplier__Wrapper<T> = Supplier<T> | Supplier<T>['get'];
 
-    const __Function: unique symbol;
     interface Function<T, R> {
-        [__Function]: 0;
+        readonly __java_util_function_Function: unique symbol;
         apply(t: T): R;
     }
 
     type Function__Wrapper<T, R> = Function<T, R> | Function<T, R>['apply'];
 
-    const __BiConsumer: unique symbol;
     interface BiConsumer<T, U> {
-        [__BiConsumer]: 0;
+        readonly __java_util_function_BiConsumer: unique symbol;
         accept(t: T, u: U): void;
     }
 
     type BiConsumer__Wrapper<T, U> = BiConsumer<T, U> | BiConsumer<T, U>['accept'];
 
-    const __Consumer: unique symbol;
     interface Consumer<T> {
-        [__Consumer]: 0;
+        readonly __java_util_function_Consumer: unique symbol;
         accept(t: T): void;
         andThen(after: Consumer__Wrapper<T>): Consumer<T>;
     }
 
     type Consumer__Wrapper<T> = Consumer<T> | Consumer<T>['accept'];
 
-    const __Predicate: unique symbol;
     interface Predicate<T> {
-        [__Predicate]: 0;
+        readonly __java_util_function_Predicate: unique symbol;
         test(t: T): boolean;
         and(other: Predicate__Wrapper<T>): Predicate<T>;
         negate(): Predicate<T>;
@@ -85,5 +80,11 @@ declare namespace internal.java.util.function_ {
         not<T>(target: Predicate__Wrapper<T>): Predicate<T>;
     };
 
-    type Predicate__Wrapper = Predicate | Predicate['test'];
+    type Predicate__Wrapper<T> = Predicate<T> | Predicate<T>['test'];
+
+    interface UnaryOperator<T> extends Function<T, T> {
+        readonly __java_util_function_UnaryOperator: unique symbol;
+    }
+
+    type UnaryOperator__Wrapper<T> = UnaryOperator<T> | UnaryOperator<T>['apply'];
 }

@@ -5,8 +5,8 @@ namespace internal.net.minecraft.network.chat {
     }
 
     import Enum = java.lang.Enum;
+    import Color__Wrapper = dev.latvian.mods.rhino.mod.util.color;
 
-    // TODO: add Color__Wrapper from rhino
     // TODO: move ClickEventAction
     type ClickEventAction =
         | 'open_url'

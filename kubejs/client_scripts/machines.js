@@ -42,7 +42,7 @@ global.addedByStarT = {
         't_large_thermal_centrifuge',
         't_large_wiremill',
         't_large_autoclave',
-        't_large_rock_crusher',
+        'large_rock_crusher',
         'bulk_ore_processing_array',
         'folding_akreyrium_stabiliser',
         'molten_destabiliser',

@@ -1,3 +1,9 @@
+namespace internal.net.minecraft.world.level {
+    class Level {
+        readonly __net_minecraft_world_level_Level: unique symbol;
+    }
+}
+
 namespace internal.net.minecraft.world.level.block {
     import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
     import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
@@ -35,6 +41,9 @@ namespace internal.net.minecraft.world.level.block {
         setRequiresTool(v: boolean): void;
         set requiresTool(v: boolean): void;
     }
+
+    // TODO: can't find where Block.class wrapper is registered!
+    type Block__Wrapper = Block | string;
 
     class SoundType {
         static EMPTY: SoundType;
@@ -213,6 +222,10 @@ namespace internal.net.minecraft.world.item {
     }
 
     type Rarity__Wrapper = Rarity | Rarity__EnumKeys | Lowercase<Rarity__EnumKeys>;
+
+    class ArmorMaterial {}
+
+    type ArmorMaterial__Wrapper = ArmorMaterial | string;
 }
 
 namespace internal.net.minecraft.world.item.crafting {
@@ -245,6 +258,16 @@ namespace internal.net.minecraft.world.level.block.state.properties {
 
 namespace internal.net.minecraft.world.level.material {
     abstract class Fluid {}
+
+    class FlowingFluid extends Fluid {}
+}
+
+namespace internal.net.minecraft.world.level.levelgen.structure.templatesystem {
+    abstract class RuleTest {}
+
+    import BlockStatePredicate = dev.latvian.mods.kubejs.block.state.BlockStatePredicate;
+
+    type RuleTest__Wrapper = RuleTest | BlockStatePredicate | string;
 }
 
 namespace internal.net.minecraft.world.effect {

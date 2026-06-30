@@ -269,6 +269,34 @@ global.getDataItem = (cwu) =>
             ? 'gtceu:data_module'
             : 'gtceu:data_orb';
 
+/**
+ *
+ * @param {keyof internal.kjs.RecipeFunctionsGtceu} machineType
+ * @param {string} recId
+ * @param {string[]} inputsI
+ * @param {string[]} inputsF
+ * @param {string[]} outputsI
+ * @param {number} duration
+ * @param {number} cwuT
+ * @param {number} totalCWU
+ * @param {number} euT
+ * @param {string} researched
+ */
+
+global.researchBuilder = (
+    /* eslint-disable no-unused-vars */
+    machineType,
+    recId,
+    inputsI,
+    inputsF,
+    outputsI,
+    duration,
+    cwuT,
+    totalCWU,
+    euT,
+    researched
+) => {};
+
 ServerEvents.recipes((event) => {
     global.researchBuilder = (
         machineType,

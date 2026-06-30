@@ -172,6 +172,10 @@ global.vha = {
     max: GTValues.VHA[GTValues.MAX],
 };
 
+/**
+ * @param {string} material
+ * @param {'ingot' | 'dust' | 'fluid' | 'gas' | 'plasma' | 'molten' | 'gas_plasma'} type
+ */
 global.periodicTableElement = (material, type) => {
     let mat = GTMaterials.get(material);
     switch (type) {
@@ -212,6 +216,13 @@ global.periodicTableElement = (material, type) => {
     }
 };
 
+/**
+ * @param {string} material
+ * @param {number} temperature
+ * @param {internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty$GasTier__Wrapper} gasTier
+ * @param {number} voltage
+ * @param {number} duration
+ */
 global.blastProperty = (material, temperature, gasTier, voltage, duration) => {
     let mat = GTMaterials.get(material);
     mat.setProperty(PropertyKey.BLAST, new $BlastProperty(temperature, gasTier, voltage, duration, -1, -1));

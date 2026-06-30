@@ -10,6 +10,7 @@ namespace internal.dev.latvian.mods.kubejs.block {
     import SoundType__Wrapper = net.minecraft.world.level.block.SoundType;
 
     abstract class BlockBuilder extends BuilderBase<Block> {
+        readonly __dev_latvian_mods_kubejs_block_BlockBuilder: unique symbol;
         soundType(soundType: SoundType__Wrapper): this;
         noSoundType(): this;
         woodSoundType(): this;
@@ -81,7 +82,19 @@ namespace internal.dev.latvian.mods.kubejs.block {
     import BlockStatePredicate__Wrapper = block.state.BlockStatePredicate__Wrapper;
 
     class BlockModificationEventJS extends EventJS {
+        readonly __dev_latvian_mods_kubejs_block_BlockModificationEventJS: unique symbol;
         modify(predicate: BlockStatePredicate__Wrapper, c: Consumer__Wrapper<Block>): void;
+    }
+
+    import BlockContainerJS = level.BlockContainerJS;
+    import PlayerEventJS = player.PlayerEventJS;
+
+    class BlockPlacedEventJS extends PlayerEventJS {
+        readonly __dev_latvian_mods_kubejs_block_BlockPlacedEventJS: unique symbol;
+        getEntity(): ServerPlayer;
+        get entity(): ServerPlayer;
+        getBlock(): BlockContainerJS;
+        get block(): BlockContainerJS;
     }
 }
 

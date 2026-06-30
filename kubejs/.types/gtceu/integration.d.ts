@@ -1,4 +1,4 @@
-declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
+namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
     import BuilderBase = api.registry.registrate.BuilderBase;
     import ResourceTexture = lowdragmc.lowdraglib.gui.texture.ResourceTexture;
     import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
@@ -46,9 +46,26 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
         setItemIcon(itemStacks: ItemStack__Wrapper[]): this;
         setItemIcon(...itemStacks: ItemStack__Wrapper[]): this;
     }
+
+    import SimpleWorldGenLayer = api.data.worldgen.SimpleWorldGenLayer;
+    import IWorldGenLayer$RuleTestSupplier__Wrapper = api.data.worldgen.IWorldGenLayer$RuleTestSupplier__Wrapper;
+
+    class WorldGenLayerBuilder extends BuilderBase<SimpleWorldGenLayer> {
+        targets(...targets: IWorldGenLayer$RuleTestSupplier__Wrapper[]): this;
+        targets(targets: IWorldGenLayer$RuleTestSupplier__Wrapper[]): this;
+        dimensions(...dimensions: ResourceLocation__Wrapper[]): this;
+        dimensions(dimensions: ResourceLocation__Wrapper[]): this;
+    }
+
+    import MaterialIconSet = api.data.chemical.material.info.MaterialIconSet;
+    import MaterialIconSet__Wrapper = api.data.chemical.material.info.MaterialIconSet__Wrapper;
+
+    class MaterialIconSetBuilder extends BuilderBase<MaterialIconSet> {
+        parent(parent: MaterialIconSet__Wrapper): this;
+    }
 }
 
-declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machine {
+namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machine {
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import BuilderBase = api.registry.registrate.BuilderBase;
     import BuilMultiblockMachineDefinitionderBase = api.machine.MultiblockMachineDefinition;
@@ -114,5 +131,88 @@ namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.block {
         material(material: Supplier__Wrapper<Material>): this;
         texture(texture: string): this;
         coilMaterial(material: Supplier__Wrapper<Material>): this;
+    }
+}
+
+namespace internal.com.gregtechceu.gtceu.integration.kjs.events {
+    import BuilderBase = api.registry.registrate.BuilderBase;
+
+    class GTRegistryEventJS<T, TBuilder extends Record<string, BuilderBase<T>>> extends StartupEventJS {
+        create<B extends Exclude<keyof TBuilder, '_default'>>(id: string, type: B): TBuilder[B];
+        create(id: string): TBuilder['_default'];
+    }
+}
+
+namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
+    import RecipeJS = dev.latvian.mods.kubejs.recipe.RecipeJS;
+    import InputItem__Wrapper = dev.latvian.mods.kubejs.item.InputItem__Wrapper;
+    import OutputItem__Wrapper = dev.latvian.mods.kubejs.item.OutputItem__Wrapper;
+    import GTRecipeComponents$FluidIngredientJS__Wrapper = components.GTRecipeComponents$FluidIngredientJS__Wrapper;
+    import EnergyStack$WithIO__Wrapper = api.recipe.ingredient.EnergyStack$WithIO__Wrapper;
+    import UnaryOperator__Wrapper = java.util.function_.UnaryOperator__Wrapper;
+    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
+    import ResearchRecipeBuilder$StationRecipeBuilder = api.recipe.ResearchRecipeBuilder$StationRecipeBuilder;
+    import ResearchRecipeBuilder$ScannerRecipeBuilder = api.recipe.ResearchRecipeBuilder$ScannerRecipeBuilder;
+    import FluidStackJS__Wrapper = dev.latvian.mods.kubejs.fluid.FluidStackJS__Wrapper;
+    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
+    import CleanroomType = api.machine.multiblock.CleanroomType;
+    import LayeredRecipeInfo$JSBuilder = data.recipe.builder.LayeredRecipeInfo$JSBuilder;
+    import ExtendedOutputItem__Wrapper = components.ExtendedOutputItem__Wrapper;
+
+    class GTRecipeSchema$GTRecipeJS extends RecipeJS {
+        #com_gregtechceu_gtceu_integration_kjs_recipe_GTRecipeSchema$GTRecipeJS: unique symbol;
+
+        itemInputs(...inputs: InputItem__Wrapper[]): this;
+        itemInputs(inputs: InputItem__Wrapper[]): this;
+        inputFluids(...inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
+        inputFluids(inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
+        fluidInputs(...inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
+        fluidInputs(inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
+        itemOutputs(...outputs: ItemOutput__Wrapper[]): this;
+        itemOutputs(outputs: ItemOutput__Wrapper[]): this;
+        notConsumable(itemStack: ItemStack__Wrapper): this;
+        notConsumableFluid(itemStack: ItemStack__Wrapper): this;
+        outputFluids(...inputs: FluidStackJS__Wrapper[]): this;
+        outputFluids(inputs: GTRecipeComponents$FluidIngredientJS__Wrapper[]): this;
+        chancedOutput(stack: ExtendedOutputItem__Wrapper, chance: number, tierChanceBoost: number): this;
+        duration(duration: number): this;
+        EUt(eut: EnergyStack$WithIO__Wrapper): this;
+        circuit(configuration: number): this;
+        stationResearch(research: UnaryOperator__Wrapper<ResearchRecipeBuilder$StationRecipeBuilder>): this;
+        'scannerResearch(java.util.function.UnaryOperator)'(
+            research: UnaryOperator__Wrapper<ResearchRecipeBuilder$ScannerRecipeBuilder>
+        ): this;
+        cleanroom(cleanroomType: CleanroomType): this;
+        layeredRecipe(config: Consumer__Wrapper<LayeredRecipeInfo$JSBuilder>): this;
+        CWUt(cwu: number): this;
+        totalCWU(cwu: number): this;
+    }
+}
+
+namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe.components {
+    import FluidStackJS__Wrapper = dev.latvian.mods.kubejs.fluid.FluidStackJS__Wrapper;
+
+    class GTRecipeComponents$FluidIngredientJS {
+        readonly __com_gregtechceu_gtceu_integration_kjs_recipe_components_GTRecipeComponents$FluidIngredientJS: unique symbol;
+    }
+
+    type GTRecipeComponents$FluidIngredientJS__Wrapper =
+        | GTRecipeComponents$FluidIngredientJS
+        | FluidStackJS__Wrapper
+        | FluidStackJS__Wrapper[];
+
+    class ExtendedOutputItem {
+        readonly __com_gregtechceu_gtceu_integration_kjs_recipe_components_ExtendedOutputItem: unique symbol;
+    }
+
+    import InputItem = dev.latvian.mods.kubejs.item.InputItem;
+    import OutputItem__Wrapper = dev.latvian.mods.kubejs.item.OutputItem__Wrapper;
+
+    type ExtendedOutputItem__Wrapper = ExtendedOutputItem | InputItem | OutputItem__Wrapper;
+}
+
+namespace internal.kjs {
+    interface LoadableClasses {
+        'com.gregtechceu.gtceu.integration.kjs.recipe.components.GTRecipeComponents$FluidIngredientJS': typeof internal.com.gregtechceu.gtceu.integration.kjs.recipe.components.GTRecipeComponents$FluidIngredientJS;
     }
 }

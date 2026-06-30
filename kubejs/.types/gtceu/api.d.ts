@@ -99,16 +99,58 @@ namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
 }
 
 namespace internal.com.gregtechceu.gtceu.api.recipe {
-    class GTRecipe {}
+    class GTRecipe {
+        readonly __com_gregtechceu_gtceu_api_recipe: unique symbol;
+    }
 
     class GTRecipeType {
         setMaxIOSize(maxInputs: number, maxOutputs: number, maxFluidInputs: number, maxFluidOutputs: number): this;
     }
 
     type GTRecipeType__Wrapper = string | GTRecipeType;
+
+    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
+
+    class ResearchRecipeBuilder {
+        readonly __com_gregtechceu_gtceu_api_recipe__ResearchRecipeBuilder: unique symbol;
+
+        researchStack(researchStack: ItemStack__Wrapper): this;
+        researchFluidStack(researchStack: FluidStack__Wrapper): this;
+        dataStack(dataStack: ItemStack__Wrapper): this;
+        researchId(researchId: string): this;
+        EUt(eut: number): this;
+        EUt(eut: number, amperage: number): this;
+    }
+
+    class ResearchRecipeBuilder$StationRecipeBuilder extends ResearchRecipeBuilder {
+        readonly __com_gregtechceu_gtceu_api_recipe__ResearchRecipeBuilder$StationRecipeBuilder: unique symbol;
+        CWUt(cwut: number): this;
+        CWUt(cwut: number, totalCWU: number): this;
+    }
+
+    class ResearchRecipeBuilder$ScannerRecipeBuilder extends ResearchRecipeBuilder {
+        readonly __com_gregtechceu_gtceu_api_recipe__ResearchRecipeBuilder$ScannerRecipeBuilder: unique symbol;
+        duration(duration: number): this;
+    }
 }
+
 namespace internal.com.gregtechceu.gtceu.api.recipe.category {
-    class GTRecipeCategory {}
+    class GTRecipeCategory {
+        readonly __com_gregtechceu_gtceu_api_recipe_category_GTRecipeCategory: unique symbol;
+    }
+}
+
+namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient {
+    class EnergyStack$WithIO {
+        readonly __com_gregtechceu_gtceu_api_recipe_ingredient_EnergyStack$WithIO: unique symbol;
+    }
+
+    type EnergyStack$WithIO__Wrapper =
+        | EnergyStack$WithIO
+        | number
+        | string
+        | { v: number; a: number }
+        | { V: number; A: number };
 }
 
 namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
@@ -166,17 +208,490 @@ namespace internal.com.gregtechceu.gtceu.api.data.chemical {
         isIsotope(isIsotope: boolean): this;
         mass(): number;
     }
+
+    type Element__Wrapper = Element | string;
+
+    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
+    import MaterialStack = material.stack.MaterialStack;
+
+    const ChemicalHelper: {
+        'getMaterialStack(net.minecraft.world.item.ItemStack)'(itemStack: ItemStack__Wrapper): MaterialStack;
+    };
 }
 
 namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
+    import MaterialIconSet = info.MaterialIconSet;
+    import MaterialFlag = info.MaterialFlag;
+    import PropertyKey = properties.PropertyKey;
+    import IMaterialProperty = properties.IMaterialProperty;
+    import MaterialStack__Wrapper = material.stack.MaterialStack__Wrapper;
+
     class Material {
-        get materialInfo(): MaterialInfo;
         getMaterialInfo(): MaterialInfo;
+        get materialInfo(): MaterialInfo;
+        setMaterialARGB(materialRGB: number): void;
+        set materialARGB(materialRGB: number): void;
+        setMaterialIconSet(materialIconSet: MaterialIconSet): void;
+        set materialIconSet(materialIconSet: MaterialIconSet): void;
+        getMaterialIconSet(): MaterialIconSet;
+        get materialIconSet(): MaterialIconSet;
+        addFlags(...flags: MaterialFlag[]): void;
+        addFlags(flags: MaterialFlag[]): void;
+        setFormula(formula: string): this;
+        setFormula(formula: string, withFormatting: boolean): this;
+        setProperty(key: PropertyKey<IMaterialProperty>, property: IMaterialProperty): void;
+        setComponents(...components: MaterialStack__Wrapper[]): this;
+        setComponents(components: MaterialStack__Wrapper[]): this;
+    }
+
+    type Material__Wrapper = Material | string;
+
+    import BuilderBase = registry.registrate.BuilderBase;
+    import MaterialIconSet__Wrapper = info.MaterialIconSet__Wrapper;
+    import BlastProperty$GasTier__Wrapper = properties.BlastProperty$GasTier__Wrapper;
+    import ToolProperty = properties.ToolProperty;
+    import FluidStorageKey = fluids.store.FluidStorageKey;
+    import FluidState__Wrapper = fluids.FluidState__Wrapper;
+    import FluidBuilder = fluids.FluidBuilder;
+
+    class Material$Builder extends BuilderBase<Material> {
+        langValue(name: string): this;
+        fluid(): this;
+        fluid(key: FluidStorageKey, state: FluidState__Wrapper);
+        fluid(key: FluidStorageKey, builder: FluidBuilder);
+        liquid(): this;
+        liquid(builder: FluidBuilder);
+        liquid(temp: number): this;
+        plasma(): this;
+        // plasma(@NotNull FluidBuilder builder)
+        // plasma(int temp)
+        gas(): this;
+        // gas(@NotNull FluidBuilder builder)
+        // gas(int temp)
+        dust(): this;
+        // dust(int harvestLevel)
+        // dust(int harvestLevel, int burnTime)
+        wood(): this;
+        // wood(int harvestLevel)
+        // wood(int harvestLevel, int burnTime)
+        ingot(): this;
+        // ingot(int harvestLevel)
+        // ingot(int harvestLevel, int burnTime)
+        gem(): this;
+        // gem(int harvestLevel)
+        // gem(int harvestLevel, int burnTime)
+        polymer(): this;
+        // polymer(int harvestLevel)
+        // polymer(int harvestLevel, int burnTime)
+        // burnTime(int burnTime)
+        color(color: number): this;
+        color(color: number, hasFluidColor: boolean): this;
+        secondaryColor(color: number): this;
+        colors(color: number, secondaryColor: number): this;
+        colorAverage(): this;
+        iconSet(iconSet: MaterialIconSet__Wrapper | null): this;
+        components(components: Material__Wrapper[]): this;
+        components(...components: Material__Wrapper[]): this;
+        // componentStacks(MaterialStack... components)
+        // componentStacks(ImmutableList<MaterialStack> components)
+        // kjs$components(MaterialStackWrapper... components)
+        // kjs$components(ImmutableList<MaterialStackWrapper> components)
+        flags(flags: MaterialFlag[]): this;
+        flags(...flags: MaterialFlag[]): this;
+        // appendFlags(Collection<MaterialFlag> f1, MaterialFlag... f2)
+        // ignoredTagPrefixes(TagPrefix... prefixes)
+        // customTags(TagKey<Item> key)
+        element(element: Element__Wrapper): this;
+        formula(formula: string): this;
+        formula(formula: string, withFormatting: boolean): this;
+        toolStats(toolProperty: ToolProperty);
+        // armorStats(ArmorProperty armorProperty)
+        rotorStats(power: number, efficiency: number, damage: number, durability: number): this;
+        blastTemp(temp: number): this;
+        blastTemp(temp: number, gasTier: BlastProperty$GasTier__Wrapper): this;
+        blastTemp(temp: number, gasTier: BlastProperty$GasTier__Wrapper, eutOverride: number): this;
+        blastTemp(
+            temp: number,
+            gasTier: BlastProperty$GasTier__Wrapper,
+            eutOverride: number,
+            durationOverride: number
+        ): this;
+        blast(temp: number): this;
+        blast(temp: number, gasTier: BlastProperty$GasTier__Wrapper): this;
+        // blast(UnaryOperator<BlastProperty.Builder> b)
+        removeHazard(): this;
+        radioactiveHazard(multiplier: number): this;
+        // hazard(HazardProperty.HazardTrigger trigger, MedicalCondition condition)
+        // hazard(HazardProperty.HazardTrigger trigger, MedicalCondition conditio
+        // hazard(HazardProperty.HazardTrigger trigger, MedicalCondition conditio
+        // hazard(HazardProperty.HazardTrigger trigger, MedicalCondition conditio
+        ore(): this;
+        ore(emissive: boolean): this;
+        ore(oreMultiplier: number, byproductMultiplier: number): this;
+        ore(oreMultiplier: number, byproductMultiplier: number, emissive: boolean): this;
+        washedIn(m: Material__Wrapper): this;
+        washedIn(m: Material__Wrapper, washedAmount: number): this;
+        separatedInto(m: Material__Wrapper[]): this;
+        separatedInto(...m: Material__Wrapper[]): this;
+        oreSmeltInto(m: Material__Wrapper): this;
+        polarizesInto(m: Material__Wrapper): this;
+        arcSmeltInto(m: Material__Wrapper): this;
+        macerateInto(m: Material__Wrapper): this;
+        ingotSmeltInto(m: Material__Wrapper): this;
+        addOreByproducts(byproducts: Material__Wrapper[]): this;
+        addOreByproducts(...byproducts: Material__Wrapper[]): this;
+        cableProperties(voltage: number, amperage: number, loss: number): this;
+        cableProperties(voltage: number, amperage: number, loss: number, isSuperCon: boolean): this;
+        cableProperties(
+            voltage: number,
+            amperage: number,
+            loss: number,
+            isSuperCon: boolean,
+            criticalTemperature: number
+        ): this;
+        fluidPipeProperties(maxTemp: number, throughput: number, gasProof: boolean): this;
+        fluidPipeProperties(
+            maxTemp: number,
+            throughput: number,
+            gasProof: boolean,
+            acidProof: boolean,
+            cryoProof: boolean,
+            plasmaProof: boolean
+        ): this;
+        itemPipeProperties(priority: number, stacksPerSec: number): this;
     }
 }
 
+namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.properties {
+    interface AlloyBlastProperty extends IMaterialProperty {}
+    class AlloyBlastProperty implements IMaterialProperty {}
+
+    interface ArmorProperty extends IMaterialProperty {}
+    class ArmorProperty implements IMaterialProperty {}
+
+    interface BlastProperty extends IMaterialProperty {}
+    class BlastProperty implements IMaterialProperty {
+        constructor(blastTemperature: number);
+        constructor(blastTemperature: number, gasTier: BlastProperty$GasTier__Wrapper);
+        constructor(
+            blastTemperature: number,
+            gasTier: BlastProperty$GasTier__Wrapper,
+            eutOverride: number,
+            durationOverride: number,
+            vacuumEUtOverride: number,
+            vacuumDurationOverride: number
+        );
+        constructor();
+    }
+
+    type BlastProperty$GasTier__EnumKeys = 'LOW' | 'MID' | 'HIGH' | 'HIGHER' | 'HIGHEST';
+
+    class BlastProperty$GasTier {
+        static LOW: BlastProperty$GasTier;
+        static MID: BlastProperty$GasTier;
+        static HIGH: BlastProperty$GasTier;
+        static HIGHER: BlastProperty$GasTier;
+        static HIGHEST: BlastProperty$GasTier;
+
+        getFluid(): FluidIngredient;
+        get fluid(): FluidIngredient;
+    }
+
+    type BlastProperty$GasTier__Wrapper =
+        | BlastProperty$GasTier
+        | BlastProperty$GasTier__EnumKeys
+        | Lowercase<BlastProperty$GasTier__EnumKeys>;
+
+    interface DustProperty extends IMaterialProperty {}
+    class DustProperty implements IMaterialProperty {}
+
+    interface FluidPipeProperties extends IMaterialProperty {}
+    class FluidPipeProperties implements IMaterialProperty {
+        constructor(
+            maxFluidTemperature: number,
+            throughput: number,
+            gasProof: boolean,
+            acidProof: boolean,
+            cryoProof: boolean,
+            plasmaProof: boolean,
+            channels: number
+        );
+        constructor(
+            maxFluidTemperature: number,
+            throughput: number,
+            gasProof: boolean,
+            acidProof: boolean,
+            cryoProof: boolean,
+            plasmaProof: boolean
+        );
+    }
+
+    import FluidStorage = fluids.store.FluidStorage;
+
+    interface FluidProperty extends IMaterialProperty, FluidStorage {}
+    class FluidProperty implements IMaterialProperty, FluidStorage {
+        getStorage(): FluidStorage;
+        get storage(): FluidStorage;
+    }
+
+    interface GemProperty extends IMaterialProperty {}
+    class GemProperty implements IMaterialProperty {}
+
+    interface HazardProperty extends IMaterialProperty {}
+    class HazardProperty implements IMaterialProperty {}
+
+    interface IngotProperty extends IMaterialProperty {}
+    class IngotProperty implements IMaterialProperty {}
+
+    interface ItemPipeProperties extends IMaterialProperty {}
+    class ItemPipeProperties implements IMaterialProperty {}
+
+    interface MaterialProperties extends IMaterialProperty {}
+    class MaterialProperties implements IMaterialProperty {}
+
+    interface OreProperty extends IMaterialProperty {}
+    class OreProperty implements IMaterialProperty {}
+
+    interface PolymerProperty extends IMaterialProperty {}
+    class PolymerProperty implements IMaterialProperty {}
+
+    interface RotorProperty extends IMaterialProperty {}
+    class RotorProperty implements IMaterialProperty {}
+
+    interface ToolProperty extends IMaterialProperty {}
+    class ToolProperty implements IMaterialProperty {
+        static Builder: typeof ToolProperty$Builder;
+    }
+
+    class ToolProperty$Builder {
+        static of(
+            harvestSpeed: number,
+            attackDamage: number,
+            durability: number,
+            harvestLevel: number
+        ): ToolProperty$Builder;
+        static of(
+            harvestSpeed: number,
+            attackDamage: number,
+            durability: number,
+            harvestLevel: number,
+            ...types: GTToolType[]
+        ): ToolProperty$Builder;
+        static of(
+            harvestSpeed: number,
+            attackDamage: number,
+            durability: number,
+            harvestLevel: number,
+            types: GTToolType[]
+        ): ToolProperty$Builder;
+
+        enchantability(enchantability: number): this;
+        attackSpeed(attackSpeed: number): this;
+        ignoreCraftingTools(): this;
+        unbreakable(): this;
+        types(...types: GTToolType[]): this;
+        types(types: GTToolType[]): this;
+        addTypes(...types: GTToolType[]): this;
+        addTypes(types: GTToolType[]): this;
+        enchantment(enchantment: Enchantment, level: number): this;
+        magnetic(): this;
+        durabilityMultiplier(multiplier: number): this;
+        build(): ToolProperty;
+    }
+
+    interface WireProperties extends IMaterialProperty {}
+    class WireProperties implements IMaterialProperty {}
+
+    interface WoodProperty extends IMaterialProperty {}
+    class WoodProperty implements IMaterialProperty {}
+
+    import Class = java.lang.Class;
+
+    class PropertyKey<T extends IMaterialProperty> {
+        static BLAST: PropertyKey<BlastProperty>;
+        static ALLOY_BLAST: PropertyKey<AlloyBlastProperty>;
+        static DUST: PropertyKey<DustProperty>;
+        static FLUID_PIPE: PropertyKey<FluidPipeProperties>;
+        static FLUID: PropertyKey<FluidProperty>;
+        static GEM: PropertyKey<GemProperty>;
+        static INGOT: PropertyKey<IngotProperty>;
+        static POLYMER: PropertyKey<PolymerProperty>;
+        static ITEM_PIPE: PropertyKey<ItemPipeProperties>;
+        static ORE: PropertyKey<OreProperty>;
+        static TOOL: PropertyKey<ToolProperty>;
+        static ARMOR: PropertyKey<ArmorProperty>;
+        static ROTOR: PropertyKey<RotorProperty>;
+        static WIRE: PropertyKey<WireProperties>;
+        static WOOD: PropertyKey<WoodProperty>;
+        static HAZARD: PropertyKey<HazardProperty>;
+        static EMPTY: PropertyKey<EmptyProperty>;
+
+        getKey(): string;
+        get key(): string;
+        getType(): Class<T>;
+        get type(): Class<T>;
+    }
+
+    const __IMaterialProperty: unique symbol;
+    interface IMaterialProperty {
+        [__IMaterialProperty]: 0;
+    }
+}
+
+namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.stack {
+    class MaterialStack {
+        material(): Material;
+        amount(): number;
+        add(amount: number): MaterialStack;
+        multiply(amount: number): MaterialStack;
+        multiply(amount: number): MaterialStack;
+        divide(amount: number): MaterialStack;
+        isEmpty(): boolean;
+    }
+
+    type MaterialStack__Wrapper = MaterialStack | Material | string;
+}
+
+namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.info {
+    const __MaterialIconSet: unique symbol;
+    class MaterialIconSet {
+        static DULL: MaterialIconSet;
+        static METALLIC: MaterialIconSet;
+        static MAGNETIC: MaterialIconSet;
+        static SHINY: MaterialIconSet;
+        static BRIGHT: MaterialIconSet;
+        static DIAMOND: MaterialIconSet;
+        static EMERALD: MaterialIconSet;
+        static GEM_HORIZONTAL: MaterialIconSet;
+        static GEM_VERTICAL: MaterialIconSet;
+        static RUBY: MaterialIconSet;
+        static OPAL: MaterialIconSet;
+        static GLASS: MaterialIconSet;
+        static NETHERSTAR: MaterialIconSet;
+        static FINE: MaterialIconSet;
+        static SAND: MaterialIconSet;
+        static WOOD: MaterialIconSet;
+        static ROUGH: MaterialIconSet;
+        static FLINT: MaterialIconSet;
+        static LIGNITE: MaterialIconSet;
+        static QUARTZ: MaterialIconSet;
+        static CERTUS: MaterialIconSet;
+        static LAPIS: MaterialIconSet;
+        static FLUID: MaterialIconSet;
+        static RADIOACTIVE: MaterialIconSet;
+
+        [__MaterialIconSet]: 0;
+    }
+
+    type MaterialIconSet__Wrapper = MaterialIconSet | string;
+
+    const __MaterialFlag: unique symbol;
+    class MaterialFlag {
+        [__MaterialFlag]: 0;
+    }
+
+    const MaterialFlags: {
+        NO_UNIFICATION: MaterialFlag;
+        DISABLE_MATERIAL_RECIPES: MaterialFlag;
+        DECOMPOSITION_BY_ELECTROLYZING: MaterialFlag;
+        DECOMPOSITION_BY_CENTRIFUGING: MaterialFlag;
+        DISABLE_DECOMPOSITION: MaterialFlag;
+        EXPLOSIVE: MaterialFlag;
+        FLAMMABLE: MaterialFlag;
+        STICKY: MaterialFlag;
+        PHOSPHORESCENT: MaterialFlag;
+        FIRE_RESISTANT: MaterialFlag;
+        GENERATE_PLATE: MaterialFlag;
+        GENERATE_DENSE: MaterialFlag;
+        GENERATE_ROD: MaterialFlag;
+        GENERATE_BOLT_SCREW: MaterialFlag;
+        GENERATE_FRAME: MaterialFlag;
+        GENERATE_GEAR: MaterialFlag;
+        GENERATE_LONG_ROD: MaterialFlag;
+        FORCE_GENERATE_BLOCK: MaterialFlag;
+        EXCLUDE_BLOCK_CRAFTING_RECIPES: MaterialFlag;
+        EXCLUDE_PLATE_COMPRESSOR_RECIPE: MaterialFlag;
+        EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES: MaterialFlag;
+        MORTAR_GRINDABLE: MaterialFlag;
+        NO_WORKING: MaterialFlag;
+        NO_SMASHING: MaterialFlag;
+        NO_SMELTING: MaterialFlag;
+        NO_ORE_SMELTING: MaterialFlag;
+        NO_ORE_PROCESSING_TAB: MaterialFlag;
+        BLAST_FURNACE_CALCITE_DOUBLE: MaterialFlag;
+        BLAST_FURNACE_CALCITE_TRIPLE: MaterialFlag;
+        DISABLE_ALLOY_BLAST: MaterialFlag;
+        DISABLE_ALLOY_PROPERTY: MaterialFlag;
+        SOLDER_MATERIAL: MaterialFlag;
+        SOLDER_MATERIAL_BAD: MaterialFlag;
+        SOLDER_MATERIAL_GOOD: MaterialFlag;
+        GENERATE_FOIL: MaterialFlag;
+        GENERATE_RING: MaterialFlag;
+        GENERATE_SPRING: MaterialFlag;
+        GENERATE_SPRING_SMALL: MaterialFlag;
+        GENERATE_SMALL_GEAR: MaterialFlag;
+        GENERATE_FINE_WIRE: MaterialFlag;
+        GENERATE_ROTOR: MaterialFlag;
+        GENERATE_ROUND: MaterialFlag;
+        IS_MAGNETIC: MaterialFlag;
+        CRYSTALLIZABLE: MaterialFlag;
+        GENERATE_LENS: MaterialFlag;
+        HIGH_SIFTER_OUTPUT: MaterialFlag;
+    };
+}
+
+namespace internal.com.gregtechceu.gtceu.api.data.worldgen {
+    const __IWorldGenLayer: unique symbol;
+    interface IWorldGenLayer {
+        [__IWorldGenLayer]: 0;
+    }
+
+    import RuleTest = net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+    import RuleTest__Wrapper = net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest__Wrapper;
+
+    const __IWorldGenLayerreadonly$RuleTestSupplier: unique symbol;
+    interface IWorldGenLayer$RuleTestSupplier {
+        [__IWorldGenLayer$RuleTestSupplier]: 0;
+        get(): RuleTest;
+    }
+
+    type IWorldGenLayer$RuleTestSupplier__Wrapper =
+        | IWorldGenLayer$RuleTestSupplier
+        | IWorldGenLayer$RuleTestSupplier['get']
+        | RuleTest__Wrapper;
+
+    interface SimpleWorldGenLayer extends IWorldGenLayer {}
+    class SimpleWorldGenLayer implements IWorldGenLayer {}
+}
+
 namespace internal.com.gregtechceu.gtceu.api.block {
-    interface IMachineBlock extends EntityBlock {}
+    const __IMachineBlock: unique symbol;
+    interface IMachineBlock extends EntityBlock {
+        [__IMachineBlock]: 0;
+    }
+
+    import Material = data.chemical.material.Material;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+
+    const __ICoilType: unique symbol;
+    interface ICoilType {
+        [__ICoilType]: 0;
+
+        getName(): string;
+        get name(): string;
+        getCoilTemperature(): number;
+        get coilTemperature(): number;
+        getLevel(): number;
+        get level(): number;
+        getEnergyDiscount(): number;
+        get energyDiscount(): number;
+        getTier(): number;
+        get tier(): number;
+        getMaterial(): Material;
+        get material(): Material;
+        getTexture(): ResourceLocation;
+        get texture(): ResourceLocation;
+    }
 }
 
 namespace internal.com.gregtechceu.gtceu.api.machine {
@@ -186,8 +701,8 @@ namespace internal.com.gregtechceu.gtceu.api.machine {
     import Supplier = java.util.function_.Supplier;
     import BlockEntity = net.min;
 
+    interface MachineDefinition extends Supplier<IMachineBlock> {}
     class MachineDefinition implements Supplier<IMachineBlock> {
-        get(): IMachineBlock;
         getRecipeTypes(): GTRecipeType[];
         setRecipeTypes(recipeTypes: GTRecipeType__Wrapper[]): void;
     }
@@ -275,7 +790,10 @@ namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
         constructor(name: string);
     }
 
-    class MultiblockControllerMachine extends MetaMachine {
+    import IMultiController = feature.multiblock.IMultiController;
+
+    interface MultiblockControllerMachine extends IMultiController {}
+    class MultiblockControllerMachine extends MetaMachine implements IMultiController {
         constructor(holder: IMachineBlockEntity);
     }
 
@@ -283,12 +801,22 @@ namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
         constructor(holder: IMachineBlockEntity, ...args: any[]);
     }
 
-    class WorkableElectricMultiblockMachine extends WorkableMultiblockMachine {
+    import ITieredMachine = feature.ITieredMachine;
+
+    interface WorkableElectricMultiblockMachine extends ITieredMachine {}
+    class WorkableElectricMultiblockMachine extends WorkableMultiblockMachine implements ITieredMachine {
         constructor(holder: IMachineBlockEntity, ...args: any[]);
     }
 
+    import ICoilType = block.ICoilType;
+
     class CoilWorkableElectricMultiblockMachine extends WorkableElectricMultiblockMachine {
         constructor(holder: IMachineBlockEntity);
+
+        getCoilType(): ICoilType;
+        get coilType(): ICoilType;
+        getCoilTier(): number;
+        get coilTier(): number;
     }
 
     class LayeredWorkableElectricMultiblockMachine extends WorkableElectricMultiblockMachine {
@@ -315,6 +843,17 @@ namespace internal.com.gregtechceu.gtceu.api.machine.multiblock.part {
     class TieredIOPartMachine extends TieredPartMachine {}
 }
 
+namespace internal.com.gregtechceu.gtceu.api.machine.feature {
+    const __ITieredMachine: unique symbol;
+    interface ITieredMachine {
+        [__ITieredMachine]: 0;
+        getTier(): number;
+        get tier(): number;
+        getMaxVoltage(): number;
+        get maxVoltage(): number;
+    }
+}
+
 namespace internal.com.gregtechceu.gtceu.api.machine.feature.multiblock {
     const __IMultiPart: unique symbol;
     interface IMultiPart {
@@ -322,11 +861,22 @@ namespace internal.com.gregtechceu.gtceu.api.machine.feature.multiblock {
         canShared(): boolean;
         isFormed(): boolean;
     }
+
+    import BlockPattern = pattern.BlockPattern;
+
+    const __IMultiController: unique symbol;
+    interface IMultiController {
+        [__IMultiController]: 0;
+        checkPattern(): boolean;
+        checkPatternWithLock(): boolean;
+        checkPatternWithTryLock(): boolean;
+        getPattern(): BlockPattern;
+        isFormed(): boolean;
+    }
 }
 
 namespace internal.com.gregtechceu.gtceu.api.pattern {
     import RelativeDirection = util.RelativeDirection;
-    import Block = internal.net.minecraft.world.level.block.Block;
 
     class BlockPattern {}
 
@@ -371,14 +921,19 @@ namespace internal.com.gregtechceu.gtceu.api.pattern {
     import PartAbility = api.machine.multiblock.PartAbility;
     import TagKey = net.minecraft.tags.TagKey;
     import Fluid = net.minecraft.world.level.material.Fluid;
+    import IMachineBlock = block.IMachineBlock;
+    import Block = internal.net.minecraft.world.level.block.Block;
+    import Block__Wrapper = internal.net.minecraft.world.level.block.Block__Wrapper;
 
     class Predicates {
         static controller(predicate: TraceabilityPredicate): TraceabilityPredicate;
 
         static states(allowedStates: BlockState): TraceabilityPredicate;
 
-        static blocks(...blocks: Block[]): TraceabilityPredicate;
-        static blocks(blocks: Block[]): TraceabilityPredicate;
+        static blocks(...blocks: Block__Wrapper[]): TraceabilityPredicate;
+        static blocks(blocks: Block__Wrapper[]): TraceabilityPredicate;
+        static blocks(...blocks: IMachineBlock[]): TraceabilityPredicate;
+        static blocks(blocks: IMachineBlock[]): TraceabilityPredicate;
 
         static machines(...definitions: MachineDefinition[]): TraceabilityPredicate;
         static machines(definitions: MachineDefinition[]): TraceabilityPredicate;
@@ -472,6 +1027,7 @@ namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         modelPropertyInt(property: Property<boolean>, defaultValue: number): this;
     }
 
+    import List = java.util.List;
     import BiConsumer__Wrapper = java.util.function_.BiConsumer__Wrapper;
 
     class MultiblockMachineBuilder extends MachineBuilder<MultiblockMachineDefinition> {
@@ -480,7 +1036,7 @@ namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         'partSorter(java.util.function.Function)': (
             fn: Function__Wrapper<MultiblockControllerMachine, Comparator<IMultiPart>>
         ) => this;
-        additionalDisplay(additionalDisplay: BiConsumer__Wrapper<IMultiController, Component[]>): this;
+        additionalDisplay(additionalDisplay: BiConsumer__Wrapper<IMultiController, List<Component>>): this;
     }
 }
 
@@ -761,6 +1317,122 @@ namespace internal.com.gregtechceu.gtceu.api.gui {
     }
 }
 
+namespace internal.com.gregtechceu.gtceu.api.item.tool {
+    class GTToolType {
+        static SWORD: GTToolType;
+        static PICKAXE: GTToolType;
+        static SHOVEL: GTToolType;
+        static AXE: GTToolType;
+        static HOE: GTToolType;
+        static MINING_HAMMER: GTToolType;
+        static SPADE: GTToolType;
+        static SCYTHE: GTToolType;
+        static SAW: GTToolType;
+        static HARD_HAMMER: GTToolType;
+        static SOFT_MALLET: GTToolType;
+        static WRENCH: GTToolType;
+        static FILE: GTToolType;
+        static CROWBAR: GTToolType;
+        static SCREWDRIVER: GTToolType;
+        static MORTAR: GTToolType;
+        static WIRE_CUTTER: GTToolType;
+        static KNIFE: GTToolType;
+        static BUTCHERY_KNIFE: GTToolType;
+        static PLUNGER: GTToolType;
+        static SHEARS: GTToolType;
+        static DRILL_LV: GTToolType;
+        static DRILL_MV: GTToolType;
+        static DRILL_HV: GTToolType;
+        static DRILL_EV: GTToolType;
+        static DRILL_IV: GTToolType;
+        static CHAINSAW_LV: GTToolType;
+        static CHAINSAW_HV: GTToolType;
+        static CHAINSAW_IV: GTToolType;
+        static WRENCH_LV: GTToolType;
+        static WRENCH_HV: GTToolType;
+        static WRENCH_IV: GTToolType;
+        static WIRE_CUTTER_LV: GTToolType;
+        static WIRE_CUTTER_HV: GTToolType;
+        static WIRE_CUTTER_IV: GTToolType;
+        static BUZZSAW: GTToolType;
+        static SCREWDRIVER_LV: GTToolType;
+        static SCREWDRIVER_HV: GTToolType;
+        static SCREWDRIVER_IV: GTToolType;
+
+        get name(): string;
+        get idFormat(): string;
+    }
+}
+
+namespace internal.com.gregtechceu.gtceu.api.fluids {
+    import FluidAttribute = attribute.FluidAttribute;
+
+    class FluidBuilder {
+        name(name: string): this;
+        translation(translation: string): this;
+        state(state: FluidState__Wrapper): this;
+        density(density: number): this;
+        burnTime(burnTime: number): this;
+        still(still: ResourceLocation__Wrapper): this;
+        flowing(flowing: ResourceLocation__Wrapper): this;
+        temperature(temperature: number): this;
+        color(color: number): this;
+        disableColor(): this;
+        density(density: number): this;
+        luminosity(luminosity: number): this;
+        viscosity(mcViscosity: number): this;
+        viscosity(viscosity: number): this;
+        attribute(attribute: FluidAttribute): this;
+        attributes(attributes: FluidAttribute[]): this;
+        attributes(...attributes: FluidAttribute[]): this;
+        customStill(): this;
+        textures(hasCustomStill: boolean): this;
+        textures(hasCustomStill: boolean, hasCustomFlowing: boolean): this;
+        block(): this;
+        disableBucket(): this;
+    }
+
+    import Enum = java.lang.Enum;
+
+    type FluidState__EnumKeys = 'LIQUID' | 'GAS' | 'PLASMA';
+
+    class FluidState extends Enum {
+        static LIQUID: FluidState;
+        static GAS: FluidState;
+        static PLASMA: FluidState;
+
+        getTranslationKey(): string;
+        get translationKey(): string;
+        getTagKey(): TagKey<Fluid>;
+        get tagKey(): TagKey<Fluid>;
+    }
+
+    type FluidState__Wrapper = FluidState | FluidState__EnumKeys | Lowercase<FluidState__EnumKeys>;
+}
+
+namespace internal.com.gregtechceu.gtceu.api.fluids.attribute {
+    class FluidAttribute {}
+}
+
+namespace internal.com.gregtechceu.gtceu.api.fluids.store {
+    import FluidBuilder = fluids.FluidBuilder;
+    class FluidStorageKey {}
+
+    const __FluidStorage: unique symbol;
+    interface FluidStorage {
+        [__FluidStorage]: 0;
+
+        enqueueRegistration(key: FluidStorageKey, builder: FluidBuilder);
+    }
+
+    const FluidStorageKeys: {
+        LIQUID: FluidStorageKey;
+        GAS: FluidStorageKey;
+        PLASMA: FluidStorageKey;
+        MOLTEN: FluidStorageKey;
+    };
+}
+
 namespace internal.kjs {
     interface LoadableClasses {
         'com.gregtechceu.gtceu.api.pattern.util.RelativeDirection': typeof internal.com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
@@ -769,5 +1441,22 @@ namespace internal.kjs {
         'com.gregtechceu.gtceu.api.machine.multiblock.LayeredWorkableElectricMultiblockMachine': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.LayeredWorkableElectricMultiblockMachine;
         'com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties': typeof internal.com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
         'com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.AlloyBlastProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.AlloyBlastProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.ArmorProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ArmorProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidPipeProperties': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidPipeProperties;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.GemProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.GemProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.HazardProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.HazardProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.ItemPipeProperties': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ItemPipeProperties;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.MaterialProperties': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.MaterialProperties;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.PolymerProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.PolymerProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.RotorProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.RotorProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.WireProperties': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.WireProperties;
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.WoodProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.WoodProperty;
     }
 }

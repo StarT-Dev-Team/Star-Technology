@@ -4,6 +4,7 @@ namespace internal.dev.latvian.mods.kubejs.misc {
     import MobEffectCategory__Wrapper = net.minecraft.world.effect.MobEffectCategory__Wrapper;
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
     import AttributeModifier$Operation__Wrapper = net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation__Wrapper;
+    import Color__Wrapper = rhino.mod.util.color;
 
     class MobEffectBuilder extends BuilderBase<MobEffect> {
         modifyAttribute(
@@ -16,7 +17,7 @@ namespace internal.dev.latvian.mods.kubejs.misc {
         harmful(): this;
         beneficial(): this;
         effectTick(effectTick: MobEffectBuilder$EffectTickCallback__Wrapper): this;
-        color(col: Color__Wrapper): this;
+        color(color: Color__Wrapper): this;
     }
 
     const __MobEffectBuilder$EffectTickCallback: unique symbol;
