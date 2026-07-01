@@ -168,6 +168,15 @@ ServerEvents.recipes((event) => {
     const t6Reflector = 'kubejs:dragonic_reflector_casing';
     const t7Reflector = 'kubejs:prismalic_reflector_casing';
 
+    /**
+     * @param {string} output
+     * @param {string} primary
+     * @param {string} secondary
+     * @param {string} backing
+     * @param {string} solder
+     * @param {number} eut
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     */
     let reflectorPanel = (output, primary, secondary, backing, solder, eut, clean) => {
         event.recipes.gtceu
             .assembler(id(output.split(':')[1]))
@@ -243,6 +252,16 @@ ServerEvents.recipes((event) => {
         $StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM
     );
 
+    /**
+     * @param {string} output
+     * @param {string} core
+     * @param {string} tierFG
+     * @param {string} cable
+     * @param {string} plate
+     * @param {string} fluid
+     * @param {number} tier
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     */
     let reflectorBlock = (output, core, tierFG, cable, plate, fluid, tier, clean) => {
         let fusionReflectorRecipe = event.recipes.gtceu
             .assembler(id(output.split(':')[1]))
@@ -340,7 +359,14 @@ ServerEvents.recipes((event) => {
     );
 
     // === Coils ===
+
     event.remove({ output: 'gtceu:superconducting_coil' });
+
+    /**
+     * @param {GTTier} tier
+     * @param {string} superCond
+     * @param {number} quant
+     */
     let superconductingCoil = (tier, superCond, quant) => {
         event.recipes.gtceu
             .assembler(id(`superconducting_coil_${tier}`))
@@ -362,6 +388,15 @@ ServerEvents.recipes((event) => {
     superconductingCoil('uiv', 'rhenium_super_composite_alloy', 6);
 
     event.remove({ output: 'gtceu:fusion_coil' });
+
+    /**
+     * @param {string} output
+     * @param {string[]} inputs
+     * @param {string} fluid
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     * @param {number} dura
+     * @param {number} eut
+     */
     let fusionCoil = (output, inputs, fluid, clean, dura, eut) => {
         event.recipes.gtceu
             .assembler(id(`${output.split(':')[1]}`))
@@ -442,6 +477,17 @@ ServerEvents.recipes((event) => {
     event.remove({ output: 'gtceu:fusion_casing_mk2' });
     event.remove({ output: 'gtceu:fusion_casing_mk3' });
 
+    /**
+     *
+     * @param {string} output
+     * @param {'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv' } tier
+     * @param {string} VcoilMod
+     * @param {string} reflector
+     * @param {string} coil
+     * @param {string} fluid
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     * @param {number} eut
+     */
     let fusionCasing = (output, tier, VcoilMod, reflector, coil, fluid, clean, eut) => {
         let tierData = {
             luv: 'iv',

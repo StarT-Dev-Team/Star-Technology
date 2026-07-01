@@ -7,6 +7,8 @@ ServerEvents.recipes((event) => {
      * General structure remains from their PR
      */
 
+    /** @typedef { { material: string; secondary: string; tertiary: string; quaternary?: string; quinary?: string } } OreProcMaterial */
+
     const oreProcessableTiers = {
         primitive: [
             { material: 'iron', secondary: 'nickel', tertiary: 'tin' },
@@ -418,12 +420,22 @@ ServerEvents.recipes((event) => {
         ],
     };
 
+    /**
+     * @param {string} mat
+     * @param {number} amount
+     */
     const crushedOre = (mat, amount) => {
         return `${amount}x gtceu:crushed_${mat}_ore`;
     };
+
+    /**
+     * @param {string} mat
+     * @param {number} amount
+     */
     const dust = (mat, amount) => {
         return `${amount}x gtceu:${mat}_dust`;
     };
+
     const fluids = {
         water: 'minecraft:water 100',
         water5x: 'minecraft:water 500',
@@ -434,12 +446,12 @@ ServerEvents.recipes((event) => {
         sodiumPersulfate25x: 'gtceu:sodium_persulfate 2500',
     };
 
-    /*
+    /**
      * Fuel based ore processing.
      * Blocks 10x the recipe while only 9x the duration.
+     * @param {OreProcMaterial} materialObj
      */
-
-    const primitiveProcessing = (event, materialObj) => {
+    const primitiveProcessing = (materialObj) => {
         [
             { item: '2x #minecraft:coals', id: 'coals' },
             { item: '2x #gtceu:coal_dusts', id: 'coal_dusts' },
@@ -477,12 +489,13 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VA[GTValues.LV]);
     };
 
-    /*
+    /**
      * Copies the recipes from primitive ore processing, but without fuels.
      * Much faster than using coke fuel and generates more products per second than using blocks.
      * Chances are bossted.
+     * @param {OreProcMaterial} materialObj
      */
-    const electricPrimitiveProcessing = (event, materialObj) => {
+    const electricPrimitiveProcessing = (materialObj) => {
         event.recipes.gtceu
             .electric_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -495,11 +508,13 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VA[GTValues.LV]);
     };
 
-    /*
+    /**
      * Energy based ore processing.
      * Needs distilled water or sodium persulfate.
+     * @param {Required<OreProcMaterial>} materialObj
+     * @param {'lv' | 'mv' | 'hv' | 'ev'} tier
      */
-    const electricProcessing = (event, materialObj, tier) => {
+    const electricProcessing = (materialObj, tier) => {
         const voltages = {
             lv: GTValues.VA[GTValues.LV],
             mv: GTValues.VA[GTValues.MV],
@@ -520,12 +535,13 @@ ServerEvents.recipes((event) => {
             .EUt(voltages[tier]);
     };
 
-    /*
+    /**
      * Improved energy based primitive ore processing.
      * Uses less energy and is quicker.
      * Chances are boosted.
+     * @param {OreProcMaterial} materialObj
      */
-    const plantPrimitiveProcessing = (event, materialObj) => {
+    const plantPrimitiveProcessing = (materialObj) => {
         event.recipes.gtceu
             .plant_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -549,12 +565,14 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VHA[GTValues.LV]);
     };
 
-    /*
+    /**
      * Improved energy based ore processing.
      * Uses less energy and is quicker.
      * Chances are boosted.
+     * @param {Required<OreProcMaterial>} materialObj
+     * @param {'lv' | 'mv' | 'hv' | 'ev'} tier
      */
-    const plantElectricProcessing = (event, materialObj, tier) => {
+    const plantElectricProcessing = (materialObj, tier) => {
         const voltages = {
             lv: GTValues.VHA[GTValues.LV],
             mv: GTValues.VHA[GTValues.MV],
@@ -588,10 +606,11 @@ ServerEvents.recipes((event) => {
             .EUt(voltages[tier]);
     };
 
-    /*
+    /**
      * Final form of 1-step ore processing.
+     * @param {Required<OreProcMaterial>} materialObj
      */
-    const plantOreProcessing = (event, materialObj) => {
+    const plantOreProcessing = (materialObj) => {
         event.recipes.gtceu
             .plant_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -619,7 +638,10 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VA[GTValues.IV]);
     };
 
-    const pulverizer = (event, materialObj) => {
+    /**
+     * @param {OreProcMaterial} materialObj
+     */
+    const pulverizer = (materialObj) => {
         event.recipes.gtceu
             .pulverizer(id(`${materialObj.material}_dust`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -698,19 +720,19 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UEV]);
 
     // Iterate over each tier and processable item and register the recipes
-    Object.keys(oreProcessableTiers).forEach((tier) => {
+    /** @type {(keyof typeof oreProcessableTiers)[]} */ (Object.keys(oreProcessableTiers)).forEach((tier) => {
         oreProcessableTiers[tier].forEach((item) => {
-            pulverizer(event, item);
+            pulverizer(item);
 
             if (tier === 'primitive') {
-                primitiveProcessing(event, item);
-                electricPrimitiveProcessing(event, item);
-                plantPrimitiveProcessing(event, item);
+                primitiveProcessing(item);
+                electricPrimitiveProcessing(item);
+                plantPrimitiveProcessing(item);
             } else if (tier === 'iv') {
-                plantOreProcessing(event, item);
+                plantOreProcessing(/** @type {any} */ (item));
             } else {
-                electricProcessing(event, item, tier);
-                plantElectricProcessing(event, item, tier);
+                electricProcessing(/** @type {any} */ (item), tier);
+                plantElectricProcessing(/** @type {any} */ (item), tier);
             }
         });
     });

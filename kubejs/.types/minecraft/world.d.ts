@@ -1,48 +1,105 @@
-namespace internal.net.minecraft.world.level {
-    class Level {
+declare namespace internal.net.minecraft.world.level {
+    import BlockPos__Wrapper = core.BlockPos;
+    import Player = entity.player.Player;
+    import SoundEvent__Wrapper = sounds.SoundEvent__Wrapper;
+    import SoundSource__Wrapper = sounds.SoundSource__Wrapper;
+
+    interface LevelAccessor__overloads$playSound {
+        (player: Player | null, pos: BlockPos__Wrapper, sound: SoundEvent__Wrapper, source: SoundSource__Wrapper): void;
+        (
+            player: Player | null,
+            pos: BlockPos__Wrapper,
+            sound: SoundEvent__Wrapper,
+            source: SoundSource__Wrapper,
+            volume: number,
+            pitch: number
+        ): void;
+    }
+
+    interface LevelAccessor {
+        readonly __net_minecraft_world_level_LevelAccessor: unique symbol;
+        playSound: LevelAccessor__overloads$playSound;
+    }
+
+    import Entity = entity.Entity;
+
+    interface Level__overloads$playSound extends LevelAccessor__overloads$playSound {
+        (
+            player: Player | null,
+            pos: BlockPos__Wrapper,
+            sound: SoundEvent__Wrapper,
+            category: SoundSource__Wrapper,
+            volume: number,
+            pitch: number
+        ): void;
+        (
+            player: Player | null,
+            x: number,
+            y: number,
+            z: number,
+            sound: SoundEvent__Wrapper,
+            category: SoundSource__Wrapper,
+            volume: number,
+            pitch: number
+        ): void;
+        (
+            player: Player | null,
+            entity: Entity,
+            event: SoundEvent__Wrapper,
+            category: SoundSource__Wrapper,
+            volume: number,
+            pitch: number
+        ): void;
+    }
+
+    interface Level extends LevelAccessor {
         readonly __net_minecraft_world_level_Level: unique symbol;
+    }
+
+    class Level implements LevelAccessor {
+        playSound: Level__overloads$playSound;
+    }
+
+    interface ChunkPos {
+        readonly __net_minecraft_world_level_ChunkPos: unique symbol;
+    }
+
+    class ChunkPos {}
+
+    import Item = item.Item;
+
+    interface ItemLike {
+        readonly __net_minecraft_world_level_ItemLike: unique symbol;
+        asItem(): Item;
     }
 }
 
-namespace internal.net.minecraft.world.level.block {
+declare namespace internal.kjs {
+    interface LoadableClasses {
+        'net.minecraft.world.level.ChunkPos': typeof internal.net.minecraft.world.level.ChunkPos;
+    }
+}
+
+declare namespace internal.net.minecraft.world.level.block {
     import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
-    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
+
+    interface Block {
+        readonly __net_minecraft_world_level_block_Block: unique symbol;
+    }
 
     class Block {
         static getBlock(resourceLocation: ResourceLocation__Wrapper): Block;
-
-        get id(): string;
-        getId(): string;
-        get mod(): string;
-        getMod(): string;
-
-        setHasCollision(v: boolean): void;
-        set hasCollision(v: boolean): void;
-        setExplosionResistance(v: float): void;
-        set explosionResistance(v: float): void;
-        setIsRandomlyTicking(v: boolean): void;
-        set isRandomlyTicking(v: boolean): void;
-        setRandomTickCallback(callback: Consumer__Wrapper<RandomTickCallbackJS>): void;
-        set randomTickCallback(callback: Consumer__Wrapper<RandomTickCallbackJS>): void;
-        setSoundType(v: SoundType__Wrapper): void;
-        set soundType(v: SoundType__Wrapper): void;
-        setFriction(v: float): void;
-        set friction(v: float): void;
-        setSpeedFactor(v: float): void;
-        set speedFactor(v: float): void;
-        setJumpFactor(v: float): void;
-        set jumpFactor(v: float): void;
-        setNameKey(key: String): void;
-        set nameKey(key: String): void;
-        setDestroySpeed(v: number): void;
-        set destroySpeed(v: number): void;
-        setLightEmission(v: number): void;
-        set lightEmission(v: number): void;
-        setRequiresTool(v: boolean): void;
-        set requiresTool(v: boolean): void;
     }
 
     type Block__Wrapper = Block | string;
+
+    interface EntityBlock {
+        readonly __net_minecraft_world_level_block_EntityBlock: unique symbol;
+    }
+
+    interface SoundType {
+        readonly __net_minecraft_world_level_block_SoundType: unique symbol;
+    }
 
     class SoundType {
         static EMPTY: SoundType;
@@ -150,23 +207,18 @@ namespace internal.net.minecraft.world.level.block {
         static DECORATED_POT_CRACKED: SoundType;
     }
 
-    type SoundType__Entries = keyof {
-        [K in keyof typeof SoundType as K extends 'prototype'
-            ? never
-            : (typeof SoundType)[K] extends SoundType
-              ? K
-              : never]: K;
-    };
-
-    type SoundType__Wrapper = SoundType | SoundType__Entries | Lowercase<SoundType__Entries>;
+    type SoundType__EnumKeys = EnumKeys<typeof SoundType>;
+    type SoundType__Wrapper = SoundType | SoundType__EnumKeys | Lowercase<SoundType__EnumKeys>;
 }
 
-namespace internal.net.minecraft.world.item {
+declare namespace internal.net.minecraft.world.item {
     import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
 
-    class Item {
+    interface Item {
         readonly __net_minecraft_world_item_Item: unique symbol;
-        static getId(item: Item__Wrapper): int;
+    }
+    class Item {
+        static getId(item: Item__Wrapper): number;
         static byId(id: number): Item;
     }
 
@@ -175,20 +227,27 @@ namespace internal.net.minecraft.world.item {
     import OutputItem = dev.latvian.mods.kubejs.item.OutputItem;
     import Ingredient = crafting.Ingredient;
 
-    class ItemStack {
+    interface ItemStack {
         readonly __net_minecraft_world_item_ItemStack: unique symbol;
+    }
+    class ItemStack {
         isEmpty(): boolean;
+
         getItem(): Item;
+        get item(): Item;
         getCount(): number;
+        get count(): number;
         setCount(count: number): void;
+        set count(count: number);
+
         weakNBT(): Ingredient;
         strongNBT(): Ingredient;
         withChance(chance: number): OutputItem;
     }
 
-    type ItemStack__WrapperString = '' | '-' | `#${string}` | `@${string}` | `%${string}` | string;
-    type ItemStack__WrapperStringWithCount = `${number}x ${ItemStack__WrapperString}`;
-    type ItemStack__Wrapper = ItemStack | ResourceLocation__Wrapper | RegExp | ItemStack__WrapperStringWithCount;
+    // type ItemStack__WrapperString = '' | '-' | `#${string}` | `@${string}` | `%${string}` | string;
+    // type ItemStack__WrapperStringWithCount = `${number}x ${ItemStack__WrapperString}`;
+    type ItemStack__Wrapper = ItemStack | ResourceLocation__Wrapper | RegExp | string;
 
     type UseAnim__EnumKeys =
         | 'NONE'
@@ -235,7 +294,7 @@ namespace internal.net.minecraft.world.item {
     type ArmorMaterial__Wrapper = ArmorMaterial | string;
 }
 
-namespace internal.net.minecraft.world.item.crafting {
+declare namespace internal.net.minecraft.world.item.crafting {
     class Ingredient {
         getItems(): ItemStack[];
     }
@@ -244,15 +303,19 @@ namespace internal.net.minecraft.world.item.crafting {
     type Ingredient__Wrapper = Ingredient__WrapperBase | Ingredient__WrapperBase[];
 }
 
-namespace internal.net.minecraft.world.level.block.entity {
-    abstract class BlockEntity {}
+declare namespace internal.net.minecraft.world.level.block.entity {
+    interface BlockEntity {
+        readonly __net_minecraft_world_level_block_entity_BlockEntity: unique symbol;
+    }
+
+    class BlockEntity {}
 }
 
-namespace internal.net.minecraft.world.level.block.state {
+declare namespace internal.net.minecraft.world.level.block.state {
     class BlockState {}
 }
 
-namespace internal.net.minecraft.world.level.block.state.properties {
+declare namespace internal.net.minecraft.world.level.block.state.properties {
     // T extends Comparable<T>
     abstract class Property<T> {}
 
@@ -263,17 +326,18 @@ namespace internal.net.minecraft.world.level.block.state.properties {
     class EnumProperty<T extends Enum> extends Property<Enum> {}
 }
 
-namespace internal.net.minecraft.world.level.material {
-    class Fluid {
+declare namespace internal.net.minecraft.world.level.material {
+    interface Fluid {
         readonly __net_minecraft_world_level_material_Fluid: unique symbol;
     }
+    class Fluid {}
 
     type Fluid__Wrapper = Fluid | string;
 
     class FlowingFluid extends Fluid {}
 }
 
-namespace internal.net.minecraft.world.level.levelgen.structure.templatesystem {
+declare namespace internal.net.minecraft.world.level.levelgen.structure.templatesystem {
     abstract class RuleTest {}
 
     import BlockStatePredicate = dev.latvian.mods.kubejs.block.state.BlockStatePredicate;
@@ -281,11 +345,17 @@ namespace internal.net.minecraft.world.level.levelgen.structure.templatesystem {
     type RuleTest__Wrapper = RuleTest | BlockStatePredicate | string;
 }
 
-namespace internal.net.minecraft.world.effect {
+declare namespace internal.net.minecraft.world.effect {
+    interface MobEffect {
+        readonly __net_minecraft_world_effect_MobEffect: unique symbol;
+    }
     class MobEffect {}
 
     type MobEffectCategory__EnumKeys = 'BENEFICIAL' | 'HARMFUL' | 'NEUTRAL';
 
+    interface MobEffectCategory {
+        readonly __net_minecraft_world_effect_MobEffectCategory: unique symbol;
+    }
     class MobEffectCategory {
         static BENEFICIAL: MobEffectCategory;
         static HARMFUL: MobEffectCategory;
@@ -298,11 +368,21 @@ namespace internal.net.minecraft.world.effect {
         | Lowercase<MobEffectCategory__EnumKeys>;
 }
 
-namespace internal.net.minecraft.world.entity {
-    class LivingEntity {}
+declare namespace internal.net.minecraft.world.entity {
+    interface Entity {
+        readonly __net_minecraft_world_entity_Entity: unique symbol;
+    }
+    class Entity {
+        isCrouching(): boolean;
+    }
+
+    interface LivingEntity extends Entity {
+        readonly __net_minecraft_world_entity_LivingEntity: unique symbol;
+    }
+    class LivingEntity extends Entity {}
 }
 
-namespace internal.net.minecraft.world.entity.ai.attributes {
+declare namespace internal.net.minecraft.world.entity.ai.attributes {
     type AttributeModifier$Operation__EnumKeys = 'ADDITION' | 'MULTIPLY_BASE' | 'MULTIPLY_TOTAL';
 
     class AttributeModifier$Operation {
@@ -315,4 +395,11 @@ namespace internal.net.minecraft.world.entity.ai.attributes {
         | AttributeModifier$Operation
         | AttributeModifier$Operation__EnumKeys
         | Lowercase<AttributeModifier$Operation__EnumKeys>;
+}
+
+declare namespace internal.net.minecraft.world.entity.player {
+    interface Player extends LivingEntity {
+        readonly __net_minecraft_world_entity_player_Player: unique symbol;
+    }
+    class Player extends LivingEntity {}
 }

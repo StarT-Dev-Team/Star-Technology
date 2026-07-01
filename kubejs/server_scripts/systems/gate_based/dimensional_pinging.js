@@ -75,7 +75,7 @@ ServerEvents.recipes((event) => {
         .duration(12000)
         .EUt(GTValues.VHA[GTValues.UIV])
         .dimension('minecraft:the_end');
-        
+
     event.recipes.gtceu.dimensional_finder(id('sea_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', 'minecraft:water_bucket', 'gtceu:uxv_sensor')
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
@@ -92,6 +92,10 @@ ServerEvents.recipes((event) => {
         .EUt(4*GTValues.VHA[GTValues.UXV])
         .dimension('minecraft:cavum_tenebrae');*/
 
+    /**
+     * @param {string} type
+     * @param {number} EUTScale
+     */
     const crystalDuping = (type, EUTScale) => {
         event.recipes.gtceu
             .scanner(id(`${type}_crystal_duping`))
@@ -105,6 +109,11 @@ ServerEvents.recipes((event) => {
     crystalDuping('end', 2);
 });
 
+/**
+ * @param {string} realmId
+ * @param {string} realm
+ * @param {string} message
+ */
 const crystalfeed = (realmId, realm, message) => {
     ItemEvents.rightClicked(`kubejs:${realm}_coordinate_crystal`, (event) => {
         if (event.player.isCrouching()) {
@@ -127,6 +136,12 @@ crystalfeed('minecraft', 'nether', 'effects.crystals.success.nether');
 crystalfeed('minecraft', 'end', 'effects.crystals.success.end');
 
 //Dimensional Gamestages
+
+/**
+ * @param {string} gate
+ * @param {string} realm
+ * @param {string} stage
+ */
 const dimensionGS = (gate, realm, stage) => {
     BlockEvents.rightClicked(`sgjourney:${gate}_stargate`, (event) => {
         const { player, item, server } = event;

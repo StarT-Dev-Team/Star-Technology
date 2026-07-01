@@ -10,15 +10,22 @@ namespace internal.dev.latvian.mods.kubejs.fluid {
         matches(other: FluidLike): boolean;
     }
 
-    interface InputFluid extends FluidLike {
+    import InputReplacement = recipe.InputReplacement;
+
+    interface InputFluid extends FluidLike, InputReplacement {
         readonly __dev_latvian_mods_kubejs_fluid_InputFluid: unique symbol;
+    }
+
+    import OutputReplacement = recipe.OutputReplacement;
+
+    interface OutputFluid extends FluidLike, OutputReplacement {
+        readonly __dev_latvian_mods_kubejs_fluid_OutputFluid: unique symbol;
     }
 
     import FluidStack = architectury.fluid.FluidStack;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
     import Fluid = net.minecraft.world.level.material.Fluid;
-    import InputReplacement = recipe.InputReplacement;
 
     interface FluidStackJS extends FluidLike, InputReplacement {}
     class FluidStackJS implements FluidLike, InputReplacement {
@@ -28,11 +35,14 @@ namespace internal.dev.latvian.mods.kubejs.fluid {
         getFluidStack(): FluidStack;
     }
 
+    import JsonElement = com.google.gson.JsonElement;
+
     type FluidStackJS__Wrapper =
         | FluidStackJS
         | FluidStack
         | Fluid
         | ResourceLocation__Wrapper
+        | JsonElement
         | { fluid: string; amount?: number; count?: number; nbt?: unknown };
 
     import BuilderBase = registry.BuilderBase;

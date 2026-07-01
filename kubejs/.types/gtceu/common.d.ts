@@ -943,8 +943,9 @@ namespace internal.com.gregtechceu.gtceu.common.data {
         static METAL_PIPE: SoundEntry;
     }
 
-    import Block = internal.net.minecraft.world.level.block.Block;
-    import BlockEntry = internal.com.tterrag.registrate.util.entry.BlockEntry;
+    import Block = net.minecraft.world.level.block.Block;
+    import BlockEntry = tterrag.registrate.util.entry.BlockEntry;
+    import ActiveBlock = api.block.ActiveBlock;
 
     class GCYMBlocks {
         static CASING_NONCONDUCTING: BlockEntry<Block>;

@@ -18,4 +18,8 @@ namespace internal.net.minecraftforge.fluids {
         shrink(amount: number): void;
         copy(): FluidStack;
     }
+
+    import FluidStackJS__Wrapper = dev.latvian.mods.kubejs.fluid.FluidStackJS__Wrapper;
+
+    type FluidStack__Wrapper = FluidStack | FluidStackJS__Wrapper;
 }

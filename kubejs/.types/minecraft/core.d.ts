@@ -1,7 +1,9 @@
-namespace internal.net.minecraft.core {
+declare namespace internal.net.minecraft.core {
     import Enum = java.lang.Enum;
 
-    type Direction__EnumKeys = 'DOWN' | 'UP' | 'NORTH' | 'SOUTH' | 'WEST' | 'EAST';
+    interface Direction {
+        readonly __net_minecraft_core_Direction: unique symbol;
+    }
 
     class Direction extends Enum {
         static DOWN: Direction;
@@ -12,9 +14,21 @@ namespace internal.net.minecraft.core {
         static EAST: Direction;
     }
 
-    type Direction__Wrapper = Direction | Direction__EnumKeys | Lowercase<Direction__EnumKeys>;
+    type Direction__Wrapper = Direction | EnumKeys<typeof Direction>;
 
-    class BlockPos {
+    interface BlockPos {
         readonly __net_minecraft_core_BlockPos: unique symbol;
+    }
+
+    class BlockPos {}
+
+    import BlockContainerJS = dev.latvian.mods.kubejs.level.BlockContainerJS;
+
+    type BlockPos__Wrapper = BlockPos | [number, number, number] | BlockContainerJS;
+}
+
+declare namespace internal.kjs {
+    interface LoadableClasses {
+        'net.minecraft.core.BlockPos': typeof internal.net.minecraft.core.BlockPos;
     }
 }

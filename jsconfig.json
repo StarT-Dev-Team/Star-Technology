@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "checkJs": true,
+        "skipLibCheck": false,
         "lib": ["ES2016", "ES2017.Object"]
     },
     "include": [

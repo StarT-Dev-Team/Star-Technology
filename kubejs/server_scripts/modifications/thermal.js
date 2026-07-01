@@ -162,6 +162,11 @@ ServerEvents.recipes((event) => {
         .duration(20)
         .EUt(30);
 
+    /**
+     * @param {string} type
+     * @param {string} prior
+     * @param {number} scale
+     */
     const systeamSteams = (type, prior, scale) => {
         event.recipes.gtceu
             .steam_turbine(id(`${type}`))

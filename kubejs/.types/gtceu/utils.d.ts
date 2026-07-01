@@ -1,4 +1,4 @@
-namespace internal.com.gregtechceu.gtceu.utils {
+declare namespace internal.com.gregtechceu.gtceu.utils {
     import DecimalFormat = java.text.DecimalFormat;
 
     const FormattingUtil: {
@@ -12,7 +12,7 @@ namespace internal.com.gregtechceu.gtceu.utils {
     };
 }
 
-namespace internal.kjs {
+declare namespace internal.kjs {
     interface LoadableClasses {
         'com.gregtechceu.gtceu.utils.FormattingUtil': typeof internal.com.gregtechceu.gtceu.utils.FormattingUtil;
     }

@@ -1,4 +1,4 @@
-module internal.dev.latvian.mods.kubejs.item {
+declare namespace internal.dev.latvian.mods.kubejs.item {
     import EventJS = event.EventJS;
     import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
     import ItemStack = net.minecraft.world.item.ItemStack;
@@ -9,7 +9,7 @@ module internal.dev.latvian.mods.kubejs.item {
     class ItemTooltipEventJS extends EventJS {
         add(item: Ingredient__Wrapper, text: MutableComponent__Wrapper | MutableComponent__Wrapper[]): void;
         addToAll(text: MutableComponent__Wrapper | MutableComponent__Wrapper[]): void;
-        addAdvanced(item: Ingredient__Wrapper, handler: StaticTooltipHandlerFromJS__Wrapper);
+        addAdvanced(item: Ingredient__Wrapper, handler: StaticTooltipHandlerFromJS__Wrapper): void;
     }
 
     const __StaticTooltipHandlerFromJS: unique symbol;
@@ -20,6 +20,7 @@ module internal.dev.latvian.mods.kubejs.item {
 
     type StaticTooltipHandlerFromJS__Wrapper = StaticTooltipHandlerFromJS | StaticTooltipHandlerFromJS['accept'];
 
+    import Item = net.minecraft.world.item.Item;
     import BuilderBase = registry.BuilderBase;
     import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
     import Component__Wrapper = net.minecraft.network.chat.Component__Wrapper;
@@ -72,11 +73,11 @@ module internal.dev.latvian.mods.kubejs.item {
         fastToEat(fastToEat: boolean): this;
         fastToEat(): this;
         effect(mobEffectId: ResourceLocation__Wrapper, duration: number, amplifier: number, probability: number): this;
-        removeEffect(mobEffect: MobEffect): this;
+        removeEffect(mobEffect: MobEffect__Wrapper): this;
         eaten(e: Consumer__Wrapper<FoodEatenEventJS>): this;
     }
 
-    import ItemStack = net.minecraft.world.item.ItemStack;
+    import Entity = net.minecraft.world.entity.Entity;
     import EntityEventJS = entity.EntityEventJS;
 
     class FoodEatenEventJS extends EntityEventJS {
@@ -90,36 +91,40 @@ module internal.dev.latvian.mods.kubejs.item {
 
     class MutableArmorTier extends ArmorMaterial {
         setDurabilityMultiplier(durabilityMultiplier: number): this;
-        set durabilityMultiplier(durabilityMultiplier: number): void;
+        set durabilityMultiplier(durabilityMultiplier: number);
         setSlotProtections(setSlotProtections: number[]): this;
-        set slotProtections(setSlotProtections: number[]): void;
+        set slotProtections(setSlotProtections: number[]);
         setEnchantmentValue(enchantmentValue: number): this;
-        set enchantmentValue(enchantmentValue: number): void;
-        setEquipSound(soundEvent: SoundEvent): this;
-        set equipSound(soundEvent: SoundEvent): void;
-        setRepairIngredient(Ingredient: Ingredient): this;
-        set repairIngredient(Ingredient: Ingredient): void;
+        set enchantmentValue(enchantmentValue: number);
+        // setEquipSound(soundEvent: SoundEvent): this;
+        // set equipSound(soundEvent: SoundEvent): void;
+        // setRepairIngredient(Ingredient: Ingredient): this;
+        // set repairIngredient(Ingredient: Ingredient): void;
         setName(name: string): this;
-        set name(name: string): void;
+        set name(name: string);
         setToughness(toughness: number): this;
-        set toughness(toughness: number): void;
+        set toughness(toughness: number);
         setKnockbackResistance(knockbackResistance: number): this;
-        set knockbackResistance(knockbackResistance: number): void;
+        set knockbackResistance(knockbackResistance: number);
     }
 
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
+    import IngredientSupplierKJS = core.IngredientSupplierKJS;
 
-    interface InputItem extends IngredientSupplierKJS {}
-    class InputItem implements IngredientSupplierKJS {
+    interface InputItem extends IngredientSupplierKJS {
         readonly __dev_latvian_mods_kubejs_item_InputItem: unique symbol;
+    }
+
+    class InputItem implements IngredientSupplierKJS {
         static of(ingredient: Ingredient__Wrapper, count: number): InputItem;
     }
 
     type InputItem__Wrapper = InputItem | ItemStack | Ingredient__Wrapper;
 
-    class OutputItem {
+    interface OutputItem {
         readonly __dev_latvian_mods_kubejs_item_OutputItem: unique symbol;
     }
+
+    class OutputItem {}
 
     type OutputItem__Wrapper = OutputItem | ItemStack | Ingredient__Wrapper;
 
@@ -127,9 +132,17 @@ module internal.dev.latvian.mods.kubejs.item {
 
     interface ItemStackSet extends Iterable<ItemStack> {}
     class ItemStackSet implements Iterable<ItemStack> {}
+
+    import PlayerEventJS = player.PlayerEventJS;
+
+    interface ItemClickedEventJS extends PlayerEventJS {
+        readonly __dev_latvian_mods_kubejs_item_ItemClickedEventJS: unique symbol;
+    }
+
+    class ItemClickedEventJS extends PlayerEventJS {}
 }
 
-module internal.dev.latvian.mods.kubejs.item.custom {
+declare namespace internal.dev.latvian.mods.kubejs.item.custom {
     import Item = net.minecraft.world.item.Item;
 
     class BasicItemJS extends Item {}
@@ -160,7 +173,7 @@ module internal.dev.latvian.mods.kubejs.item.custom {
     class ArmorItemBuilder$Boots extends ArmorItemBuilder {}
 }
 
-module internal.dev.latvian.mods.kubejs.item.creativetab {
+declare namespace internal.dev.latvian.mods.kubejs.item.creativetab {
     import EventJS = event.EventJS;
     import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
 

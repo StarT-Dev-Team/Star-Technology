@@ -105,10 +105,13 @@ namespace internal.kjs.kubejs {
 
     import ItemTooltipEventJS = dev.latvian.mods.kubejs.item.ItemTooltipEventJS;
     import ItemArmorTierRegistryEventJS = dev.latvian.mods.kubejs.item.custom.ItemArmorTierRegistryEventJS;
+    import ItemClickedEventJS = dev.latvian.mods.kubejs.item.ItemClickedEventJS;
+    import ItemLike = net.minecraft.world.level.ItemLike;
 
     interface ItemEvents {
         tooltip(callback: (event: ItemTooltipEventJS) => void): void;
         armorTierRegistry(callback: (event: ItemArmorTierRegistryEventJS) => void): void;
+        rightClicked(item: ItemLike | ResourceLocation__Wrapper, callback: (event: ItemClickedEventJS) => void): void;
     }
 
     import RegistryEventJS = dev.latvian.mods.kubejs.registry.RegistryEventJS;
@@ -136,10 +139,17 @@ namespace internal.kjs.kubejs {
 
     import BlockModificationEventJS = dev.latvian.mods.kubejs.block.BlockModificationEventJS;
     import BlockPlacedEventJS = dev.latvian.mods.kubejs.block.BlockPlacedEventJS;
+    import BlockRightClickedEventJS = dev.latvian.mods.kubejs.block.BlockRightClickedEventJS;
+
+    type ExtraSupportsBlock = null | Block | ResourceLocation__Wrapper;
 
     interface BlockEvents {
         modification(callback: (event: BlockModificationEventJS) => void): void;
+        modification(block: ExtraSupportsBlock, callback: (event: BlockModificationEventJS) => void): void;
         placed(callback: (event: BlockPlacedEventJS) => void): void;
+        placed(block: ExtraSupportsBlock, callback: (event: BlockPlacedEventJS) => void): void;
+        rightClicked(callback: (event: BlockRightClickedEventJS) => void): void;
+        rightClicked(block: ExtraSupportsBlock, callback: (event: BlockRightClickedEventJS) => void): void;
     }
 }
 

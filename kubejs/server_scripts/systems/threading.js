@@ -86,6 +86,19 @@ ServerEvents.recipes((event) => {
 
     // Machines
 
+    /**
+     * @param {string} type
+     * @param {string} core
+     * @param {string} circTier
+     * @param {number} nexusAmount
+     * @param {string[]} subMachines
+     * @param {string[]} miscInputs
+     * @param {string} toResearch
+     * @param {string[]} fluids
+     * @param {number} dur
+     * @param {number} cwu
+     * @param {number} eut
+     */
     const assemblyThreadMachine = (
         type,
         core,
@@ -437,6 +450,10 @@ ServerEvents.recipes((event) => {
 
     // Helixes
 
+    /**
+     * @param {string} type
+     * @param {string} specializer
+     */
     const specialAssemblyHelix = (type, specializer) => {
         event.recipes.gtceu
             .assembly_line(id(`uhv_${type}_thread_helix`))
@@ -493,6 +510,10 @@ ServerEvents.recipes((event) => {
     // global.researchBuilder = (machineType, recId, inputsI, inputsF, outputsI, duration, cwuT, totalCWU, euT, researched)
     const riftAss = 'riftic_infusion_assembly';
 
+    /**
+     * @param {string} type
+     * @param {string} specializer
+     */
     let uivSpecialRifticHelix = (type, specializer) => {
         researchBuilder(
             riftAss,

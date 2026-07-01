@@ -20,3 +20,11 @@ type OverloadedParameters<T extends (...args: any[]) => any> = T extends {
           : T extends { (...args: infer P1): any }
             ? P1
             : never;
+
+declare namespace internal {
+    type EnumKeys__Impl<T extends abstract new (...args: any) => any> = keyof {
+        [K in keyof T as K extends 'prototype' ? never : T[K] extends InstanceType<T> ? K : never]: K;
+    };
+
+    type EnumKeys<T extends abstract new (...args: any) => any> = EnumKeys__Impl<T> | Lowercase<EnumKeys__Impl<T>>;
+}

@@ -88,7 +88,7 @@ declare namespace internal.kjs.gtceu {
     }
 }
 
-namespace internal.kjs {
+declare namespace internal.kjs {
     import ActiveBlockBuilder = com.gregtechceu.gtceu.integration.kjs.builders.block.ActiveBlockBuilder;
     import CoilBlockBuilder = com.gregtechceu.gtceu.integration.kjs.builders.block.CoilBlockBuilder;
 
@@ -107,48 +107,64 @@ namespace internal.kjs {
             pattern: string[],
             key: Record<string, InputItem__Wrapper>
         ) => GTShapedRecipeSchema$ShapedRecipeJS;
-        assembler: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        assembly_line: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        fluid_heater: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        chemical_reactor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        large_chemical_reactor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        distillation_tower: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        centrifuge: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        canner: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        packer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        research_station: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        distillery: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        fluid_solidifier: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        vacuum_freezer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        circuit_assembler: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        mixer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        extractor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        forge_hammer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        electrolyzer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        electric_blast_furnace: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        cutter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        laser_engraver: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        coke_oven: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        fermenter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        composting: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        composting_factory: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        compressor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        implosion_compressor: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        brewery: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        electromagnetic_separator: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        polarizer: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        chemical_bath: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        macerator: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        autoclave: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        arc_furnace: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        alloy_smelter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        extruder: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        rock_breaker: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        alloy_blast_smelter: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        wiremill: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        bender: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        combustion_generator: (id: ResourceLocation__Wrapper) => GTRecipeJS;
-        steam_turbine: (id: ResourceLocation__Wrapper) => GTRecipeJS;
+        steam_boiler(id: ResourceLocation__Wrapper): GTRecipeJS;
+        electric_furnace(id: ResourceLocation__Wrapper): GTRecipeJS;
+        electric_vanilla_blast_furnace(id: ResourceLocation__Wrapper): GTRecipeJS;
+        electric_smoking_furnace(id: ResourceLocation__Wrapper): GTRecipeJS;
+        alloy_smelter(id: ResourceLocation__Wrapper): GTRecipeJS;
+        arc_furnace(id: ResourceLocation__Wrapper): GTRecipeJS;
+        assembler(id: ResourceLocation__Wrapper): GTRecipeJS;
+        autoclave(id: ResourceLocation__Wrapper): GTRecipeJS;
+        bender(id: ResourceLocation__Wrapper): GTRecipeJS;
+        brewery(id: ResourceLocation__Wrapper): GTRecipeJS;
+        macerator(id: ResourceLocation__Wrapper): GTRecipeJS;
+        canner(id: ResourceLocation__Wrapper): GTRecipeJS;
+        centrifuge(id: ResourceLocation__Wrapper): GTRecipeJS;
+        chemical_bath(id: ResourceLocation__Wrapper): GTRecipeJS;
+        chemical_reactor(id: ResourceLocation__Wrapper): GTRecipeJS;
+        compressor(id: ResourceLocation__Wrapper): GTRecipeJS;
+        cutter(id: ResourceLocation__Wrapper): GTRecipeJS;
+        distillery(id: ResourceLocation__Wrapper): GTRecipeJS;
+        electrolyzer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        electromagnetic_separator(id: ResourceLocation__Wrapper): GTRecipeJS;
+        extractor(id: ResourceLocation__Wrapper): GTRecipeJS;
+        extruder(id: ResourceLocation__Wrapper): GTRecipeJS;
+        fermenter(id: ResourceLocation__Wrapper): GTRecipeJS;
+        fluid_heater(id: ResourceLocation__Wrapper): GTRecipeJS;
+        fluid_solidifier(id: ResourceLocation__Wrapper): GTRecipeJS;
+        forge_hammer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        forming_press(id: ResourceLocation__Wrapper): GTRecipeJS;
+        lathe(id: ResourceLocation__Wrapper): GTRecipeJS;
+        mixer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        ore_washer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        packer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        polarizer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        laser_engraver(id: ResourceLocation__Wrapper): GTRecipeJS;
+        sifter(id: ResourceLocation__Wrapper): GTRecipeJS;
+        thermal_centrifuge(id: ResourceLocation__Wrapper): GTRecipeJS;
+        wiremill(id: ResourceLocation__Wrapper): GTRecipeJS;
+        circuit_assembler(id: ResourceLocation__Wrapper): GTRecipeJS;
+        gas_collector(id: ResourceLocation__Wrapper): GTRecipeJS;
+        air_scrubber(id: ResourceLocation__Wrapper): GTRecipeJS;
+        research_station(id: ResourceLocation__Wrapper): GTRecipeJS;
+        rock_breaker(id: ResourceLocation__Wrapper): GTRecipeJS;
+        scanner(id: ResourceLocation__Wrapper): GTRecipeJS;
+        combustion_generator(id: ResourceLocation__Wrapper): GTRecipeJS;
+        gas_turbine(id: ResourceLocation__Wrapper): GTRecipeJS;
+        steam_turbine(id: ResourceLocation__Wrapper): GTRecipeJS;
+        plasma_generator(id: ResourceLocation__Wrapper): GTRecipeJS;
+        large_boiler(id: ResourceLocation__Wrapper): GTRecipeJS;
+        coke_oven(id: ResourceLocation__Wrapper): GTRecipeJS;
+        primitive_blast_furnace(id: ResourceLocation__Wrapper): GTRecipeJS;
+        electric_blast_furnace(id: ResourceLocation__Wrapper): GTRecipeJS;
+        distillation_tower(id: ResourceLocation__Wrapper): GTRecipeJS;
+        pyrolyse_oven(id: ResourceLocation__Wrapper): GTRecipeJS;
+        cracker(id: ResourceLocation__Wrapper): GTRecipeJS;
+        implosion_compressor(id: ResourceLocation__Wrapper): GTRecipeJS;
+        vacuum_freezer(id: ResourceLocation__Wrapper): GTRecipeJS;
+        assembly_line(id: ResourceLocation__Wrapper): GTRecipeJS;
+        large_chemical_reactor(id: ResourceLocation__Wrapper): GTRecipeJS;
+        fusion_reactor(id: ResourceLocation__Wrapper): GTRecipeJS;
     }
 
     interface RecipeFunctions {
