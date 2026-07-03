@@ -53,4 +53,17 @@ StartupEvents.registry('block', (event) => {
         .tagBlock('mineable/pickaxe')
         .tagBlock('minecraft:needs_iron_tool')
         .textureAll('kubejs:block/casings/basic/machine_casing_polycarbonate');
+
+    event
+        .create('stainless_steel_firebox_casing', 'gtceu:active')
+        .hardness(5)
+        .resistance(10)
+        .soundType('metal')
+        .requiresTool(true)
+        .noValidSpawns(true)
+        .firebox(
+            'gtceu:block/casings/solid/machine_casing_clean_stainless_steel',
+            'kubejs:block/casings/basic/machine_casing_firebox_stainless_steel',
+            'gtceu:block/casings/solid/machine_casing_clean_stainless_steel'
+        );
 });
