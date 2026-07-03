@@ -1,4 +1,4 @@
-namespace internal.com.startechnology.start_core.recipe {
+declare namespace internal.com.startechnology.start_core.recipe {
     import RecipeModifier = internal.com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
 
     class StarTRecipeModifiers {
@@ -16,7 +16,7 @@ namespace internal.com.startechnology.start_core.recipe {
     }
 }
 
-namespace internal.kjs {
+declare namespace internal.kjs {
     interface LoadableClasses {
         'com.startechnology.start_core.recipe.StarTRecipeModifiers': typeof internal.com.startechnology.start_core.recipe.StarTRecipeModifiers;
     }

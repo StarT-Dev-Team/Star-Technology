@@ -1,34 +1,39 @@
-namespace internal.dev.latvian.mods.kubejs.misc {
+declare namespace internal.dev.latvian.mods.kubejs.misc {
     import BuilderBase = registry.BuilderBase;
     import MobEffect = net.minecraft.world.effect.MobEffect;
-    import MobEffectCategory__Wrapper = net.minecraft.world.effect.MobEffectCategory__Wrapper;
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
-    import AttributeModifier$Operation__Wrapper = net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation__Wrapper;
-    import Color__Wrapper = rhino.mod.util.color;
+    import MobEffectCategory = net.minecraft.world.effect.MobEffectCategory;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import AttributeModifier$Operation = net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation;
+    import Color = rhino.mod.util.color.Color;
 
-    class MobEffectBuilder extends BuilderBase<MobEffect> {
+    interface MobEffectBuilder extends $object<
+        'dev.latvian.mods.kubejs.misc.MobEffectBuilder',
+        BuilderBase<MobEffect>
+    > {
         modifyAttribute(
-            attribute: ResourceLocation__Wrapper,
+            attribute: $wrapped<ResourceLocation>,
             identifier: string,
             d: number,
-            operation: AttributeModifier$Operation__Wrapper
+            operation: $wrapped<AttributeModifier$Operation>
         ): this;
-        category(c: MobEffectCategory__Wrapper): this;
+        category(c: $wrapped<MobEffectCategory>): this;
         harmful(): this;
         beneficial(): this;
-        effectTick(effectTick: MobEffectBuilder$EffectTickCallback__Wrapper): this;
-        color(color: Color__Wrapper): this;
+        effectTick(effectTick: $wrapped<MobEffectBuilder$EffectTickCallback>): this;
+        color(color: $wrapped<Color>): this;
     }
 
-    const __MobEffectBuilder$EffectTickCallback: unique symbol;
-    interface MobEffectBuilder$EffectTickCallback {
-        [__MobEffectBuilder$EffectTickCallback]: 0;
+    import LivingEntity = net.minecraft.world.entity.LivingEntity;
+
+    interface MobEffectBuilder$EffectTickCallback extends $object<{
+        name: 'dev.latvian.mods.kubejs.misc.MobEffectBuilder$EffectTickCallback';
+        functionalInterface: 'applyEffectTick';
+    }> {
         applyEffectTick(livingEntity: LivingEntity, level: number): void;
     }
 
-    type MobEffectBuilder$EffectTickCallback__Wrapper =
-        | MobEffectBuilder$EffectTickCallback
-        | MobEffectBuilder$EffectTickCallback['applyEffectTick'];
-
-    class BasicMobEffect$Builder extends MobEffectBuilder {}
+    interface BasicMobEffect$Builder extends $object<
+        'dev.latvian.mods.kubejs.misc.BasicMobEffect$Builder',
+        MobEffectBuilder
+    > {}
 }

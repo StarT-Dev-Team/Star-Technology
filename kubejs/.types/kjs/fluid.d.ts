@@ -1,7 +1,7 @@
-namespace internal.dev.latvian.mods.kubejs.fluid {
+declare namespace internal.dev.latvian.mods.kubejs.fluid {
     import ReplacementMatch = recipe.ReplacementMatch;
 
-    interface FluidLike extends ReplacementMatch {
+    interface FluidLike extends $object<'dev.latvian.mods.kubejs.fluid.FluidLike', ReplacementMatch> {
         readonly __dev_latvian_mods_kubejs_fluid_FluidLike: unique symbol;
         getAmount(): number;
         get amount(): number;
@@ -12,60 +12,50 @@ namespace internal.dev.latvian.mods.kubejs.fluid {
 
     import InputReplacement = recipe.InputReplacement;
 
-    interface InputFluid extends FluidLike, InputReplacement {
+    interface InputFluid extends $object<'dev.latvian.mods.kubejs.fluid.InputFluid', FluidLike, InputReplacement> {
         readonly __dev_latvian_mods_kubejs_fluid_InputFluid: unique symbol;
     }
 
     import OutputReplacement = recipe.OutputReplacement;
 
-    interface OutputFluid extends FluidLike, OutputReplacement {
+    interface OutputFluid extends $object<'dev.latvian.mods.kubejs.fluid.OutputFluid', FluidLike, OutputReplacement> {
         readonly __dev_latvian_mods_kubejs_fluid_OutputFluid: unique symbol;
     }
 
     import FluidStack = architectury.fluid.FluidStack;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
-    import Fluid = net.minecraft.world.level.material.Fluid;
 
-    interface FluidStackJS extends FluidLike, InputReplacement {}
-    class FluidStackJS implements FluidLike, InputReplacement {
+    interface FluidStackJS extends $object<'dev.latvian.mods.kubejs.fluid.FluidStackJS', FluidLike, InputReplacement> {
         readonly __dev_latvian_mods_kubejs_fluid_FluidStackJS: unique symbol;
         getId(): string;
-        getTags(): Collection<ResourceLocation>;
+        getTags(): ResourceLocation[];
         getFluidStack(): FluidStack;
     }
 
-    import JsonElement = com.google.gson.JsonElement;
-
-    type FluidStackJS__Wrapper =
-        | FluidStackJS
-        | FluidStack
-        | Fluid
-        | ResourceLocation__Wrapper
-        | JsonElement
-        | { fluid: string; amount?: number; count?: number; nbt?: unknown };
-
-    import BuilderBase = registry.BuilderBase;
+    import BuilderBase__Blueprint = registry.BuilderBase__Blueprint;
     import FlowingFluid = net.minecraft.world.level.material.FlowingFluid;
-    import Rarity__Wrapper = net.minecraft.world.item.Rarity__Wrapper;
-    import Color__Wrapper = rhino.mod.util.color;
+    import Rarity = net.minecraft.world.item.Rarity;
+    import Color = rhino.mod.util.color.Color;
 
-    class FluidBuilder extends BuilderBase<FlowingFluid> {
-        color(color: Color__Wrapper): this;
-        bucketColor(bucketColor: Color__Wrapper): this;
+    interface FluidBuilder extends $object<
+        'dev.latvian.mods.kubejs.fluid.FluidBuilder',
+        BuilderBase__Blueprint<FlowingFluid, FluidBuilder>
+    > {
+        color(color: $wrapped<Color>): this;
+        bucketColor(bucketColor: $wrapped<Color>): this;
         builtinTextures(): this;
-        stillTexture(id: ResourceLocation__Wrapper): this;
-        flowingTexture(id: ResourceLocation__Wrapper): this;
+        stillTexture(id: $wrapped<ResourceLocation>): this;
+        flowingTexture(id: $wrapped<ResourceLocation>): this;
         renderType(l: string): this;
         translucent(): this;
-        thickTexture(color: Color__Wrapper): this;
-        thinTexture(color: Color__Wrapper): this;
-        luminosity(luminosity: number);
-        density(density: number);
-        temperature(temperature: number);
-        viscosity(viscosity: number);
+        thickTexture(color: $wrapped<Color>): this;
+        thinTexture(color: $wrapped<Color>): this;
+        luminosity(luminosity: number): this;
+        density(density: number): this;
+        temperature(temperature: number): this;
+        viscosity(viscosity: number): this;
         gaseous(): this;
-        rarity(rarity: Rarity__Wrapper);
+        rarity(rarity: $wrapped<Rarity>): this;
         noBucket(): this;
         noBlock(): this;
     }

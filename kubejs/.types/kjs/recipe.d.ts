@@ -2,14 +2,10 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
     import EventJS = event.EventJS;
     import RecipeFunctions = kjs.RecipeFunctions;
     import RecipeFunctions_minecraft = kjs.RecipeFunctions_minecraft;
-    import RecipeFilter__Wrapper = dev.latvian.mods.kubejs.recipe.filter.RecipeFilter__Wrapper;
-    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
+    import RecipeFilter = dev.latvian.mods.kubejs.recipe.filter.RecipeFilter;
+    import Consumer = java.util.function_.Consumer;
 
-    interface RecipesEventJS extends EventJS {
-        readonly __dev_latvian_mods_kubejs_recipe_RecipesEventJS: unique symbol;
-    }
-
-    class RecipesEventJS extends EventJS {
+    interface RecipesEventJS extends $object<'dev.latvian.mods.kubejs.recipe.RecipesEventJS', EventJS> {
         getRecipes(): RecipeFunctions;
         get recipes(): RecipeFunctions;
 
@@ -26,23 +22,23 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
         // smithingTrim: RecipeFunctions_minecraft['smithing_trim'];
         custom(json: object): void;
 
-        remove(filter: RecipeFilter__Wrapper): void;
+        remove(filter: $wrapped<RecipeFilter>): void;
         replaceInput(
-            filter: RecipeFilter__Wrapper,
-            match: ReplacementMatch__Wrapper,
-            with_: InputReplacement__Wrapper
+            filter: $wrapped<RecipeFilter>,
+            match: $wrapped<ReplacementMatch>,
+            with_: $wrapped<InputReplacement>
         ): void;
         replaceOutput(
-            filter: RecipeFilter__Wrapper,
-            match: ReplacementMatch__Wrapper,
-            with_: OutputReplacement__Wrapper
+            filter: $wrapped<RecipeFilter>,
+            match: $wrapped<ReplacementMatch>,
+            with_: $wrapped<OutputReplacement>
         ): void;
-        forEachRecipe(filter: RecipeFilter__Wrapper, consumer: Consumer__Wrapper<RecipeJS>): void;
+        forEachRecipe(filter: $wrapped<RecipeFilter>, consumer: $wrapped<Consumer<RecipeJS>>): void;
     }
 
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
-    import IngredientActionFilter__Wrapper = ingredientaction.IngredientActionFilter__Wrapper;
-    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import IngredientActionFilter = ingredientaction.IngredientActionFilter;
+    import ItemStack = net.minecraft.world.item.ItemStack;
     import JsonObject = com.google.gson.JsonObject;
 
     interface RecipeJS {
@@ -51,66 +47,34 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
 
     class RecipeJS {
         json: JsonObject;
-        id(id: ResourceLocation__Wrapper): this;
-        damageIngredient(filter: IngredientActionFilter__Wrapper, damage: number): this;
-        damageIngredient(filter: IngredientActionFilter__Wrapper): this;
-        replaceIngredient(filter: IngredientActionFilter__Wrapper, item: ItemStack__Wrapper): this;
-        keepIngredient(filter: IngredientActionFilter__Wrapper): this;
-        consumeIngredient(filter: IngredientActionFilter__Wrapper): this;
+        id(id: $wrapped<ResourceLocation>): this;
+        damageIngredient(filter: $wrapped<IngredientActionFilter>, damage: number): this;
+        damageIngredient(filter: $wrapped<IngredientActionFilter>): this;
+        replaceIngredient(filter: $wrapped<IngredientActionFilter>, item: $wrapped<ItemStack>): this;
+        keepIngredient(filter: $wrapped<IngredientActionFilter>): this;
+        consumeIngredient(filter: $wrapped<IngredientActionFilter>): this;
     }
 
-    interface ReplacementMatch {
-        readonly __dev_latvian_mods_kubejs_recipe_ReplacementMatch: unique symbol;
-    }
+    interface ReplacementMatch extends $object<'dev.latvian.mods.kubejs.recipe.ReplacementMatch'> {}
 
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
+    interface InputReplacement extends $object<'dev.latvian.mods.kubejs.recipe.InputReplacement'> {}
 
-    type ReplacementMatch__Wrapper = ReplacementMatch | null | Ingredient__Wrapper;
-
-    interface InputReplacement {
-        readonly __dev_latvian_mods_kubejs_recipe_InputReplacement: unique symbol;
-    }
-
-    import InputItem__Wrapper = item.InputItem__Wrapper;
-
-    type InputReplacement__Wrapper = InputReplacement | InputItem__Wrapper;
-
-    interface OutputReplacement {
-        readonly __dev_latvian_mods_kubejs_recipe_OutputReplacement: unique symbol;
-    }
-
-    import OutputItem__Wrapper = item.OutputItem__Wrapper;
-
-    type OutputReplacement__Wrapper = OutputReplacement | OutputItem__Wrapper;
+    interface OutputReplacement extends $object<'dev.latvian.mods.kubejs.recipe.OutputReplacement'> {}
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.component {
-    import InputItem__Wrapper = dev.latvian.mods.kubejs.item.InputItem__Wrapper;
-    import OutputItem__Wrapper = dev.latvian.mods.kubejs.item.OutputItem__Wrapper;
-    import FluidStackJS__Wrapper = dev.latvian.mods.kubejs.fluid.FluidStackJS__Wrapper;
+    import InputItem = dev.latvian.mods.kubejs.item.InputItem;
+    import OutputItem = dev.latvian.mods.kubejs.item.OutputItem;
+    import FluidStackJS = dev.latvian.mods.kubejs.fluid.FluidStackJS;
 
-    type $InputItemOrFluid = InputItem__Wrapper | FluidStackJS__Wrapper;
+    type $InputItemOrFluid = $wrapped<InputItem> | $wrapped<FluidStackJS>;
     type $InputItemOrFluidArray = $InputItemOrFluid | $InputItemOrFluid[];
-    type $OutputItemOrFluid = OutputItem__Wrapper | FluidStackJS__Wrapper;
+    type $OutputItemOrFluid = $wrapped<OutputItem> | $wrapped<FluidStackJS>;
     type $OutputItemOrFluidArray = $OutputItemOrFluid | $OutputItemOrFluid[];
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.ingredientaction {
-    interface IngredientActionFilter {
-        readonly __dev_latvian_mods_kubejs_recipe_ingredientaction_IngredientActionFilter: unique symbol;
-    }
-
-    class IngredientActionFilter {}
-
-    import Ingredient = net.minecraft.world.item.crafting.Ingredient;
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
-
-    type IngredientActionFilter__Wrapper =
-        | IngredientActionFilter
-        | number
-        | string
-        | Ingredient
-        | { item?: Ingredient__Wrapper; index?: number };
+    interface IngredientActionFilter extends $object<'dev.latvian.mods.kubejs.recipe.ingredientaction.IngredientActionFilter'> {}
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.schema.minecraft {
@@ -120,40 +84,17 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe.schema.minecraft {
 
     class ShapedRecipeSchema$ShapedRecipeJS extends RecipeJS {}
 
-    import InputItem__Wrapper = item.InputItem__Wrapper;
-    import OutputItem__Wrapper = item.OutputItem__Wrapper;
+    import InputItem = item.InputItem;
+    import OutputItem = item.OutputItem;
 
     class CookingRecipeSchema__Impl extends RecipeJS {
-        result(result: OutputItem__Wrapper): this;
-        ingredient(ingredient: InputItem__Wrapper): this;
+        result(result: $wrapped<OutputItem>): this;
+        ingredient(ingredient: $wrapped<InputItem>): this;
         xp(xp: number): this;
         cookingTime(cookingTime: number): this;
     }
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.filter {
-    interface RecipeFilter {
-        readonly __dev_latvian_mods_kubejs_recipe_filter_RecipeFilter: unique symbol;
-    }
-
-    class RecipeFilter {}
-
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
-    import ReplacementMatch__Wrapper = recipe.ReplacementMatch__Wrapper;
-
-    type RecipeFilter__Wrapper =
-        | RecipeFilter
-        | string
-        | RegExp
-        | RecipeFilter__Wrapper[]
-        | {
-              or?: RecipeFilter__Wrapper;
-              not?: RecipeFilter__Wrapper;
-              id?: ResourceLocation__Wrapper | RegExp;
-              type?: ResourceLocation__Wrapper;
-              group?: string;
-              mod?: string;
-              input?: ReplacementMatch__Wrapper;
-              output?: ReplacementMatch__Wrapper;
-          };
+    interface RecipeFilter extends $object<'dev.latvian.mods.kubejs.recipe.filter.RecipeFilter'> {}
 }

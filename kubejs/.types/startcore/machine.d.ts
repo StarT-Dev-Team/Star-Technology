@@ -1,4 +1,4 @@
-namespace internal.com.startechnology.start_core.machine {
+declare namespace internal.com.startechnology.start_core.machine {
     import PartAbility = com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 
     class StarTPartAbility {
@@ -29,7 +29,7 @@ namespace internal.com.startechnology.start_core.machine {
     }
 }
 
-namespace internal.com.startechnology.start_core.machine.threading {
+declare namespace internal.com.startechnology.start_core.machine.threading {
     import TraceabilityPredicate = gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
@@ -37,12 +37,14 @@ namespace internal.com.startechnology.start_core.machine.threading {
         static threadingStatBlocks(): TraceabilityPredicate;
     }
 
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+
     class StarTThreadingCapableMachine extends WorkableElectricMultiblockMachine {
         constructor(holder: IMachineBlockEntity, ...args: any[]);
     }
 }
 
-namespace internal.com.startechnology.start_core.machine.vacuum_pump {
+declare namespace internal.com.startechnology.start_core.machine.vacuum_pump {
     import TraceabilityPredicate = internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 
     class StarTVacuumPumpPredicates {
@@ -50,20 +52,21 @@ namespace internal.com.startechnology.start_core.machine.vacuum_pump {
     }
 }
 
-namespace internal.com.startechnology.start_core.machine.steam {
+declare namespace internal.com.startechnology.start_core.machine.steam {
     import SteamParallelMultiblockMachine = com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine;
 
     class StarTSteamParallelMultiblockMachine extends SteamParallelMultiblockMachine {}
 }
 
-namespace internal.com.startechnology.start_core.machine.boosting {
+declare namespace internal.com.startechnology.start_core.machine.boosting {
     import LargeTurbineMachine = com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
 
     class BoostedPlasmaTurbine extends LargeTurbineMachine {}
 }
 
-namespace internal.com.startechnology.start_core.machine.komaru {
+declare namespace internal.com.startechnology.start_core.machine.komaru {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
     class StarTKomaruFrameMachine extends WorkableElectricMultiblockMachine {
         constructor(holder: IMachineBlockEntity, ...args: any[]);
@@ -72,25 +75,28 @@ namespace internal.com.startechnology.start_core.machine.komaru {
     }
 }
 
-namespace internal.com.startechnology.start_core.machine.draconic_infusion {
+declare namespace internal.com.startechnology.start_core.machine.draconic_infusion {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
     class StarTDraconicInfusionMachine extends WorkableElectricMultiblockMachine {
         constructor(holder: IMachineBlockEntity, ...args: any[]);
     }
 }
 
-namespace internal.com.startechnology.start_core.machine.vcrc {
+declare namespace internal.com.startechnology.start_core.machine.vcrc {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
     class VacuumChemicalReactionChamberMachine extends WorkableElectricMultiblockMachine {
         constructor(holder: IMachineBlockEntity, ...args: any[]);
     }
 }
 
-namespace internal.com.startechnology.start_core.machine.abyssal_containment {
+declare namespace internal.com.startechnology.start_core.machine.abyssal_containment {
     import CleanroomMachine = gregtechceu.gtceu.common.machine.multiblock.electric.CleanroomMachine;
     import CleanroomType = gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
     class StarTAbyssalContainmentMachine extends CleanroomMachine {
         constructor(holder: IMachineBlockEntity, ...args: any[]);
@@ -99,7 +105,7 @@ namespace internal.com.startechnology.start_core.machine.abyssal_containment {
     }
 }
 
-namespace internal.kjs {
+declare namespace internal.kjs {
     interface LoadableClasses {
         'com.startechnology.start_core.machine.StarTPartAbility': typeof internal.com.startechnology.start_core.machine.StarTPartAbility;
         'com.startechnology.start_core.machine.threading.StarTThreadingStatsPredicate': typeof internal.com.startechnology.start_core.machine.threading.StarTThreadingStatsPredicate;

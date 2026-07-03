@@ -1,31 +1,23 @@
-namespace internal.com.google.gson {
-    class JsonElement {
-        __com_google_gson_JsonElement: unique symbol;
-    }
+declare namespace internal.com.google.gson {
+    interface JsonElement extends $object<'com.google.gson.JsonElement'> {}
 
-    import CompoundTag = net.minecraft.nbt.CompoundTag;
-    import JsonSerializable = dev.latvian.mods.rhino.mod.util.JsonSerializable;
+    const JsonElement: $class<JsonElement> & {};
 
-    type JsonElement__Wrapper =
-        | JsonElement
-        | CompoundTag
-        | { [P in string]: JsonElement__Wrapper }
-        | JsonSerializable
-        | string
-        | boolean
-        | number
-        | null;
-
-    class JsonObject extends JsonElement {
-        __com_google_gson_JsonObject: unique symbol;
-
-        constructor();
-        add(property: string, value: JsonElement__Wrapper): void;
+    interface JsonObject extends $object<'com.google.gson.JsonObject', JsonElement> {
+        add(property: string, value: $wrapped<JsonElement>): void;
         remove(property: string): JsonElement;
     }
+
+    const JsonObject: $class<JsonObject> & {
+        new (): JsonObject;
+    };
+
+    interface JsonArray extends $object<'com.google.gson.JsonArray', JsonElement> {}
+
+    interface JsonPrimitive extends $object<'com.google.gson.JsonPrimitive', JsonElement> {}
 }
 
-namespace internal.kjs {
+declare namespace internal.kjs {
     interface LoadableClasses {
         'com.google.gson.JsonObject': typeof internal.com.google.gson.JsonObject;
     }

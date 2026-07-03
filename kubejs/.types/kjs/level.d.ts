@@ -1,9 +1,9 @@
 declare namespace internal.dev.latvian.mods.kubejs.level {
     import Level = net.minecraft.world.level.Level;
     import BlockPos = net.minecraft.core.BlockPos;
-    import CompoundTag__Wrapper = net.minecraft.nbt.CompoundTag__Wrapper;
-    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
-    import Direction__Wrapper = net.minecraft.core.Direction__Wrapper;
+    import CompoundTag = net.minecraft.nbt.CompoundTag;
+    import ItemStack = net.minecraft.world.item.ItemStack;
+    import Direction = net.minecraft.core.Direction;
 
     interface BlockContainerJS {
         readonly __dev_latvian_mods_kubejs_level_BlockContainerJS: unique symbol;
@@ -18,18 +18,14 @@ declare namespace internal.dev.latvian.mods.kubejs.level {
         get pos(): BlockPos;
         getId(): string;
         get id(): string;
-        mergeEntityData(tag: CompoundTag__Wrapper | null): void;
-        popItemFromFace(item: ItemStack__Wrapper, direction: Direction__Wrapper): void;
+        mergeEntityData(tag: $wrapped<CompoundTag> | null): void;
+        popItemFromFace(item: $wrapped<ItemStack>, direction: $wrapped<Direction>): void;
     }
 
     import EventJS = event.EventJS;
     import MinecraftServer = net.minecraft.server.MinecraftServer;
 
-    interface LevelEventJS extends EventJS {
-        readonly __dev_latvian_mods_kubejs_level_LevelEventJS: unique symbol;
-    }
-
-    abstract class LevelEventJS extends EventJS {
+    interface LevelEventJS extends $object<'dev.latvian.mods.kubejs.level.LevelEventJS', EventJS> {
         getLevel(): Level;
         get level(): Level;
         getServer(): MinecraftServer;

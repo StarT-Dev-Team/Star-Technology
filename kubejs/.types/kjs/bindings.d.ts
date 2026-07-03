@@ -8,12 +8,15 @@ declare namespace internal.dev.latvian.mods.kubejs.bindings {
         static isEmpty(component: Component): boolean;
         static empty(): MutableComponent;
         static join(...texts: Component[]): MutableComponent;
+        static join(texts: Component[]): MutableComponent;
         static string(text: string): MutableComponent;
         static literal(text: string): MutableComponent;
         static translate(key: string): MutableComponent;
         static translate(key: string, ...objects: any[]): MutableComponent;
+        static translate(key: string, objects: any[]): MutableComponent;
         static translatable(key: string): MutableComponent;
         static translatable(key: string, ...objects: any[]): MutableComponent;
+        static translatable(key: string, objects: any[]): MutableComponent;
         static keybind(keybind: string): MutableComponent;
         static score(selector: string, objective: string): MutableComponent;
         static selector(selector: string): MutableComponent;
@@ -37,36 +40,33 @@ declare namespace internal.dev.latvian.mods.kubejs.bindings {
     }
 
     import ItemStack = net.minecraft.world.item.ItemStack;
-    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
-    import CompoundTag__Wrapper = net.minecraft.nbt.CompoundTag__Wrapper;
+    import CompoundTag = net.minecraft.nbt.CompoundTag;
 
     const ItemWrapper: {
-        of(in_: ItemStack__Wrapper): ItemStack;
-        of(in_: ItemStack__Wrapper, count: number): ItemStack;
-        of(in_: ItemStack__Wrapper, tag: CompoundTag__Wrapper): ItemStack;
-        of(in_: ItemStack__Wrapper, count: number, tag: CompoundTag__Wrapper): ItemStack;
-        withNBT(in_: ItemStack__Wrapper, nbt: CompoundTag__Wrapper): ItemStack;
+        of(in_: $wrapped<ItemStack>): ItemStack;
+        of(in_: $wrapped<ItemStack>, count: number): ItemStack;
+        of(in_: $wrapped<ItemStack>, tag: $wrapped<CompoundTag>): ItemStack;
+        of(in_: $wrapped<ItemStack>, count: number, tag: $wrapped<CompoundTag>): ItemStack;
+        withNBT(in_: $wrapped<ItemStack>, nbt: $wrapped<CompoundTag>): ItemStack;
         getList(): ItemStack[];
     };
 
     import Ingredient = net.minecraft.world.item.crafting.Ingredient;
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
     import InputItem = item.InputItem;
 
     const IngredientWrapper: {
         none: Ingredient;
         all: Ingredient;
-        of(ingredient: Ingredient__Wrapper): Ingredient;
-        of(ingredient: Ingredient__Wrapper, count: number): InputItem;
+        of(ingredient: $wrapped<Ingredient>): Ingredient;
+        of(ingredient: $wrapped<Ingredient>, count: number): InputItem;
     };
 
     import FluidStackJS = fluid.FluidStackJS;
-    import FluidStackJS__Wrapper = fluid.FluidStackJS__Wrapper;
 
     const FluidWrapper: {
-        of(o_: FluidStackJS__Wrapper): FluidStackJS;
-        of(o_: FluidStackJS__Wrapper, amount: number): FluidStackJS;
-        of(o_: FluidStackJS__Wrapper, nbt: CompoundTag__Wrapper): FluidStackJS;
-        of(o_: FluidStackJS__Wrapper, amount: CompoundTag__Wrapper, nbt: CompoundTag__Wrapper): FluidStackJS;
+        of(o_: $wrapped<FluidStackJS>): FluidStackJS;
+        of(o_: $wrapped<FluidStackJS>, amount: number): FluidStackJS;
+        of(o_: $wrapped<FluidStackJS>, nbt: $wrapped<CompoundTag>): FluidStackJS;
+        of(o_: $wrapped<FluidStackJS>, amount: $wrapped<CompoundTag>, nbt: $wrapped<CompoundTag>): FluidStackJS;
     };
 }

@@ -1,24 +1,28 @@
+declare namespace internal.net.minecraft.world {
+    interface Container extends $object<'net.minecraft.world.Container'> {}
+}
+
 declare namespace internal.net.minecraft.world.level {
-    import BlockPos__Wrapper = core.BlockPos;
+    import BlockPos = core.BlockPos;
     import Player = entity.player.Player;
-    import SoundEvent__Wrapper = sounds.SoundEvent__Wrapper;
-    import SoundSource__Wrapper = sounds.SoundSource__Wrapper;
+    import SoundEvent = sounds.SoundEvent;
+    import SoundSource = sounds.SoundSource;
 
     interface LevelAccessor__overloads$playSound {
-        (player: Player | null, pos: BlockPos__Wrapper, sound: SoundEvent__Wrapper, source: SoundSource__Wrapper): void;
         (
             player: Player | null,
-            pos: BlockPos__Wrapper,
-            sound: SoundEvent__Wrapper,
-            source: SoundSource__Wrapper,
+            pos: $wrapped<BlockPos>,
+            sound: $wrapped<SoundEvent>,
+            source: $wrapped<SoundSource>
+        ): void;
+        (
+            player: Player | null,
+            pos: $wrapped<BlockPos>,
+            sound: $wrapped<SoundEvent>,
+            source: $wrapped<SoundSource>,
             volume: number,
             pitch: number
         ): void;
-    }
-
-    interface LevelAccessor {
-        readonly __net_minecraft_world_level_LevelAccessor: unique symbol;
-        playSound: LevelAccessor__overloads$playSound;
     }
 
     import Entity = entity.Entity;
@@ -26,9 +30,9 @@ declare namespace internal.net.minecraft.world.level {
     interface Level__overloads$playSound extends LevelAccessor__overloads$playSound {
         (
             player: Player | null,
-            pos: BlockPos__Wrapper,
-            sound: SoundEvent__Wrapper,
-            category: SoundSource__Wrapper,
+            pos: $wrapped<BlockPos>,
+            sound: $wrapped<SoundEvent>,
+            category: $wrapped<SoundSource>,
             volume: number,
             pitch: number
         ): void;
@@ -37,34 +41,34 @@ declare namespace internal.net.minecraft.world.level {
             x: number,
             y: number,
             z: number,
-            sound: SoundEvent__Wrapper,
-            category: SoundSource__Wrapper,
+            sound: $wrapped<SoundEvent>,
+            category: $wrapped<SoundSource>,
             volume: number,
             pitch: number
         ): void;
         (
             player: Player | null,
             entity: Entity,
-            event: SoundEvent__Wrapper,
-            category: SoundSource__Wrapper,
+            event: $wrapped<SoundEvent>,
+            category: $wrapped<SoundSource>,
             volume: number,
             pitch: number
         ): void;
     }
 
-    interface Level extends LevelAccessor {
-        readonly __net_minecraft_world_level_Level: unique symbol;
+    interface LevelAccessor extends $object<'net.minecraft.world.level.LevelAccessor'> {
+        playSound: LevelAccessor__overloads$playSound;
     }
 
-    class Level implements LevelAccessor {
+    interface Level extends $object<'net.minecraft.world.level.Level', LevelAccessor> {
         playSound: Level__overloads$playSound;
     }
 
-    interface ChunkPos {
-        readonly __net_minecraft_world_level_ChunkPos: unique symbol;
-    }
+    const Level: $class<Level> & {};
 
-    class ChunkPos {}
+    interface ChunkPos extends $object<'net.minecraft.world.level.ChunkPos'> {}
+
+    const ChunkPos: $class<ChunkPos> & {};
 
     import Item = item.Item;
 
@@ -81,156 +85,146 @@ declare namespace internal.kjs {
 }
 
 declare namespace internal.net.minecraft.world.level.block {
-    import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
+    import ResourceLocation = resources.ResourceLocation;
 
-    interface Block {
-        readonly __net_minecraft_world_level_block_Block: unique symbol;
-    }
+    interface Block extends $object<{ name: 'net.minecraft.world.level.block.Block'; registryEntry: true }> {}
 
-    class Block {
-        static getBlock(resourceLocation: ResourceLocation__Wrapper): Block;
-    }
-
-    type Block__Wrapper = Block | string;
+    const Block: $class<Block> & {
+        getBlock(resourceLocation: $wrapped<ResourceLocation>): Block;
+    };
 
     interface EntityBlock {
         readonly __net_minecraft_world_level_block_EntityBlock: unique symbol;
     }
 
-    interface SoundType {
-        readonly __net_minecraft_world_level_block_SoundType: unique symbol;
-    }
+    import Enum = java.lang.Enum;
 
-    class SoundType {
-        static EMPTY: SoundType;
-        static WOOD: SoundType;
-        static GRAVEL: SoundType;
-        static GRASS: SoundType;
-        static LILY_PAD: SoundType;
-        static STONE: SoundType;
-        static METAL: SoundType;
-        static GLASS: SoundType;
-        static WOOL: SoundType;
-        static SAND: SoundType;
-        static SNOW: SoundType;
-        static POWDER_SNOW: SoundType;
-        static LADDER: SoundType;
-        static ANVIL: SoundType;
-        static SLIME_BLOCK: SoundType;
-        static HONEY_BLOCK: SoundType;
-        static WET_GRASS: SoundType;
-        static CORAL_BLOCK: SoundType;
-        static BAMBOO: SoundType;
-        static BAMBOO_SAPLING: SoundType;
-        static SCAFFOLDING: SoundType;
-        static SWEET_BERRY_BUSH: SoundType;
-        static CROP: SoundType;
-        static HARD_CROP: SoundType;
-        static VINE: SoundType;
-        static NETHER_WART: SoundType;
-        static LANTERN: SoundType;
-        static STEM: SoundType;
-        static NYLIUM: SoundType;
-        static FUNGUS: SoundType;
-        static ROOTS: SoundType;
-        static SHROOMLIGHT: SoundType;
-        static WEEPING_VINES: SoundType;
-        static TWISTING_VINES: SoundType;
-        static SOUL_SAND: SoundType;
-        static SOUL_SOIL: SoundType;
-        static BASALT: SoundType;
-        static WART_BLOCK: SoundType;
-        static NETHERRACK: SoundType;
-        static NETHER_BRICKS: SoundType;
-        static NETHER_SPROUTS: SoundType;
-        static NETHER_ORE: SoundType;
-        static BONE_BLOCK: SoundType;
-        static NETHERITE_BLOCK: SoundType;
-        static ANCIENT_DEBRIS: SoundType;
-        static LODESTONE: SoundType;
-        static CHAIN: SoundType;
-        static NETHER_GOLD_ORE: SoundType;
-        static GILDED_BLACKSTONE: SoundType;
-        static CANDLE: SoundType;
-        static AMETHYST: SoundType;
-        static AMETHYST_CLUSTER: SoundType;
-        static SMALL_AMETHYST_BUD: SoundType;
-        static MEDIUM_AMETHYST_BUD: SoundType;
-        static LARGE_AMETHYST_BUD: SoundType;
-        static TUFF: SoundType;
-        static CALCITE: SoundType;
-        static DRIPSTONE_BLOCK: SoundType;
-        static POINTED_DRIPSTONE: SoundType;
-        static COPPER: SoundType;
-        static CAVE_VINES: SoundType;
-        static SPORE_BLOSSOM: SoundType;
-        static AZALEA: SoundType;
-        static FLOWERING_AZALEA: SoundType;
-        static MOSS_CARPET: SoundType;
-        static PINK_PETALS: SoundType;
-        static MOSS: SoundType;
-        static BIG_DRIPLEAF: SoundType;
-        static SMALL_DRIPLEAF: SoundType;
-        static ROOTED_DIRT: SoundType;
-        static HANGING_ROOTS: SoundType;
-        static AZALEA_LEAVES: SoundType;
-        static SCULK_SENSOR: SoundType;
-        static SCULK_CATALYST: SoundType;
-        static SCULK: SoundType;
-        static SCULK_VEIN: SoundType;
-        static SCULK_SHRIEKER: SoundType;
-        static GLOW_LICHEN: SoundType;
-        static DEEPSLATE: SoundType;
-        static DEEPSLATE_BRICKS: SoundType;
-        static DEEPSLATE_TILES: SoundType;
-        static POLISHED_DEEPSLATE: SoundType;
-        static FROGLIGHT: SoundType;
-        static FROGSPAWN: SoundType;
-        static MANGROVE_ROOTS: SoundType;
-        static MUDDY_MANGROVE_ROOTS: SoundType;
-        static MUD: SoundType;
-        static MUD_BRICKS: SoundType;
-        static PACKED_MUD: SoundType;
-        static HANGING_SIGN: SoundType;
-        static NETHER_WOOD_HANGING_SIGN: SoundType;
-        static BAMBOO_WOOD_HANGING_SIGN: SoundType;
-        static BAMBOO_WOOD: SoundType;
-        static NETHER_WOOD: SoundType;
-        static CHERRY_WOOD: SoundType;
-        static CHERRY_SAPLING: SoundType;
-        static CHERRY_LEAVES: SoundType;
-        static CHERRY_WOOD_HANGING_SIGN: SoundType;
-        static CHISELED_BOOKSHELF: SoundType;
-        static SUSPICIOUS_SAND: SoundType;
-        static SUSPICIOUS_GRAVEL: SoundType;
-        static DECORATED_POT: SoundType;
-        static DECORATED_POT_CRACKED: SoundType;
-    }
+    interface SoundType extends $object<
+        { name: 'net.minecraft.world.level.block.SoundType'; enumClass: typeof SoundType },
+        Enum
+    > {}
 
-    type SoundType__EnumKeys = EnumKeys<typeof SoundType>;
-    type SoundType__Wrapper = SoundType | SoundType__EnumKeys | Lowercase<SoundType__EnumKeys>;
+    const SoundType: $class<SoundType> & {
+        EMPTY: SoundType;
+        WOOD: SoundType;
+        GRAVEL: SoundType;
+        GRASS: SoundType;
+        LILY_PAD: SoundType;
+        STONE: SoundType;
+        METAL: SoundType;
+        GLASS: SoundType;
+        WOOL: SoundType;
+        SAND: SoundType;
+        SNOW: SoundType;
+        POWDER_SNOW: SoundType;
+        LADDER: SoundType;
+        ANVIL: SoundType;
+        SLIME_BLOCK: SoundType;
+        HONEY_BLOCK: SoundType;
+        WET_GRASS: SoundType;
+        CORAL_BLOCK: SoundType;
+        BAMBOO: SoundType;
+        BAMBOO_SAPLING: SoundType;
+        SCAFFOLDING: SoundType;
+        SWEET_BERRY_BUSH: SoundType;
+        CROP: SoundType;
+        HARD_CROP: SoundType;
+        VINE: SoundType;
+        NETHER_WART: SoundType;
+        LANTERN: SoundType;
+        STEM: SoundType;
+        NYLIUM: SoundType;
+        FUNGUS: SoundType;
+        ROOTS: SoundType;
+        SHROOMLIGHT: SoundType;
+        WEEPING_VINES: SoundType;
+        TWISTING_VINES: SoundType;
+        SOUL_SAND: SoundType;
+        SOUL_SOIL: SoundType;
+        BASALT: SoundType;
+        WART_BLOCK: SoundType;
+        NETHERRACK: SoundType;
+        NETHER_BRICKS: SoundType;
+        NETHER_SPROUTS: SoundType;
+        NETHER_ORE: SoundType;
+        BONE_BLOCK: SoundType;
+        NETHERITE_BLOCK: SoundType;
+        ANCIENT_DEBRIS: SoundType;
+        LODESTONE: SoundType;
+        CHAIN: SoundType;
+        NETHER_GOLD_ORE: SoundType;
+        GILDED_BLACKSTONE: SoundType;
+        CANDLE: SoundType;
+        AMETHYST: SoundType;
+        AMETHYST_CLUSTER: SoundType;
+        SMALL_AMETHYST_BUD: SoundType;
+        MEDIUM_AMETHYST_BUD: SoundType;
+        LARGE_AMETHYST_BUD: SoundType;
+        TUFF: SoundType;
+        CALCITE: SoundType;
+        DRIPSTONE_BLOCK: SoundType;
+        POINTED_DRIPSTONE: SoundType;
+        COPPER: SoundType;
+        CAVE_VINES: SoundType;
+        SPORE_BLOSSOM: SoundType;
+        AZALEA: SoundType;
+        FLOWERING_AZALEA: SoundType;
+        MOSS_CARPET: SoundType;
+        PINK_PETALS: SoundType;
+        MOSS: SoundType;
+        BIG_DRIPLEAF: SoundType;
+        SMALL_DRIPLEAF: SoundType;
+        ROOTED_DIRT: SoundType;
+        HANGING_ROOTS: SoundType;
+        AZALEA_LEAVES: SoundType;
+        SCULK_SENSOR: SoundType;
+        SCULK_CATALYST: SoundType;
+        SCULK: SoundType;
+        SCULK_VEIN: SoundType;
+        SCULK_SHRIEKER: SoundType;
+        GLOW_LICHEN: SoundType;
+        DEEPSLATE: SoundType;
+        DEEPSLATE_BRICKS: SoundType;
+        DEEPSLATE_TILES: SoundType;
+        POLISHED_DEEPSLATE: SoundType;
+        FROGLIGHT: SoundType;
+        FROGSPAWN: SoundType;
+        MANGROVE_ROOTS: SoundType;
+        MUDDY_MANGROVE_ROOTS: SoundType;
+        MUD: SoundType;
+        MUD_BRICKS: SoundType;
+        PACKED_MUD: SoundType;
+        HANGING_SIGN: SoundType;
+        NETHER_WOOD_HANGING_SIGN: SoundType;
+        BAMBOO_WOOD_HANGING_SIGN: SoundType;
+        BAMBOO_WOOD: SoundType;
+        NETHER_WOOD: SoundType;
+        CHERRY_WOOD: SoundType;
+        CHERRY_SAPLING: SoundType;
+        CHERRY_LEAVES: SoundType;
+        CHERRY_WOOD_HANGING_SIGN: SoundType;
+        CHISELED_BOOKSHELF: SoundType;
+        SUSPICIOUS_SAND: SoundType;
+        SUSPICIOUS_GRAVEL: SoundType;
+        DECORATED_POT: SoundType;
+        DECORATED_POT_CRACKED: SoundType;
+    };
 }
 
 declare namespace internal.net.minecraft.world.item {
-    import ResourceLocation__Wrapper = resources.ResourceLocation__Wrapper;
+    import ResourceLocation = resources.ResourceLocation;
 
-    interface Item {
-        readonly __net_minecraft_world_item_Item: unique symbol;
-    }
-    class Item {
-        static getId(item: Item__Wrapper): number;
-        static byId(id: number): Item;
-    }
+    interface Item extends $object<'net.minecraft.world.item.Item'> {}
 
-    type Item__Wrapper = Item;
+    const Item: $class<Item> & {
+        getId(item: $wrapped<Item>): number;
+        byId(id: number): Item;
+    };
 
     import OutputItem = dev.latvian.mods.kubejs.item.OutputItem;
     import Ingredient = crafting.Ingredient;
 
-    interface ItemStack {
-        readonly __net_minecraft_world_item_ItemStack: unique symbol;
-    }
-    class ItemStack {
+    interface ItemStack extends $object<'net.minecraft.world.item.ItemStack'> {
         isEmpty(): boolean;
 
         getItem(): Item;
@@ -245,62 +239,51 @@ declare namespace internal.net.minecraft.world.item {
         withChance(chance: number): OutputItem;
     }
 
-    // type ItemStack__WrapperString = '' | '-' | `#${string}` | `@${string}` | `%${string}` | string;
-    // type ItemStack__WrapperStringWithCount = `${number}x ${ItemStack__WrapperString}`;
-    type ItemStack__Wrapper = ItemStack | ResourceLocation__Wrapper | RegExp | string;
+    import Enum = java.lang.Enum;
 
-    type UseAnim__EnumKeys =
-        | 'NONE'
-        | 'EAT'
-        | 'DRINK'
-        | 'BLOCK'
-        | 'BOW'
-        | 'SPEAR'
-        | 'CROSSBOW'
-        | 'SPYGLASS'
-        | 'TOOT_HORN'
-        | 'BRUSH'
-        | 'CUSTOM';
+    interface UseAnim extends $object<{ name: 'net.minecraft.world.item.UseAnim'; enumClass: typeof UseAnim }, Enum> {}
 
-    class UseAnim {
-        static NONE: UseAnim;
-        static EAT: UseAnim;
-        static DRINK: UseAnim;
-        static BLOCK: UseAnim;
-        static BOW: UseAnim;
-        static SPEAR: UseAnim;
-        static CROSSBOW: UseAnim;
-        static SPYGLASS: UseAnim;
-        static TOOT_HORN: UseAnim;
-        static BRUSH: UseAnim;
-        static CUSTOM: UseAnim;
-    }
+    const UseAnim: $class<UseAnim> & {
+        NONE: UseAnim;
+        EAT: UseAnim;
+        DRINK: UseAnim;
+        BLOCK: UseAnim;
+        BOW: UseAnim;
+        SPEAR: UseAnim;
+        CROSSBOW: UseAnim;
+        SPYGLASS: UseAnim;
+        TOOT_HORN: UseAnim;
+        BRUSH: UseAnim;
+        CUSTOM: UseAnim;
+    };
 
-    type UseAnim__Wrapper = UseAnim | UseAnim__EnumKeys | Lowercase<UseAnim__EnumKeys>;
+    interface Rarity extends $object<{ name: 'net.minecraft.world.item.Rarity'; enumClass: typeof Rarity }, Enum> {}
 
-    type Rarity__EnumKeys = 'COMMON' | 'UNCOMMON' | 'RARE' | 'EPIC';
+    const Rarity: $class<Rarity> & {
+        COMMON: Rarity;
+        UNCOMMON: Rarity;
+        RARE: Rarity;
+        EPIC: Rarity;
+    };
 
-    class Rarity {
-        static COMMON: Rarity;
-        static UNCOMMON: Rarity;
-        static RARE: Rarity;
-        static EPIC: Rarity;
-    }
-
-    type Rarity__Wrapper = Rarity | Rarity__EnumKeys | Lowercase<Rarity__EnumKeys>;
-
-    class ArmorMaterial {}
-
-    type ArmorMaterial__Wrapper = ArmorMaterial | string;
+    interface ArmorMaterial extends $object<{ name: 'net.minecraft.world.item.ArmorMaterial'; registryEntry: true }> {}
 }
 
 declare namespace internal.net.minecraft.world.item.crafting {
-    class Ingredient {
+    import Container = world.Container;
+
+    interface Recipe<C extends Container> extends $object<'net.minecraft.world.item.crafting.Recipe'> {}
+
+    interface Ingredient extends $object<'net.minecraft.world.item.crafting.Ingredient'> {
         getItems(): ItemStack[];
     }
 
-    type Ingredient__WrapperBase = Ingredient | ItemStack__Wrapper | { item: string } | { tag: string };
-    type Ingredient__Wrapper = Ingredient__WrapperBase | Ingredient__WrapperBase[];
+    import ResourceLocation = resources.ResourceLocation;
+    import Optional = java.util.Optional;
+
+    interface RecipeManager extends $object<'net.minecraft.world.item.crafting.RecipeManager'> {
+        byKey(recipeId: $wrapped<ResourceLocation>): Optional<Recipe<Container>>;
+    }
 }
 
 declare namespace internal.net.minecraft.world.level.block.entity {
@@ -327,79 +310,77 @@ declare namespace internal.net.minecraft.world.level.block.state.properties {
 }
 
 declare namespace internal.net.minecraft.world.level.material {
-    interface Fluid {
-        readonly __net_minecraft_world_level_material_Fluid: unique symbol;
-    }
-    class Fluid {}
+    interface Fluid extends $object<{ name: 'net.minecraft.world.level.material.Fluid'; registryEntry: true }> {}
 
-    type Fluid__Wrapper = Fluid | string;
-
-    class FlowingFluid extends Fluid {}
+    interface FlowingFluid extends $object<'net.minecraft.world.level.material.FlowingFluid', Fluid> {}
 }
 
 declare namespace internal.net.minecraft.world.level.levelgen.structure.templatesystem {
-    abstract class RuleTest {}
+    interface RuleTest extends $object<'net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest'> {}
 
     import BlockStatePredicate = dev.latvian.mods.kubejs.block.state.BlockStatePredicate;
 
-    type RuleTest__Wrapper = RuleTest | BlockStatePredicate | string;
+    type $wrapped<RuleTest> = RuleTest | BlockStatePredicate | string;
 }
 
 declare namespace internal.net.minecraft.world.effect {
-    interface MobEffect {
-        readonly __net_minecraft_world_effect_MobEffect: unique symbol;
-    }
-    class MobEffect {}
+    interface MobEffect extends $object<{ name: 'net.minecraft.world.effect.MobEffect'; registryEntry: true }> {}
 
-    type MobEffectCategory__EnumKeys = 'BENEFICIAL' | 'HARMFUL' | 'NEUTRAL';
+    interface MobEffectCategory extends $object<{
+        name: 'net.minecraft.world.effect.MobEffectCategory';
+        enumClass: typeof MobEffectCategory;
+    }> {}
 
-    interface MobEffectCategory {
-        readonly __net_minecraft_world_effect_MobEffectCategory: unique symbol;
-    }
-    class MobEffectCategory {
-        static BENEFICIAL: MobEffectCategory;
-        static HARMFUL: MobEffectCategory;
-        static NEUTRAL: MobEffectCategory;
-    }
-
-    type MobEffectCategory__Wrapper =
-        | MobEffectCategory
-        | MobEffectCategory__EnumKeys
-        | Lowercase<MobEffectCategory__EnumKeys>;
+    const MobEffectCategory: $class<MobEffectCategory> & {
+        BENEFICIAL: MobEffectCategory;
+        HARMFUL: MobEffectCategory;
+        NEUTRAL: MobEffectCategory;
+    };
 }
 
 declare namespace internal.net.minecraft.world.entity {
-    interface Entity {
-        readonly __net_minecraft_world_entity_Entity: unique symbol;
-    }
-    class Entity {
+    interface Entity extends $object<'net.minecraft.world.entity.Entity'> {
         isCrouching(): boolean;
+        getX(): number;
+        get x(): number;
+        getY(): number;
+        get y(): number;
+        getZ(): number;
+        get z(): number;
     }
 
-    interface LivingEntity extends Entity {
-        readonly __net_minecraft_world_entity_LivingEntity: unique symbol;
+    import MobEffect = net.minecraft.world.effect.MobEffect;
+
+    interface LivingEntity extends $object<'net.minecraft.world.entity.LivingEntity', Entity> {
+        hasEffect(effect: $wrapped<MobEffect>): boolean;
+        getHealth(): number;
+        get health(): number;
     }
-    class LivingEntity extends Entity {}
 }
 
 declare namespace internal.net.minecraft.world.entity.ai.attributes {
-    type AttributeModifier$Operation__EnumKeys = 'ADDITION' | 'MULTIPLY_BASE' | 'MULTIPLY_TOTAL';
+    import Enum = java.lang.Enum;
 
-    class AttributeModifier$Operation {
-        static ADDITION: AttributeModifier$Operation;
-        static MULTIPLY_BASE: AttributeModifier$Operation;
-        static MULTIPLY_TOTAL: AttributeModifier$Operation;
-    }
+    interface AttributeModifier$Operation extends $object<
+        {
+            name: 'net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation';
+            enumClass: typeof AttributeModifier$Operation;
+        },
+        Enum
+    > {}
 
-    type AttributeModifier$Operation__Wrapper =
-        | AttributeModifier$Operation
-        | AttributeModifier$Operation__EnumKeys
-        | Lowercase<AttributeModifier$Operation__EnumKeys>;
+    const AttributeModifier$Operation: $class<AttributeModifier$Operation> & {
+        ADDITION: AttributeModifier$Operation;
+        MULTIPLY_BASE: AttributeModifier$Operation;
+        MULTIPLY_TOTAL: AttributeModifier$Operation;
+    };
 }
 
 declare namespace internal.net.minecraft.world.entity.player {
-    interface Player extends LivingEntity {
-        readonly __net_minecraft_world_entity_player_Player: unique symbol;
+    interface Inventory extends $object<'net.minecraft.world.entity.player.Inventory', java.lang.Object, Container> {}
+
+    interface Player extends $object<'net.minecraft.world.entity.player.Player', LivingEntity> {
+        getInventory(): Inventory;
+        get inventory(): Inventory;
     }
-    class Player extends LivingEntity {}
 }

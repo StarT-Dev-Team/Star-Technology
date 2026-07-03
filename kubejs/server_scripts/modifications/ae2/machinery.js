@@ -1,7 +1,7 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    /** @typedef {internal.dev.latvian.mods.kubejs.item.InputItem__Wrapper} ItemInput */
+    /** @typedef {internal.$wrapped<internal.dev.latvian.mods.kubejs.item.InputItem>} ItemInput */
 
     /**
      * @param {string} id1

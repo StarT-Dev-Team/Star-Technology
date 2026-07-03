@@ -1,7 +1,7 @@
 // priority 1000
 
 /**
- * @param {internal.kjs.gtceu.ElementEventContext} event
+ * @param {internal.kjs.gtceu.ElementRegistryEvent} event
  * @returns {(name: string, protons: number, neutrons: number, symbol: string) => void}
  */
 global.elementFunction = (event) => {

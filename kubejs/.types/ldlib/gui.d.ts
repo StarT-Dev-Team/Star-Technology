@@ -1,7 +1,7 @@
 declare namespace internal.com.lowdragmc.lowdraglib.gui.texture {
-    interface IGuiTexture {
-        readonly __com_lowdragmc_lowdraglib_gui_texture_IGuiTexture: unique symbol;
+    import GuiGraphics = net.minecraft.client.gui.IGuiGraphics;
 
+    interface IGuiTexture extends $object<'com.lowdragmc.lowdraglib.gui.texture.IGuiTexture'> {
         draw(
             var1: GuiGraphics,
             var2: number,
@@ -13,17 +13,7 @@ declare namespace internal.com.lowdragmc.lowdraglib.gui.texture {
         ): void;
     }
 
-    abstract class TransformTexture implements IGuiTexture {
-        draw(
-            var1: GuiGraphics,
-            var2: number,
-            var3: number,
-            var4: number,
-            var5: number,
-            var6: number,
-            var7: number
-        ): void;
-
+    interface TransformTexture extends IGuiTexture {
         drawInternal(
             var1: GuiGraphics,
             var2: number,
@@ -35,31 +25,49 @@ declare namespace internal.com.lowdragmc.lowdraglib.gui.texture {
         ): void;
     }
 
-    class ResourceTexture extends TransformTexture {
+    interface ResourceTexture extends $object<
+        'com.lowdragmc.lowdraglib.gui.texture.ResourceTexture',
+        TransformTexture
+    > {
         getSubTexture(offsetX: number, offsetY: number, width: number, height: number): ResourceTexture;
     }
 
-    class ResourceBorderTexture extends ResourceTexture {}
+    interface ResourceBorderTexture extends $object<
+        'com.lowdragmc.lowdraglib.gui.texture.ResourceBorderTexture',
+        ResourceTexture
+    > {}
 
-    class ProgressTexture extends TransformTexture {}
+    interface ProgressTexture extends $object<
+        'com.lowdragmc.lowdraglib.gui.texture.ProgressTexture',
+        TransformTexture
+    > {}
 
-    class GuiTextureGroup extends TransformTexture {
-        constructor();
-        constructor(textures: IGuiTexture[]);
-        constructor(...textures: IGuiTexture[]);
-    }
+    interface GuiTextureGroup extends $object<
+        'com.lowdragmc.lowdraglib.gui.texture.GuiTextureGroup',
+        TransformTexture
+    > {}
+
+    const GuiTextureGroup: $class<GuiTextureGroup> & {
+        new (): GuiTextureGroup;
+        new (textures: IGuiTexture[]): GuiTextureGroup;
+        new (...textures: IGuiTexture[]): GuiTextureGroup;
+    };
 
     import Enum = java.lang.Enum;
 
-    class ProgressTexture$FillDirection extends Enum {
-        static LEFT_TO_RIGHT: ProgressTexture$FillDirection;
-        static RIGHT_TO_LEFT: ProgressTexture$FillDirection;
-        static UP_TO_DOWN: ProgressTexture$FillDirection;
-        static DOWN_TO_UP: ProgressTexture$FillDirection;
-        static ALWAYS_FULL: ProgressTexture$FillDirection;
-    }
+    interface ProgressTexture$FillDirection extends $object<
+        {
+            name: 'com.lowdragmc.lowdraglib.gui.texture.ProgressTexture$FillDirection';
+            enumClass: ProgressTexture$FillDirection;
+        },
+        Enum
+    > {}
 
-    type ProgressTexture$FillDirection__Wrapper =
-        | ProgressTexture$FillDirection
-        | EnumKeys<typeof ProgressTexture$FillDirection>;
+    const ProgressTexture$FillDirection: $class<ProgressTexture$FillDirection> & {
+        LEFT_TO_RIGHT: ProgressTexture$FillDirection;
+        RIGHT_TO_LEFT: ProgressTexture$FillDirection;
+        UP_TO_DOWN: ProgressTexture$FillDirection;
+        DOWN_TO_UP: ProgressTexture$FillDirection;
+        ALWAYS_FULL: ProgressTexture$FillDirection;
+    };
 }

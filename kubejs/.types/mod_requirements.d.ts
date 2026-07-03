@@ -1,4 +1,4 @@
-namespace global {
+declare namespace global {
     function withArchitectsPalette(
         ifTrue?: (() => void) | null | undefined,
         ifFalse?: (() => void) | null | undefined

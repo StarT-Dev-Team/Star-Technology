@@ -1,15 +1,22 @@
-namespace internal.dev.latvian.mods.kubejs.integration.forge.jei {
+declare namespace internal.dev.latvian.mods.kubejs.integration.forge.jei {
     import EventJS = event.EventJS;
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
-    import FluidStackJS__Wrapper = fluid.FluidStackJS__Wrapper;
+    import Ingredient = net.minecraft.world.item.crafting.Ingredient;
+    import Component = net.minecraft.network.chat.Component;
+    import FluidStackJS = fluid.FluidStackJS;
 
-    class InformationJEIEventJS extends EventJS {
-        addItem(item: Ingredient__Wrapper, s: Component[]): void;
-        addFluid(fluid: FluidStackJS__Wrapper, s: Component[]): void;
-        addForType(type: IIngredientType<T>, o: Object, s: Component[]): void;
+    interface InformationJEIEventJS extends $object<
+        'dev.latvian.mods.kubejs.integration.forge.jei.InformationJEIEventJS',
+        EventJS
+    > {
+        addItem(item: $wrapped<Ingredient>, s: $wrapped<Component>[]): void;
+        addFluid(fluid: $wrapped<FluidStackJS>, s: $wrapped<Component>[]): void;
+        // addForType(type: IIngredientType<T>, o: Object, s: $wrapped<Component>[]): void;
     }
 
-    class HideJEIEventJS<T, E> extends EventJS {
+    interface HideJEIEventJS<T, E> extends $object<
+        'dev.latvian.mods.kubejs.integration.forge.jei.HideJEIEventJS',
+        EventJS
+    > {
         getAllIngredients(): T[];
         hideAll(): void;
         hide(o: E): void;

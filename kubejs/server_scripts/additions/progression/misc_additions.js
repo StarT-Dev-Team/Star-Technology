@@ -175,7 +175,7 @@ ServerEvents.recipes((event) => {
 
 ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
     let { level, player } = event;
-    if (!(level instanceof ServerLevel)) return;
+    if (!(level instanceof $ServerLevel)) return;
     let registryAccess = level.registryAccess();
     let structureRegistry = registryAccess.registryOrThrow(Registries.STRUCTURE);
     let structureKey = structureRegistry.getResourceKey(structureRegistry.get('minecraft:ruined_portal_nether')).get();

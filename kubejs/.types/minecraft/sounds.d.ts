@@ -1,10 +1,5 @@
 declare namespace internal.net.minecraft.sounds {
-    interface SoundEvent {
-        readonly __net_minecraft_sounds_SoundEvent: unique symbol;
-    }
-    class SoundEvent {}
-
-    type SoundEvent__Wrapper = SoundEvent | string;
+    interface SoundEvent extends $object<{ name: 'net.minecraft.sounds.SoundEvent'; registryEntry: true }> {}
 
     type SoundSource__EnumKeys =
         | 'MASTER'
@@ -18,22 +13,21 @@ declare namespace internal.net.minecraft.sounds {
         | 'AMBIENT'
         | 'VOICE';
 
-    interface SoundSource {
-        readonly __net_minecraft_sounds_SoundSource: unique symbol;
-    }
+    interface SoundSource extends $object<{
+        name: 'net.minecraft.sounds.SoundSource';
+        enumClass: typeof SoundSource;
+    }> {}
 
-    class SoundSource {
-        static MASTER: SoundSource;
-        static MUSIC: SoundSource;
-        static RECORDS: SoundSource;
-        static WEATHER: SoundSource;
-        static BLOCKS: SoundSource;
-        static HOSTILE: SoundSource;
-        static NEUTRAL: SoundSource;
-        static PLAYERS: SoundSource;
-        static AMBIENT: SoundSource;
-        static VOICE: SoundSource;
-    }
-
-    type SoundSource__Wrapper = SoundSource | SoundSource__EnumKeys | Lowercase<SoundSource__EnumKeys>;
+    const SoundSource: $class<SoundSource> & {
+        MASTER: SoundSource;
+        MUSIC: SoundSource;
+        RECORDS: SoundSource;
+        WEATHER: SoundSource;
+        BLOCKS: SoundSource;
+        HOSTILE: SoundSource;
+        NEUTRAL: SoundSource;
+        PLAYERS: SoundSource;
+        AMBIENT: SoundSource;
+        VOICE: SoundSource;
+    };
 }

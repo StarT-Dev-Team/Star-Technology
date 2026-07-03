@@ -1,30 +1,20 @@
 declare namespace internal.net.minecraft.core {
     import Enum = java.lang.Enum;
 
-    interface Direction {
-        readonly __net_minecraft_core_Direction: unique symbol;
-    }
+    interface Direction extends $object<{ name: 'net.minecraft.core.Direction'; enumClass: typeof Direction }, Enum> {}
 
-    class Direction extends Enum {
-        static DOWN: Direction;
-        static UP: Direction;
-        static NORTH: Direction;
-        static SOUTH: Direction;
-        static WEST: Direction;
-        static EAST: Direction;
-    }
+    const Direction: $class<Direction> & {
+        DOWN: Direction;
+        UP: Direction;
+        NORTH: Direction;
+        SOUTH: Direction;
+        WEST: Direction;
+        EAST: Direction;
+    };
 
-    type Direction__Wrapper = Direction | EnumKeys<typeof Direction>;
+    interface BlockPos extends $object<'net.minecraft.core.BlockPos'> {}
 
-    interface BlockPos {
-        readonly __net_minecraft_core_BlockPos: unique symbol;
-    }
-
-    class BlockPos {}
-
-    import BlockContainerJS = dev.latvian.mods.kubejs.level.BlockContainerJS;
-
-    type BlockPos__Wrapper = BlockPos | [number, number, number] | BlockContainerJS;
+    const BlockPos: $class<BlockPos> & {};
 }
 
 declare namespace internal.kjs {

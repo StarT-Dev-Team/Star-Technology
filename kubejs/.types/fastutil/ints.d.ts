@@ -1,10 +1,9 @@
-namespace internal.it.unimi.dsi.fastutil.ints {
-    const __Int2IntFunction: unique symbol;
-    interface Int2IntFunction {
-        [__Int2IntFunction]: 0;
+declare namespace internal.it.unimi.dsi.fastutil.ints {
+    interface Int2IntFunction extends $object<{
+        name: 'it.unimi.dsi.fastutil.ints.Int2IntFunction';
+        functionalInterface: 'get';
+    }> {
         get(key: number): number;
-        defaultReturnValue(): number; // this is a default implementation
+        defaultReturnValue(): number;
     }
-
-    type Int2IntFunction__Wrapper = Int2IntFunction | ((key: number) => number);
 }

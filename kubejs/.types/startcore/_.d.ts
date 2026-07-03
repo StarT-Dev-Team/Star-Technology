@@ -5,22 +5,22 @@ declare namespace internal.kjs {
         'gtceu:fusion_reflector': FusionReflectorBlockBuilder;
     }
 
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import GTRecipeJS = com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS;
 
     interface RecipeFunctions_gtceu {
-        reflector_fusion_reactor(id: ResourceLocation__Wrapper): GTRecipeJS;
-        reflector_fusion_reactor(id: ResourceLocation__Wrapper): GTRecipeJS;
-        bacterial_breeding_vat(id: ResourceLocation__Wrapper): GTRecipeJS;
-        abyssal_containment(id: ResourceLocation__Wrapper): GTRecipeJS;
-        bacterial_runic_mutator(id: ResourceLocation__Wrapper): GTRecipeJS;
-        bacterial_hydrocarbon_harvester(id: ResourceLocation__Wrapper): GTRecipeJS;
-        vacuum_chemical_reaction_chamber(id: ResourceLocation__Wrapper): GTRecipeJS;
-        abyssal_harvester(id: ResourceLocation__Wrapper): GTRecipeJS;
-        solar_energy(id: ResourceLocation__Wrapper): GTRecipeJS;
-        titan_forge(id: ResourceLocation__Wrapper): GTRecipeJS;
-        modular_rocket_module(id: ResourceLocation__Wrapper): GTRecipeJS;
-        modular_combustion_frame(id: ResourceLocation__Wrapper): GTRecipeJS;
-        hellforge(id: ResourceLocation__Wrapper): GTRecipeJS;
+        reflector_fusion_reactor(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        reflector_fusion_reactor(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        bacterial_breeding_vat(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        abyssal_containment(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        bacterial_runic_mutator(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        bacterial_hydrocarbon_harvester(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        vacuum_chemical_reaction_chamber(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        abyssal_harvester(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        solar_energy(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        titan_forge(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        modular_rocket_module(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        modular_combustion_frame(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        hellforge(id: $wrapped<ResourceLocation>): GTRecipeJS;
     }
 }

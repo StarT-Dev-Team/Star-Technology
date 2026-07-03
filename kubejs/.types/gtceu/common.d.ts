@@ -1,4 +1,4 @@
-namespace internal.com.gregtechceu.gtceu.common.data {
+declare namespace internal.com.gregtechceu.gtceu.common.data {
     import Material = api.data.chemical.material.Material;
 
     class GTMaterials {
@@ -1070,7 +1070,7 @@ namespace internal.com.gregtechceu.gtceu.common.data {
     }
 }
 
-namespace internal.com.gregtechceu.gtceu.common.data.machines {
+declare namespace internal.com.gregtechceu.gtceu.common.data.machines {
     import MachineDefinition = api.machine.MachineDefinition;
     import MultiblockMachineDefinition = api.machine.MultiblockMachineDefinition;
 
@@ -1103,16 +1103,16 @@ namespace internal.com.gregtechceu.gtceu.common.data.machines {
     }
 }
 
-namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.part {
+declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.part {
     import IMachineBlockEntity = api.machine.IMachineBlockEntity;
     import TieredIOPartMachine = api.machine.multiblock.part.TieredIOPartMachine;
-    import IO__Wrapper = internal.com.gregtechceu.gtceu.api.capability.recipe.IO__Wrapper;
+    import IO = internal.com.gregtechceu.gtceu.api.capability.recipe.IO;
 
     class FluidHatchPartMachine extends TieredIOPartMachine {
         constructor(
             holder: IMachineBlockEntity,
             tier: number,
-            io: IO__Wrapper,
+            io: $wrapped<IO>,
             initialCapacity: number,
             slots: number,
             ...args: unknown[]
@@ -1120,7 +1120,7 @@ namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.part {
         constructor(
             holder: IMachineBlockEntity,
             tier: number,
-            io: IO__Wrapper,
+            io: $wrapped<IO>,
             initialCapacity: number,
             slots: number,
             args: unknown[]
@@ -1130,12 +1130,14 @@ namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.part {
     import TieredPartMachine = api.machine.multiblock.part.TieredPartMachine;
     class AutoMaintenanceHatchPartMachine extends TieredPartMachine {}
 
+    import CleanroomType = api.machine.multiblock.CleanroomType;
+
     class CleaningMaintenanceHatchPartMachine extends AutoMaintenanceHatchPartMachine {
         constructor(holder: IMachineBlockEntity, cleanroomType: CleanroomType);
     }
 }
 
-namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.generator {
+declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.generator {
     import WorkableElectricMultiblockMachine = api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = api.machine.IMachineBlockEntity;
 
@@ -1144,7 +1146,7 @@ namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.generator {
     }
 }
 
-namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.steam {
+declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.steam {
     import IMachineBlockEntity = api.machine.IMachineBlockEntity;
     import WorkableElectricMultiblockMachine = api.machine.multiblock.WorkableElectricMultiblockMachine;
     import MetaMachine = api.machine.MetaMachine;
@@ -1159,26 +1161,32 @@ namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.steam {
     }
 }
 
-namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.electric {
+declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.electric {
     import WorkableElectricMultiblockMachine = api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = api.machine.IMachineBlockEntity;
-    import IMachineBlockEntity = java.util.Comparator;
+    import Comparator = java.util.Comparator;
     import MultiblockControllerMachine = api.machine.multiblock.MultiblockControllerMachine;
+    import IMultiPart = api.machine.feature.multiblock.IMultiPart;
+
+    interface AssemblyLineMachine extends WorkableElectricMultiblockMachine {
+        readonly __com_gregtechceu_gtceu_common_machine_multiblock_electric_AssemblyLineMachine: unique symbol;
+    }
 
     class AssemblyLineMachine extends WorkableElectricMultiblockMachine {
-        readonly __com_gregtechceu_gtceu_common_machine_multiblock_electric_AssemblyLineMachine: unique symbol;
         constructor(holder: IMachineBlockEntity, allowCircuitSlots: boolean);
         constructor(holder: IMachineBlockEntity);
 
         static partSorter(mc: MultiblockControllerMachine): Comparator<IMultiPart>;
     }
 
-    class CleanroomMachine extends WorkableElectricMultiblockMachine {
+    interface CleanroomMachine extends WorkableElectricMultiblockMachine {
         readonly __com_gregtechceu_gtceu_common_machine_multiblock_electric_CleanroomMachine: unique symbol;
     }
+
+    class CleanroomMachine extends WorkableElectricMultiblockMachine {}
 }
 
-namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.electric.research {
+declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.electric.research {
     import WorkableElectricMultiblockMachine = api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = api.machine.IMachineBlockEntity;
 
@@ -1187,7 +1195,7 @@ namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.electric.rese
     }
 }
 
-namespace internal.kjs {
+declare namespace internal.kjs {
     interface LoadableClasses {
         'com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.OpticalComputationMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.electric.research.OpticalComputationMachine;

@@ -1,12 +1,10 @@
-namespace internal.dev.latvian.mods.kubejs.util {
-    class ScheduledEvents$ScheduledEvent {
-        readonly __dev_latvian_mods_kubejs_util_ScheduledEvents$ScheduledEvent: unique symbol;
-    }
+declare namespace internal.dev.latvian.mods.kubejs.util {
+    interface ScheduledEvents$ScheduledEvent extends $object<'dev.latvian.mods.kubejs.util.ScheduledEvents$ScheduledEvent'> {}
 
-    class ScheduledEvents$Callback {
-        readonly __dev_latvian_mods_kubejs_util_ScheduledEvents$Callback: unique symbol;
+    interface ScheduledEvents$Callback extends $object<{
+        name: 'dev.latvian.mods.kubejs.util.ScheduledEvents$Callback';
+        functionalInterface: 'onCallback';
+    }> {
         onCallback(event: ScheduledEvents$ScheduledEvent): void;
     }
-
-    type ScheduledEvents$Callback__Wrapper = ScheduledEvents$Callback | ScheduledEvents$Callback['onCallback'];
 }

@@ -1,21 +1,35 @@
-namespace internal.dev.latvian.mods.kubejs.server.tag {
+declare namespace internal.dev.latvian.mods.kubejs.server {
+    import ReloadableServerResources = net.minecraft.server.ReloadableServerResources;
+
+    const KubeJSReloadListener: {
+        resources: ReloadableServerResources;
+    };
+}
+
+declare namespace internal.dev.latvian.mods.kubejs.server.tag {
     import EventJS = event.EventJS;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
 
-    class TagEventJS extends EventJS {
-        readonly __dev_latvian_mods_kubejs_server_tag_TagEventJS: unique symbol;
-        add(tag: ResourceLocation__Wrapper, filters: TagEventFilter__Wrapper[]): TagWrapper;
-        add(tag: ResourceLocation__Wrapper, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
-        remove(tag: ResourceLocation__Wrapper, filters: TagEventFilter__Wrapper[]): TagWrapper;
-        remove(tag: ResourceLocation__Wrapper, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
+    interface TagEventJS extends $object<'dev.latvian.mods.kubejs.server.tag.TagEventJS', EventJS> {
+        add(tag: $wrapped<ResourceLocation>, filters: TagEventFilter__Wrapper[]): TagWrapper;
+        add(tag: $wrapped<ResourceLocation>, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
+        remove(tag: $wrapped<ResourceLocation>, filters: TagEventFilter__Wrapper[]): TagWrapper;
+        remove(tag: $wrapped<ResourceLocation>, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
+        removeAllTagsFrom(...ids: TagEventFilter__Wrapper[]): void;
+        removeAllTagsFrom(ids: TagEventFilter__Wrapper[]): void;
     }
 
-    interface TagEventFilter {
-        readonly __dev_latvian_mods_kubejs_server_tag_TagEventFilter: unique symbol;
-    }
+    const TagEventJS: $class<TagEventJS> & {};
+
+    interface TagEventFilter extends $object<'dev.latvian.mods.kubejs.server.tag.TagEventFilter'> {}
+
+    interface TagWrapper extends $object<'dev.latvian.mods.kubejs.server.tag.TagWrapper'> {}
 
     type TagEventFilter__Wrapper = TagEventFilter | RegExp | string;
+}
 
-    class TagWrapper {
-        readonly __dev_latvian_mods_kubejs_server_tag_TagWrapper: unique symbol;
+declare namespace internal.kjs {
+    interface LoadableClasses {
+        'dev.latvian.mods.kubejs.server.KubeJSReloadListener': typeof internal.dev.latvian.mods.kubejs.server.KubeJSReloadListener;
     }
 }

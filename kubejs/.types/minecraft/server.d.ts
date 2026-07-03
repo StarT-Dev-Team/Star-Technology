@@ -1,18 +1,23 @@
-namespace internal.net.minecraft.server {
-    class MinecraftServer {
-        readonly __net_minecraft_server_MinecraftServer: unique symbol;
+declare namespace internal.net.minecraft.server {
+    interface MinecraftServer extends $object<'net.minecraft.server.MinecraftServer'> {}
+
+    import RecipeManager = net.minecraft.world.item.crafting.RecipeManager;
+
+    interface ReloadableServerResources extends $object<'net.minecraft.server.ReloadableServerResources'> {
+        getRecipeManager(): RecipeManager;
+        get recipeManager(): RecipeManager;
     }
 }
 
-namespace internal.net.minecraft.server.level {
+declare namespace internal.net.minecraft.server.level {
     import Level = world.level.Level;
 
-    class ServerLevel extends Level {
-        readonly __net_minecraft_server_level_ServerLevel: unique symbol;
-    }
+    interface ServerLevel extends $object<'net.minecraft.server.level.ServerLevel', Level> {}
+
+    const ServerLevel: $class<ServerLevel>;
 }
 
-namespace internal.kjs {
+declare namespace internal.kjs {
     interface LoadableClasses {
         'net.minecraft.server.level.ServerLevel': typeof internal.net.minecraft.server.level.ServerLevel;
     }

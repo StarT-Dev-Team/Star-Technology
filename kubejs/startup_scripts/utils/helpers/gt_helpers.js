@@ -1,6 +1,6 @@
 // priority: 1000
 
-/** @param {internal.net.minecraft.world.item.ItemStack__Wrapper} item */
+/** @param {internal.$wrapped<internal.net.minecraft.world.item.ItemStack>} item */
 global.getGtMaterial = (item) => {
     // eslint-disable-next-line id-match, no-undef
     const ms = ChemicalHelper['getMaterialStack(net.minecraft.world.item.ItemStack)'](Item.of(item));

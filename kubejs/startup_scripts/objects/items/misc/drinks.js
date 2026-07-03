@@ -41,7 +41,8 @@ StartupEvents.registry('item', (event) => {
                 food.effect(effect.id, effect.duration, effect.amplifier, 1) // effect (id), duration (ticks), amplifier (array count), probability
                     .alwaysEdible()
                     .eaten((ctx) => {
-                        ctx.player.give('minecraft:glass_bottle');
+                        let player = /** @type {NonNullable<typeof ctx.player>} */ (ctx.player);
+                        player.give('minecraft:glass_bottle');
                     });
             })
             .tag('create:upright_on_belt')

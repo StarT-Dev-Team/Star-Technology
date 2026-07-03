@@ -1,7 +1,10 @@
-namespace internal.dev.latvian.mods.kubejs.thermal {
+declare namespace internal.dev.latvian.mods.kubejs.thermal {
     import ItemBuilder = item.ItemBuilder;
 
-    class ThermalAugmentItemBuilder extends ItemBuilder {
+    interface ThermalAugmentItemBuilder extends $object<
+        'dev.latvian.mods.kubejs.thermal.ThermalAugmentItemBuilder',
+        ItemBuilder
+    > {
         augmentType(type: 'RF'): ThermalAugmentItemBuilder__RF;
         augmentType(type: 'Dynamo'): ThermalAugmentItemBuilder__Dynamo;
         augmentType(type: 'Fluid'): ThermalAugmentItemBuilder__Fluid;
@@ -28,7 +31,5 @@ namespace internal.dev.latvian.mods.kubejs.thermal {
 
     import RecipeJS = recipe.RecipeJS;
 
-    class ThermalRecipeJS extends RecipeJS {
-        readonly __dev_latvian_mods_kubejs_thermal_ThermalRecipeJS: unique symbol;
-    }
+    interface ThermalRecipeJS extends $object<'dev.latvian.mods.kubejs.thermal.ThermalRecipeJS', RecipeJS> {}
 }

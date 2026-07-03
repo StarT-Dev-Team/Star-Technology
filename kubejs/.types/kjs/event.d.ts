@@ -1,5 +1,5 @@
-namespace internal.dev.latvian.mods.kubejs.event {
-    class EventJS {
+declare namespace internal.dev.latvian.mods.kubejs.event {
+    interface EventJS extends $object<'dev.latvian.mods.kubejs.event.EventJS'> {
         cancel(): unknown;
         success(): unknown;
         exit(): unknown;
@@ -8,5 +8,5 @@ namespace internal.dev.latvian.mods.kubejs.event {
         exit(value: unknown): unknown;
     }
 
-    class StartupEventJS extends EventJS {}
+    interface StartupEventJS extends $object<'dev.latvian.mods.kubejs.event.StartupEventJS', EventJS> {}
 }

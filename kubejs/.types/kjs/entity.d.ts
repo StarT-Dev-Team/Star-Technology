@@ -3,11 +3,7 @@ declare namespace internal.dev.latvian.mods.kubejs.entity {
     import Entity = net.minecraft.world.entity.Entity;
     import Player = net.minecraft.world.entity.player.Player;
 
-    interface EntityEventJS extends LevelEventJS {
-        readonly __dev_latvian_mods_kubejs_entity_EntityEventJS: unique symbol;
-    }
-
-    class EntityEventJS extends LevelEventJS {
+    interface EntityEventJS extends $object<'dev.latvian.mods.kubejs.entity.EntityEventJS', LevelEventJS> {
         getEntity(): Entity;
         get entity(): Entity;
         getPlayer(): Player | null;
@@ -16,12 +12,23 @@ declare namespace internal.dev.latvian.mods.kubejs.entity {
 
     import LivingEntity = net.minecraft.world.entity.LivingEntity;
 
-    interface LivingEntityEventJS extends EntityEventJS {
-        readonly __dev_latvian_mods_kubejs_entity_LivingEntityEventJS: unique symbol;
-    }
-
-    class LivingEntityEventJS extends EntityEventJS {
+    interface LivingEntityEventJS extends $object<'dev.latvian.mods.kubejs.entity.LivingEntityEventJS', EntityEventJS> {
         getEntity(): LivingEntity;
         get entity(): LivingEntity;
+    }
+
+    import MobEffect = net.minecraft.world.effect.MobEffect;
+
+    interface EntityPotionEffectsJS extends $object<'dev.latvian.mods.kubejs.entity.EntityPotionEffectsJS'> {
+        add(mobEffect: $wrapped<MobEffect>): void;
+        add(mobEffect: $wrapped<MobEffect>, duration: number): void;
+        add(mobEffect: $wrapped<MobEffect>, duration: number, amplifier: number): void;
+        add(
+            mobEffect: $wrapped<MobEffect>,
+            duration: number,
+            amplifier: number,
+            ambient: boolean,
+            showParticles: boolean
+        ): void;
     }
 }

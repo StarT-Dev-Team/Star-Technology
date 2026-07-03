@@ -297,7 +297,7 @@
 
         /** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.Material} Material */
         /** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag} MaterialFlag */
-        /** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet__Wrapper} MaterialIconSet */
+        /** @typedef {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet>} MaterialIconSet */
         /** @typedef {OverloadedParameters<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder["fluidPipeProperties"]>} ParamFluidPipeProperties */
         /** @typedef {OverloadedParameters<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder["blastTemp"]>} ParamBlastTemp */
         /** @typedef {OverloadedParameters<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder["cableProperties"]>} ParamCableProperties */

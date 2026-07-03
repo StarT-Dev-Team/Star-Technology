@@ -1,6 +1,5 @@
 declare namespace internal.dev.latvian.mods.kubejs.core {
     import ItemStackSet = item.ItemStackSet;
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
     import Ingredient = net.minecraft.world.item.crafting.Ingredient;
 
     interface IngredientKJS {
@@ -8,7 +7,7 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
         get stacks(): ItemStackSet;
         getDisplayStacks(): ItemStackSet;
         get displayStacks(): ItemStackSet;
-        subtract(other: Ingredient__Wrapper): Ingredient;
+        subtract(other: $wrapped<Ingredient>): Ingredient;
     }
 
     interface MinecraftServerKJS extends MinecraftEnvironmentKJS {
@@ -16,25 +15,34 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
         runCommandSilent(command: string): number;
     }
 
-    import ScheduledEvents$Callback__Wrapper = dev.latvian.mods.kubejs.util.ScheduledEvents$Callback__Wrapper;
+    import ScheduledEvents$Callback = dev.latvian.mods.kubejs.util.ScheduledEvents$Callback;
     import ScheduledEvents$ScheduledEvent = dev.latvian.mods.kubejs.util.ScheduledEvents$ScheduledEvent;
 
     interface MinecraftEnvironmentKJS {
-        scheduleInTicks(ticks: number, callback: ScheduledEvents$Callback__Wrapper): ScheduledEvents$ScheduledEvent;
+        scheduleInTicks(ticks: number, callback: $wrapped<ScheduledEvents$Callback>): ScheduledEvents$ScheduledEvent;
     }
 
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
 
     interface ItemStackKJS {
         getId(): string;
         get id(): string;
-        hasTag(tag: ResourceLocation__Wrapper): boolean;
+        hasTag(tag: $wrapped<ResourceLocation>): boolean;
     }
 
-    import Component__Wrapper = net.minecraft.network.chat.Component__Wrapper;
+    import Component = net.minecraft.network.chat.Component;
+    import EntityPotionEffectsJS = entity.EntityPotionEffectsJS;
+    import Level = net.minecraft.world.level.Level;
+    import CompoundTag = net.minecraft.nbt.CompoundTag;
 
     interface EntityKJS {
-        tell(message: Component__Wrapper): void;
+        tell(message: $wrapped<Component>): void;
+        getPotionEffects(): EntityPotionEffectsJS;
+        get potionEffects(): EntityPotionEffectsJS;
+        getLevel(): Level;
+        get level(): Level;
+        getNbt(): $reverseWrapped<CompoundTag>;
+        get nbt(): $reverseWrapped<CompoundTag>;
     }
 
     import ItemStack = net.minecraft.world.item.ItemStack;
@@ -43,10 +51,20 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
         swing(): void;
         getMainHandItem(): ItemStack;
         get mainHandItem(): ItemStack;
+        getOffHandItem(): ItemStack;
+        get offHandItem(): ItemStack;
+        getHeadArmorItem(): ItemStack;
+        get headArmorItem(): ItemStack;
+        getChestArmorItem(): ItemStack;
+        get chestArmorItem(): ItemStack;
+        getLegsArmorItem(): ItemStack;
+        get legsArmorItem(): ItemStack;
+        getFeetArmorItem(): ItemStack;
+        get feetArmorItem(): ItemStack;
     }
 
-    import SoundType__Wrapper = net.minecraft.world.level.block.SoundType;
-    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
+    import SoundType = net.minecraft.world.level.block.SoundType;
+    import Consumer = java.util.function_.Consumer;
     import RandomTickCallbackJS = block.RandomTickCallbackJS;
 
     interface BlockKJS {
@@ -61,10 +79,10 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
         set explosionResistance(v: number);
         setIsRandomlyTicking(v: boolean): void;
         set isRandomlyTicking(v: boolean);
-        setRandomTickCallback(callback: Consumer__Wrapper<RandomTickCallbackJS>): void;
-        set randomTickCallback(callback: Consumer__Wrapper<RandomTickCallbackJS>);
-        setSoundType(v: SoundType__Wrapper): void;
-        set soundType(v: SoundType__Wrapper);
+        setRandomTickCallback(callback: $wrapped<Consumer<RandomTickCallbackJS>>): void;
+        set randomTickCallback(callback: $wrapped<Consumer<RandomTickCallbackJS>>);
+        setSoundType(v: $wrapped<SoundType>): void;
+        set soundType(v: $wrapped<SoundType>);
         setFriction(v: number): void;
         set friction(v: number);
         setSpeedFactor(v: number): void;
@@ -84,6 +102,39 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
     interface IngredientSupplierKJS {
         asIngredient(): Ingredient;
     }
+
+    import MutableComponent = internal.net.minecraft.network.chat.MutableComponent;
+
+    interface ComponentKJS {
+        clickRunCommand(text: string): MutableComponent;
+        clickSuggestCommand(text: string): MutableComponent;
+        clickCopy(text: string): MutableComponent;
+        hover(s: $wrapped<Component> | null): MutableComponent;
+    }
+
+    interface InventoryKJS {
+        isMutable(): boolean;
+        find(): number;
+        find(ingredient: $wrapped<Ingredient>): number;
+        count(): number;
+    }
+
+    interface PlayerKJS {
+        give(item: $wrapped<ItemStack>): void;
+    }
+
+    interface LevelKJS {
+        getName(): Component;
+        get name(): Component;
+        getDimension(): ResourceLocation;
+        get dimension(): ResourceLocation;
+        isOverworld(): boolean;
+    }
+}
+
+declare namespace internal.net.minecraft.world {
+    import InventoryKJS = dev.latvian.mods.kubejs.core.InventoryKJS;
+    interface Container extends InventoryKJS {}
 }
 
 declare namespace internal.net.minecraft.world.item.crafting {
@@ -106,13 +157,29 @@ declare namespace internal.net.minecraft.world.entity {
     interface Entity extends EntityKJS {
         getUsername(): string;
         get username(): string;
+        age: number;
     }
 
     import LivingEntityKJS = dev.latvian.mods.kubejs.core.LivingEntityKJS;
     interface LivingEntity extends LivingEntityKJS {}
 }
 
+declare namespace internal.net.minecraft.world.entity.player {
+    import PlayerKJS = dev.latvian.mods.kubejs.core.PlayerKJS;
+    interface Player extends PlayerKJS {}
+}
+
+declare namespace internal.net.minecraft.world.level {
+    import LevelKJS = dev.latvian.mods.kubejs.core.LevelKJS;
+    interface Level extends LevelKJS {}
+}
+
 declare namespace internal.net.minecraft.world.level.block {
     import BlockKJS = dev.latvian.mods.kubejs.core.BlockKJS;
     interface Block extends BlockKJS {}
+}
+
+declare namespace internal.net.minecraft.network.chat {
+    import ComponentKJS = dev.latvian.mods.kubejs.core.ComponentKJS;
+    interface Component extends ComponentKJS {}
 }

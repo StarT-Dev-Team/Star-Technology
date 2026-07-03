@@ -1,4 +1,4 @@
-namespace internal.dev.architectury.fluid {
+declare namespace internal.dev.architectury.fluid {
     import ForgeFluidStack = net.minecraftforge.fluids.FluidStack;
 
     class FluidStack {

@@ -1,8 +1,7 @@
-namespace internal.net.minecraft.nbt {
-    class CompoundTag {
-        readonly __net_minecraft_nbt_CompoundTag: unique symbol;
-    }
+declare namespace internal.net.minecraft.nbt {
+    interface Tag extends $object<'net.minecraft.nbt.Tag'> {}
 
-    type CompoundTag__Json = { [P in string]: CompoundTag__Json } | string | boolean | number;
-    type CompoundTag__Wrapper = CompoundTag | CompoundTag__Json;
+    interface CompoundTag extends $object<'net.minecraft.nbt.CompoundTag', Tag> {}
+
+    const CompoundTag: $class<CompoundTag> & {};
 }

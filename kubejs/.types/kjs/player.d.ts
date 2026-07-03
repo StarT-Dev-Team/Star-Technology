@@ -2,11 +2,7 @@ declare namespace internal.dev.latvian.mods.kubejs.player {
     import LivingEntityEventJS = entity.LivingEntityEventJS;
     import Player = net.minecraft.world.entity.player.Player;
 
-    interface PlayerEventJS extends LivingEntityEventJS {
-        readonly __dev_latvian_mods_kubejs_player_PlayerEventJS: unique symbol;
-    }
-
-    class PlayerEventJS extends LivingEntityEventJS {
+    interface PlayerEventJS extends $object<'dev.latvian.mods.kubejs.player.PlayerEventJS', LivingEntityEventJS> {
         getEntity(): Player;
         get entity(): Player;
         getPlayer(): Player;
@@ -15,4 +11,19 @@ declare namespace internal.dev.latvian.mods.kubejs.player {
         addGameStage(stage: string): void;
         removeGameStage(stage: string): void;
     }
+
+    interface SimplePlayerEventJS extends $object<
+        'dev.latvian.mods.kubejs.player.SimplePlayerEventJS',
+        PlayerEventJS
+    > {}
+
+    interface PlayerChatDecorateEventJS extends $object<
+        'dev.latvian.mods.kubejs.player.PlayerChatDecorateEventJS',
+        PlayerEventJS
+    > {
+        getMessage(): string;
+        get message(): string;
+    }
+
+    const PlayerChatDecorateEventJS: $class<PlayerChatDecorateEventJS> & {};
 }

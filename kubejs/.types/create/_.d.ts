@@ -1,17 +1,17 @@
-namespace internal.kjs {
+declare namespace internal.kjs {
     import ItemApplicationRecipeJS = dev.latvian.mods.kubejs.create.ProcessingRecipeSchema$ItemApplicationRecipeJS;
     import ProcessingRecipeJS = dev.latvian.mods.kubejs.create.ProcessingRecipeSchema$ProcessingRecipeJS;
     import $InputItemOrFluidArray = dev.latvian.mods.kubejs.recipe.component.$InputItemOrFluidArray;
     import $OutputItemOrFluidArray = dev.latvian.mods.kubejs.recipe.component.$OutputItemOrFluidArray;
 
-    class RecipeFunction_ProcessingUnwrapped extends ProcessingRecipeJS {
+    interface RecipeFunction_ProcessingUnwrapped extends ProcessingRecipeJS {
         processingTime(processingTime: number): this;
         heatRequirement(heatRequirement: 'lowheated'): this;
         heated(): this;
         superheated(): this;
     }
 
-    class RecipeFunction_ProcessingDefault extends ProcessingRecipeJS {
+    interface RecipeFunction_ProcessingDefault extends ProcessingRecipeJS {
         processingTime(processingTime: number): this;
         heatRequirement(heatRequirement: 'lowheated'): this;
         heated(): this;
@@ -48,11 +48,11 @@ namespace internal.kjs {
         ): RecipeFunction_ProcessingDefault;
     }
 
-    class RecipeFunction_CreateVintageHammering extends RecipeFunction_ProcessingDefault {
+    interface RecipeFunction_CreateVintageHammering extends RecipeFunction_ProcessingDefault {
         hammerBlows(blows: number): this;
     }
 
-    class RecipeFunction_CreateVintageCentrifugation extends RecipeFunction_ProcessingDefault {
+    interface RecipeFunction_CreateVintageCentrifugation extends RecipeFunction_ProcessingDefault {
         minimalRPM(rpm: number): this;
     }
 

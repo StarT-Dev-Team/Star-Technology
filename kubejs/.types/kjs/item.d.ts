@@ -1,43 +1,44 @@
 declare namespace internal.dev.latvian.mods.kubejs.item {
     import EventJS = event.EventJS;
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
+    import Ingredient = net.minecraft.world.item.crafting.Ingredient;
     import ItemStack = net.minecraft.world.item.ItemStack;
     import Component = net.minecraft.network.chat.Component;
-    import MutableComponent__Wrapper = net.minecraft.network.chat.MutableComponent__Wrapper;
+    import MutableComponent = net.minecraft.network.chat.MutableComponent;
     import List = java.util.List;
 
-    class ItemTooltipEventJS extends EventJS {
-        add(item: Ingredient__Wrapper, text: MutableComponent__Wrapper | MutableComponent__Wrapper[]): void;
-        addToAll(text: MutableComponent__Wrapper | MutableComponent__Wrapper[]): void;
-        addAdvanced(item: Ingredient__Wrapper, handler: StaticTooltipHandlerFromJS__Wrapper): void;
+    interface ItemTooltipEventJS extends $object<'dev.latvian.mods.kubejs.item.ItemTooltipEventJS', EventJS> {
+        add(item: $wrapped<Ingredient>, text: $wrapped<MutableComponent> | $wrapped<MutableComponent>[]): void;
+        addToAll(text: $wrapped<MutableComponent> | $wrapped<MutableComponent>[]): void;
+        addAdvanced(item: $wrapped<Ingredient>, handler: $wrapped<StaticTooltipHandlerFromJS>): void;
     }
 
-    const __StaticTooltipHandlerFromJS: unique symbol;
-    interface StaticTooltipHandlerFromJS {
-        [__StaticTooltipHandlerFromJS]: 0;
+    interface StaticTooltipHandlerFromJS extends $object<{
+        name: 'dev.latvian.mods.kubejs.item.StaticTooltipHandlerFromJS';
+        functionalInterface: 'accept';
+    }> {
         accept(stack: ItemStack, advanced: boolean, text: List<Component>): void;
     }
 
-    type StaticTooltipHandlerFromJS__Wrapper = StaticTooltipHandlerFromJS | StaticTooltipHandlerFromJS['accept'];
-
     import Item = net.minecraft.world.item.Item;
-    import BuilderBase = registry.BuilderBase;
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
-    import Component__Wrapper = net.minecraft.network.chat.Component__Wrapper;
-    import UseAnim__Wrapper = net.minecraft.world.item.UseAnim__Wrapper;
-    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
-    import Rarity__Wrapper = net.minecraft.world.item.Rarity__Wrapper;
+    import BuilderBase__Blueprint = registry.BuilderBase__Blueprint;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import UseAnim = net.minecraft.world.item.UseAnim;
+    import Consumer = java.util.function_.Consumer;
+    import Rarity = net.minecraft.world.item.Rarity;
 
-    class ItemBuilder extends BuilderBase<Item> {
+    interface ItemBuilder extends $object<
+        'dev.latvian.mods.kubejs.item.ItemBuilder',
+        BuilderBase__Blueprint<Item, ItemBuilder>
+    > {
         maxStackSize(maxStackSize: number): this;
         unstackable(): this;
         maxDamage(maxDamage: number): this;
         burnTime(burnTime: number): this;
-        containerItem(containerItem: ResourceLocation__Wrapper): this;
+        containerItem(containerItem: $wrapped<ResourceLocation>): this;
         // subtypes(fn: Function<ItemStack, Collection<ItemStack>> )
-        rarity(rarity: Rarity__Wrapper): this;
+        rarity(rarity: $wrapped<Rarity>): this;
         glow(glow: boolean): this;
-        tooltip(tooltip: Component__Wrapper): this;
+        tooltip(tooltip: $wrapped<Component>): this;
         // group(@Nullable String g)
         // color(int index, ItemTintFunction color)
         // color(ItemTintFunction callback)
@@ -49,11 +50,11 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
         // barColor(Function<ItemStack, Color> barColor)
         // barWidth(ToIntFunction<ItemStack> barWidth)
         // name(NameCallback name)
-        food(food: Consumer__Wrapper<FoodBuilder>): this;
+        food(food: $wrapped<Consumer<FoodBuilder>>): this;
         // fireResistant(boolean isFireResistant)
         // fireResistant()
         // modifyAttribute(ResourceLocation attribute, String identifier, double d, AttributeModifier.Operation operation)
-        useAnimation(animation: UseAnim__Wrapper): this;
+        useAnimation(animation: $wrapped<UseAnim>): this;
         // useDuration(ToIntFunction<ItemStack> useDuration)
         // use(UseCallback use)
         // finishUsing(FinishUsingCallback finishUsing)
@@ -61,7 +62,7 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
         // hurtEnemy(Predicate<HurtEnemyContext> context)
     }
 
-    import MobEffect__Wrapper = net.minecraft.world.effect.MobEffect;
+    import MobEffect = net.minecraft.world.effect.MobEffect;
 
     class FoodBuilder {
         hunger(h: number): this;
@@ -72,15 +73,15 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
         alwaysEdible(): this;
         fastToEat(fastToEat: boolean): this;
         fastToEat(): this;
-        effect(mobEffectId: ResourceLocation__Wrapper, duration: number, amplifier: number, probability: number): this;
-        removeEffect(mobEffect: MobEffect__Wrapper): this;
-        eaten(e: Consumer__Wrapper<FoodEatenEventJS>): this;
+        effect(mobEffectId: $wrapped<ResourceLocation>, duration: number, amplifier: number, probability: number): this;
+        removeEffect(mobEffect: $wrapped<MobEffect>): this;
+        eaten(e: $wrapped<Consumer<FoodEatenEventJS>>): this;
     }
 
     import Entity = net.minecraft.world.entity.Entity;
     import EntityEventJS = entity.EntityEventJS;
 
-    class FoodEatenEventJS extends EntityEventJS {
+    interface FoodEatenEventJS extends $object<'dev.latvian.mods.kubejs.item.FoodEatenEventJS', EntityEventJS> {
         getEntity(): Entity;
         get entity(): Entity;
         getItem(): ItemStack;
@@ -88,18 +89,19 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
     }
 
     import ArmorMaterial = net.minecraft.world.item.ArmorMaterial;
+    import SoundEvent = net.minecraft.sounds.SoundEvent;
 
-    class MutableArmorTier extends ArmorMaterial {
+    interface MutableArmorTier extends $object<'dev.latvian.mods.kubejs.item.MutableArmorTier', ArmorMaterial> {
         setDurabilityMultiplier(durabilityMultiplier: number): this;
         set durabilityMultiplier(durabilityMultiplier: number);
         setSlotProtections(setSlotProtections: number[]): this;
         set slotProtections(setSlotProtections: number[]);
         setEnchantmentValue(enchantmentValue: number): this;
         set enchantmentValue(enchantmentValue: number);
-        // setEquipSound(soundEvent: SoundEvent): this;
-        // set equipSound(soundEvent: SoundEvent): void;
-        // setRepairIngredient(Ingredient: Ingredient): this;
-        // set repairIngredient(Ingredient: Ingredient): void;
+        setEquipSound(soundEvent: $wrapped<SoundEvent>): this;
+        set equipSound(soundEvent: $wrapped<SoundEvent>);
+        setRepairIngredient(Ingredient: $wrapped<Ingredient>): this;
+        set repairIngredient(Ingredient: $wrapped<Ingredient>);
         setName(name: string): this;
         set name(name: string);
         setToughness(toughness: number): this;
@@ -110,23 +112,13 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
 
     import IngredientSupplierKJS = core.IngredientSupplierKJS;
 
-    interface InputItem extends IngredientSupplierKJS {
-        readonly __dev_latvian_mods_kubejs_item_InputItem: unique symbol;
-    }
+    interface InputItem extends $object<'dev.latvian.mods.kubejs.item.InputItem', IngredientSupplierKJS> {}
 
-    class InputItem implements IngredientSupplierKJS {
-        static of(ingredient: Ingredient__Wrapper, count: number): InputItem;
-    }
+    const InputItem: $class<InputItem> & {
+        of(ingredient: $wrapped<Ingredient>, count: number): InputItem;
+    };
 
-    type InputItem__Wrapper = InputItem | ItemStack | Ingredient__Wrapper;
-
-    interface OutputItem {
-        readonly __dev_latvian_mods_kubejs_item_OutputItem: unique symbol;
-    }
-
-    class OutputItem {}
-
-    type OutputItem__Wrapper = OutputItem | ItemStack | Ingredient__Wrapper;
+    interface OutputItem extends $object<'dev.latvian.mods.kubejs.item.OutputItem'> {}
 
     import Iterable = java.util.Iterable;
 
@@ -135,49 +127,64 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
 
     import PlayerEventJS = player.PlayerEventJS;
 
-    interface ItemClickedEventJS extends PlayerEventJS {
-        readonly __dev_latvian_mods_kubejs_item_ItemClickedEventJS: unique symbol;
-    }
+    interface ItemClickedEventJS extends $object<'dev.latvian.mods.kubejs.item.ItemClickedEventJS', PlayerEventJS> {}
 
-    class ItemClickedEventJS extends PlayerEventJS {}
+    type test = [ItemClickedEventJS['exit']];
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.item.custom {
     import Item = net.minecraft.world.item.Item;
 
-    class BasicItemJS extends Item {}
+    interface BasicItemJS extends $object<'dev.latvian.mods.kubejs.item.custom.BasicItemJS', Item> {}
 
-    class BasicItemJS$Builder extends ItemBuilder {}
+    interface BasicItemJS$Builder extends $object<
+        'dev.latvian.mods.kubejs.item.custom.BasicItemJS$Builder',
+        ItemBuilder
+    > {}
 
     import StartupEventJS = event.StartupEventJS;
-    import Consumer__Wrapper = java.util.function_.Consumer__Wrapper;
-    import MutableA = java.util.function_.Consumer__Wrapper;
-    import ArmorMaterial__Wrapper = net.minecraft.world.item.ArmorMaterial__Wrapper;
+    import Consumer = java.util.function_.Consumer;
+    import ArmorMaterial = net.minecraft.world.item.ArmorMaterial;
 
-    class ItemArmorTierRegistryEventJS extends StartupEventJS {
-        add(id: string, parent: string, tier: Consumer__Wrapper<MutableArmorTier>): this;
-        add(id: string, tier: Consumer__Wrapper<MutableArmorTier>): this;
+    interface ItemArmorTierRegistryEventJS extends $object<
+        'dev.latvian.mods.kubejs.item.custom.ItemArmorTierRegistryEventJS',
+        StartupEventJS
+    > {
+        add(id: string, parent: string, tier: $wrapped<Consumer<MutableArmorTier>>): this;
+        add(id: string, tier: $wrapped<Consumer<MutableArmorTier>>): this;
     }
 
-    class ArmorItemBuilder extends ItemBuilder {
-        tier(tier: ArmorMaterial__Wrapper): this;
-        modifyTier(tier: Consumer__Wrapper<MutableArmorTier>): this;
+    interface ArmorItemBuilder extends $object<'dev.latvian.mods.kubejs.item.custom.ArmorItemBuilder', ItemBuilder> {
+        tier(tier: $wrapped<ArmorMaterial>): this;
+        modifyTier(tier: $wrapped<Consumer<MutableArmorTier>>): this;
     }
 
-    class ArmorItemBuilder$Helmet extends ArmorItemBuilder {}
+    interface ArmorItemBuilder$Helmet extends $object<
+        'dev.latvian.mods.kubejs.item.custom.ArmorItemBuilder$Helmet',
+        ArmorItemBuilder
+    > {}
 
-    class ArmorItemBuilder$Chestplate extends ArmorItemBuilder {}
+    interface ArmorItemBuilder$Chestplate extends $object<
+        'ArmorItemBuilder$dev.latvian.mods.kubejs.item.custom.Chestplate',
+        ArmorItemBuilder
+    > {}
 
-    class ArmorItemBuilder$Leggings extends ArmorItemBuilder {}
+    interface ArmorItemBuilder$Leggings extends $object<
+        'ArmorItemBuilderdev.latvian.mods.kubejs.item.custom.$Leggings',
+        ArmorItemBuilder
+    > {}
 
-    class ArmorItemBuilder$Boots extends ArmorItemBuilder {}
+    interface ArmorItemBuilder$Boots extends $object<
+        'dev.latvian.mods.kubejs.item.custom.ArmorItemBuilder$Boots',
+        ArmorItemBuilder
+    > {}
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.item.creativetab {
     import EventJS = event.EventJS;
-    import Ingredient__Wrapper = net.minecraft.world.item.crafting.Ingredient__Wrapper;
+    import Ingredient = net.minecraft.world.item.crafting.Ingredient;
 
-    class CreativeTabEvent extends EventJS {
-        remove(ingredient: Ingredient__Wrapper): void;
+    interface CreativeTabEvent extends $object<'dev.latvian.mods.kubejs.item.creativetab.CreativeTabEvent', EventJS> {
+        remove(ingredient: $wrapped<Ingredient>): void;
     }
 }

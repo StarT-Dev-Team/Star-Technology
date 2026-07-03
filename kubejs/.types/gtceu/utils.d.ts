@@ -10,10 +10,15 @@ declare namespace internal.com.gregtechceu.gtceu.utils {
 
         formatNumbers(number: number | object): string;
     };
+
+    const GTUtil: {
+        getFloorTierByVoltage(voltage: number): number;
+    };
 }
 
 declare namespace internal.kjs {
     interface LoadableClasses {
         'com.gregtechceu.gtceu.utils.FormattingUtil': typeof internal.com.gregtechceu.gtceu.utils.FormattingUtil;
+        'com.gregtechceu.gtceu.utils.GTUtil': typeof internal.com.gregtechceu.gtceu.utils.GTUtil;
     }
 }

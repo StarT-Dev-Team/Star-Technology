@@ -1,14 +1,17 @@
-namespace internal.net.minecraft.resources {
-    class ResourceLocation {
-        constructor(namespace: string, path: string);
-        constructor(location: string);
-
-        static tryParse(location: string): ResourceLocation | null;
-        static tryBuild(namespace: string, path: string): ResourceLocation | null;
-
+declare namespace internal.net.minecraft.resources {
+    interface ResourceLocation extends $object<'net.minecraft.resources.ResourceLocation'> {
         getPath(): string;
         getNamespace(): string;
     }
 
-    type ResourceLocation__Wrapper = ResourceLocation | string;
+    const ResourceLocation: $class<ResourceLocation> & {
+        new (namespace: string, path: string): ResourceLocation;
+        new (location: string): ResourceLocation;
+        tryParse(location: string): ResourceLocation | null;
+        tryBuild(namespace: string, path: string): ResourceLocation | null;
+    };
+
+    import Comparable = java.lang.Comparable;
+
+    interface ResourceKey<T> extends $object<'net.minecraft.resources.ResourceKey', Comparable<ResourceKey<T>>> {}
 }

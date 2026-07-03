@@ -1,14 +1,10 @@
-namespace internal.dev.latvian.mods.rhino.mod.util {
-    interface JsonSerializable {
-        __dev_latvian_mods_rhino_mod_util_JsonSerializable: unique symbol;
+declare namespace internal.dev.latvian.mods.rhino.mod.util {
+    import JsonElement = com.google.gson.JsonElement;
+
+    interface JsonSerializable extends $object<'dev.latvian.mods.rhino.mod.util.JsonSerializable'> {
         toJson(): JsonElement;
     }
 }
-namespace internal.dev.latvian.mods.rhino.mod.util.color {
-    const __Color: unique symbol;
-    interface Color {
-        [__Color]: 0;
-    }
-
-    type Color__Wrapper = Color | string | number;
+declare namespace internal.dev.latvian.mods.rhino.mod.util.color {
+    interface Color extends $object<'dev.latvian.mods.rhino.mod.util.color.Color'> {}
 }

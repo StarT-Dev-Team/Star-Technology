@@ -219,7 +219,7 @@ global.periodicTableElement = (material, type) => {
 /**
  * @param {string} material
  * @param {number} temperature
- * @param {internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty$GasTier__Wrapper} gasTier
+ * @param {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty$GasTier>} gasTier
  * @param {number} voltage
  * @param {number} duration
  */

@@ -82,45 +82,52 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
     import Enum = internal.java.lang.Enum;
     import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
 
-    class IO extends Enum {
-        static IN: IO;
-        static OUT: IO;
-        static BOTH: IO;
-        static NONE: IO;
-
+    interface IO extends $object<
+        { name: 'com.gregtechceu.gtceu.api.capability.recipe.IO'; enumClass: typeof IO },
+        Enum
+    > {
         get tooltip(): string;
         get icon(): IGuiTexture;
-
-        static values(): IO[];
     }
 
-    type IO__Wrapper = IO | EnumKeys<typeof IO>;
+    const IO: $class<IO> & {
+        IN: IO;
+        OUT: IO;
+        BOTH: IO;
+        NONE: IO;
+        values(): IO[];
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe {
-    interface GTRecipe {
-        readonly __com_gregtechceu_gtceu_api_recipe: unique symbol;
+    import Recipe = net.minecraft.world.item.crafting.Recipe;
+    import Container = net.minecraft.world.Container;
+
+    interface GTRecipe extends $object<'com.gregtechceu.gtceu.api.recipe.GTRecipe', Recipe<Container>> {
+        duration: number;
     }
 
-    class GTRecipe {}
+    const GTRecipe: $class<GTRecipe> & {};
 
-    class GTRecipeType {
+    const RecipeHelper: {
+        getRealEUt(recipe: GTRecipe): number;
+    };
+
+    interface GTRecipeType extends $object<'com.gregtechceu.gtceu.api.recipe.GTRecipeType'> {
         setMaxIOSize(maxInputs: number, maxOutputs: number, maxFluidInputs: number, maxFluidOutputs: number): this;
     }
 
-    type GTRecipeType__Wrapper = string | GTRecipeType;
-
-    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
-    import FluidStack__Wrapper = net.minecraftforge.fluids.FluidStack__Wrapper;
+    import ItemStack = net.minecraft.world.item.ItemStack;
+    import FluidStack = net.minecraftforge.fluids.FluidStack;
 
     interface ResearchRecipeBuilder {
         readonly __com_gregtechceu_gtceu_api_recipe__ResearchRecipeBuilder: unique symbol;
     }
 
     class ResearchRecipeBuilder {
-        researchStack(researchStack: ItemStack__Wrapper): this;
-        researchFluidStack(researchStack: FluidStack__Wrapper): this;
-        dataStack(dataStack: ItemStack__Wrapper): this;
+        researchStack(researchStack: $wrapped<ItemStack>): this;
+        researchFluidStack(researchStack: $wrapped<FluidStack>): this;
+        dataStack(dataStack: $wrapped<ItemStack>): this;
         researchId(researchId: string): this;
         EUt(eut: number): this;
         EUt(eut: number, amperage: number): this;
@@ -145,45 +152,25 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.category {
-    interface GTRecipeCategory {
-        readonly __com_gregtechceu_gtceu_api_recipe_category_GTRecipeCategory: unique symbol;
-    }
-
-    class GTRecipeCategory {}
-
-    type GTRecipeCategory__Wrapper = GTRecipeCategory | string;
+    interface GTRecipeCategory extends $object<'com.gregtechceu.gtceu.api.recipe.category.GTRecipeCategory'> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient {
-    interface EnergyStack$WithIO {
-        readonly __com_gregtechceu_gtceu_api_recipe_ingredient_EnergyStack$WithIO: unique symbol;
-    }
-
-    class EnergyStack$WithIO {}
-
-    type EnergyStack$WithIO__Wrapper =
-        | EnergyStack$WithIO
-        | number
-        | string
-        | { v: number; a: number }
-        | { V: number; A: number };
+    interface EnergyStack$WithIO extends $object<'com.gregtechceu.gtceu.api.recipe.ingredient.EnergyStack$WithIO'> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
     import MetaMachine = machine.MetaMachine;
     import GTRecipe = recipe.GTRecipe;
 
-    const __RecipeModifier: unique symbol;
-    interface RecipeModifier {
-        [__RecipeModifier]: 0;
+    interface RecipeModifier extends $object<{
+        name: 'com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier';
+        functionalInterface: 'getModifier';
+    }> {
         getModifier(machine: MetaMachine, recipe: GTRecipe): ModifierFunction;
     }
 
-    type RecipeModifier__Wrapper = RecipeModifier | ((machine: MetaMachine, recipe: GTRecipe) => ModifierFunction);
-
-    const __ModifierFunction: unique symbol;
-    interface ModifierFunction {
-        [__ModifierFunction]: 0;
+    interface ModifierFunction extends $object<'com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction'> {
         apply(recipe: GTRecipe): GTRecipe | null;
     }
 
@@ -198,22 +185,20 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
 declare namespace internal.com.gregtechceu.gtceu.api.data {
     import Enum = java.lang.Enum;
 
-    interface RotationState {
-        readonly __com_gregtechceu_gtceu_api_data_RotationState: unique symbol;
-    }
+    interface RotationState extends $object<'com.gregtechceu.gtceu.api.data.RotationState', Enum> {}
 
-    class RotationState extends Enum {
-        static ALL: RotationState;
-        static NONE: RotationState;
-        static Y_AXIS: RotationState;
-        static NON_Y_AXIS: RotationState;
-    }
+    const RotationState: $class<RotationState> & {
+        ALL: RotationState;
+        NONE: RotationState;
+        Y_AXIS: RotationState;
+        NON_Y_AXIS: RotationState;
+    };
 
-    type RotationState__Wrapper = RotationState | EnumKeys<typeof RotationState>;
+    // type $wrapped<RotationState> = RotationState | EnumKeys<typeof RotationState>;
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.data.chemical {
-    class Element {
+    interface Element extends $object<'com.gregtechceu.gtceu.api.data.chemical.Element'> {
         protons(): number;
         protons(protons: number): this;
         neutrons(): number;
@@ -231,13 +216,11 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical {
         mass(): number;
     }
 
-    type Element__Wrapper = Element | string;
-
-    import ItemStack__Wrapper = net.minecraft.world.item.ItemStack__Wrapper;
+    import ItemStack = net.minecraft.world.item.ItemStack;
     import MaterialStack = material.stack.MaterialStack;
 
     const ChemicalHelper: {
-        'getMaterialStack(net.minecraft.world.item.ItemStack)'(itemStack: ItemStack__Wrapper): MaterialStack;
+        'getMaterialStack(net.minecraft.world.item.ItemStack)'(itemStack: $wrapped<ItemStack>): MaterialStack;
     };
 }
 
@@ -246,13 +229,9 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
     import MaterialFlag = info.MaterialFlag;
     import PropertyKey = properties.PropertyKey;
     import IMaterialProperty = properties.IMaterialProperty;
-    import MaterialStack__Wrapper = material.stack.MaterialStack__Wrapper;
+    import MaterialStack = material.stack.MaterialStack;
 
-    interface Material {
-        readonly __com_gregtechceu_gtceu_api_data_chemical_material_Material: unique symbol;
-    }
-
-    class Material {
+    interface Material extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.Material'> {
         // getMaterialInfo(): MaterialInfo;
         // get materialInfo(): MaterialInfo;
         setMaterialARGB(materialRGB: number): void;
@@ -261,29 +240,31 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
         set materialIconSet(materialIconSet: MaterialIconSet);
         getMaterialIconSet(): MaterialIconSet;
         get materialIconSet(): MaterialIconSet;
+        getMass(): number;
+        get mass(): number;
         addFlags(...flags: MaterialFlag[]): void;
         addFlags(flags: MaterialFlag[]): void;
+        hasFlag(flag: MaterialFlag): boolean;
         setFormula(formula: string): this;
         setFormula(formula: string, withFormatting: boolean): this;
+        hasProperty<T extends IMaterialProperty>(key: PropertyKey<T>): boolean;
+        getProperty<T extends IMaterialProperty>(key: PropertyKey<T>): T;
         setProperty(key: PropertyKey<IMaterialProperty>, property: IMaterialProperty): void;
-        setComponents(...components: MaterialStack__Wrapper[]): this;
-        setComponents(components: MaterialStack__Wrapper[]): this;
+        setComponents(...components: $wrapped<MaterialStack>[]): this;
+        setComponents(components: $wrapped<MaterialStack>[]): this;
     }
 
-    type Material__Wrapper = Material | string;
-
     import BuilderBase = registry.registrate.BuilderBase;
-    import MaterialIconSet__Wrapper = info.MaterialIconSet__Wrapper;
-    import BlastProperty$GasTier__Wrapper = properties.BlastProperty$GasTier__Wrapper;
+    import BlastProperty$GasTier = properties.BlastProperty$GasTier;
     import ToolProperty = properties.ToolProperty;
     import FluidStorageKey = fluids.store.FluidStorageKey;
-    import FluidState__Wrapper = fluids.FluidState__Wrapper;
+    import FluidState = fluids.FluidState;
     import FluidBuilder = fluids.FluidBuilder;
 
     class Material$Builder extends BuilderBase<Material> {
         langValue(name: string): this;
         fluid(): this;
-        fluid(key: FluidStorageKey, state: FluidState__Wrapper): this;
+        fluid(key: FluidStorageKey, state: $wrapped<FluidState>): this;
         fluid(key: FluidStorageKey, builder: FluidBuilder): this;
         liquid(): this;
         liquid(builder: FluidBuilder): this;
@@ -315,9 +296,9 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
         secondaryColor(color: number): this;
         colors(color: number, secondaryColor: number): this;
         colorAverage(): this;
-        iconSet(iconSet: MaterialIconSet__Wrapper | null): this;
-        components(components: Material__Wrapper[]): this;
-        components(...components: Material__Wrapper[]): this;
+        iconSet(iconSet: $wrapped<MaterialIconSet> | null): this;
+        components(components: $wrapped<Material>[]): this;
+        components(...components: $wrapped<Material>[]): this;
         // componentStacks(MaterialStack... components)
         // componentStacks(ImmutableList<MaterialStack> components)
         // kjs$components(MaterialStackWrapper... components)
@@ -327,23 +308,23 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
         // appendFlags(Collection<MaterialFlag> f1, MaterialFlag... f2)
         // ignoredTagPrefixes(TagPrefix... prefixes)
         // customTags(TagKey<Item> key)
-        element(element: Element__Wrapper): this;
+        element(element: $wrapped<Element>): this;
         formula(formula: string): this;
         formula(formula: string, withFormatting: boolean): this;
         toolStats(toolProperty: ToolProperty): this;
         // armorStats(ArmorProperty armorProperty)
         rotorStats(power: number, efficiency: number, damage: number, durability: number): this;
         blastTemp(temp: number): this;
-        blastTemp(temp: number, gasTier: BlastProperty$GasTier__Wrapper): this;
-        blastTemp(temp: number, gasTier: BlastProperty$GasTier__Wrapper, eutOverride: number): this;
+        blastTemp(temp: number, gasTier: $wrapped<BlastProperty$GasTier>): this;
+        blastTemp(temp: number, gasTier: $wrapped<BlastProperty$GasTier>, eutOverride: number): this;
         blastTemp(
             temp: number,
-            gasTier: BlastProperty$GasTier__Wrapper,
+            gasTier: $wrapped<BlastProperty$GasTier>,
             eutOverride: number,
             durationOverride: number
         ): this;
         blast(temp: number): this;
-        blast(temp: number, gasTier: BlastProperty$GasTier__Wrapper): this;
+        blast(temp: number, gasTier: $wrapped<BlastProperty$GasTier>): this;
         // blast(UnaryOperator<BlastProperty.Builder> b)
         removeHazard(): this;
         radioactiveHazard(multiplier: number): this;
@@ -355,17 +336,17 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
         ore(emissive: boolean): this;
         ore(oreMultiplier: number, byproductMultiplier: number): this;
         ore(oreMultiplier: number, byproductMultiplier: number, emissive: boolean): this;
-        washedIn(m: Material__Wrapper): this;
-        washedIn(m: Material__Wrapper, washedAmount: number): this;
-        separatedInto(m: Material__Wrapper[]): this;
-        separatedInto(...m: Material__Wrapper[]): this;
-        oreSmeltInto(m: Material__Wrapper): this;
-        polarizesInto(m: Material__Wrapper): this;
-        arcSmeltInto(m: Material__Wrapper): this;
-        macerateInto(m: Material__Wrapper): this;
-        ingotSmeltInto(m: Material__Wrapper): this;
-        addOreByproducts(byproducts: Material__Wrapper[]): this;
-        addOreByproducts(...byproducts: Material__Wrapper[]): this;
+        washedIn(m: $wrapped<Material>): this;
+        washedIn(m: $wrapped<Material>, washedAmount: number): this;
+        separatedInto(m: $wrapped<Material>[]): this;
+        separatedInto(...m: $wrapped<Material>[]): this;
+        oreSmeltInto(m: $wrapped<Material>): this;
+        polarizesInto(m: $wrapped<Material>): this;
+        arcSmeltInto(m: $wrapped<Material>): this;
+        macerateInto(m: $wrapped<Material>): this;
+        ingotSmeltInto(m: $wrapped<Material>): this;
+        addOreByproducts(byproducts: $wrapped<Material>[]): this;
+        addOreByproducts(...byproducts: $wrapped<Material>[]): this;
         cableProperties(voltage: number, amperage: number, loss: number): this;
         cableProperties(voltage: number, amperage: number, loss: number, isSuperCon: boolean): this;
         cableProperties(
@@ -398,10 +379,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
     interface BlastProperty extends IMaterialProperty {}
     class BlastProperty implements IMaterialProperty {
         constructor(blastTemperature: number);
-        constructor(blastTemperature: number, gasTier: BlastProperty$GasTier__Wrapper);
+        constructor(blastTemperature: number, gasTier: $wrapped<BlastProperty$GasTier>);
         constructor(
             blastTemperature: number,
-            gasTier: BlastProperty$GasTier__Wrapper,
+            gasTier: $wrapped<BlastProperty$GasTier>,
             eutOverride: number,
             durationOverride: number,
             vacuumEUtOverride: number,
@@ -410,18 +391,23 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
         constructor();
     }
 
-    class BlastProperty$GasTier {
-        static LOW: BlastProperty$GasTier;
-        static MID: BlastProperty$GasTier;
-        static HIGH: BlastProperty$GasTier;
-        static HIGHER: BlastProperty$GasTier;
-        static HIGHEST: BlastProperty$GasTier;
+    import Enum = java.lang.Enum;
 
-        // getFluid(): FluidIngredient;
-        // get fluid(): FluidIngredient;
-    }
+    interface BlastProperty$GasTier extends $object<
+        {
+            name: 'com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty$GasTier';
+            enumClass: typeof BlastProperty$GasTier;
+        },
+        Enum
+    > {}
 
-    type BlastProperty$GasTier__Wrapper = BlastProperty$GasTier | EnumKeys<typeof BlastProperty$GasTier>;
+    const BlastProperty$GasTier: $class<BlastProperty$GasTier> & {
+        LOW: BlastProperty$GasTier;
+        MID: BlastProperty$GasTier;
+        HIGH: BlastProperty$GasTier;
+        HIGHER: BlastProperty$GasTier;
+        HIGHEST: BlastProperty$GasTier;
+    };
 
     interface DustProperty extends IMaterialProperty {}
     class DustProperty implements IMaterialProperty {}
@@ -562,7 +548,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.stack {
-    class MaterialStack {
+    interface MaterialStack extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack'> {
         material(): Material;
         amount(): number;
         add(amount: number): MaterialStack;
@@ -571,47 +557,42 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.stac
         divide(amount: number): MaterialStack;
         isEmpty(): boolean;
     }
-
-    type MaterialStack__Wrapper = MaterialStack | Material | string;
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.info {
-    const __MaterialIconSet: unique symbol;
-    class MaterialIconSet {
-        static DULL: MaterialIconSet;
-        static METALLIC: MaterialIconSet;
-        static MAGNETIC: MaterialIconSet;
-        static SHINY: MaterialIconSet;
-        static BRIGHT: MaterialIconSet;
-        static DIAMOND: MaterialIconSet;
-        static EMERALD: MaterialIconSet;
-        static GEM_HORIZONTAL: MaterialIconSet;
-        static GEM_VERTICAL: MaterialIconSet;
-        static RUBY: MaterialIconSet;
-        static OPAL: MaterialIconSet;
-        static GLASS: MaterialIconSet;
-        static NETHERSTAR: MaterialIconSet;
-        static FINE: MaterialIconSet;
-        static SAND: MaterialIconSet;
-        static WOOD: MaterialIconSet;
-        static ROUGH: MaterialIconSet;
-        static FLINT: MaterialIconSet;
-        static LIGNITE: MaterialIconSet;
-        static QUARTZ: MaterialIconSet;
-        static CERTUS: MaterialIconSet;
-        static LAPIS: MaterialIconSet;
-        static FLUID: MaterialIconSet;
-        static RADIOACTIVE: MaterialIconSet;
+    interface MaterialIconSet extends $object<{
+        name: 'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet';
+        enumClass: typeof MaterialIconSet;
+    }> {}
 
-        [__MaterialIconSet]: 0;
-    }
+    const MaterialIconSet: $class<MaterialIconSet> & {
+        DULL: MaterialIconSet;
+        METALLIC: MaterialIconSet;
+        MAGNETIC: MaterialIconSet;
+        SHINY: MaterialIconSet;
+        BRIGHT: MaterialIconSet;
+        DIAMOND: MaterialIconSet;
+        EMERALD: MaterialIconSet;
+        GEM_HORIZONTAL: MaterialIconSet;
+        GEM_VERTICAL: MaterialIconSet;
+        RUBY: MaterialIconSet;
+        OPAL: MaterialIconSet;
+        GLASS: MaterialIconSet;
+        NETHERSTAR: MaterialIconSet;
+        FINE: MaterialIconSet;
+        SAND: MaterialIconSet;
+        WOOD: MaterialIconSet;
+        ROUGH: MaterialIconSet;
+        FLINT: MaterialIconSet;
+        LIGNITE: MaterialIconSet;
+        QUARTZ: MaterialIconSet;
+        CERTUS: MaterialIconSet;
+        LAPIS: MaterialIconSet;
+        FLUID: MaterialIconSet;
+        RADIOACTIVE: MaterialIconSet;
+    };
 
-    type MaterialIconSet__Wrapper = MaterialIconSet | string;
-
-    const __MaterialFlag: unique symbol;
-    class MaterialFlag {
-        [__MaterialFlag]: 0;
-    }
+    interface MaterialFlag extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag'> {}
 
     const MaterialFlags: {
         NO_UNIFICATION: MaterialFlag;
@@ -664,25 +645,18 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.info
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.data.worldgen {
-    interface IWorldGenLayer {
-        readonly __com_gregtechceu_gtceu_api_data_worldgen_IWorldGenLayer: unique symbol;
-    }
+    interface IWorldGenLayer extends $object<'com.gregtechceu.gtceu.api.data.worldgen.IWorldGenLayer'> {}
 
     import RuleTest = net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-    import RuleTest__Wrapper = net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest__Wrapper;
 
-    interface IWorldGenLayer$RuleTestSupplier {
-        readonly __com_gregtechceu_gtceu_api_data_worldgen_IWorldGenLayer$RuleTestSupplier: unique symbol;
+    interface IWorldGenLayer$RuleTestSupplier extends $object<'com.gregtechceu.gtceu.api.data.worldgen.IWorldGenLayer$RuleTestSupplier'> {
         get(): RuleTest;
     }
 
-    type IWorldGenLayer$RuleTestSupplier__Wrapper =
-        | IWorldGenLayer$RuleTestSupplier
-        | IWorldGenLayer$RuleTestSupplier['get']
-        | RuleTest__Wrapper;
-
-    interface SimpleWorldGenLayer extends IWorldGenLayer {}
-    class SimpleWorldGenLayer implements IWorldGenLayer {}
+    interface SimpleWorldGenLayer extends $object<
+        'com.gregtechceu.gtceu.api.data.worldgen.IWorldGenLayer',
+        IWorldGenLayer
+    > {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.block {
@@ -717,15 +691,11 @@ declare namespace internal.com.gregtechceu.gtceu.api.block {
 
     import Block = net.minecraft.world.level.block.Block;
 
-    interface ActiveBlock extends Block {
-        readonly __com_gregtechceu_gtceu_api_block_ActiveBlock: unique symbol;
-    }
-    class ActiveBlock extends Block {}
+    interface ActiveBlock extends $object<'com.gregtechceu.gtceu.api.block.ActiveBlock', Block> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.machine {
     import GTRecipeType = recipe.GTRecipeType;
-    import GTRecipeType__Wrapper = recipe.GTRecipeType__Wrapper;
     import IMachineBlock = block.IMachineBlock;
     import Supplier = java.util.function_.Supplier;
     import BlockEntity = net.minecraft.world.level.block.entity.BlockEntity;
@@ -733,16 +703,14 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine {
     interface MachineDefinition extends Supplier<IMachineBlock> {}
     class MachineDefinition implements Supplier<IMachineBlock> {
         getRecipeTypes(): GTRecipeType[];
-        setRecipeTypes(recipeTypes: GTRecipeType__Wrapper[]): void;
+        setRecipeTypes(recipeTypes: $wrapped<GTRecipeType>[]): void;
     }
 
     class MultiblockMachineDefinition extends MachineDefinition {}
 
     class MetaMachine {}
 
-    const __IMachineBlockEntity: unique symbol;
-    interface IMachineBlockEntity {
-        [__IMachineBlockEntity]: 0;
+    interface IMachineBlockEntity extends $object<'com.gregtechceu.gtceu.api.machine.IMachineBlockEntity'> {
         self(): BlockEntity;
     }
 }
@@ -928,7 +896,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
         build(): BlockPattern;
     }
 
-    import Component__Wrapper = net.minecraft.network.chat.Component__Wrapper;
+    import Component = net.minecraft.network.chat.Component;
 
     interface TraceabilityPredicate {
         readonly __com_gregtechceu_gtceu_api_pattern_TraceabilityPredicate: unique symbol;
@@ -943,8 +911,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
         setExactLimit(limit: number): TraceabilityPredicate;
         /** @deprecated */
         setPreviewCount(count: number): TraceabilityPredicate;
-        addTooltips(tips: Component__Wrapper[]): TraceabilityPredicate;
-        addTooltips(...tips: Component__Wrapper[]): TraceabilityPredicate;
+        addTooltips(tips: $wrapped<Component>[]): TraceabilityPredicate;
+        addTooltips(...tips: $wrapped<Component>[]): TraceabilityPredicate;
         or(other: TraceabilityPredicate): TraceabilityPredicate;
         isAny(): boolean;
         isAir(): boolean;
@@ -958,29 +926,29 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
     import Fluid = net.minecraft.world.level.material.Fluid;
     import IMachineBlock = block.IMachineBlock;
     import Block = internal.net.minecraft.world.level.block.Block;
-    import Block__Wrapper = internal.net.minecraft.world.level.block.Block__Wrapper;
     import BlockState = net.minecraft.world.level.block.state.BlockState;
-    import GTRecipeType__Wrapper = api.recipe.GTRecipeType__Wrapper;
+    import GTRecipeType = api.recipe.GTRecipeType;
+    import Material = api.data.chemical.material.Material;
 
     class Predicates {
         static controller(predicate: TraceabilityPredicate): TraceabilityPredicate;
 
         static states(allowedStates: BlockState): TraceabilityPredicate;
 
-        static blocks(...blocks: Block__Wrapper[]): TraceabilityPredicate;
-        static blocks(blocks: Block__Wrapper[]): TraceabilityPredicate;
+        static blocks(...blocks: $wrapped<Block>[]): TraceabilityPredicate;
+        static blocks(blocks: $wrapped<Block>[]): TraceabilityPredicate;
         static blocks(...blocks: IMachineBlock[]): TraceabilityPredicate;
         static blocks(blocks: IMachineBlock[]): TraceabilityPredicate;
 
         static machines(...definitions: MachineDefinition[]): TraceabilityPredicate;
         static machines(definitions: MachineDefinition[]): TraceabilityPredicate;
 
-        static autoAbilities(recipeTypes: GTRecipeType__Wrapper[]): TraceabilityPredicate;
-        static autoAbilities(...recipeTypes: GTRecipeType__Wrapper[]): TraceabilityPredicate;
+        static autoAbilities(recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
+        static autoAbilities(...recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
 
         static blockTag(tag: TagKey<Block>): TraceabilityPredicate;
-        static fluids(fluids: Fluid[]): TraceabilityPredicate;
-        static fluids(...fluids: Fluid[]): TraceabilityPredicate;
+        static fluids(fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
+        static fluids(...fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
         static fluidTag(tag: TagKey<Fluid>): TraceabilityPredicate;
         // static custom(Predicate<MultiblockState> predicate, Supplier<BlockInfo[]> candidates): TraceabilityPredicate;
 
@@ -1002,7 +970,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
 
         static dataHatchPredicate(def: TraceabilityPredicate): TraceabilityPredicate;
 
-        static frames(...frameMaterials: Material[]): TraceabilityPredicate;
+        static frames(...frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
     }
 }
 
@@ -1018,62 +986,83 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
-    import ResourceLocation__Wrapper = net.minecraft.resources.ResourceLocation__Wrapper;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import Supplier = java.util.function_.Supplier;
 
-    interface BuilderBase<T> extends Supplier<T> {}
-    abstract class BuilderBase<T> implements Supplier<T> {
-        id: ResourceLocation__Wrapper;
-        constructor(id: ResourceLocation__Wrapper);
+    interface BuilderBase__Blueprint<T, TSelf> extends $object<
+        'com.gregtechceu.gtceu.api.registry.registrate.BuilderBase',
+        Supplier<T>
+    > {
+        id: $wrapped<ResourceLocation>;
     }
 
-    import Function__Wrapper = java.util.function_.Function__Wrapper;
-    import Supplier__Wrapper = java.util.function_.Supplier__Wrapper;
+    interface BuilderBase<T> extends BuilderBase__Blueprint<T, BuilderBase<T>> {}
+
+    const BuilderBase: $class<BuilderBase<unknown>> & {
+        new <T>(id: $wrapped<ResourceLocation>): BuilderBase<T>;
+    };
+
+    import Function = java.util.function_.Function;
     import BlockPattern = pattern.BlockPattern;
+    import IMachineBlockEntity = machine.IMachineBlockEntity;
     import MetaMachine = machine.MetaMachine;
+    import MachineDefinition = machine.MachineDefinition;
     import MultiblockMachineDefinition = machine.MultiblockMachineDefinition;
     import Component = net.minecraft.network.chat.Component;
     import MultiblockControllerMachine = machine.multiblock.MultiblockControllerMachine;
     import Comparator = java.util.Comparator;
     import Property = net.minecraft.world.level.block.state.properties.Property;
     import PartAbility = machine.multiblock.PartAbility;
-    import RecipeModifier__Wrapper = recipe.modifier.RecipeModifier__Wrapper;
+    import RecipeModifier = recipe.modifier.RecipeModifier;
+    import RotationState = data.RotationState;
+    import GTRecipeType = recipe.GTRecipeType;
+    import Block = net.minecraft.world.level.block.Block;
 
-    class MachineBuilder<T extends MachineDefinition> extends BuilderBase<T> {
-        machine(machine: Function__Wrapper<IMachineBlockEntity, MetaMachine>): this;
-        rotationState(state: RotationState): this;
-        tooltips(components: Component[]): this;
-        paginatedTooltips(pages: Component[][]): this;
-        bottomTooltips(components: Component[]): this;
-        langValue(langValue: string): this;
-        recipeType(types: GTRecipeType__Wrapper): this;
-        abilities(...abilities: PartAbility[]): this;
-        abilities(abilities: PartAbility[]): this;
-        recipeTypes(types: GTRecipeType__Wrapper[]): this;
-        recipeTypes(...types: GTRecipeType__Wrapper[]): this;
-        recipeModifier(modifiers: RecipeModifier__Wrapper): this;
-        recipeModifier(modifiers: RecipeModifier__Wrapper, alwaysRecheck: boolean): this;
-        recipeModifiers(modifiers: RecipeModifier__Wrapper[]): this;
-        recipeModifiers(...modifiers: RecipeModifier__Wrapper[]): this;
-        appearanceBlock(block: Supplier__Wrapper<Block>): this;
-        regressWhenWaiting(regressWhenWaiting: boolean): this;
-        workableCasingModel(baseCasing: ResourceLocation__Wrapper, workableModel: ResourceLocation__Wrapper): this;
-        workableTieredHullModel(workableModel: ResourceLocation__Wrapper): this;
-        editableUI(ui: EditableMachineUI): this;
-        modelPropertyBool(property: Property<boolean>, defaultValue: boolean): this;
-        modelPropertyInt(property: Property<boolean>, defaultValue: number): this;
+    interface MachineBuilder__Blueprint<T extends MachineDefinition, TSelf> extends $object<
+        'com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder',
+        BuilderBase__Blueprint<T, TSelf>
+    > {
+        machine(machine: $wrapped<Function<IMachineBlockEntity, MetaMachine>>): TSelf;
+        rotationState(state: $wrapped<RotationState>): TSelf;
+        tooltips(components: Component[]): TSelf;
+        paginatedTooltips(pages: Component[][]): TSelf;
+        bottomTooltips(components: Component[]): TSelf;
+        langValue(langValue: string): TSelf;
+        recipeType(types: $wrapped<GTRecipeType>): TSelf;
+        abilities(...abilities: PartAbility[]): TSelf;
+        abilities(abilities: PartAbility[]): TSelf;
+        recipeTypes(types: $wrapped<GTRecipeType>[]): TSelf;
+        recipeTypes(...types: $wrapped<GTRecipeType>[]): TSelf;
+        recipeModifier(modifiers: $wrapped<RecipeModifier>): TSelf;
+        recipeModifier(modifiers: $wrapped<RecipeModifier>, alwaysRecheck: boolean): TSelf;
+        recipeModifiers(modifiers: $wrapped<RecipeModifier>[]): TSelf;
+        recipeModifiers(...modifiers: $wrapped<RecipeModifier>[]): TSelf;
+        appearanceBlock(block: $wrapped<Supplier<Block>>): TSelf;
+        regressWhenWaiting(regressWhenWaiting: boolean): TSelf;
+        workableCasingModel(baseCasing: $wrapped<ResourceLocation>, workableModel: $wrapped<ResourceLocation>): TSelf;
+        workableTieredHullModel(workableModel: $wrapped<ResourceLocation>): TSelf;
+        editableUI(ui: EditableMachineUI): TSelf;
+        modelPropertyBool(property: Property<boolean>, defaultValue: boolean): TSelf;
+        modelPropertyInt(property: Property<boolean>, defaultValue: number): TSelf;
     }
 
-    import List = java.util.List;
-    import BiConsumer__Wrapper = java.util.function_.BiConsumer__Wrapper;
+    interface MachineBuilder<T extends MachineDefinition> extends MachineBuilder__Blueprint<T, MachineBuilder<T>> {}
 
-    class MultiblockMachineBuilder extends MachineBuilder<MultiblockMachineDefinition> {
+    import List = java.util.List;
+    import BiConsumer = java.util.function_.BiConsumer;
+    import IMultiController = machine.feature.multiblock.IMultiController;
+    import IMultiPart = machine.feature.multiblock.IMultiPart;
+
+    interface MultiblockMachineBuilder extends $object<
+        'com.gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder',
+        MachineBuilder__Blueprint<MultiblockMachineDefinition, MultiblockMachineBuilder>
+    > {
         generator(generator: boolean): this;
-        pattern(pattern: Function__Wrapper<MultiblockMachineDefinition, BlockPattern>): this;
+        pattern(pattern: $wrapped<Function<MultiblockMachineDefinition, BlockPattern>>): this;
         'partSorter(java.util.function.Function)': (
-            fn: Function__Wrapper<MultiblockControllerMachine, Comparator<IMultiPart>>
+            fn: $wrapped<Function<MultiblockControllerMachine, Comparator<IMultiPart>>>
         ) => this;
-        additionalDisplay(additionalDisplay: BiConsumer__Wrapper<IMultiController, List<Component>>): this;
+        additionalDisplay(additionalDisplay: $wrapped<BiConsumer<IMultiController, List<Component>>>): this;
     }
 }
 
@@ -1407,15 +1396,16 @@ declare namespace internal.com.gregtechceu.gtceu.api.item.tool {
 
 declare namespace internal.com.gregtechceu.gtceu.api.fluids {
     import FluidAttribute = attribute.FluidAttribute;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
 
     class FluidBuilder {
         name(name: string): this;
         translation(translation: string): this;
-        state(state: FluidState__Wrapper): this;
+        state(state: $wrapped<FluidState>): this;
         density(density: number): this;
         burnTime(burnTime: number): this;
-        still(still: ResourceLocation__Wrapper): this;
-        flowing(flowing: ResourceLocation__Wrapper): this;
+        still(still: $wrapped<ResourceLocation>): this;
+        flowing(flowing: $wrapped<ResourceLocation>): this;
         temperature(temperature: number): this;
         color(color: number): this;
         disableColor(): this;
@@ -1434,23 +1424,24 @@ declare namespace internal.com.gregtechceu.gtceu.api.fluids {
     }
 
     import Enum = java.lang.Enum;
+    import TagKey = net.minecraft.tags.TagKey;
+    import Fluid = net.minecraft.world.level.material.Fluid;
 
-    interface FluidState {
-        readonly __com_gregtechceu_gtceu_api_fluids_FluidState: unique symbol;
-    }
-
-    class FluidState extends Enum {
-        static LIQUID: FluidState;
-        static GAS: FluidState;
-        static PLASMA: FluidState;
-
+    interface FluidState extends $object<
+        { name: 'com.gregtechceu.gtceu.api.fluids.FluidState'; enumClass: typeof FluidState },
+        Enum
+    > {
         getTranslationKey(): string;
         get translationKey(): string;
         getTagKey(): TagKey<Fluid>;
         get tagKey(): TagKey<Fluid>;
     }
 
-    type FluidState__Wrapper = FluidState | EnumKeys<typeof FluidState>;
+    const FluidState: $class<FluidState> & {
+        LIQUID: FluidState;
+        GAS: FluidState;
+        PLASMA: FluidState;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.fluids.attribute {
@@ -1478,6 +1469,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.fluids.store {
 
 declare namespace internal.kjs {
     interface LoadableClasses {
+        'com.gregtechceu.gtceu.api.recipe.GTRecipe': typeof internal.com.gregtechceu.gtceu.api.recipe.GTRecipe;
+        'com.gregtechceu.gtceu.api.recipe.RecipeHelper': typeof internal.com.gregtechceu.gtceu.api.recipe.RecipeHelper;
         'com.gregtechceu.gtceu.api.pattern.util.RelativeDirection': typeof internal.com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
         'com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
         'com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition': typeof internal.com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;

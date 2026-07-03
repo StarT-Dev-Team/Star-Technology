@@ -1,14 +1,8 @@
-namespace internal.net.minecraftforge.fluids {
+declare namespace internal.net.minecraftforge.fluids {
     import Fluid = net.minecraft.world.level.material.Fluid;
     import CompoundTag = net.minecraft.nbt.CompoundTag;
 
-    class FluidStack {
-        static EMPTY: FluidStack;
-
-        constructor(fluid: Fluid, amount: number);
-        constructor(fluid: Fluid, amount: number, nbt: CompoundTag);
-        constructor(stack: FluidStack, amount: number);
-
+    interface FluidStack extends $object<'net.minecraftforge.fluids.FluidStack'> {
         getFluid(): Fluid;
         getRawFluid(): Fluid;
         isEmpty(): boolean;
@@ -19,7 +13,10 @@ namespace internal.net.minecraftforge.fluids {
         copy(): FluidStack;
     }
 
-    import FluidStackJS__Wrapper = dev.latvian.mods.kubejs.fluid.FluidStackJS__Wrapper;
-
-    type FluidStack__Wrapper = FluidStack | FluidStackJS__Wrapper;
+    const FluidStack: $class<FluidStack> & {
+        EMPTY: FluidStack;
+        new (fluid: $wrapped<Fluid>, amount: number): FluidStack;
+        new (fluid: $wrapped<Fluid>, amount: number, nbt: $wrapped<CompoundTag>): FluidStack;
+        new (stack: $wrapped<FluidStack>, amount: number): FluidStack;
+    };
 }

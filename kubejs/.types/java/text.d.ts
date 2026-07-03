@@ -1,4 +1,4 @@
-namespace internal.java.text {
+declare namespace internal.java.text {
     class DecimalFormat {
         format(number: unknown): string;
     }

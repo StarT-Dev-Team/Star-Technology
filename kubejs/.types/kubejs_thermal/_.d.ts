@@ -1,4 +1,4 @@
-namespace internal.kjs {
+declare namespace internal.kjs {
     import ThermalAugmentItemBuilder = dev.latvian.mods.kubejs.thermal.ThermalAugmentItemBuilder;
 
     interface ItemRegistry {
