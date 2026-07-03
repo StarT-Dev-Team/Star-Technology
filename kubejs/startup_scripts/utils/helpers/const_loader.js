@@ -126,3 +126,7 @@ const $FormattingUtil = Java.loadClass('com.gregtechceu.gtceu.utils.FormattingUt
 const $OpticalComputationMachine = Java.loadClass(
     'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.OpticalComputationMachine'
 );
+
+const $CompoundGeneratorMachine = Java.loadClass(
+    'com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine'
+);
