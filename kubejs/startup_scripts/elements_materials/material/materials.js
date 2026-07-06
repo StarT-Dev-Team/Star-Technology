@@ -749,6 +749,8 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .arcSmeltInto('dysprosium')
         .ingotSmeltInto('dysprosium');
 
+    compLiquid('hydroxide', ['1x oxygen', '1x hydrogen'], 0xc0d4dd, []); //Hide in JEI
+
     // Thermal Superconductors
     conductorSuper('soul_infused', ['1x invar', '2x soul'], 0xcc9966, [], [V('lv'), 4, 0, true], [150, 120, 2, 3000]);
     conductorSuper(
@@ -1071,7 +1073,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     compDustOre('titanite', ['1x calcium', '1x titanium', '1x silicon', '5x oxygen'], 0x66ffff, [noDecomp]);
 
-    compDustOre('zapolite', ['2x zapolgium', '4x iodine', '2x aluminium', '5x oxygen'], 0xcc0099, [noDecomp]);
+    compDustOre('zapolite', ['2x zapolgium', '4x iodine', '2x aluminium', '6x oxygen'], 0xcc0099, [noDecomp]);
 
     compGemOre('xenotime', ['1x yttrium', '1x sulfate'], 0x948446, GEM_VERTICAL, [noDecomp]);
 
@@ -1219,7 +1221,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     // compDust('adamantamite_titite', ['5x adamantine','4x titanium'], 0xB68E52, [noDecomp]);
     // compDust('adamantine_5', ['5x adamantine'], 0xCB9D58, [noDecomp]);
 
-    compDust('adamantine_hydroxide', ['1x adamantine', '3x hydrogen', '3x oxygen'], 0xcb8858, [noDecomp]);
+    compDust('adamantine_hydroxide', ['1x adamantine', '3x hydroxide'], 0xcb8858, [noDecomp]);
 
     //Mythril Line
     compLiquid('enriched_mythrillic_mixture', ['1x mystery', '1x mythril', '1x mystery'], 0x238213, [noDecomp]);
@@ -1280,7 +1282,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     // Abydos
     // Titanite(Zirconium) Line
-    compLiquid('titanite_slurry', ['1x titanite', '1x mystery'], 0x862d2d, [noDecomp]);
+    compLiquid('titanite_slurry', ['1x titanite', '1x mystery', '3x perchloric_acid'], 0x862d2d, [noDecomp]);
 
     compLiquid('titanite_slurry_residue', ['1x rutile', '1x mystery'], 0xbf4040, [noDecomp]);
 
@@ -1293,7 +1295,12 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     compLiquid('titanite_residue', ['1x rutile', '1x mystery'], 0xe6004c, [noDecomp]);
 
-    compLiquid('titanium_tetrachloride_mixture', ['1x titanium_tetrachloride', '1x mystery'], 0xff1a66, [noDecomp]);
+    compLiquid(
+        'titanium_tetrachloride_mixture',
+        ['1x titanium_tetrachloride', '1x zirconium_tetrachloride'],
+        0xff1a66,
+        [noDecomp]
+    );
 
     compDust('zirconium_tetrachloride', ['1x zirconium', '4x chlorine'], 0xffad33, [noDecomp]);
 
@@ -1310,7 +1317,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     compDust('zapolgium_chloride', ['1x zapolgium', '2x chlorine'], 0x99ff33, [noDecomp]);
 
-    compDust('zapolgium_hydroxide', ['1x zapolgium', '2x oxygen', '2x hydrogen'], 0x00ff99, [noDecomp]);
+    compDust('zapolgium_hydroxide', ['1x zapolgium', '2x hydroxide'], 0x00ff99, [noDecomp]);
 
     // Xenotime RE line
     compLiquid('rare_earth_sulfate_solution', ['2x mystery', '3x sulfate'], 0xc6c2a8, [noDecomp]);
@@ -1535,8 +1542,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     // compDust('plutonium_octofluoride', ['2x plutonium', '8x fluorine'], 0x000000, [noDecomp]);
     // compLiquid('uranium_tetrafluoride', ['1x uranium', '4x fluorine'], 0x6CAB3F, [noDecomp]);
-
-    compLiquid('hydroxide', ['1x oxygen', '1x hydrogen'], 0xc0d4dd, []); //Hide in JEI
 
     // compLiquid('caesium_oganesson_hexanitrate', ['2x caesium', '1x oganesson', '6x nitrate'], 0x769192, [noDecomp]);
     // compLiquid('caesium_oganesson_trioxide', ['2x caesium', '1x oganesson', '3x oxygen'], 0x4E7577, [noDecomp]);

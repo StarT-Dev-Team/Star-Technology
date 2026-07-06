@@ -1310,6 +1310,7 @@
     "block.gtceu.super_gas_collector": "Compression Gas Siphon [CGS]",
     "block.gtceu.super_gas_collector.tooltip.0": "§7Collects gas just a bit faster.",
 
+    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber",
     "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
 
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",

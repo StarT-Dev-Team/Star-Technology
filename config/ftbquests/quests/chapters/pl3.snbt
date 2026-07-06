@@ -3137,6 +3137,7 @@
 				{
 					id: "19BCC532D8C4EE1A"
 					item: "gtceu:divinylbenzene_bucket"
+					optional_task: true
 					type: "item"
 				}
 				{

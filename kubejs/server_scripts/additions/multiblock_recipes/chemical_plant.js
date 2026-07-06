@@ -11,19 +11,19 @@ ServerEvents.recipes((event) => {
         .duration(150)
         .EUt(GTValues.VHA[GTValues.IV]);
 
-    event.recipes.gtceu
+    event.recipes.gtceu // +5% on original platline for Ru, Rh, Os and Ir
         .chemical_skip(id('plat_line_skip'))
-        .itemInputs('24x gtceu:platinum_group_sludge_dust')
-        .inputFluids('gtceu:aqua_regia 3000')
+        .itemInputs('30x gtceu:purified_cooperite_ore')
+        .inputFluids('gtceu:aqua_regia 24000', 'gtceu:nitric_acid 3000')
         .itemOutputs(
-            '4x gtceu:platinum_dust',
-            '3x gtceu:palladium_dust',
-            '2x gtceu:ruthenium_dust',
-            '2x gtceu:rhodium_dust',
-            '1x gtceu:osmium_dust',
-            '1x gtceu:iridium_dust'
+            '20x gtceu:platinum_dust',
+            '12x gtceu:palladium_dust',
+            '7x gtceu:ruthenium_dust',
+            '7x gtceu:rhodium_dust',
+            '3x gtceu:osmium_dust',
+            '3x gtceu:iridium_dust'
         )
-        .outputFluids('gtceu:nitric_acid 1000', 'gtceu:hydrochloric_acid 2000')
+        .outputFluids('gtceu:nitric_acid 11000', 'gtceu:hydrochloric_acid 16000')
         .duration(485)
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
@@ -48,7 +48,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('30x gtceu:uraninite_dust')
         .inputFluids('gtceu:hydrofluoric_acid 40000')
         .itemOutputs('9x gtceu:uranium_dust', 'gtceu:uranium_235_dust')
-        .outputFluids('gtceu:fluorine 40000', 'gtceu:hydrogen 40000', 'gtceu:oxygen 10000')
+        .outputFluids('gtceu:fluorine 40000', 'gtceu:hydrogen 40000', 'gtceu:oxygen 20000')
         .duration(216)
         .EUt(GTValues.VHA[GTValues.LuV]);
 
@@ -71,44 +71,62 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .chemical_skip(id('cupric_chloride_solution_skip'))
         .itemInputs('1x gtceu:copper_dust')
-        .inputFluids('gtceu:hydrogen 2000', 'gtceu:chlorine 3000')
-        .outputFluids('gtceu:cupric_chloride_solution 2000')
+        .inputFluids('gtceu:hydrogen 1000', 'gtceu:chlorine 2000')
+        .outputFluids('gtceu:cupric_chloride_solution 1000')
         .duration(30)
         .EUt(GTValues.VHA[GTValues.IV]);
 
     event.recipes.gtceu
         .chemical_skip(id('borax_skip'))
         .itemInputs('4x gtceu:boron_dust', '14x gtceu:sodium_bisulfate_dust')
-        .inputFluids('minecraft:water 12000')
+        .inputFluids('minecraft:water 12000', 'gtceu:oxygen 6000')
         .itemOutputs('23x gtceu:borax_dust')
-        .outputFluids('gtceu:diluted_sulfuric_acid 3000', 'gtceu:oxygen 6000')
+        .outputFluids('gtceu:diluted_sulfuric_acid 3000')
         .duration(720)
         .EUt(GTValues.VHA[GTValues.IV]);
 
+    /*
+3B C6H6 + 23B O => 4B C4H2O3 + 5B H2O + 2B CO2
+
+4B C4H2O3 + 8B CH4O => 4B C6H10O4 + 4B O
+
+4B C6H10O4 + 20B H + 2B O =[1 PdC]=> 6B C4H10O3
+
+6B C4H10O3 + 18B H => 3B C4H10O2 + 12B CH4O
+
+
+3B C6H6 + 19B O + 38B H => 5B H2O + 2B CO2 + 3B C4H10O2 + 4B CH4O
+    */
     event.recipes.gtceu
         .chemical_skip(id('14_butanediol_skip'))
         .notConsumable('gtceu:palladium_on_carbon_dust')
-        .inputFluids('gtceu:benzene 1500', 'gtceu:oxygen 6000', 'gtceu:hydrogen 18000')
-        .outputFluids('gtceu:14_butanediol 3000', 'gtceu:methanol 3000')
+        .inputFluids('gtceu:benzene 3000', 'gtceu:oxygen 19000', 'gtceu:hydrogen 38000')
+        .outputFluids(
+            'gtceu:14_butanediol 3000',
+            'gtceu:methanol 4000',
+            'gtceu:carbon_dioxide 2000',
+            'minecraft:water 5000'
+        )
         .duration(105)
         .circuit(8)
         .EUt(GTValues.VHA[GTValues.UEV]);
 
     event.recipes.gtceu
         .chemical_skip(id('benzophenone_3344_tetracarboxylic_dianhydridenediol_skip'))
+        .notConsumable('gtceu:aluminium_dust')
         .inputFluids(
-            'gtceu:toluene 1000',
-            'gtceu:benzene 1375',
-            'gtceu:oxygen 9875',
-            'gtceu:acetic_acid 1000',
+            'gtceu:toluene 8000',
+            'gtceu:benzene 11000',
+            'gtceu:oxygen 77000',
+            'gtceu:acetic_acid 8000',
             'gtceu:chlorine 3000'
         )
-        .itemOutputs('30x gtceu:benzophenone_3344_tetracarboxylic_dianhydride_dust')
+        .itemOutputs('240x gtceu:benzophenone_3344_tetracarboxylic_dianhydride_dust')
         .outputFluids(
             'gtceu:hydrogen_chloride 3000',
-            'gtceu:carbon_dioxide 250',
-            'minecraft:water 4125',
-            'gtceu:hydrogen 3000'
+            'gtceu:carbon_dioxide 2000',
+            'minecraft:water 33000',
+            'gtceu:hydrogen 45000'
         )
         .duration(30)
         .circuit(6)
@@ -118,17 +136,17 @@ ServerEvents.recipes((event) => {
         .chemical_skip(id('tungstate_line'))
         .itemInputs('1x gtceu:tungstate_dust')
         .inputFluids('gtceu:hydrochloric_acid 2000')
-        .itemOutputs('1x gtceu:tungsten_trioxide_dust', '1x gtceu:lithium_dust')
-        .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000')
+        .itemOutputs('1x gtceu:tungsten_dust', '2x gtceu:lithium_dust')
+        .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000', 'gtceu:oxygen 4000')
         .duration(175)
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
     event.recipes.gtceu
         .chemical_skip(id('scheelite_line'))
-        .itemInputs('1x gtceu:scheelite_dust')
+        .itemInputs('6x gtceu:scheelite_dust')
         .inputFluids('gtceu:hydrochloric_acid 2000')
-        .itemOutputs('1x gtceu:tungsten_trioxide_dust', '1x gtceu:calcium_dust')
-        .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000')
+        .itemOutputs('1x gtceu:tungsten_dust', '1x gtceu:calcium_dust')
+        .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000', 'gtceu:oxygen 4000')
         .duration(175)
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
@@ -172,24 +190,29 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_skip(id('zapolgium_skip'))
-        .itemInputs('4x gtceu:zapolite_dust', '5x gtceu:potassium_hydroxide_dust')
-        .inputFluids('gtceu:hydrogen 2000', 'gtceu:hydrochloric_acid 2000')
+        .itemInputs('70x gtceu:zapolite_dust', '60x gtceu:potassium_hydroxide_dust')
+        .inputFluids('gtceu:hydrogen 18000', 'gtceu:hydrochloric_acid 20000')
         .itemOutputs(
-            '5x gtceu:zapolgium_dust',
-            '4x gtceu:bauxite_dust',
-            '10x gtceu:iodine_dust',
-            '4x gtceu:rock_salt_dust'
+            '10x gtceu:zapolgium_dust',
+            '5x gtceu:bauxite_dust',
+            '20x gtceu:iodine_dust',
+            '40x gtceu:rock_salt_dust'
         )
-        .outputFluids('minecraft:water 6000', 'gtceu:oxygen 5000')
+        .outputFluids('minecraft:water 29000', 'gtceu:oxygen 21000')
         .duration(66)
         .EUt(GTValues.VHA[GTValues.UIV]);
 
     event.recipes.gtceu
         .chemical_skip(id('zirconium_skip'))
-        .itemInputs('2x gtceu:titanite_dust')
-        .inputFluids('gtceu:hydrochloric_acid 4000', 'gtceu:sulfuric_acid 2000')
-        .itemOutputs('1x gtceu:zirconium_dust', '2x gtceu:silicon_dioxide_dust', '12x gtceu:calcium_sulfate_dust')
-        .outputFluids('gtceu:titanium_tetrachloride 1000', 'minecraft:water 6000')
+        .itemInputs('80x gtceu:titanite_dust')
+        .inputFluids('gtceu:hydrogen 20000')
+        .itemOutputs(
+            '10x gtceu:zirconium_dust',
+            '10x gtceu:titanium_dust',
+            '30x gtceu:silicon_dioxide_dust',
+            '50x gtceu:calcium_hydroxide_dust'
+        )
+        .outputFluids('gtceu:oxygen 10000')
         .duration(14)
         .EUt(GTValues.VHA[GTValues.UIV]);
 

@@ -11,8 +11,6 @@ ServerEvents.recipes((event) => {
     event.remove({ id: /gtceu:large_chemical_reactor\/lightly.*crack.*/ });
     event.remove({ id: /gtceu:large_chemical_reactor\/severely.*crack.*/ });
 
-    const chem = event.recipes.gtceu.large_chemical_reactor || event.recipes.gtceu.chemical_reactor;
-
     event.recipes.gtceu
         .fermenter(id('fermented_biomass'))
         .inputFluids('gtceu:biomass 500')
@@ -53,7 +51,8 @@ ServerEvents.recipes((event) => {
             .EUt(type !== 'oil_heavy' ? 96 : 384);
     });
 
-    chem(id('bacterial_sludge'))
+    event.recipes.gtceu
+        .chemical_reactor(id('bacterial_sludge'))
         .inputFluids('gtceu:fermented_biomass 1000', 'gtceu:bacteria 1000')
         .outputFluids('gtceu:bacterial_sludge 1000')
         .duration(600)
