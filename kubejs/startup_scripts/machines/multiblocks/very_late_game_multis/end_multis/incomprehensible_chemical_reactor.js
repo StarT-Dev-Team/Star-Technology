@@ -8,7 +8,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.CHEMICAL_REACTOR_OVERCLOCK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
-            $BulkingCoiledMulti.modifier,
+            $StarTRecipeModifiers.BULKING,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:cattomolymer_casing'))

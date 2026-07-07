@@ -8,7 +8,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.EBF_OVERCLOCK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
-            $BulkingCoiledMulti.modifier,
+            $StarTRecipeModifiers.BULKING,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:absolute_temperature_smelting_casing'))

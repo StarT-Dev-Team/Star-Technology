@@ -18,7 +18,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
-            $BulkingMulti.modifier,
+            $StarTRecipeModifiers.BULKING,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))

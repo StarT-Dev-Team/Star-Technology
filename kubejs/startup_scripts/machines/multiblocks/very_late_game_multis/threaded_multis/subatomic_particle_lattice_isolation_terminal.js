@@ -9,7 +9,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             $StarTRecipeModifiers.THREADING_MACHINE,
-            $BulkingThreadedMulti.modifier,
+            $StarTRecipeModifiers.BULKING,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:inoculated_nuclei_seperation_casing'))
