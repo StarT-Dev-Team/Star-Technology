@@ -36,6 +36,6 @@
 //             .where('O', Predicates.abilities(PartAbility.OUTPUT_ENERGY).setExactLimit(4))
 //             .where('#', Predicates.air())
 //             .build()
-//         ).workableCasingRenderer('gtceu:block/casings/solid/machine_casing_stable_titanium', 
+//         ).workableCasingRenderer('gtceu:block/casings/solid/machine_casing_stable_titanium',
 //             'gtceu:block/multiblocks/electric_blast_furnace', false);
 // });

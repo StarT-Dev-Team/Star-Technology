@@ -1,10 +1,16 @@
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('ultimate_abs', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('ultimate_abs', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .machine((holder) => new $CoiledMulti(holder))
         .recipeType('alloy_blast_smelter')
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.EBF_OVERCLOCK, $StarTRecipeModifiers.THROUGHPUT_BOOSTING, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.EBF_OVERCLOCK,
+            $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
+            $StarTRecipeModifiers.BULK_PROCESSING,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:absolute_temperature_smelting_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle('               B                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ') 
@@ -38,30 +44,35 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('  BB          BDB          BB   ', '                                ', '                                ', '                                ', '                                ', '               B                ', '               C                ', '               C                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ') 
             .aisle('              BBB               ', '               C                ', '               C                ', '               C                ', '               C                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ') 
             .aisle('               B                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ', '                                ') 
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('kubejs:infernally_reinforced_casing'))
-            .where('C', Predicates.blocks('gtceu:draco_abyssal_frame'))
-            .where('D', Predicates.blocks('kubejs:absolute_temperature_smelting_casing')                
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1)))
-            .where('E', Predicates.blocks('gtceu:uiv_rotor_holder'))
-            .where('F', Predicates.blocks('kubejs:nyanium_heat_escape_casing'))
-            .where('G', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
-            .where('H', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-            .where('I', Predicates.blocks('kubejs:nyanium_machine_casing'))
-            .where('J', Predicates.blocks('kubejs:nyanium_firebox_casing'))
-            .where('K', Predicates.blocks('kubejs:aberration_casing'))
-            .where('L', Predicates.heatingCoils())
-            .where('M', Predicates.abilities(PartAbility.MUFFLER))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-			.build())
-		.workableCasingModel('kubejs:block/casings/riftic_multis/absolute_temperature_smelting_casing',
-            'gtceu:block/multiblock/gcym/blast_alloy_smelter')
+                .where(' ', Predicates.any())
+                .where('B', Predicates.blocks('kubejs:infernally_reinforced_casing'))
+                .where('C', Predicates.blocks('gtceu:draco_abyssal_frame'))
+                .where(
+                    'D',
+                    Predicates.blocks('kubejs:absolute_temperature_smelting_casing')
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(8).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                )
+                .where('E', Predicates.blocks('gtceu:uiv_rotor_holder'))
+                .where('F', Predicates.blocks('kubejs:nyanium_heat_escape_casing'))
+                .where('G', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
+                .where('H', Predicates.blocks('kubejs:nyanium_pipe_casing'))
+                .where('I', Predicates.blocks('kubejs:nyanium_machine_casing'))
+                .where('J', Predicates.blocks('kubejs:nyanium_firebox_casing'))
+                .where('K', Predicates.blocks('kubejs:aberration_casing'))
+                .where('L', Predicates.heatingCoils())
+                .where('M', Predicates.abilities(PartAbility.MUFFLER))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/riftic_multis/absolute_temperature_smelting_casing',
+            'gtceu:block/multiblock/gcym/blast_alloy_smelter'
+        )
         .additionalDisplay(global.coilMachineTempDisplay);
-
 });

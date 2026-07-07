@@ -1,16 +1,22 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
-    event.create('bacteria_synthesizer')
+GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
+    event
+        .create('bacteria_synthesizer')
         .category('resource_production')
         .setMaxIOSize(2, 0, 6, 1)
         .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.CHEMICAL);
 });
 
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-    event.create('bacteria_synthesizer', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('bacteria_synthesizer', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('bacteria_synthesizer')
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:peek_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle("       BBBBB", "       BBBBB", "       CDDDC", "       C   C", "       C   C", "       C   C", "       CDDDC", "       BBBBB", "            ", "            ", "            ", "            ", "            ")
@@ -35,14 +41,15 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .where("F", Predicates.blocks("gtceu:molybdenum_disilicide_coil_block"))
             .where("G", Predicates.blocks("kubejs:pallaridium_engine_intake_casing"))
             .where("H", Predicates.blocks("kubejs:peek_casing")
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1)))
-            .where("@", Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/basic/machine_casing_peek',
-            'gtceu:block/multiblock/fusion_reactor');
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
+                )
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel('kubejs:block/casings/basic/machine_casing_peek', 'gtceu:block/multiblock/fusion_reactor');
 });

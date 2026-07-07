@@ -18,13 +18,13 @@ recipes:
 
   # Whether to nerf Wood crafting to 2 Planks from 1 Log, and 2 Sticks from 2 Planks.
   # Default: false
-  nerfWoodCrafting: false
+  nerfWoodCrafting: true
   # Packmode Sensitivity
 
   # Whether to make Wood related recipes harder.
   # Excludes sticks and planks.
   # Default: false
-  hardWoodRecipes: false
+  hardWoodRecipes: true
   # Packmode Sensitivity
 
   # Recipes for Buckets, Cauldrons, Hoppers, and Iron Bars require Iron Plates, Rods, and more.
@@ -33,13 +33,13 @@ recipes:
 
   # Whether to make Redstone related recipes harder.
   # Default: false
-  hardRedstoneRecipes: false
+  hardRedstoneRecipes: true
   # Packmode Sensitivity
 
   # Whether to make Vanilla Tools and Armor recipes harder.
   # Excludes Flint and Steel, and Buckets.
   # Default: false
-  hardToolArmorRecipes: false
+  hardToolArmorRecipes: true
   # Packmode Sensitivity
 
   # Whether to make miscellaneous recipes harder.
@@ -51,7 +51,7 @@ recipes:
 
   # Whether to nerf the Paper crafting recipe.
   # Default: true
-  nerfPaperCrafting: false
+  nerfPaperCrafting: true
   # Packmode Sensitivity
 
   # Recipes for items like Iron Doors, Trapdoors, Anvil require Iron Plates, Rods, and more.
@@ -97,7 +97,7 @@ recipes:
 
   # Whether tools should have enchants or not. Like the flint sword getting fire aspect.
   # Default: true
-  enchantedTools: true
+  enchantedTools: false
   # Packmode Sensitivity
 
   # Whether to enable macerator decomposition recycling
@@ -339,7 +339,7 @@ machines:
   # Whether the Assembly Line should require the fluid inputs to be in order.
   # (Requires Ordered Assembly Line Item Inputs to be enabled.)
   # Default: false
-  orderedAssemblyLineFluids: false
+  orderedAssemblyLineFluids: true
   # Packmode Sensitivity
 
   # Default maximum parallel of steam multiblocks
@@ -604,13 +604,13 @@ compat:
     # Forge Energy to GTEU ratio for converting FE to EU.
     # Only affects converters.
     # Default: 4 FE == 1 EU
-    feToEuRatio: 4
+    feToEuRatio: 16
     # Packmode Sensitivity
 
     # GTEU to Forge Energy ratio for converting EU to FE.
     # Affects native conversion and Converters.
     # Default: 4 FE == 1 EU
-    euToFeRatio: 4
+    euToFeRatio: 16
     # Packmode Sensitivity
 
   # Config options regarding GTCEu compatibility with AE2

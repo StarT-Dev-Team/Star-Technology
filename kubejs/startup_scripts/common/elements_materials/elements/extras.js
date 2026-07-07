@@ -1,6 +1,4 @@
-
-GTCEuStartupEvents.registry('gtceu:element', event => {
-    
+GTCEuStartupEvents.registry('gtceu:element', (event) => {
     const elem = global.elementFunction(event);
 
     elem('mystery', -1, 1, '?');
@@ -9,5 +7,4 @@ GTCEuStartupEvents.registry('gtceu:element', event => {
     elem('fluix', -1, 18, 'Fx');
     elem('star', -1, 152, '✧');
     elem('soul', -1, 1, 'Ⱉ');
-
 });

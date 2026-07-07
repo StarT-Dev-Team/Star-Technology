@@ -1,27 +1,23 @@
 // priority -100
 
-ItemEvents.tooltip(event => {
+ItemEvents.tooltip((event) => {
     const addedByStarT = global.addedByStarT;
-    const tiers = [
-        "lv", "mv", "hv", "ev", "iv", "luv", "zpm", "uv", "uhv", "uev", "uiv"
-    ];
-    const addedByStarTSingles = [
-        "electric_blaster", "electric_smoker", "me_assembler"
-    ];
+    const tiers = ['lv', 'mv', 'hv', 'ev', 'iv', 'luv', 'zpm', 'uv', 'uhv', 'uev', 'uiv'];
+    const addedByStarTSingles = ['electric_blaster', 'electric_smoker', 'me_assembler'];
 
-    tiers.forEach(tier => {
-        addedByStarTSingles.forEach(name => {
+    tiers.forEach((tier) => {
+        addedByStarTSingles.forEach((name) => {
             event.add(`gtceu:${tier}_${name}`, Text.translate(`block.kubejs.added_by_StarT.tooltip`));
         });
     });
 
     let prefix;
 
-    addedByStarT.machines.forEach(machine => {
-        prefix = (addedByStarT.isCore.includes(machine)) ? "start_core:" : "gtceu:";
+    addedByStarT.machines.forEach((machine) => {
+        prefix = addedByStarT.isCore.includes(machine) ? 'start_core:' : 'gtceu:';
 
         event.add(prefix + machine, Text.translate(`block.kubejs.added_by_StarT.tooltip`));
-    })
+    });
 
     event.addAdvanced(/gtceu:.*_macerator/, (item, advanced, text) => {
         text.add(1, Text.translate('block.gtceu.macerators.tooltip.1'));
@@ -45,19 +41,27 @@ ItemEvents.tooltip(event => {
 
     //Custom Colossal Chest Tooltips
     const colossalTypes = [`wood`, `copper`, `iron`, `silver`, `gold`, `diamond`, `obsidian`];
-    colossalTypes.forEach(type => {
-        event.add(`colossalchests:colossal_chest_${type}`, Text.translate(`item.colossalchests.colossal_chest.tooltip`));
+    colossalTypes.forEach((type) => {
+        event.add(
+            `colossalchests:colossal_chest_${type}`,
+            Text.translate(`item.colossalchests.colossal_chest.tooltip`)
+        );
     });
 
-    //Theta 2 removals 
-    const theta2Removals = ["essence_burner", "mystical_greenhouse", "essence_enchancer", "essence_replicator", "nuclear_reactor"];
-    theta2Removals.forEach(name => {
-        if (name == "essence_burner" || name == "mystical_greenhouse") {
-            tiers.forEach(tier => {
+    //Theta 2 removals
+    const theta2Removals = [
+        'essence_burner',
+        'mystical_greenhouse',
+        'essence_enchancer',
+        'essence_replicator',
+        'nuclear_reactor',
+    ];
+    theta2Removals.forEach((name) => {
+        if (name == 'essence_burner' || name == 'mystical_greenhouse') {
+            tiers.forEach((tier) => {
                 event.add(`gtceu:${tier}_${name}`, Text.translate(`block.gtceu.theta2Removals.tooltip`));
             });
-        }
-        else {
+        } else {
             event.add(`gtceu:${name}`, Text.translate(`block.gtceu.theta2Removals.tooltip`));
         }
     });

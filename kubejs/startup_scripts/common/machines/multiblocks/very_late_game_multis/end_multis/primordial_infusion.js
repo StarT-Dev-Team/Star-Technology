@@ -1,11 +1,11 @@
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('primordial_infusion', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('primordial_infusion', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .tooltips([ 
-            Text.translate("block.gtceu.draco_infusion.tooltip.3"),
-            Text.translate("block.gtceu.draco_infusion.tooltip.4"),
-            Text.translate("block.gtceu.draco_infusion.tooltip.5")
+        .tooltips([
+            Text.translate('block.gtceu.draco_infusion.tooltip.3'),
+            Text.translate('block.gtceu.draco_infusion.tooltip.4'),
+            Text.translate('block.gtceu.draco_infusion.tooltip.5'),
         ])
         .machine((holder) => new $StarTDraconicInfusionMachine(holder))
         .recipeType('draco_infusion')
@@ -27,26 +27,28 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('    NNHHHNN    ', '    NNNHNNN    ', '     VVHVV     ','       V       ','       V       ','       V       ','               ','               ','               ','               ','               ','               ','               ','     TTTTT     ','               ','  T         T  ','               ','               ','               ','               ','               ')
             .aisle('     NFFFN     ', '     NN@NN     ', '      NNN      ','               ','               ','               ','               ','               ','               ','               ','               ','               ','               ','               ','       V       ','   TT     TT   ','               ','               ','               ','               ','               ')
             .aisle('               ', '               ', '               ','               ','               ','               ','               ','               ','               ','               ','               ','               ','               ','               ','               ','     TTTTT     ','               ','               ','               ','               ','               ')   
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .where('N', Predicates. blocks('kubejs:nyanium_machine_casing')
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setExactLimit(1))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
-            .where('M', Predicates.blocks('kubejs:aberration_casing'))
-            .where('A', Predicates.blocks('kubejs:draco_assembly_grating'))
-            .where('H', Predicates.blocks('kubejs:draco_ware_casing'))
-            .where('F', Predicates.blocks('kubejs:nyanium_firebox_casing'))
-            .where('V', Predicates.blocks('gtceu:draco_abyssal_frame'))    
-            .where('P', Predicates.blocks('kubejs:runic_pathway_casing'))
-            .where('G', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-            .where('T', Predicates.blocks('kubejs:abyssal_alloy_coil_block'))    
-            .where('U', Predicates.blocks('kubejs:melodium_casing'))
-            .where('C', Predicates.blocks('kubejs:core_casing'))
-            .where('O', Predicates.abilities(PartAbility.EXPORT_ITEMS))
-            .where('I', Predicates.abilities(PartAbility.IMPORT_FLUIDS))
-            .where('0', Predicates.abilities(PartAbility.IMPORT_ITEMS))
-            .where(' ', Predicates.any())
-            .build())
-        .workableCasingModel('kubejs:block/casings/nyanium/casing', 
-            'kubejs:block/multiblock/draco_infusion');
-        
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .where(
+                    'N',
+                    Predicates.blocks('kubejs:nyanium_machine_casing')
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setExactLimit(1))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                )
+                .where('M', Predicates.blocks('kubejs:aberration_casing'))
+                .where('A', Predicates.blocks('kubejs:draco_assembly_grating'))
+                .where('H', Predicates.blocks('kubejs:draco_ware_casing'))
+                .where('F', Predicates.blocks('kubejs:nyanium_firebox_casing'))
+                .where('V', Predicates.blocks('gtceu:draco_abyssal_frame'))
+                .where('P', Predicates.blocks('kubejs:runic_pathway_casing'))
+                .where('G', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
+                .where('T', Predicates.blocks('kubejs:abyssal_alloy_coil_block'))
+                .where('U', Predicates.blocks('kubejs:melodium_casing'))
+                .where('C', Predicates.blocks('kubejs:core_casing'))
+                .where('O', Predicates.abilities(PartAbility.EXPORT_ITEMS))
+                .where('I', Predicates.abilities(PartAbility.IMPORT_FLUIDS))
+                .where('0', Predicates.abilities(PartAbility.IMPORT_ITEMS))
+                .where(' ', Predicates.any())
+                .build()
+        )
+        .workableCasingModel('kubejs:block/casings/nyanium/casing', 'kubejs:block/multiblock/draco_infusion');
 });

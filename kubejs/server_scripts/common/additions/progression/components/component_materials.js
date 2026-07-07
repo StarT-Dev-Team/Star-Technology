@@ -7,8 +7,8 @@ global.componentMaterials = {
             tierMaterial: 'wrought_iron',
             cable: 'red_alloy',
             cable1: 'tin',
-            chip: ''
-        }
+            chip: '',
+        },
     },
     lv: {
         tiers: { tier: 'lv' },
@@ -20,8 +20,8 @@ global.componentMaterials = {
             glass: '#forge:glass',
             chip: '',
             rotorMaterial: 'tin',
-            grind: 'minecraft:diamond'
-        }
+            grind: 'minecraft:diamond',
+        },
     },
     mv: {
         tiers: { tier: 'mv' },
@@ -33,8 +33,8 @@ global.componentMaterials = {
             glass: '#forge:glass',
             chip: 'gtceu:ulpic',
             rotorMaterial: 'bronze',
-            grind: 'minecraft:diamond'
-        }
+            grind: 'minecraft:diamond',
+        },
     },
     hv: {
         tiers: { tier: 'hv' },
@@ -46,8 +46,8 @@ global.componentMaterials = {
             glass: 'gtceu:tempered_glass',
             chip: 'gtceu:lpic',
             rotorMaterial: 'steel',
-            grind: 'gtceu:diamond_grinding_head'
-        }
+            grind: 'gtceu:diamond_grinding_head',
+        },
     },
     ev: {
         tiers: { tier: 'ev', tier0: 'iv', tier1: 'hv', tier2: 'mv' },
@@ -63,12 +63,12 @@ global.componentMaterials = {
             chip: 'gtceu:mpic',
             battery: 'lapotron_crystal',
             rotorMaterial: 'stainless_steel',
-            grind: 'gtceu:diamond_grinding_head'
+            grind: 'gtceu:diamond_grinding_head',
         },
         scaling: {
             scaler: 1,
-            EU: GTValues.VA[GTValues.HV]
-        }
+            EU: GTValues.VA[GTValues.HV],
+        },
     },
     iv: {
         tiers: { tier: 'iv', tier0: 'luv', tier1: 'ev', tier2: 'hv' },
@@ -84,12 +84,12 @@ global.componentMaterials = {
             chip: 'gtceu:hpic',
             battery: 'lapotronic_energy_orb',
             rotorMaterial: 'tungsten_steel',
-            grind: 'gtceu:tungsten_grinding_head'
+            grind: 'gtceu:tungsten_grinding_head',
         },
         scaling: {
             scaler: 1,
-            EU: GTValues.VA[GTValues.EV]
-        }
+            EU: GTValues.VA[GTValues.EV],
+        },
     },
     luv: {
         tiers: { tier: 'luv', tier0: 'zpm', tier1: 'iv', tier2: 'ev' },
@@ -123,16 +123,16 @@ global.componentMaterials = {
             itemStorage: 'gtceu:titanium_crate',
             battery: 'lapotronic_energy_orb_cluster',
             rotorMaterial: 'rhodium_plated_palladium',
-            grind: 'gtceu:tungsten_grinding_head'
+            grind: 'gtceu:tungsten_grinding_head',
         },
         scaling: {
             scaler: 1,
-            EU: GTValues.VA[GTValues.IV]
+            EU: GTValues.VA[GTValues.IV],
         },
         researchData: {
             default: { ifDRS: false, cwuD: 0, duraD: 90, EUtD: GTValues.VA[GTValues.EV] },
-            special: { ifSRS: false, cwuS: 0, duraS: 60, EUtS: GTValues.VA[GTValues.IV] }
-        }
+            special: { ifSRS: false, cwuS: 0, duraS: 60, EUtS: GTValues.VA[GTValues.IV] },
+        },
     },
 
     zpm: {
@@ -166,16 +166,16 @@ global.componentMaterials = {
             fluidStorage: 'gtceu:tungsten_steel_drum',
             itemStorage: 'gtceu:tungsten_steel_crate',
             rotorMaterial: 'naquadah_alloy',
-            grind: 'gtceu:tungsten_grinding_head'
+            grind: 'gtceu:tungsten_grinding_head',
         },
         scaling: {
             scaler: 2,
-            EU: GTValues.VA[GTValues.LuV]
+            EU: GTValues.VA[GTValues.LuV],
         },
         researchData: {
             default: { ifDRS: false, cwuD: 0, duraD: 90, EUtD: GTValues.VA[GTValues.IV] },
-            special: { ifSRS: true, cwuS: 4, duraS: 90, EUtS: GTValues.VA[GTValues.LuV] }
-        }
+            special: { ifSRS: true, cwuS: 4, duraS: 90, EUtS: GTValues.VA[GTValues.LuV] },
+        },
     },
 
     uv: {
@@ -210,16 +210,16 @@ global.componentMaterials = {
             itemStorage: 'start_core:enriched_naquadah_crate',
             battery: 'energy_cluster',
             rotorMaterial: 'darmstadtium',
-            grind: 'gtceu:tungsten_grinding_head'
+            grind: 'gtceu:tungsten_grinding_head',
         },
         scaling: {
             scaler: 3,
-            EU: GTValues.VA[GTValues.ZPM]
+            EU: GTValues.VA[GTValues.ZPM],
         },
         researchData: {
             default: { ifDRS: true, cwuD: 32, duraD: 180, EUtD: GTValues.VA[GTValues.ZPM] },
-            special: { ifSRS: true, cwuS: 48, duraS: 180, EUtS: GTValues.VA[GTValues.UV] }
-        }
+            special: { ifSRS: true, cwuS: 48, duraS: 180, EUtS: GTValues.VA[GTValues.UV] },
+        },
     },
 
     uhv: {
@@ -255,16 +255,16 @@ global.componentMaterials = {
             itemStorage: 'start_core:neutronium_crate',
             battery: 'max_battery',
             rotorMaterial: 'neutronium',
-            grind: 'gtceu:tungsten_grinding_head'
+            grind: 'gtceu:tungsten_grinding_head',
         },
         scaling: {
             scaler: 4,
-            EU: GTValues.VA[GTValues.UV]
+            EU: GTValues.VA[GTValues.UV],
         },
         researchData: {
             default: { ifDRS: true, cwuD: 128, duraD: 180, EUtD: GTValues.VA[GTValues.UV] },
-            special: { ifSRS: true, cwuS: 144, duraS: 180, EUtS: GTValues.VA[GTValues.UV] }
-        }
+            special: { ifSRS: true, cwuS: 144, duraS: 180, EUtS: GTValues.VA[GTValues.UV] },
+        },
     },
 
     uev: {
@@ -299,16 +299,16 @@ global.componentMaterials = {
             fluidStorage: '', //none exist
             itemStorage: '', //none exist
             rotorMaterial: 'mythrolic_alloy',
-            grind: 'gtceu:tungsten_grinding_head'
+            grind: 'gtceu:tungsten_grinding_head',
         },
         scaling: {
             scaler: 5,
-            EU: GTValues.VA[GTValues.UHV]
+            EU: GTValues.VA[GTValues.UHV],
         },
         researchData: {
             default: { ifDRS: true, cwuD: 160, duraD: 180, EUtD: GTValues.VA[GTValues.UHV] },
-            special: { ifSRS: true, cwuS: 176, duraS: 180, EUtS: GTValues.VA[GTValues.UHV] }
-        }
+            special: { ifSRS: true, cwuS: 176, duraS: 180, EUtS: GTValues.VA[GTValues.UHV] },
+        },
     },
 
     uiv: {
@@ -343,16 +343,15 @@ global.componentMaterials = {
             fluidStorage: '', //none exist
             itemStorage: '', //none exist
             rotorMaterial: 'chaotixic_alloy',
-            grind: 'gtceu:tungsten_grinding_head'
+            grind: 'gtceu:tungsten_grinding_head',
         },
         scaling: {
             scaler: 6,
-            EU: GTValues.VA[GTValues.UEV]
+            EU: GTValues.VA[GTValues.UEV],
         },
         researchData: {
             default: { ifDRS: true, cwuD: 192, duraD: 180, EUtD: GTValues.VA[GTValues.UEV] },
-            special: { ifSRS: true, cwuS: 208, duraS: 180, EUtS: GTValues.VA[GTValues.UEV] }
-        }
-    }
-
-}
+            special: { ifSRS: true, cwuS: 208, duraS: 180, EUtS: GTValues.VA[GTValues.UEV] },
+        },
+    },
+};

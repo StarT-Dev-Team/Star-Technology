@@ -1,4 +1,3 @@
-
 // GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
 //     event.create('kinetic_box')
 //         .category('kinetic_box')

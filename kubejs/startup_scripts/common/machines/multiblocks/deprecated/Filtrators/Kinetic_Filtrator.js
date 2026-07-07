@@ -24,7 +24,7 @@
 //             .where('I', Predicates.abilities(PartAbility.IMPORT_FLUIDS))
 //             .where('S', Predicates.blocks('gtceu:steam_machine_casing'))
 //             .where('P', Predicates.blocks('gtceu:bronze_pipe_casing'))
-//             .where('X', Predicates.blocks('gtceu:bronze_firebox_casing'))     
+//             .where('X', Predicates.blocks('gtceu:bronze_firebox_casing'))
 //             .where('M', Predicates.blocks('kubejs:meshblock'))
 //             .where('G', Predicates.blocks('thermal_extra:soul_infused_glass'))
 //             .where('T', Predicates.blocks('kubejs:treatedwood_casing'))

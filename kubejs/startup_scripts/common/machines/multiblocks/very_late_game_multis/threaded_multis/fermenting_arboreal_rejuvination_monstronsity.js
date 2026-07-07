@@ -1,14 +1,17 @@
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('fermenting_arboreal_rejuvenation_monstrosity', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('fermenting_arboreal_rejuvenation_monstrosity', 'multiblock')
         .machine((holder) => new $StarTThreadingCapableMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
-        .tooltips([ 
-            Text.translate("block.start_core.gap"),
-            Text.translate("block.kubejs.threading.tooltip")
-        ])
+        .tooltips([Text.translate('block.start_core.gap'), Text.translate('block.kubejs.threading.tooltip')])
         .recipeTypes(['hydroponic_garden', 'industrial_fishery', 'tree_greenhouse', 'composting_factory'])
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THREADING_MACHINE, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.THREADING_MACHINE,
+            $StarTRecipeModifiers.BULK_PROCESSING,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:true_revitilization_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle('             BCCCCCB ', '             BC C CB ', '             BCCDCCB ', '             BC C CB ', '             BCCCCCB ', '              BBBBB  ', '                     ')
@@ -30,30 +33,35 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('             CCCCCCC ', '             CCCCCCC ', '             C     C ', '             C     C ', '             C     C ', '              CCCCC  ', '                B    ')
             .aisle('             CCCCCCC ', '             CCEFECC ', '             CCFDFCC ', '             CCEFECC ', '             CCCCCCC ', '               CCC   ', '                B    ')
             .aisle('             BCCCCCB ', '             BC C CB ', '             BCCDCCB ', '             BC C CB ', '             BCCCCCB ', '              BBBBB  ', '                     ')
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('gtceu:chaotixic_alloy_frame'))
-            .where('C', Predicates.blocks('kubejs:true_revitilization_casing')
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
-            .where('D', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
-            .where('E', $StarTThreadingStatBlocks.threadingStatBlocks())
-            .where('F', Predicates.blocks('start_core:advanced_fusion_coil'))
-            .where('G', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-            .where('H', Predicates.blocks('minecraft:water'))
-            .where('I', Predicates.blocks('farmersdelight:rich_soil_farmland'))
-            .where('J', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-            .where('K', Predicates.blocks('minecraft:podzol'))
-            .where('L', Predicates.blocks('minecraft:spruce_fence'))
-            .where('M', Predicates.blocks('minecraft:spruce_leaves'))
-            .where('N', Predicates.blocks('start_core:threading_controller'))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/threading/true_revitilization_casing',
-            'gtceu:block/multiblock/implosion_compressor');
-
+                .where(' ', Predicates.any())
+                .where('B', Predicates.blocks('gtceu:chaotixic_alloy_frame'))
+                .where(
+                    'C',
+                    Predicates.blocks('kubejs:true_revitilization_casing')
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                )
+                .where('D', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
+                .where('E', $StarTThreadingStatBlocks.threadingStatBlocks())
+                .where('F', Predicates.blocks('start_core:advanced_fusion_coil'))
+                .where('G', Predicates.blocks('kubejs:nyanium_pipe_casing'))
+                .where('H', Predicates.blocks('minecraft:water'))
+                .where('I', Predicates.blocks('farmersdelight:rich_soil_farmland'))
+                .where('J', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
+                .where('K', Predicates.blocks('minecraft:podzol'))
+                .where('L', Predicates.blocks('minecraft:spruce_fence'))
+                .where('M', Predicates.blocks('minecraft:spruce_leaves'))
+                .where('N', Predicates.blocks('start_core:threading_controller'))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/threading/true_revitilization_casing',
+            'gtceu:block/multiblock/implosion_compressor'
+        );
 });

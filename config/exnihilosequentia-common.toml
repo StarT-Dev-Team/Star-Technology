@@ -190,7 +190,7 @@
 	[crucible.wood]
 		#Heat rate the Wood Crucible will use regardless of heat source below (Default: 2)
 		#Range: > 1
-		woodHeatRate = 2
+		woodHeatRate = 1
 
 #Sieve Configs
 [sieve]

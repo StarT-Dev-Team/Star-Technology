@@ -1,6 +1,6 @@
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
-    
+
     const CR = event.recipes.gtceu.large_chemical_reactor;
 
     CR(id(`sodium_diphenoxide_dust`))
@@ -26,4 +26,4 @@ ServerEvents.recipes(event => {
         .outputFluids(`gtceu:polycarbonate 1000`)
         .duration(600)
         .EUt(GTValues.VA[GTValues.ZPM]);
-})
+});

@@ -7,7 +7,7 @@
 //         .itemOutputs('gtceu:chemical_builder')
 //         .duration(950)
 //         .EUt(GTValues.VA[GTValues.UV]);
-    
+
 //     event.recipes.gtceu.chemical_builder(id('propene'))
 //         .itemInputs('3x gtceu:carbon_dust')
 //         .inputFluids('gtceu:hydrogen 6000')
@@ -15,7 +15,7 @@
 //         .duration(40)
 //         .EUt(GTValues.VHA[GTValues.IV])
 //         .circuit(0);
-    
+
 //     event.recipes.gtceu.chemical_builder(id('ethane'))
 //         .itemInputs('2x gtceu:carbon_dust')
 //         .inputFluids('gtceu:hydrogen 6000')
@@ -23,7 +23,7 @@
 //         .duration(40)
 //         .EUt(GTValues.VHA[GTValues.IV])
 //         .circuit(1);
-    
+
 //     event.recipes.gtceu.chemical_builder(id('butene'))
 //         .itemInputs('4x gtceu:carbon_dust')
 //         .inputFluids('gtceu:hydrogen 8000')
@@ -39,7 +39,7 @@
 //         .duration(40)
 //         .EUt(GTValues.VHA[GTValues.IV])
 //         .circuit(3);
-    
+
 //     event.recipes.gtceu.chemical_builder(id('phenol'))
 //         .itemInputs('6x gtceu:carbon_dust')
 //         .inputFluids('gtceu:hydrogen 6000', 'gtceu:oxygen 1000')
@@ -47,7 +47,7 @@
 //         .duration(40)
 //         .EUt(GTValues.VHA[GTValues.IV])
 //         .circuit(4);
-    
+
 //     event.recipes.gtceu.chemical_builder(id('acetone'))
 //         .itemInputs('3x gtceu:carbon_dust')
 //         .inputFluids('gtceu:hydrogen 6000', 'gtceu:oxygen 1000')
@@ -87,7 +87,7 @@
 //         .duration(40)
 //         .EUt(GTValues.VHA[GTValues.IV])
 //         .circuit(9);
-    
+
 //     event.recipes.gtceu.chemical_builder(id('octane'))
 //         .itemInputs('8x gtceu:carbon_dust')
 //         .inputFluids('gtceu:hydrogen 18000')
@@ -95,7 +95,7 @@
 //         .duration(40)
 //         .EUt(GTValues.VHA[GTValues.IV])
 //         .circuit(10);
-    
+
 //     event.recipes.gtceu.chemical_builder(id('acetic_acid'))
 //         .itemInputs('2x gtceu:carbon_dust')
 //         .inputFluids('gtceu:hydrogen 4000', 'gtceu:oxygen 2000')

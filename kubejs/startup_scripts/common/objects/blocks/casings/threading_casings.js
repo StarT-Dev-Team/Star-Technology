@@ -1,8 +1,7 @@
-StartupEvents.registry('block', event => {
-
+StartupEvents.registry('block', (event) => {
     const ThreadingCasing = (type) => {
-
-        event.create(type)
+        event
+            .create(type)
             .hardness(5)
             .resistance(10)
             .soundType('metal')
@@ -11,8 +10,7 @@ StartupEvents.registry('block', event => {
             .tagBlock('mineable/pickaxe')
             .tagBlock('minecraft:needs_diamond_tool')
             .textureAll(`kubejs:block/casings/threading/${type}`);
-
-    }
+    };
 
     ThreadingCasing('ionic_engraving_casing');
     ThreadingCasing('advanced_assembly_casing');
@@ -28,7 +26,8 @@ StartupEvents.registry('block', event => {
     ThreadingCasing('tectonic_defiance_casing');
     ThreadingCasing('true_revitilization_casing');
 
-    event.create('aurouric_polarization_cell', 'gtceu:active')
+    event
+        .create('aurouric_polarization_cell', 'gtceu:active')
         .hardness(5)
         .resistance(10)
         .soundType('metal')

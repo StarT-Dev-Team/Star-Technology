@@ -1,4 +1,3 @@
-
 // GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
 //     event.create('chemical_builder')
 //         .category('chemical_builder')
@@ -24,8 +23,8 @@
 //                 .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
 //                 .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1)))
 //             .where('E', Predicates.blocks(GTBlocks.CASING_EXTREME_ENGINE_INTAKE.get()))
-//             .where('F', Predicates.blocks(GTBlocks.FIREBOX_TUNGSTENSTEEL.get()))   
-//             .where('P', Predicates.blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))     
+//             .where('F', Predicates.blocks(GTBlocks.FIREBOX_TUNGSTENSTEEL.get()))
+//             .where('P', Predicates.blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
 //             .where('T', Predicates.blocks('gtceu:trinaquadalloy_frame'))
 //             .where(' ', Predicates.any())
 //             .build())

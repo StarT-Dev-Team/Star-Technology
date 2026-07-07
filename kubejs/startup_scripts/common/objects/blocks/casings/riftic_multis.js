@@ -1,6 +1,6 @@
-StartupEvents.registry('block', event => {
-
-    event.create('absolute_temperature_smelting_casing')
+StartupEvents.registry('block', (event) => {
+    event
+        .create('absolute_temperature_smelting_casing')
         .hardness(5)
         .resistance(10)
         .soundType('metal')
@@ -10,7 +10,8 @@ StartupEvents.registry('block', event => {
         .noValidSpawns(true)
         .textureAll('kubejs:block/casings/riftic_multis/absolute_temperature_smelting_casing');
 
-    event.create('aberration_casing')
+    event
+        .create('aberration_casing')
         .hardness(5)
         .resistance(10)
         .soundType('metal')
@@ -20,7 +21,8 @@ StartupEvents.registry('block', event => {
         .noValidSpawns(true)
         .textureAll('kubejs:block/casings/riftic_multis/aberration_casing');
 
-    event.create('infernally_reinforced_casing')
+    event
+        .create('infernally_reinforced_casing')
         .hardness(5)
         .resistance(10)
         .soundType('metal')
@@ -30,7 +32,8 @@ StartupEvents.registry('block', event => {
         .noValidSpawns(true)
         .textureAll('kubejs:block/casings/riftic_multis/infernally_reinforced_casing');
 
-    event.create('soul_of_the_flame')
+    event
+        .create('soul_of_the_flame')
         .hardness(5)
         .resistance(10)
         .lightLevel(10)
@@ -61,7 +64,8 @@ StartupEvents.registry('block', event => {
     //     .noValidSpawns(true)
     //     .bloom('kubejs:block/casings/riftic_multis/riftion_injection_core');
 
-    event.create('primordial_ware_casing')
+    event
+        .create('primordial_ware_casing')
         .hardness(5)
         .resistance(10)
         .lightLevel(3)
@@ -72,7 +76,8 @@ StartupEvents.registry('block', event => {
         .tagBlock('minecraft:needs_iron_tool')
         .textureAll('kubejs:block/casings/riftic_multis/primordial_ware_casing');
 
-    event.create('primordial_assembly_grating')
+    event
+        .create('primordial_assembly_grating')
         .hardness(5)
         .resistance(10)
         .lightLevel(1)
@@ -82,5 +87,4 @@ StartupEvents.registry('block', event => {
         .tagBlock('mineable/pickaxe')
         .tagBlock('minecraft:needs_iron_tool')
         .textureAll('kubejs:block/casings/riftic_multis/primordial_assembly_grating');
-
 });

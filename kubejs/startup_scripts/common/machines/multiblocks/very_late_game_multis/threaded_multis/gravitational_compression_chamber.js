@@ -1,14 +1,17 @@
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('gravitational_compression_chamber', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('gravitational_compression_chamber', 'multiblock')
         .machine((holder) => new $StarTThreadingCapableMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
-        .tooltips([ 
-            Text.translate("block.start_core.gap"),
-            Text.translate("block.kubejs.threading.tooltip")
-        ])
+        .tooltips([Text.translate('block.start_core.gap'), Text.translate('block.kubejs.threading.tooltip')])
         .recipeTypes(['bender', 'compressor', 'forge_hammer', 'forming_press', 'packer'])
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THREADING_MACHINE, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.THREADING_MACHINE,
+            $StarTRecipeModifiers.BULK_PROCESSING,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:gravitationally_strained_stabilization_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle('                     ', '                     ', '                     ', '                     ', ' BBB             BBB ', ' BBBBB         BBBBB ', ' BBBBBCC     CCBBBBB ', ' BBBBB         BBBBB ', ' BBB             BBB ', '                     ', '                     ', '                     ', '                     ')
@@ -24,20 +27,25 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('                     ', ' BB               BB ', ' BBBBCCC     CCCBBBB ', 'BBBBBBBBC   CBBBBBBBB', 'BB  BBBBB   BBBBB  BB', 'BB  C  BBBBBBB  C  BB', 'BB CDC BBB@BBB CDC BB', 'BB  C  BBBBBBB  C  BB', 'BB  BBBBB   BBBBB  BB', 'BBBBBBBBC   CBBBBBBBB', ' BBBBCCC     CCCBBBB ', ' BB               BB ', '                     ')
             .aisle('                     ', '                     ', ' BB               BB ', ' BBBB           BBBB ', ' BBBBB  C   C  BBBBB ', 'BBBBBBBBC   CBBBBBBBB', 'BBBBDBBBC   CBBBDBBBB', 'BBBBBBBBC   CBBBBBBBB', ' BBBBB  C   C  BBBBB ', ' BBBB            BBB ', ' BB               BB ', '                     ', '                     ')
             .aisle('                     ', '                     ', '                     ', '                     ', ' BBB             BBB ', ' BBBBB         BBBBB ', ' BBBBBCC     CCBBBBB ', ' BBBBB         BBBBB ', ' BBB             BBB ', '                     ', '                     ', '                     ', '                     ')
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('kubejs:gravitationally_strained_stabilization_casing')
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
-            .where('C', Predicates.blocks('gtceu:abyssal_alloy_frame'))
-            .where('D', Predicates.blocks('kubejs:nyanium_gearbox'))
-            .where('E', Predicates.blocks('start_core:threading_controller'))
-            .where('F', $StarTThreadingStatBlocks.threadingStatBlocks())
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/threading/gravitationally_strained_stabilization_casing',
-            'gtceu:block/machines/compressor');
-
+                .where(' ', Predicates.any())
+                .where(
+                    'B',
+                    Predicates.blocks('kubejs:gravitationally_strained_stabilization_casing')
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                )
+                .where('C', Predicates.blocks('gtceu:abyssal_alloy_frame'))
+                .where('D', Predicates.blocks('kubejs:nyanium_gearbox'))
+                .where('E', Predicates.blocks('start_core:threading_controller'))
+                .where('F', $StarTThreadingStatBlocks.threadingStatBlocks())
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/threading/gravitationally_strained_stabilization_casing',
+            'gtceu:block/machines/compressor'
+        );
 });

@@ -1,4 +1,4 @@
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
     let LCR = event.recipes.gtceu.large_chemical_reactor;
@@ -40,17 +40,19 @@ ServerEvents.recipes(event => {
         .duration(640)
         .EUt(GTValues.VHA[GTValues.UV]);
 
-    event.recipes.gtceu.vacuum_chemical_reaction_chamber(id(`acidic_water`))
+    event.recipes.gtceu
+        .vacuum_chemical_reaction_chamber(id(`acidic_water`))
         .inputFluids(`gtceu:purified_water 50000`)
         .itemInputs(`20x kubejs:${beads}`)
         .outputFluids(`gtceu:acidic_water 50000`)
         .itemOutputs(`10x kubejs:dirty_${beads}`)
-        .chancedOutput(`10x kubejs:dirty_${beads}`,6000,1000)
+        .chancedOutput(`10x kubejs:dirty_${beads}`, 6000, 1000)
         .duration(128)
         .EUt(GTValues.VHA[GTValues.UV])
         .vacuumLevel(85);
 
-    event.recipes.gtceu.distillation_tower(id(`deionized_water`))
+    event.recipes.gtceu
+        .distillation_tower(id(`deionized_water`))
         .inputFluids(`gtceu:acidic_water 24000`)
         .outputFluids(`gtceu:deionized_water 18000`, `gtceu:purified_water 4000`, `gtceu:distilled_water 2000`)
         .duration(160)
@@ -64,5 +66,4 @@ ServerEvents.recipes(event => {
         .itemOutputs(`4x kubejs:dry_${beads}`)
         .duration(85)
         .EUt(GTValues.VHA[GTValues.LuV]);
-    
 });

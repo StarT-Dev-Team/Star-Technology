@@ -1,10 +1,14 @@
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('mega_abs', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('mega_abs', 'multiblock')
         .machine((holder) => new $CoiledMulti(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('alloy_blast_smelter')
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.EBF_OVERCLOCK, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.EBF_OVERCLOCK,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:extreme_temperature_smelting_casing'))
         .pattern(definition => FactoryBlockPattern.start()
 			.aisle('     B  B  B     ', '     BBBBBBB     ', '     C     C     ', '     C     C     ', '     CCCCCCC     ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ') 
@@ -24,24 +28,30 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 			.aisle('  GEDDDDDDDDDEG  ', ' BDDDDDDDDDDDDDB ', '  D DDEG@GEDD D  ', '  D  DDFIFDD  D  ', ' CDDDDDDDDDDDDDC ', '  C  C     C  C  ', '   C C     C C   ', '    CCDDDDDCC    ', '      C   C      ', '       C C       ', '       C C       ', '       C C       ', '      C   C      ', '     C DDD C     ', '                 ', '                 ', '                 ', '       DDD       ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ') 
 			.aisle(' B  BDEFDFEDB  B ', ' BBBBDDDDDDDBBBB ', ' C   D     D   C ', ' C   DD   DD   C ', ' CCCCCDDDDDCCCCC ', '      C   C      ', '       C C       ', '     CCCCCCC     ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ') 
 			.aisle('     B  B  B     ', '     BBBBBBB     ', '     C     C     ', '     C     C     ', '     CCCCCCC     ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ') 
-			.where(' ', Predicates.any())
-			.where('B', Predicates.blocks('kubejs:reinforced_brimstone_casing'))
-			.where('C', Predicates.blocks('gtceu:enriched_estalt_frame'))
-			.where('D', Predicates.blocks('kubejs:extreme_temperature_smelting_casing').setMinGlobalLimited(898)
-                .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1)))
-			.where('E', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-			.where('F', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-			.where('G', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-			.where('H', Predicates.heatingCoils())
-			.where('I', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-			.where('J', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-			.where('K', Predicates.abilities(PartAbility.MUFFLER))
-			.where('@', Predicates.controller(Predicates.blocks(definition.get())))
-			.build())
-		.workableCasingModel('kubejs:block/casings/nether_multis/extreme_temperature_smelting_casing',
-            'gtceu:block/multiblock/gcym/blast_alloy_smelter')
+                .where(' ', Predicates.any())
+                .where('B', Predicates.blocks('kubejs:reinforced_brimstone_casing'))
+                .where('C', Predicates.blocks('gtceu:enriched_estalt_frame'))
+                .where(
+                    'D',
+                    Predicates.blocks('kubejs:extreme_temperature_smelting_casing')
+                        .setMinGlobalLimited(898)
+                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                )
+                .where('E', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
+                .where('F', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
+                .where('G', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
+                .where('H', Predicates.heatingCoils())
+                .where('I', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
+                .where('J', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
+                .where('K', Predicates.abilities(PartAbility.MUFFLER))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/nether_multis/extreme_temperature_smelting_casing',
+            'gtceu:block/multiblock/gcym/blast_alloy_smelter'
+        )
         .additionalDisplay(global.coilMachineTempDisplay);
-
 });

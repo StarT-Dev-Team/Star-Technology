@@ -1,20 +1,23 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
-
-    event.create('pressure_heat_chamber')
+GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
+    event
+        .create('pressure_heat_chamber')
         .category('highly_advanced')
         .setEUIO('in')
         .setMaxIOSize(2, 2, 2, 2)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION , FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.ARC);
-
 });
 
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('super_pressure_heat_chamber', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('super_pressure_heat_chamber', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('pressure_heat_chamber')
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(GCYMBlocks.CASING_STRESS_PROOF)
         .pattern(definition => FactoryBlockPattern.start()
             .aisle('   BBBBBBB   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '   BBBBBBB   ', '     CCC     ')
@@ -30,21 +33,26 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle(' BBCCCCCCCBB ', '   CC    C   ', '             ', '  D       D  ', '      C      ', '   EECGCEE   ', '      C      ', '  D       D  ', '             ', '   CCCCCCC   ', ' BBEEEEEEEBB ', '      E      ')
             .aisle('  BBCCCCCBB  ', '   DEEEEED   ', '   D EEE D   ', '      E      ', '   D EEE D   ', '   DEE@EED   ', '   D EEE D   ', '      E      ', '   D EEE D   ', '   DEEEEED   ', '  BBEEEEEBB  ', '     EEE     ')
             .aisle('   BBBBBBB   ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '             ', '   BBBBBBB   ', '     CCC     ')
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
-            .where('C', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-            .where('D', Predicates.blocks('gtceu:hsla_steel_frame'))
-            .where('E', Predicates.blocks('gtceu:stress_proof_casing')
-                .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
-            .where('F', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-            .where('G', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-            .where('H', Predicates.blocks('kubejs:signalum_casing'))
-            .where('I', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('gtceu:block/casings/gcym/stress_proof_casing',
-            'gtceu:block/multiblock/implosion_compressor');
-
+                .where(' ', Predicates.any())
+                .where('B', Predicates.blocks('kubejs:enriched_naquadah_firebox_casing'))
+                .where('C', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
+                .where('D', Predicates.blocks('gtceu:hsla_steel_frame'))
+                .where(
+                    'E',
+                    Predicates.blocks('gtceu:stress_proof_casing')
+                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                )
+                .where('F', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
+                .where('G', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
+                .where('H', Predicates.blocks('kubejs:signalum_casing'))
+                .where('I', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'gtceu:block/casings/gcym/stress_proof_casing',
+            'gtceu:block/multiblock/implosion_compressor'
+        );
 });

@@ -21,10 +21,10 @@
 	bulkCutting = false
 	#.
 	#Allow supported potions to be brewed by a Mechanical Mixer + Basin.
-	allowBrewingInMixer = true
+	allowBrewingInMixer = false
 	#.
 	#Allow any shapeless crafting recipes to be processed by a Mechanical Mixer + Basin.
-	allowShapelessInMixer = true
+	allowShapelessInMixer = false
 	#.
 	#Allow any single-ingredient 2x2 or 3x3 crafting recipes to be processed by a Mechanical Press + Basin.
 	allowShapedSquareInPress = true
@@ -37,16 +37,16 @@
 	maxFireworkIngredientsInCrafter = 9
 	#.
 	#Allow any stonecutting recipes to be processed by a Mechanical Saw.
-	allowStonecuttingOnSaw = true
+	allowStonecuttingOnSaw = false
 	#.
 	#Allow any Druidcraft woodcutter recipes to be processed by a Mechanical Saw.
-	allowWoodcuttingOnSaw = true
+	allowWoodcuttingOnSaw = false
 	#.
 	#Allow Spouts to interact with Casting Tables and Basins from Tinkers' Construct.
-	allowCastingBySpout = true
+	allowCastingBySpout = false
 	#.
 	#Display vanilla Log-stripping interactions in JEI.
-	displayLogStrippingRecipes = true
+	displayLogStrippingRecipes = false
 	#.
 	#The amount of Light sources destroyed before Chromatic Compound turns into Refined Radiance.
 	#Range: > 1
@@ -130,7 +130,7 @@
 		#.
 		#Game ticks required for a Fan-based processing recipe to take effect.
 		#Range: > 0
-		fanProcessingTime = 150
+		fanProcessingTime = 600
 
 	#.
 	#Moving Contraptions
@@ -348,7 +348,7 @@
 	fluidFillPlaceFluidSourceBlocks = true
 	#.
 	#Whether open-ended pipes should be allowed to place fluid sources.
-	pipesPlaceFluidSourceBlocks = true
+	pipesPlaceFluidSourceBlocks = false
 
 #.
 #Tweaks for logistical components

@@ -1,19 +1,18 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
-
-    event.create('riftion_accelerator')
+GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
+    event
+        .create('riftion_accelerator')
         .category('komaru')
         .setEUIO('in')
         .setMaxIOSize(1, 12, 1, 0)
         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.REPLICATOR);
-
 });
 
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('riftion_accelerator', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('riftion_accelerator', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .machine(holder => new $OpticalComputationMachine(holder))
+        .machine((holder) => new $OpticalComputationMachine(holder))
         .recipeType('riftion_accelerator')
         .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('kubejs:primordial_ware_casing'))
@@ -40,25 +39,34 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('                              ', '                              ', '   G                          ', '  GHG                         ', '   G                          ', '                              ', '                              ') 
             .aisle('                              ', '                              ', '   C                          ', '  CHC                         ', '   C                          ', '                              ', '                              ') 
             .aisle('B     B                       ', ' B   B                        ', '  DDD                         ', '  DND                         ', '  DDD                         ', ' B   B                        ', 'B     B                       ') 
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('gtceu:hvga_steel_frame'))
-            .where('C', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-            .where('D', Predicates.blocks('kubejs:primordial_ware_casing')
-                .or(Predicates.blocks('gtceu:ulv_input_bus').setMaxGlobalLimited(1).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.COMPUTATION_DATA_RECEPTION).setExactLimit(1).setPreviewCount(0))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0)))
-            .where('E', Predicates.blocks('kubejs:aberration_casing'))
-            .where('F', Predicates.blocks('start_core:auxiliary_boosted_fusion_casing_mk2'))
-            .where('G', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
-            .where('H', Predicates.blocks('kubejs:prismalic_reflector_casing'))
-            .where('I', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-            .where('J', Predicates.blocks('gtceu:neutronium_block'))
-            .where('K', Predicates.abilities(PartAbility.EXPORT_ITEMS))
-            .where('L', Predicates.blocks('kubejs:core_casing'))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .where('N', Predicates.abilities(PartAbility.IMPORT_FLUIDS))
-            .build())
-        .workableCasingModel('kubejs:block/casings/riftic_multis/primordial_ware_casing', 
-            'kubejs:block/multiblock/riftion/accelerator');
-        
+                .where(' ', Predicates.any())
+                .where('B', Predicates.blocks('gtceu:hvga_steel_frame'))
+                .where('C', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
+                .where(
+                    'D',
+                    Predicates.blocks('kubejs:primordial_ware_casing')
+                        .or(Predicates.blocks('gtceu:ulv_input_bus').setMaxGlobalLimited(1).setPreviewCount(0))
+                        .or(
+                            Predicates.abilities(PartAbility.COMPUTATION_DATA_RECEPTION)
+                                .setExactLimit(1)
+                                .setPreviewCount(0)
+                        )
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
+                )
+                .where('E', Predicates.blocks('kubejs:aberration_casing'))
+                .where('F', Predicates.blocks('start_core:auxiliary_boosted_fusion_casing_mk2'))
+                .where('G', Predicates.blocks('kubejs:nyanium_engine_intake_casing'))
+                .where('H', Predicates.blocks('kubejs:prismalic_reflector_casing'))
+                .where('I', Predicates.blocks('kubejs:nyanium_pipe_casing'))
+                .where('J', Predicates.blocks('gtceu:neutronium_block'))
+                .where('K', Predicates.abilities(PartAbility.EXPORT_ITEMS))
+                .where('L', Predicates.blocks('kubejs:core_casing'))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .where('N', Predicates.abilities(PartAbility.IMPORT_FLUIDS))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/riftic_multis/primordial_ware_casing',
+            'kubejs:block/multiblock/riftion/accelerator'
+        );
 });

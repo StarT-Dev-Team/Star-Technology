@@ -1,6 +1,4 @@
-
-ItemEvents.tooltip(event => { 
-
+ItemEvents.tooltip((event) => {
     const integration = (id) => `projectred_integration:${id}`;
     const core = (id) => `projectred_core:${id}`;
     const transmission = (id) => `projectred_transmission:${id}`;
@@ -24,7 +22,10 @@ ItemEvents.tooltip(event => {
     event.add(gate('sr_latch'), Component.translatable('item.projectred_integration.sr_latch_gate.tooltip'));
     event.add(gate('toggle_latch'), Component.translatable('item.projectred_integration.toggle_latch_gate.tooltip'));
 
-    event.add(gate('transparent_latch'), Component.translatable('item.projectred_integration.transparent_latch_gate.tooltip'));
+    event.add(
+        gate('transparent_latch'),
+        Component.translatable('item.projectred_integration.transparent_latch_gate.tooltip')
+    );
     event.add(gate('light_sensor'), Component.translatable('item.projectred_integration.light_sensor_gate.tooltip'));
     event.add(gate('rain_sensor'), Component.translatable('item.projectred_integration.rain_sensor_gate.tooltip'));
     event.add(gate('timer'), Component.translatable('item.projectred_integration.timer_gate.tooltip'));
@@ -33,17 +34,34 @@ ItemEvents.tooltip(event => {
     event.add(gate('state_cell'), Component.translatable('item.projectred_integration.state_cell_gate.tooltip'));
 
     event.add(gate('synchronizer'), Component.translatable('item.projectred_integration.synchronizer_gate.tooltip'));
-    event.add(gate('bus_transceiver'), Component.translatable('item.projectred_integration.bus_transciever_gate.tooltip'));
+    event.add(
+        gate('bus_transceiver'),
+        Component.translatable('item.projectred_integration.bus_transciever_gate.tooltip')
+    );
     event.add(gate('null_cell'), Component.translatable('item.projectred_integration.null_cell_gate.tooltip'));
     event.add(gate('invert_cell'), Component.translatable('item.projectred_integration.inverter_cell_gate.tooltip'));
     event.add(gate('buffer_cell'), Component.translatable('item.projectred_integration.buffer_cell_gate.tooltip'));
     event.add(gate('comparator'), Component.translatable('item.projectred_integration.comparator_gate.tooltip'));
     event.add(gate('and_cell'), Component.translatable('item.projectred_integration.and_cell_gate.tooltip'));
-    event.add(gate('bus_randomizer'), Component.translatable('item.projectred_integration.bus_randomizer_gate.tooltip'));
+    event.add(
+        gate('bus_randomizer'),
+        Component.translatable('item.projectred_integration.bus_randomizer_gate.tooltip')
+    );
     event.add(gate('bus_converter'), Component.translatable('item.projectred_integration.bus_converter_gate.tooltip'));
-    event.add(gate('bus_input_panel'), Component.translatable('item.projectred_integration.bus_input_panel_gate.tooltip'));
-    event.add(gate('segment_display'), Component.translatable('item.projectred_integration.segment_display_gate.tooltip'));
-    event.add(gate('dec_randomizer'), Component.translatable('item.projectred_integration.dec_randomizer_gate.tooltip'));
-    event.add(gate('stacking_latch'), Component.translatable('item.projectred_integration.stacking_latch_gate.tooltip'));
-
+    event.add(
+        gate('bus_input_panel'),
+        Component.translatable('item.projectred_integration.bus_input_panel_gate.tooltip')
+    );
+    event.add(
+        gate('segment_display'),
+        Component.translatable('item.projectred_integration.segment_display_gate.tooltip')
+    );
+    event.add(
+        gate('dec_randomizer'),
+        Component.translatable('item.projectred_integration.dec_randomizer_gate.tooltip')
+    );
+    event.add(
+        gate('stacking_latch'),
+        Component.translatable('item.projectred_integration.stacking_latch_gate.tooltip')
+    );
 });

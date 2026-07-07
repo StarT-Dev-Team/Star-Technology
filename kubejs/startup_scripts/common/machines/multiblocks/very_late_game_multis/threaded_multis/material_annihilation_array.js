@@ -1,14 +1,17 @@
-GTCEuStartupEvents.registry('gtceu:machine', event => {
-
-    event.create('material_annihilation_array', 'multiblock')
+GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    event
+        .create('material_annihilation_array', 'multiblock')
         .machine((holder) => new $StarTThreadingCapableMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
-        .tooltips([ 
-            Text.translate("block.start_core.gap"),
-            Text.translate("block.kubejs.threading.tooltip")
-        ])
+        .tooltips([Text.translate('block.start_core.gap'), Text.translate('block.kubejs.threading.tooltip')])
         .recipeTypes(['bulk_ore_processing_array', 'arc_furnace', 'macerator', 'pulverizer'])
-        .recipeModifiers([GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THREADING_MACHINE, $StarTRecipeModifiers.BULK_PROCESSING, GTRecipeModifiers.BATCH_MODE])
+        .recipeModifiers([
+            GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.THREADING_MACHINE,
+            $StarTRecipeModifiers.BULK_PROCESSING,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:absolute_annihilation_casing'))
         .pattern(definition => FactoryBlockPattern.start()
             .aisle('      BBBBB      ', '      BBBBB      ', '      BBBBB      ', '      BBBBB      ', '      BBBBB      ', '      BBBBB      ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ')
@@ -36,26 +39,31 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .aisle('  BBBBBBBBBBBBB  ', '  BBBBDDDDDBBBB  ', '  BBBBCCCCCBBBB  ', '   BBBDDDDDBBB   ', '   BBBBBBBBBBB   ', '    BBBBBBBBB    ', '    BBBBBBBBB    ', '                 ', '                 ', '                 ', '                 ', '                 ')
             .aisle('   BBBBBBBBBBB   ', '   BBBBBBBBBBB   ', '   BBBBB@BBBBB   ', '    BBBBBBBBB    ', '    BBBBBBBBB    ', '    BBBBBBBBB    ', '     BBBBBBB     ', '                 ', '                 ', '                 ', '                 ', '                 ')
             .aisle('     BBBBBBB     ', '     BB   BB     ', '     BB   BB     ', '     BB   BB     ', '     BBBBBBB     ', '      BBBBB      ', '                 ', '                 ', '                 ', '                 ', '                 ', '                 ')
-            .where(' ', Predicates.any())
-            .where('B', Predicates.blocks('kubejs:absolute_annihilation_casing')
-                .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
-                .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
-            .where('C', Predicates.blocks('kubejs:nyanium_pipe_casing'))
-            .where('D', Predicates.blocks('kubejs:nyanium_gearbox'))
-            .where('E', Predicates.blocks('kubejs:absolute_annihilators'))
-            .where('F', Predicates.blocks('gtceu:zeroidic_trinate_steel_frame'))
-            .where('G', $StarTThreadingStatBlocks.threadingStatBlocks())
-            .where('H', Predicates.blocks('kubejs:atomic_convergence_casing'))
-            .where('I', Predicates.abilities(PartAbility.MUFFLER))
-            .where('J', Predicates.blocks('start_core:threading_controller'))
-            .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-            .build())
-        .workableCasingModel('kubejs:block/casings/threading/absolute_annihilation_casing',
-            'gtceu:block/machines/macerator');
-
+                .where(' ', Predicates.any())
+                .where(
+                    'B',
+                    Predicates.blocks('kubejs:absolute_annihilation_casing')
+                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setPreviewCount(0).setMaxGlobalLimited(20))
+                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
+                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
+                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
+                )
+                .where('C', Predicates.blocks('kubejs:nyanium_pipe_casing'))
+                .where('D', Predicates.blocks('kubejs:nyanium_gearbox'))
+                .where('E', Predicates.blocks('kubejs:absolute_annihilators'))
+                .where('F', Predicates.blocks('gtceu:zeroidic_trinate_steel_frame'))
+                .where('G', $StarTThreadingStatBlocks.threadingStatBlocks())
+                .where('H', Predicates.blocks('kubejs:atomic_convergence_casing'))
+                .where('I', Predicates.abilities(PartAbility.MUFFLER))
+                .where('J', Predicates.blocks('start_core:threading_controller'))
+                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+                .build()
+        )
+        .workableCasingModel(
+            'kubejs:block/casings/threading/absolute_annihilation_casing',
+            'gtceu:block/machines/macerator'
+        );
 });

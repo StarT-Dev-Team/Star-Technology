@@ -1,7 +1,5 @@
 {
 	chapter_groups: [
-		{ id: "1E0FC4EA21F735F7", title: "{ftbquests.main.title}" }
-		{ id: "03EF8417F6D21A2E", title: "{ftbquests.progression.title}" }
-		{ id: "28726466D987C725", title: "{ftbquests.extra.title}" }
+		{ id: "5829B93DCAFAD4B8", title: "Through the Ages HM" }
 	]
 }

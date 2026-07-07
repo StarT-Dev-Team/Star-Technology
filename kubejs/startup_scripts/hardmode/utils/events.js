@@ -1,7 +1,5 @@
-// packmode: hard
-
 // Blocks Create Pipe Cobble Gen
-ForgeEvents.onEvent('com.simibubi.create.api.event.PipeCollisionEvent$Spill', event => {
+ForgeEvents.onEvent('com.simibubi.create.api.event.PipeCollisionEvent$Spill', (event) => {
     const pipeFluid = Fluid.of(event.getPipeFluid());
     const worldFluid = Fluid.of(event.getWorldFluid());
 

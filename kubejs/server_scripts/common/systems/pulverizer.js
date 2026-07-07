@@ -1,15 +1,15 @@
 // priority -1000
 
-const blacklist = ["aluminum"];
+const blacklist = ['aluminum'];
 const edgeCases = {
-    "gtceu:certus_quartz_gem": "ae2:certus_quartz_crystal"
-}
+    'gtceu:certus_quartz_gem': 'ae2:certus_quartz_crystal',
+};
 
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
     var once = true;
 
-    event.forEachRecipe({ type: 'gtceu:macerator' }, macParse => {
+    event.forEachRecipe({ type: 'gtceu:macerator' }, (macParse) => {
         const macData = JSON.parse(macParse.json);
 
         if (macData.category === 'gtceu:ore_crushing') {
@@ -26,7 +26,8 @@ ServerEvents.recipes(event => {
             if (oreTagSplit[0] === 'forge:raw_materials' && !blacklist.includes(oreTagSplit[1])) {
                 const itemOutput = macData.outputs.item[0].content;
 
-                event.recipes.gtceu.pulverizer(id(`crushed_${oreTagSplit[1]}`))
+                event.recipes.gtceu
+                    .pulverizer(id(`crushed_${oreTagSplit[1]}`))
                     .itemInputs(`1x #${itemInput.ingredient.tag}`)
                     .itemOutputs(`${itemOutput.count}x ${itemOutput.ingredient.item}`)
                     .circuit(0)
@@ -36,7 +37,7 @@ ServerEvents.recipes(event => {
         }
     });
 
-    event.forEachRecipe({ type: 'minecraft:blasting' }, furnParse => {
+    event.forEachRecipe({ type: 'minecraft:blasting' }, (furnParse) => {
         const furnData = JSON.parse(furnParse.json);
         const furnInput = furnData.ingredient;
 
@@ -47,13 +48,14 @@ ServerEvents.recipes(event => {
         if (oreTagSplit[0] === 'forge:raw_materials' && !blacklist.includes(oreTagSplit[1])) {
             const oreName = oreTagSplit[1];
             const furnOutput = furnData.result;
-            var furnOutputItem = typeof furnOutput === "string" ? furnOutput : furnOutput.item;
+            var furnOutputItem = typeof furnOutput === 'string' ? furnOutput : furnOutput.item;
 
-            if (furnOutputItem.includes("dust")) return;
+            if (furnOutputItem.includes('dust')) return;
 
             if (edgeCases[furnOutputItem]) furnOutputItem = edgeCases[furnOutputItem];
 
-            event.recipes.gtceu.pulverizer(id(`crushed_heated_${oreName}`))
+            event.recipes.gtceu
+                .pulverizer(id(`crushed_heated_${oreName}`))
                 .itemInputs(`1x gtceu:crushed_${oreName}_ore`)
                 .itemOutputs(`${furnOutputItem}`)
                 .circuit(1)
@@ -61,7 +63,8 @@ ServerEvents.recipes(event => {
                 .category('pulverizer_heated')
                 .EUt(GTValues.VA[GTValues.LV]);
 
-            event.recipes.gtceu.pulverizer(id(`raw_heated_${oreName}`))
+            event.recipes.gtceu
+                .pulverizer(id(`raw_heated_${oreName}`))
                 .itemInputs(`1x #${furnInput.tag}`)
                 .itemOutputs(`${furnOutput.count || 1}x ${furnOutputItem}`)
                 .circuit(1)

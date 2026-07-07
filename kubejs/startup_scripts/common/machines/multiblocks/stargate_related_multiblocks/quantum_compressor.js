@@ -63,5 +63,5 @@
 //             .build())
 //         .workableCasingModel('gtceu:block/casings/gcym/stress_proof_casing',
 //             'gtceu:block/multiblock/implosion_compressor');
-            
+
 // });

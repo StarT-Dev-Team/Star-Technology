@@ -1,4 +1,4 @@
-ServerEvents.recipes(event => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
     // event.recipes.gtceu.circuit_assembler(id('basic_energy_core'))
@@ -53,7 +53,7 @@ ServerEvents.recipes(event => {
     //         .EUt(30 * (4 ** (type - 1)));
     //     }
     //     }
-    
+
     // SolarPanel('1','aluminium','mirror','mv','','copper','')
     // SolarPanel('2','stainless_steel','','hv','silicon','gold','basic')
     // SolarPanel('3','titanium','','ev','silicon','aluminium','regular')
@@ -75,5 +75,4 @@ ServerEvents.recipes(event => {
     //         .itemOutputs(`solarflux:sp_8`)
     //         .duration(300)
     //         .EUt(30 * (4 ** 7));
-
 });

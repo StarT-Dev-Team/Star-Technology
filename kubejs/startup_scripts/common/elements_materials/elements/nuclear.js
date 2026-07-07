@@ -1,5 +1,4 @@
-GTCEuStartupEvents.registry('gtceu:element', event => {
-    
+GTCEuStartupEvents.registry('gtceu:element', (event) => {
     const elem = global.elementFunction(event);
 
     elem('uranium_233', 92, 141, 'U²³³');
@@ -9,5 +8,4 @@ GTCEuStartupEvents.registry('gtceu:element', event => {
     elem('curium_244', 96, 148, 'Cm²⁴⁴');
     elem('californium_252', 98, 154, 'Cf²⁵²');
     elem('einsteinium_253', 99, 154, 'Es²⁵³');
-
 });
