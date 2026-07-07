@@ -2,13 +2,13 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('incomprehensible_chemical_reactor', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .machine((holder) => new $CoiledMulti(holder))
+        .machine((holder) => new $BulkingCoiledMulti(holder))
         .recipeTypes(['large_chemical_reactor'])
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.CHEMICAL_REACTOR_OVERCLOCK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
-            $StarTRecipeModifiers.BULK_PROCESSING,
+            $BulkingCoiledMulti.modifier,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:cattomolymer_casing'))

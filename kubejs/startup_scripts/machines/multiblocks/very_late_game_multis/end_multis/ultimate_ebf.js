@@ -2,13 +2,13 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('ultimate_ebf', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .machine((holder) => new $CoiledMulti(holder))
+        .machine((holder) => new $BulkingCoiledMulti(holder))
         .recipeType('electric_blast_furnace')
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.EBF_OVERCLOCK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
-            $StarTRecipeModifiers.BULK_PROCESSING,
+            $BulkingCoiledMulti.modifier,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:extreme_temperature_smelting_casing'))

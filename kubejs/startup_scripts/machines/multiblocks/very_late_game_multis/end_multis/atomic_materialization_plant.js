@@ -2,14 +2,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('atomic_materialization_plant', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .machine((holder) => new $CoiledMulti(holder))
+        .machine((holder) => new $BulkingCoiledMulti(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeTypes(['chemical_skip'])
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.CHEMICAL_REACTOR_OVERCLOCK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
-            $StarTRecipeModifiers.BULK_PROCESSING,
+            $BulkingCoiledMulti.modifier,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:cattomolymer_casing'))
