@@ -51,6 +51,9 @@ config/*
 !config/thermal-common.toml
 !config/toms_storage-common.toml
 
+# Misc
+.DS_Store
+
 # Linting stuff
 !package.json
 !package-lock.json
