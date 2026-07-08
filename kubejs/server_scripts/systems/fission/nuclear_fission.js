@@ -31,12 +31,12 @@ ServerEvents.recipes((event) => {
 
     let nuclearRod = (type, tier, composition, decomposition) => {
         let cell = FLUID_CELL_TYPE[tier];
-        let comp = (comp_) => {
+        let comp = (compInput) => {
             let localCalculatedComp = [];
-            if (Array.isArray(comp_)) {
-                if (comp_.length > 1) {
-                    for (let i = 0; i < comp_.length; i++) {
-                        localCalculatedComp.push(comp_[i]);
+            if (Array.isArray(compInput)) {
+                if (compInput.length > 1) {
+                    for (let i = 0; i < compInput.length; i++) {
+                        localCalculatedComp.push(compInput[i]);
                     }
 
                     event.recipes.gtceu
@@ -48,7 +48,7 @@ ServerEvents.recipes((event) => {
                     localCalculatedComp = 'gtceu:' + type + '_base_dust';
                 }
             } else {
-                localCalculatedComp = comp_;
+                localCalculatedComp = compInput;
             }
             return localCalculatedComp;
         };
