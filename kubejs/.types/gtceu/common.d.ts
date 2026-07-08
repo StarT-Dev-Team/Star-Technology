@@ -1108,33 +1108,58 @@ declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.part 
     import TieredIOPartMachine = api.machine.multiblock.part.TieredIOPartMachine;
     import IO = internal.com.gregtechceu.gtceu.api.capability.recipe.IO;
 
-    class FluidHatchPartMachine extends TieredIOPartMachine {
-        constructor(
+    interface FluidHatchPartMachine extends $object<
+        'com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine',
+        TieredIOPartMachine
+    > {}
+
+    const FluidHatchPartMachine: $class<FluidHatchPartMachine> & {
+        new (
             holder: IMachineBlockEntity,
             tier: number,
             io: $wrapped<IO>,
             initialCapacity: number,
             slots: number,
             ...args: unknown[]
-        );
-        constructor(
+        ): FluidHatchPartMachine;
+        new (
             holder: IMachineBlockEntity,
             tier: number,
             io: $wrapped<IO>,
             initialCapacity: number,
             slots: number,
             args: unknown[]
-        );
-    }
+        ): FluidHatchPartMachine;
+    };
 
     import TieredPartMachine = api.machine.multiblock.part.TieredPartMachine;
-    class AutoMaintenanceHatchPartMachine extends TieredPartMachine {}
+
+    interface AutoMaintenanceHatchPartMachine extends $object<
+        'com.gregtechceu.gtceu.common.machine.multiblock.part.AutoMaintenanceHatchPartMachine',
+        TieredPartMachine
+    > {}
+
+    const AutoMaintenanceHatchPartMachine: $class<AutoMaintenanceHatchPartMachine> & {};
 
     import CleanroomType = api.machine.multiblock.CleanroomType;
 
-    class CleaningMaintenanceHatchPartMachine extends AutoMaintenanceHatchPartMachine {
-        constructor(holder: IMachineBlockEntity, cleanroomType: CleanroomType);
-    }
+    interface CleaningMaintenanceHatchPartMachine extends $object<
+        'com.gregtechceu.gtceu.common.machine.multiblock.part.CleaningMaintenanceHatchPartMachine',
+        AutoMaintenanceHatchPartMachine
+    > {}
+
+    const CleaningMaintenanceHatchPartMachine: $class<CleaningMaintenanceHatchPartMachine> & {
+        new (holder: IMachineBlockEntity, cleanroomType: CleanroomType): CleaningMaintenanceHatchPartMachine;
+    };
+
+    interface MufflerPartMachine extends $object<
+        'com.gregtechceu.gtceu.common.machine.multiblock.part.MufflerPartMachine',
+        TieredPartMachine
+    > {}
+
+    const MufflerPartMachine: $class<MufflerPartMachine> & {
+        new (holder: IMachineBlockEntity, tier: number): MufflerPartMachine;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.generator {
@@ -1202,6 +1227,7 @@ declare namespace internal.kjs {
         'com.gregtechceu.gtceu.common.machine.multiblock.electric.AssemblyLineMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.electric.AssemblyLineMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.part.FluidHatchPartMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.part.CleaningMaintenanceHatchPartMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.part.CleaningMaintenanceHatchPartMachine;
+        'com.gregtechceu.gtceu.common.machine.multiblock.part.MufflerPartMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.part.MufflerPartMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
     }
 }

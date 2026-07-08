@@ -1,15 +1,20 @@
-namespace internal.com.tterrag.registrate.util.entry {
+declare namespace internal.com.tterrag.registrate.util.entry {
     import Block = net.minecraft.world.level.block.Block;
     import Supplier = java.util.function_.Supplier;
+    import ItemLike = net.minecraft.world.level.ItemLike;
 
-    interface RegistryEntry<T> extends Supplier<T> {
+    interface RegistryEntry<T> extends $object<'com.tterrag.registrate.util.entry.RegistryEntry', Supplier<T>> {
         getUnchecked(): T | null;
         is(entry: T): boolean;
     }
 
-    class RegistryEntry<T> implements Supplier<T> {}
+    interface ItemProviderEntry<T extends ItemLike> extends $object<
+        'com.tterrag.registrate.util.entry.ItemProviderEntry',
+        RegistryEntry<T>
+    > {}
 
-    class ItemProviderEntry<T extends ItemLike> extends RegistryEntry<T> {}
-
-    class BlockEntry<T extends Block> extends ItemProviderEntry<T> {}
+    interface BlockEntry<T extends Block> extends $object<
+        'com.tterrag.registrate.util.entry.BlockEntry',
+        ItemProviderEntry<T>
+    > {}
 }

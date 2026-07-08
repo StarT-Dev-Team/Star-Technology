@@ -15,3 +15,9 @@ declare namespace internal.net.minecraft.resources {
 
     interface ResourceKey<T> extends $object<'net.minecraft.resources.ResourceKey', Comparable<ResourceKey<T>>> {}
 }
+
+declare namespace internal.kjs {
+    interface LoadableClasses {
+        'net.minecraft.resources.ResourceLocation': typeof net.minecraft.resources.ResourceLocation;
+    }
+}

@@ -84,6 +84,18 @@ declare namespace internal.kjs.gtceu {
         registry(key: 'gtceu:material', callback: (event: MaterialRegistryEvent) => void): void;
         materialModification(callback: (event: MaterialModificationEventJS) => void): void;
     }
+
+    import GTBedrockOreVeinEventJS = com.gregtechceu.gtceu.integration.kjs.events.GTBedrockOreVeinEventJS;
+    import GTFluidVeinEventJS = com.gregtechceu.gtceu.integration.kjs.events.GTFluidVeinEventJS;
+    import GTOreVeinEventJS = com.gregtechceu.gtceu.integration.kjs.events.GTOreVeinEventJS;
+    import RegisterCapesEventJS = com.gregtechceu.gtceu.integration.kjs.events.RegisterCapesEventJS;
+
+    interface ServerEvents {
+        oreVeins(callback: (event: GTOreVeinEventJS) => void): void;
+        bedrockOreVeins(callback: (event: GTBedrockOreVeinEventJS) => void): void;
+        fluidVeins(callback: (event: GTFluidVeinEventJS) => void): void;
+        registerCapes(callback: (event: RegisterCapesEventJS) => void): void;
+    }
 }
 
 declare namespace internal.kjs {
@@ -224,8 +236,8 @@ declare namespace internal.kjs {
     }
 }
 
+declare const GTRegistries: typeof internal.com.gregtechceu.gtceu.api.registry.GTRegistries;
 declare const RotationState: typeof internal.com.gregtechceu.gtceu.api.data.RotationState;
-
 declare const GTMaterials: typeof internal.com.gregtechceu.gtceu.common.data.GTMaterials;
 declare const GTElements: typeof internal.com.gregtechceu.gtceu.common.data.GTElements;
 declare const GTRecipeTypes: typeof internal.com.gregtechceu.gtceu.common.data.GTRecipeTypes;
@@ -236,6 +248,7 @@ declare const GCYMBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GCYM
 declare const GTBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GTBlocks;
 declare const GCYMMachines: typeof internal.com.gregtechceu.gtceu.common.data.machines.GCYMMachines;
 declare const GTCEuStartupEvents: internal.kjs.gtceu.StartupEvents;
+declare const GTCEuServerEvents: internal.kjs.gtceu.ServerEvents;
 declare const GTValues: typeof internal.com.gregtechceu.gtceu.api.GTValues;
 declare const GTMaterialIconSet: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 declare const GTMaterialFlags: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;

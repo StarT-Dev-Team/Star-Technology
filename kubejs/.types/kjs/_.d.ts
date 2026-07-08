@@ -71,7 +71,7 @@ declare namespace internal.kjs {
         | null
         | string
         | number
-        | java.lang.Enum
+        | java.lang.Enum<unknown>
         | ({ text: string } & ComponentJsonAttributes)
         | ({ translate: string; with?: unknown[] } & ComponentJsonAttributes)
         | ComponentWrapper[];
@@ -80,6 +80,14 @@ declare namespace internal.kjs {
         'net.minecraft.nbt.CompoundTag': JsonObjectLike;
         'net.minecraft.nbt.CollectionTag': JsonArrayLike;
     }
+
+    type IntBoundsWrapper =
+        | number
+        | [number, number]
+        | { bounds: [number, number] }
+        | { min: number; max: number }
+        | { min_inclusive: number; max_inclusive: number }
+        | { value: number };
 
     interface TypeWrappers {
         // Java / Minecraft
@@ -104,14 +112,25 @@ declare namespace internal.kjs {
         'net.minecraft.nbt.Tag': string | JsonLike;
 
         'net.minecraft.core.BlockPos': [number, number, number] | dev.latvian.mods.kubejs.level.BlockContainerJS;
-        // typeWrappers.registerSimple(Vec3.class, UtilsJS::vec3Of);
+        'net.minecraft.world.phys.Vec3':
+            | net.minecraft.world.entity.Entity
+            | [number, number, number]
+            | net.minecraft.core.BlockPos
+            | dev.latvian.mods.kubejs.level.BlockContainerJS;
 
         'net.minecraft.world.item.Item': TypeWrappers['net.minecraft.world.item.ItemStack'];
         // typeWrappers.register(ItemLike.class, ItemStackJS::getRawItem);
         // typeWrappers.registerSimple(MobCategory.class, o -> o == null ? null : UtilsJS.mobCategoryByName(o.toString()));
 
-        // typeWrappers.registerSimple(AABB.class, AABBWrapper::wrap);
-        // typeWrappers.registerSimple(IntProvider.class, UtilsJS::intProviderOf);
+        'net.minecraft.world.phys.AABB':
+            | net.minecraft.core.BlockPos
+            | []
+            | [number, number, number]
+            | [number, number, number, number, number, number];
+        'net.minecraft.util.valueproviders.IntProvider':
+            | IntBoundsWrapper
+            | { clamped: IntBoundsWrapper }
+            | { clamped_normal: IntBoundsWrapper; mean: number; deviation: number };
         // typeWrappers.registerSimple(NumberProvider.class, UtilsJS::numberProviderOf);
         // typeWrappers.registerSimple(LootContext.EntityTarget.class, o -> o == null ? null : LootContext.EntityTarget.getByName(o.toString().toLowerCase()));
         // typeWrappers.registerSimple(CopyNameFunction.NameSource.class, o -> o == null ? null : CopyNameFunction.NameSource.getByName(o.toString().toLowerCase()));
@@ -357,11 +376,15 @@ declare namespace internal.kjs.kubejs {
     }
 }
 
+// TODO: move to JavaWrapper
 declare const Java: {
     loadClass: { <K extends keyof internal.kjs.LoadableClasses>(name: K): internal.kjs.LoadableClasses[K] };
 };
 
+declare const console: internal.dev.latvian.mods.kubejs.util.ConsoleJS;
+declare const Platform: typeof internal.dev.latvian.mods.kubejs.script.PlatformWrapper;
 declare const JavaMath: typeof internal.java.lang.Math;
+declare const Utils: typeof internal.dev.latvian.mods.kubejs.bindings.UtilsWrapper;
 
 declare const Item: typeof internal.dev.latvian.mods.kubejs.bindings.ItemWrapper;
 declare const Ingredient: typeof internal.dev.latvian.mods.kubejs.bindings.IngredientWrapper;
@@ -373,3 +396,6 @@ declare const ItemEvents: internal.kjs.kubejs.ItemEvents;
 declare const JEIEvents: internal.kjs.kubejs.JEIEvents;
 declare const BlockEvents: internal.kjs.kubejs.BlockEvents;
 declare const PlayerEvents: internal.kjs.kubejs.PlayerEvents;
+
+declare const BlockProperties: typeof internal.net.minecraft.world.level.block.state.properties.BlockStateProperties;
+declare const Direction: typeof internal.net.minecraft.core.Direction;

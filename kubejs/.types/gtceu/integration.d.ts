@@ -157,6 +157,42 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.events {
         'com.gregtechceu.gtceu.integration.kjs.events.MaterialModificationEventJS',
         StartupEventJS
     > {}
+
+    import EventJS = dev.latvian.mods.kubejs.event.EventJS;
+
+    interface GTBedrockOreVeinEventJS extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.events.GTBedrockOreVeinEventJS',
+        EventJS
+    > {}
+
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import Consumer = java.util.function_.Consumer;
+    import BedrockFluidDefinition = com.gregtechceu.gtceu.api.data.worldgen.bedrockfluid.BedrockFluidDefinition;
+    import BedrockFluidDefinition$Builder = com.gregtechceu.gtceu.api.data.worldgen.bedrockfluid.BedrockFluidDefinition$Builder;
+
+    interface GTFluidVeinEventJS extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.events.GTFluidVeinEventJS',
+        EventJS
+    > {
+        add(id: $wrapped<ResourceLocation>, consumer: $wrapped<Consumer<BedrockFluidDefinition$Builder>>): void;
+        remove(id: $wrapped<ResourceLocation>): void;
+        modify(id: $wrapped<ResourceLocation>, consumer: $wrapped<Consumer<BedrockFluidDefinition>>): void;
+    }
+
+    import GTOreDefinition = com.gregtechceu.gtceu.api.data.worldgen.GTOreDefinition;
+
+    interface GTOreVeinEventJS extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.events.GTOreVeinEventJS',
+        EventJS
+    > {
+        add(id: $wrapped<ResourceLocation>, consumer: $wrapped<Consumer<GTOreDefinition>>): void;
+        removeAll(): void;
+    }
+
+    interface RegisterCapesEventJS extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.events.RegisterCapesEventJS',
+        EventJS
+    > {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {

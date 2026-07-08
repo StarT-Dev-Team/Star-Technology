@@ -1,4 +1,4 @@
-namespace internal.kjs {
+declare namespace internal.kjs {
     import GTRecipeJS = com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
 

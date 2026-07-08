@@ -1,5 +1,3 @@
-declare namespace internal.net.minecraft {}
-
 declare const Block: typeof internal.net.minecraft.world.level.block.Block;
 
 declare const Text: typeof internal.dev.latvian.mods.kubejs.bindings.TextWrapper;

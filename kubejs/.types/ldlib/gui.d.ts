@@ -1,5 +1,5 @@
 declare namespace internal.com.lowdragmc.lowdraglib.gui.texture {
-    import GuiGraphics = net.minecraft.client.gui.IGuiGraphics;
+    import GuiGraphics = net.minecraft.client.gui.GuiGraphics;
 
     interface IGuiTexture extends $object<'com.lowdragmc.lowdraglib.gui.texture.IGuiTexture'> {
         draw(
@@ -60,7 +60,7 @@ declare namespace internal.com.lowdragmc.lowdraglib.gui.texture {
             name: 'com.lowdragmc.lowdraglib.gui.texture.ProgressTexture$FillDirection';
             enumClass: ProgressTexture$FillDirection;
         },
-        Enum
+        Enum<ProgressTexture$FillDirection>
     > {}
 
     const ProgressTexture$FillDirection: $class<ProgressTexture$FillDirection> & {

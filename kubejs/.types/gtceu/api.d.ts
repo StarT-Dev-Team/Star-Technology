@@ -84,7 +84,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
 
     interface IO extends $object<
         { name: 'com.gregtechceu.gtceu.api.capability.recipe.IO'; enumClass: typeof IO },
-        Enum
+        Enum<IO>
     > {
         get tooltip(): string;
         get icon(): IGuiTexture;
@@ -109,7 +109,9 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
 
     const GTRecipe: $class<GTRecipe> & {};
 
-    const RecipeHelper: {
+    interface RecipeHelper extends $object<'com.gregtechceu.gtceu.api.recipe.RecipeHelper'> {}
+
+    const RecipeHelper: $class<RecipeHelper> & {
         getRealEUt(recipe: GTRecipe): number;
     };
 
@@ -120,11 +122,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
     import ItemStack = net.minecraft.world.item.ItemStack;
     import FluidStack = net.minecraftforge.fluids.FluidStack;
 
-    interface ResearchRecipeBuilder {
-        readonly __com_gregtechceu_gtceu_api_recipe__ResearchRecipeBuilder: unique symbol;
-    }
-
-    class ResearchRecipeBuilder {
+    interface ResearchRecipeBuilder extends $object<'com.gregtechceu.gtceu.api.recipe.ResearchRecipeBuilder'> {
         researchStack(researchStack: $wrapped<ItemStack>): this;
         researchFluidStack(researchStack: $wrapped<FluidStack>): this;
         dataStack(dataStack: $wrapped<ItemStack>): this;
@@ -133,20 +131,18 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
         EUt(eut: number, amperage: number): this;
     }
 
-    interface ResearchRecipeBuilder$StationRecipeBuilder extends ResearchRecipeBuilder {
-        readonly __com_gregtechceu_gtceu_api_recipe__ResearchRecipeBuilder$StationRecipeBuilder: unique symbol;
-    }
-
-    class ResearchRecipeBuilder$StationRecipeBuilder extends ResearchRecipeBuilder {
+    interface ResearchRecipeBuilder$StationRecipeBuilder extends $object<
+        'com.gregtechceu.gtceu.api.recipe.ResearchRecipeBuilder$StationRecipeBuilder',
+        ResearchRecipeBuilder
+    > {
         CWUt(cwut: number): this;
         CWUt(cwut: number, totalCWU: number): this;
     }
 
-    interface ResearchRecipeBuilder$ScannerRecipeBuilder extends ResearchRecipeBuilder {
-        readonly __com_gregtechceu_gtceu_api_recipe__ResearchRecipeBuilder$ScannerRecipeBuilder: unique symbol;
-    }
-
-    class ResearchRecipeBuilder$ScannerRecipeBuilder extends ResearchRecipeBuilder {
+    interface ResearchRecipeBuilder$ScannerRecipeBuilder extends $object<
+        'com.gregtechceu.gtceu.api.recipe.ResearchRecipeBuilder$ScannerRecipeBuilder',
+        ResearchRecipeBuilder
+    > {
         duration(duration: number): this;
     }
 }
@@ -184,8 +180,18 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
 
 declare namespace internal.com.gregtechceu.gtceu.api.data {
     import Enum = java.lang.Enum;
+    import Predicate = java.util.function_.Predicate;
+    import Direction = net.minecraft.core.Direction;
+    import DirectionProperty = net.minecraft.world.level.block.state.properties.DirectionProperty;
 
-    interface RotationState extends $object<'com.gregtechceu.gtceu.api.data.RotationState', Enum> {}
+    interface RotationState extends $object<
+        'com.gregtechceu.gtceu.api.data.RotationState',
+        Enum<RotationState>,
+        Predicate<Direction>
+    > {
+        get defaultDirection(): Direction;
+        get property(): DirectionProperty;
+    }
 
     const RotationState: $class<RotationState> & {
         ALL: RotationState;
@@ -261,7 +267,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
     import FluidState = fluids.FluidState;
     import FluidBuilder = fluids.FluidBuilder;
 
-    class Material$Builder extends BuilderBase<Material> {
+    interface Material$Builder extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder',
+        BuilderBase<Material>
+    > {
         langValue(name: string): this;
         fluid(): this;
         fluid(key: FluidStorageKey, state: $wrapped<FluidState>): this;
@@ -370,26 +379,41 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.properties {
-    interface AlloyBlastProperty extends IMaterialProperty {}
-    class AlloyBlastProperty implements IMaterialProperty {}
+    interface AlloyBlastProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.AlloyBlastProperty',
+        IMaterialProperty
+    > {}
 
-    interface ArmorProperty extends IMaterialProperty {}
-    class ArmorProperty implements IMaterialProperty {}
+    const AlloyBlastProperty: $class<AlloyBlastProperty> & {};
 
-    interface BlastProperty extends IMaterialProperty {}
-    class BlastProperty implements IMaterialProperty {
-        constructor(blastTemperature: number);
-        constructor(blastTemperature: number, gasTier: $wrapped<BlastProperty$GasTier>);
-        constructor(
+    interface ArmorProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.ArmorProperty',
+        IMaterialProperty
+    > {}
+
+    const ArmorProperty: $class<ArmorProperty> & {};
+
+    interface BlastProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty',
+        IMaterialProperty
+    > {
+        getBlastTemperature(): number;
+        get blastTemperature(): number;
+    }
+
+    const BlastProperty: $class<BlastProperty> & {
+        new (blastTemperature: number): BlastProperty;
+        new (blastTemperature: number, gasTier: $wrapped<BlastProperty$GasTier>): BlastProperty;
+        new (
             blastTemperature: number,
             gasTier: $wrapped<BlastProperty$GasTier>,
             eutOverride: number,
             durationOverride: number,
             vacuumEUtOverride: number,
             vacuumDurationOverride: number
-        );
-        constructor();
-    }
+        ): BlastProperty;
+        new (): BlastProperty;
+    };
 
     import Enum = java.lang.Enum;
 
@@ -398,7 +422,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
             name: 'com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty$GasTier';
             enumClass: typeof BlastProperty$GasTier;
         },
-        Enum
+        Enum<BlastProperty$GasTier>
     > {}
 
     const BlastProperty$GasTier: $class<BlastProperty$GasTier> & {
@@ -409,12 +433,22 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
         HIGHEST: BlastProperty$GasTier;
     };
 
-    interface DustProperty extends IMaterialProperty {}
-    class DustProperty implements IMaterialProperty {}
+    interface DustProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty',
+        IMaterialProperty
+    > {}
 
-    interface FluidPipeProperties extends IMaterialProperty {}
-    class FluidPipeProperties implements IMaterialProperty {
-        constructor(
+    const DustProperty: $class<DustProperty> & {
+        new (): IngotProperty;
+    };
+
+    interface FluidPipeProperties extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidPipeProperties',
+        IMaterialProperty
+    > {}
+
+    const FluidPipeProperties: $class<FluidPipeProperties> & {
+        new (
             maxFluidTemperature: number,
             throughput: number,
             gasProof: boolean,
@@ -422,52 +456,104 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
             cryoProof: boolean,
             plasmaProof: boolean,
             channels: number
-        );
-        constructor(
+        ): FluidPipeProperties;
+        new (
             maxFluidTemperature: number,
             throughput: number,
             gasProof: boolean,
             acidProof: boolean,
             cryoProof: boolean,
             plasmaProof: boolean
-        );
-    }
+        ): FluidPipeProperties;
+    };
 
     import FluidStorage = fluids.store.FluidStorage;
 
-    interface FluidProperty extends IMaterialProperty, FluidStorage {}
-    class FluidProperty implements IMaterialProperty, FluidStorage {
+    interface FluidProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty',
+        IMaterialProperty,
+        FluidStorage
+    > {
         getStorage(): FluidStorage;
         get storage(): FluidStorage;
     }
 
-    interface GemProperty extends IMaterialProperty {}
-    class GemProperty implements IMaterialProperty {}
+    const FluidProperty: $class<FluidProperty> & {
+        new (): FluidProperty;
+    };
 
-    interface HazardProperty extends IMaterialProperty {}
-    class HazardProperty implements IMaterialProperty {}
+    interface GemProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.GemProperty',
+        IMaterialProperty
+    > {}
 
-    interface IngotProperty extends IMaterialProperty {}
-    class IngotProperty implements IMaterialProperty {}
+    const GemProperty: $class<GemProperty> & {};
 
-    interface ItemPipeProperties extends IMaterialProperty {}
-    class ItemPipeProperties implements IMaterialProperty {}
+    interface HazardProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.HazardProperty',
+        IMaterialProperty
+    > {}
 
-    interface MaterialProperties extends IMaterialProperty {}
-    class MaterialProperties implements IMaterialProperty {}
+    const HazardProperty: $class<HazardProperty> & {};
 
-    interface OreProperty extends IMaterialProperty {}
-    class OreProperty implements IMaterialProperty {}
+    interface IngotProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty',
+        IMaterialProperty
+    > {
+        getSmeltingInto(): Material;
+        get smeltingInto(): Material;
+    }
 
-    interface PolymerProperty extends IMaterialProperty {}
-    class PolymerProperty implements IMaterialProperty {}
+    const IngotProperty: $class<IngotProperty> & {
+        new (): IngotProperty;
+    };
 
-    interface RotorProperty extends IMaterialProperty {}
-    class RotorProperty implements IMaterialProperty {}
+    interface ItemPipeProperties extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.ItemPipeProperties',
+        IMaterialProperty
+    > {}
 
-    interface ToolProperty extends IMaterialProperty {}
-    class ToolProperty implements IMaterialProperty {
-        static Builder: typeof ToolProperty$Builder;
+    const ItemPipeProperties: $class<ItemPipeProperties> & {};
+
+    interface MaterialProperties extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.MaterialProperties',
+        IMaterialProperty
+    > {}
+
+    const MaterialProperties: $class<MaterialProperties> & {};
+
+    interface OreProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty',
+        IMaterialProperty
+    > {}
+
+    const OreProperty: $class<OreProperty> & {};
+
+    interface PolymerProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.PolymerProperty',
+        IMaterialProperty
+    > {}
+
+    const PolymerProperty: $class<PolymerProperty> & {};
+
+    interface RotorProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.RotorProperty',
+        IMaterialProperty
+    > {}
+
+    const RotorProperty: $class<RotorProperty> & {};
+
+    interface ToolProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolPerperty',
+        IMaterialProperty
+    > {}
+
+    const ToolProperty: $class<ToolProperty> & {
+        Builder: typeof ToolProperty$Builder;
+    };
+
+    namespace ToolProperty {
+        type Builder = ToolProperty$Builder;
     }
 
     import GTToolType = item.tool.GTToolType;
@@ -508,43 +594,52 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
         build(): ToolProperty;
     }
 
-    interface WireProperties extends IMaterialProperty {}
-    class WireProperties implements IMaterialProperty {}
+    interface WireProperties extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.WireProperties',
+        IMaterialProperty
+    > {}
 
-    interface WoodProperty extends IMaterialProperty {}
-    class WoodProperty implements IMaterialProperty {}
+    const WireProperties: $class<WireProperties> & {};
 
-    // import Class = java.lang.Class;
+    interface WoodProperty extends $object<
+        'com.gregtechceu.gtceu.api.data.chemical.material.properties.WoodProperty',
+        IMaterialProperty
+    > {}
 
-    class PropertyKey<T extends IMaterialProperty> {
-        static BLAST: PropertyKey<BlastProperty>;
-        static ALLOY_BLAST: PropertyKey<AlloyBlastProperty>;
-        static DUST: PropertyKey<DustProperty>;
-        static FLUID_PIPE: PropertyKey<FluidPipeProperties>;
-        static FLUID: PropertyKey<FluidProperty>;
-        static GEM: PropertyKey<GemProperty>;
-        static INGOT: PropertyKey<IngotProperty>;
-        static POLYMER: PropertyKey<PolymerProperty>;
-        static ITEM_PIPE: PropertyKey<ItemPipeProperties>;
-        static ORE: PropertyKey<OreProperty>;
-        static TOOL: PropertyKey<ToolProperty>;
-        static ARMOR: PropertyKey<ArmorProperty>;
-        static ROTOR: PropertyKey<RotorProperty>;
-        static WIRE: PropertyKey<WireProperties>;
-        static WOOD: PropertyKey<WoodProperty>;
-        static HAZARD: PropertyKey<HazardProperty>;
-        static EMPTY: PropertyKey<IMaterialProperty>;
+    const WoodProperty: $class<WoodProperty> & {};
 
+    import Class = java.lang.Class;
+
+    interface PropertyKey<
+        T extends IMaterialProperty,
+    > extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey'> {
         getKey(): string;
         get key(): string;
-        // getType(): Class<T>;
-        // get type(): Class<T>;
+        getType(): Class<T>;
+        get type(): Class<T>;
     }
 
-    const __IMaterialProperty: unique symbol;
-    interface IMaterialProperty {
-        [__IMaterialProperty]: 0;
-    }
+    const PropertyKey: $class<PropertyKey<IMaterialProperty>> & {
+        BLAST: PropertyKey<BlastProperty>;
+        ALLOY_BLAST: PropertyKey<AlloyBlastProperty>;
+        DUST: PropertyKey<DustProperty>;
+        FLUID_PIPE: PropertyKey<FluidPipeProperties>;
+        FLUID: PropertyKey<FluidProperty>;
+        GEM: PropertyKey<GemProperty>;
+        INGOT: PropertyKey<IngotProperty>;
+        POLYMER: PropertyKey<PolymerProperty>;
+        ITEM_PIPE: PropertyKey<ItemPipeProperties>;
+        ORE: PropertyKey<OreProperty>;
+        TOOL: PropertyKey<ToolProperty>;
+        ARMOR: PropertyKey<ArmorProperty>;
+        ROTOR: PropertyKey<RotorProperty>;
+        WIRE: PropertyKey<WireProperties>;
+        WOOD: PropertyKey<WoodProperty>;
+        HAZARD: PropertyKey<HazardProperty>;
+        EMPTY: PropertyKey<IMaterialProperty>;
+    };
+
+    interface IMaterialProperty extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.properties.IMaterialProperty'> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.stack {
@@ -657,22 +752,138 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.worldgen {
         'com.gregtechceu.gtceu.api.data.worldgen.IWorldGenLayer',
         IWorldGenLayer
     > {}
+
+    import IntProvider = net.minecraft.util.valueproviders.IntProvider;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import Consumer = java.util.function_.Consumer;
+    import LayeredVeinGenerator = generator.veins.LayeredVeinGenerator;
+    import SurfaceIndicatorGenerator = generator.indicators.SurfaceIndicatorGenerator;
+
+    interface GTOreDefinition extends $object<'com.gregtechceu.gtceu.api.data.worldgen.GTOreDefinition'> {
+        // dimensionFilter(dimensionFilter: Set<ResourceKey<Level>>): this;
+        // range(range: HeightRangePlacement): this;
+        discardChanceOnAirExposure(discardChanceOnAirExposure: number): this;
+        // biomeWeightModifier(biomeWeightModifier: BiomeWeightModifier): this;
+        // veinGenerator(veinGenerator: VeinGenerator): this;
+        // indicatorGenerators(indicatorGenerators: List<IndicatorGenerator>): this;
+        clusterSize(clusterSize: $wrapped<IntProvider>): this;
+        clusterSize(clusterSize: number): this;
+        density(density: number): this;
+        weight(weight: number): this;
+        layer(layer: $wrapped<IWorldGenLayer>): this;
+        dimensions(...dimensions: $wrapped<ResourceLocation>[]): this;
+        biomes(first: string, ...biomes: string[]): this;
+        heightRangeUniform(min: number, max: number): this;
+        heightRangeTriangle(min: number, max: number): this;
+        // heightRange(range: HeightRangePlacement): this;
+        // standardVeinGenerator(config: $wrapped<Consumer<StandardVeinGenerator>>): this;
+        layeredVeinGenerator(config: $wrapped<Consumer<LayeredVeinGenerator>>): this;
+        // geodeVeinGenerator(config: $wrapped<Consumer<GeodeVeinGenerator>>): this;
+        // dikeVeinGenerator(config: $wrapped<Consumer<DikeVeinGenerator>>): this;
+        // veinedVeinGenerator(config: $wrapped<Consumer<VeinedVeinGenerator>>): this;
+        // classicVeinGenerator(config: $wrapped<Consumer<ClassicVeinGenerator>>): this;
+        // cuboidVeinGenerator(config: $wrapped<Consumer<CuboidVeinGenerator>>): this;
+        surfaceIndicatorGenerator(config: $wrapped<Consumer<SurfaceIndicatorGenerator>>): this;
+    }
+
+    interface GTLayerPattern$Builder extends $object<'com.gregtechceu.gtceu.api.data.worldgen.GTLayerPattern$Builder'> {
+        layer(config: $wrapped<Consumer<GTLayerPattern$Layer$Builder>>): this;
+    }
+
+    import Block = net.minecraft.world.level.block.Block;
+    import BlockState = net.minecraft.world.level.block.state.BlockState;
+    import Supplier = java.util.function_.Supplier;
+    import Material = chemical.material.Material;
+
+    interface GTLayerPattern$Layer$Builder extends $object<'com.gregtechceu.gtceu.api.data.worldgen.GTLayerPattern$Layer$Builder'> {
+        block(block: $wrapped<Supplier<Block>>): this;
+        state(state: $wrapped<Supplier<BlockState>>): this;
+        state(state: $wrapped<BlockState>): this;
+        mat(material: $wrapped<Material>): this;
+        weight(weight: number): this;
+        size(min: number, max: number): this;
+    }
+}
+
+declare namespace internal.com.gregtechceu.gtceu.api.data.worldgen.generator.veins {
+    import Consumer = java.util.function_.Consumer;
+
+    interface LayeredVeinGenerator extends $object<'com.gregtechceu.gtceu.api.data.worldgen.generator.veins.LayeredVeinGenerator'> {
+        buildLayerPattern(config: $wrapped<Consumer<GTLayerPattern$Builder>>): this;
+    }
+}
+
+declare namespace internal.com.gregtechceu.gtceu.api.data.worldgen.generator.indicators {
+    import Material = chemical.material.Material;
+    import IntProvider = net.minecraft.util.valueproviders.IntProvider;
+    import FloatProvider = net.minecraft.util.valueproviders.FloatProvider;
+    import Block = internal.net.minecraft.world.level.block.Block;
+    import BlockState = net.minecraft.world.level.block.state.BlockState;
+
+    interface SurfaceIndicatorGenerator extends $object<'com.gregtechceu.gtceu.api.data.worldgen.generator.indicators.SurfaceIndicatorGenerator'> {
+        surfaceRock(material: $wrapped<Material>): this;
+        block(block: $wrapped<Block>): this;
+        state(state: $wrapped<BlockState>): this;
+        radius(radius: number): this;
+        radius(provider: $wrapped<IntProvider>): this;
+        density(density: number): this;
+        density(provider: $wrapped<FloatProvider>): this;
+        placement(placement: $wrapped<SurfaceIndicatorGenerator$IndicatorPlacement>): this;
+    }
+
+    interface SurfaceIndicatorGenerator$IndicatorPlacement extends $object<{
+        name: 'com.gregtechceu.gtceu.api.data.worldgen.generator.indicators.SurfaceIndicatorGenerator$IndicatorPlacement';
+        enumClass: typeof SurfaceIndicatorGenerator$IndicatorPlacement;
+    }> {}
+
+    const SurfaceIndicatorGenerator$IndicatorPlacement: $class<SurfaceIndicatorGenerator$IndicatorPlacement> & {
+        SURFACE: SurfaceIndicatorGenerator$IndicatorPlacement;
+        ABOVE: SurfaceIndicatorGenerator$IndicatorPlacement;
+        BELOW: SurfaceIndicatorGenerator$IndicatorPlacement;
+    };
+}
+
+declare namespace internal.com.gregtechceu.gtceu.api.data.worldgen.bedrockfluid {
+    interface BedrockFluidDefinition extends $object<'com.gregtechceu.gtceu.api.data.worldgen.bedrockfluid.BedrockFluidDefinition'> {}
+
+    import Fluid = net.minecraft.world.level.material.Fluid;
+    import Supplier = java.util.function_.Supplier;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+
+    interface BedrockFluidDefinition$Builder extends $object<'com.gregtechceu.gtceu.api.data.worldgen.bedrockfluid.BedrockFluidDefinition$Builder'> {
+        weight(weight: number): this;
+        yield(min: number, max: number): this;
+        minimumYield(minimumYield: number): this;
+        maximumYield(maximumYiel: number): this;
+        depletionAmount(depletionAmount: number): this;
+        depletionChance(depletionChance: number): this;
+        depletedYield(depletedYield: number): this;
+        fluid(fluid: $wrapped<Supplier<Fluid>>): this;
+        dimensions(dimensions: $wrapped<ResourceLocation>[]): this;
+        dimensions(...dimensions: $wrapped<ResourceLocation>[]): this;
+    }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.block {
+    import Block = net.minecraft.world.level.block.Block;
     import EntityBlock = net.minecraft.world.level.block.EntityBlock;
+    import MachineDefinition = machine.MachineDefinition;
+    import RotationState = data.RotationState;
 
-    interface IMachineBlock extends EntityBlock {
-        readonly __com_gregtechceu_gtceu_api_block_EntityBlock: unique symbol;
+    interface IMachineBlock extends $object<'com.gregtechceu.gtceu.api.block.IMachineBlock', EntityBlock> {
+        self(): Block;
+        getDefinition(): MachineDefinition;
+        get definition(): MachineDefinition;
+        getRotationState(): RotationState;
+        get rotationState(): RotationState;
     }
+
+    const IMachineBlock: $class<IMachineBlock> & {};
 
     import Material = data.chemical.material.Material;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
 
-    const __ICoilType: unique symbol;
-    interface ICoilType {
-        [__ICoilType]: 0;
-
+    interface ICoilType extends $object<'com.gregtechceu.gtceu.api.block.ICoilType'> {
         getName(): string;
         get name(): string;
         getCoilTemperature(): number;
@@ -689,8 +900,6 @@ declare namespace internal.com.gregtechceu.gtceu.api.block {
         get texture(): ResourceLocation;
     }
 
-    import Block = net.minecraft.world.level.block.Block;
-
     interface ActiveBlock extends $object<'com.gregtechceu.gtceu.api.block.ActiveBlock', Block> {}
 }
 
@@ -699,25 +908,49 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine {
     import IMachineBlock = block.IMachineBlock;
     import Supplier = java.util.function_.Supplier;
     import BlockEntity = net.minecraft.world.level.block.entity.BlockEntity;
+    import Block = net.minecraft.world.level.block.Block;
 
-    interface MachineDefinition extends Supplier<IMachineBlock> {}
-    class MachineDefinition implements Supplier<IMachineBlock> {
+    interface MachineDefinition extends $object<
+        'com.gregtechceu.gtceu.api.machine.MachineDefinition',
+        Supplier<IMachineBlock>
+    > {
         getRecipeTypes(): GTRecipeType[];
+        get recipeTypes(): GTRecipeType[];
+
         setRecipeTypes(recipeTypes: $wrapped<GTRecipeType>[]): void;
+        set recipeTypes(recipeTypes: $wrapped<GTRecipeType>[]);
+
+        getBlock(): Block;
+        get block(): Block;
     }
 
-    class MultiblockMachineDefinition extends MachineDefinition {}
+    const MachineDefinition: $class<MachineDefinition> & {};
 
-    class MetaMachine {}
+    interface MultiblockMachineDefinition extends $object<
+        'com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition',
+        MachineDefinition
+    > {}
+
+    const MultiblockMachineDefinition: $class<MultiblockMachineDefinition> & {};
+
+    interface MetaMachine extends $object<'com.gregtechceu.gtceu.api.machine.MetaMachine'> {}
+
+    const MetaMachine: $class<MetaMachine> & {};
+
+    import Level = net.minecraft.world.level.Level;
 
     interface IMachineBlockEntity extends $object<'com.gregtechceu.gtceu.api.machine.IMachineBlockEntity'> {
         self(): BlockEntity;
+        level(): Level;
+        getMetaMachine(): MetaMachine;
+        getOffset(): number;
     }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.machine.property {
     import BooleanProperty = net.minecraft.world.level.block.state.properties.BooleanProperty;
     import EnumProperty = net.minecraft.world.level.block.state.properties.EnumProperty;
+    import RecipeLogic$Status = trait.RecipeLogic$Status;
 
     class GTMachineModelProperties {
         static IS_PAINTED: BooleanProperty;
@@ -743,139 +976,210 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.property {
 declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
     import MetaMachine = internal.com.gregtechceu.gtceu.api.machine.MetaMachine;
 
-    class PartAbility {
-        static EXPORT_ITEMS: PartAbility;
-        static IMPORT_ITEMS: PartAbility;
-        static EXPORT_FLUIDS: PartAbility;
-        static IMPORT_FLUIDS: PartAbility;
-        static EXPORT_FLUIDS_1X: PartAbility;
-        static IMPORT_FLUIDS_1X: PartAbility;
-        static EXPORT_FLUIDS_4X: PartAbility;
-        static IMPORT_FLUIDS_4X: PartAbility;
-        static EXPORT_FLUIDS_9X: PartAbility;
-        static IMPORT_FLUIDS_9X: PartAbility;
-        static INPUT_ENERGY: PartAbility;
-        static INPUT_ENERGY_2A: PartAbility;
-        static INPUT_ENERGY_4A: PartAbility;
-        static INPUT_ENERGY_16A: PartAbility;
-        static OUTPUT_ENERGY: PartAbility;
-        static OUTPUT_ENERGY_2A: PartAbility;
-        static OUTPUT_ENERGY_4A: PartAbility;
-        static OUTPUT_ENERGY_16A: PartAbility;
-        static SUBSTATION_INPUT_ENERGY: PartAbility;
-        static SUBSTATION_OUTPUT_ENERGY: PartAbility;
-        static ROTOR_HOLDER: PartAbility;
-        static PUMP_FLUID_HATCH: PartAbility;
-        static STEAM: PartAbility;
-        static STEAM_IMPORT_ITEMS: PartAbility;
-        static STEAM_EXPORT_ITEMS: PartAbility;
-        static MAINTENANCE: PartAbility;
-        static MUFFLER: PartAbility;
-        static TANK_VALVE: PartAbility;
-        static PASSTHROUGH_HATCH: PartAbility;
-        static PARALLEL_HATCH: PartAbility;
-        static INPUT_LASER: PartAbility;
-        static OUTPUT_LASER: PartAbility;
-        static COMPUTATION_DATA_RECEPTION: PartAbility;
-        static COMPUTATION_DATA_TRANSMISSION: PartAbility;
-        static OPTICAL_DATA_RECEPTION: PartAbility;
-        static OPTICAL_DATA_TRANSMISSION: PartAbility;
-        static DATA_ACCESS: PartAbility;
-        static HPCA_COMPONENT: PartAbility;
-        static OBJECT_HOLDER: PartAbility;
+    interface PartAbility extends $object<'com.gregtechceu.gtceu.api.machine.multiblock.PartAbility'> {}
 
-        constructor(name: string);
-    }
+    const PartAbility: $class<PartAbility> & {
+        EXPORT_ITEMS: PartAbility;
+        IMPORT_ITEMS: PartAbility;
+        EXPORT_FLUIDS: PartAbility;
+        IMPORT_FLUIDS: PartAbility;
+        EXPORT_FLUIDS_1X: PartAbility;
+        IMPORT_FLUIDS_1X: PartAbility;
+        EXPORT_FLUIDS_4X: PartAbility;
+        IMPORT_FLUIDS_4X: PartAbility;
+        EXPORT_FLUIDS_9X: PartAbility;
+        IMPORT_FLUIDS_9X: PartAbility;
+        INPUT_ENERGY: PartAbility;
+        INPUT_ENERGY_2A: PartAbility;
+        INPUT_ENERGY_4A: PartAbility;
+        INPUT_ENERGY_16A: PartAbility;
+        OUTPUT_ENERGY: PartAbility;
+        OUTPUT_ENERGY_2A: PartAbility;
+        OUTPUT_ENERGY_4A: PartAbility;
+        OUTPUT_ENERGY_16A: PartAbility;
+        SUBSTATION_INPUT_ENERGY: PartAbility;
+        SUBSTATION_OUTPUT_ENERGY: PartAbility;
+        ROTOR_HOLDER: PartAbility;
+        PUMP_FLUID_HATCH: PartAbility;
+        STEAM: PartAbility;
+        STEAM_IMPORT_ITEMS: PartAbility;
+        STEAM_EXPORT_ITEMS: PartAbility;
+        MAINTENANCE: PartAbility;
+        MUFFLER: PartAbility;
+        TANK_VALVE: PartAbility;
+        PASSTHROUGH_HATCH: PartAbility;
+        PARALLEL_HATCH: PartAbility;
+        INPUT_LASER: PartAbility;
+        OUTPUT_LASER: PartAbility;
+        COMPUTATION_DATA_RECEPTION: PartAbility;
+        COMPUTATION_DATA_TRANSMISSION: PartAbility;
+        OPTICAL_DATA_RECEPTION: PartAbility;
+        OPTICAL_DATA_TRANSMISSION: PartAbility;
+        DATA_ACCESS: PartAbility;
+        HPCA_COMPONENT: PartAbility;
+        OBJECT_HOLDER: PartAbility;
+
+        new (name: string): PartAbility;
+    };
 
     import IMultiController = feature.multiblock.IMultiController;
 
-    interface MultiblockControllerMachine extends IMultiController {}
-    class MultiblockControllerMachine extends MetaMachine implements IMultiController {
-        constructor(holder: IMachineBlockEntity);
-    }
+    interface MultiblockControllerMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine',
+        MetaMachine,
+        IMultiController
+    > {}
 
-    class WorkableMultiblockMachine extends MultiblockControllerMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
-    }
+    const MultiblockControllerMachine: $class<MultiblockControllerMachine> & {
+        new (holder: IMachineBlockEntity): MultiblockControllerMachine;
+    };
+
+    interface WorkableMultiblockMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine',
+        MultiblockControllerMachine
+    > {}
+
+    const WorkableMultiblockMachine: $class<WorkableMultiblockMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): WorkableMultiblockMachine;
+    };
 
     import ITieredMachine = feature.ITieredMachine;
 
-    interface WorkableElectricMultiblockMachine extends ITieredMachine {}
-    class WorkableElectricMultiblockMachine extends WorkableMultiblockMachine implements ITieredMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
-    }
+    interface WorkableElectricMultiblockMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine',
+        WorkableMultiblockMachine,
+        ITieredMachine
+    > {}
+
+    const WorkableElectricMultiblockMachine: $class<WorkableElectricMultiblockMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): WorkableElectricMultiblockMachine;
+    };
 
     import ICoilType = block.ICoilType;
 
-    class CoilWorkableElectricMultiblockMachine extends WorkableElectricMultiblockMachine {
-        constructor(holder: IMachineBlockEntity);
-
+    interface CoilWorkableElectricMultiblockMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine',
+        WorkableElectricMultiblockMachine
+    > {
         getCoilType(): ICoilType;
         get coilType(): ICoilType;
         getCoilTier(): number;
         get coilTier(): number;
     }
 
-    class LayeredWorkableElectricMultiblockMachine extends WorkableElectricMultiblockMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
-    }
+    const CoilWorkableElectricMultiblockMachine: $class<CoilWorkableElectricMultiblockMachine> & {
+        new (holder: IMachineBlockEntity): CoilWorkableElectricMultiblockMachine;
+    };
 
-    class CleanroomType {
-        static CLEANROOM: CleanroomType;
-        static STERILE_CLEANROOM: CleanroomType;
-        static getByName(name: string | null): CleanroomType;
+    interface LayeredWorkableElectricMultiblockMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.LayeredWorkableElectricMultiblockMachine',
+        WorkableElectricMultiblockMachine
+    > {}
 
-        constructor(name: string, translationKey: string);
-    }
+    const LayeredWorkableElectricMultiblockMachine: $class<LayeredWorkableElectricMultiblockMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): LayeredWorkableElectricMultiblockMachine;
+    };
+
+    interface CleanroomType extends $object<'com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType'> {}
+
+    const CleanroomType: $class<CleanroomType> & {
+        CLEANROOM: CleanroomType;
+        STERILE_CLEANROOM: CleanroomType;
+        getByName(name: string | null): CleanroomType;
+        new (name: string, translationKey: string): CleanroomType;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock.part {
     import IMultiPart = feature.multiblock.IMultiPart;
 
-    interface MultiblockPartMachine extends IMultiPart {}
-    class MultiblockPartMachine extends MetaMachine implements IMultiPart {}
+    interface MultiblockPartMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.part.MultiblockPartMachine',
+        MetaMachine,
+        IMultiPart
+    > {}
 
-    class TieredPartMachine extends MultiblockPartMachine {}
+    interface TieredPartMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.part.TieredPartMachine',
+        MultiblockPartMachine
+    > {}
 
-    class TieredIOPartMachine extends TieredPartMachine {}
+    interface TieredIOPartMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine',
+        TieredPartMachine
+    > {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.machine.feature {
-    const __ITieredMachine: unique symbol;
-    interface ITieredMachine {
-        [__ITieredMachine]: 0;
+    interface IMachineFeature extends $object<'com.gregtechceu.gtceu.api.machine.feature.IMachineFeature'> {
+        self(): MetaMachine;
+    }
+
+    interface ITieredMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.feature.ITieredMachine',
+        IMachineFeature
+    > {
         getTier(): number;
         get tier(): number;
         getMaxVoltage(): number;
         get maxVoltage(): number;
     }
+
+    import RecipeLogic$Status = trait.RecipeLogic$Status;
+
+    interface IRecipeLogicMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine',
+        // IRecipeCapabilityHolder,
+        IMachineFeature
+        // IWorkable,
+        // ICleanroomReceiver,
+        // IVoidable
+    > {
+        notifyStatusChanged(oldStatus: RecipeLogic$Status, newStatus: RecipeLogic$Status): void;
+    }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.machine.feature.multiblock {
-    const __IMultiPart: unique symbol;
-    interface IMultiPart {
-        [__IMultiPart]: 0;
+    interface IMultiPart extends $object<'com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiPart'> {
         canShared(): boolean;
         isFormed(): boolean;
     }
 
     import BlockPattern = pattern.BlockPattern;
+    import MultiblockState = pattern.MultiblockState;
 
-    const __IMultiController: unique symbol;
-    interface IMultiController {
-        [__IMultiController]: 0;
+    interface IMultiController extends $object<'com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController'> {
         checkPattern(): boolean;
         checkPatternWithLock(): boolean;
         checkPatternWithTryLock(): boolean;
         getPattern(): BlockPattern;
         isFormed(): boolean;
+        getMultiblockState(): MultiblockState;
+        onStructureFormed(): void;
+        onStructureInvalid(): void;
     }
+
+    const IMultiController: $class<IMultiController> & {};
+
+    interface IMufflerMachine extends $object<
+        'IMufflerMachine',
+        IMultiPart
+        // IEnvironmentalHazardEmitter
+    > {
+        emitPollutionParticles(): void;
+    }
+
+    const IMufflerMachine: $class<IMufflerMachine> & {};
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.pattern {
     import RelativeDirection = util.RelativeDirection;
 
-    class BlockPattern {}
+    interface MultiblockState extends $object<'com.gregtechceu.gtceu.api.pattern.MultiblockState'> {}
+
+    interface BlockPattern extends $object<'com.gregtechceu.gtceu.api.pattern.BlockPattern'> {
+        checkPatternAt(worldState: MultiblockState, savePredicate: boolean): boolean;
+    }
 
     class FactoryBlockPattern {
         static start(
@@ -946,10 +1250,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
         static autoAbilities(recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
         static autoAbilities(...recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
 
-        static blockTag(tag: TagKey<Block>): TraceabilityPredicate;
+        static blockTag(tag: $wrapped<TagKey<Block>>): TraceabilityPredicate;
         static fluids(fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
         static fluids(...fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
-        static fluidTag(tag: TagKey<Fluid>): TraceabilityPredicate;
+        static fluidTag(tag: $wrapped<TagKey<Fluid>>): TraceabilityPredicate;
         // static custom(Predicate<MultiblockState> predicate, Supplier<BlockInfo[]> candidates): TraceabilityPredicate;
 
         static any(): TraceabilityPredicate;
@@ -975,14 +1279,76 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
-    class RelativeDirection {
-        static UP: RelativeDirection;
-        static DOWN: RelativeDirection;
-        static LEFT: RelativeDirection;
-        static RIGHT: RelativeDirection;
-        static FRONT: RelativeDirection;
-        static BACK: RelativeDirection;
+    import Direction = net.minecraft.core.Direction;
+
+    interface RelativeDirection extends $object<{
+        name: 'com.gregtechceu.gtceu.api.pattern.util.RelativeDirection';
+        enumClass: typeof RelativeDirection;
+    }> {
+        getOpposite(): RelativeDirection;
+        get opposite(): RelativeDirection;
+        getActualDirection(direction: Direction): Direction;
     }
+
+    import BlockPos = net.minecraft.core.BlockPos;
+
+    const RelativeDirection: $class<RelativeDirection> & {
+        UP: RelativeDirection;
+        DOWN: RelativeDirection;
+        LEFT: RelativeDirection;
+        RIGHT: RelativeDirection;
+        FRONT: RelativeDirection;
+        BACK: RelativeDirection;
+
+        offsetPos(
+            pos: $wrapped<BlockPos>,
+            frontDir: $wrapped<Direction>,
+            upwardsDir: $wrapped<Direction>,
+            isFlipped: boolean,
+            upOffset: number,
+            leftOffset: number,
+            forwardOffset: number
+        ): BlockPos;
+    };
+}
+
+declare namespace internal.com.gregtechceu.gtceu.api.registry {
+    import Iterable = java.lang.Iterable;
+
+    interface GTRegistry<K, V> extends $object<'com.gregtechceu.gtceu.api.registry.GTRegistry', Iterable<V>> {
+        containKey(key: $wrapped<K>): boolean;
+        containValue(value: $wrapped<V>): boolean;
+    }
+
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+
+    interface GTRegistry$RL<V> extends $object<
+        'com.gregtechceu.gtceu.api.registry.GTRegistry$RL',
+        GTRegistry<ResourceLocation, V>
+    > {}
+
+    import MachineDefinition = machine.MachineDefinition;
+
+    const GTRegistries: {
+        // ELEMENTS: GTRegistry.String<Element>;
+        // RECIPE_TYPES: GTRegistry$RL<GTRecipeType>;
+        // RECIPE_CATEGORIES: GTRegistry$RL<GTRecipeCategory>;
+        // COVERS: GTRegistry$RL<CoverDefinition>;
+        MACHINES: GTRegistry$RL<MachineDefinition>;
+        // RECIPE_CAPABILITIES: GTRegistry.String<RecipeCapability<unknown>>;
+        // RECIPE_CONDITIONS: GTRegistry.String<RecipeConditionType<unknown>>;
+        // CHANCE_LOGICS: GTRegistry.String<ChanceLogic>;
+        // SOUNDS: GTRegistry$RL<SoundEntry>;
+        // BEDROCK_FLUID_DEFINITIONS: GTRegistry$RL<BedrockFluidDefinition>;
+        // BEDROCK_ORE_DEFINITIONS: GTRegistry$RL<BedrockOreDefinition>;
+        // ORE_VEINS: GTRegistry$RL<GTOreDefinition>;
+        // DIMENSION_MARKERS: GTRegistry$RL<DimensionMarker>;
+        // TRUNK_PLACER_TYPE: DeferredRegister<TrunkPlacerType<unknown>>;
+        // PLACEMENT_MODIFIER: DeferredRegister<PlacementModifierType<unknown>>;
+        // GLOBAL_LOOT_MODIFIES: DeferredRegister<Codec<IGlobalLootModifier>>;
+        // FLUID_SERIALIZERS: GTRegistry<String, Function<FriendlyByteBuf, FluidIngredient>>;
+        // PARALLEL_TYPES: GTRegistry.String<ParallelType>;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
@@ -1017,6 +1383,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     import RotationState = data.RotationState;
     import GTRecipeType = recipe.GTRecipeType;
     import Block = net.minecraft.world.level.block.Block;
+    import EditableMachineUI = gui.editor.EditableMachineUI;
+    import Boolean = java.lang.Boolean;
 
     interface MachineBuilder__Blueprint<T extends MachineDefinition, TSelf> extends $object<
         'com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder',
@@ -1042,8 +1410,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         workableCasingModel(baseCasing: $wrapped<ResourceLocation>, workableModel: $wrapped<ResourceLocation>): TSelf;
         workableTieredHullModel(workableModel: $wrapped<ResourceLocation>): TSelf;
         editableUI(ui: EditableMachineUI): TSelf;
-        modelPropertyBool(property: Property<boolean>, defaultValue: boolean): TSelf;
-        modelPropertyInt(property: Property<boolean>, defaultValue: number): TSelf;
+        modelPropertyBool(property: Property<Boolean>, defaultValue: boolean): TSelf;
+        modelPropertyInt(property: Property<Boolean>, defaultValue: number): TSelf;
     }
 
     interface MachineBuilder<T extends MachineDefinition> extends MachineBuilder__Blueprint<T, MachineBuilder<T>> {}
@@ -1078,273 +1446,277 @@ declare namespace internal.com.gregtechceu.gtceu.api.gui {
     import ResourceTexture = com.lowdragmc.lowdraglib.gui.texture.ResourceTexture;
     import ResourceBorderTexture = com.lowdragmc.lowdraglib.gui.texture.ResourceBorderTexture;
 
-    class GuiTextures {
-        static GREGTECH_LOGO: ResourceTexture;
-        static GREGTECH_LOGO_XMAS: ResourceTexture;
-        static TOOL_FRONT_FACING_ROTATION: ResourceTexture;
-        static TOOL_IO_FACING_ROTATION: ResourceTexture;
-        static TOOL_PAUSE: ResourceTexture;
-        static TOOL_START: ResourceTexture;
-        static TOOL_COVER_SETTINGS: ResourceTexture;
-        static TOOL_MUTE: ResourceTexture;
-        static TOOL_SOUND: ResourceTexture;
-        static TOOL_ALLOW_INPUT: ResourceTexture;
-        static TOOL_ATTACH_COVER: ResourceTexture;
-        static TOOL_REMOVE_COVER: ResourceTexture;
-        static TOOL_PIPE_BLOCK: ResourceTexture;
-        static TOOL_PIPE_CONNECT: ResourceTexture;
-        static TOOL_WIRE_BLOCK: ResourceTexture;
-        static TOOL_WIRE_CONNECT: ResourceTexture;
-        static TOOL_AUTO_OUTPUT: ResourceTexture;
-        static TOOL_DISABLE_AUTO_OUTPUT: ResourceTexture;
-        static TOOL_SWITCH_CONVERTER_NATIVE: ResourceTexture;
-        static TOOL_SWITCH_CONVERTER_EU: ResourceTexture;
-        static CLIPBOARD_BACKGROUND: ResourceTexture;
-        static CLIPBOARD_PAPER_BACKGROUND: ResourceTexture;
-        static DISPLAY: ResourceTexture;
-        static BLANK: ResourceTexture;
-        static BLANK_TRANSPARENT: ResourceTexture;
-        static FLUID_TANK_BACKGROUND: ResourceTexture;
-        static FLUID_TANK_OVERLAY: ResourceTexture;
-        static SLOT_DARKENED: ResourceTexture;
-        static TOGGLE_BUTTON_BACK: ResourceTexture;
-        static CLOSE_ICON: ResourceTexture;
-        static BLOCKS_INPUT: ResourceTexture;
-        static BUTTON_ALLOW_IMPORT_EXPORT: ResourceTexture;
-        static BUTTON_BLACKLIST: ResourceTexture;
-        static BUTTON_CHUNK_MODE: ResourceTexture;
-        static BUTTON_CLEAR_GRID: ResourceTexture;
-        static BUTTON_FILTER_DAMAGE: ResourceTexture;
-        static BUTTON_DISTINCT_BUSES: ResourceTexture;
-        static BUTTON_POWER: ResourceTexture;
-        static BUTTON_BATCH: ResourceTexture;
-        static BUTTON_FILTER_NBT: ResourceTexture;
-        static BUTTON_FLUID_OUTPUT: ResourceTexture;
-        static BUTTON_ITEM_OUTPUT: ResourceTexture;
-        static BUTTON_LOCK: ResourceTexture;
-        static BUTTON_REDSTONE_STRENGTH: ResourceTexture;
-        static BUTTON_VOID: ResourceTexture;
-        static BUTTON_VOID_PARTIAL: ResourceTexture;
-        static BUTTON_VOID_MULTIBLOCK: ResourceTexture;
-        static BUTTON_LEFT: ResourceTexture;
-        static BUTTON_PUBLIC_PRIVATE: ResourceTexture;
-        static BUTTON_CHECK: ResourceTexture;
-        static BUTTON_LIST: ResourceTexture;
-        static BUTTON_RIGHT: ResourceTexture;
-        static BUTTON_SILK_TOUCH_MODE: ResourceTexture;
-        static BUTTON_SWITCH_VIEW: ResourceTexture;
-        static BUTTON_WORKING_ENABLE: ResourceTexture;
-        static BUTTON_INT_CIRCUIT_PLUS: ResourceTexture;
-        static BUTTON_INT_CIRCUIT_MINUS: ResourceTexture;
-        static CLIPBOARD_BUTTON: ResourceTexture;
-        static DISTRIBUTION_MODE: ResourceTexture;
-        static BUTTON_AUTO_PULL: ResourceTexture;
-        static LOCK: ResourceTexture;
-        static LOCK_WHITE: ResourceTexture;
-        static SWITCH: ResourceTexture;
-        static SWITCH_HORIZONTAL: ResourceTexture;
-        static VANILLA_BUTTON: ResourceTexture;
-        static ENERGY_DETECTOR_COVER_MODE_BUTTON: ResourceTexture;
-        static INVERT_REDSTONE_BUTTON: ResourceTexture;
-        static IO_CONFIG_FLUID_MODES_BUTTON: ResourceTexture;
-        static IO_CONFIG_ITEM_MODES_BUTTON: ResourceTexture;
-        static IO_CONFIG_COVER_SLOT_OVERLAY: ResourceTexture;
-        static IO_CONFIG_COVER_SETTINGS: ResourceTexture;
-        static PATTERN_OVERLAY: ResourceTexture;
-        static REFUND_OVERLAY: ResourceTexture;
-        static INDICATOR_NO_ENERGY: ResourceTexture;
-        static TANK_ICON: ResourceTexture;
-        static SLIDER_BACKGROUND: ResourceTexture;
-        static SLIDER_BACKGROUND_VERTICAL: ResourceTexture;
-        static SLIDER_ICON: ResourceTexture;
-        static MAINTENANCE_BUTTON: ResourceTexture;
-        static MAINTENANCE_ICON: ResourceTexture;
-        static STORAGE_ICON: ResourceTexture;
-        static BUTTON_MINER_MODES: ResourceTexture;
-        static OREBY_BASE: ResourceTexture;
-        static OREBY_CHEM: ResourceTexture;
-        static OREBY_SEP: ResourceTexture;
-        static OREBY_SIFT: ResourceTexture;
-        static OREBY_SMELT: ResourceTexture;
-        static PRIMITIVE_FURNACE_OVERLAY: ResourceTexture;
-        static PRIMITIVE_DUST_OVERLAY: ResourceTexture;
-        static PRIMITIVE_INGOT_OVERLAY: ResourceTexture;
-        static PRIMITIVE_LARGE_FLUID_TANK: ResourceTexture;
-        static PRIMITIVE_LARGE_FLUID_TANK_OVERLAY: ResourceTexture;
-        static PRIMITIVE_BLAST_FURNACE_PROGRESS_BAR: ResourceTexture;
-        static ATOMIC_OVERLAY_1: ResourceTexture;
-        static ATOMIC_OVERLAY_2: ResourceTexture;
-        static ARROW_INPUT_OVERLAY: ResourceTexture;
-        static ARROW_OUTPUT_OVERLAY: ResourceTexture;
-        static BATTERY_OVERLAY: ResourceTexture;
-        static BEAKER_OVERLAY_1: ResourceTexture;
-        static BEAKER_OVERLAY_2: ResourceTexture;
-        static BEAKER_OVERLAY_3: ResourceTexture;
-        static BEAKER_OVERLAY_4: ResourceTexture;
-        static BENDER_OVERLAY: ResourceTexture;
-        static BOX_OVERLAY: ResourceTexture;
-        static BOXED_OVERLAY: ResourceTexture;
-        static BREWER_OVERLAY: ResourceTexture;
-        static CANNER_OVERLAY: ResourceTexture;
-        static CHARGER_OVERLAY: ResourceTexture;
-        static CANISTER_OVERLAY: ResourceTexture;
-        static CENTRIFUGE_OVERLAY: ResourceTexture;
-        static CIRCUIT_OVERLAY: ResourceTexture;
-        static COMPRESSOR_OVERLAY: ResourceTexture;
-        static CRACKING_OVERLAY_1: ResourceTexture;
-        static CRACKING_OVERLAY_2: ResourceTexture;
-        static CRUSHED_ORE_OVERLAY: ResourceTexture;
-        static CRYSTAL_OVERLAY: ResourceTexture;
-        static CUTTER_OVERLAY: ResourceTexture;
-        static DARK_CANISTER_OVERLAY: ResourceTexture;
-        static DUST_OVERLAY: ResourceTexture;
-        static EXTRACTOR_OVERLAY: ResourceTexture;
-        static FILTER_SLOT_OVERLAY: ResourceTexture;
-        static FURNACE_OVERLAY_1: ResourceTexture;
-        static FURNACE_OVERLAY_2: ResourceTexture;
-        static HAMMER_OVERLAY: ResourceTexture;
-        static HEATING_OVERLAY_1: ResourceTexture;
-        static HEATING_OVERLAY_2: ResourceTexture;
-        static IMPLOSION_OVERLAY_1: ResourceTexture;
-        static IMPLOSION_OVERLAY_2: ResourceTexture;
-        static IN_SLOT_OVERLAY: ResourceTexture;
-        static INGOT_OVERLAY: ResourceTexture;
-        static INT_CIRCUIT_OVERLAY: ResourceTexture;
-        static LENS_OVERLAY: ResourceTexture;
-        static LIGHTNING_OVERLAY_1: ResourceTexture;
-        static LIGHTNING_OVERLAY_2: ResourceTexture;
-        static MOLD_OVERLAY: ResourceTexture;
-        static MOLECULAR_OVERLAY_1: ResourceTexture;
-        static MOLECULAR_OVERLAY_2: ResourceTexture;
-        static MOLECULAR_OVERLAY_3: ResourceTexture;
-        static MOLECULAR_OVERLAY_4: ResourceTexture;
-        static OUT_SLOT_OVERLAY: ResourceTexture;
-        static PAPER_OVERLAY: ResourceTexture;
-        static PRINTED_PAPER_OVERLAY: ResourceTexture;
-        static PIPE_OVERLAY_2: ResourceTexture;
-        static PIPE_OVERLAY_1: ResourceTexture;
-        static PRESS_OVERLAY_1: ResourceTexture;
-        static PRESS_OVERLAY_2: ResourceTexture;
-        static PRESS_OVERLAY_3: ResourceTexture;
-        static PRESS_OVERLAY_4: ResourceTexture;
-        static SAWBLADE_OVERLAY: ResourceTexture;
-        static SOLIDIFIER_OVERLAY: ResourceTexture;
-        static STRING_SLOT_OVERLAY: ResourceTexture;
-        static TOOL_SLOT_OVERLAY: ResourceTexture;
-        static TURBINE_OVERLAY: ResourceTexture;
-        static VIAL_OVERLAY_1: ResourceTexture;
-        static VIAL_OVERLAY_2: ResourceTexture;
-        static WIREMILL_OVERLAY: ResourceTexture;
-        static POSITIVE_MATTER_OVERLAY: ResourceTexture;
-        static NEUTRAL_MATTER_OVERLAY: ResourceTexture;
-        static DATA_ORB_OVERLAY: ResourceTexture;
-        static SCANNER_OVERLAY: ResourceTexture;
-        static DUCT_TAPE_OVERLAY: ResourceTexture;
-        static RESEARCH_STATION_OVERLAY: ResourceTexture;
-        static PROGRESS_BAR_ARC_FURNACE: ResourceTexture;
-        static PROGRESS_BAR_ARROW: ResourceTexture;
-        static PROGRESS_BAR_ARROW_MULTIPLE: ResourceTexture;
-        static PROGRESS_BAR_ASSEMBLER: ResourceTexture;
-        static PROGRESS_BAR_ASSEMBLY_LINE: ResourceTexture;
-        static PROGRESS_BAR_ASSEMBLY_LINE_ARROW: ResourceTexture;
-        static PROGRESS_BAR_BATH: ResourceTexture;
-        static PROGRESS_BAR_BENDING: ResourceTexture;
-        static PROGRESS_BAR_BOILER_HEAT: ResourceTexture;
-        static PROGRESS_BAR_CANNER: ResourceTexture;
-        static PROGRESS_BAR_CIRCUIT: ResourceTexture;
-        static PROGRESS_BAR_CIRCUIT_ASSEMBLER: ResourceTexture;
-        static PROGRESS_BAR_COKE_OVEN: ResourceTexture;
-        static PROGRESS_BAR_COMPRESS: ResourceTexture;
-        static PROGRESS_BAR_CRACKING: ResourceTexture;
-        static PROGRESS_BAR_CRACKING_INPUT: ResourceTexture;
-        static PROGRESS_BAR_CRYSTALLIZATION: ResourceTexture;
-        static PROGRESS_BAR_DISTILLATION_TOWER: ResourceTexture;
-        static PROGRESS_BAR_EXTRACT: ResourceTexture;
-        static PROGRESS_BAR_EXTRUDER: ResourceTexture;
-        static PROGRESS_BAR_FUSION: ResourceTexture;
-        static PROGRESS_BAR_GAS_COLLECTOR: ResourceTexture;
-        static PROGRESS_BAR_HAMMER: ResourceTexture;
-        static PROGRESS_BAR_HAMMER_BASE: ResourceTexture;
-        static PROGRESS_BAR_LATHE: ResourceTexture;
-        static PROGRESS_BAR_LATHE_BASE: ResourceTexture;
-        static PROGRESS_BAR_MACERATE: ResourceTexture;
-        static PROGRESS_BAR_MAGNET: ResourceTexture;
-        static PROGRESS_BAR_MASS_FAB: ResourceTexture;
-        static PROGRESS_BAR_MIXER: ResourceTexture;
-        static PROGRESS_BAR_PACKER: ResourceTexture;
-        static PROGRESS_BAR_RECYCLER: ResourceTexture;
-        static PROGRESS_BAR_REPLICATOR: ResourceTexture;
-        static PROGRESS_BAR_SIFT: ResourceTexture;
-        static PROGRESS_BAR_SLICE: ResourceTexture;
-        static PROGRESS_BAR_UNLOCK: ResourceTexture;
-        static PROGRESS_BAR_UNPACKER: ResourceTexture;
-        static PROGRESS_BAR_WIREMILL: ResourceTexture;
-        static PROGRESS_BAR_RESEARCH_STATION_1: ResourceTexture;
-        static PROGRESS_BAR_RESEARCH_STATION_2: ResourceTexture;
-        static PROGRESS_BAR_RESEARCH_STATION_BASE: ResourceTexture;
-        static INFO_ICON: ResourceTexture;
-        static MULTIBLOCK_CATEGORY: ResourceTexture;
-        static ARC_FURNACE_RECYCLING_CATEGORY: ResourceTexture;
-        static MACERATOR_RECYCLING_CATEGORY: ResourceTexture;
-        static EXTRACTOR_RECYCLING_CATEGORY: ResourceTexture;
-        static COVER_MACHINE_CONTROLLER: ResourceTexture;
-        static ICON_REMOVE: ResourceTexture;
-        static ICON_UP: ResourceTexture;
-        static ICON_DOWN: ResourceTexture;
-        static ICON_RIGHT: ResourceTexture;
-        static ICON_LEFT: ResourceTexture;
-        static ICON_ADD: ResourceTexture;
-        static ICON_NEW_PAGE: ResourceTexture;
-        static ICON_LOAD: ResourceTexture;
-        static ICON_SAVE: ResourceTexture;
-        static ICON_LOCATION: ResourceTexture;
-        static ICON_VISIBLE: ResourceTexture;
-        static ICON_CALCULATOR: ResourceTexture;
-        static UI_FRAME_SIDE_UP: ResourceTexture;
-        static UI_FRAME_SIDE_DOWN: ResourceTexture;
-        static BUTTON_FLUID: ResourceTexture;
-        static BUTTON_ITEM: ResourceTexture;
-        static BUTTON_ENERGY: ResourceTexture;
-        static BUTTON_MACHINE: ResourceTexture;
-        static BUTTON_INTERFACE: ResourceTexture;
-        static COVER_INTERFACE_MACHINE_ON_PROXY: ResourceTexture;
-        static COVER_INTERFACE_MACHINE_OFF_PROXY: ResourceTexture;
-        static SCENE: ResourceTexture;
-        static INSUFFICIENT_INPUT: ResourceTexture;
-        static LIGHT_ON: ResourceTexture;
-        static LIGHT_OFF: ResourceTexture;
-        static UP: ResourceTexture;
-        static TIER: ResourceTexture[];
-        static LAMP_NO_BLOOM: ResourceTexture;
-        static LAMP_NO_LIGHT: ResourceTexture;
-        static NUMBER_BACKGROUND: ResourceTexture;
-        static CONFIG_ARROW: ResourceTexture;
-        static CONFIG_ARROW_DARK: ResourceTexture;
-        static SELECT_BOX: ResourceTexture;
-        static HPCA_COMPONENT_OUTLINE: ResourceTexture;
-        static HPCA_ICON_EMPTY_COMPONENT: ResourceTexture;
-        static HPCA_ICON_ADVANCED_COMPUTATION_COMPONENT: ResourceTexture;
-        static HPCA_ICON_BRIDGE_COMPONENT: ResourceTexture;
-        static HPCA_ICON_COMPUTATION_COMPONENT: ResourceTexture;
-        static HPCA_ICON_ACTIVE_COOLER_COMPONENT: ResourceTexture;
-        static HPCA_ICON_HEAT_SINK_COMPONENT: ResourceTexture;
-        static HPCA_ICON_DAMAGED_ADVANCED_COMPUTATION_COMPONENT: ResourceTexture;
-        static HPCA_ICON_DAMAGED_COMPUTATION_COMPONENT: ResourceTexture;
+    const GuiTextures: {
+        GREGTECH_LOGO: ResourceTexture;
+        GREGTECH_LOGO_XMAS: ResourceTexture;
+        TOOL_FRONT_FACING_ROTATION: ResourceTexture;
+        TOOL_IO_FACING_ROTATION: ResourceTexture;
+        TOOL_PAUSE: ResourceTexture;
+        TOOL_START: ResourceTexture;
+        TOOL_COVER_SETTINGS: ResourceTexture;
+        TOOL_MUTE: ResourceTexture;
+        TOOL_SOUND: ResourceTexture;
+        TOOL_ALLOW_INPUT: ResourceTexture;
+        TOOL_ATTACH_COVER: ResourceTexture;
+        TOOL_REMOVE_COVER: ResourceTexture;
+        TOOL_PIPE_BLOCK: ResourceTexture;
+        TOOL_PIPE_CONNECT: ResourceTexture;
+        TOOL_WIRE_BLOCK: ResourceTexture;
+        TOOL_WIRE_CONNECT: ResourceTexture;
+        TOOL_AUTO_OUTPUT: ResourceTexture;
+        TOOL_DISABLE_AUTO_OUTPUT: ResourceTexture;
+        TOOL_SWITCH_CONVERTER_NATIVE: ResourceTexture;
+        TOOL_SWITCH_CONVERTER_EU: ResourceTexture;
+        CLIPBOARD_BACKGROUND: ResourceTexture;
+        CLIPBOARD_PAPER_BACKGROUND: ResourceTexture;
+        DISPLAY: ResourceTexture;
+        BLANK: ResourceTexture;
+        BLANK_TRANSPARENT: ResourceTexture;
+        FLUID_TANK_BACKGROUND: ResourceTexture;
+        FLUID_TANK_OVERLAY: ResourceTexture;
+        SLOT_DARKENED: ResourceTexture;
+        TOGGLE_BUTTON_BACK: ResourceTexture;
+        CLOSE_ICON: ResourceTexture;
+        BLOCKS_INPUT: ResourceTexture;
+        BUTTON_ALLOW_IMPORT_EXPORT: ResourceTexture;
+        BUTTON_BLACKLIST: ResourceTexture;
+        BUTTON_CHUNK_MODE: ResourceTexture;
+        BUTTON_CLEAR_GRID: ResourceTexture;
+        BUTTON_FILTER_DAMAGE: ResourceTexture;
+        BUTTON_DISTINCT_BUSES: ResourceTexture;
+        BUTTON_POWER: ResourceTexture;
+        BUTTON_BATCH: ResourceTexture;
+        BUTTON_FILTER_NBT: ResourceTexture;
+        BUTTON_FLUID_OUTPUT: ResourceTexture;
+        BUTTON_ITEM_OUTPUT: ResourceTexture;
+        BUTTON_LOCK: ResourceTexture;
+        BUTTON_REDSTONE_STRENGTH: ResourceTexture;
+        BUTTON_VOID: ResourceTexture;
+        BUTTON_VOID_PARTIAL: ResourceTexture;
+        BUTTON_VOID_MULTIBLOCK: ResourceTexture;
+        BUTTON_LEFT: ResourceTexture;
+        BUTTON_PUBLIC_PRIVATE: ResourceTexture;
+        BUTTON_CHECK: ResourceTexture;
+        BUTTON_LIST: ResourceTexture;
+        BUTTON_RIGHT: ResourceTexture;
+        BUTTON_SILK_TOUCH_MODE: ResourceTexture;
+        BUTTON_SWITCH_VIEW: ResourceTexture;
+        BUTTON_WORKING_ENABLE: ResourceTexture;
+        BUTTON_INT_CIRCUIT_PLUS: ResourceTexture;
+        BUTTON_INT_CIRCUIT_MINUS: ResourceTexture;
+        CLIPBOARD_BUTTON: ResourceTexture;
+        DISTRIBUTION_MODE: ResourceTexture;
+        BUTTON_AUTO_PULL: ResourceTexture;
+        LOCK: ResourceTexture;
+        LOCK_WHITE: ResourceTexture;
+        SWITCH: ResourceTexture;
+        SWITCH_HORIZONTAL: ResourceTexture;
+        VANILLA_BUTTON: ResourceTexture;
+        ENERGY_DETECTOR_COVER_MODE_BUTTON: ResourceTexture;
+        INVERT_REDSTONE_BUTTON: ResourceTexture;
+        IO_CONFIG_FLUID_MODES_BUTTON: ResourceTexture;
+        IO_CONFIG_ITEM_MODES_BUTTON: ResourceTexture;
+        IO_CONFIG_COVER_SLOT_OVERLAY: ResourceTexture;
+        IO_CONFIG_COVER_SETTINGS: ResourceTexture;
+        PATTERN_OVERLAY: ResourceTexture;
+        REFUND_OVERLAY: ResourceTexture;
+        INDICATOR_NO_ENERGY: ResourceTexture;
+        TANK_ICON: ResourceTexture;
+        SLIDER_BACKGROUND: ResourceTexture;
+        SLIDER_BACKGROUND_VERTICAL: ResourceTexture;
+        SLIDER_ICON: ResourceTexture;
+        MAINTENANCE_BUTTON: ResourceTexture;
+        MAINTENANCE_ICON: ResourceTexture;
+        STORAGE_ICON: ResourceTexture;
+        BUTTON_MINER_MODES: ResourceTexture;
+        OREBY_BASE: ResourceTexture;
+        OREBY_CHEM: ResourceTexture;
+        OREBY_SEP: ResourceTexture;
+        OREBY_SIFT: ResourceTexture;
+        OREBY_SMELT: ResourceTexture;
+        PRIMITIVE_FURNACE_OVERLAY: ResourceTexture;
+        PRIMITIVE_DUST_OVERLAY: ResourceTexture;
+        PRIMITIVE_INGOT_OVERLAY: ResourceTexture;
+        PRIMITIVE_LARGE_FLUID_TANK: ResourceTexture;
+        PRIMITIVE_LARGE_FLUID_TANK_OVERLAY: ResourceTexture;
+        PRIMITIVE_BLAST_FURNACE_PROGRESS_BAR: ResourceTexture;
+        ATOMIC_OVERLAY_1: ResourceTexture;
+        ATOMIC_OVERLAY_2: ResourceTexture;
+        ARROW_INPUT_OVERLAY: ResourceTexture;
+        ARROW_OUTPUT_OVERLAY: ResourceTexture;
+        BATTERY_OVERLAY: ResourceTexture;
+        BEAKER_OVERLAY_1: ResourceTexture;
+        BEAKER_OVERLAY_2: ResourceTexture;
+        BEAKER_OVERLAY_3: ResourceTexture;
+        BEAKER_OVERLAY_4: ResourceTexture;
+        BENDER_OVERLAY: ResourceTexture;
+        BOX_OVERLAY: ResourceTexture;
+        BOXED_OVERLAY: ResourceTexture;
+        BREWER_OVERLAY: ResourceTexture;
+        CANNER_OVERLAY: ResourceTexture;
+        CHARGER_OVERLAY: ResourceTexture;
+        CANISTER_OVERLAY: ResourceTexture;
+        CENTRIFUGE_OVERLAY: ResourceTexture;
+        CIRCUIT_OVERLAY: ResourceTexture;
+        COMPRESSOR_OVERLAY: ResourceTexture;
+        CRACKING_OVERLAY_1: ResourceTexture;
+        CRACKING_OVERLAY_2: ResourceTexture;
+        CRUSHED_ORE_OVERLAY: ResourceTexture;
+        CRYSTAL_OVERLAY: ResourceTexture;
+        CUTTER_OVERLAY: ResourceTexture;
+        DARK_CANISTER_OVERLAY: ResourceTexture;
+        DUST_OVERLAY: ResourceTexture;
+        EXTRACTOR_OVERLAY: ResourceTexture;
+        FILTER_SLOT_OVERLAY: ResourceTexture;
+        FURNACE_OVERLAY_1: ResourceTexture;
+        FURNACE_OVERLAY_2: ResourceTexture;
+        HAMMER_OVERLAY: ResourceTexture;
+        HEATING_OVERLAY_1: ResourceTexture;
+        HEATING_OVERLAY_2: ResourceTexture;
+        IMPLOSION_OVERLAY_1: ResourceTexture;
+        IMPLOSION_OVERLAY_2: ResourceTexture;
+        IN_SLOT_OVERLAY: ResourceTexture;
+        INGOT_OVERLAY: ResourceTexture;
+        INT_CIRCUIT_OVERLAY: ResourceTexture;
+        LENS_OVERLAY: ResourceTexture;
+        LIGHTNING_OVERLAY_1: ResourceTexture;
+        LIGHTNING_OVERLAY_2: ResourceTexture;
+        MOLD_OVERLAY: ResourceTexture;
+        MOLECULAR_OVERLAY_1: ResourceTexture;
+        MOLECULAR_OVERLAY_2: ResourceTexture;
+        MOLECULAR_OVERLAY_3: ResourceTexture;
+        MOLECULAR_OVERLAY_4: ResourceTexture;
+        OUT_SLOT_OVERLAY: ResourceTexture;
+        PAPER_OVERLAY: ResourceTexture;
+        PRINTED_PAPER_OVERLAY: ResourceTexture;
+        PIPE_OVERLAY_2: ResourceTexture;
+        PIPE_OVERLAY_1: ResourceTexture;
+        PRESS_OVERLAY_1: ResourceTexture;
+        PRESS_OVERLAY_2: ResourceTexture;
+        PRESS_OVERLAY_3: ResourceTexture;
+        PRESS_OVERLAY_4: ResourceTexture;
+        SAWBLADE_OVERLAY: ResourceTexture;
+        SOLIDIFIER_OVERLAY: ResourceTexture;
+        STRING_SLOT_OVERLAY: ResourceTexture;
+        TOOL_SLOT_OVERLAY: ResourceTexture;
+        TURBINE_OVERLAY: ResourceTexture;
+        VIAL_OVERLAY_1: ResourceTexture;
+        VIAL_OVERLAY_2: ResourceTexture;
+        WIREMILL_OVERLAY: ResourceTexture;
+        POSITIVE_MATTER_OVERLAY: ResourceTexture;
+        NEUTRAL_MATTER_OVERLAY: ResourceTexture;
+        DATA_ORB_OVERLAY: ResourceTexture;
+        SCANNER_OVERLAY: ResourceTexture;
+        DUCT_TAPE_OVERLAY: ResourceTexture;
+        RESEARCH_STATION_OVERLAY: ResourceTexture;
+        PROGRESS_BAR_ARC_FURNACE: ResourceTexture;
+        PROGRESS_BAR_ARROW: ResourceTexture;
+        PROGRESS_BAR_ARROW_MULTIPLE: ResourceTexture;
+        PROGRESS_BAR_ASSEMBLER: ResourceTexture;
+        PROGRESS_BAR_ASSEMBLY_LINE: ResourceTexture;
+        PROGRESS_BAR_ASSEMBLY_LINE_ARROW: ResourceTexture;
+        PROGRESS_BAR_BATH: ResourceTexture;
+        PROGRESS_BAR_BENDING: ResourceTexture;
+        PROGRESS_BAR_BOILER_HEAT: ResourceTexture;
+        PROGRESS_BAR_CANNER: ResourceTexture;
+        PROGRESS_BAR_CIRCUIT: ResourceTexture;
+        PROGRESS_BAR_CIRCUIT_ASSEMBLER: ResourceTexture;
+        PROGRESS_BAR_COKE_OVEN: ResourceTexture;
+        PROGRESS_BAR_COMPRESS: ResourceTexture;
+        PROGRESS_BAR_CRACKING: ResourceTexture;
+        PROGRESS_BAR_CRACKING_INPUT: ResourceTexture;
+        PROGRESS_BAR_CRYSTALLIZATION: ResourceTexture;
+        PROGRESS_BAR_DISTILLATION_TOWER: ResourceTexture;
+        PROGRESS_BAR_EXTRACT: ResourceTexture;
+        PROGRESS_BAR_EXTRUDER: ResourceTexture;
+        PROGRESS_BAR_FUSION: ResourceTexture;
+        PROGRESS_BAR_GAS_COLLECTOR: ResourceTexture;
+        PROGRESS_BAR_HAMMER: ResourceTexture;
+        PROGRESS_BAR_HAMMER_BASE: ResourceTexture;
+        PROGRESS_BAR_LATHE: ResourceTexture;
+        PROGRESS_BAR_LATHE_BASE: ResourceTexture;
+        PROGRESS_BAR_MACERATE: ResourceTexture;
+        PROGRESS_BAR_MAGNET: ResourceTexture;
+        PROGRESS_BAR_MASS_FAB: ResourceTexture;
+        PROGRESS_BAR_MIXER: ResourceTexture;
+        PROGRESS_BAR_PACKER: ResourceTexture;
+        PROGRESS_BAR_RECYCLER: ResourceTexture;
+        PROGRESS_BAR_REPLICATOR: ResourceTexture;
+        PROGRESS_BAR_SIFT: ResourceTexture;
+        PROGRESS_BAR_SLICE: ResourceTexture;
+        PROGRESS_BAR_UNLOCK: ResourceTexture;
+        PROGRESS_BAR_UNPACKER: ResourceTexture;
+        PROGRESS_BAR_WIREMILL: ResourceTexture;
+        PROGRESS_BAR_RESEARCH_STATION_1: ResourceTexture;
+        PROGRESS_BAR_RESEARCH_STATION_2: ResourceTexture;
+        PROGRESS_BAR_RESEARCH_STATION_BASE: ResourceTexture;
+        INFO_ICON: ResourceTexture;
+        MULTIBLOCK_CATEGORY: ResourceTexture;
+        ARC_FURNACE_RECYCLING_CATEGORY: ResourceTexture;
+        MACERATOR_RECYCLING_CATEGORY: ResourceTexture;
+        EXTRACTOR_RECYCLING_CATEGORY: ResourceTexture;
+        COVER_MACHINE_CONTROLLER: ResourceTexture;
+        ICON_REMOVE: ResourceTexture;
+        ICON_UP: ResourceTexture;
+        ICON_DOWN: ResourceTexture;
+        ICON_RIGHT: ResourceTexture;
+        ICON_LEFT: ResourceTexture;
+        ICON_ADD: ResourceTexture;
+        ICON_NEW_PAGE: ResourceTexture;
+        ICON_LOAD: ResourceTexture;
+        ICON_SAVE: ResourceTexture;
+        ICON_LOCATION: ResourceTexture;
+        ICON_VISIBLE: ResourceTexture;
+        ICON_CALCULATOR: ResourceTexture;
+        UI_FRAME_SIDE_UP: ResourceTexture;
+        UI_FRAME_SIDE_DOWN: ResourceTexture;
+        BUTTON_FLUID: ResourceTexture;
+        BUTTON_ITEM: ResourceTexture;
+        BUTTON_ENERGY: ResourceTexture;
+        BUTTON_MACHINE: ResourceTexture;
+        BUTTON_INTERFACE: ResourceTexture;
+        COVER_INTERFACE_MACHINE_ON_PROXY: ResourceTexture;
+        COVER_INTERFACE_MACHINE_OFF_PROXY: ResourceTexture;
+        SCENE: ResourceTexture;
+        INSUFFICIENT_INPUT: ResourceTexture;
+        LIGHT_ON: ResourceTexture;
+        LIGHT_OFF: ResourceTexture;
+        UP: ResourceTexture;
+        TIER: ResourceTexture[];
+        LAMP_NO_BLOOM: ResourceTexture;
+        LAMP_NO_LIGHT: ResourceTexture;
+        NUMBER_BACKGROUND: ResourceTexture;
+        CONFIG_ARROW: ResourceTexture;
+        CONFIG_ARROW_DARK: ResourceTexture;
+        SELECT_BOX: ResourceTexture;
+        HPCA_COMPONENT_OUTLINE: ResourceTexture;
+        HPCA_ICON_EMPTY_COMPONENT: ResourceTexture;
+        HPCA_ICON_ADVANCED_COMPUTATION_COMPONENT: ResourceTexture;
+        HPCA_ICON_BRIDGE_COMPONENT: ResourceTexture;
+        HPCA_ICON_COMPUTATION_COMPONENT: ResourceTexture;
+        HPCA_ICON_ACTIVE_COOLER_COMPONENT: ResourceTexture;
+        HPCA_ICON_HEAT_SINK_COMPONENT: ResourceTexture;
+        HPCA_ICON_DAMAGED_ADVANCED_COMPUTATION_COMPONENT: ResourceTexture;
+        HPCA_ICON_DAMAGED_COMPUTATION_COMPONENT: ResourceTexture;
 
-        static BACKGROUND: ResourceBorderTexture;
-        static BACKGROUND_INVERSE: ResourceBorderTexture;
-        static TITLE_BAR_BACKGROUND: ResourceBorderTexture;
-        static FLUID_SLOT: ResourceBorderTexture;
-        static SLOT: ResourceBorderTexture;
-        static SLOT_DARK: ResourceBorderTexture;
-        static BUTTON: ResourceBorderTexture;
-        static CLIPBOARD_TEXT_BOX: ResourceBorderTexture;
-        static PRIMITIVE_BACKGROUND: ResourceBorderTexture;
-        static PRIMITIVE_SLOT: ResourceBorderTexture;
-        static DISPLAY_FRAME: ResourceBorderTexture;
-        static ENERGY_BAR_BACKGROUND: ResourceBorderTexture;
-        static ENERGY_BAR_BASE: ResourceBorderTexture;
-    }
+        BACKGROUND: ResourceBorderTexture;
+        BACKGROUND_INVERSE: ResourceBorderTexture;
+        TITLE_BAR_BACKGROUND: ResourceBorderTexture;
+        FLUID_SLOT: ResourceBorderTexture;
+        SLOT: ResourceBorderTexture;
+        SLOT_DARK: ResourceBorderTexture;
+        BUTTON: ResourceBorderTexture;
+        CLIPBOARD_TEXT_BOX: ResourceBorderTexture;
+        PRIMITIVE_BACKGROUND: ResourceBorderTexture;
+        PRIMITIVE_SLOT: ResourceBorderTexture;
+        DISPLAY_FRAME: ResourceBorderTexture;
+        ENERGY_BAR_BACKGROUND: ResourceBorderTexture;
+        ENERGY_BAR_BASE: ResourceBorderTexture;
+    };
+}
+
+declare namespace internal.com.gregtechceu.gtceu.api.gui.editor {
+    interface EditableMachineUI extends $object<'com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI'> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.item.tool {
@@ -1429,7 +1801,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.fluids {
 
     interface FluidState extends $object<
         { name: 'com.gregtechceu.gtceu.api.fluids.FluidState'; enumClass: typeof FluidState },
-        Enum
+        Enum<FluidState>
     > {
         getTranslationKey(): string;
         get translationKey(): string;
@@ -1450,12 +1822,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.fluids.attribute {
 
 declare namespace internal.com.gregtechceu.gtceu.api.fluids.store {
     import FluidBuilder = fluids.FluidBuilder;
-    class FluidStorageKey {}
 
-    const __FluidStorage: unique symbol;
-    interface FluidStorage {
-        [__FluidStorage]: 0;
+    interface FluidStorageKey extends $object<'com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey'> {}
 
+    interface FluidStorage extends $object<'com.gregtechceu.gtceu.api.fluids.store.FluidStorage'> {
         enqueueRegistration(key: FluidStorageKey, builder: FluidBuilder): void;
     }
 
@@ -1467,16 +1837,83 @@ declare namespace internal.com.gregtechceu.gtceu.api.fluids.store {
     };
 }
 
+declare namespace internal.com.gregtechceu.gtceu.api.blockentity {
+    import BlockEntity = net.minecraft.world.level.block.entity.BlockEntity;
+    import IMachineBlockEntity = api.machine.IMachineBlockEntity;
+
+    interface MetaMachineBlockEntity extends $object<
+        'com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity',
+        BlockEntity,
+        IMachineBlockEntity
+    > {}
+
+    const MetaMachineBlockEntity: $class<MetaMachineBlockEntity> & {};
+
+    import Enum = java.lang.Enum;
+    import IPipeType = pipenet.IPipeType;
+    import IPipeNode = pipenet.IPipeNode;
+
+    interface PipeBlockEntity<PipeType extends Enum<PipeType> & IPipeType<NodeDataType>, NodeDataType> extends $object<
+        'com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity',
+        BlockEntity,
+        IPipeNode<PipeType, NodeDataType>
+        // IEnhancedManaged, IAsyncAutoSyncBlockEntity, IAutoPersistBlockEntity, IToolGridHighlight, IToolable
+    > {}
+
+    const PipeBlockEntity: $class<PipeBlockEntity<Enum<unknown> & IPipeType<unknown>, unknown>> & {};
+}
+
+declare namespace internal.com.gregtechceu.gtceu.api.machine.trait {
+    import Enum = java.lang.Enum;
+
+    interface RecipeLogic$Status extends $object<
+        { name: 'com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status'; enumClass: typeof RecipeLogic$Status },
+        Enum<RecipeLogic$Status>
+    > {
+        getSerializedName(): string;
+        get serializedName(): string;
+    }
+
+    const RecipeLogic$Status: $class<RecipeLogic$Status> & {
+        IDLE: RecipeLogic$Status;
+        WORKING: RecipeLogic$Status;
+        WAITING: RecipeLogic$Status;
+        SUSPEND: RecipeLogic$Status;
+    };
+}
+declare namespace internal.com.gregtechceu.gtceu.api.pipenet {
+    interface IPipeType<NodeDataType> extends $object<'com.gregtechceu.gtceu.api.pipenet.IPipeType'> {}
+
+    import Enum = java.lang.Enum;
+
+    interface IPipeNode<
+        PipeType extends Enum<PipeType> & IPipeType<NodeDataType>,
+        NodeDataType,
+    > extends $object<'com.gregtechceu.gtceu.api.pipenet.IPipeNode'> {
+        setConnections(connections: number): void;
+        set connections(connections: number);
+        getConnections(): number;
+        get connections(): number;
+        getNumConnections(): number;
+        get numConnections(): number;
+    }
+
+    const IPipeNode: $class<IPipeNode<any, any>> & {};
+}
+
 declare namespace internal.kjs {
     interface LoadableClasses {
         'com.gregtechceu.gtceu.api.recipe.GTRecipe': typeof internal.com.gregtechceu.gtceu.api.recipe.GTRecipe;
         'com.gregtechceu.gtceu.api.recipe.RecipeHelper': typeof internal.com.gregtechceu.gtceu.api.recipe.RecipeHelper;
         'com.gregtechceu.gtceu.api.pattern.util.RelativeDirection': typeof internal.com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
-        'com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
         'com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition': typeof internal.com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+        'com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
         'com.gregtechceu.gtceu.api.machine.multiblock.LayeredWorkableElectricMultiblockMachine': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.LayeredWorkableElectricMultiblockMachine;
-        'com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties': typeof internal.com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
         'com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
+        'com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties': typeof internal.com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
+        'com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController': typeof internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
+        'com.gregtechceu.gtceu.api.machine.feature.multiblock.IMufflerMachine': typeof internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMufflerMachine;
+        'com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status': typeof internal.com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status;
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.AlloyBlastProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.AlloyBlastProperty;
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.ArmorProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ArmorProperty;
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
@@ -1494,5 +1931,9 @@ declare namespace internal.kjs {
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.WireProperties': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.WireProperties;
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.WoodProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.WoodProperty;
+        'com.gregtechceu.gtceu.api.block.IMachineBlock': typeof internal.com.gregtechceu.gtceu.api.block.IMachineBlock;
+        'com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity': typeof internal.com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity;
+        'com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity': typeof internal.com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity;
+        'com.gregtechceu.gtceu.api.pipenet.IPipeNode': typeof internal.com.gregtechceu.gtceu.api.pipenet.IPipeNode;
     }
 }

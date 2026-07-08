@@ -24,12 +24,15 @@ declare namespace internal.dev.latvian.mods.kubejs.fluid {
 
     import FluidStack = architectury.fluid.FluidStack;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import Fluid = net.minecraft.world.level.material.Fluid;
 
     interface FluidStackJS extends $object<'dev.latvian.mods.kubejs.fluid.FluidStackJS', FluidLike, InputReplacement> {
         readonly __dev_latvian_mods_kubejs_fluid_FluidStackJS: unique symbol;
         getId(): string;
         getTags(): ResourceLocation[];
         getFluidStack(): FluidStack;
+        getFluid(): Fluid;
+        get fluid(): Fluid;
     }
 
     import BuilderBase__Blueprint = registry.BuilderBase__Blueprint;

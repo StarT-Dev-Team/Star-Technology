@@ -2,6 +2,36 @@ declare namespace internal.net.minecraft.world {
     interface Container extends $object<'net.minecraft.world.Container'> {}
 }
 
+declare namespace internal.net.minecraft.world.phys {
+    import Position = net.minecraft.core.Position;
+
+    interface Vec3 extends $object<'net.minecraft.world.phys.Vec3', Position> {
+        vectorTo(vec: Vec3): Vec3;
+        normalize(): Vec3;
+        dot(vec: Vec3): number;
+        cross(vec: Vec3): Vec3;
+        subtract(vec: Vec3): Vec3;
+        subtract(x: number, y: number, z: number): Vec3;
+        add(vec: Vec3): Vec3;
+        add(x: number, y: number, z: number): Vec3;
+        closerThan(pos: Position, distance: number): boolean;
+        distanceTo(vec: Vec3): number;
+        distanceToSqr(vec: Vec3): number;
+        distanceToSqr(x: number, y: number, z: number): number;
+    }
+
+    interface Vec2 extends $object<'net.minecraft.world.phys.Vec2'> {
+        get x(): number;
+        get y(): number;
+    }
+
+    interface HitResult extends $object<'net.minecraft.world.phys.HitResult'> {}
+
+    interface BlockHitResult extends $object<'net.minecraft.world.phys.BlockHitResult', HitResult> {}
+
+    interface AABB extends $object<'net.minecraft.world.phys.AABB'> {}
+}
+
 declare namespace internal.net.minecraft.world.level {
     import BlockPos = core.BlockPos;
     import Player = entity.player.Player;
@@ -56,7 +86,62 @@ declare namespace internal.net.minecraft.world.level {
         ): void;
     }
 
-    interface LevelAccessor extends $object<'net.minecraft.world.level.LevelAccessor'> {
+    interface EntityGetter extends $object<'net.minecraft.world.level.EntityGetter'> {}
+
+    interface LevelHeightAccessor extends $object<'net.minecraft.world.level.LevelHeightAccessor'> {
+        getHeight(): number;
+        get height(): number;
+        getMinBuildHeight(): number;
+        get minBuildHeight(): number;
+    }
+
+    import BlockEntity = block.entity.BlockEntity;
+
+    interface BlockGetter extends $object<
+        'net.minecraft.world.level.BlockGetter',
+        LevelHeightAccessor
+        // IForgeBlockGetter
+    > {
+        getBlockEntity(pos: $wrapped<BlockPos>): BlockEntity | null;
+    }
+
+    interface BlockAndTintGetter extends $object<
+        'net.minecraft.world.level.BlockAndTintGetter',
+        BlockGetter
+        // IForgeBlockAndTintGetter
+    > {}
+
+    interface LevelReader extends $object<
+        'net.minecraft.world.level.LevelReader',
+        BlockAndTintGetter
+        // CollisionGetter,
+        // SignalGetter,
+        // BiomeManager.NoiseBiomeSource
+    > {}
+
+    interface LevelSimulatedReader extends $object<'net.minecraft.world.level.LevelSimulatedReader'> {}
+
+    import BlockState = block.state.BlockState;
+
+    interface LevelWriter extends $object<'net.minecraft.world.level.LevelWriter'> {
+        setBlock(var1: $wrapped<BlockPos>, var2: $wrapped<BlockState>, var3: number, var4: number): boolean;
+        setBlock(pos: $wrapped<BlockPos>, newState: $wrapped<BlockState>, flags: number): boolean;
+    }
+
+    interface LevelSimulatedRW extends $object<
+        'net.minecraft.world.level.LevelSimulatedRW',
+        LevelSimulatedReader,
+        LevelWriter
+    > {}
+
+    interface CommonLevelAccessor extends $object<
+        'net.minecraft.world.level.CommonLevelAccessor',
+        EntityGetter,
+        LevelReader,
+        LevelSimulatedRW
+    > {}
+
+    interface LevelAccessor extends $object<'net.minecraft.world.level.LevelAccessor', CommonLevelAccessor> {
         playSound: LevelAccessor__overloads$playSound;
     }
 
@@ -86,22 +171,23 @@ declare namespace internal.kjs {
 
 declare namespace internal.net.minecraft.world.level.block {
     import ResourceLocation = resources.ResourceLocation;
+    import BlockState = state.BlockState;
 
-    interface Block extends $object<{ name: 'net.minecraft.world.level.block.Block'; registryEntry: true }> {}
+    interface Block extends $object<{ name: 'net.minecraft.world.level.block.Block'; registryEntry: true }, ItemLike> {
+        defaultBlockState(): BlockState;
+    }
 
     const Block: $class<Block> & {
         getBlock(resourceLocation: $wrapped<ResourceLocation>): Block;
     };
 
-    interface EntityBlock {
-        readonly __net_minecraft_world_level_block_EntityBlock: unique symbol;
-    }
+    interface EntityBlock extends $object<'net.minecraft.world.level.block.EntityBlock'> {}
 
     import Enum = java.lang.Enum;
 
     interface SoundType extends $object<
         { name: 'net.minecraft.world.level.block.SoundType'; enumClass: typeof SoundType },
-        Enum
+        Enum<SoundType>
     > {}
 
     const SoundType: $class<SoundType> & {
@@ -241,7 +327,10 @@ declare namespace internal.net.minecraft.world.item {
 
     import Enum = java.lang.Enum;
 
-    interface UseAnim extends $object<{ name: 'net.minecraft.world.item.UseAnim'; enumClass: typeof UseAnim }, Enum> {}
+    interface UseAnim extends $object<
+        { name: 'net.minecraft.world.item.UseAnim'; enumClass: typeof UseAnim },
+        Enum<UseAnim>
+    > {}
 
     const UseAnim: $class<UseAnim> & {
         NONE: UseAnim;
@@ -257,7 +346,10 @@ declare namespace internal.net.minecraft.world.item {
         CUSTOM: UseAnim;
     };
 
-    interface Rarity extends $object<{ name: 'net.minecraft.world.item.Rarity'; enumClass: typeof Rarity }, Enum> {}
+    interface Rarity extends $object<
+        { name: 'net.minecraft.world.item.Rarity'; enumClass: typeof Rarity },
+        Enum<Rarity>
+    > {}
 
     const Rarity: $class<Rarity> & {
         COMMON: Rarity;
@@ -287,26 +379,74 @@ declare namespace internal.net.minecraft.world.item.crafting {
 }
 
 declare namespace internal.net.minecraft.world.level.block.entity {
-    interface BlockEntity {
-        readonly __net_minecraft_world_level_block_entity_BlockEntity: unique symbol;
-    }
-
-    class BlockEntity {}
+    interface BlockEntity extends $object<'net.minecraft.world.level.block.entity.BlockEntity'> {}
 }
 
 declare namespace internal.net.minecraft.world.level.block.state {
-    class BlockState {}
+    interface BlockState extends $object<
+        'net.minecraft.world.level.block.state.BlockState',
+        BlockBehaviour$BlockStateBase
+    > {}
+
+    import Comparable = java.lang.Comparable;
+    import Property = properties.Property;
+    import Optional = java.util.Optional;
+
+    interface StateHolder<O, S> extends $object<'net.minecraft.world.level.block.state.StateHolder'> {
+        getValue<T extends Comparable<T>>(property: Property<T>): T;
+        getOptionalValue<T extends Comparable<T>>(property: Property<T>): Optional<T>;
+        setValue<T extends Comparable<T>, V extends T>(property: Property<T>, value: V): S;
+        trySetValue<T extends Comparable<T>, V extends T>(property: Property<T>, value: V): S;
+    }
+
+    interface BlockBehaviour$BlockStateBase extends $object<
+        'net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase',
+        StateHolder<Block, BlockState>
+    > {
+        getBlock(): Block;
+        get block(): Block;
+        isAir(): boolean;
+        ignitedByLava(): boolean;
+    }
 }
 
 declare namespace internal.net.minecraft.world.level.block.state.properties {
-    // T extends Comparable<T>
-    abstract class Property<T> {}
+    import Comparable = java.lang.Comparable;
 
-    class BooleanProperty extends Property<boolean> {}
+    interface Property<
+        T extends Comparable<T>,
+    > extends $object<'net.minecraft.world.level.block.state.properties.Property'> {
+        getName(value: T): string;
+    }
+
+    import Boolean = java.lang.Boolean;
+
+    interface BooleanProperty extends $object<
+        'net.minecraft.world.level.block.state.properties.BooleanProperty',
+        Property<Boolean>
+    > {}
 
     import Enum = java.lang.Enum;
 
-    class EnumProperty<T extends Enum> extends Property<Enum> {}
+    interface EnumProperty<T extends Enum<T>> extends $object<
+        'net.minecraft.world.level.block.state.properties.EnumProperty',
+        Property<T>
+    > {}
+
+    import Direction = core.Direction;
+
+    interface DirectionProperty extends $object<
+        'net.minecraft.world.level.block.state.properties.DirectionProperty',
+        EnumProperty<Direction>
+    > {}
+
+    interface BlockStateProperties extends $object<'net.minecraft.world.level.block.state.properties.BlockStateProperties'> {}
+
+    const BlockStateProperties: $class<BlockStateProperties> & {
+        FACING: DirectionProperty;
+        FACING_HOPPER: DirectionProperty;
+        HORIZONTAL_FACING: DirectionProperty;
+    };
 }
 
 declare namespace internal.net.minecraft.world.level.material {
@@ -315,12 +455,12 @@ declare namespace internal.net.minecraft.world.level.material {
     interface FlowingFluid extends $object<'net.minecraft.world.level.material.FlowingFluid', Fluid> {}
 }
 
+declare namespace internal.net.minecraft.world.level.levelgen.structure {
+    interface BoundingBox extends $object<'net.minecraft.world.level.levelgen.structure.BoundingBox'> {}
+}
+
 declare namespace internal.net.minecraft.world.level.levelgen.structure.templatesystem {
     interface RuleTest extends $object<'net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest'> {}
-
-    import BlockStatePredicate = dev.latvian.mods.kubejs.block.state.BlockStatePredicate;
-
-    type $wrapped<RuleTest> = RuleTest | BlockStatePredicate | string;
 }
 
 declare namespace internal.net.minecraft.world.effect {
@@ -366,7 +506,7 @@ declare namespace internal.net.minecraft.world.entity.ai.attributes {
             name: 'net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation';
             enumClass: typeof AttributeModifier$Operation;
         },
-        Enum
+        Enum<AttributeModifier$Operation>
     > {}
 
     const AttributeModifier$Operation: $class<AttributeModifier$Operation> & {

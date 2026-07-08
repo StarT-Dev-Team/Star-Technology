@@ -70,7 +70,7 @@ declare namespace internal.dev.latvian.mods.kubejs.block {
         bounciness(bounciness: number): TSelf;
         // afterFallenOn(callbackJS: $wrapped<Consumer<AfterEntityFallenOnBlockCallbackJS>>): TSelf;
         // exploded(callbackJS: $wrapped<Consumer<BlockExplodedCallbackJS>>): TSelf;
-        property(property: Property<unknown>): TSelf;
+        property(property: Property<any>): TSelf;
         // rotateState(callbackJS: $wrapped<Consumer<BlockStateRotateCallbackJS>>): TSelf;
         // mirrorState(callbackJS: $wrapped<Consumer<BlockStateMirrorCallbackJS>>): TSelf;
         rightClick(callbackJS: $wrapped<Consumer<BlockRightClickedEventJS>>): TSelf;
@@ -116,11 +116,7 @@ declare namespace internal.dev.latvian.mods.kubejs.block {
         get item(): ItemStack;
     }
 
-    interface RandomTickCallbackJS {
-        readonly __dev_latvian_mods_kubejs_block_RandomTickCallbackJS: unique symbol;
-    }
-
-    class RandomTickCallbackJS {}
+    interface RandomTickCallbackJS extends $object<'dev.latvian.mods.kubejs.block.RandomTickCallbackJS'> {}
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.block.custom {
@@ -158,4 +154,19 @@ declare namespace internal.dev.latvian.mods.kubejs.block.state {
         ALL: BlockStatePredicate$Simple;
         NONE: BlockStatePredicate$Simple;
     };
+}
+declare namespace internal.dev.latvian.mods.kubejs.block.predicate {
+    import BlockContainerJS = level.BlockContainerJS;
+
+    interface BlockPredicate extends $object<{
+        name: 'dev.latvian.mods.kubejs.block.predicate.BlockPredicate';
+        functionalInterface: 'check';
+    }> {
+        check(block: BlockContainerJS): boolean;
+    }
+
+    interface BlockIDPredicate extends $object<
+        'dev.latvian.mods.kubejs.block.predicate.BlockIDPredicate',
+        BlockPredicate
+    > {}
 }

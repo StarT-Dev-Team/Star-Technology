@@ -177,7 +177,7 @@ ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
     let { level, player } = event;
     if (!(level instanceof $ServerLevel)) return;
     let registryAccess = level.registryAccess();
-    let structureRegistry = registryAccess.registryOrThrow(Registries.STRUCTURE);
+    let structureRegistry = registryAccess.registryOrThrow($Registries.STRUCTURE);
     let structureKey = structureRegistry.getResourceKey(structureRegistry.get('minecraft:ruined_portal_nether')).get();
     let structureHolder = structureRegistry.getHolderOrThrow(structureKey);
 
@@ -187,7 +187,7 @@ ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
     }
 
     let structure = structureHolder.get();
-    let holderSet = HolderSet.direct([structureHolder]);
+    let holderSet = $HolderSet.direct([structureHolder]);
     let origin = new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
     let generator = level.getChunkSource().getGenerator();
     let result = generator.findNearestMapStructure(level, holderSet, origin, 100, false);
@@ -195,7 +195,7 @@ ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
     if (result !== null) {
         let pos = result.getFirst();
         let chunkPos = new ChunkPos(pos);
-        let sectionPos = SectionPos.of(chunkPos, level.getMinSection());
+        let sectionPos = $SectionPos.of(chunkPos, level.getMinSection());
         let chunk = level.getChunk(chunkPos.x, chunkPos.z);
         let start = level.structureManager().getStartForStructure(sectionPos, structure, chunk);
         if (start && start.isValid()) {

@@ -7,7 +7,6 @@
         revealBlocks,
         hideSectionAndRemoveBlocks,
         hideSectionImmediately,
-        javaReflectionGetMethodByName,
         setPipeConnections,
     } = ponderUtils;
     let { classicStargate } = ponderMultis;
@@ -184,7 +183,7 @@
         scene.idle(20);
 
         let gtWires = Array(5)
-            .fill()
+            .fill(undefined)
             .map((_, off) => ({
                 pos: csgInterface.pos.offset(off + 1, 0, 0),
                 state: block('gtceu:dragonsteel_double_wire'),
@@ -361,23 +360,22 @@
         ]);
     }
 
-    // eslint-disable-next-line no-unused-vars
-    function playStargateChevronSound(scene, pos, index) {
-        // TODO: not working...
-        let $AbstractStargateEntity = Java.loadClass(
-            'net.povstalec.sgjourney.common.block_entities.stargate.AbstractStargateEntity'
-        );
-        let $GenericStargateSound = Java.loadClass('net.povstalec.sgjourney.client.sound.sounds.GenericStargateSound');
-        let getChevronEngageSound = javaReflectionGetMethodByName(
-            'net.povstalec.sgjourney.client.sound.SoundAccess',
-            'getChevronEngageSound'
-        );
-        let $Minecraft = Java.loadClass('net.minecraft.client.Minecraft');
-        let $Short = Java.loadClass('java.lang.Short');
+    // TODO: not working...
+    // function playStargateChevronSound(scene, pos, index) {
+    //     let $AbstractStargateEntity = Java.loadClass(
+    //         'net.povstalec.sgjourney.common.block_entities.stargate.AbstractStargateEntity'
+    //     );
+    //     let $GenericStargateSound = Java.loadClass('net.povstalec.sgjourney.client.sound.sounds.GenericStargateSound');
+    //     let getChevronEngageSound = javaReflectionGetMethodByName(
+    //         'net.povstalec.sgjourney.client.sound.SoundAccess',
+    //         'getChevronEngageSound'
+    //     );
+    //     let $Minecraft = Java.loadClass('net.minecraft.client.Minecraft');
+    //     let $Short = Java.loadClass('java.lang.Short');
 
-        scene.world().modifyBlockEntity(pos, $AbstractStargateEntity, (be) => {
-            let sound = new $GenericStargateSound(be, getChevronEngageSound(null, be, new $Short(`${index}`)), 0.5);
-            $Minecraft.instance.soundManager.play(sound);
-        });
-    }
+    //     scene.world().modifyBlockEntity(pos, $AbstractStargateEntity, (be) => {
+    //         let sound = new $GenericStargateSound(be, getChevronEngageSound(null, be, new $Short(`${index}`)), 0.5);
+    //         $Minecraft.instance.soundManager.play(sound);
+    //     });
+    // }
 })();

@@ -24,3 +24,15 @@ declare namespace internal.kjs {
         hellforge(id: $wrapped<ResourceLocation>): GTRecipeJS;
     }
 }
+
+declare namespace internal.kjs.startcore {
+    import PonderRegistryEventJS = com.startechnology.start_core.integration.ponder.PonderRegistryEventJS;
+    import PonderItemTagEventJS = com.startechnology.start_core.integration.ponder.PonderItemTagEventJS;
+
+    interface Ponder {
+        registry(callback: (event: PonderRegistryEventJS) => void): void;
+        tags(callback: (event: PonderItemTagEventJS) => void): void;
+    }
+}
+
+declare const Ponder: internal.kjs.startcore.Ponder;

@@ -120,7 +120,7 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
 
     interface OutputItem extends $object<'dev.latvian.mods.kubejs.item.OutputItem'> {}
 
-    import Iterable = java.util.Iterable;
+    import Iterable = java.lang.Iterable;
 
     interface ItemStackSet extends Iterable<ItemStack> {}
     class ItemStackSet implements Iterable<ItemStack> {}

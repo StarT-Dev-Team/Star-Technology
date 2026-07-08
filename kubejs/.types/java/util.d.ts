@@ -4,12 +4,9 @@ declare namespace internal.java.util {
         equals(o: any): boolean;
     }
 
-    import Consumer = function_.Consumer;
+    interface Iterator<V> extends $object<'java.lang.Iterable'> {}
 
-    interface Iterable<E> extends $object<'Iterable'> {
-        iterator(): Iterator<E>;
-        forEach(action: $wrapped<Consumer<E>>): void;
-    }
+    import Iterable = java.lang.Iterable;
 
     interface Collection<E> extends $object<'Collection', Iterable<E>> {
         size(): number;
@@ -32,6 +29,7 @@ declare namespace internal.java.util {
     interface Optional<T> extends $object<'java.lang.Optional'> {
         get(): T;
         isPresent(): boolean;
+        get present(): boolean;
     }
 
     const Optional: {
@@ -39,6 +37,8 @@ declare namespace internal.java.util {
         of<T>(value: T): Optional<T>;
         ofNullable<T>(value: T | null): Optional<T>;
     };
+
+    interface UUID extends $object<'java.lang.UUID'> {}
 }
 
 declare namespace internal.java.util.function_ {

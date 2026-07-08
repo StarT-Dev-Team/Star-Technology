@@ -20,7 +20,7 @@
         resetScene(scene, 5, true);
 
         let ebf = computeMultiData(util, electricBlastFurnace(true), [2, 1, 1]);
-        const steps = sortStrategy['controllerThenLayers'](util, ebf.controller, ebf.blocks);
+        const steps = sortStrategy.controllerThenLayers(util, ebf.controller, ebf.blocks);
 
         revealBlocks(scene, steps[0]);
         scene.idle(25);
@@ -123,6 +123,7 @@
         );
         scene.idle(20);
 
+        /** @type {import("../types").MachineBlockWrapped[]} */
         let wires = [
             {
                 pos: [2, 1, 4],

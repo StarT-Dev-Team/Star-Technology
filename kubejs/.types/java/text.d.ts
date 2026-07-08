@@ -1,5 +1,5 @@
 declare namespace internal.java.text {
-    class DecimalFormat {
+    interface DecimalFormat extends $object<'java.text.DecimalFormat'> {
         format(number: unknown): string;
     }
 }

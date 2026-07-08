@@ -50,8 +50,8 @@ export default [
                 ForgeEvents: 'readonly',
                 WorldgenEvents: 'readonly',
                 $ServerLevel: 'readonly',
-                Registries: 'readonly',
-                HolderSet: 'readonly',
+                $Registries: 'readonly',
+                $HolderSet: 'readonly',
                 ChunkPos: 'readonly',
                 BlockProperties: 'readonly',
                 SectionPos: 'readonly',
@@ -120,6 +120,7 @@ export default [
                 // Miscellaneous globals
                 Ponder: 'readonly',
                 Direction: 'readonly',
+                PonderPalette: 'readonly',
                 PonderTickingInstruction: 'readonly',
                 PonderPointing: 'readonly',
                 // Custom globals

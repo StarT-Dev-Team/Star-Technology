@@ -68,6 +68,8 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
     import RandomTickCallbackJS = block.RandomTickCallbackJS;
 
     interface BlockKJS {
+        get idLocation(): ResourceLocation;
+        getIdLocation(): ResourceLocation;
         get id(): string;
         getId(): string;
         get mod(): string;

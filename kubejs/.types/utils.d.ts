@@ -132,14 +132,14 @@ declare namespace internal {
             readonly [impl.__class]: (meta: TName extends string ? { name: TName } : TName) => void;
         };
 
-    type $class<TObject> = {
+    type $class<TObject> = java.lang.Class<TObject> & {
         __javaObject__: globalThis.internal.java.lang.Class<TObject>;
         [Symbol.hasInstance](obj: any): obj is TObject;
     };
 
-    type $wrapped<T extends impl.BrandedClass> = (T | impl.Wrapped<T, impl.MetaOf<T>>) & {};
+    type $wrapped<T> = (T | impl.Wrapped<T, impl.MetaOf<T>>) & {};
 
-    type $reverseWrapped<T extends impl.BrandedClass> = impl.ReverseWrapped<T, impl.MetaOf<T>>;
+    type $reverseWrapped<T> = impl.ReverseWrapped<T, impl.MetaOf<T>>;
 
     type JsonArrayLike = JsonLike[];
     type JsonObjectLike = { [P in string]: JsonLike };
