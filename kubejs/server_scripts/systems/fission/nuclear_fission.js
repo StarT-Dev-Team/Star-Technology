@@ -31,11 +31,31 @@ ServerEvents.recipes((event) => {
 
     let nuclearRod = (type, tier, composition, decomposition) => {
         let cell = FLUID_CELL_TYPE[tier];
+        let comp = (comp_) => {
+            let localCalculatedComp = [];
+            if (Array.isArray(comp_)) {
+                if (comp_.length > 1) {
+                    for (let i = 0; i < comp_.length; i++) {
+                        localCalculatedComp.push(comp_[i]);
+                    }
 
+                    event.recipes.gtceu
+                        .mixer(type + '_base_dust')
+                        .itemInputs(localCalculatedComp)
+                        .itemOutputs('gtceu:' + type + '_base_dust')
+                        .duration(1200 / Math.pow(2, tier))
+                        .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));
+                    localCalculatedComp = 'gtceu:' + type + '_base_dust';
+                }
+            } else {
+                localCalculatedComp = comp_;
+            }
+            return localCalculatedComp;
+        };
         event.recipes.gtceu
-            .forming_press(id(type + '_fuel_rod'))
+            .canner(id(type + '_fuel_rod'))
             .itemInputs(cell)
-            .itemInputs(composition)
+            .itemInputs(comp(composition))
             .itemOutputs('kubejs:' + type + '_fuel_rod')
             .duration(1200 / Math.pow(2, tier))
             .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));

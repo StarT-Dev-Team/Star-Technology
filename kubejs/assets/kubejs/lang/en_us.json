@@ -813,6 +813,13 @@
     "item.kubejs.depleted_leu233_fuel_rod": "Depleted LEU-233 Fuel Rod",
     "item.kubejs.depleted_nqe_fuel_rod": "Depleted NQE Fuel Rod",
 
+    "item.gtceu.mox239_base_dust": "MOX-239 Base Dust",
+    "item.gtceu.mox241_base_dust": "MOX-241 Base Dust",
+    "item.gtceu.mox238_base_dust": "MOX-238 Base Dust",
+    "item.gtceu.nqe_base_dust": "NQE Base Dust",
+    "item.gtceu.tpu_base_dust": "TPU Base Dust",
+    "item.gtceu.etu_base_dust": "ETU Base Dust",
+
     "block.kubejs.superdense_assembly_control_casing": "Superdense Assembly Control Casing",
     "block.kubejs.superdense_assembly_machine_casing": "Superdense Assembly Machine Casing",
     "block.kubejs.superdense_machine_casing": "Superdense Machine Casing",

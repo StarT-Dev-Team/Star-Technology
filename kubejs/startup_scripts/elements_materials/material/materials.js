@@ -2851,4 +2851,23 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     compLiquid('fluorinated_ferrocene', ['15x carbon', '5x hydrogen', '15x fluorine', '1x iron'], 0x00aa00, [noDecomp]);
 
     event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
+
+    // Fuel rod base dusts :D
+    let $Th230 = 'gtceu:thorium_dust';
+    let $U238 = 'gtceu:uranium_dust';
+    let $Pu238 = 'gtceu:plutonium_238_dust';
+    let $Pu239 = 'gtceu:plutonium_dust';
+    let $Pu241 = 'gtceu:plutonium_241_dust';
+    let $Am241 = 'gtceu:americium_241_dust';
+    let $Cm244 = 'gtceu:curium_244_dust';
+    let $Cf252 = 'gtceu:californium_252_dust';
+    let $Es253 = 'gtceu:einsteinium_253_dust';
+    let $Nq404 = 'gtceu:purified_naquadah_dust';
+
+    compDust('mox239_base', [`2x ${$U238}`, `2x ${$Pu239}`], 0x2e4503, [noDecomp]);
+    compDust('mox241_base', [`2x ${$U238}`, `2x ${$Pu241}`], 0x415e09, [noDecomp]);
+    compDust('tpu_base', [`2x ${$Th230}`, `2x ${$Pu239}`], 0x293d05, [noDecomp]);
+    compDust('mox238_base', [`3x ${$Pu238}`, `1x ${$Cf252}`], 0x4f1404, [noDecomp]);
+    compDust('etu_base', [`2x ${$Cm244}`, `1x ${$Cf252}`, `1x ${$Am241}`], 0x39452e, [noDecomp]);
+    compDust('nqe_base', [`2x ${$Nq404}`, `2x ${$Es253}`], 0x524e14, [noDecomp]);
 });
