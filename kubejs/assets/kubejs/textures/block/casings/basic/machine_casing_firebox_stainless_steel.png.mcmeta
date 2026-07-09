@@ -1,0 +1,5 @@
+{
+    "ldlib": {
+        "connection": "kubejs:block/casings/basic/machine_casing_firebox_stainless_steel_ctm"
+    }
+}

@@ -1310,6 +1310,8 @@
     "block.gtceu.super_gas_collector": "Compression Gas Siphon [CGS]",
     "block.gtceu.super_gas_collector.tooltip.0": "§7Collects gas just a bit faster.",
 
+    "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
+
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§bStellarized§f Weapon Grade Naquadah",
     "material.gtceu.primordially_stellarized_weapon_grade_naquadah": "§5Primordially §bStellarized§f Weapon Grade Naquadah",
