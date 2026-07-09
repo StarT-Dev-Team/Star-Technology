@@ -29,40 +29,32 @@ ServerEvents.recipes((event) => {
         6: 'start_core:neutronium_fluid_cell',
     };
 
-    let nuclearRod = (type, tier, composition, decomposition) => {
-        let cell = FLUID_CELL_TYPE[tier];
-        let comp = (compInput) => {
-            let localCalculatedComp = [];
-            if (Array.isArray(compInput)) {
-                if (compInput.length > 1) {
-                    for (let i = 0; i < compInput.length; i++) {
-                        localCalculatedComp.push(compInput[i]);
-                    }
+    const nuclearRod = (type, tier, composition, decomposition) => {
+        const cell = FLUID_CELL_TYPE[tier];
+        let blend = composition;
 
-                    event.recipes.gtceu
-                        .mixer(type + '_base_dust')
-                        .itemInputs(localCalculatedComp)
-                        .itemOutputs('gtceu:' + type + '_base_dust')
-                        .duration(1200 / Math.pow(2, tier))
-                        .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));
-                    localCalculatedComp = 'gtceu:' + type + '_base_dust';
-                }
-            } else {
-                localCalculatedComp = compInput;
-            }
-            return localCalculatedComp;
-        };
+        if (Array.isArray(composition)) {
+            event.recipes.gtceu
+                .mixer(id(`${type}_blend_dust`))
+                .itemInputs(composition)
+                .itemOutputs(`4x gtceu:${type}_blend_dust`)
+                .duration(1200 / Math.pow(2, tier))
+                .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));
+
+            blend = `4x gtceu:${type}_blend_dust`;
+        }
+
         event.recipes.gtceu
             .canner(id(type + '_fuel_rod'))
             .itemInputs(cell)
-            .itemInputs(comp(composition))
+            .itemInputs(blend)
             .itemOutputs('kubejs:' + type + '_fuel_rod')
             .duration(1200 / Math.pow(2, tier))
             .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));
 
         event.recipes.gtceu
-            .centrifuge(id('depleted_' + type + '_fuel_rod_decomposition'))
-            .itemInputs('kubejs:depleted_' + type + '_fuel_rod')
+            .centrifuge(id(`depleted_${type}_fuel_rod_decomposition`))
+            .itemInputs(`kubejs:depleted_${type}_fuel_rod`)
             .itemOutputs(cell)
             .itemOutputs(decomposition)
             .duration(1600 / Math.pow(2, tier))
