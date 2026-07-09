@@ -2853,21 +2853,14 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
 
     // Fuel rod base dusts :D
-    let $Th230 = 'gtceu:thorium_dust';
-    let $U238 = 'gtceu:uranium_dust';
-    let $Pu238 = 'gtceu:plutonium_238_dust';
-    let $Pu239 = 'gtceu:plutonium_dust';
-    let $Pu241 = 'gtceu:plutonium_241_dust';
-    let $Am241 = 'gtceu:americium_241_dust';
-    let $Cm244 = 'gtceu:curium_244_dust';
-    let $Cf252 = 'gtceu:californium_252_dust';
-    let $Es253 = 'gtceu:einsteinium_253_dust';
-    let $Nq404 = 'gtceu:purified_naquadah_dust';
+    const $U238 = 'uranium';
+    const $Pu239 = 'plutonium';
+    const $Cf252 = 'californium_252';
 
-    compDust('mox239_base', [`2x ${$U238}`, `2x ${$Pu239}`], 0x2e4503);
-    compDust('mox241_base', [`2x ${$U238}`, `2x ${$Pu241}`], 0x415e09);
-    compDust('tpu_base', [`2x ${$Th230}`, `2x ${$Pu239}`], 0x293d05);
-    compDust('mox238_base', [`3x ${$Pu238}`, `1x ${$Cf252}`], 0x4f1404);
-    compDust('etu_base', [`2x ${$Cm244}`, `1x ${$Cf252}`, `1x ${$Am241}`], 0x394520);
-    compDust('nqe_base', [`2x ${$Nq404}`, `2x ${$Es253}`], 0x524e14);
+    compDust('mox239_blend', [`2x ${$U238}`, `2x ${$Pu239}`], 0x289a0a, []);
+    compDust('mox241_blend', [`2x ${$U238}`, '2x plutonium_241'], 0x587c13, []);
+    compDust('tpu_blend', ['2x thorium', `2x ${$Pu239}`], 0x36aa18, []);
+    compDust('mox238_blend', ['3x plutonium_238', `1x ${$Cf252}`], 0x4f2f04, []);
+    compDust('etu_blend', ['2x curium_244', `1x ${$Cf252}`, '1x americium_241'], 0x3d5434, []);
+    compDust('nqe_blend', ['2x purified_naquadah', '2x einsteinium_253'], 0x3f3c18, []);
 });
