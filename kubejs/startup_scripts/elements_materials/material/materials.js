@@ -2864,10 +2864,10 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     let $Es253 = 'gtceu:einsteinium_253_dust';
     let $Nq404 = 'gtceu:purified_naquadah_dust';
 
-    compDust('mox239_base', [`2x ${$U238}`, `2x ${$Pu239}`], 0x2e4503, [noDecomp]);
-    compDust('mox241_base', [`2x ${$U238}`, `2x ${$Pu241}`], 0x415e09, [noDecomp]);
-    compDust('tpu_base', [`2x ${$Th230}`, `2x ${$Pu239}`], 0x293d05, [noDecomp]);
-    compDust('mox238_base', [`3x ${$Pu238}`, `1x ${$Cf252}`], 0x4f1404, [noDecomp]);
-    compDust('etu_base', [`2x ${$Cm244}`, `1x ${$Cf252}`, `1x ${$Am241}`], 0x39452e, [noDecomp]);
-    compDust('nqe_base', [`2x ${$Nq404}`, `2x ${$Es253}`], 0x524e14, [noDecomp]);
+    compDust('mox239_base', [`2x ${$U238}`, `2x ${$Pu239}`], 0x2e4503);
+    compDust('mox241_base', [`2x ${$U238}`, `2x ${$Pu241}`], 0x415e09);
+    compDust('tpu_base', [`2x ${$Th230}`, `2x ${$Pu239}`], 0x293d05);
+    compDust('mox238_base', [`3x ${$Pu238}`, `1x ${$Cf252}`], 0x4f1404);
+    compDust('etu_base', [`2x ${$Cm244}`, `1x ${$Cf252}`, `1x ${$Am241}`], 0x394520);
+    compDust('nqe_base', [`2x ${$Nq404}`, `2x ${$Es253}`], 0x524e14);
 });
