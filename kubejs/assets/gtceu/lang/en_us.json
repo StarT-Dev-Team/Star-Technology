@@ -498,9 +498,9 @@
     "gtceu.barrel": "Barrel Soaking",
     "gtceu.barrel_composting": "Barrel Composting",
     "gtceu.barrel_transformation": "Barrel Transformation",
-    "block.gtceu.ulv_barrel": "Wooden Barrel [WB]",
+    "block.gtceu.barrel": "Wooden Barrel [WB]",
     "gtceu.stone_barrel": "Barrel Formation",
-    "block.gtceu.ulv_stone_barrel": "Stone Barrel [SB]",
+    "block.gtceu.stone_barrel": "Stone Barrel [SB]",
     "gtceu.gate_assembly": "Stargate Assembly",
     "block.gtceu.gate_assembly": "Runic Stargate Assembler [RSA]",
     "material.gtceu.thorium_plut_duranide_241": "Thorium Plut-Duranide 241",
@@ -585,9 +585,9 @@
     "material.gtceu.astatine_bis_tritelluride_cobo_selenium": "Astatine Bis-Tritelluride Cobo-Selenium",
     "material.gtceu.iron_titanium_oxide": "Iron Titanium Oxide",
 
-    "block.gtceu.ulv_advanced_composter": "Advanced Composter [AC]",
+    "block.gtceu.advanced_composter": "Advanced Composter [AC]",
     "gtceu.composting": "Composting",
-    "block.gtceu.ulv_casket": "Fermenting Casket [FC]",
+    "block.gtceu.casket": "Fermenting Casket [FC]",
     "gtceu.fermenting": "Fermenting",
 
     "material.gtceu.warped": "Warped",
@@ -1296,6 +1296,13 @@
     "material.gtceu.einsteinium_253": "Einsteinium 253",
     "material.gtceu.fermium": "Fermium 257",
 
+    "material.gtceu.mox239_blend": "MOX-239 Blend",
+    "material.gtceu.mox241_blend": "MOX-241 Blend",
+    "material.gtceu.mox238_blend": "MOX-238 Blend",
+    "material.gtceu.nqe_blend": "NQE Blend",
+    "material.gtceu.tpu_blend": "TPU Blend",
+    "material.gtceu.etu_blend": "ETU Blend",
+
     "material.gtceu.hafnastide_rich_sludge": "Hafnastide-Rich Sludge",
     "material.gtceu.flerovium_rich_re_sludge": "Flerovium-Rich Re Sludge",
     "material.gtceu.pologium_rich_sludge": "Pologium-Rich Sludge",
@@ -1309,6 +1316,8 @@
 
     "block.gtceu.super_gas_collector": "Compression Gas Siphon [CGS]",
     "block.gtceu.super_gas_collector.tooltip.0": "§7Collects gas just a bit faster.",
+
+    "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
 
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§bStellarized§f Weapon Grade Naquadah",

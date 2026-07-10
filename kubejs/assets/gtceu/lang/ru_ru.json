@@ -498,9 +498,9 @@
     "gtceu.barrel": "Вымачивание в бочке",
     "gtceu.barrel_composting": "Компостирование в бочке",
     "gtceu.barrel_transformation": "Превращение в бочке",
-    "block.gtceu.ulv_barrel": "Деревянная бочка [WB]",
+    "block.gtceu.barrel": "Деревянная бочка [WB]",
     "gtceu.stone_barrel": "Формование в бочке",
-    "block.gtceu.ulv_stone_barrel": "Каменная бочка [SB]",
+    "block.gtceu.stone_barrel": "Каменная бочка [SB]",
     "gtceu.gate_assembly": "Сборка звёздных врат",
     "block.gtceu.gate_assembly": "Рунический сборщик звёздных врат [RSA]",
     "material.gtceu.thorium_plut_duranide_241": "Ториево-плутониевый дюранид-241",
@@ -585,9 +585,9 @@
     "material.gtceu.astatine_bis_tritelluride_cobo_selenium": "Бис-трителлурид астата кобальто-селена",
     "material.gtceu.iron_titanium_oxide": "Оксид железа-титана",
 
-    "block.gtceu.ulv_advanced_composter": "Улучшенный компостер [AC]",
+    "block.gtceu.advanced_composter": "Улучшенный компостер [AC]",
     "gtceu.composting": "Компостирование",
-    "block.gtceu.ulv_casket": "Ферментационный чан [FC]",
+    "block.gtceu.casket": "Ферментационный чан [FC]",
     "gtceu.fermenting": "Ферментация",
 
     "material.gtceu.warped": "Искажённый",

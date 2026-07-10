@@ -179,9 +179,9 @@ ServerEvents.tags('block', (event) => {
     ];
     targets.forEach((target) => event.add('forge:mineable/wrench', target));
 
-    event.remove('mineable/pickaxe', ['gtceu:ulv_barrel']);
+    event.remove('mineable/pickaxe', ['gtceu:barrel']);
 
-    event.add('mineable/axe', ['gtceu:ulv_barrel']);
+    event.add('mineable/axe', ['gtceu:barrel']);
 
     event.add('mineable/pickaxe', ['travelanchors:travel_anchor']);
 
