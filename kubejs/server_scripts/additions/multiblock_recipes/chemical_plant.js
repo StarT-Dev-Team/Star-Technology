@@ -14,7 +14,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu // +5% on original platline for Ru, Rh, Os and Ir
         .chemical_skip(id('plat_line_skip'))
         .itemInputs('30x gtceu:purified_cooperite_ore')
-        .inputFluids('gtceu:aqua_regia 24000', 'gtceu:nitric_acid 3000')
+        .inputFluids('gtceu:aqua_regia 24000')
         .itemOutputs(
             '20x gtceu:platinum_dust',
             '12x gtceu:palladium_dust',
@@ -23,7 +23,7 @@ ServerEvents.recipes((event) => {
             '3x gtceu:osmium_dust',
             '3x gtceu:iridium_dust'
         )
-        .outputFluids('gtceu:nitric_acid 11000', 'gtceu:hydrochloric_acid 16000')
+        .outputFluids('gtceu:nitric_acid 8000', 'gtceu:hydrochloric_acid 16000')
         .duration(485)
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
@@ -85,18 +85,6 @@ ServerEvents.recipes((event) => {
         .duration(720)
         .EUt(GTValues.VHA[GTValues.IV]);
 
-    /*
-3B C6H6 + 23B O => 4B C4H2O3 + 5B H2O + 2B CO2
-
-4B C4H2O3 + 8B CH4O => 4B C6H10O4 + 4B O
-
-4B C6H10O4 + 20B H + 2B O =[1 PdC]=> 6B C4H10O3
-
-6B C4H10O3 + 18B H => 3B C4H10O2 + 12B CH4O
-
-
-3B C6H6 + 19B O + 38B H => 5B H2O + 2B CO2 + 3B C4H10O2 + 4B CH4O
-    */
     event.recipes.gtceu
         .chemical_skip(id('14_butanediol_skip'))
         .notConsumable('gtceu:palladium_on_carbon_dust')
