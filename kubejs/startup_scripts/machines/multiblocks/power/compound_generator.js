@@ -3,35 +3,39 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         {
             tier: GTValues.LV,
             voltage: 'lv',
-            casing: 'bronze_casing',
+            casing: 'steam_machine_casing',
             frame: 'steel',
             pipe: 'bronze_pipe_casing',
+            base: 'machine_casing_bronze_plated_bricks',
         },
         {
             tier: GTValues.MV,
             voltage: 'mv',
-            casing: 'solid_steel_casing',
+            casing: 'solid_machine_casing',
             frame: 'aluminium',
             pipe: 'steel_pipe_casing',
+            base: 'machine_casing_solid_steel',
         },
         {
             tier: GTValues.HV,
             voltage: 'hv',
-            casing: 'clean_stainless_steel_casing',
+            casing: 'clean_machine_casing',
             frame: 'stainless_steel',
             pipe: 'steel_pipe_casing',
+            base: 'machine_casing_clean_stainless_steel',
         },
     ].forEach((generator) => {
         event
             .create(`${generator.voltage}_compound_generator`, 'multiblock')
             .rotationState(RotationState.ALL)
-            .recipeTypes([GTRecipeTypes.COMBUSTION])
+            .recipeTypes(['combustion_generator', 'gas_turbine', 'steam_turbine'])
             .machine((holder) => new $CompoundGeneratorMachine(holder, generator.tier))
-            .recipeModifiers($StarTRecipeModifiers.COMPOUND_GENERATOR)
+            .recipeModifiers([$StarTRecipeModifiers.COMPOUND_GENERATOR])
             .appearanceBlock(() => Block.getBlock(`gtceu:${generator.casing}`))
+            .generator()
             .pattern((definition) =>
                 newFactoryBlockPatternWithDirections(
-                    $RelativeDirection.DOWN,
+                    $RelativeDirection.BACK,
                     $RelativeDirection.UP,
                     $RelativeDirection.RIGHT
                 )(['CCC|C@C| C ', 'FKF|KPK|FKF', blockPatternRepeatable(1, 8), 'CCC|CMC| C '])
@@ -42,7 +46,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                             P.ability(PA.fluidIn, { max: 2, prev: 1 }),
                             P.ability(PA.fluidOut, { max: 2, prev: 1 }),
                         ]),
-                        K: P.anyOf([P.gtBlock('solid_steel_casing'), P.ability(PA.euIn, { max: 1, prev: 1 })]),
+                        K: P.anyOf([
+                            P.gtBlock(generator.casing),
+                            P.gtBlock(`${generator.voltage}_energy_output_hatch`, { max: 1, prev: 1 }),
+                        ]),
                         F: P.frame(GTMaterials.get(generator.frame)),
                         M: P.ability(PA.muffler),
                         P: P.gtBlock(generator.pipe),
@@ -51,9 +58,6 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     })
                     .build()
             )
-            .workableCasingModel(
-                'gtceu:block/casings/solid/machine_casing_solid_steel',
-                'gtceu:block/multiblock/implosion_compressor'
-            );
+            .workableCasingModel(`gtceu:block/casings/solid/${generator.base}`, 'gtceu:block/machines/alloy_smelter');
     });
 });
