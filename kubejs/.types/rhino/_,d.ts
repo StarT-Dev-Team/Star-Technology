@@ -3,3 +3,8 @@ declare namespace internal.kjs {
         'dev.latvian.mods.rhino.mod.util.color.Color': string | number;
     }
 }
+
+interface String {
+    readonly path: string;
+    readonly namespace: string;
+}

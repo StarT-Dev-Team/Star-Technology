@@ -66,7 +66,7 @@ ServerEvents.recipes((event) => {
      */
     const mechanicalSieving = (input, outputs) => {
         event.recipes.gtceu
-            .mechanical_sieve(id(`${input}_sieving`))
+            .mechanical_sieve(id(`${input.path}_sieving`))
             .itemInputs(`64x ${input}`)
             .notConsumable('exnihilosequentia:string_mesh')
             .itemOutputs(outputs)
@@ -74,7 +74,7 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VA[GTValues.LV]);
 
         event.recipes.gtceu
-            .large_sieve(id(`${input}_sieving`))
+            .large_sieve(id(`${input.path}_sieving`))
             .itemInputs(`48x ${input}`)
             .itemOutputs(outputs)
             .duration(200)

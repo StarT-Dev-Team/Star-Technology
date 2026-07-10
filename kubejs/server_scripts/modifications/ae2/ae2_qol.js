@@ -47,7 +47,7 @@ ServerEvents.recipes((event) => {
      */
     const rubberType = (rubber, amount) => {
         event.recipes.gtceu
-            .assembler(id(`${rubber}_covered_cable`))
+            .assembler(id(`${rubber.path}_covered_cable`))
             .itemInputs('ae2:fluix_glass_cable')
             .inputFluids(`${rubber} ${amount}`)
             .itemOutputs('ae2:fluix_covered_cable')
