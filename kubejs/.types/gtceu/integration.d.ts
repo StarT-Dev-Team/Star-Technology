@@ -109,7 +109,12 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
         tiers(...tiers: number[]): this;
     }
 
-    class KJSWrappingMachineBuilder extends BuilderBase<MachineDefinition> {}
+    class KJSWrappingMachineBuilder extends BuilderBase<MachineDefinition> {
+        recipeTypes(...recipeTypes: string[]): this;
+        recipeType(recipeType: string): this;
+        editableUI(settings: api.gui.editor.EditableMachineUI): this;
+        workableCasingModel(baseCasing: $wrapped<ResourceLocation>, overlayCasing: $wrapped<ResourceLocation>): this;
+    }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.block {
