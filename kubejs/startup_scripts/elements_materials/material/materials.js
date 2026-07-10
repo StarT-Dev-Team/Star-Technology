@@ -3088,7 +3088,7 @@
         ]);
 
         event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
-      
+
         // Fuel rod base dusts :D
         const $U238 = 'uranium';
         const $Pu239 = 'plutonium';
@@ -3101,5 +3101,4 @@
         compDust('etu_blend', ['2x curium_244', `1x ${$Cf252}`, '1x americium_241'], 0x3d5434, [centrifuge]);
         compDust('nqe_blend', ['2x purified_naquadah', '2x einsteinium_253'], 0x3f3c18, [centrifuge]);
     });
-
 })();
