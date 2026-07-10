@@ -51,6 +51,9 @@ config/*
 !config/thermal-common.toml
 !config/toms_storage-common.toml
 
+# Misc
+.DS_Store
+
 # Linting stuff
 !package.json
 !package-lock.json
@@ -64,3 +67,8 @@ config/*
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# AI docs
+!AGENTS.md
+!CLAUDE.md
+!.gemini/

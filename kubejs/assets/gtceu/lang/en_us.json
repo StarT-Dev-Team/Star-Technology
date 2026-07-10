@@ -1296,6 +1296,13 @@
     "material.gtceu.einsteinium_253": "Einsteinium 253",
     "material.gtceu.fermium": "Fermium 257",
 
+    "material.gtceu.mox239_blend": "MOX-239 Blend",
+    "material.gtceu.mox241_blend": "MOX-241 Blend",
+    "material.gtceu.mox238_blend": "MOX-238 Blend",
+    "material.gtceu.nqe_blend": "NQE Blend",
+    "material.gtceu.tpu_blend": "TPU Blend",
+    "material.gtceu.etu_blend": "ETU Blend",
+
     "material.gtceu.hafnastide_rich_sludge": "Hafnastide-Rich Sludge",
     "material.gtceu.flerovium_rich_re_sludge": "Flerovium-Rich Re Sludge",
     "material.gtceu.pologium_rich_sludge": "Pologium-Rich Sludge",
