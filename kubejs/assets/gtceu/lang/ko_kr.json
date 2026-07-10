@@ -498,9 +498,9 @@
     "gtceu.barrel": "통 적시기",
     "gtceu.barrel_composting": "통 퇴비",
     "gtceu.barrel_transformation": "통 변환",
-    "block.gtceu.ulv_barrel": "나무 통 [WB]",
+    "block.gtceu.barrel": "나무 통 [WB]",
     "gtceu.stone_barrel": "통 변환",
-    "block.gtceu.ulv_stone_barrel": "돌 통 [SB]",
+    "block.gtceu.stone_barrel": "돌 통 [SB]",
     "gtceu.gate_assembly": "스타게이트 조립",
     "block.gtceu.gate_assembly": "루닉 스타게이트 조합기 [RSA]",
     "material.gtceu.thorium_plut_duranide_241": "토륨 플루토 듀라니드 241",
@@ -585,9 +585,9 @@
     "material.gtceu.astatine_bis_tritelluride_cobo_selenium": "아스타틴 비스무트 트리텔루라이드 코발트 셀레늄",
     "material.gtceu.iron_titanium_oxide": "산화 티타늄 철",
 
-    "block.gtceu.ulv_advanced_composter": "고급 퇴비통 [AC]",
+    "block.gtceu.advanced_composter": "고급 퇴비통 [AC]",
     "gtceu.composting": "퇴비통",
-    "block.gtceu.ulv_casket": "발효용 통 [FC]",
+    "block.gtceu.casket": "발효용 통 [FC]",
     "gtceu.fermenting": "발효",
 
     "material.gtceu.warped": "뒤틀린",

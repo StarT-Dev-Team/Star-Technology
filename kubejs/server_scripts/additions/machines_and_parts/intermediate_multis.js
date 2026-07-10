@@ -191,4 +191,13 @@ ServerEvents.recipes((event) => {
         )
         .duration(400)
         .EUt(GTValues.VHA[GTValues.LuV]);
+
+    event.shaped('gtceu:industrial_extraction_chamber', ['TPG', 'AMA', 'GCT'], {
+        M: 'gtceu:hv_extractor',
+        T: 'gtceu:hv_electric_pump',
+        P: 'gtceu:tempered_glass',
+        C: 'gtceu:lumium_quadruple_wire',
+        G: 'gtceu:stainless_steel_plate',
+        A: '#gtceu:circuits/hv',
+    });
 });
