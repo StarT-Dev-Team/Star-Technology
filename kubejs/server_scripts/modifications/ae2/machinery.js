@@ -160,7 +160,7 @@ ServerEvents.recipes((event) => {
         'giga_pattern_provider',
         'expandedae:giga_pattern_provider',
         [
-            '3x expandedae:exp_pattern_provider',
+            'expandedae:exp_pattern_provider',
             '16x ae2:engineering_processor',
             '#gtceu:circuits/uhv',
             '8x gtceu:double_netherite_gold_skystone_alloy_plate',
@@ -170,7 +170,6 @@ ServerEvents.recipes((event) => {
     );
 
     //Upgrade Kits
-    let ppu = 'pattern_provider_upgrade';
     assemblerFluidRem(
         'pattern_terminal_upgrade',
         'expatternprovider:pattern_terminal_upgrade',
@@ -223,6 +222,8 @@ ServerEvents.recipes((event) => {
         1
     );
 
+    const ppu = 'pattern_provider_upgrade';
+
     assemblerFluidRem(
         ppu,
         `expatternprovider:${ppu}`,
@@ -239,65 +240,9 @@ ServerEvents.recipes((event) => {
     );
 
     assemblerFluidRem(
-        `mega_${ppu}`,
-        `expandedae:mega_${ppu}`,
-        [
-            `expandedae:ext_${ppu}`,
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            'gtceu:double_gold_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[GTValues.HV],
-        1
-    );
-
-    assemblerFluidRem(
         `ext_${ppu}`,
         `expandedae:ext_${ppu}`,
         ['4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],
-        'fluix_steel 576',
-        GTValues.VA[GTValues.IV],
-        1
-    );
-
-    assemblerFluidRem(
-        `expanded_${ppu}`,
-        `expandedae:exp_${ppu}`,
-        [
-            `expatternprovider:${ppu}`,
-            '4x ae2:engineering_processor',
-            '#gtceu:circuits/iv',
-            '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-        ],
-        'fluix_steel 576',
-        GTValues.VA[GTValues.IV],
-        1
-    );
-
-    assemblerFluid(
-        `m2g_${ppu}`,
-        `expandedae:m2g_${ppu}`,
-        [
-            `expandedae:ext2g_${ppu}`,
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            '4x gtceu:double_gold_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[GTValues.EV],
-        1
-    );
-
-    assemblerFluid(
-        `ext2g_${ppu}`,
-        `expandedae:ext2g_${ppu}`,
-        [
-            `expandedae:exp2g_${ppu}`,
-            '4x ae2:engineering_processor',
-            '#gtceu:circuits/iv',
-            '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-        ],
         'fluix_steel 576',
         GTValues.VA[GTValues.IV],
         1
@@ -312,13 +257,37 @@ ServerEvents.recipes((event) => {
         1
     );
 
-    event.recipes.gtceu
-        .assembler(id(`p2g_${ppu}`))
-        .itemInputs(`expatternprovider:${ppu}`, `expandedae:ext2g_${ppu}`)
-        .itemOutputs(`expandedae:p2g_${ppu}`)
-        .circuit(5)
-        .duration(1)
-        .EUt(GTValues.VHA[GTValues.ULV]);
+    // Compounded PPU's
+    event.remove({ id: 'expandedae:crafting/exp_pattern_provider_upgrade' });
+
+    assemblerFluidRem(
+        `mega_${ppu}`,
+        `expandedae:mega_${ppu}`,
+        [
+            `expandedae:ext_${ppu}`,
+            '4x ae2:calculation_processor',
+            '#gtceu:circuits/ev',
+            'gtceu:double_gold_skystone_alloy_plate',
+        ],
+        'sky_steel 576',
+        GTValues.VA[GTValues.HV],
+        1
+    );
+
+    [
+        { upgrade: `exp_${ppu}`, main: `expandedae:ext_${ppu}`, addition: `expatternprovider:${ppu}` },
+        { upgrade: `p2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:exp_${ppu}` },
+        { upgrade: `m2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:mega_${ppu}` },
+        { upgrade: `ext2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:ext_${ppu}` },
+    ].forEach((set) => {
+        const { upgrade, main, addition } = set;
+        event.recipes.gtceu
+            .canner(id(upgrade))
+            .itemInputs(main, addition)
+            .itemOutputs(`expandedae:${upgrade}`)
+            .duration(40)
+            .EUt(256);
+    });
 
     //Infinity Cells
     ['minecraft:sand', 'minecraft:gravel', 'exnihilosequentia:dust', 'exnihilosequentia:crushed_blackstone'].forEach(
@@ -411,11 +380,14 @@ ServerEvents.recipes((event) => {
         B: 'ae2:fluix_glass_cable',
     });
 
-    shapedRecipeRem('ae2:energy_acceptor', ['HFH', 'FCF', 'HFH'], {
-        C: 'gtceu:sky_steel_frame',
-        F: 'ae2:quartz_glass',
-        H: 'gtceu:sky_steel_plate',
-    });
+    event.remove('ae2:network/blocks/energy_energy_acceptor');
+    event
+        .shaped('ae2:energy_acceptor', ['HFH', 'FCF', 'HFH'], {
+            C: 'gtceu:sky_steel_frame',
+            F: 'ae2:quartz_glass',
+            H: 'gtceu:sky_steel_plate',
+        })
+        .id('start:shaped/ae/energy_acceptor');
 
     shapedRecipeRem('ae2:drive', ['HFH', 'BAB', 'HFH'], {
         F: 'ae2:engineering_processor',
