@@ -578,28 +578,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
 
     import GTToolType = item.tool.GTToolType;
 
-    class ToolProperty$Builder {
-        static of(
-            harvestSpeed: number,
-            attackDamage: number,
-            durability: number,
-            harvestLevel: number
-        ): ToolProperty$Builder;
-        static of(
-            harvestSpeed: number,
-            attackDamage: number,
-            durability: number,
-            harvestLevel: number,
-            ...types: GTToolType[]
-        ): ToolProperty$Builder;
-        static of(
-            harvestSpeed: number,
-            attackDamage: number,
-            durability: number,
-            harvestLevel: number,
-            types: GTToolType[]
-        ): ToolProperty$Builder;
-
+    interface ToolProperty$Builder extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty$Builder'> {
         enchantability(enchantability: number): this;
         attackSpeed(attackSpeed: number): this;
         ignoreCraftingTools(): this;
@@ -613,6 +592,24 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.prop
         durabilityMultiplier(multiplier: number): this;
         build(): ToolProperty;
     }
+
+    const ToolProperty$Builder: $class<ToolProperty$Builder> & {
+        of(harvestSpeed: number, attackDamage: number, durability: number, harvestLevel: number): ToolProperty$Builder;
+        of(
+            harvestSpeed: number,
+            attackDamage: number,
+            durability: number,
+            harvestLevel: number,
+            ...types: GTToolType[]
+        ): ToolProperty$Builder;
+        of(
+            harvestSpeed: number,
+            attackDamage: number,
+            durability: number,
+            harvestLevel: number,
+            types: GTToolType[]
+        ): ToolProperty$Builder;
+    };
 
     interface WireProperties extends $object<
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.WireProperties',
@@ -1005,25 +1002,27 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.property {
     import EnumProperty = net.minecraft.world.level.block.state.properties.EnumProperty;
     import RecipeLogic$Status = trait.RecipeLogic$Status;
 
-    class GTMachineModelProperties {
-        static IS_PAINTED: BooleanProperty;
-        static IS_FORMED: BooleanProperty;
-        static IS_TAPED: BooleanProperty;
-        // static RECIPE_LOGIC_STATUS: EnumProperty<RecipeLogic$Status>;
-        static IS_WORKING_ENABLED: BooleanProperty;
-        static IS_ACTIVE: BooleanProperty;
-        static IS_STEEL_MACHINE: BooleanProperty;
-        // static VENT_DIRECTION: EnumProperty<RelativeDirection>;
-        // static CHARGER_STATE: EnumProperty<ChargerMachine$State>;
-        static IS_FE_TO_EU: BooleanProperty;
-        static IS_TRANSFORM_UP: BooleanProperty;
-        // static DIODE_AMP_MODE: EnumProperty<DiodePartMachine$AmpMode>;
-        static IS_HPCA_PART_DAMAGED: BooleanProperty;
-        static IS_RANDOM_TICK_MODE: BooleanProperty;
-        static HAS_ROTOR: BooleanProperty;
-        static IS_ROTOR_SPINNING: BooleanProperty;
-        static IS_EMISSIVE_ROTOR: BooleanProperty;
-    }
+    interface GTMachineModelProperties extends $object<'com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties'> {}
+
+    const GTMachineModelProperties: $class<GTMachineModelProperties> & {
+        IS_PAINTED: BooleanProperty;
+        IS_FORMED: BooleanProperty;
+        IS_TAPED: BooleanProperty;
+        // RECIPE_LOGIC_STATUS: EnumProperty<RecipeLogic$Status>;
+        IS_WORKING_ENABLED: BooleanProperty;
+        IS_ACTIVE: BooleanProperty;
+        IS_STEEL_MACHINE: BooleanProperty;
+        // VENT_DIRECTION: EnumProperty<RelativeDirection>;
+        // CHARGER_STATE: EnumProperty<ChargerMachine$State>;
+        IS_FE_TO_EU: BooleanProperty;
+        IS_TRANSFORM_UP: BooleanProperty;
+        // DIODE_AMP_MODE: EnumProperty<DiodePartMachine$AmpMode>;
+        IS_HPCA_PART_DAMAGED: BooleanProperty;
+        IS_RANDOM_TICK_MODE: BooleanProperty;
+        HAS_ROTOR: BooleanProperty;
+        IS_ROTOR_SPINNING: BooleanProperty;
+        IS_EMISSIVE_ROTOR: BooleanProperty;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
@@ -1237,32 +1236,26 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
         checkPatternAt(worldState: MultiblockState, savePredicate: boolean): boolean;
     }
 
-    class FactoryBlockPattern {
-        static start(
+    interface FactoryBlockPattern extends $object<'com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern'> {
+        aisle(...aisle: string[]): this;
+        whereDict(dict: Record<string, TraceabilityPredicate | string>): this;
+        setRepeatable(minRepeat: number, maxRepeat: number): this;
+        setRepeatable(repeatCount: number): this;
+        build(): BlockPattern;
+    }
+
+    const FactoryBlockPattern: $class<FactoryBlockPattern> & {
+        start(
             charDir: RelativeDirection,
             stringDir: RelativeDirection,
             aisleDir: RelativeDirection
         ): FactoryBlockPattern;
-
-        static start(): FactoryBlockPattern;
-
-        aisle(...aisle: string[]): this;
-
-        whereDict(dict: Record<string, TraceabilityPredicate | string>): this;
-
-        setRepeatable(minRepeat: number, maxRepeat: number): this;
-        setRepeatable(repeatCount: number): this;
-
-        build(): BlockPattern;
-    }
+        start(): FactoryBlockPattern;
+    };
 
     import Component = net.minecraft.network.chat.Component;
 
-    interface TraceabilityPredicate {
-        readonly __com_gregtechceu_gtceu_api_pattern_TraceabilityPredicate: unique symbol;
-    }
-
-    class TraceabilityPredicate {
+    interface TraceabilityPredicate extends $object<'com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate'> {
         /** @deprecated */
         setMinGlobalLimited(min: number): TraceabilityPredicate;
         /** @deprecated */
@@ -1290,48 +1283,37 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
     import GTRecipeType = api.recipe.GTRecipeType;
     import Material = api.data.chemical.material.Material;
 
-    class Predicates {
-        static controller(predicate: TraceabilityPredicate): TraceabilityPredicate;
+    interface Predicates extends $object<'com.gregtechceu.gtceu.api.pattern.Predicates'> {}
 
-        static states(allowedStates: BlockState): TraceabilityPredicate;
-
-        static blocks(...blocks: $wrapped<Block>[]): TraceabilityPredicate;
-        static blocks(blocks: $wrapped<Block>[]): TraceabilityPredicate;
-        static blocks(...blocks: IMachineBlock[]): TraceabilityPredicate;
-        static blocks(blocks: IMachineBlock[]): TraceabilityPredicate;
-
-        static machines(...definitions: MachineDefinition[]): TraceabilityPredicate;
-        static machines(definitions: MachineDefinition[]): TraceabilityPredicate;
-
-        static autoAbilities(recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
-        static autoAbilities(...recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
-
-        static blockTag(tag: $wrapped<TagKey<Block>>): TraceabilityPredicate;
-        static fluids(fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
-        static fluids(...fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
-        static fluidTag(tag: $wrapped<TagKey<Fluid>>): TraceabilityPredicate;
-        // static custom(Predicate<MultiblockState> predicate, Supplier<BlockInfo[]> candidates): TraceabilityPredicate;
-
-        static any(): TraceabilityPredicate;
-
-        static air(): TraceabilityPredicate;
-
-        static abilities(...abilities: PartAbility[]): TraceabilityPredicate;
-        static abilities(abilities: PartAbility[]): TraceabilityPredicate;
-
-        static ability(ability: PartAbility, ...tiers: number[]): TraceabilityPredicate;
-        static ability(ability: PartAbility, tiers: number[]): TraceabilityPredicate;
-
-        static heatingCoils(): TraceabilityPredicate;
-
-        static cleanroomFilters(): TraceabilityPredicate;
-
-        static powerSubstationBatteries(): TraceabilityPredicate;
-
-        static dataHatchPredicate(def: TraceabilityPredicate): TraceabilityPredicate;
-
-        static frames(...frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
-    }
+    const Predicates: $class<Predicates> & {
+        controller(predicate: TraceabilityPredicate): TraceabilityPredicate;
+        states(allowedStates: BlockState): TraceabilityPredicate;
+        blocks(...blocks: $wrapped<Block>[]): TraceabilityPredicate;
+        blocks(blocks: $wrapped<Block>[]): TraceabilityPredicate;
+        blocks(...blocks: IMachineBlock[]): TraceabilityPredicate;
+        blocks(blocks: IMachineBlock[]): TraceabilityPredicate;
+        machines(...definitions: MachineDefinition[]): TraceabilityPredicate;
+        machines(definitions: MachineDefinition[]): TraceabilityPredicate;
+        autoAbilities(recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
+        autoAbilities(...recipeTypes: $wrapped<GTRecipeType>[]): TraceabilityPredicate;
+        blockTag(tag: $wrapped<TagKey<Block>>): TraceabilityPredicate;
+        fluids(fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
+        fluids(...fluids: $wrapped<Fluid>[]): TraceabilityPredicate;
+        fluidTag(tag: $wrapped<TagKey<Fluid>>): TraceabilityPredicate;
+        // custom(Predicate<MultiblockState> predicate, Supplier<BlockInfo[]> candidates): TraceabilityPredicate;
+        any(): TraceabilityPredicate;
+        air(): TraceabilityPredicate;
+        abilities(...abilities: PartAbility[]): TraceabilityPredicate;
+        abilities(abilities: PartAbility[]): TraceabilityPredicate;
+        ability(ability: PartAbility, ...tiers: number[]): TraceabilityPredicate;
+        ability(ability: PartAbility, tiers: number[]): TraceabilityPredicate;
+        heatingCoils(): TraceabilityPredicate;
+        cleanroomFilters(): TraceabilityPredicate;
+        powerSubstationBatteries(): TraceabilityPredicate;
+        dataHatchPredicate(def: TraceabilityPredicate): TraceabilityPredicate;
+        frames(...frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
+        frames(frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
@@ -1491,11 +1473,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.sound {
-    interface SoundEntry {
-        readonly __com_gregtechceu_gtceu_api_sound_SoundEntry: unique symbol;
-    }
-
-    class SoundEntry {}
+    interface SoundEntry extends $object<'com.gregtechceu.gtceu.api.sound.SoundEntry'> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.gui {
@@ -1848,57 +1826,59 @@ declare namespace internal.com.gregtechceu.gtceu.api.gui.editor {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.item.tool {
-    class GTToolType {
-        static SWORD: GTToolType;
-        static PICKAXE: GTToolType;
-        static SHOVEL: GTToolType;
-        static AXE: GTToolType;
-        static HOE: GTToolType;
-        static MINING_HAMMER: GTToolType;
-        static SPADE: GTToolType;
-        static SCYTHE: GTToolType;
-        static SAW: GTToolType;
-        static HARD_HAMMER: GTToolType;
-        static SOFT_MALLET: GTToolType;
-        static WRENCH: GTToolType;
-        static FILE: GTToolType;
-        static CROWBAR: GTToolType;
-        static SCREWDRIVER: GTToolType;
-        static MORTAR: GTToolType;
-        static WIRE_CUTTER: GTToolType;
-        static KNIFE: GTToolType;
-        static BUTCHERY_KNIFE: GTToolType;
-        static PLUNGER: GTToolType;
-        static SHEARS: GTToolType;
-        static DRILL_LV: GTToolType;
-        static DRILL_MV: GTToolType;
-        static DRILL_HV: GTToolType;
-        static DRILL_EV: GTToolType;
-        static DRILL_IV: GTToolType;
-        static CHAINSAW_LV: GTToolType;
-        static CHAINSAW_HV: GTToolType;
-        static CHAINSAW_IV: GTToolType;
-        static WRENCH_LV: GTToolType;
-        static WRENCH_HV: GTToolType;
-        static WRENCH_IV: GTToolType;
-        static WIRE_CUTTER_LV: GTToolType;
-        static WIRE_CUTTER_HV: GTToolType;
-        static WIRE_CUTTER_IV: GTToolType;
-        static BUZZSAW: GTToolType;
-        static SCREWDRIVER_LV: GTToolType;
-        static SCREWDRIVER_HV: GTToolType;
-        static SCREWDRIVER_IV: GTToolType;
-
+    interface GTToolType extends $object<'com.gregtechceu.gtceu.api.item.tool.GTToolType'> {
         get name(): string;
         get idFormat(): string;
     }
+
+    const GTToolType: $class<GTToolType> & {
+        SWORD: GTToolType;
+        PICKAXE: GTToolType;
+        SHOVEL: GTToolType;
+        AXE: GTToolType;
+        HOE: GTToolType;
+        MINING_HAMMER: GTToolType;
+        SPADE: GTToolType;
+        SCYTHE: GTToolType;
+        SAW: GTToolType;
+        HARD_HAMMER: GTToolType;
+        SOFT_MALLET: GTToolType;
+        WRENCH: GTToolType;
+        FILE: GTToolType;
+        CROWBAR: GTToolType;
+        SCREWDRIVER: GTToolType;
+        MORTAR: GTToolType;
+        WIRE_CUTTER: GTToolType;
+        KNIFE: GTToolType;
+        BUTCHERY_KNIFE: GTToolType;
+        PLUNGER: GTToolType;
+        SHEARS: GTToolType;
+        DRILL_LV: GTToolType;
+        DRILL_MV: GTToolType;
+        DRILL_HV: GTToolType;
+        DRILL_EV: GTToolType;
+        DRILL_IV: GTToolType;
+        CHAINSAW_LV: GTToolType;
+        CHAINSAW_HV: GTToolType;
+        CHAINSAW_IV: GTToolType;
+        WRENCH_LV: GTToolType;
+        WRENCH_HV: GTToolType;
+        WRENCH_IV: GTToolType;
+        WIRE_CUTTER_LV: GTToolType;
+        WIRE_CUTTER_HV: GTToolType;
+        WIRE_CUTTER_IV: GTToolType;
+        BUZZSAW: GTToolType;
+        SCREWDRIVER_LV: GTToolType;
+        SCREWDRIVER_HV: GTToolType;
+        SCREWDRIVER_IV: GTToolType;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.fluids {
     import FluidAttribute = attribute.FluidAttribute;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
 
-    class FluidBuilder {
+    interface FluidBuilder extends $object<'com.gregtechceu.gtceu.api.fluids.FluidBuilder'> {
         name(name: string): this;
         translation(translation: string): this;
         state(state: $wrapped<FluidState>): this;
@@ -1923,6 +1903,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.fluids {
         disableBucket(): this;
     }
 
+    const FluidBuilder: $class<FluidBuilder> & {
+        new (): FluidBuilder;
+    };
+
     import Enum = java.lang.Enum;
     import TagKey = net.minecraft.tags.TagKey;
     import Fluid = net.minecraft.world.level.material.Fluid;
@@ -1945,7 +1929,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.fluids {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.fluids.attribute {
-    class FluidAttribute {}
+    interface FluidAttribute extends $object<'com.gregtechceu.gtceu.api.fluids.attribute.FluidAttribute'> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.fluids.store {

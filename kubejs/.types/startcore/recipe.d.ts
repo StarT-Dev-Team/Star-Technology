@@ -1,19 +1,21 @@
 declare namespace internal.com.startechnology.start_core.recipe {
     import RecipeModifier = internal.com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
 
-    class StarTRecipeModifiers {
-        static ABSOLUTE_PARALLEL: RecipeModifier;
-        static HELL_FORGE_OC: RecipeModifier;
-        static BULK_PROCESSING: RecipeModifier;
-        static THROUGHPUT_BOOSTING: RecipeModifier;
-        static LARGE_TURBINE: RecipeModifier;
-        static BOOSTED_PLASMA_TURBINE: RecipeModifier;
-        static THREADING_MACHINE: RecipeModifier;
-        static START_STEAM_PARALLEL: RecipeModifier;
-        static VACUUM_CHEMICAL_REACTION_CHAMBER: RecipeModifier;
-        static FAKE_FUSION_OVERCLOCK: RecipeModifier;
-        static REFLECTOR_FUSION_REACTOR: RecipeModifier;
-    }
+    interface StarTRecipeModifiers extends $object<'com.startechnology.start_core.recipe.StarTRecipeModifiers'> {}
+
+    const StarTRecipeModifiers: $class<StarTRecipeModifiers> & {
+        ABSOLUTE_PARALLEL: RecipeModifier;
+        HELL_FORGE_OC: RecipeModifier;
+        BULK_PROCESSING: RecipeModifier;
+        THROUGHPUT_BOOSTING: RecipeModifier;
+        LARGE_TURBINE: RecipeModifier;
+        BOOSTED_PLASMA_TURBINE: RecipeModifier;
+        THREADING_MACHINE: RecipeModifier;
+        START_STEAM_PARALLEL: RecipeModifier;
+        VACUUM_CHEMICAL_REACTION_CHAMBER: RecipeModifier;
+        FAKE_FUSION_OVERCLOCK: RecipeModifier;
+        REFLECTOR_FUSION_REACTOR: RecipeModifier;
+    };
 }
 
 declare namespace internal.kjs {

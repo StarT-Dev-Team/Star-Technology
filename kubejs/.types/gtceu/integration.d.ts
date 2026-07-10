@@ -1,5 +1,5 @@
 declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
-    import BuilderBase = api.registry.registrate.BuilderBase;
+    import BuilderBase__Blueprint = api.registry.registrate.BuilderBase__Blueprint;
     import ResourceTexture = lowdragmc.lowdraglib.gui.texture.ResourceTexture;
     import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
     import IO = api.capability.recipe.IO;
@@ -9,7 +9,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
     import SoundEntry = api.sound.SoundEntry;
     import ProgressTexture$FillDirection = lowdragmc.lowdraglib.gui.texture.ProgressTexture$FillDirection;
 
-    class GTRecipeTypeBuilder extends BuilderBase<GTRecipeType> {
+    interface GTRecipeTypeBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.GTRecipeTypeBuilder',
+        BuilderBase__Blueprint<GTRecipeType, GTRecipeTypeBuilder>
+    > {
         category(category: string): this;
         setEUIO(io: $wrapped<IO>): this;
         setMaxTooltips(maxTooltips: number): this;
@@ -26,8 +29,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import Component = net.minecraft.network.chat.Component;
 
-    class ElementBuilder extends BuilderBase<Element> {
-        constructor(id: $wrapped<ResourceLocation>);
+    interface ElementBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.ElementBuilder',
+        BuilderBase__Blueprint<Element, ElementBuilder>
+    > {
         get name(): string;
         translatableName(translatableName: Component): this;
         protons(protons: number): this;
@@ -38,10 +43,16 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
         isIsotope(isIsotope: boolean): this;
     }
 
+    const ElementBuilder: $class<ElementBuilder> & {
+        new (id: $wrapped<ResourceLocation>): ElementBuilder;
+    };
+
     import GTRecipeCategory = api.recipe.category.GTRecipeCategory;
 
-    class GTRecipeCategoryBuilder extends BuilderBase<GTRecipeCategory> {
-        constructor(id: $wrapped<ResourceLocation>);
+    interface GTRecipeCategoryBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.GTRecipeCategoryBuilder',
+        BuilderBase__Blueprint<GTRecipeCategory, GTRecipeCategoryBuilder>
+    > {
         recipeType(recipeType: $wrapped<GTRecipeType>): this;
         icon(icon: IGuiTexture): this;
         setCustomIcon(location: $wrapped<ResourceLocation>): this;
@@ -49,10 +60,17 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
         setItemIcon(...itemStacks: $wrapped<ItemStack>[]): this;
     }
 
+    const GTRecipeCategoryBuilder: $class<GTRecipeCategoryBuilder> & {
+        new (id: $wrapped<ResourceLocation>): GTRecipeCategoryBuilder;
+    };
+
     import SimpleWorldGenLayer = api.data.worldgen.SimpleWorldGenLayer;
     import IWorldGenLayer$RuleTestSupplier = api.data.worldgen.IWorldGenLayer$RuleTestSupplier;
 
-    class WorldGenLayerBuilder extends BuilderBase<SimpleWorldGenLayer> {
+    interface WorldGenLayerBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.WorldGenLayerBuilder',
+        BuilderBase__Blueprint<SimpleWorldGenLayer, WorldGenLayerBuilder>
+    > {
         targets(...targets: $wrapped<IWorldGenLayer$RuleTestSupplier>[]): this;
         targets(targets: $wrapped<IWorldGenLayer$RuleTestSupplier>[]): this;
         dimensions(...dimensions: $wrapped<ResourceLocation>[]): this;
@@ -61,23 +79,32 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
 
     import MaterialIconSet = api.data.chemical.material.info.MaterialIconSet;
 
-    class MaterialIconSetBuilder extends BuilderBase<MaterialIconSet> {
+    interface MaterialIconSetBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.MaterialIconSetBuilder',
+        BuilderBase__Blueprint<MaterialIconSet, MaterialIconSetBuilder>
+    > {
         parent(parent: $wrapped<MaterialIconSet>): this;
     }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machine {
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
-    import BuilderBase = api.registry.registrate.BuilderBase;
+    import BuilderBase__Blueprint = api.registry.registrate.BuilderBase__Blueprint;
     import MachineDefinition = api.machine.MachineDefinition;
 
-    class KJSWrappingTieredMachineBuilder extends BuilderBase<MachineDefinition> {
-        constructor(id: ResourceLocation, tieredBuilder: KJSTieredMachineBuilder);
+    interface KJSWrappingTieredMachineBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingTieredMachineBuilder',
+        BuilderBase__Blueprint<MachineDefinition, KJSWrappingTieredMachineBuilder>
+    > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
         machine(machine: $wrapped<KJSTieredMachineBuilder$TieredCreationFunction>): this;
         definition(definition: $wrapped<KJSTieredMachineBuilder$DefinitionFunction>): this;
     }
+
+    const KJSWrappingTieredMachineBuilder: $class<KJSWrappingTieredMachineBuilder> & {
+        new (id: ResourceLocation, tieredBuilder: KJSTieredMachineBuilder): KJSWrappingTieredMachineBuilder;
+    };
 
     import MachineBuilder = api.registry.registrate.MachineBuilder;
 
@@ -100,16 +127,25 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
         create(holder: IMachineBlockEntity, tier: number, tankScaling: $wrapped<Int2IntFunction>): MetaMachine;
     }
 
-    class KJSTieredMachineBuilder extends BuilderBase<MachineDefinition[]> {}
+    interface KJSTieredMachineBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMachineBuilder',
+        BuilderBase__Blueprint<MachineDefinition[], KJSTieredMachineBuilder>
+    > {}
 
     import MultiblockMachineDefinition = api.machine.MultiblockMachineDefinition;
 
-    class KJSWrappingMultiblockBuilder extends BuilderBase<MultiblockMachineDefinition> {
+    interface KJSWrappingMultiblockBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingMultiblockBuilder',
+        BuilderBase__Blueprint<MultiblockMachineDefinition, KJSWrappingMultiblockBuilder>
+    > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
     }
 
-    class KJSWrappingMachineBuilder extends BuilderBase<MachineDefinition> {}
+    interface KJSWrappingMachineBuilder extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingMachineBuilder',
+        BuilderBase__Blueprint<MachineDefinition, KJSWrappingMachineBuilder>
+    > {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.block {
@@ -214,11 +250,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import Tag = net.minecraft.nbt.Tag;
 
-    interface GTRecipeSchema$GTRecipeJS extends RecipeJS {
-        readonly __com_gregtechceu_gtceu_integration_kjs_recipe_GTRecipeSchema$GTRecipeJS: unique symbol;
-    }
-
-    class GTRecipeSchema$GTRecipeJS extends RecipeJS {
+    interface GTRecipeSchema$GTRecipeJS extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS',
+        RecipeJS
+    > {
         category(category: $wrapped<GTRecipeCategory>): this;
         itemInputs(...inputs: $wrapped<InputItem>[]): this;
         itemInputs(inputs: readonly $wrapped<InputItem>[]): this;
@@ -269,11 +304,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         addDataBool(key: string, data: boolean): this;
     }
 
-    interface GTShapedRecipeSchema$ShapedRecipeJS extends RecipeJS {
-        readonly __com_gregtechceu_gtceu_integration_kjs_recipe_GTShapedRecipeSchema$ShapedRecipeJS: unique symbol;
-    }
-
-    class GTShapedRecipeSchema$ShapedRecipeJS extends RecipeJS {
+    interface GTShapedRecipeSchema$ShapedRecipeJS extends $object<
+        'com.gregtechceu.gtceu.integration.kjs.recipe.GTShapedRecipeSchema$ShapedRecipeJS',
+        RecipeJS
+    > {
         addMaterialInfo(): this;
     }
 }

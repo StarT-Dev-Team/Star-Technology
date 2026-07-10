@@ -64,7 +64,7 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
 
     import MobEffect = net.minecraft.world.effect.MobEffect;
 
-    class FoodBuilder {
+    interface FoodBuilder extends $object<'dev.latvian.mods.kubejs.item.FoodBuilder'> {
         hunger(h: number): this;
         saturation(s: number): this;
         meat(meta: boolean): this;
@@ -122,8 +122,7 @@ declare namespace internal.dev.latvian.mods.kubejs.item {
 
     import Iterable = java.lang.Iterable;
 
-    interface ItemStackSet extends Iterable<ItemStack> {}
-    class ItemStackSet implements Iterable<ItemStack> {}
+    interface ItemStackSet extends $object<'dev.latvian.mods.kubejs.item.ItemStackSet', Iterable<ItemStack>> {}
 
     import PlayerEventJS = player.PlayerEventJS;
 

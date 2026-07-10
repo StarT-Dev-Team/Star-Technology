@@ -135,10 +135,7 @@ const P = {
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     frame: (materials, settings) =>
-        applySettings(
-            Predicates.frames.apply(Predicates, Array.isArray(materials) ? materials : [materials]),
-            settings
-        ),
+        applySettings(Predicates.frames(Array.isArray(materials) ? materials : [materials]), settings),
     /**
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */

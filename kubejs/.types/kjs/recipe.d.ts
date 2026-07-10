@@ -41,11 +41,7 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
     import ItemStack = net.minecraft.world.item.ItemStack;
     import JsonObject = com.google.gson.JsonObject;
 
-    interface RecipeJS {
-        readonly __dev_latvian_mods_kubejs_recipe_RecipeJS: unique symbol;
-    }
-
-    class RecipeJS {
+    interface RecipeJS extends $object<'dev.latvian.mods.kubejs.recipe.RecipeJS'> {
         json: JsonObject;
         id(id: $wrapped<ResourceLocation>): this;
         damageIngredient(filter: $wrapped<IngredientActionFilter>, damage: number): this;
@@ -78,16 +74,15 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe.ingredientaction {
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.schema.minecraft {
-    interface ShapedRecipeSchema$ShapedRecipeJS extends RecipeJS {
-        readonly __dev_latvian_mods_kubejs_recipe_schema_minecraft_ShapedRecipeSchema$ShapedRecipeJS: unique symbol;
-    }
-
-    class ShapedRecipeSchema$ShapedRecipeJS extends RecipeJS {}
+    interface ShapedRecipeSchema$ShapedRecipeJS extends $object<
+        'dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedRecipeSchema$ShapedRecipeJS',
+        RecipeJS
+    > {}
 
     import InputItem = item.InputItem;
     import OutputItem = item.OutputItem;
 
-    class CookingRecipeSchema__Impl extends RecipeJS {
+    interface CookingRecipeSchema__Impl extends RecipeJS {
         result(result: $wrapped<OutputItem>): this;
         ingredient(ingredient: $wrapped<InputItem>): this;
         xp(xp: number): this;

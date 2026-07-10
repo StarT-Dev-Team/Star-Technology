@@ -1,96 +1,133 @@
 declare namespace internal.com.startechnology.start_core.machine {
     import PartAbility = com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 
-    class StarTPartAbility {
-        static ABSOLUTE_PARALLEL_HATCH: PartAbility;
-        static REDSTONE_INTERFACE: PartAbility;
-        static THREADING_CONTROLLER: PartAbility;
-        static VACUUM_PUMP: PartAbility;
-        static MODULAR_TERMINAL: PartAbility;
-        static MODULAR_NODE: PartAbility;
-        static MODULAR_TERMINAL_INTERFACE: PartAbility;
-        static MODULAR_NODE_INTERFACE: PartAbility;
-        static MODULAR_AUTO_SCALING_TERMINAL_CONDUIT: PartAbility;
-        static MODULAR_AUTO_SCALING_NODE_CONDUIT: PartAbility;
-        static MODULAR_TERMINAL_CONDUIT_2A: PartAbility;
-        static MODULAR_TERMINAL_CONDUIT_4A: PartAbility;
-        static MODULAR_TERMINAL_CONDUIT_16A: PartAbility;
-        static MODULAR_TERMINAL_CONDUIT_64A: PartAbility;
-        static MODULAR_TERMINAL_CONDUIT_256A: PartAbility;
-        static MODULAR_TERMINAL_CONDUIT_1024A: PartAbility;
-        static MODULAR_TERMINAL_CONDUIT_4096A: PartAbility;
-        static MODULAR_NODE_CONDUIT_2A: PartAbility;
-        static MODULAR_NODE_CONDUIT_4A: PartAbility;
-        static MODULAR_NODE_CONDUIT_16A: PartAbility;
-        static MODULAR_NODE_CONDUIT_64A: PartAbility;
-        static MODULAR_NODE_CONDUIT_256A: PartAbility;
-        static MODULAR_NODE_CONDUIT_1024A: PartAbility;
-        static MODULAR_NODE_CONDUIT_4096A: PartAbility;
-    }
+    interface StarTPartAbility extends $object<'com.startechnology.start_core.machine.StarTPartAbility'> {}
+
+    const StarTPartAbility: $class<StarTPartAbility> & {
+        ABSOLUTE_PARALLEL_HATCH: PartAbility;
+        REDSTONE_INTERFACE: PartAbility;
+        THREADING_CONTROLLER: PartAbility;
+        VACUUM_PUMP: PartAbility;
+        MODULAR_TERMINAL: PartAbility;
+        MODULAR_NODE: PartAbility;
+        MODULAR_TERMINAL_INTERFACE: PartAbility;
+        MODULAR_NODE_INTERFACE: PartAbility;
+        MODULAR_AUTO_SCALING_TERMINAL_CONDUIT: PartAbility;
+        MODULAR_AUTO_SCALING_NODE_CONDUIT: PartAbility;
+        MODULAR_TERMINAL_CONDUIT_2A: PartAbility;
+        MODULAR_TERMINAL_CONDUIT_4A: PartAbility;
+        MODULAR_TERMINAL_CONDUIT_16A: PartAbility;
+        MODULAR_TERMINAL_CONDUIT_64A: PartAbility;
+        MODULAR_TERMINAL_CONDUIT_256A: PartAbility;
+        MODULAR_TERMINAL_CONDUIT_1024A: PartAbility;
+        MODULAR_TERMINAL_CONDUIT_4096A: PartAbility;
+        MODULAR_NODE_CONDUIT_2A: PartAbility;
+        MODULAR_NODE_CONDUIT_4A: PartAbility;
+        MODULAR_NODE_CONDUIT_16A: PartAbility;
+        MODULAR_NODE_CONDUIT_64A: PartAbility;
+        MODULAR_NODE_CONDUIT_256A: PartAbility;
+        MODULAR_NODE_CONDUIT_1024A: PartAbility;
+        MODULAR_NODE_CONDUIT_4096A: PartAbility;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.threading {
     import TraceabilityPredicate = gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
-    class StarTThreadingStatsPredicate {
-        static threadingStatBlocks(): TraceabilityPredicate;
-    }
+    const StarTThreadingStatsPredicate: {
+        threadingStatBlocks(): TraceabilityPredicate;
+    };
 
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
-    class StarTThreadingCapableMachine extends WorkableElectricMultiblockMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
-    }
+    interface StarTThreadingCapableMachine extends $object<
+        'com.startechnology.start_core.machine.threading.StarTThreadingCapableMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const StarTThreadingCapableMachine: $class<StarTThreadingCapableMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): StarTThreadingCapableMachine;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.vacuum_pump {
     import TraceabilityPredicate = internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 
-    class StarTVacuumPumpPredicates {
-        static vacuumPumps(): TraceabilityPredicate;
-    }
+    const StarTVacuumPumpPredicates: {
+        vacuumPumps(): TraceabilityPredicate;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.steam {
     import SteamParallelMultiblockMachine = com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
-    class StarTSteamParallelMultiblockMachine extends SteamParallelMultiblockMachine {}
+    interface StarTSteamParallelMultiblockMachine extends $object<
+        'com.startechnology.start_core.machine.steam.StarTSteamParallelMultiblockMachine',
+        SteamParallelMultiblockMachine
+    > {}
+
+    const StarTSteamParallelMultiblockMachine: $class<StarTSteamParallelMultiblockMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): StarTSteamParallelMultiblockMachine;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.boosting {
     import LargeTurbineMachine = com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
-    class BoostedPlasmaTurbine extends LargeTurbineMachine {}
+    interface BoostedPlasmaTurbine extends $object<
+        'com.startechnology.start_core.machine.boosting.BoostedPlasmaTurbine',
+        LargeTurbineMachine
+    > {}
+
+    const BoostedPlasmaTurbine: $class<BoostedPlasmaTurbine> & {
+        new (holder: IMachineBlockEntity, tier: number): BoostedPlasmaTurbine;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.komaru {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
-    class StarTKomaruFrameMachine extends WorkableElectricMultiblockMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
+    interface StarTKomaruFrameMachine extends $object<
+        'com.startechnology.start_core.machine.komaru.StarTKomaruFrameMachine',
+        WorkableElectricMultiblockMachine
+    > {}
 
-        static addModule(resourceLocation: string, moduleType: 'basic' | 'advanced'): void;
-    }
+    const StarTKomaruFrameMachine: $class<StarTKomaruFrameMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): StarTKomaruFrameMachine;
+        addModule(resourceLocation: string, moduleType: 'basic' | 'advanced'): void;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.draconic_infusion {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
-    class StarTDraconicInfusionMachine extends WorkableElectricMultiblockMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
-    }
+    interface StarTDraconicInfusionMachine extends $object<
+        'com.startechnology.start_core.machine.draconic_infusion.StarTDraconicInfusionMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const StarTDraconicInfusionMachine: $class<StarTDraconicInfusionMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): StarTDraconicInfusionMachine;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.vcrc {
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
-    class VacuumChemicalReactionChamberMachine extends WorkableElectricMultiblockMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
-    }
+    interface VacuumChemicalReactionChamberMachine extends $object<
+        'com.startechnology.start_core.machine.vcrc.VacuumChemicalReactionChamberMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const VacuumChemicalReactionChamberMachine: $class<VacuumChemicalReactionChamberMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): VacuumChemicalReactionChamberMachine;
+    };
 }
 
 declare namespace internal.com.startechnology.start_core.machine.abyssal_containment {
@@ -98,11 +135,15 @@ declare namespace internal.com.startechnology.start_core.machine.abyssal_contain
     import CleanroomType = gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 
-    class StarTAbyssalContainmentMachine extends CleanroomMachine {
-        constructor(holder: IMachineBlockEntity, ...args: any[]);
+    interface StarTAbyssalContainmentMachine extends $object<
+        'com.startechnology.start_core.machine.abyssal_containment.StarTAbyssalContainmentMachine',
+        CleanroomMachine
+    > {}
 
-        static ABYSSAL_CONTAINMENT_ROOM: CleanroomType;
-    }
+    const StarTAbyssalContainmentMachine: $class<StarTAbyssalContainmentMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): StarTAbyssalContainmentMachine;
+        ABYSSAL_CONTAINMENT_ROOM: CleanroomType;
+    };
 }
 
 declare namespace internal.kjs {
