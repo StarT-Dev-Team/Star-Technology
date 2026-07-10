@@ -19,4 +19,18 @@ declare namespace internal.net.minecraftforge.fluids {
         new (fluid: $wrapped<Fluid>, amount: number, nbt: $wrapped<CompoundTag>): FluidStack;
         new (stack: $wrapped<FluidStack>, amount: number): FluidStack;
     };
+
+    interface IFluidTank extends $object<'net.minecraftforge.fluids.IFluidTank'> {}
+}
+
+declare namespace internal.net.minecraftforge.fluids.capability {
+    interface IFluidHandler extends $object<'net.minecraftforge.fluids.capability.IFluidHandler'> {}
+}
+
+declare namespace internal.net.minecraftforge.fluids.capability.templates {
+    interface FluidTank extends $object<
+        'net.minecraftforge.fluids.capability.templates.FluidTank',
+        IFluidHandler,
+        IFluidTank
+    > {}
 }

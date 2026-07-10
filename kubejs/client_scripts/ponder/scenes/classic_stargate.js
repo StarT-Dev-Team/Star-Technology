@@ -13,7 +13,7 @@
 
     let $BlockStateProperties = Java.loadClass('net.minecraft.world.level.block.state.properties.BlockStateProperties');
     let $Boolean = Java.loadClass('java.lang.Boolean');
-    let $TileFluxPoint = Java.loadClass('sonar.fluxnetworks.common.device.TileFluxPoint');
+    let $TileFluxPoint = Java.loadClass(/** @type {any} */ ('sonar.fluxnetworks.common.device.TileFluxPoint'));
 
     defineScene('classic_stargate', (scene, util) => {
         resetScene(scene, 9, true);
@@ -106,10 +106,12 @@
                 state: block('sgjourney:classic_stargate'),
                 onPlace: (scene, pos) => {
                     let $ClassicStargateEntity = Java.loadClass(
-                        'net.povstalec.sgjourney.common.block_entities.stargate.ClassicStargateEntity'
+                        /** @type {any} */ (
+                            'net.povstalec.sgjourney.common.block_entities.stargate.ClassicStargateEntity'
+                        )
                     );
                     scene.world().modifyBlockEntity(pos, $ClassicStargateEntity, (be) => {
-                        be.symbolInfo().setSymbols('sgjourney:terra');
+                        /** @type {any} */ (be).symbolInfo().setSymbols('sgjourney:terra');
                     });
                 },
             },
@@ -182,6 +184,7 @@
 
         scene.idle(20);
 
+        /** @type {import("../types").MachineBlockWrapped[]} */
         let gtWires = Array(5)
             .fill(undefined)
             .map((_, off) => ({
@@ -216,14 +219,19 @@
             .world()
             .setBlock(
                 csgInterface.pos.offset(-1, 0, 0),
-                block('fluxnetworks:flux_point').setValue($BlockStateProperties.EAST, new $Boolean(true)),
+                block('fluxnetworks:flux_point').setValue($BlockStateProperties.EAST, $Boolean.valueOf(true)),
                 false
             );
 
-        scene.world().modifyBlockEntity(csgInterface.pos.offset(-1, 0, 0), $TileFluxPoint, (be) => {
-            be.mClientColor = 0xfe019a;
-            be.getTransferHandler().addToBuffer(1000);
-        });
+        scene.world().modifyBlockEntity(
+            csgInterface.pos.offset(-1, 0, 0),
+            $TileFluxPoint,
+            /** @param {*} be */
+            (be) => {
+                be.mClientColor = 0xfe019a;
+                be.getTransferHandler().addToBuffer(1000);
+            }
+        );
 
         scene.idle(60);
         scene.addKeyframe();
@@ -292,33 +300,63 @@
         scene.idle(40);
 
         let $AbstractStargateEntity = Java.loadClass(
-            'net.povstalec.sgjourney.common.block_entities.stargate.AbstractStargateEntity'
+            /** @type {any} */ ('net.povstalec.sgjourney.common.block_entities.stargate.AbstractStargateEntity')
         );
-        let $Address = Java.loadClass('net.povstalec.sgjourney.common.sgjourney.Address');
+        let $Address = Java.loadClass(/** @type {any} */ ('net.povstalec.sgjourney.common.sgjourney.Address'));
 
-        scene.world().modifyBlockEntity(csg.controller, $AbstractStargateEntity, (be) => {
-            be.setAddress(new $Address['(java.lang.String)']('-26-'));
-        });
+        scene.world().modifyBlockEntity(
+            csg.controller,
+            $AbstractStargateEntity,
+            /** @param {any} be */
+            (be) => {
+                be.setAddress(new $Address['(java.lang.String)']('-26-'));
+            }
+        );
         scene.idle(20);
-        scene.world().modifyBlockEntity(csg.controller, $AbstractStargateEntity, (be) => {
-            be.setAddress(new $Address['(java.lang.String)']('-26-6-'));
-        });
+        scene.world().modifyBlockEntity(
+            csg.controller,
+            $AbstractStargateEntity,
+            /** @param {any} be */
+            (be) => {
+                be.setAddress(new $Address['(java.lang.String)']('-26-6-'));
+            }
+        );
         scene.idle(20);
-        scene.world().modifyBlockEntity(csg.controller, $AbstractStargateEntity, (be) => {
-            be.setAddress(new $Address['(java.lang.String)']('-26-6-14-'));
-        });
+        scene.world().modifyBlockEntity(
+            csg.controller,
+            $AbstractStargateEntity,
+            /** @param {any} be */
+            (be) => {
+                be.setAddress(new $Address['(java.lang.String)']('-26-6-14-'));
+            }
+        );
         scene.idle(20);
-        scene.world().modifyBlockEntity(csg.controller, $AbstractStargateEntity, (be) => {
-            be.setAddress(new $Address['(java.lang.String)']('-26-6-14-31-'));
-        });
+        scene.world().modifyBlockEntity(
+            csg.controller,
+            $AbstractStargateEntity,
+            /** @param {any} be */
+            (be) => {
+                be.setAddress(new $Address['(java.lang.String)']('-26-6-14-31-'));
+            }
+        );
         scene.idle(20);
-        scene.world().modifyBlockEntity(csg.controller, $AbstractStargateEntity, (be) => {
-            be.setAddress(new $Address['(java.lang.String)']('-26-6-14-31-11-'));
-        });
+        scene.world().modifyBlockEntity(
+            csg.controller,
+            $AbstractStargateEntity,
+            /** @param {any} be */
+            (be) => {
+                be.setAddress(new $Address['(java.lang.String)']('-26-6-14-31-11-'));
+            }
+        );
         scene.idle(20);
-        scene.world().modifyBlockEntity(csg.controller, $AbstractStargateEntity, (be) => {
-            be.setAddress(new $Address['(java.lang.String)']('-26-6-14-31-11-29-'));
-        });
+        scene.world().modifyBlockEntity(
+            csg.controller,
+            $AbstractStargateEntity,
+            /** @param {any} be */
+            (be) => {
+                be.setAddress(new $Address['(java.lang.String)']('-26-6-14-31-11-29-'));
+            }
+        );
         scene.idle(20);
 
         let tickCount = 0;
@@ -326,11 +364,15 @@
             new PonderTickingInstruction(false, 120)
                 .onFirstTick((scene) => {
                     tickCount = 0;
+                    /** @type {any} */
                     let be = scene.world.getBlockEntity(csg.controller);
-                    let $State = Java.loadClass('net.povstalec.sgjourney.common.sgjourney.StargateConnection$State');
+                    let $State = Java.loadClass(
+                        /** @type {any} */ ('net.povstalec.sgjourney.common.sgjourney.StargateConnection$State')
+                    );
                     be.setConnectionState($State.OUTGOING_CONNECTION);
                 })
                 .onTick((scene) => {
+                    /** @type {any} */
                     let be = scene.world.getBlockEntity(csg.controller);
                     be.setTickCount(tickCount);
                     be.setKawooshTickCount(Math.min(40, Math.max(0, tickCount - 60)));
@@ -343,6 +385,11 @@
         scene.idle(100);
     });
 
+    /**
+     * @param {internal.net.createmod.ponder.api.scene.SceneBuilder} scene
+     * @param {string} kind
+     * @param {internal.$wrapped<internal.net.minecraft.core.BlockPos>} pos
+     */
     function placeStargate(scene, kind, pos) {
         revealBlocks(scene, [
             {
@@ -350,11 +397,18 @@
                 state: block(`sgjourney:${kind}_stargate`),
                 onPlace: (scene, pos) => {
                     let $AbstractStargateEntity = Java.loadClass(
-                        'net.povstalec.sgjourney.common.block_entities.stargate.AbstractStargateEntity'
+                        /** @type {any} */ (
+                            'net.povstalec.sgjourney.common.block_entities.stargate.AbstractStargateEntity'
+                        )
                     );
-                    scene.world().modifyBlockEntity(pos, $AbstractStargateEntity, (be) => {
-                        be.symbolInfo().setSymbols('sgjourney:terra');
-                    });
+                    scene.world().modifyBlockEntity(
+                        pos,
+                        $AbstractStargateEntity,
+                        /** @param {any} be */
+                        (be) => {
+                            be.symbolInfo().setSymbols('sgjourney:terra');
+                        }
+                    );
                 },
             },
         ]);

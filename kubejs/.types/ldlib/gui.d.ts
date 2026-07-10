@@ -71,3 +71,62 @@ declare namespace internal.com.lowdragmc.lowdraglib.gui.texture {
         ALWAYS_FULL: ProgressTexture$FillDirection;
     };
 }
+
+declare namespace internal.com.lowdragmc.lowdraglib.gui.widget {
+    import IGuiTexture = texture.IGuiTexture;
+
+    interface Widget extends $object<'com.lowdragmc.lowdraglib.gui.widget.Widget'> {
+        setSize(width: number, height: number): void;
+        setSizeWidth(height: number): void;
+        setSizeHeight(height: number): void;
+        setBackground(...backgroundTexture: IGuiTexture[]): Widget;
+        setBackground(backgroundTexture: IGuiTexture[]): Widget;
+    }
+
+    interface WidgetGroup extends $object<
+        'com.lowdragmc.lowdraglib.gui.widget.WidgetGroup',
+        Widget /* IGhostIngredientTarget, IIngredientSlot, IConfigurableWidgetGroup */
+    > {
+        addWidget(widget: Widget): WidgetGroup;
+        addWidgets(...widgets: Widget[]): WidgetGroup;
+        addWidgets(widgets: Widget[]): WidgetGroup;
+    }
+
+    const WidgetGroup: $class<WidgetGroup> & {
+        new (): WidgetGroup;
+    };
+
+    interface ProgressWidget extends $object<
+        'com.lowdragmc.lowdraglib.gui.widget.ProgressWidget',
+        Widget /* IConfigurableWidget */
+    > {}
+
+    interface SlotWidget extends $object<
+        'com.lowdragmc.lowdraglib.gui.widget.SlotWidget',
+        Widget /* IRecipeIngredientSlot, IConfigurableWidget */
+    > {}
+
+    import DoubleSupplier = java.util.function_.DoubleSupplier;
+    import ResourceTexture = texture.ResourceTexture;
+    import ProgressTexture = texture.ProgressTexture;
+
+    const ProgressWidget: $class<ProgressWidget> & {
+        new (): ProgressWidget;
+        new (
+            progressSupplier: $wrapped<DoubleSupplier>,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            fullImage: ResourceTexture
+        ): ProgressWidget;
+        new (
+            progressSupplier: $wrapped<DoubleSupplier>,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            progressBar: ProgressTexture
+        ): ProgressWidget;
+    };
+}

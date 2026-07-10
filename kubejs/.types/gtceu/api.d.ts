@@ -79,6 +79,18 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
+    import Predicate = java.util.function_.Predicate;
+
+    interface IFilteredHandler<K> extends $object<
+        'com.gregtechceu.gtceu.api.capability.recipe.IFilteredHandler',
+        Predicate<K>
+    > {}
+
+    interface IRecipeHandler<K> extends $object<
+        'com.gregtechceu.gtceu.api.capability.recipe.IRecipeHandler',
+        IFilteredHandler<K>
+    > {}
+
     import Enum = internal.java.lang.Enum;
     import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
 
@@ -153,6 +165,14 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.category {
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient {
     interface EnergyStack$WithIO extends $object<'com.gregtechceu.gtceu.api.recipe.ingredient.EnergyStack$WithIO'> {}
+
+    import Predicate = java.util.function_.Predicate;
+    import FluidStack = net.minecraftforge.fluids.FluidStack;
+
+    interface FluidIngredient extends $object<
+        'com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient',
+        Predicate<FluidStack>
+    > {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
@@ -945,6 +965,39 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine {
         getMetaMachine(): MetaMachine;
         getOffset(): number;
     }
+
+    import ITieredMachine = feature.ITieredMachine;
+
+    interface TieredMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.TieredMachine',
+        MetaMachine,
+        ITieredMachine
+    > {}
+
+    interface TieredEnergyMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.TieredEnergyMachine',
+        TieredMachine,
+        ITieredMachine
+        // IExplosionMachine
+    > {}
+
+    import IRecipeLogicMachine = feature.IRecipeLogicMachine;
+    import NotifiableItemStackHandler = trait.NotifiableItemStackHandler;
+    import NotifiableFluidTank = trait.NotifiableFluidTank;
+
+    interface WorkableTieredMachine extends $object<
+        'com.gregtechceu.gtceu.api.machine.WorkableTieredMachine',
+        TieredEnergyMachine,
+        IRecipeLogicMachine
+        // IMachineLife,
+        // IMufflableMachine,
+        // IOverclockMachine
+    > {
+        readonly importItems: NotifiableItemStackHandler;
+        readonly exportItems: NotifiableItemStackHandler;
+        readonly importFluids: NotifiableFluidTank;
+        readonly exportFluids: NotifiableFluidTank;
+    }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.machine.property {
@@ -1125,6 +1178,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.feature {
         get maxVoltage(): number;
     }
 
+    import RecipeLogic = trait.RecipeLogic;
     import RecipeLogic$Status = trait.RecipeLogic$Status;
 
     interface IRecipeLogicMachine extends $object<
@@ -1136,6 +1190,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.feature {
         // IVoidable
     > {
         notifyStatusChanged(oldStatus: RecipeLogic$Status, newStatus: RecipeLogic$Status): void;
+        getRecipeLogic(): RecipeLogic;
+        get recipeLogic(): RecipeLogic;
     }
 }
 
@@ -1715,8 +1771,80 @@ declare namespace internal.com.gregtechceu.gtceu.api.gui {
     };
 }
 
+declare namespace internal.com.gregtechceu.gtceu.api.gui.widget {
+    interface SlotWidget extends $object<
+        'com.gregtechceu.gtceu.api.gui.widget.SlotWidget',
+        com.lowdragmc.lowdraglib.gui.widget.SlotWidget
+    > {}
+
+    import Container = net.minecraft.world.Container;
+    import IItemHandlerModifiable = net.minecraftforge.items.IItemHandlerModifiable;
+
+    const SlotWidget: $class<SlotWidget> & {
+        new (): SlotWidget;
+        new (
+            inventory: Container,
+            slotIndex: number,
+            xPosition: number,
+            yPosition: number,
+            canTakeItems: boolean,
+            canPutItems: boolean
+        ): SlotWidget;
+        new (
+            itemHandler: IItemHandlerModifiable,
+            slotIndex: number,
+            xPosition: number,
+            yPosition: number,
+            canTakeItems: boolean,
+            canPutItems: boolean
+        ): SlotWidget;
+    };
+
+    interface TankWidget extends $object<
+        'com.gregtechceu.gtceu.api.gui.widget.TankWidget',
+        com.lowdragmc.lowdraglib.gui.widget.SlotWidget
+    > {}
+
+    import IFluidHandler = net.minecraftforge.fluids.capability.IFluidHandler;
+
+    const TankWidget: $class<TankWidget> & {
+        new (): TankWidget;
+        new (
+            fluidTank: IFluidHandler,
+            x: number,
+            y: number,
+            allowClickContainerFilling: boolean,
+            allowClickContainerEmptying: boolean
+        ): TankWidget;
+        new (
+            fluidTank: IFluidHandler,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            allowClickContainerFilling: boolean,
+            allowClickContainerEmptying: boolean
+        ): TankWidget;
+    };
+}
+
 declare namespace internal.com.gregtechceu.gtceu.api.gui.editor {
-    interface EditableMachineUI extends $object<'com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI'> {}
+    interface EditableMachineUI extends $object<'com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI' /* , IEditableUI<WidgetGroup, MetaMachine> */> {}
+
+    import Supplier = java.util.function_.Supplier;
+    import BiConsumer = java.util.function_.BiConsumer;
+    import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import WidgetGroup = com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
+    import MetaMachine = machine.MetaMachine;
+
+    const EditableMachineUI: $class<EditableMachineUI> & {
+        new (
+            groupName: string,
+            uiPath: $wrapped<ResourceLocation>,
+            widgetSupplier: $wrapped<Supplier<WidgetGroup>>,
+            binder: $wrapped<BiConsumer<WidgetGroup, MetaMachine>>
+        ): EditableMachineUI;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.item.tool {
@@ -1863,7 +1991,69 @@ declare namespace internal.com.gregtechceu.gtceu.api.blockentity {
     const PipeBlockEntity: $class<PipeBlockEntity<Enum<unknown> & IPipeType<unknown>, unknown>> & {};
 }
 
+declare namespace internal.com.gregtechceu.gtceu.api.transfer.item {
+    import ItemStackHandler = net.minecraftforge.items.ItemStackHandler;
+
+    interface CustomItemStackHandler extends $object<
+        'com.gregtechceu.gtceu.api.transfer.item.CustomItemStackHandler',
+        ItemStackHandler
+        // IContentChangeAware,
+        // ITagSerializable<CompoundTag>
+    > {}
+}
+declare namespace internal.com.gregtechceu.gtceu.api.transfer.fluid {
+    import FluidTank = net.minecraftforge.fluids.capability.templates.FluidTank;
+
+    interface CustomFluidTank extends $object<
+        'com.gregtechceu.gtceu.api.transfer.item.CustomFluidTank',
+        FluidTank
+        // IFluidHandlerModifiable,
+        // ITagSerializable<CompoundTag>,
+        // IContentChangeAware
+    > {}
+}
+
 declare namespace internal.com.gregtechceu.gtceu.api.machine.trait {
+    interface MachineTrait extends $object<'com.gregtechceu.gtceu.api.machine.trait.MachineTrait' /* IEnhancedManaged */> {}
+
+    import IRecipeHandler = capability.recipe.IRecipeHandler;
+
+    interface IRecipeHandlerTrait<K> extends $object<
+        'com.gregtechceu.gtceu.api.machine.trait.IRecipeHandlerTrait',
+        IRecipeHandler<K>
+    > {}
+
+    interface NotifiableRecipeHandlerTrait<T> extends $object<
+        'com.gregtechceu.gtceu.api.machine.trait.NotifiableRecipeHandlerTrait',
+        MachineTrait,
+        IRecipeHandlerTrait<T>
+    > {}
+
+    import Ingredient = net.minecraft.world.item.crafting.Ingredient;
+    import CustomItemStackHandler = transfer.item.CustomItemStackHandler;
+
+    interface NotifiableItemStackHandler extends $object<
+        'com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler',
+        NotifiableRecipeHandlerTrait<Ingredient>
+    > {
+        readonly storage: CustomItemStackHandler;
+    }
+
+    import FluidIngredient = recipe.ingredient.FluidIngredient;
+    import CustomFluidTank = transfer.fluid.CustomFluidTank;
+
+    interface NotifiableFluidTank extends $object<
+        'com.gregtechceu.gtceu.api.machine.trait.NotifiableFluidTank',
+        NotifiableRecipeHandlerTrait<FluidIngredient>
+    > {
+        readonly storages: CustomFluidTank[];
+    }
+
+    interface RecipeLogic extends $object<'com.gregtechceu.gtceu.api.machine.trait.RecipeLogic'> {
+        getProgressPercent(): number;
+        get progressPercent(): number;
+    }
+
     import Enum = java.lang.Enum;
 
     interface RecipeLogic$Status extends $object<
@@ -1935,5 +2125,8 @@ declare namespace internal.kjs {
         'com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity': typeof internal.com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity;
         'com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity': typeof internal.com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity;
         'com.gregtechceu.gtceu.api.pipenet.IPipeNode': typeof internal.com.gregtechceu.gtceu.api.pipenet.IPipeNode;
+        'com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI': typeof internal.com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI;
+        'com.gregtechceu.gtceu.api.gui.widget.SlotWidget': typeof internal.com.gregtechceu.gtceu.api.gui.widget.SlotWidget;
+        'com.gregtechceu.gtceu.api.gui.widget.TankWidget': typeof internal.com.gregtechceu.gtceu.api.gui.widget.TankWidget;
     }
 }

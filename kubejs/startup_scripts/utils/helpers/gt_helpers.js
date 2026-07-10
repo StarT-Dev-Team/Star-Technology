@@ -103,9 +103,9 @@ const blockPatternRepeatable = (min, max) => {
 };
 
 /**
- * @param {InstanceType<typeof $RelativeDirection>} charDir
- * @param {InstanceType<typeof $RelativeDirection>} stringDir
- * @param {InstanceType<typeof $RelativeDirection>} aisleDir
+ * @param {internal.InstanceType<typeof $RelativeDirection>} charDir
+ * @param {internal.InstanceType<typeof $RelativeDirection>} stringDir
+ * @param {internal.InstanceType<typeof $RelativeDirection>} aisleDir
  * @returns {typeof newFactoryBlockPattern}
  * @global
  */

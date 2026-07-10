@@ -78,4 +78,11 @@ declare namespace internal.java.util.function_ {
         { name: 'java.util.function.UnaryOperator'; functionalInterface: 'apply' },
         Function<T, T>
     > {}
+
+    interface DoubleSupplier extends $object<{
+        name: 'java.util.function.DoubleSupplier';
+        functionalInterface: 'getAsDouble';
+    }> {
+        getAsDouble(): number;
+    }
 }

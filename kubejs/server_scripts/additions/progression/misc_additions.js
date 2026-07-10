@@ -174,11 +174,15 @@ ServerEvents.recipes((event) => {
 });
 
 ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
+    /** @typedef {internal.net.minecraft.world.level.levelgen.structure.Structure} Structure */
+
     let { level, player } = event;
     if (!(level instanceof $ServerLevel)) return;
     let registryAccess = level.registryAccess();
     let structureRegistry = registryAccess.registryOrThrow($Registries.STRUCTURE);
-    let structureKey = structureRegistry.getResourceKey(structureRegistry.get('minecraft:ruined_portal_nether')).get();
+    let structureKey = structureRegistry
+        .getResourceKey(/** @type {Structure} */ (structureRegistry.get('minecraft:ruined_portal_nether')))
+        .get();
     let structureHolder = structureRegistry.getHolderOrThrow(structureKey);
 
     if (!structureHolder) {
@@ -188,13 +192,13 @@ ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
 
     let structure = structureHolder.get();
     let holderSet = $HolderSet.direct([structureHolder]);
-    let origin = new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
+    let origin = new $BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
     let generator = level.getChunkSource().getGenerator();
     let result = generator.findNearestMapStructure(level, holderSet, origin, 100, false);
 
-    if (result !== null) {
+    if (result) {
         let pos = result.getFirst();
-        let chunkPos = new ChunkPos(pos);
+        let chunkPos = new $ChunkPos(pos);
         let sectionPos = $SectionPos.of(chunkPos, level.getMinSection());
         let chunk = level.getChunk(chunkPos.x, chunkPos.z);
         let start = level.structureManager().getStartForStructure(sectionPos, structure, chunk);

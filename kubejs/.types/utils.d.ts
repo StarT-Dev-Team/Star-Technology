@@ -144,4 +144,6 @@ declare namespace internal {
     type JsonArrayLike = JsonLike[];
     type JsonObjectLike = { [P in string]: JsonLike };
     type JsonLike = JsonArrayLike | JsonObjectLike | string | boolean | number;
+
+    type InstanceType<T extends $class<any>> = ReturnType<T['__javaObject__']['cast']>;
 }

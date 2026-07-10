@@ -93,6 +93,8 @@ declare namespace internal.net.minecraft.world.level {
         get height(): number;
         getMinBuildHeight(): number;
         get minBuildHeight(): number;
+        getMinSection(): number;
+        get minSection(): number;
     }
 
     import BlockEntity = block.entity.BlockEntity;
@@ -111,13 +113,21 @@ declare namespace internal.net.minecraft.world.level {
         // IForgeBlockAndTintGetter
     > {}
 
+    import RegistryAccess = core.RegistryAccess;
+    import ChunkAccess = world.level.chunk.ChunkAccess;
+
     interface LevelReader extends $object<
         'net.minecraft.world.level.LevelReader',
         BlockAndTintGetter
         // CollisionGetter,
         // SignalGetter,
         // BiomeManager.NoiseBiomeSource
-    > {}
+    > {
+        registryAccess(): RegistryAccess;
+        getChunk(pos: $wrapped<BlockPos>): ChunkAccess;
+        getChunk(chunkX: number, chunkZ: number): ChunkAccess;
+        // getChunk(int chunkX, int chunkZ, ChunkStatus requiredStatus)
+    }
 
     interface LevelSimulatedReader extends $object<'net.minecraft.world.level.LevelSimulatedReader'> {}
 
@@ -141,8 +151,11 @@ declare namespace internal.net.minecraft.world.level {
         LevelSimulatedRW
     > {}
 
+    import ChunkSource = chunk.ChunkSource;
+
     interface LevelAccessor extends $object<'net.minecraft.world.level.LevelAccessor', CommonLevelAccessor> {
         playSound: LevelAccessor__overloads$playSound;
+        getChunkSource(): ChunkSource;
     }
 
     interface Level extends $object<'net.minecraft.world.level.Level', LevelAccessor> {
@@ -151,9 +164,17 @@ declare namespace internal.net.minecraft.world.level {
 
     const Level: $class<Level> & {};
 
-    interface ChunkPos extends $object<'net.minecraft.world.level.ChunkPos'> {}
+    interface ChunkPos extends $object<'net.minecraft.world.level.ChunkPos'> {
+        getX(): number;
+        get x(): number;
+        getZ(): number;
+        get z(): number;
+    }
 
-    const ChunkPos: $class<ChunkPos> & {};
+    const ChunkPos: $class<ChunkPos> & {
+        new (x: number, y: number): ChunkPos;
+        new (pos: $wrapped<BlockPos>): ChunkPos;
+    };
 
     import Item = item.Item;
 
@@ -167,6 +188,36 @@ declare namespace internal.kjs {
     interface LoadableClasses {
         'net.minecraft.world.level.ChunkPos': typeof internal.net.minecraft.world.level.ChunkPos;
     }
+}
+
+declare namespace internal.net.minecraft.world.level.chunk {
+    interface ChunkSource extends $object<'net.minecraft.world.level.chunk.ChunkSource'> {}
+
+    import ServerLevel = server.level.ServerLevel;
+    import HolderSet = core.HolderSet;
+    import Holder = core.Holder;
+    import BlockPos = core.BlockPos;
+    import Structure = world.level.levelgen.structure.Structure;
+    import Pair = com.mojang.datafixers.util.Pair;
+
+    interface ChunkGenerator extends $object<'net.minecraft.world.level.chunk.ChunkGenerator'> {
+        findNearestMapStructure(
+            level: ServerLevel,
+            structure: HolderSet<Structure>,
+            pos: $wrapped<BlockPos>,
+            searchRadius: number,
+            skipKnownStructures: boolean
+        ): Pair<BlockPos, Holder<Structure>> | null;
+    }
+
+    interface ChunkAccess extends $object<
+        'net.minecraft.world.level.chunk.ChunkAccess',
+        BlockGetter,
+        // BiomeManager.NoiseBiomeSource, LightChunk
+        StructureAccess
+    > {}
+
+    interface StructureAccess extends $object<'net.minecraft.world.level.chunk.StructureAccess'> {}
 }
 
 declare namespace internal.net.minecraft.world.level.block {
@@ -446,6 +497,12 @@ declare namespace internal.net.minecraft.world.level.block.state.properties {
         FACING: DirectionProperty;
         FACING_HOPPER: DirectionProperty;
         HORIZONTAL_FACING: DirectionProperty;
+        UP: BooleanProperty;
+        DOWN: BooleanProperty;
+        NORTH: BooleanProperty;
+        EAST: BooleanProperty;
+        SOUTH: BooleanProperty;
+        WEST: BooleanProperty;
     };
 }
 
@@ -457,6 +514,21 @@ declare namespace internal.net.minecraft.world.level.material {
 
 declare namespace internal.net.minecraft.world.level.levelgen.structure {
     interface BoundingBox extends $object<'net.minecraft.world.level.levelgen.structure.BoundingBox'> {}
+
+    interface Structure extends $object<'net.minecraft.world.level.levelgen.structure.Structure'> {}
+
+    interface StructureStart extends $object<'net.minecraft.world.level.levelgen.structure.StructureStart'> {
+        isValid(): boolean;
+        getPieces(): StructurePiece[];
+        get pieces(): StructurePiece[];
+    }
+
+    import BlockPos = core.BlockPos;
+
+    interface StructurePiece extends $object<'net.minecraft.world.level.levelgen.structure.StructurePiece'> {
+        getLocatorPosition(): BlockPos;
+        get locatorPosition(): BlockPos;
+    }
 }
 
 declare namespace internal.net.minecraft.world.level.levelgen.structure.templatesystem {
@@ -481,10 +553,16 @@ declare namespace internal.net.minecraft.world.effect {
 declare namespace internal.net.minecraft.world.entity {
     interface Entity extends $object<'net.minecraft.world.entity.Entity'> {
         isCrouching(): boolean;
+        getBlockX(): number;
+        get blockX(): number;
         getX(): number;
         get x(): number;
+        getBlockY(): number;
+        get blockY(): number;
         getY(): number;
         get y(): number;
+        getBlockZ(): number;
+        get blockZ(): number;
         getZ(): number;
         get z(): number;
     }
@@ -522,5 +600,11 @@ declare namespace internal.net.minecraft.world.entity.player {
     interface Player extends $object<'net.minecraft.world.entity.player.Player', LivingEntity> {
         getInventory(): Inventory;
         get inventory(): Inventory;
+    }
+}
+
+declare namespace internal.kjs {
+    interface LoadableClasses {
+        'net.minecraft.world.level.block.state.properties.BlockStateProperties': typeof internal.net.minecraft.world.level.block.state.properties.BlockStateProperties;
     }
 }
