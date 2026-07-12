@@ -9,6 +9,10 @@ ServerEvents.recipes((event) => {
      */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
+        if (!data) {
+            console.error(`Could not find tier data for ${tierKey}`);
+            return;
+        }
 
         const {
             tiers: { tier, tier1 },
@@ -43,191 +47,69 @@ ServerEvents.recipes((event) => {
         const scaled = (base) => base * scaler;
 
         /**
-         * @param {string} type
-         * @param {string[]} inputs
-         * @param {string[]} fluids
+         * @typedef ItemIngredientObj
+         * @property {number} count
+         * @property {string} itemId
          */
-        const components = (type, inputs, fluids) => {
-            let typeSpecial = ['field_generator', 'emitter', 'sensor'].includes(type);
+
+        /**
+         * @typedef FluidIngredientObj
+         * @property {number} amount
+         * @property {string} fluidId
+         */
+
+        /**
+         * @param {string} type
+         * @param {ItemIngredientObj[]} items
+         * @param {FluidIngredientObj[]} fluids
+         */
+        const components = (type, items, fluids) => {
+            const typeSpecial = ['field_generator', 'emitter', 'sensor'].includes(type);
+
+            const assemblyLineItems = items.map((itemObj) => {
+                return `${itemObj.count}x ${itemObj.itemId}`;
+            });
+
+            const assemblyLineFluids = fluids.map((fluidObj) => {
+                return `${fluidObj.fluidId} ${fluidObj.amount}`;
+            });
 
             let assemblyLineRecipe = event.recipes.gtceu
                 .assembly_line(id(`${tier}_${type}`))
-                .itemInputs(inputs)
-                .inputFluids(fluids)
+                .itemInputs(assemblyLineItems)
+                .inputFluids(assemblyLineFluids)
                 .itemOutputs(`gtceu:${tier}_${type}`)
                 .duration(600)
                 .EUt(EU);
 
-            if (typeSpecial) {
-                assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
-                    researchRecipeBuilder
-                        .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                        .EUt(EUTS)
-                        .CWUt(cwuS)
-                );
-            } else {
-                assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
-                    researchRecipeBuilder
-                        .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                        .EUt(EUTD)
-                        .CWUt(cwuD)
-                );
-            }
-        };
+            assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
+                researchRecipeBuilder
+                    .researchStack(Item.of(`gtceu:${tier1}_${type}`))
+                    .EUt(typeSpecial ? EUTS : EUTD)
+                    .CWUt(typeSpecial ? cwuS : cwuD)
+            );
 
-        components(
-            'electric_motor',
-            [
-                `kubejs:${tier}_super_magnetic_core`,
-                `2x gtceu:long_${primMaterial}_rod`,
-                `kubejs:${tier}_transmission_assembly`,
-                `64x gtceu:fine_${wireMechanical}_wire`,
-                `kubejs:${tier}_micropower_router`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`,
-            ]
-        );
+            const mtscfItems = items.map((itemObj) => {
+                const { count, itemId } = itemObj;
+                const multiplier = count * scalerMCSF * 0.75;
 
-        components(
-            'electric_pump',
-            [
-                `gtceu:${tier}_electric_motor`,
-                `gtceu:${pipeMaterial}_normal_fluid_pipe`,
-                `kubejs:${tier}_microfluidic_flow_valve`,
-                `8x gtceu:${supRubber}_ring`,
-                `gtceu:${supMaterial}_rotor`,
-                `kubejs:${tier}_micropower_router`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`,
-            ]
-        );
+                const spoolCheck = itemId.match(/gtceu:fine_(.*)_wire/);
+                if (spoolCheck) return `${multiplier / 64}x gtceu:${spoolCheck[1]}_wire_spool`;
 
-        components(
-            'conveyor_module',
-            [
-                `2x gtceu:${tier}_electric_motor`,
-                `kubejs:${tier}_high_strength_panel`,
-                `kubejs:${tier}_precision_drive_mechanism`,
-                `4x gtceu:${primMaterial}_ring`,
-                `kubejs:${tier}_micropower_router`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${primRubber} ${scaled(1152)}`,
-                `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`,
-            ]
-        );
+                const foilCheck = itemId.match(/gtceu:(.*)_foil/);
+                if (foilCheck) return `${multiplier / 64}x gtceu:${foilCheck[1]}_foil_ream`;
 
-        components(
-            'electric_piston',
-            [
-                `gtceu:${tier}_electric_motor`,
-                `2x kubejs:${tier}_high_strength_panel`,
-                `1x kubejs:${tier}_transmission_assembly`,
-                `gtceu:${supMaterial}_gear`,
-                `gtceu:small_${supMaterial}_gear`,
-                `kubejs:${tier}_micropower_router`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`,
-            ]
-        );
+                return `${multiplier}x ${itemId}`;
+            });
 
-        components(
-            'robot_arm',
-            [
-                `4x gtceu:long_${primMaterial}_rod`,
-                `kubejs:${tier}_precision_drive_mechanism`,
-                `kubejs:${tier}_transmission_assembly`,
-                `gtceu:${tier}_electric_motor`,
-                `gtceu:${tier}_electric_piston`,
-                `2x kubejs:${tier}_computational_matrix`,
-                `2x kubejs:${tier}_micropower_router`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(144)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`,
-            ]
-        );
+            const mtscfFluids = fluids.map((fluidObj) => {
+                return `${fluidObj.fluidId} ${fluidObj.amount * scalerMCSF * 0.75}`;
+            });
 
-        components(
-            'field_generator',
-            [
-                `gtceu:${primMaterial}_frame`,
-                `2x kubejs:${tier}_high_strength_panel`,
-                `kubejs:${tier}_catalyst_core`,
-                `2x gtceu:${tier}_emitter`,
-                `1x kubejs:${tier}_computational_matrix`,
-                `64x gtceu:fine_${superconductor}_wire`,
-                `2x kubejs:${tier}_micropower_router`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(288)}`, `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`]
-        );
-
-        components(
-            'emitter',
-            [
-                `gtceu:${primMaterial}_frame`,
-                `gtceu:${tier}_electric_motor`,
-                `4x gtceu:long_${primMaterial}_rod`,
-                `1x kubejs:${tier}_catalyst_core`,
-                `1x kubejs:${tier}_computational_matrix`,
-                `64x gtceu:${miscMaterial}_foil`,
-                `1x kubejs:${tier}_micropower_router`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(144)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`,
-            ]
-        );
-
-        components(
-            'sensor',
-            [
-                `gtceu:${primMaterial}_frame`,
-                `gtceu:${tier}_electric_motor`,
-                `4x gtceu:${primMaterial}_plate`,
-                `1x kubejs:${tier}_catalyst_core`,
-                `1x kubejs:${tier}_computational_matrix`,
-                `64x gtceu:${miscMaterial}_foil`,
-                `1x kubejs:${tier}_micropower_router`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(144)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${b2exponentialMultiplier(72)}`,
-            ]
-        );
-
-        event.recipes.gtceu
-            .assembler(id(`${tier}_fluid_regulator`))
-            .itemInputs(`gtceu:${tier}_electric_pump`, `2x #gtceu:circuits/${tier}`)
-            .itemOutputs(`gtceu:${tier}_fluid_regulator`)
-            .duration(50)
-            .EUt(EU * 4)
-            .circuit(1);
-
-        /**
-         * @param {string} type
-         * @param {string[]} inputs
-         * @param {string[]} fluids
-         */
-        const mtscfComponents = (type, inputs, fluids) => {
             event.recipes.gtceu
                 .component_synthesis_forge(id(`${tier}_${type}`))
-                .itemInputs(inputs)
-                .inputFluids(fluids)
+                .itemInputs(mtscfItems)
+                .inputFluids(mtscfFluids)
                 .itemOutputs(`${scalerMCSF}x gtceu:${tier}_${type}`)
                 .duration(scalerMCSF * 600)
                 .stationResearch((researchRecipeBuilder) =>
@@ -250,147 +132,155 @@ ServerEvents.recipes((event) => {
                     )
                 )
                 .CWUt(320)
-                .totalCWU(384000) // 320 CWU * 60 seconds * 20 ticks
+                .totalCWU(384000)
                 .EUt(EU);
         };
 
-        mtscfComponents(
+        components(
             'electric_motor',
             [
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_super_magnetic_core`,
-                `${2 * scalerMCSF * 0.75}x gtceu:long_${primMaterial}_rod`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_transmission_assembly`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${wireMechanical}_wire_spool`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 1, itemId: `kubejs:${tier}_super_magnetic_core` },
+                { count: 2, itemId: `gtceu:long_${primMaterial}_rod` },
+                { count: 1, itemId: `kubejs:${tier}_transmission_assembly` },
+                { count: 64, itemId: `gtceu:fine_${wireMechanical}_wire` },
+                { count: 1, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
 
-        mtscfComponents(
+        components(
             'electric_pump',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${pipeMaterial}_normal_fluid_pipe`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_microfluidic_flow_valve`,
-                `${8 * scalerMCSF * 0.75}x gtceu:${supRubber}_ring`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${supMaterial}_rotor`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 1, itemId: `gtceu:${pipeMaterial}_normal_fluid_pipe` },
+                { count: 1, itemId: `kubejs:${tier}_microfluidic_flow_valve` },
+                { count: 8, itemId: `gtceu:${supRubber}_ring` },
+                { count: 1, itemId: `gtceu:${supMaterial}_rotor` },
+                { count: 1, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
 
-        mtscfComponents(
+        components(
             'conveyor_module',
             [
-                `${2 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_high_strength_panel`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_precision_drive_mechanism`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_ring`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 2, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 1, itemId: `kubejs:${tier}_high_strength_panel` },
+                { count: 1, itemId: `kubejs:${tier}_precision_drive_mechanism` },
+                { count: 4, itemId: `gtceu:${primMaterial}_ring` },
+                { count: 1, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${primRubber} ${scalerMCSF * 0.75 * scaled(1152)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: scaled(1152), fluidId: `gtceu:${primRubber}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
 
-        mtscfComponents(
+        components(
             'electric_piston',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${2 * scalerMCSF * 0.75}x kubejs:${tier}_high_strength_panel`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_transmission_assembly`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${supMaterial}_gear`,
-                `${1 * scalerMCSF * 0.75}x gtceu:small_${supMaterial}_gear`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 2, itemId: `kubejs:${tier}_high_strength_panel` },
+                { count: 1, itemId: `kubejs:${tier}_transmission_assembly` },
+                { count: 1, itemId: `gtceu:${supMaterial}_gear` },
+                { count: 1, itemId: `gtceu:small_${supMaterial}_gear` },
+                { count: 1, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
 
-        mtscfComponents(
+        components(
             'robot_arm',
             [
-                `${4 * scalerMCSF * 0.75}x gtceu:long_${primMaterial}_rod`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_precision_drive_mechanism`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_transmission_assembly`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_piston`,
-                `${2 * scalerMCSF * 0.75}x kubejs:${tier}_computational_matrix`,
-                `${2 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
+                { count: 1, itemId: `kubejs:${tier}_precision_drive_mechanism` },
+                { count: 1, itemId: `kubejs:${tier}_transmission_assembly` },
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 1, itemId: `gtceu:${tier}_electric_piston` },
+                { count: 2, itemId: `kubejs:${tier}_computational_matrix` },
+                { count: 2, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(144)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(144), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
 
-        mtscfComponents(
+        components(
             'field_generator',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${2 * scalerMCSF * 0.75}x kubejs:${tier}_high_strength_panel`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_catalyst_core`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${tier}_emitter`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_computational_matrix`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${superconductor}_wire_spool`,
-                `${2 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 2, itemId: `kubejs:${tier}_high_strength_panel` },
+                { count: 1, itemId: `kubejs:${tier}_catalyst_core` },
+                { count: 2, itemId: `gtceu:${tier}_emitter` },
+                { count: 1, itemId: `kubejs:${tier}_computational_matrix` },
+                { count: 64, itemId: `gtceu:fine_${superconductor}_wire` },
+                { count: 2, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(288)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(288), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
 
-        mtscfComponents(
+        components(
             'emitter',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${4 * scalerMCSF * 0.75}x gtceu:long_${primMaterial}_rod`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_catalyst_core`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_computational_matrix`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${miscMaterial}_foil_ream`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
+                { count: 1, itemId: `kubejs:${tier}_catalyst_core` },
+                { count: 1, itemId: `kubejs:${tier}_computational_matrix` },
+                { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
+                { count: 1, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(144)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(144), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
 
-        mtscfComponents(
+        components(
             'sensor',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_catalyst_core`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_computational_matrix`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${miscMaterial}_foil_ream`,
-                `${1 * scalerMCSF * 0.75}x kubejs:${tier}_micropower_router`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 4, itemId: `gtceu:${primMaterial}_plate` },
+                { count: 1, itemId: `kubejs:${tier}_catalyst_core` },
+                { count: 1, itemId: `kubejs:${tier}_computational_matrix` },
+                { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
+                { count: 1, itemId: `kubejs:${tier}_micropower_router` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(144)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
+                { amount: b2exponentialMultiplier(144), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${tierFluid}` },
             ]
         );
+
+        event.recipes.gtceu
+            .assembler(id(`${tier}_fluid_regulator`))
+            .itemInputs(`gtceu:${tier}_electric_pump`, `2x #gtceu:circuits/${tier}`)
+            .itemOutputs(`gtceu:${tier}_fluid_regulator`)
+            .duration(50)
+            .EUt(EU * 4)
+            .circuit(1);
     };
 
     componentMaterials('uhv');
