@@ -105,7 +105,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`512x minecraft:${dye2}_wool`, `512x #forge:cooked_fishes`)
             .itemOutputs(`placeablemaxwell:${name}`)
             .duration(168000)
-            .EUt(GTValues.VH[GTValues.ZPM] * 4 ** scaler);
+            .EUt(GTValues.VH[GTValues.ZPM] * Math.pow(4, scaler));
     };
 
     cat('mars', 'zpm', 'light_gray', 'gray', 'yttrium_barium_cuprate', 1);

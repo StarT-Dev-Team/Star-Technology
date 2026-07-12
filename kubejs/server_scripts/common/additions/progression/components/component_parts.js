@@ -66,7 +66,7 @@ ServerEvents.recipes((event) => {
             },
         } = data;
 
-        const b2exponentialMultiplier = (base) => base * 2 ** scaler;
+        const b2exponentialMultiplier = (base) => base * Math.pow(2, scaler);
         const scaled = (base) => base * scaler;
         const getDataItem = global.getDataItem;
 

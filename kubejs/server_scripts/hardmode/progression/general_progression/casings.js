@@ -17,7 +17,7 @@ ServerEvents.recipes((event) => {
                 .circuit(2)
                 .itemOutputs(`2x ${mod}:${type}_firebox_casing`)
                 .duration(100)
-                .EUt(2 * 4 ** tier);
+                .EUt(2 * Math.pow(4, tier));
         }
         if (p == true) {
             let mod = type == 'enriched_naquadah' ? 'kubejs' : 'gtceu';
@@ -32,7 +32,7 @@ ServerEvents.recipes((event) => {
                 .circuit(3)
                 .itemOutputs(`2x ${mod}:${outputType}_pipe_casing`)
                 .duration(100)
-                .EUt(2 * 4 ** tier);
+                .EUt(2 * Math.pow(4, tier));
         }
         if (g == true) {
             let mod = type == 'enriched_naquadah' ? 'kubejs' : 'gtceu';
@@ -47,7 +47,7 @@ ServerEvents.recipes((event) => {
                 .circuit(4)
                 .itemOutputs(`2x ${mod}:${type}_gearbox`)
                 .duration(100)
-                .EUt(2 * 4 ** tier);
+                .EUt(2 * Math.pow(4, tier));
         }
         if (e == true) {
             let casingType =
@@ -63,7 +63,7 @@ ServerEvents.recipes((event) => {
                 .circuit(7)
                 .itemOutputs(`2x ${engineType}engine_intake_casing`)
                 .duration(100)
-                .EUt(2 * 4 ** tier);
+                .EUt(2 * Math.pow(4, tier));
         }
     };
     SpecialCasing('bronze', 0, true, true, true, false);
@@ -86,7 +86,7 @@ ServerEvents.recipes((event) => {
         .circuit(7)
         .itemOutputs(`2x gtceu:extreme_engine_intake_casing`)
         .duration(100)
-        .EUt(2 * 4 ** 5);
+        .EUt(2 * Math.pow(4, 5));
 
     // Storages
 
@@ -108,7 +108,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`gtceu:${material}_crate`)
             .duration(200)
             .circuit(5)
-            .EUt(2 * 4 ** tier);
+            .EUt(2 * Math.pow(4, tier));
     };
     event.recipes.create.mechanical_crafting(Item.of(`gtceu:wood_crate`), ['PRSRP', 'PSWSP', 'PRSRP'], {
         S: 'gtceu:iron_screw',
@@ -137,7 +137,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`${Mod}:${material}_drum`)
             .duration(200)
             .circuit(2)
-            .EUt(1 * 4 ** tier);
+            .EUt(1 * Math.pow(4, tier));
     };
 
     DrumType('wood', 0, 'gtceu');
@@ -162,7 +162,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`gtceu:${tier}_machine_casing`)
             .circuit(8)
             .duration(100)
-            .EUt(2 * 4 ** scaler);
+            .EUt(2 * Math.pow(4, scaler));
 
         event.recipes.gtceu
             .assembler(id(`${tier}_machine_hull`))
@@ -170,7 +170,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${bindant} ${FluidQuant}`)
             .itemOutputs(`gtceu:${tier}_machine_hull`)
             .duration(100)
-            .EUt(2 * 4 ** scaler);
+            .EUt(2 * Math.pow(4, scaler));
     };
 
     Hulls('ulv', 'wrought_iron', 'red_alloy', 'glue', 0);
@@ -199,7 +199,7 @@ ServerEvents.recipes((event) => {
             )
             .itemOutputs(`gtceu:${tier}_hermetic_casing`)
             .duration(200)
-            .EUt(7.5 * 4 ** scaler);
+            .EUt(7.5 * Math.pow(4, scaler));
     };
     HermeticCasings('lv', 'steel', 'steel', 1);
     HermeticCasings('mv', 'aluminium', 'polyethylene', 2);

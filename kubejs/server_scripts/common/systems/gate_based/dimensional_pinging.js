@@ -103,7 +103,7 @@ ServerEvents.recipes((event) => {
             .itemInputs('kubejs:coordinate_crystal', `kubejs:${type}_coordinate_crystal`)
             .itemOutputs(`2x kubejs:${type}_coordinate_crystal`)
             .duration(3000)
-            .EUt(GTValues.VHA[GTValues.ZPM] * 4 ** eutScale);
+            .EUt(GTValues.VHA[GTValues.ZPM] * Math.pow(4, eutScale));
     };
     CrystalDuping('abydos', 0);
     CrystalDuping('nether', 1);

@@ -408,13 +408,13 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${origin} 50000`)
             .outputFluids(`start_core:${type} 5000`)
             .duration(1500)
-            .EUt(GTValues.VA[GTValues.UV] * 4 ** scaler);
+            .EUt(GTValues.VA[GTValues.UV] * Math.pow(4, scaler));
         event.recipes.gtceu
             .molten_destabilizing(id(better))
             .inputFluids(`start_core:${type} 10000`)
             .outputFluids(`gtceu:${origin} 70000`, `gtceu:infernal_concentrate 5000`, `start_core:${better} 2000`)
             .duration(1200)
-            .EUt(GTValues.VA[GTValues.UV] * 4 ** scaler);
+            .EUt(GTValues.VA[GTValues.UV] * Math.pow(4, scaler));
     };
     HellforgeHeater('flamewake_solvent', 'superheated_infernal_concentrate', 1, 'cinderbrew_solvent');
     HellforgeHeater('emberheart_nectar', 'sub_stellar_infernal_concentrate', 2, 'corefire_nectar');
@@ -453,7 +453,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate ${512 + scaler * 64}`)
             .itemOutputs(`96x kubejs:${type}_catalyst`)
             .duration(600)
-            .EUt(GTValues.VHA[GTValues.UV] * 4 ** scaler);
+            .EUt(GTValues.VHA[GTValues.UV] * Math.pow(4, scaler));
     };
     catalyst(
         'ascendant',

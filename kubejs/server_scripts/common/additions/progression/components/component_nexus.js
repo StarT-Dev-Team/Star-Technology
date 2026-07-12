@@ -51,7 +51,7 @@ ServerEvents.recipes((event) => {
                 `64x gtceu:fine_${wireMechanical}_wire`,
                 `2x gtceu:${cable}_single_cable`,
             ],
-            [`gtceu:${solder} ${72 * 2 ** scaler}`, `gtceu:${lubricant} ${125 * 2 ** scaler}`]
+            [`gtceu:${solder} ${72 * Math.pow(2, scaler)}`, `gtceu:${lubricant} ${125 * Math.pow(2, scaler)}`]
         );
 
         componentTypesNexus(
@@ -65,7 +65,7 @@ ServerEvents.recipes((event) => {
                 `1x gtceu:${supMaterial}_rotor`,
                 `2x gtceu:${cable}_single_cable`,
             ],
-            [`gtceu:${solder} ${72 * 2 ** scaler}`, `gtceu:${lubricant} ${125 * 2 ** scaler}`]
+            [`gtceu:${solder} ${72 * Math.pow(2, scaler)}`, `gtceu:${lubricant} ${125 * Math.pow(2, scaler)}`]
         );
 
         componentTypesNexus(
@@ -79,8 +79,8 @@ ServerEvents.recipes((event) => {
                 `2x gtceu:${cable}_single_cable`,
             ],
             [
-                `gtceu:${solder} ${72 * 2 ** scaler}`,
-                `gtceu:${lubricant} ${125 * 2 ** scaler}`,
+                `gtceu:${solder} ${72 * Math.pow(2, scaler)}`,
+                `gtceu:${lubricant} ${125 * Math.pow(2, scaler)}`,
                 `gtceu:styrene_butadiene_rubber ${scaler * 1152}`,
             ]
         );
@@ -97,7 +97,7 @@ ServerEvents.recipes((event) => {
                 `2x gtceu:small_${supMaterial}_gear`,
                 `2x gtceu:${cable}_single_cable`,
             ],
-            [`gtceu:${solder} ${72 * 2 ** scaler}`, `gtceu:${lubricant} ${125 * 2 ** scaler}`]
+            [`gtceu:${solder} ${72 * Math.pow(2, scaler)}`, `gtceu:${lubricant} ${125 * Math.pow(2, scaler)}`]
         );
 
         componentTypesNexus(
@@ -113,7 +113,7 @@ ServerEvents.recipes((event) => {
                 `4x #gtceu:circuits/${tier2}`,
                 `4x gtceu:${cable}_single_cable`,
             ],
-            [`gtceu:${solder} ${288 * scaler}`, `gtceu:${lubricant} ${125 * 2 ** scaler}`]
+            [`gtceu:${solder} ${288 * scaler}`, `gtceu:${lubricant} ${125 * Math.pow(2, scaler)}`]
         );
 
         componentTypesNexus(
@@ -127,7 +127,7 @@ ServerEvents.recipes((event) => {
                 `128x gtceu:fine_${superconductor}_wire`,
                 `4x gtceu:${cable}_single_cable`,
             ],
-            [`gtceu:${solder} ${288 * 2 ** scaler}`]
+            [`gtceu:${solder} ${288 * Math.pow(2, scaler)}`]
         );
 
         componentTypesNexus(
@@ -141,7 +141,7 @@ ServerEvents.recipes((event) => {
                 `96x gtceu:${miscMaterial}_foil`,
                 `4x gtceu:${cable}_single_cable`,
             ],
-            [`gtceu:${solder} ${144 * 2 ** scaler}`]
+            [`gtceu:${solder} ${144 * Math.pow(2, scaler)}`]
         );
 
         componentTypesNexus(
@@ -155,7 +155,7 @@ ServerEvents.recipes((event) => {
                 `96x gtceu:${miscMaterial}_foil`,
                 `4x gtceu:${cable}_single_cable`,
             ],
-            [`gtceu:${solder} ${144 * 2 ** scaler}`]
+            [`gtceu:${solder} ${144 * Math.pow(2, scaler)}`]
         );
     };
 

@@ -694,7 +694,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${polymer} ${1 * polymerScaler}`)
             .itemOutputs(`gtceu:${tier}_1a_energy_converter`)
             .duration(200)
-            .EUt(3.75 * 4 ** tierScaler);
+            .EUt(3.75 * Math.pow(4, tierScaler));
         event.recipes.gtceu
             .simple_machine_facility(id(`${tier}_4a_energy_converter`))
             .itemInputs(
@@ -706,7 +706,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${polymer} ${4 * polymerScaler}`)
             .itemOutputs(`gtceu:${tier}_4a_energy_converter`)
             .duration(200)
-            .EUt(3.75 * 4 ** tierScaler);
+            .EUt(3.75 * Math.pow(4, tierScaler));
         event.recipes.gtceu
             .simple_machine_facility(id(`${tier}_8a_energy_converter`))
             .itemInputs(
@@ -718,7 +718,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${polymer} ${8 * polymerScaler}`)
             .itemOutputs(`gtceu:${tier}_8a_energy_converter`)
             .duration(200)
-            .EUt(3.75 * 4 ** tierScaler);
+            .EUt(3.75 * Math.pow(4, tierScaler));
         event.recipes.gtceu
             .simple_machine_facility(id(`${tier}_16a_energy_converter`))
             .itemInputs(
@@ -730,7 +730,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${polymer} ${16 * polymerScaler}`)
             .itemOutputs(`gtceu:${tier}_16a_energy_converter`)
             .duration(200)
-            .EUt(3.75 * 4 ** tierScaler);
+            .EUt(3.75 * Math.pow(4, tierScaler));
     };
     Converter('lv', 'soul_infused', 1, 'glue');
     Converter('mv', 'signalum', 2, 'polyethylene');
