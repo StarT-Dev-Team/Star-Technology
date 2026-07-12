@@ -26,37 +26,6 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UHV]);
 
     event.recipes.gtceu
-        .large_chemical_reactor(id('benzene_oxidization'))
-        .inputFluids('gtceu:benzene 1500', 'gtceu:oxygen 11500')
-        .outputFluids('gtceu:maleic_anhydride 2000', 'minecraft:water 2500', 'gtceu:carbon_dioxide 1000')
-        .circuit(3)
-        .duration(526)
-        .EUt(GTValues.VHA[GTValues.LuV]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('maleic_anhydride_esterification'))
-        .inputFluids('gtceu:maleic_anhydride 250', 'gtceu:methanol 500')
-        .outputFluids('gtceu:dimethyl_maleate 250', 'gtceu:oxygen 250')
-        .duration(418)
-        .EUt(GTValues.VHA[GTValues.UV]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('dimethyl_maleate_hydrogenation'))
-        .inputFluids('gtceu:dimethyl_maleate 1000', 'gtceu:hydrogen 5000')
-        .notConsumable('gtceu:palladium_on_carbon_dust')
-        .outputFluids('gtceu:dimethyl_succinate 1500')
-        .duration(763)
-        .EUt(GTValues.VA[GTValues.ZPM]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('dimethyl_succinate_hydrogenation'))
-        .inputFluids('gtceu:dimethyl_succinate 800', 'gtceu:hydrogen 2400')
-        .outputFluids('gtceu:14_butanediol 400', 'gtceu:methanol 1600')
-        .duration(617)
-        .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
-
-    event.recipes.gtceu
         .large_chemical_reactor(id('14_butanediol_transformation'))
         .inputFluids('gtceu:14_butanediol 1000', 'gtceu:phosphoric_acid 4000')
         .itemInputs('2x gtceu:sulfur_dust')

@@ -67,3 +67,8 @@ config/*
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# AI docs
+!AGENTS.md
+!CLAUDE.md
+!.gemini/
