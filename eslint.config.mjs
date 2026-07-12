@@ -117,6 +117,9 @@ export default [
                 $StarTThreadingCapableMachine: 'readonly',
                 $StarTThreadingStatBlocks: 'readonly',
                 $BoostedPlasmaTurbine: 'readonly',
+                $BulkingMulti: 'readonly',
+                $BulkingCoiledMulti: 'readonly',
+                $BulkingThreadedMulti: 'readonly',
                 // Miscellaneous globals
                 Ponder: 'readonly',
                 Direction: 'readonly',
