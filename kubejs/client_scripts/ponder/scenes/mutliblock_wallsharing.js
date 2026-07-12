@@ -92,6 +92,13 @@
 
         scene.idle(40);
 
+        /**
+         *
+         * @param {internal.$wrapped<internal.net.minecraft.core.BlockPos>} position
+         * @param {boolean} formed
+         * @param {number=} duration
+         * @returns
+         */
         let showMultiStatus = (position, formed, duration) =>
             addTooltipInstruction(
                 scene,
@@ -100,7 +107,7 @@
                 formed
                     ? Component.literal('§aStructure Formed§r') // gtceu.top.valid_structure
                     : Component.literal('§cStructure Incomplete§r'), // gtceu.top.invalid_structure
-                duration | 30
+                duration || 30
             );
 
         showMultiStatus([5, 2, 3], true, 30);
@@ -178,10 +185,10 @@
     // TODO: move to Java
 
     /**
-     * @param {Internal.SceneBuilder} scene
-     * @param {Vec3d} sceneSpace
+     * @param {internal.net.createmod.ponder.api.scene.SceneBuilder} scene
+     * @param {internal.net.minecraft.world.phys.Vec3} sceneSpace
      * @param {PonderPointing} direction
-     * @param {Internal.Component} text
+     * @param {internal.net.minecraft.network.chat.Component} text
      * @param {number} duration
      */
     function addTooltipInstruction(scene, sceneSpace, direction, text, duration) {
@@ -209,6 +216,8 @@
             'int'
         );
 
+        if (!fontFontWidth || !graphicsDrawString) return;
+
         scene
             .overlay()
             .addElement(duration)
@@ -218,6 +227,7 @@
 
                 let sceneToScreen = scene.getTransform().sceneToScreen(sceneSpace, partialTicks);
 
+                /** @type {number} */
                 let textWidth = fontFontWidth.invoke(font, text.getVisualOrderText());
                 let width = textWidth + 4;
                 let height = 12;
@@ -241,7 +251,6 @@
                     text.getVisualOrderText(),
                     $Float.valueOf(0),
                     $Float.valueOf(0),
-                    // eslint-disable-next-line id-match, no-undef
                     $Integer.valueOf(PonderPalette.WHITE.getColorObject().scaleAlpha(fade).getRGB()),
                     $Boolean.valueOf(false)
                 );

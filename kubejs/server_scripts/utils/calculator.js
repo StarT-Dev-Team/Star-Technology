@@ -2,12 +2,11 @@ const $GTUtil = Java.loadClass('com.gregtechceu.gtceu.utils.GTUtil');
 const $GTRecipe = Java.loadClass('com.gregtechceu.gtceu.api.recipe.GTRecipe');
 const $RecipeHelper = Java.loadClass('com.gregtechceu.gtceu.api.recipe.RecipeHelper');
 const $KubeJSReloadListener = Java.loadClass('dev.latvian.mods.kubejs.server.KubeJSReloadListener');
-
 const GTV = GTValues.VEX;
 
 PlayerEvents.chat((event) => {
     /** @type {string} */
-    let message = (message = ('' + event.message).trim());
+    let message = ('' + event.message).trim();
 
     if (message.startsWith('=')) {
         message = ('' + message).replace(/^=\s*/, '');
@@ -24,16 +23,19 @@ PlayerEvents.chat((event) => {
             let tokens = calculatorLex(message);
             /** @type {NodeExpr} */
             let ast = calculatorParse(tokens);
-            /** @type {Value} */
+            /** @type {Calculator.Value} */
             let resultValue = calculatorExec(ast);
-            let result = resultValue.v;
+            /** @type {string} */
+            let result = '';
 
             if (resultValue.t === 'number') {
-                result = numberToString(result);
+                result = numberToString(resultValue.v);
             } else if (resultValue.t === 'vec2') {
                 result = 'vec2(' + resultValue.v.map((v) => numberToString(v)).join(', ') + ')';
             } else if (resultValue.t === 'vec3') {
                 result = 'vec3(' + resultValue.v.map((v) => numberToString(v)).join(', ') + ')';
+            } else {
+                result = resultValue.v;
             }
 
             event.player.tell(
@@ -43,7 +45,7 @@ PlayerEvents.chat((event) => {
             );
         } catch (e) {
             /** @type {string} */
-            let error = e.message || e.toString();
+            let error = /** @type {any} */ (e).message || /** @type {any} */ (e).toString();
             event.player.tell(
                 Text.join([Text.red('Error evaluating '), Text.aqua(message), Text.red(': '), Text.gray(error)])
             );
@@ -52,25 +54,39 @@ PlayerEvents.chat((event) => {
     }
 });
 
+/** @param {number} num */
 let numberToString = (num) => {
-    num = num
+    let ret = num
         .toFixed(5)
-        /* eslint-disable no-useless-escape */
-        .replace(/e([\-+])?(\d+)$/, (_, sign, digits) => {
-            /* eslint-enable no-useless-escape */
-            sign = sign === '-' ? '⁻' : '';
-            digits = digits
-                .split('')
-                .map((c) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+c])
-                .join('');
-            return ` × 10${sign}${digits}`;
-        })
+        .replace(
+            // eslint-disable-next-line no-useless-escape
+            /e([\-+])?(\d+)$/,
+            /**
+             * @param {string} sign
+             * @param {string} digits
+             */
+            (_, sign, digits) => {
+                sign = sign === '-' ? '⁻' : '';
+                digits = digits
+                    .split('')
+                    .map((c) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+c])
+                    .join('');
+                return ` × 10${sign}${digits}`;
+            }
+        )
         .replace(/\.?0+$/, '');
-    if (num === '-0') num = '0';
-    return num;
+    if (ret === '-0') return '0';
+    return ret;
 };
 
 let calculatorShowDocumentation = (() => {
+    /**
+     * @template T
+     * @template U
+     * @param {T[]} arr
+     * @param {(value: T, index: number, array: T[]) => U | ReadonlyArray<U>} fn
+     * @returns {U[]}
+     */
     let flatMap = function (arr, fn) {
         return Array.prototype.concat.apply([], arr.map(fn));
     };
@@ -78,6 +94,10 @@ let calculatorShowDocumentation = (() => {
     let showMainHelp = () => {
         let result = [];
 
+        /**
+         * @param {internal.net.minecraft.network.chat.Component} text
+         * @param {string} searchName
+         */
         let asCommand = (text, searchName) => {
             return text.clickSuggestCommand('=help ' + searchName).hover(Text.of('=help ' + searchName));
         };
@@ -117,23 +137,39 @@ let calculatorShowDocumentation = (() => {
 
     /**
      * @param {string} subject
-     * @returns {(CalculatorDocumentedFunction | CalculatorDocumentedOperator | CalculatorDocumentedConstant)[]}
      */
     let gatherMatchingDefinitions = (subject) => {
+        /** @param {Calculator.DocumentedOperator} x */
         let filterEnds = (x) => x.name.endsWith(subject);
+
+        /** @param {Calculator.DocumentedFunction | Calculator.DocumentedConstant} x */
         let filterEq = (x) => x.name === subject;
+
         let filterSuffix = subject.startsWith('_')
             ? (() => {
                   let subject1 = subject.substring(1);
+                  /** @param {Calculator.DocumentedSuffix} x */
                   return (x) => x.names.includes(subject1);
               })()
-            : (x) => x.names.includes(subject);
-        let mapName = (kind) => (t) =>
-            Object.assign({}, t, {
-                name: `${t.fullName || t.name} (${kind})`,
-            });
+            : /** @param {Calculator.DocumentedSuffix} x */
+              (x) => x.names.includes(subject);
 
-        return [].concat(
+        /** @typedef {(Calculator.DocumentedFunction | Calculator.DocumentedOperator | Calculator.DocumentedConstant | Calculator.DocumentedSuffix) & { name: string }} FunctionWithName */
+
+        /**
+         * @param {string} kind
+         */
+        let mapName =
+            (kind) =>
+            /**
+             * @param {Calculator.DocumentedFunction | Calculator.DocumentedOperator | Calculator.DocumentedConstant | Calculator.DocumentedSuffix} t
+             * @returns {FunctionWithName}
+             */ (t) =>
+                Object.assign({}, t, {
+                    name: `${t.fullName || ('name' in t ? t.name : t.names)} (${kind})`,
+                });
+
+        return /** @type {FunctionWithName[]} */ ([]).concat(
             calculatorDefinitions.operators.filter(filterEnds).map(mapName('operator')),
             calculatorDefinitions.functions.filter(filterEq).map(mapName('function')),
             calculatorDefinitions.constants.filter(filterEq).map(mapName('constant')),
@@ -141,6 +177,9 @@ let calculatorShowDocumentation = (() => {
         );
     };
 
+    /**
+     * @param {string} subject
+     */
     return (subject) => {
         if (!subject) {
             return showMainHelp();
@@ -165,45 +204,69 @@ let calculatorShowDocumentation = (() => {
     };
 })();
 
-/** @typedef {{ arguments?: Value["t"][], fn: (...args: Value[]) => Value }} CalculatorFunction */
-/** @typedef {{ name: string; fullName?: string, usage: string, description: string, implementation: CalculatorFunction | CalculatorFunction[] }} CalculatorDocumentedFunction */
-/** @typedef {{ name: string; fullName?: string, usage: string, description: string, implementation: CalculatorFunction | CalculatorFunction[] }} CalculatorDocumentedOperator */
-/** @typedef {{ name: string; fullName?: string, usage: string, description: string, value: Value }} CalculatorDocumentedConstant */
-/** @typedef {{ names: string[]; fullName?: string, usage: string, description: string }} CalculatorDocumentedSuffix */
-
-/** @type {{ functions: CalculatorDocumentedFunction[], operators: CalculatorDocumentedOperator[], constants: CalculatorDocumentedConstant[] }} */
+/** @type {{ functions: Calculator.DocumentedFunction[], operators: Calculator.DocumentedOperator[], constants: Calculator.DocumentedConstant[], suffixes: Calculator.DocumentedSuffix[] }} */
 let calculatorDefinitions = (() => {
-    /** @type {(fn: (value: number) => number) => CalculatorFunction[]} */
+    /** @type { <T, U, Ts extends T[]>(arr: Ts, fn: (t: T, index: number) => U) => { [K in keyof Ts]: U } } */
+    let tupleMap = (arr, fn) => /** @type {any} */ (arr.map(fn));
+
+    /**  @type { <const TArgs extends readonly Calculator.Value['t'][]>(fn: Calculator.TypedFunction<TArgs>) => Calculator.Function } */
+    let typedFn = /** @param {any} fn */ (fn) => fn;
+
+    /**  @type { <const TArgs extends readonly Calculator.Value['t'][]>(fn: Calculator.TypedFunctionImpl<TArgs>) => Calculator.Function } */
+    let typedGenericFn = /** @param {any} fn */ (fn) => fn;
+
+    /**
+     * @template {Calculator.Value} T
+     * @template {Calculator.Value["t"]} U
+     * @param {T[]} args
+     * @param {U} type
+     * @returns {args is Extract<Calculator.Value, { t: U }>[]}
+     */
+    let argsOfType = (args, type) => {
+        return args.every((arg) => arg.t === type);
+    };
+
+    /**
+     * @template {Calculator.Value} T
+     * @template {Calculator.Value["t"]} U
+     * @param {T} arg
+     * @param {U} type
+     * @returns {arg is Extract<Calculator.Value, { t: U }>}
+     */
+    let argOfType = (arg, type) => {
+        return arg.t === type;
+    };
+
+    /** @type {(fn: (value: number) => number) => Calculator.Function[]} */
     let componentsOverloads = (fn) => {
         return [
-            { arguments: ['number'], fn: (v) => ({ t: 'number', v: fn(v.v) }) },
-            { arguments: ['vec2'], fn: (v) => ({ t: 'vec2', v: v.v.map(fn) }) },
-            { arguments: ['vec3'], fn: (v) => ({ t: 'vec3', v: v.v.map(fn) }) },
+            typedFn({ arguments: ['number'], fn: (v) => ({ t: 'number', v: fn(v.v) }) }),
+            typedFn({ arguments: ['vec2'], fn: (v) => ({ t: 'vec2', v: tupleMap(v.v, fn) }) }),
+            typedFn({ arguments: ['vec3'], fn: (v) => ({ t: 'vec3', v: tupleMap(v.v, fn) }) }),
         ];
     };
-    /** @type {(fn: (a: number, b: number) => number) => CalculatorFunction[]} */
+    /** @type {(fn: (a: number, b: number) => number) => Calculator.Function[]} */
     let componentsOverloads2 = (fn) => {
         return [
-            {
+            typedFn({
                 arguments: ['number', 'number'],
                 fn: (a, b) => ({ t: 'number', v: fn(a.v, b.v) }),
-            },
-            {
+            }),
+            typedFn({
                 arguments: ['vec2', 'vec2'],
-                fn: (a, b) => ({ t: 'vec2', v: a.v.map((ax, i) => fn(ax, b.v[i])) }),
-            },
-            {
+                fn: (a, b) => ({ t: 'vec2', v: tupleMap(a.v, (ax, i) => fn(ax, b.v[i])) }),
+            }),
+            typedFn({
                 arguments: ['vec3', 'vec3'],
-                fn: (a, b) => ({ t: 'vec3', v: a.v.map((ax, i) => fn(ax, b.v[i])) }),
-            },
+                fn: (a, b) => ({ t: 'vec3', v: tupleMap(a.v, (ax, i) => fn(ax, b.v[i])) }),
+            }),
         ];
     };
     /**
      * Validate first!
-     *
-     * @param {ValueVec2 | ValueVec3} value
+     * @param {Calculator.ValueVec2 | Calculator.ValueVec3} value
      * @param {string} identifier
-     * @returns {ValueNumber | ValueVec2 | ValueVec3}
+     * @returns {Calculator.ValueNumber | Calculator.ValueVec2 | Calculator.ValueVec3}
      */
     function vecAccessors(value, identifier) {
         let v = Array.from(identifier).map((accessor) => {
@@ -216,10 +279,10 @@ let calculatorDefinitions = (() => {
                     return value.v[2];
             }
         });
-        return {
+        return /** @type {any} */ ({
             t: ['', 'number', 'vec2', 'vec3'][identifier.length],
             v: v.length === 1 ? v[0] : v,
-        };
+        });
     }
 
     /**
@@ -227,14 +290,20 @@ let calculatorDefinitions = (() => {
      * @param {`${string}:${string}`[][]} overloads
      */
     function formatOverloads(fnName, overloads) {
+        /**
+         * @template T
+         * @template U
+         * @param {T[]} arr
+         * @param {(value: T, index: number, array: T[]) => U | ReadonlyArray<U>} fn
+         * @returns {U[]}
+         */
         let flatMap = function (arr, fn) {
             return Array.prototype.concat.apply([], arr.map(fn));
         };
 
         return Text.join(
             flatMap(overloads, (overload, i) => {
-                let label = [].concat(
-                    [Text.gray(fnName), Text.of('(')],
+                let label = [Text.gray(fnName), Text.of('(')].concat(
                     flatMap(overload, (argRaw, j) => {
                         let arg = ('' + argRaw).split(':');
                         let label = [Text.lightPurple(arg[0]), Text.gray(': '), Text.gray(arg[1])];
@@ -259,12 +328,18 @@ let calculatorDefinitions = (() => {
                 description:
                     'constructs a bidimensional vector; you can access the components with .x and .y, or you can §oswizzle§r them to create new vectors (like .xyx)',
                 implementation: [
-                    { arguments: [], fn: () => ({ t: 'vec2', v: [0, 0] }) },
-                    { arguments: ['number'], fn: (x) => ({ t: 'vec2', v: [x.v, x.v] }) },
-                    {
+                    typedFn({
+                        arguments: [],
+                        fn: () => ({ t: 'vec2', v: [0, 0] }),
+                    }),
+                    typedFn({
+                        arguments: ['number'],
+                        fn: (x) => ({ t: 'vec2', v: [x.v, x.v] }),
+                    }),
+                    typedFn({
                         arguments: ['number', 'number'],
                         fn: (x, y) => ({ t: 'vec2', v: [x.v, y.v] }),
-                    },
+                    }),
                 ],
             },
             {
@@ -278,19 +353,22 @@ let calculatorDefinitions = (() => {
                 description:
                     'constructs a tridimensional vector; you can access the components with .x, .y and .z, or you can §oswizzle§r them to create new vectors (like .zy)',
                 implementation: [
-                    { arguments: [], fn: () => ({ t: 'vec3', v: [0, 0, 0] }) },
-                    {
+                    typedFn({
+                        arguments: [],
+                        fn: () => ({ t: 'vec3', v: [0, 0, 0] }),
+                    }),
+                    typedFn({
                         arguments: ['number'],
                         fn: (x) => ({ t: 'vec3', v: [x.v, x.v, x.v] }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['vec2', 'number'],
                         fn: (xy, z) => ({ t: 'vec3', v: [xy.v[0], xy.v[1], z.v] }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['number', 'number', 'number'],
                         fn: (x, y, z) => ({ t: 'vec3', v: [x.v, y.v, z.v] }),
-                    },
+                    }),
                 ],
             },
             {
@@ -301,20 +379,20 @@ let calculatorDefinitions = (() => {
                 ]),
                 description: 'returns the dot product',
                 implementation: [
-                    {
+                    typedFn({
                         arguments: ['vec2', 'vec2'],
                         fn: (a, b) => ({
                             t: 'number',
                             v: a.v[0] * b.v[0] + a.v[1] * b.v[1],
                         }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['vec3', 'vec3'],
                         fn: (a, b) => ({
                             t: 'number',
                             v: a.v[0] * b.v[0] + a.v[1] * b.v[1] + a.v[2] * b.v[2],
                         }),
-                    },
+                    }),
                 ],
             },
             {
@@ -393,14 +471,14 @@ let calculatorDefinitions = (() => {
                 description:
                     'returns the angle in the plane (in radians) between the positive x-axis and the ray from (0, 0) and the point (x, y)',
                 implementation: [
-                    {
+                    typedFn({
                         arguments: ['vec2'],
                         fn: (v) => ({ t: 'number', v: Math.atan2(v.v[1], v.v[0]) }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['number', 'number'],
                         fn: (y, x) => ({ t: 'number', v: Math.atan2(y.v, x.v) }),
-                    },
+                    }),
                 ],
             },
             {
@@ -462,27 +540,27 @@ let calculatorDefinitions = (() => {
                 description:
                     "returns the logarithm in the specified base of the input; if the input is a vector, it's applied to all the components",
                 implementation: [
-                    {
+                    typedFn({
                         arguments: ['number', 'number'],
                         fn: (base, v) => ({
                             t: 'number',
                             v: JavaMath.log(v.v) / JavaMath.log(base.v),
                         }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['number', 'vec2'],
                         fn: (base, v) => ({
                             t: 'vec2',
-                            v: v.v.map((v) => JavaMath.log(v) / JavaMath.log(base.v)),
+                            v: tupleMap(v.v, (v) => JavaMath.log(v) / JavaMath.log(base.v)),
                         }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['number', 'vec3'],
                         fn: (base, v) => ({
                             t: 'vec3',
-                            v: v.v.map((v) => JavaMath.log(v) / JavaMath.log(base.v)),
+                            v: tupleMap(v.v, (v) => JavaMath.log(v) / JavaMath.log(base.v)),
                         }),
-                    },
+                    }),
                 ],
             },
             {
@@ -501,16 +579,16 @@ let calculatorDefinitions = (() => {
             },
             {
                 name: 'min',
-                usage: formatOverloads('min', [[['...values:number[]']]]),
+                usage: formatOverloads('min', [['...values:number[]']]),
                 description: 'returns the smallest of the numbers given as input',
                 implementation: {
                     fn: function () {
-                        /** @type {Value[]} */
+                        /** @type {Calculator.Value[]} */
                         let args = Array.from(arguments);
                         if (args.length === 0) {
                             throw new Error('wrong argument count for min: expected 1 or more, got 0');
                         }
-                        if (!args.some((arg) => arg.t !== 'number')) {
+                        if (!argsOfType(args, 'number')) {
                             throw new Error('wrong argument types for min: expected all numbers');
                         }
                         return {
@@ -525,15 +603,16 @@ let calculatorDefinitions = (() => {
             },
             {
                 name: 'max',
-                usage: formatOverloads('max', [[['...values:number[]']]]),
+                usage: formatOverloads('max', [['...values:number[]']]),
                 description: 'returns the largest of the numbers given as input',
                 implementation: {
                     fn: function () {
+                        /** @type {Calculator.Value[]} */
                         let args = Array.from(arguments);
                         if (args.length === 0) {
                             throw new Error('wrong argument count for max: expected 1 or more, got 0');
                         }
-                        if (args.some((arg) => arg.t !== 'number')) {
+                        if (!argsOfType(args, 'number')) {
                             throw new Error('wrong argument types for max: expected all numbers');
                         }
                         return {
@@ -554,7 +633,7 @@ let calculatorDefinitions = (() => {
                 ]),
                 description: 'returns the distance between 2 points',
                 implementation: [
-                    {
+                    typedFn({
                         arguments: ['vec2', 'vec2'],
                         fn: (point1, point2) => ({
                             t: 'number',
@@ -562,8 +641,8 @@ let calculatorDefinitions = (() => {
                                 Math.pow(point1.v[0] - point2.v[0], 2) + Math.pow(point1.v[1] - point2.v[1], 2)
                             ),
                         }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['vec3', 'vec3'],
                         fn: (point1, point2) => ({
                             t: 'number',
@@ -573,14 +652,14 @@ let calculatorDefinitions = (() => {
                                     Math.pow(point1.v[2] - point2.v[2], 2)
                             ),
                         }),
-                    },
+                    }),
                 ],
             },
             {
                 name: 'oc',
                 usage: formatOverloads('oc', [['duration:number', 'overclocks:number']]),
                 description: 'returns the duration after the specified steps of normal overclock',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number', 'number'],
                     fn: (duration, steps) => {
                         if (steps.v <= 0)
@@ -590,13 +669,13 @@ let calculatorDefinitions = (() => {
                             v: Math.max(Math.floor(duration.v / (2 << (steps.v - 1))), 1),
                         };
                     },
-                },
+                }),
             },
             {
                 name: 'poc',
                 usage: formatOverloads('poc', [['duration:number', 'overclocks:number']]),
                 description: 'returns the duration after the specified steps of perfect overclock',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number', 'number'],
                     fn: (duration, steps) => {
                         if (steps.v <= 0)
@@ -606,35 +685,35 @@ let calculatorDefinitions = (() => {
                             v: Math.max(Math.floor(duration.v / (4 << (steps.v - 1))), 1),
                         };
                     },
-                },
+                }),
             },
             {
                 name: 'toSeconds',
                 usage: formatOverloads('toSeconds', [['ticks:number']]),
                 description: 'converts the input ticks to seconds (1 second = 20 ticks)',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number'],
                     fn: (duration) => ({ t: 'number', v: duration.v / 20 }),
-                },
+                }),
             },
             {
                 name: 'formatTier',
                 usage: formatOverloads('formatTier', [['tier:number']]),
                 description: 'returns the formatted version of the specified tier index',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number'],
                     fn: (tier) => {
                         if (!(0 <= tier.v && tier.v < GTValues.VNF.length)) throw new Error('invalid tier');
                         return { t: 'string', v: GTValues.VNF[tier.v] + '§r' };
                     },
-                },
+                }),
             },
             {
                 name: 'formatEUt',
                 usage: formatOverloads('formatEUt', [['EUt:number']]),
                 description:
                     'returns the formatted version of the specified EU/t value, as a percentage of amps for the voltage tier above (useful for recipes)',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number'],
                     fn: (eut) => {
                         let tierIndex = $GTUtil.getFloorTierByVoltage(eut.v) + 1;
@@ -644,14 +723,14 @@ let calculatorDefinitions = (() => {
                             v: numberToString(perc) + 'A of ' + GTValues.VNF[tierIndex] + '§r',
                         };
                     },
-                },
+                }),
             },
             {
                 name: 'formatAmps',
                 usage: formatOverloads('formatAmps', [['EUt:number']]),
                 description:
                     'returns the formatted version of the specified EU/t value, as a multiple of amps for the voltage tier below (useful for generators)',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number'],
                     fn: (eut) => {
                         let tierIndex = $GTUtil.getFloorTierByVoltage(eut.v);
@@ -661,31 +740,31 @@ let calculatorDefinitions = (() => {
                             v: numberToString(perc) + 'A of ' + GTValues.VNF[tierIndex] + '§r',
                         };
                     },
-                },
+                }),
             },
             {
                 name: 'voltage',
                 usage: formatOverloads('voltage', [['tier:number']]),
                 description: 'returns the EU/t of 1 amp of the specified tier index',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number'],
                     fn: (tier) => {
                         if (!(0 <= tier.v && tier.v < GTV.length)) throw new Error('invalid tier');
                         return { t: 'number', v: GTV[tier.v] };
                     },
-                },
+                }),
             },
             {
                 name: 'V',
                 usage: formatOverloads('V', [['EUt:number']]),
                 description:
                     'returns the index of the voltage tier required to run a recipe with that EU/t requirement',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['number'],
                     fn: (eut) => {
                         return { t: 'number', v: $GTUtil.getFloorTierByVoltage(eut.v) + 1 };
                     },
-                },
+                }),
             },
             {
                 name: 'parallels',
@@ -696,7 +775,7 @@ let calculatorDefinitions = (() => {
                 description:
                     "returns the maximum number of parallels for a recipe with the specified EU/t cost and overclocked the specified times; if the first input parameter is a vec2 then it's considerered a (EU/t, duration) pair and the paralleled duration is also calculated",
                 implementation: [
-                    {
+                    typedFn({
                         arguments: ['number', 'number'],
                         fn: (eut, ocTier) => {
                             let recipeTier = $GTUtil.getFloorTierByVoltage(eut.v) + 1;
@@ -707,8 +786,8 @@ let calculatorDefinitions = (() => {
                             let cap = Math.floor((GTV[recipeTier] / eut.v) * Math.pow(4, numOfOc));
                             return { t: 'number', v: cap };
                         },
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['vec2', 'number'],
                         fn: (recipeInfo, ocTier) => {
                             let recipeTier = $GTUtil.getFloorTierByVoltage(recipeInfo.v[0]) + 1;
@@ -721,7 +800,7 @@ let calculatorDefinitions = (() => {
                             let duration = ocDuration * Math.pow(2, numOfOc);
                             return { t: 'vec2', v: [cap, duration] };
                         },
-                    },
+                    }),
                 ],
             },
             {
@@ -729,7 +808,7 @@ let calculatorDefinitions = (() => {
                 usage: formatOverloads('recipe', [['id:string']]),
                 description:
                     'returns the EU/t and duration of the recipe with the specified id as a vec2(EU/t, duration)',
-                implementation: {
+                implementation: typedFn({
                     arguments: ['string'],
                     fn: (recipeId) => {
                         let recipeManager = $KubeJSReloadListener.resources.getRecipeManager();
@@ -744,7 +823,7 @@ let calculatorDefinitions = (() => {
                             v: [$RecipeHelper.getRealEUt(recipe), recipe.duration],
                         };
                     },
-                },
+                }),
             },
         ],
         operators: [
@@ -784,28 +863,28 @@ let calculatorDefinitions = (() => {
                 description:
                     'multiplies the two values together; if both the values are vectors, then each component is multiplied individually; if one value is a number and other is a vector, the number is multiplied to each component of the vector',
                 implementation: componentsOverloads2((a, b) => a * b).concat(
-                    {
+                    typedFn({
                         arguments: ['number', 'vec2'],
                         fn: (a, b) => ({ t: 'vec2', v: [a.v * b.v[0], a.v * b.v[1]] }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['vec2', 'number'],
                         fn: (a, b) => ({ t: 'vec2', v: [a.v[0] * b.v, a.v[1] * b.v] }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['number', 'vec3'],
                         fn: (a, b) => ({
                             t: 'vec3',
                             v: [a.v * b.v[0], a.v * b.v[1], a.v * b.v[2]],
                         }),
-                    },
-                    {
+                    }),
+                    typedFn({
                         arguments: ['vec3', 'number'],
                         fn: (a, b) => ({
                             t: 'vec3',
                             v: [a.v[0] * b.v, a.v[1] * b.v, a.v[2] * b.v],
                         }),
-                    }
+                    })
                 ),
             },
             {
@@ -846,16 +925,18 @@ let calculatorDefinitions = (() => {
                 usage: '§7vec2§r.x, §7vec2§r.y, §7vec2§r.xyx',
                 description:
                     'access the components of the vec2; you can use .x or .y to get the corresponding component, or you can §oswizzle§r them to create new vectors (like .xyx)',
-                implementation: {
-                    fn: (value, identifierValue) => {
-                        /** @type {string} */
-                        let identifier = identifierValue.v;
-                        if (1 <= identifier.length && identifier.length <= 3 && identifier.match(/^[xy]+$/)) {
-                            return vecAccessors(value, identifier);
-                        }
-                        throw new Error('non-existing member ' + identifier + ' for type ' + value.t);
-                    },
-                },
+                implementation: typedGenericFn(
+                    /** @type {Calculator.TypedFunctionImpl<["vec2", "string"]>} */ ({
+                        fn: (value, identifierValue) => {
+                            if (!argOfType(identifierValue, 'string')) throw new Error('unexpected');
+                            let identifier = identifierValue.v;
+                            if (1 <= identifier.length && identifier.length <= 3 && identifier.match(/^[xy]+$/)) {
+                                return vecAccessors(value, identifier);
+                            }
+                            throw new Error('non-existing member ' + identifier + ' for type ' + value.t);
+                        },
+                    })
+                ),
             },
             {
                 name: 'vec3.',
@@ -863,32 +944,36 @@ let calculatorDefinitions = (() => {
                 usage: '§7vec3§r.x, §7vec3§r.y, §7vec3§r.z, §7vec3§r.xz',
                 description:
                     'access the components of the vec3; you can use .x, .y or .z to get the corresponding component, or you can §oswizzle§r them to create new vectors (like .xz)',
-                implementation: {
-                    fn: (value, identifierValue) => {
-                        /** @type {string} */
-                        let identifier = identifierValue.v;
-                        if (1 <= identifier.length && identifier.length <= 3 && identifier.match(/^[xyz]+$/)) {
-                            return vecAccessors(value, identifier);
-                        }
-                        throw new Error('non-existing member ' + identifier + ' for type ' + value.t);
-                    },
-                },
+                implementation: typedGenericFn(
+                    /** @type {Calculator.TypedFunctionImpl<["vec3", "string"]>} */ ({
+                        fn: (value, identifierValue) => {
+                            /** @type {string} */
+                            let identifier = identifierValue.v;
+                            if (1 <= identifier.length && identifier.length <= 3 && identifier.match(/^[xyz]+$/)) {
+                                return vecAccessors(value, identifier);
+                            }
+                            throw new Error('non-existing member ' + identifier + ' for type ' + value.t);
+                        },
+                    })
+                ),
             },
             {
                 name: 'string.',
                 fullName: 'String members',
                 usage: '§7string§r.length',
                 description: 'access the length of the string',
-                implementation: {
-                    fn: (value, identifierValue) => {
-                        /** @type {string} */
-                        let identifier = identifierValue.v;
-                        if (identifier === 'length') {
-                            return { t: 'number', v: value.v.length };
-                        }
-                        throw new Error('non-existing member ' + identifier + ' for type ' + value.t);
-                    },
-                },
+                implementation: typedGenericFn(
+                    /** @type {Calculator.TypedFunctionImpl<["string", "string"]>} */ ({
+                        fn: (value, identifierValue) => {
+                            /** @type {string} */
+                            let identifier = identifierValue.v;
+                            if (identifier === 'length') {
+                                return { t: 'number', v: value.v.length };
+                            }
+                            throw new Error('non-existing member ' + identifier + ' for type ' + value.t);
+                        },
+                    })
+                ),
             },
         ],
         constants: [
@@ -1134,40 +1219,46 @@ let calculatorDefinitions = (() => {
     };
 })();
 
-/** @typedef {{ t: "number", v: number }} ValueNumber */
-/** @typedef {{ t: "string", v: string }} ValueString */
-/** @typedef {{ t: "vec2", v: [number, number] }} ValueVec2 */
-/** @typedef {{ t: "vec3", v: [number, number, number] }} ValueVec3 */
-/** @typedef {ValueNumber | ValueString | ValueVec2 | ValueVec3} Value */
-
 let calculatorExec = (() => {
     /**
-     * @template K
+     * @template {string} K
      * @template V
      * @param {[K, V][]} entries
      * @returns {Record<K, V>}
      */
     let objectFromEntries = (entries) => {
-        let obj = {};
+        let obj = /** @type {Record<K, V>} */ ({});
         for (let entry of entries) {
             obj[entry[0]] = entry[1];
         }
         return obj;
     };
 
-    const functions = objectFromEntries(calculatorDefinitions.functions.map((f) => [f.name, f.implementation]));
-    const operators = objectFromEntries(calculatorDefinitions.operators.map((f) => [f.name, f.implementation]));
+    const functions = objectFromEntries(
+        calculatorDefinitions.functions.map((f) => [
+            f.name,
+            Array.isArray(f.implementation) ? f.implementation : [f.implementation],
+        ])
+    );
+    const operators = objectFromEntries(
+        calculatorDefinitions.operators.map((f) => [
+            f.name,
+            Array.isArray(f.implementation) ? f.implementation : [f.implementation],
+        ])
+    );
     const constants = objectFromEntries(calculatorDefinitions.constants.map((f) => [f.name, f.value]));
 
     /**
      *
-     * @param {CalculatorFunction[]} options
-     * @param {Value[]} args
+     * @param {Calculator.Function[]} options
+     * @param {Calculator.Value[]} args
+     * @param {string} error
      */
     function execOverloaded(options, args, error) {
         for (let option of options) {
             if (option.arguments) {
-                if (args.length === option.arguments.length && args.every((arg, i) => option.arguments[i] === arg.t)) {
+                let optionArguments = option.arguments;
+                if (args.length === option.arguments.length && args.every((arg, i) => optionArguments[i] === arg.t)) {
                     return option.fn.apply(null, args);
                 }
             } else {
@@ -1182,6 +1273,7 @@ let calculatorExec = (() => {
                 '). Options are:\n' +
                 options
                     .map((o) => {
+                        if (!o.arguments) return '- variable arguments';
                         if (o.arguments.length === 0) return '- no arguments';
                         return '- ' + o.arguments.join(', ');
                     })
@@ -1191,7 +1283,7 @@ let calculatorExec = (() => {
 
     /**
      * @param {NodeExpr} node
-     * @returns {Value}
+     * @returns {Calculator.Value}
      */
     function calculate(node) {
         switch (node.type) {
@@ -1238,13 +1330,13 @@ let calculatorExec = (() => {
                     throw new Error("unknown identifier '" + fnName + "'");
                 }
                 let args = node.arguments.map((arg) => calculate(arg));
-                return execOverloaded(Array.isArray(fn) ? fn : [fn], args, "function '" + fnName + "'");
+                return execOverloaded(fn, args, "function '" + fnName + "'");
             }
             case 'member': {
                 let value = calculate(node.value);
                 let accessor = operators[value.t + '.'];
                 if (accessor) {
-                    return accessor.fn(value, { t: 'string', v: node.identifier });
+                    return accessor[0].fn(value, { t: 'string', v: node.identifier });
                 }
                 throw new Error('non-existing member ' + node.identifier + ' for type ' + value.t);
             }
@@ -1260,9 +1352,6 @@ let calculatorExec = (() => {
                     throw new Error('unknown identifier ' + node.identifier);
                 }
                 return constant;
-            }
-            default: {
-                throw new Error('unknown node type ' + node.type);
             }
         }
     }
@@ -1323,13 +1412,13 @@ function calculatorLex(input) {
     /** @returns {Token | null} */
     function lexToken() {
         let ch = next();
+        while (ch === ' ' || ch === '\t' || ch === '\n' || ch === '\r') {
+            ch = next();
+        }
         if (!ch) {
             return null;
         }
 
-        while (ch === ' ' || ch === '\t' || ch === '\n' || ch === '\r') {
-            ch = next();
-        }
         if (ch.match(/^[a-zA-Z_]$/)) {
             return lexIdent();
         }
@@ -1443,7 +1532,7 @@ function calculatorLex(input) {
  * @returns {NodeExpr}
  */
 function calculatorParse(tokens) {
-    /** @type {Record<"*" | "/" | "+" | "-" | "^", { prec: number, assoc: "left" | "right" }>} */
+    /** @type {Record<BinaryOperator, { prec: number, assoc: "left" | "right" }>} */
     let operators = {
         '*': { prec: 3, assoc: 'left' },
         '/': { prec: 3, assoc: 'left' },
@@ -1487,6 +1576,10 @@ function calculatorParse(tokens) {
                 return "'" + token.v + "'";
             case ',':
                 return "','";
+            case '.':
+                return '.';
+            case 'string':
+                return "string ('" + token.v + "')";
             case 'number':
                 if (token.s) return "number ('" + token.v + "', '" + token.s + "')";
                 return "number ('" + token.v + "')";
@@ -1550,7 +1643,7 @@ function calculatorParse(tokens) {
      * @returns {token is BinaryOperator}
      */
     function isBinaryOperator(token) {
-        return !!operators[token];
+        return !!(/** @type {any} */ (operators)[token]);
     }
 
     /**

@@ -48,6 +48,12 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
+    /**
+     * @param {string} type
+     * @param {string} input
+     * @param {string} output
+     * @param {number} duration
+     */
     const kilnRecipe = (type, input, output, duration) => {
         event.recipes.gtceu.kiln(id(type)).itemInputs(input).itemOutputs(output).duration(duration);
         event.recipes.gtceu.steam_kiln(id(type)).itemInputs(input).itemOutputs(output).duration(duration).EUt(30);

@@ -21,14 +21,16 @@ ServerEvents.recipes((event) => {
 
     // VF Recipe Pull
     event.forEachRecipe({ type: 'gtceu:vacuum_freezer' }, (vacParse) => {
-        let bulkVac = JSON.parse(vacParse.json);
+        let bulkVac = JSON.parse(/** @type {any} */ (vacParse.json));
         let duration = bulkVac.duration;
         let eut = bulkVac.tickInputs.eu[0].content;
-        let inItem = false;
-        let inFluid1 = false;
-        let inFluid2 = false;
-        let outFluid = false;
-        let outItem = false;
+
+        let inItem;
+        let inFluid1;
+        let inFluid2;
+        let outFluid;
+        let outItem;
+
         if (bulkVac.inputs.item?.length === 1) {
             inItem = bulkVac.inputs.item[0].content;
         }
@@ -103,6 +105,11 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.UV]);
 
     // >15000K Cooling
+
+    /**
+     * @param {string} type
+     * @param {number} dur
+     */
     const material15000PlusAlloy = (type, dur) => {
         event.remove({ id: `gtceu:vacuum_freezer/${type}` });
         event.recipes.gtceu

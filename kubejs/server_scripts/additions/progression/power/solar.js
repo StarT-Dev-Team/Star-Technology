@@ -22,6 +22,10 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /**
+     * @param {'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv'} tierKey
+     * @param {string} panelType
+     */
     const solar = (tierKey, panelType) => {
         const data = COMPONENTS[tierKey];
         if (!data) return;
@@ -29,8 +33,9 @@ ServerEvents.recipes((event) => {
         const {
             tiers: { tier, tier1 },
             materials: { wireMechanical, tierMaterial, solder, lubricant, cable, battery },
-            scaling: { scaler, EU },
+            scaling: dataScaling,
         } = data;
+        const { scaler, EU } = dataScaling || { EU: 0, scaler: 0 };
 
         if (tier !== 'ev') {
             //Other Cores
@@ -65,7 +70,7 @@ ServerEvents.recipes((event) => {
             assembler(id(`${tier}_solar_panel`))
                 .itemInputs(
                     `1x gtceu:${tierMaterial}_frame`,
-                    Item.of(`gtceu:${battery}`),
+                    Item.of(`gtceu:${battery || ''}`),
                     `16x gtceu:${cable}_double_cable`,
                     `4x gtceu:${tier}_emitter`,
                     `2x gtceu:${tier}_sensor`,

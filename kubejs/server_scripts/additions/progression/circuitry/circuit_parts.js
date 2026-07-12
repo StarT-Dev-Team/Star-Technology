@@ -5,6 +5,13 @@ ServerEvents.recipes((event) => {
     // const getDataItem = global.getDataItem;
 
     // === Living SMDs ===
+
+    /**
+     * @param {string} type
+     * @param {number} quantity
+     * @param {string[]} inputs
+     * @param {number} polymerAmount
+     */
     const livingSMD = (type, quantity, inputs, polymerAmount /*, cwu */) => {
         event.recipes.gtceu
             .assembler(id(`living_smd_${type}`))
@@ -60,6 +67,13 @@ ServerEvents.recipes((event) => {
     );
 
     // === Draco-QMDs ===
+
+    /**
+     * @param {string} type
+     * @param {number} quantity
+     * @param {string[]} inputs
+     * @param {number} polymerAmount
+     */
     const dracoQMD = (type, quantity, inputs, polymerAmount) => {
         event.recipes.gtceu
             .component_part_assembly(id(`draconic_qmd_${type}`))
@@ -136,6 +150,13 @@ ServerEvents.recipes((event) => {
         432
     );
 
+    /**
+     * @param {string} type
+     * @param {number} outQuant
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {number} duration
+     */
     const dracoQMDInMCSF = (type, outQuant, inputs, fluids, duration) => {
         event.recipes.gtceu
             .component_part_synthesis_forge(id(`${type}`))

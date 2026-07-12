@@ -1,6 +1,9 @@
 ItemEvents.tooltip((event) => {
+    /** @param {string} id */
     const integration = (id) => `projectred_integration:${id}`;
+    /** @param {string} id */
     const core = (id) => `projectred_core:${id}`;
+    /** @param {string} id */
     const gate = (id) => integration(`${id}_gate`);
 
     event.add(core('screwdriver'), Component.translatable('item.projectred_core.screwdriver.tooltip'));

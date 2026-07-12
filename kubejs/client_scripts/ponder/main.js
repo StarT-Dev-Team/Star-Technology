@@ -51,7 +51,7 @@
      * @returns {() => T}
      */
     function lazyGetter(init) {
-        let data = null;
+        let data = /** @type {T} */ (null);
         return () => {
             if (!data) data = init();
             return data;
@@ -60,13 +60,18 @@
 
     /**
      * @param {"multiblock"} kind
-     * @returns {string[]}
+     * @returns {internal.net.minecraft.resources.ResourceLocation[]}
      */
     function getGregtechMachines(kind) {
         let $MultiblockMachineDefinition = Java.loadClass(
             'com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition'
         );
 
+        /**
+         * @template {internal.$class<any>} T
+         * @param {T} clz
+         * @param {internal.java.lang.Object} obj
+         */
         let isInstance = (clz, obj) => clz.__javaObject__.isInstance(obj);
 
         let result = [];

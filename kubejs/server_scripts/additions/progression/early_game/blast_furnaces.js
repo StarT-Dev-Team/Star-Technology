@@ -40,6 +40,11 @@ ServerEvents.recipes((event) => {
     // === SBF ===
     const coalType = ['coal', 'charcoal'];
 
+    /**
+     * @param {string} feType
+     * @param {number} baseTime
+     * @param {number} cokeScaler
+     */
     const ironType = (feType, baseTime, cokeScaler) => {
         const naming = feType.split(':')[1];
         coalType.forEach((coal) => {

@@ -224,8 +224,13 @@ ServerEvents.recipes((event) => {
     // Plasma Turbine Recipes
     event.remove({ type: 'gtceu:plasma_generator' });
 
+    /**
+     * @param {string} type
+     * @param {number} duration
+     * @param {boolean} ifGas
+     */
     const plasmaTurbine = (type, duration, ifGas) => {
-        let quantity = ifGas === true ? 5 : 1;
+        let quantity = ifGas ? 5 : 1;
         event.recipes.gtceu
             .plasma_generator(id(`${type}_from_${type}_plasma`))
             .inputFluids(`gtceu:${type}_plasma ${quantity}`)
@@ -234,8 +239,14 @@ ServerEvents.recipes((event) => {
             .EUt(-2048);
     };
 
+    /**
+     * @param {string} type
+     * @param {string} output
+     * @param {number} duration
+     * @param {boolean} ifGas
+     */
     const plasmaTurbineUnique = (type, output, duration, ifGas) => {
-        let quantity = ifGas === true ? 5 : 1;
+        let quantity = ifGas ? 5 : 1;
         event.recipes.gtceu
             .plasma_generator(id(`${output}_from_${type}_plasma`))
             .inputFluids(`gtceu:${type}_plasma ${quantity}`)
@@ -259,6 +270,11 @@ ServerEvents.recipes((event) => {
         event.remove({ output: `gtceu:${type}_turbine_blade` });
         event.remove({ id: `gtceu:assembler/assemble_${type}_turbine_blade` });
     });
+
+    /**
+     * @param {string} type
+     * @param {string} Fluid
+     */
     const turbineBlade = (type, Fluid) => {
         event.recipes.gtceu
             .assembler(id(`${type}_turbine_blade`))

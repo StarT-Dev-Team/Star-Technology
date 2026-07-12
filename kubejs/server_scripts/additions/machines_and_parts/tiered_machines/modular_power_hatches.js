@@ -19,6 +19,9 @@ ServerEvents.recipes((event) => {
 
     const components = global.componentMaterials;
 
+    /**
+     * @param {'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv'} tierKey
+     */
     function modularHatch(tierKey) {
         const tierData = components[tierKey];
 

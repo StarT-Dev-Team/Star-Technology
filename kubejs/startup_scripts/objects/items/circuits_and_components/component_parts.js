@@ -1,4 +1,5 @@
 StartupEvents.registry('item', (event) => {
+    /** @param {string} tier */
     const partTiers = (tier) => {
         event
             .create(`${tier}_computational_matrix`)

@@ -1,6 +1,11 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} casingId
+     */
     const casing = (type, material, casingId) => {
         event
             .shaped(Item.of(`2x ${casingId}:${type}_casing`), ['PHP', 'PFP', 'PWP'], {
@@ -52,6 +57,11 @@ ServerEvents.recipes((event) => {
     casing('manganin', 'manganin', 'kubejs');
     casing('galvanized_steel', 'galvanized_steel', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} casingId
+     */
     const casingDouble = (type, material, casingId) => {
         event
             .shaped(Item.of(`${casingId}:${type}_casing`, 2), ['PHP', 'PFP', 'PWP'], {
@@ -86,6 +96,11 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VH[GTValues.MV])
         .circuit(6);
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} casingId
+     */
     const turbine = (type, material, casingId) => {
         event
             .shaped(Item.of(`${casingId}:${type}_turbine_casing`, 2), ['PHP', 'PFP', 'PWP'], {
@@ -109,6 +124,12 @@ ServerEvents.recipes((event) => {
     turbine('enriched_naquadah', 'enriched_naquadah', 'kubejs');
     turbine('nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} frame
+     * @param {string} casingId
+     */
     const firebox = (type, material, frame, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_firebox_casing`, ['PRP', 'RFR', 'PRP'], {
@@ -123,6 +144,12 @@ ServerEvents.recipes((event) => {
     firebox('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     firebox('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} frame
+     * @param {string} casingId
+     */
     const heatEscape = (type, material, frame, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_heat_escape_casing`, ['PTP', 'RFR', 'PTP'], {
@@ -137,6 +164,12 @@ ServerEvents.recipes((event) => {
     heatEscape('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     heatEscape('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} frame
+     * @param {string} casingId
+     */
     const gearbox = (type, material, frame, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_gearbox`, ['PHP', 'GFG', 'PWP'], {
@@ -161,6 +194,12 @@ ServerEvents.recipes((event) => {
     gearbox('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     gearbox('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} pipe
+     * @param {string} casingId
+     */
     const pipe = (type, material, pipe, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_pipe_casing`, ['PLP', 'LFL', 'PLP'], {
@@ -183,6 +222,13 @@ ServerEvents.recipes((event) => {
     pipe('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     pipe('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} pipe
+     * @param {string} casingId
+     * @param {string} usedCasing
+     */
     const engineIntake = (type, material, pipe, casingId, usedCasing) => {
         event
             .shaped(`2x ${casingId}:${type}_engine_intake_casing`, ['PHP', 'RFR', 'PWP'], {
@@ -246,6 +292,11 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
+    /**
+     * @param {string} nameCasing
+     * @param {string} plate
+     * @param {string} frameMat
+     */
     const ultimateCasing = (nameCasing, plate, frameMat) => {
         event.recipes.gtceu
             .assembler(id(`${nameCasing}_casing`))
@@ -269,6 +320,12 @@ ServerEvents.recipes((event) => {
     ultimateCasing('tectonic_defiance', 'vastaqalloy_cr_4200x', 'melastrium_mox');
     ultimateCasing('true_revitilization', 'soul_ascendant_cuperite', 'soul_infused');
 
+    /**
+     * @param {string} nameCasing
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {string} researched
+     */
     const specialUltimateCasing = (nameCasing, inputs, fluids, researched) => {
         event.recipes.gtceu
             .assembly_line(id(`${nameCasing}`))
@@ -480,6 +537,9 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/palladium_substation');
 
+    /**
+     * @param {keyof typeof global.componentMaterials} tier
+     */
     const hermeticCasing = (tier) => {
         const casingMaterial = global.componentMaterials[tier].materials.tierMaterial;
         const pipeMaterial = global.componentMaterials[tier].materials.pipeMaterial;
@@ -507,7 +567,7 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VH[GTValues.LV]);
     };
 
-    ['luv', 'zpm', 'uv', 'uhv'].forEach((tier) => {
+    /** @type {const} */ (['luv', 'zpm', 'uv', 'uhv']).forEach((tier) => {
         hermeticCasing(tier);
     });
 

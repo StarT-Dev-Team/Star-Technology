@@ -87,13 +87,13 @@ ServerEvents.recipes((event) => {
         .duration(360)
         .EUt(112);
 
-    [
+    /** @type {const} */ ([
         { chip: 'silicon', voltage: 'mv', n: 1, dura: 200 },
         { chip: 'phosphorus', voltage: 'hv', n: 4, dura: 160 },
         { chip: 'naquadah', voltage: 'ev', n: 8, dura: 120 },
         { chip: 'neutronium', voltage: 'iv', n: 16, dura: 80 },
         { chip: 'draco', voltage: 'uv', n: 64, dura: 60 },
-    ].forEach((tier) => {
+    ]).forEach((tier) => {
         let modID = tier.chip !== 'draco' ? 'gtceu' : 'kubejs';
         event.recipes.gtceu
             .cutter(id(`${tier.chip}_chip`))
@@ -191,12 +191,12 @@ ServerEvents.recipes((event) => {
             .EUt(128);
     });
 
-    [
+    /** @type {const} */ ([
         // free lenses: white, l_gray, lime, magenta
         { type: 'naquadah', n: 1, time: 900, voltage: 'ev' },
         { type: 'neutronium', n: 2, time: 500, voltage: 'iv' },
         { type: 'draco', n: 8, time: 200, voltage: 'luv' },
-    ].forEach((wafer) => {
+    ]).forEach((wafer) => {
         const { type, n, time, voltage } = wafer;
         event.recipes.gtceu
             .laser_engraver(id(`engrave_ae2_soc_${type}`))
@@ -208,13 +208,13 @@ ServerEvents.recipes((event) => {
             .cleanroom(CleanroomType.CLEANROOM);
     });
 
-    [
+    /** @type {const} */ ([
         { type: 'silicon', n: 1, time: 900, voltage: 'mv' },
         { type: 'phosphorus', n: 4, time: 500, voltage: 'hv' },
         { type: 'naquadah', n: 8, time: 200, voltage: 'ev' },
         { type: 'neutronium', n: 16, time: 50, voltage: 'iv' },
         { type: 'draco', n: 64, time: 20, voltage: 'luv' },
-    ].forEach((wafer) => {
+    ]).forEach((wafer) => {
         const { type, n, time, voltage } = wafer;
         event.recipes.gtceu
             .laser_engraver(id(`engrave_acu_wafer_${type}`))

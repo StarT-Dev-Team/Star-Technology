@@ -152,6 +152,11 @@ ServerEvents.recipes((event) => {
 
     // Processing Line
 
+    /**
+     * @param {string} type
+     * @param {number} quantityBuckets
+     * @param {string[]} outputs
+     */
     const entropyVoid = (type, quantityBuckets, outputs) => {
         event.recipes.gtceu
             .cyclonic_sifter(id(`${type}_saturation_voidic_excression`))
@@ -166,6 +171,11 @@ ServerEvents.recipes((event) => {
     entropyVoid('moderate', 50, ['gtceu:tempered_voidic_slurry 18500']);
     entropyVoid('low', 50, ['gtceu:lethargic_voidic_slurry 18500']);
 
+    /**
+     * @param {string} slurryType
+     * @param {string} state1
+     * @param {string} state2
+     */
     const quantumDecomp = (slurryType, state1, state2) => {
         event.recipes.gtceu
             .manifold_centrifuge(id(`${slurryType}_voidic_slurry`))
@@ -178,6 +188,10 @@ ServerEvents.recipes((event) => {
     quantumDecomp('tempered', 'beta', 'epsilon');
     quantumDecomp('lethargic', 'alpha', 'delta');
 
+    /**
+     * @param {string} state
+     * @param {number} time
+     */
     const voidState = (state, time) => {
         event.recipes.gtceu
             .centrifuge(id(`${state}_sludge_to_residue`))
@@ -224,6 +238,13 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UIV]);
 
     // Voidic Metals
+
+    /**
+     * @param {string} Material
+     * @param {string[]} inputs
+     * @param {string} VoidType
+     * @param {number} PerSeconds
+     */
     const voidicMetal = (Material, inputs, VoidType, PerSeconds) => {
         event.recipes.gtceu
             .draco_infusion(id(`${Material}_dust`))

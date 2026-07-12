@@ -29,6 +29,12 @@ ServerEvents.recipes((event) => {
         6: 'start_core:neutronium_fluid_cell',
     };
 
+    /**
+     * @param {string} type
+     * @param {keyof typeof FLUID_CELL_TYPE} tier
+     * @param {string | string[]} composition
+     * @param {string | string[]} decomposition
+     */
     const nuclearRod = (type, tier, composition, decomposition) => {
         const cell = FLUID_CELL_TYPE[tier];
         let blend = composition;

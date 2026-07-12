@@ -29,12 +29,12 @@ ServerEvents.recipes((event) => {
         .duration(600)
         .EUt(GTValues.VHA[GTValues.LuV]);
 
-    [
+    /** @type {const} */ ([
         { tier: 'luv', researchItem: 'gtceu:extreme_combustion_engine' },
         { tier: 'zpm', researchItem: 'start_core:luv_combustion_module', cwuT: 24 },
         { tier: 'uv', researchItem: 'start_core:zpm_combustion_module', cwuT: 64 },
         { tier: 'uev', researchItem: 'start_core:uv_combustion_module', cwuT: 160 },
-    ].forEach((machine) => {
+    ]).forEach((machine) => {
         const machineType = machine.tier === 'luv' || machine.tier === 'zpm' ? 'combustion' : 'rocket';
         const circuitCount = machineType === 'rocket' ? 8 : 6;
         const plateCount = machineType === 'rocket' ? 4 : 2;

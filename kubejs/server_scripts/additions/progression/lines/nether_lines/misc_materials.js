@@ -41,6 +41,10 @@ ServerEvents.recipes((event) => {
         .circuit(1)
         .EUt(GTValues.VA[GTValues.UHV]);
 
+    /**
+     * @param {string} type
+     * @param {number} size
+     */
     const warpedMaceration = (type, size) => {
         event.recipes.gtceu
             .macerator(id(`warped_dust_nether_from_${type.split(':')[1]}`))
@@ -126,7 +130,7 @@ ServerEvents.recipes((event) => {
             .notConsumableFluid('minecraft:lava 1000')
             .itemInputs(`${type.consumedAmount}x ${type.consumedSolid}`)
             .inputFluids(`${type.consumedFluid} 500`)
-            .circuit(`${type.circ}`)
+            .circuit(type.circ)
             .itemOutputs(`${type.output}x ${type.stone}`)
             .duration(300)
             .EUt(type.energy);

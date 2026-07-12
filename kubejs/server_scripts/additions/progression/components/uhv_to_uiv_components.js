@@ -4,9 +4,11 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /**
+     * @param {'uhv' | 'uev' | 'uiv'} tierKey
+     */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
-        if (!data) return;
 
         const {
             tiers: { tier, tier1 },
@@ -23,16 +25,28 @@ ServerEvents.recipes((event) => {
                 miscMaterial,
                 superconductor,
             },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { cwuD, EUTD },
-                special: { cwuS, EUTS },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = data;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { cwuD, EUTD },
+            special: { cwuS, EUTS },
+        } = tierResearchData || {
+            default: { cwuD: 0, EUTD: 0 },
+            special: { cwuS: 0, EUTS: 0 },
+        };
 
+        /** @param {number} base */
         const b2exponentialMultiplier = (base) => base * Math.pow(2, scaler);
+        /** @param {number} base */
         const scaled = (base) => base * scaler;
 
+        /**
+         * @param {string} type
+         * @param {string[]} inputs
+         * @param {string[]} fluids
+         */
         const components = (type, inputs, fluids) => {
             let typeSpecial = ['field_generator', 'emitter', 'sensor'].includes(type);
 
@@ -204,6 +218,11 @@ ServerEvents.recipes((event) => {
             .EUt(EU * 4)
             .circuit(1);
 
+        /**
+         * @param {string} type
+         * @param {string[]} inputs
+         * @param {string[]} fluids
+         */
         const mtscfComponents = (type, inputs, fluids) => {
             event.recipes.gtceu
                 .component_synthesis_forge(id(`${tier}_${type}`))

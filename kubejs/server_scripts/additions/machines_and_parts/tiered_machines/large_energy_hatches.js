@@ -10,16 +10,20 @@ ServerEvents.recipes((event) => {
 
     const components = global.componentMaterials;
 
+    /**
+     * @param {'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv'} tierKey
+     * @param {'gtceu' | 'kubejs'} coilMod
+     */
     function highAmphatches(tierKey, coilMod) {
         const tierData = components[tierKey];
-
         if (!tierData) return;
 
         const {
             tiers: { tier },
             materials: { tierMaterial, cable, solder },
-            scaling: { scaler, EU },
+            scaling: tierScalingData,
         } = tierData;
+        const { scaler, EU } = tierScalingData || { scaler: 1, EU: 1 };
 
         [
             { type: 'input', laserType: 'target', laserPart: 'sensor' },

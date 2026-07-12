@@ -18,6 +18,11 @@ ServerEvents.recipes((event) => {
 
     //storage cells
 
+    /**
+     * @param {number} tier
+     * @param {string} type
+     * @param {string} mat
+     */
     const packaging = (tier, type, mat) => {
         //Base
         event.remove({ output: `ae2:${type}_storage_cell_${tier}k` });
@@ -80,14 +85,12 @@ ServerEvents.recipes((event) => {
             .EUt(7);
     };
 
-    //Duals
-    let tierCons;
-    let cellType;
+    // Duals
 
     ['dual_cell_housing', 'mega_dual_cell_housing'].forEach((type) => {
         event.remove({ output: `expandedae:${type}` });
-        tierCons = type === 'dual_cell_housing' ? 'MV' : 'IV';
-        cellType = type === 'dual_cell_housing' ? 'ae2:' : 'megacells:mega_';
+        const tierCons = type === 'dual_cell_housing' ? 'MV' : 'IV';
+        const cellType = type === 'dual_cell_housing' ? 'ae2:' : 'megacells:mega_';
 
         event.recipes.gtceu
             .canner(id(`${type}`))
@@ -148,6 +151,9 @@ ServerEvents.recipes((event) => {
 
     //crafting storage
 
+    /**
+     * @param {number} tier
+     */
     const craftingStorage = (tier) => {
         //Base
         event.remove({ output: `ae2:${tier}k_crafting_storage` });
@@ -184,7 +190,7 @@ ServerEvents.recipes((event) => {
             .EUt(7);
     };
 
-    const transformerDict = {
+    const transformerDict = /** @type {const} */ ({
         4: ['ulv', 1, 'wrought_iron'],
         16: ['lv', 2, 'steel'],
         64: ['mv', 4, 'aluminium'],
@@ -195,14 +201,19 @@ ServerEvents.recipes((event) => {
         '64k': ['zpm', 128, 'naquadah_alloy'],
         '256k': ['uv', 256, 'darmstadtium'],
         '1m': ['uhv', 512, 'neutronium'],
-    };
+    });
 
+    /**
+     * @param {number} tier
+     */
     const expandedAccelerator = (tier) => {
         const suffixList = ['', 'k', 'm'];
         [0, 1].forEach((suffixPos) => {
             const previous = `${tier === 1 ? 256 : tier / 4}${suffixList[suffixPos]}`;
             const lower = `${tier === 1 ? 512 : tier / 2}${suffixList[suffixPos]}`;
-            const current = `${tier}${tier === 1 ? suffixList[suffixPos + 1] : suffixList[suffixPos]}`;
+            const current = /** @type {keyof typeof transformerDict} */ (
+                `${tier}${tier === 1 ? suffixList[suffixPos + 1] : suffixList[suffixPos]}`
+            );
 
             const voltage = transformerDict[current][0];
             const previousAcceleratorCraft =
@@ -246,6 +257,11 @@ ServerEvents.recipes((event) => {
         expandedAccelerator(tier);
     });
 
+    /**
+     * @param {string} output
+     * @param {string} catalyst
+     * @param {boolean} Mega
+     */
     const canner = (output, catalyst, Mega) => {
         event.remove({ output: `ae2:crafting_${output}` });
         event.recipes.gtceu

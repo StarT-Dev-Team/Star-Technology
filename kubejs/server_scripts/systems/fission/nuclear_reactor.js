@@ -23,6 +23,13 @@ ServerEvents.recipes((event) => {
     };
 
     //Fuels
+
+    /**
+     * @param {string} type
+     * @param {keyof typeof COOLANT} tier
+     * @param {number} modifier
+     * @param {number} boost
+     */
     let nuclearReactor = (type, tier, modifier, boost) => {
         let coolant = COOLANT[tier];
 

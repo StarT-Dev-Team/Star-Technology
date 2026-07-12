@@ -37,7 +37,9 @@ ServerEvents.recipes((event) => {
         const { result, amount, ingredients } = alloy;
 
         let resultStack = `${amount !== 1 ? `${amount}x ` : ''}gtceu:${result}`;
+        /** @type {string[]} */
         let dustIngredients = [];
+        /** @type {string[]} */
         let ingotIngredients = [];
 
         ingredients.forEach((ingredient) => {

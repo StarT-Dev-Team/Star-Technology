@@ -1,4 +1,11 @@
 StartupEvents.registry('item', (event) => {
+    /**
+     * @param {string} type
+     * @param {GTTier} tier
+     * @param {string} composition
+     * @param {string} depeletedComposition
+     * @param {boolean} boolsumption
+     */
     const nuclearRod = (type, tier, composition, depeletedComposition, boolsumption) => {
         let activeRod = event
             .create(`${type}_fuel_rod`)

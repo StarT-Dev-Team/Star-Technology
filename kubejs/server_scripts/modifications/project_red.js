@@ -1,6 +1,8 @@
 //requires: projectred_core
 ServerEvents.recipes((event) => {
+    /** @param {string} id */
     const core = (id) => `projectred_core:${id}`;
+    /** @param {string} id */
     const transmission = (id) => `projectred_transmission:${id}`;
 
     [
