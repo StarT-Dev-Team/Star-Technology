@@ -6,7 +6,10 @@ ServerEvents.recipes((event) => {
 
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
-        if (!data) return;
+        if (!data) {
+            console.error(`Could not find tier data for ${tierKey}`);
+            return;
+        }
 
         const {
             tiers: { tier, tier1 },
@@ -52,7 +55,7 @@ ServerEvents.recipes((event) => {
                 .duration(600)
                 .EUt(EU);
 
-            assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
+            assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
                 researchRecipeBuilder
                     .researchStack(Item.of(`gtceu:${tier1}_${type}`))
                     .EUt(typeSpecial ? EUTS : EUTD)

@@ -33,7 +33,10 @@ ServerEvents.recipes((event) => {
 
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
-        if (!data) return;
+        if (!data) {
+            console.error(`Could not find tier data for ${tierKey}`);
+            return;
+        }
 
         const {
             tiers: { tier, tier1, tier2 },
@@ -91,7 +94,7 @@ ServerEvents.recipes((event) => {
 
             let dataItem = getDataItem(typeSpecial ? cwuS : cwuD);
 
-            cpaRecipe = cpaRecipe.stationResearch((researchRecipeBuilder) =>
+            cpaRecipe.stationResearch((researchRecipeBuilder) =>
                 researchRecipeBuilder
                     .researchStack(Item.of(researched))
                     .EUt(typeSpecial ? EUTS : EUTD)
