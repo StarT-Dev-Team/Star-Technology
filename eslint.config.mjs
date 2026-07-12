@@ -151,7 +151,7 @@ export default [
             ],
             'id-match': [
                 'error',
-                '^\\$?([a-z][a-zA-Z0-9]*|[A-Z][A-Z0-9]*(_[A-Z0-9]+)*|\\$[A-Z][a-zA-Z0-9]*|[a-z])$',
+                '^\\$?([a-z][a-zA-Z0-9]*|[A-Z][A-Z0-9]*(_[A-Z0-9]+)*|\\$[A-Z][a-zA-Z0-9]*|[a-z]|\\$)$',
                 {
                     properties: true,
                     onlyDeclarations: true,
