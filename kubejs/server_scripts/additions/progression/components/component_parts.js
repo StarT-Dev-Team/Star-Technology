@@ -81,6 +81,25 @@ ServerEvents.recipes((event) => {
 
         const getDataItem = global.getDataItem;
 
+        /**
+         * @typedef ItemIngredientObj
+         * @property {number} count
+         * @property {string} itemId
+         */
+
+        /**
+         * @typedef FluidIngredientObj
+         * @property {number} amount
+         * @property {string} fluidId
+         */
+
+        /**
+         * @param {string} type
+         * @param {ItemIngredientObj[]} items
+         * @param {FluidIngredientObj[]} fluids
+         * @param {number} duration
+         * @param {string} researched
+         */
         const componentPart = (type, items, fluids, duration, researched) => {
             const typeSpecial = ['computational_matrix', 'catalyst_core'].includes(type);
 
@@ -120,7 +139,7 @@ ServerEvents.recipes((event) => {
                     )
                 )
                 .CWUt(typeSpecial ? cwuS : cwuD)
-                .totalCWU(typeSpecial ? cwuS : cwuD * typeSpecial ? duraS : duraD * 20)
+                .totalCWU(typeSpecial ? cwuS : cwuD * (typeSpecial ? duraS : duraD * 20))
                 .EUt(typeSpecial ? EUTS : EUTD);
 
             const mtscfItems = items.map((itemObj) => {

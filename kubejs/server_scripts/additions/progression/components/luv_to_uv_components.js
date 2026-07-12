@@ -49,6 +49,23 @@ ServerEvents.recipes((event) => {
         /** @param {number} base */
         const scaled = (base) => base * scaler;
 
+        /**
+         * @typedef ItemIngredientObj
+         * @property {number} count
+         * @property {string} itemId
+         */
+
+        /**
+         * @typedef FluidIngredientObj
+         * @property {number} amount
+         * @property {string} fluidId
+         */
+
+        /**
+         * @param {string} type
+         * @param {ItemIngredientObj[]} items
+         * @param {FluidIngredientObj[]} fluids
+         */
         const componentTypesAssemblyLine = (type, items, fluids) => {
             event.remove({ id: `gtceu:assembly_line/${type}_${tier}` });
 

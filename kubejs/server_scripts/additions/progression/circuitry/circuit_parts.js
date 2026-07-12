@@ -66,8 +66,26 @@ ServerEvents.recipes((event) => {
         // 180
     );
 
+    /**
+     * @typedef ItemIngredientObj
+     * @property {number} count
+     * @property {string} itemId
+     */
+
+    /**
+     * @typedef FluidIngredientObj
+     * @property {number} amount
+     * @property {string} fluidId
+     */
+
     // === Draco-QMDs ===
+    /**
+     * @param {string} type
+     * @param {ItemIngredientObj[]} items
+     * @param {FluidIngredientObj[]} fluids
+     */
     const dracoQMD = (type, items, fluids) => {
+        /** @type {string[]} */
         const cpaItems = items.map((itemObj) => {
             return `${itemObj.count}x ${itemObj.itemId}`;
         });

@@ -46,6 +46,23 @@ ServerEvents.recipes((event) => {
         /** @param {number} base */
         const scaled = (base) => base * scaler;
 
+        /**
+         * @typedef ItemIngredientObj
+         * @property {number} count
+         * @property {string} itemId
+         */
+
+        /**
+         * @typedef FluidIngredientObj
+         * @property {number} amount
+         * @property {string} fluidId
+         */
+
+        /**
+         * @param {string} type
+         * @param {ItemIngredientObj[]} items
+         * @param {FluidIngredientObj[]} fluids
+         */
         const components = (type, items, fluids) => {
             const typeSpecial = ['field_generator', 'emitter', 'sensor'].includes(type);
 
