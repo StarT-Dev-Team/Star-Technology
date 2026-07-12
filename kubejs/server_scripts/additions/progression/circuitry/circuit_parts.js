@@ -145,8 +145,8 @@ ServerEvents.recipes((event) => {
             { count: 1, itemId: 'gtceu:iron_titanium_oxide_dust' },
         ],
         [
-            { amount: 216, fluidId: `gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate` },
-            { amount: 324, fluidId: `gtceu:naquadated_soldering_alloy` },
+            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 324, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
 
@@ -158,8 +158,8 @@ ServerEvents.recipes((event) => {
             { count: 1, itemId: 'gtceu:aurourium_foil' },
         ],
         [
-            { amount: 216, fluidId: `gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate` },
-            { amount: 324, fluidId: `gtceu:naquadated_soldering_alloy` },
+            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 324, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
 
@@ -171,8 +171,8 @@ ServerEvents.recipes((event) => {
             { count: 1, itemId: 'gtceu:mythrolic_alloy_foil' },
         ],
         [
-            { amount: 144, fluidId: `gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate` },
-            { amount: 216, fluidId: `gtceu:naquadated_soldering_alloy` },
+            { amount: 144, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 216, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
 
@@ -184,8 +184,8 @@ ServerEvents.recipes((event) => {
             { count: 4, itemId: 'gtceu:bismuth_iridate_foil' },
         ],
         [
-            { amount: 216, fluidId: `gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate` },
-            { amount: 324, fluidId: `gtceu:naquadated_soldering_alloy` },
+            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 324, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
 
@@ -197,8 +197,8 @@ ServerEvents.recipes((event) => {
             { count: 8, itemId: 'gtceu:fine_stellarium_wire' },
         ],
         [
-            { amount: 432, fluidId: `gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate` },
-            { amount: 648, fluidId: `gtceu:naquadated_soldering_alloy` },
+            { amount: 432, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 648, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
 });
