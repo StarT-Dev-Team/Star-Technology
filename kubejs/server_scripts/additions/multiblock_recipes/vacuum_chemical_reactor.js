@@ -1,6 +1,11 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /**
+     * @param {GTTier} tier
+     * @param {string} rotor
+     * @param {string} casing
+     */
     const pumpBlockTiers = (tier, rotor, casing) => {
         event
             .shaped(`start_core:${tier}_vacuum_pump`, ['ABA', 'CDC', 'ABA'], {

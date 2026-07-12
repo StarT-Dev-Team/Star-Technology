@@ -12,6 +12,12 @@ ServerEvents.recipes((event) => {
     const dustDepleted = 'gtceu:18_crown_6 100';
     const dustCryptand = 'gtceu:cryptand_k 1';
 
+    /**
+     * @param {string} type
+     * @param {number} circ
+     * @param {number} eut
+     * @param {string} output
+     */
     const essenceFluid = (type, circ, eut, output) => {
         event.recipes.gtceu
             .essence_burning(id(`${type}_essence_burning_${circ}`))
@@ -21,6 +27,13 @@ ServerEvents.recipes((event) => {
             .EUt(eut)
             .circuit(circ);
     };
+
+    /**
+     * @param {string} type
+     * @param {number} circ
+     * @param {number} eut
+     * @param {string} output
+     */
     const essenceSolid = (type, circ, eut, output) => {
         event.recipes.gtceu
             .essence_burning(id(`${type}_essence_burning_${circ}`))

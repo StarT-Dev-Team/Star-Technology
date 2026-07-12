@@ -4,7 +4,7 @@ ServerEvents.recipes((event) => {
 
     const researchBuilder = global.researchBuilder;
     // global.researchBuilder = (machineType, recId, inputsI, inputsF, outputsI, duration, cwuT, totalCWU, euT, researched)
-    const riftAss = 'riftic_infusion_assembly';
+    const riftAss = /** @type {const} */ ('riftic_infusion_assembly');
     // const assLine = 'assembly_line';
 
     researchBuilder(

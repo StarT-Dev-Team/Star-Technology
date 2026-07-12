@@ -84,6 +84,14 @@ ServerEvents.recipes((event) => {
 
     event.remove({ mod: 'placeablemaxwell' });
 
+    /**
+     * @param {string} name
+     * @param {GTTier} tier
+     * @param {string} dye
+     * @param {string} dye2
+     * @param {string} wire
+     * @param {number} scaler
+     */
     const cat = (name, tier, dye, dye2, wire, scaler) => {
         event.recipes.gtceu
             .catto_shrine(id(name))
@@ -166,11 +174,15 @@ ServerEvents.recipes((event) => {
 });
 
 ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
+    /** @typedef {internal.net.minecraft.world.level.levelgen.structure.Structure} Structure */
+
     let { level, player } = event;
-    if (!(level instanceof ServerLevel)) return;
+    if (!(level instanceof $ServerLevel)) return;
     let registryAccess = level.registryAccess();
-    let structureRegistry = registryAccess.registryOrThrow(Registries.STRUCTURE);
-    let structureKey = structureRegistry.getResourceKey(structureRegistry.get('minecraft:ruined_portal_nether')).get();
+    let structureRegistry = registryAccess.registryOrThrow($Registries.STRUCTURE);
+    let structureKey = structureRegistry
+        .getResourceKey(/** @type {Structure} */ (structureRegistry.get('minecraft:ruined_portal_nether')))
+        .get();
     let structureHolder = structureRegistry.getHolderOrThrow(structureKey);
 
     if (!structureHolder) {
@@ -179,15 +191,15 @@ ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
     }
 
     let structure = structureHolder.get();
-    let holderSet = HolderSet.direct([structureHolder]);
-    let origin = new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
+    let holderSet = $HolderSet.direct([structureHolder]);
+    let origin = new $BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
     let generator = level.getChunkSource().getGenerator();
     let result = generator.findNearestMapStructure(level, holderSet, origin, 100, false);
 
-    if (result !== null) {
+    if (result) {
         let pos = result.getFirst();
-        let chunkPos = new ChunkPos(pos);
-        let sectionPos = SectionPos.of(chunkPos, level.getMinSection());
+        let chunkPos = new $ChunkPos(pos);
+        let sectionPos = $SectionPos.of(chunkPos, level.getMinSection());
         let chunk = level.getChunk(chunkPos.x, chunkPos.z);
         let start = level.structureManager().getStartForStructure(sectionPos, structure, chunk);
         if (start && start.isValid()) {

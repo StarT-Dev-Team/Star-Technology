@@ -4,9 +4,15 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /**
+     * @param {'luv' | 'zpm' | 'uv'} tierKey
+     */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
-        if (!data) return;
+        if (!data) {
+            console.error(`Could not find tier data for ${tierKey}`);
+            return;
+        }
 
         const {
             tiers: { tier, tier1, tier2 },
@@ -26,202 +32,116 @@ ServerEvents.recipes((event) => {
                 primMagnet,
                 miscMaterial,
             },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { ifDRS, cwuD, duraD, EUTD },
-                special: { ifSRS, cwuS, duraS, EUTS },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = data;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { ifDRS, cwuD, duraD, EUTD },
+            special: { ifSRS, cwuS, duraS, EUTS },
+        } = tierResearchData || {
+            default: { ifDRS: false, cwuD: 0, duraD: 0, EUTD: 0 },
+            special: { ifSRS: false, cwuS: 0, duraS: 0, EUTS: 0 },
+        };
 
+        /** @param {number} base */
         const b2exponentialMultiplier = (base) => base * Math.pow(2, scaler);
+        /** @param {number} base */
         const scaled = (base) => base * scaler;
 
-        const componentTypesAssemblyLine = (type, inputs, fluids) => {
+        /**
+         * @typedef ItemIngredientObj
+         * @property {number} count
+         * @property {string} itemId
+         */
+
+        /**
+         * @typedef FluidIngredientObj
+         * @property {number} amount
+         * @property {string} fluidId
+         */
+
+        /**
+         * @param {string} type
+         * @param {ItemIngredientObj[]} items
+         * @param {FluidIngredientObj[]} fluids
+         */
+        const componentTypesAssemblyLine = (type, items, fluids) => {
             event.remove({ id: `gtceu:assembly_line/${type}_${tier}` });
 
-            let typeSpecial = ['field_generator', 'emitter', 'sensor'].includes(type);
+            const typeSpecial = ['field_generator', 'emitter', 'sensor'].includes(type);
+
+            const assemblyLineItems = items.map((itemObj) => {
+                return `${itemObj.count}x ${itemObj.itemId}`;
+            });
+
+            const assemblyLineFluids = fluids.map((fluidObj) => {
+                return `${fluidObj.fluidId} ${fluidObj.amount}`;
+            });
 
             let assemblyLineRecipe = event.recipes.gtceu
                 .assembly_line(id(`${tier}_${type}`))
-                .itemInputs(inputs)
-                .inputFluids(fluids)
+                .itemInputs(assemblyLineItems)
+                .inputFluids(assemblyLineFluids)
                 .itemOutputs(`gtceu:${tier}_${type}`)
                 .duration(600)
                 .EUt(EU);
 
+            let nexusRecipe = event.recipes.gtceu
+                .component_nexus(id(`${tier}_${type}`))
+                .itemInputs(assemblyLineItems)
+                .inputFluids(assemblyLineFluids)
+                .itemOutputs(`gtceu:${tier}_${type}`)
+                .cleanroom(CleanroomType.getByName('stabilized'))
+                .duration(300)
+                .EUt(EU);
+
             if (tier === 'uv') {
-                assemblyLineRecipe = assemblyLineRecipe.inputFluids(`gtceu:${tierFluid} 576`);
+                assemblyLineRecipe.inputFluids(`gtceu:${tierFluid} 576`);
+                nexusRecipe.inputFluids(`gtceu:${tierFluid} 576`);
             }
 
-            if (typeSpecial) {
-                if (ifSRS) {
-                    assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
-                        researchRecipeBuilder
-                            .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                            .EUt(EUTS)
-                            .CWUt(cwuS)
-                    );
+            if ((ifSRS && typeSpecial) || ifDRS) {
+                assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
+                    researchRecipeBuilder
+                        .researchStack(Item.of(`gtceu:${tier1}_${type}`))
+                        .EUt(typeSpecial ? EUTS : EUTD)
+                        .CWUt(typeSpecial ? cwuS : cwuD)
+                );
 
-                    event.remove({ id: `gtceu:research_station/1_x_gtceu_${tier}_${type}` });
-                } else {
-                    assemblyLineRecipe = assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)'](
-                        (researchRecipeBuilder) =>
-                            researchRecipeBuilder
-                                .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                                .duration(duraS * 20)
-                                .EUt(EUTS)
-                    );
-
-                    event.remove({ id: `gtceu:scanner/1_x_gtceu_${tier}_${type}` });
-                }
+                event.remove({ id: `gtceu:research_station/1_x_gtceu_${tier}_${type}` });
             } else {
-                if (ifDRS) {
-                    assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
-                        researchRecipeBuilder
-                            .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                            .EUt(EUTD)
-                            .CWUt(cwuD)
-                    );
+                assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
+                    researchRecipeBuilder
+                        .researchStack(Item.of(`gtceu:${tier1}_${type}`))
+                        .duration(typeSpecial ? duraS : duraD * 20)
+                        .EUt(typeSpecial ? EUTS : EUTD)
+                );
 
-                    event.remove({ id: `gtceu:research_station/1_x_gtceu_${tier}_${type}` });
-                } else {
-                    assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-                        researchRecipeBuilder
-                            .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                            .duration(duraD * 20)
-                            .EUt(EUTD)
-                    );
-
-                    event.remove({ id: `gtceu:scanner/1_x_gtceu_${tier}_${type}` });
-                }
+                event.remove({ id: `gtceu:scanner/1_x_gtceu_${tier}_${type}` });
             }
-        };
 
-        componentTypesAssemblyLine(
-            'electric_motor',
-            [
-                `1x gtceu:long_magnetic_${primMagnet}_rod`,
-                `4x gtceu:long_${primMaterial}_rod`,
-                `4x gtceu:${primMaterial}_ring`,
-                `8x gtceu:${primMaterial}_round`,
-                `64x gtceu:fine_${wireMechanical}_wire`,
-                `2x gtceu:${cable}_single_cable`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(72)}`, `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`]
-        );
+            const mtscfItems = items.map((itemObj) => {
+                const { count, itemId } = itemObj;
+                const multiplier = count * scalerMCSF * 0.75;
 
-        componentTypesAssemblyLine(
-            'electric_pump',
-            [
-                `1x gtceu:${tier}_electric_motor`,
-                `1x gtceu:${pipeMaterial}_normal_fluid_pipe`,
-                `2x gtceu:${primMaterial}_plate`,
-                `8x gtceu:${primMaterial}_screw`,
-                `${scaled(2) + 2}x gtceu:${supRubber}_ring`,
-                `1x gtceu:${supMaterial}_rotor`,
-                `2x gtceu:${cable}_single_cable`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(72)}`, `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`]
-        );
+                const spoolCheck = itemId.match(/gtceu:fine_(.*)_wire/);
+                if (spoolCheck) return `${multiplier / 64}x gtceu:${spoolCheck[1]}_wire_spool`;
 
-        componentTypesAssemblyLine(
-            'conveyor_module',
-            [
-                `2x gtceu:${tier}_electric_motor`,
-                `2x gtceu:${primMaterial}_plate`,
-                `4x gtceu:${primMaterial}_ring`,
-                `16x gtceu:${primMaterial}_round`,
-                `4x gtceu:${primMaterial}_screw`,
-                `2x gtceu:${cable}_single_cable`,
-            ],
-            [
-                `gtceu:${solder} ${b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`,
-                `gtceu:${primRubber} ${scaled(1152)}`,
-            ]
-        );
+                const foilCheck = itemId.match(/gtceu:(.*)_foil/);
+                if (foilCheck) return `${multiplier / 64}x gtceu:${foilCheck[1]}_foil_ream`;
 
-        componentTypesAssemblyLine(
-            'electric_piston',
-            [
-                `1x gtceu:${tier}_electric_motor`,
-                `4x gtceu:${primMaterial}_plate`,
-                `4x gtceu:${primMaterial}_ring`,
-                `16x gtceu:${primMaterial}_round`,
-                `4x gtceu:${primMaterial}_rod`,
-                `1x gtceu:${supMaterial}_gear`,
-                `2x gtceu:small_${supMaterial}_gear`,
-                `2x gtceu:${cable}_single_cable`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(72)}`, `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`]
-        );
+                return `${multiplier}x ${itemId}`;
+            });
 
-        componentTypesAssemblyLine(
-            'robot_arm',
-            [
-                `4x gtceu:long_${primMaterial}_rod`,
-                `1x gtceu:${primMaterial}_gear`,
-                `3x gtceu:small_${primMaterial}_gear`,
-                `2x gtceu:${tier}_electric_motor`,
-                `1x gtceu:${tier}_electric_piston`,
-                `1x #gtceu:circuits/${tier}`,
-                `2x #gtceu:circuits/${tier1}`,
-                `4x #gtceu:circuits/${tier2}`,
-                `4x gtceu:${cable}_single_cable`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(144)}`, `gtceu:${lubricant} ${b2exponentialMultiplier(125)}`]
-        );
+            const mtscfFluids = fluids.map((fluidObj) => {
+                return `${fluidObj.fluidId} ${fluidObj.amount * scalerMCSF * 0.75}`;
+            });
 
-        componentTypesAssemblyLine(
-            'field_generator',
-            [
-                `1x gtceu:${primMaterial}_frame`,
-                `6x gtceu:${primMaterial}_plate`,
-                catalyst,
-                `2x gtceu:${tier}_emitter`,
-                `2x #gtceu:circuits/${tier}`,
-                `64x gtceu:fine_${superconductor}_wire`,
-                `64x gtceu:fine_${superconductor}_wire`,
-                `4x gtceu:${cable}_single_cable`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(288)}`]
-        );
-
-        componentTypesAssemblyLine(
-            'emitter',
-            [
-                `1x gtceu:${primMaterial}_frame`,
-                `1x gtceu:${tier}_electric_motor`,
-                `4x gtceu:long_${primMaterial}_rod`,
-                catalyst,
-                `2x #gtceu:circuits/${tier}`,
-                `64x gtceu:${miscMaterial}_foil`,
-                `32x gtceu:${miscMaterial}_foil`,
-                `4x gtceu:${cable}_single_cable`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(144)}`]
-        );
-
-        componentTypesAssemblyLine(
-            'sensor',
-            [
-                `1x gtceu:${primMaterial}_frame`,
-                `1x gtceu:${tier}_electric_motor`,
-                `4x gtceu:${primMaterial}_plate`,
-                catalyst,
-                `2x #gtceu:circuits/${tier}`,
-                `64x gtceu:${miscMaterial}_foil`,
-                `32x gtceu:${miscMaterial}_foil`,
-                `4x gtceu:${cable}_single_cable`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(144)}`]
-        );
-
-        const assemblyComponentMtCSF = (type, inputs, fluids) => {
             let mtscfRecipe = event.recipes.gtceu
                 .component_synthesis_forge(id(`${tier}_${type}`))
-                .itemInputs(inputs)
-                .inputFluids(fluids)
+                .itemInputs(mtscfItems)
+                .inputFluids(mtscfFluids)
                 .itemOutputs(`${scalerMCSF}x gtceu:${tier}_${type}`)
                 .duration(scalerMCSF * 600)
                 .stationResearch((researchRecipeBuilder) =>
@@ -248,137 +168,140 @@ ServerEvents.recipes((event) => {
                     )
                 )
                 .CWUt(320)
-                .totalCWU(384000) // 320 CWUt x 60 seconds x 20 ticks
+                .totalCWU(384000)
                 .EUt(EU * 4);
         };
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'electric_motor',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:long_magnetic_${primMagnet}_rod`,
-                `${4 * scalerMCSF * 0.75}x gtceu:long_${primMaterial}_rod`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_ring`,
-                `${8 * scalerMCSF * 0.75}x gtceu:${primMaterial}_round`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${wireMechanical}_wire_spool`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 1, itemId: `gtceu:long_magnetic_${primMagnet}_rod` },
+                { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
+                { count: 4, itemId: `gtceu:${primMaterial}_ring` },
+                { count: 8, itemId: `gtceu:${primMaterial}_round` },
+                { count: 64, itemId: `gtceu:fine_${wireMechanical}_wire` },
+                { count: 2, itemId: `gtceu:${cable}_single_cable` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
             ]
         );
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'electric_pump',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${pipeMaterial}_normal_fluid_pipe`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${8 * scalerMCSF * 0.75}x gtceu:${primMaterial}_screw`,
-                `${scalerMCSF * 0.75 * (scaled(2) + 2)}x gtceu:${supRubber}_ring`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${supMaterial}_rotor`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 1, itemId: `gtceu:${pipeMaterial}_normal_fluid_pipe` },
+                { count: 2, itemId: `gtceu:${primMaterial}_plate` },
+                { count: 8, itemId: `gtceu:${primMaterial}_screw` },
+                { count: scaled(2) + 2, itemId: `gtceu:${supRubber}_ring` },
+                { count: 1, itemId: `gtceu:${supMaterial}_rotor` },
+                { count: 2, itemId: `gtceu:${cable}_single_cable` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
             ]
         );
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'conveyor_module',
             [
-                `${2 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_ring`,
-                `${16 * scalerMCSF * 0.75}x gtceu:${primMaterial}_round`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_screw`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 2, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 2, itemId: `gtceu:${primMaterial}_plate` },
+                { count: 4, itemId: `gtceu:${primMaterial}_ring` },
+                { count: 16, itemId: `gtceu:${primMaterial}_round` },
+                { count: 4, itemId: `gtceu:${primMaterial}_screw` },
+                { count: 2, itemId: `gtceu:${cable}_single_cable` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${primRubber} ${scalerMCSF * 0.75 * scaled(1152)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: scaled(1152), fluidId: `gtceu:${primRubber}` },
             ]
         );
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'electric_piston',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_ring`,
-                `${16 * scalerMCSF * 0.75}x gtceu:${primMaterial}_round`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_rod`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${supMaterial}_gear`,
-                `${2 * scalerMCSF * 0.75}x gtceu:small_${supMaterial}_gear`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 4, itemId: `gtceu:${primMaterial}_plate` },
+                { count: 4, itemId: `gtceu:${primMaterial}_ring` },
+                { count: 16, itemId: `gtceu:${primMaterial}_round` },
+                { count: 4, itemId: `gtceu:${primMaterial}_rod` },
+                { count: 1, itemId: `gtceu:${supMaterial}_gear` },
+                { count: 2, itemId: `gtceu:small_${supMaterial}_gear` },
+                { count: 2, itemId: `gtceu:${cable}_single_cable` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(72)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
+                { amount: b2exponentialMultiplier(72), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
             ]
         );
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'robot_arm',
             [
-                `${4 * scalerMCSF * 0.75}x gtceu:long_${primMaterial}_rod`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_gear`,
-                `${3 * scalerMCSF * 0.75}x gtceu:small_${primMaterial}_gear`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_piston`,
-                `${1 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
-                `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier1}`,
-                `${4 * scalerMCSF * 0.75}x #gtceu:circuits/${tier2}`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
+                { count: 1, itemId: `gtceu:${primMaterial}_gear` },
+                { count: 3, itemId: `gtceu:small_${primMaterial}_gear` },
+                { count: 2, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 1, itemId: `gtceu:${tier}_electric_piston` },
+                { count: 1, itemId: `#gtceu:circuits/${tier}` },
+                { count: 2, itemId: `#gtceu:circuits/${tier1}` },
+                { count: 4, itemId: `#gtceu:circuits/${tier2}` },
+                { count: 4, itemId: `gtceu:${cable}_single_cable` },
             ],
             [
-                `gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(144)}`,
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
+                { amount: b2exponentialMultiplier(144), fluidId: `gtceu:${solder}` },
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
             ]
         );
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'field_generator',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${6 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${scalerMCSF * 0.75 * catalyst[0]}x ${catalyst.split(' ')[1]}`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${tier}_emitter`,
-                `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${superconductor}_wire_spool`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 6, itemId: `gtceu:${primMaterial}_plate` },
+                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: 2, itemId: `gtceu:${tier}_emitter` },
+                { count: 2, itemId: `#gtceu:circuits/${tier}` },
+                { count: 64, itemId: `gtceu:fine_${superconductor}_wire` },
+                { count: 64, itemId: `gtceu:fine_${superconductor}_wire` },
+                { count: 4, itemId: `gtceu:${cable}_single_cable` },
             ],
-            [`gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(288)}`]
+            [{ amount: b2exponentialMultiplier(288), fluidId: `gtceu:${solder}` }]
         );
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'emitter',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${4 * scalerMCSF * 0.75}x gtceu:long_${primMaterial}_rod`,
-                `${scalerMCSF * 0.75 * catalyst[0]}x ${catalyst.split(' ')[1]}`,
-                `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
-                `${1.5 * scalerMCSF * 0.75}x gtceu:${miscMaterial}_foil_ream`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
+                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: 2, itemId: `#gtceu:circuits/${tier}` },
+                { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
+                { count: 32, itemId: `gtceu:${miscMaterial}_foil` },
+                { count: 4, itemId: `gtceu:${cable}_single_cable` },
             ],
-            [`gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(144)}`]
+            [{ amount: b2exponentialMultiplier(144), fluidId: `gtceu:${solder}` }]
         );
 
-        assemblyComponentMtCSF(
+        componentTypesAssemblyLine(
             'sensor',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier}_electric_motor`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${scalerMCSF * 0.75 * catalyst[0]}x ${catalyst.split(' ')[1]}`,
-                `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
-                `${1.5 * scalerMCSF * 0.75}x gtceu:${miscMaterial}_foil_ream`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 1, itemId: `gtceu:${tier}_electric_motor` },
+                { count: 4, itemId: `gtceu:${primMaterial}_plate` },
+                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: 2, itemId: `#gtceu:circuits/${tier}` },
+                { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
+                { count: 32, itemId: `gtceu:${miscMaterial}_foil` },
+                { count: 4, itemId: `gtceu:${cable}_single_cable` },
             ],
-            [`gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(144)}`]
+            [{ amount: b2exponentialMultiplier(144), fluidId: `gtceu:${solder}` }]
         );
     };
 

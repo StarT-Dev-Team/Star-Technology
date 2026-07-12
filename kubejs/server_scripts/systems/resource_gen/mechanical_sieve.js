@@ -60,6 +60,10 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
+    /**
+     * @param {string} input
+     * @param {string[]} outputs
+     */
     const mechanicalSieving = (input, outputs) => {
         event.recipes.gtceu
             .mechanical_sieve(id(`${input.path}_sieving`))

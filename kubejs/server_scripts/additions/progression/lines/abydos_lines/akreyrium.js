@@ -165,7 +165,7 @@ ServerEvents.recipes((event) => {
 
     // Normal chemical reactor
     event.recipes.gtceu
-        .chemical_reactor(id('twink_muon_lighting'))
+        .chemical_reactor(id('twinkling_muon_lighting'))
         .inputFluids('gtceu:twinkling_muon_infusion_flux 1000', 'minecraft:lava 1000')
         .outputFluids('gtceu:glowing_muon_infusion_flux 1000')
         .duration(360)
@@ -180,28 +180,6 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_reactor(id('shining_muon_lighting'))
-        .inputFluids('gtceu:shining_muon_infusion_flux 1000', 'gtceu:lumium 288')
-        .outputFluids('gtceu:radiant_muon_infusion_flux 1000')
-        .duration(160)
-        .EUt(GTValues.VA[GTValues.UV]);
-
-    // Large chemical reactor
-    event.recipes.gtceu
-        .large_chemical_reactor(id('twinkling_muon_lighting'))
-        .inputFluids('gtceu:twinkling_muon_infusion_flux 1000', 'minecraft:lava 1000')
-        .outputFluids('gtceu:glowing_muon_infusion_flux 1000')
-        .duration(360)
-        .EUt(GTValues.VA[GTValues.LuV]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('glowing_muon_lighting'))
-        .inputFluids('gtceu:glowing_muon_infusion_flux 1000', 'gtceu:blaze 288')
-        .outputFluids('gtceu:shining_muon_infusion_flux 1000')
-        .duration(460)
-        .EUt(GTValues.VA[GTValues.ZPM]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('shining_muon_lighting'))
         .inputFluids('gtceu:shining_muon_infusion_flux 1000', 'gtceu:lumium 288')
         .outputFluids('gtceu:radiant_muon_infusion_flux 1000')
         .duration(160)
@@ -313,6 +291,12 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VA[GTValues.LuV]);
 
     // Injection
+
+    /**
+     * @param {string} akreyType
+     * @param {number} amount
+     * @param {string} catalyst
+     */
     const addInjectionRecipe = (akreyType, amount, catalyst) => {
         event.recipes.gtceu
             .injection_mixer(id(`${akreyType}_${amount}_${catalyst}`))

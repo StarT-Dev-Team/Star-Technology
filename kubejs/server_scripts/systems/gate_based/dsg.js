@@ -390,7 +390,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:raging_rimulatia 41472')
         .itemOutputs('kubejs:ascension_core')
         .duration(6000)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     event.recipes.gtceu
         .supreme_chemistry(id('dsg_enscription_plate'))
@@ -457,7 +457,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:dsg_stargate_rod_base')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     rotor(id('primordicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
@@ -494,7 +494,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:primordicly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     rotor(id('kaleidoscopicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
@@ -527,7 +527,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:kaleidoscopicly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     rotor(id('prismaticly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
@@ -564,7 +564,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:prismaticly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     riftEnh(id('faetic_stargate_rod'))
         .itemInputs('kubejs:prismaticly_infused_stargate_rod')
@@ -572,7 +572,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:faetic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     riftEnh(id('riftic_stargate_rod'))
         .itemInputs('kubejs:kaleidoscopicly_infused_stargate_rod')
@@ -580,7 +580,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:riftic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     riftEnh(id('temporic_stargate_rod'))
         .itemInputs('kubejs:primordicly_infused_stargate_rod')
@@ -588,7 +588,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:temporic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     stargateComponent('dsg_ring')
         .layeredRecipe((layers) =>
@@ -621,7 +621,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_ring_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     stargateComponent('dsg_chevron')
         .layeredRecipe((layers) =>
@@ -684,7 +684,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_chevron_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     stargateComponent('dsg_base')
         .layeredRecipe((layers) =>
@@ -747,7 +747,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_base_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUt(GTValues.VHA[GTValues.UIV]);
 
     event.recipes.create
         .mechanical_crafting(

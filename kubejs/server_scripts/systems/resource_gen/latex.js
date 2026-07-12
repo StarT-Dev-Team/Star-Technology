@@ -54,9 +54,9 @@ ServerEvents.recipes((event) => {
         .duration(400);
 
     const latexType = [
-        { fuel: 'minecraft:bone_meal', circ: '1' },
-        { fuel: 'thermal:compost', circ: '2' },
-        { fuel: 'gtceu:fertilizer', circ: '3' },
+        { fuel: 'minecraft:bone_meal', circ: 1 },
+        { fuel: 'thermal:compost', circ: 2 },
+        { fuel: 'gtceu:fertilizer', circ: 3 },
     ];
 
     latexType.forEach((latex) => {

@@ -2,6 +2,15 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     // === Controllers ===
+
+    /**
+     * @param {string} type
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {string} research
+     * @param {number} cwu
+     * @param {number} eu
+     */
     const wirelessControllers = (type, inputs, fluids, research, cwu, eu) => {
         event.recipes.gtceu
             .assembly_line(id(type))
@@ -96,6 +105,10 @@ ServerEvents.recipes((event) => {
 
     const components = global.componentMaterials;
 
+    /**
+     * @param {keyof typeof global.componentMaterials} tierKey
+     * @param {string} specialFluid
+     */
     function wirelessPower(tierKey, specialFluid) {
         const tierData = components[tierKey];
 
@@ -104,11 +117,15 @@ ServerEvents.recipes((event) => {
         const {
             tiers: { tier },
             materials: { tierMaterial, cable, solder, chip, tierFluid },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { cwuD },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = tierData;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { cwuD },
+        } = tierResearchData || {
+            default: { cwuD: 0 },
+        };
 
         let coilID = tier === 'uv' ? 'gtceu' : 'kubejs';
 

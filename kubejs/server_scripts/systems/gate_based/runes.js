@@ -1,6 +1,15 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /**
+     * @param {string} output
+     * @param {string} lens
+     * @param {string} plate
+     * @param {string} catalyst
+     * @param {string} fluid
+     * @param {number} EU
+     * @param {number} duration
+     */
     let rcasRecipe = (output, lens, plate, catalyst, fluid, EU, duration) => {
         let rcas = event.recipes.gtceu
             .runic_circuitry_assembling_station(id(output))

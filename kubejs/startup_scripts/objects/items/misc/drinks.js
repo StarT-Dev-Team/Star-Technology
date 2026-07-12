@@ -28,6 +28,10 @@ const potions = [
 ];
 
 StartupEvents.registry('item', (event) => {
+    /**
+     * @param {string} itemID
+     * @param {{ id: string, duration: number, amplifier: number }} effect
+     */
     const potionItem = (itemID, effect) => {
         event
             .create(itemID)
@@ -37,7 +41,8 @@ StartupEvents.registry('item', (event) => {
                 food.effect(effect.id, effect.duration, effect.amplifier, 1) // effect (id), duration (ticks), amplifier (array count), probability
                     .alwaysEdible()
                     .eaten((ctx) => {
-                        ctx.player.give('minecraft:glass_bottle');
+                        let player = /** @type {NonNullable<typeof ctx.player>} */ (ctx.player);
+                        player.give('minecraft:glass_bottle');
                     });
             })
             .tag('create:upright_on_belt')
@@ -52,6 +57,10 @@ StartupEvents.registry('item', (event) => {
 });
 
 StartupEvents.registry('fluid', (event) => {
+    /**
+     * @param {string} fluidID
+     * @param {number} color
+     */
     const potionFluid = (fluidID, color) => {
         event.create(fluidID).thinTexture(color).noBlock();
     };

@@ -30,10 +30,10 @@ StartupEvents.registry('item', (event) => {
             .rarity('epic')
             .texture(`kubejs:item/progression/dimensional/${dimension}_talisman`);
 
-        ['helmet', 'chestplate', 'leggings', 'boots'].forEach((armorPiece) => {
+        /** @type {const} */ (['helmet', 'chestplate', 'leggings', 'boots']).forEach((armorPiece) => {
             event
-                .create(`${dimension}_${armorPiece}`, `${armorPiece}`)
-                .tier(`${dimension}`)
+                .create(`${dimension}_${armorPiece}`, armorPiece)
+                .tier(dimension)
                 .texture(`kubejs:item/progression/dimensional/${dimension}_${armorPiece}`);
         });
     });

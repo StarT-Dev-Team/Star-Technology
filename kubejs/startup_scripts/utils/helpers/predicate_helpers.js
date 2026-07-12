@@ -48,7 +48,7 @@ const P = {
      */
     controller: (definition) => Predicates.controller(Predicates.blocks(definition.get())),
     /**
-     * @param {string | } id
+     * @param {string | internal.net.minecraft.world.level.block.Block} id
      * @param {PredicateSettings} [settings]
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
@@ -135,10 +135,7 @@ const P = {
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     frame: (materials, settings) =>
-        applySettings(
-            Predicates.frames.apply(Predicates, Array.isArray(materials) ? materials : [materials]),
-            settings
-        ),
+        applySettings(Predicates.frames(Array.isArray(materials) ? materials : [materials]), settings),
     /**
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */

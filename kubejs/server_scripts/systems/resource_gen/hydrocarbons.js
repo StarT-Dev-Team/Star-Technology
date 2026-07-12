@@ -11,8 +11,6 @@ ServerEvents.recipes((event) => {
     event.remove({ id: /gtceu:large_chemical_reactor\/lightly.*crack.*/ });
     event.remove({ id: /gtceu:large_chemical_reactor\/severely.*crack.*/ });
 
-    const chem = event.recipes.gtceu.large_chemical_reactor || event.recipes.gtceu.chemical_reactor;
-
     event.recipes.gtceu
         .fermenter(id('fermented_biomass'))
         .inputFluids('gtceu:biomass 500')
@@ -53,7 +51,8 @@ ServerEvents.recipes((event) => {
             .EUt(type !== 'oil_heavy' ? 96 : 384);
     });
 
-    chem(id('bacterial_sludge'))
+    event.recipes.gtceu
+        .chemical_reactor(id('bacterial_sludge'))
         .inputFluids('gtceu:fermented_biomass 1000', 'gtceu:bacteria 1000')
         .outputFluids('gtceu:bacterial_sludge 1000')
         .duration(600)
@@ -84,7 +83,7 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VA[GTValues.IV]);
     });
 
-    [
+    /** @type {const} */ ([
         {
             output: 'polyimide 3024',
             fluidInput: [`${PS} 4125`, `${FS} 850`, `${BC} 825`, 'gtceu:nitric_acid 975', 'minecraft:water 9250'],
@@ -102,7 +101,7 @@ ServerEvents.recipes((event) => {
         {
             output: 'polyphenylene_sulfide 1000',
             fluidInput: [`${PS} 1425`, 'gtceu:oxygen 6500'],
-            inputItem: '1x gtceu:sulfur_dust',
+            inputItem: ['1x gtceu:sulfur_dust'],
             voltage: GTValues.VHA[GTValues.EV],
             duration: 216,
         },
@@ -116,21 +115,21 @@ ServerEvents.recipes((event) => {
         {
             output: 'polyvinyl_butyral 720',
             fluidInput: [`${BC} 875`, `${CV} 500`, `${FS} 500`, 'gtceu:oxygen 2500'],
-            inputItem: 'gtceu:carbon_dust',
+            inputItem: ['gtceu:carbon_dust'],
             voltage: GTValues.VHA[GTValues.LuV],
             duration: 75,
         },
         {
             output: 'perfluoroelastomer_rubber 9072',
             fluidInput: [`${CV} 9625`, `${BC} 1375`, `${FS} 250`, 'gtceu:fluorine 18500'],
-            inputItem: '7x gtceu:sulfur_dust',
+            inputItem: ['7x gtceu:sulfur_dust'],
             voltage: GTValues.VHA[GTValues.UHV],
             duration: 83,
         },
         {
             output: 'silicone_rubber 1296',
             fluidInput: [`${CV} 2000`, 'gtceu:silicic_acid 1000'],
-            inputItem: 'gtceu:sulfur_dust',
+            inputItem: ['gtceu:sulfur_dust'],
             voltage: GTValues.VA[GTValues.EV],
             duration: 25,
         },
@@ -151,11 +150,11 @@ ServerEvents.recipes((event) => {
         {
             output: 'polybenzimidazole 9072',
             fluidInput: [`${PS} 24625`, `${CV} 16250`, `${XC} 7625`, 'gtceu:ammonia 6500'],
-            inputItem: 'gtceu:copper_dust',
+            inputItem: ['gtceu:copper_dust'],
             voltage: GTValues.VHA[GTValues.ZPM],
             duration: 285,
         },
-    ].forEach((superSkip) => {
+    ]).forEach((superSkip) => {
         const { output, fluidInput, inputItem, voltage, duration } = superSkip;
         const recipe = event.recipes.gtceu.bacteria_synthesizer(id(`${output.split(' ')[0]}_synthesis`));
         recipe.inputFluids(fluidInput);

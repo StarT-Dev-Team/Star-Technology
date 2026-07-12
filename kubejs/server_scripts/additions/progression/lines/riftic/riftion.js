@@ -169,7 +169,7 @@ ServerEvents.recipes((event) => {
                 .next()
                 .itemInputs('gtceu:chalyblux_dust')
         )
-        .fluidOutputs('gtceu:prismatic_hypergurmalium 325')
+        .outputFluids('gtceu:prismatic_hypergurmalium 325')
         .duration(480)
         .EUt(GTValues.VHA[GTValues.UXV]);
 });
