@@ -70,12 +70,12 @@ ServerEvents.recipes((event) => {
                 .EUt(EU);
 
             if (tier === 'uv') {
-                assemblyLineRecipe = assemblyLineRecipe.inputFluids(`gtceu:${tierFluid} 576`);
-                nexusRecipe = nexusRecipe.inputFluids(`gtceu:${tierFluid} 576`);
+                assemblyLineRecipe.inputFluids(`gtceu:${tierFluid} 576`);
+                nexusRecipe.inputFluids(`gtceu:${tierFluid} 576`);
             }
 
             if ((ifSRS && typeSpecial) || ifDRS) {
-                assemblyLineRecipe = assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
+                assemblyLineRecipe.stationResearch((researchRecipeBuilder) =>
                     researchRecipeBuilder
                         .researchStack(Item.of(`gtceu:${tier1}_${type}`))
                         .EUt(typeSpecial ? EUTS : EUTD)
@@ -84,18 +84,17 @@ ServerEvents.recipes((event) => {
 
                 event.remove({ id: `gtceu:research_station/1_x_gtceu_${tier}_${type}` });
             } else {
-                assemblyLineRecipe = assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)'](
-                    (researchRecipeBuilder) =>
-                        researchRecipeBuilder
-                            .researchStack(Item.of(`gtceu:${tier1}_${type}`))
-                            .duration(typeSpecial ? duraS : duraD * 20)
-                            .EUt(typeSpecial ? EUTS : EUTD)
+                assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
+                    researchRecipeBuilder
+                        .researchStack(Item.of(`gtceu:${tier1}_${type}`))
+                        .duration(typeSpecial ? duraS : duraD * 20)
+                        .EUt(typeSpecial ? EUTS : EUTD)
                 );
 
                 event.remove({ id: `gtceu:scanner/1_x_gtceu_${tier}_${type}` });
             }
 
-            const MtscfItems = items.map((itemObj) => {
+            const mtscfItems = items.map((itemObj) => {
                 const { count, itemId } = itemObj;
                 const multiplier = count * scalerMCSF * 0.75;
 
@@ -108,14 +107,14 @@ ServerEvents.recipes((event) => {
                 return `${multiplier}x ${itemId}`;
             });
 
-            const MtscfFluids = fluids.map((fluidObj) => {
+            const mtscfFluids = fluids.map((fluidObj) => {
                 return `${fluidObj.fluidId} ${fluidObj.amount * scalerMCSF * 0.75}`;
             });
 
             let mtscfRecipe = event.recipes.gtceu
                 .component_synthesis_forge(id(`${tier}_${type}`))
-                .itemInputs(MtscfItems)
-                .inputFluids(MtscfFluids)
+                .itemInputs(mtscfItems)
+                .inputFluids(mtscfFluids)
                 .itemOutputs(`${scalerMCSF}x gtceu:${tier}_${type}`)
                 .duration(scalerMCSF * 600)
                 .stationResearch((researchRecipeBuilder) =>
@@ -238,7 +237,7 @@ ServerEvents.recipes((event) => {
             [
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 6, itemId: `gtceu:${primMaterial}_plate` },
-                { count: tier == 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
                 { count: 2, itemId: `gtceu:${tier}_emitter` },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:fine_${superconductor}_wire` },
@@ -254,7 +253,7 @@ ServerEvents.recipes((event) => {
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 1, itemId: `gtceu:${tier}_electric_motor` },
                 { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
-                { count: tier == 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
                 { count: 32, itemId: `gtceu:${miscMaterial}_foil` },
@@ -269,7 +268,7 @@ ServerEvents.recipes((event) => {
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 1, itemId: `gtceu:${tier}_electric_motor` },
                 { count: 4, itemId: `gtceu:${primMaterial}_plate` },
-                { count: tier == 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
                 { count: 32, itemId: `gtceu:${miscMaterial}_foil` },
