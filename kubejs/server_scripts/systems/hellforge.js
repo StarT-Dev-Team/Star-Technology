@@ -2,6 +2,17 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     //Hell Forge Recipes
+
+    /**
+     * @param {string} type
+     * @param {number} IngQuant
+     * @param {string[]} inputs
+     * @param {string} plasma
+     * @param {string} catalyst
+     * @param {number} HeatMK
+     * @param {number} eut
+     * @param {number} SecDurPerIng
+     */
     const hellForgeMat = (type, IngQuant, inputs, plasma, catalyst, HeatMK, eut, SecDurPerIng) => {
         event.recipes.gtceu
             .hellforge(id(`${type}`))
@@ -402,6 +413,12 @@ ServerEvents.recipes((event) => {
 
     // Hyper Stellar Recipe
 
+    /**
+     * @param {string} type
+     * @param {string} origin
+     * @param {number} scaler
+     * @param {string} better
+     */
     const hellforgeHeater = (type, origin, scaler, better) => {
         event.recipes.gtceu
             .pressure_heat_chamber(id(type))
@@ -446,6 +463,12 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.ZPM]);
 
     //Catalyst
+
+    /**
+     * @param {string} type
+     * @param {string[]} inputs
+     * @param {number} scaler
+     */
     const catalyst = (type, inputs, scaler) => {
         event.recipes.gtceu
             .assembler(id(`${type}_catalyst`))

@@ -17,6 +17,12 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/stone_barrel');
 
+    /**
+     * @param {string} output
+     * @param {string} fluidcons
+     * @param {string} nconsfluid
+     * @param {number} circ
+     */
     const sbarrel = (output, fluidcons, nconsfluid, circ) => {
         event.recipes.gtceu
             .stone_barrel(id(`${output}`))
@@ -38,6 +44,11 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:tempered_glass')
         .duration(600);
 
+    /**
+     * @param {string} output
+     * @param {string} item
+     * @param {string} fluid
+     */
     const barrel = (output, item, fluid) => {
         event.recipes.gtceu
             .barrel(id(`${output.split(':')[1]}`))
@@ -93,6 +104,7 @@ ServerEvents.recipes((event) => {
         '#minecraft:saplings',
         '#minecraft:leaves',
     ];
+
     compost.forEach((type) => {
         event.recipes.gtceu
             .barrel_composting(id(`${type.split(':')[1]}_composting`))
@@ -101,6 +113,10 @@ ServerEvents.recipes((event) => {
             .duration(15);
     });
 
+    /**
+     * @param {string} output
+     * @param {string} ncItem
+     */
     const transformation = (output, ncItem) => {
         event.recipes.gtceu
             .barrel_transformation(id(`${output.split(':')[1]}`))

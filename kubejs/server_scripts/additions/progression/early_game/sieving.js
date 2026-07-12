@@ -16,12 +16,14 @@ ServerEvents.recipes((event) => {
     const SIEVING_RECIPE_HANDLER = {
         currentMesh: 'string',
         isWaterlogged: false,
+        /** @type {string | null} */
         currentInput: null,
+        /** @type { {input: string, result: string, chance: number, mesh: string, waterlogged: boolean}[] } */
         recipes: [],
-        /*
+        /**
          * Set the mesh type for subsequent recipes.
-         * @param {string} type - The type of mesh ('string', 'flint', 'iron', 'diamond', 'emerald', 'netherite').
-         * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+         * @param {string} type The type of mesh ('string', 'flint', 'iron', 'diamond', 'emerald', 'netherite').
+         * @returns {typeof SIEVING_RECIPE_HANDLER} Returns the SievingRecipeHandler for method chaining.
          */
         mesh: (type) => {
             if (!['string', 'flint', 'iron', 'diamond', 'emerald', 'netherite'].includes(type)) {
@@ -31,10 +33,10 @@ ServerEvents.recipes((event) => {
             SIEVING_RECIPE_HANDLER.currentMesh = type;
             return SIEVING_RECIPE_HANDLER;
         },
-        /*
+        /**
          * Set whether the sieve is waterlogged for subsequent recipes.
          * @param {boolean} wl - True if waterlogged, false otherwise.
-         * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+         * @returns {typeof SIEVING_RECIPE_HANDLER} - Returns the SievingRecipeHandler for method chaining.
          */
         waterlogged: (wl) => {
             if (typeof wl !== 'boolean') {
@@ -44,11 +46,11 @@ ServerEvents.recipes((event) => {
             SIEVING_RECIPE_HANDLER.isWaterlogged = wl;
             return SIEVING_RECIPE_HANDLER;
         },
-        /*
+        /**
          * Set the input block for subsequent recipes.
          * Does not support extra rolls
-         * @param {string|null} input - The input block identifier. Use null for no input.
-         * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+         * @param {string | null} input The input block identifier. Use null for no input.
+         * @returns {typeof SIEVING_RECIPE_HANDLER} Returns the SievingRecipeHandler for method chaining.
          */
         input: (input) => {
             if (!input || typeof input !== 'string') {
@@ -58,15 +60,15 @@ ServerEvents.recipes((event) => {
             SIEVING_RECIPE_HANDLER.currentInput = input;
             return SIEVING_RECIPE_HANDLER;
         },
-        /*
+        /**
          * Add a sieving result with chance for the current input, mesh, and waterlogged state.
          * @param {string} result - The result item/block identifier.
          * @param {number} chance - The chance (0.0 to 1.0) of obtaining the result.
-         * @returns {SievingRecipeHandler} - Returns the SievingRecipeHandler for method chaining.
+         * @returns {typeof SIEVING_RECIPE_HANDLER} - Returns the SievingRecipeHandler for method chaining.
          */
         add: (result, chance) => {
             SIEVING_RECIPE_HANDLER.recipes.push({
-                input: SIEVING_RECIPE_HANDLER.currentInput,
+                input: /** @type {string} */ (SIEVING_RECIPE_HANDLER.currentInput),
                 result: result,
                 chance: chance,
                 mesh: SIEVING_RECIPE_HANDLER.currentMesh,
@@ -74,9 +76,9 @@ ServerEvents.recipes((event) => {
             });
             return SIEVING_RECIPE_HANDLER;
         },
-        /*
+        /**
          * Build and register all accumulated sieving recipes.
-         * @param {object} event - The event object to register recipes with.
+         * @param {internal.dev.latvian.mods.kubejs.recipe.RecipesEventJS} event - The event object to register recipes with.
          * @returns {void}
          */
         build: (event) => {
@@ -96,7 +98,7 @@ ServerEvents.recipes((event) => {
             });
             SIEVING_RECIPE_HANDLER.reset();
         },
-        /*
+        /**
          * Reset the SievingRecipeHandler to its default state.
          * @returns {void}
          */

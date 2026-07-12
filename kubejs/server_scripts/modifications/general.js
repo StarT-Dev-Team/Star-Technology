@@ -12,6 +12,9 @@ ServerEvents.recipes((event) => {
 
     event.remove({ id: 'create:splashing/stained_glass' });
 
+    /**
+     * @param {string} mod
+     */
     const nuggetFixMod = (mod) => {
         event.replaceOutput({ output: `${mod}:copper_nugget` }, `${mod}:copper_nugget`, 'gtceu:copper_nugget');
         event.replaceOutput({ output: `${mod}:zinc_nugget` }, `${mod}:zinc_nugget`, 'gtceu:zinc_nugget');
@@ -96,6 +99,12 @@ ServerEvents.recipes((event) => {
 
     // Effortless Building Upgrade Accessibility
     global.withEffortlessBuilding(() => {
+        /**
+         * @param {string} type
+         * @param {string} mat
+         * @param {string} dye
+         * @param {string} core
+         */
         const reachUpgrade = (type, mat, dye, core) => {
             event.remove({ output: `effortlessbuilding:reach_upgrade${type}` });
             event

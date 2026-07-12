@@ -4,6 +4,9 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /**
+     * @param {'luv' | 'zpm' | 'uv'} tierKey
+     */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
         if (!data) {
@@ -29,14 +32,21 @@ ServerEvents.recipes((event) => {
                 primMagnet,
                 miscMaterial,
             },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { ifDRS, cwuD, duraD, EUTD },
-                special: { ifSRS, cwuS, duraS, EUTS },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = data;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { ifDRS, cwuD, duraD, EUTD },
+            special: { ifSRS, cwuS, duraS, EUTS },
+        } = tierResearchData || {
+            default: { ifDRS: false, cwuD: 0, duraD: 0, EUTD: 0 },
+            special: { ifSRS: false, cwuS: 0, duraS: 0, EUTS: 0 },
+        };
 
+        /** @param {number} base */
         const b2exponentialMultiplier = (base) => base * Math.pow(2, scaler);
+        /** @param {number} base */
         const scaled = (base) => base * scaler;
 
         const componentTypesAssemblyLine = (type, items, fluids) => {

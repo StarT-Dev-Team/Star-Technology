@@ -1,12 +1,17 @@
 // priority = 10
 const debugMode = false; // don't comment this out, it throws errors in the log, just keep it on false
 
+/** @param {any} message */
 global.devLogger = (message) => {
     if (debugMode) {
         console.log(message);
     }
 };
 
+/**
+ * @param {internal.dev.latvian.mods.kubejs.player.SimplePlayerEventJS} event
+ * @param {string} type
+ */
 global.checkArmor = (event, type) => {
     global.devLogger('Checking Armor');
     let armorCheck = false;
@@ -36,6 +41,10 @@ global.checkArmor = (event, type) => {
     return armorCheck;
 };
 
+/**
+ * @param {internal.dev.latvian.mods.kubejs.player.SimplePlayerEventJS} event
+ * @param {string[]} list
+ */
 global.checkImmunity = (event, list) => {
     global.devLogger('Checking Inventory');
     let key = false;
@@ -46,9 +55,15 @@ global.checkImmunity = (event, list) => {
     return key;
 };
 
+/**
+ * @param {internal.dev.latvian.mods.kubejs.player.SimplePlayerEventJS} event
+ * @param {string[]} curiosList
+ */
 global.checkCurios = (event, curiosList) => {
     global.devLogger('Checking Curios');
-    let curios = event.player.nbt.ForgeCaps['curios:inventory'];
+    /** @type {any} */
+    let nbt = event.player.nbt;
+    let curios = nbt.ForgeCaps['curios:inventory'];
     let key = false;
     curiosList.forEach((curio) => {
         if (curios.toString().contains(curio)) {

@@ -2,6 +2,13 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     // === LARGE BARREL ===
+    /**
+     * @param {string} item
+     * @param {string} fluid
+     * @param {number} dur
+     * @param {string} mod
+     * @param {string} output
+     */
     const largeBarrelItem = (item, fluid, dur, mod, output) => {
         event.recipes.gtceu
             .large_barrel(id(`${output}_large_barrel`))
@@ -112,6 +119,10 @@ ServerEvents.recipes((event) => {
         .itemOutputs('minecraft:obsidian')
         .duration(5);
 
+    /**
+     * @param {string} type
+     * @param {string} aqueous
+     */
     const pebblesLargeStoneBarrel = (type, aqueous) => {
         event.recipes.gtceu
             .large_stone_barrel(id(`${type}_pebbles`))
@@ -142,6 +153,10 @@ ServerEvents.recipes((event) => {
         .duration(1600)
         .EUt(GTValues.VHA[GTValues.LV]);
 
+    /**
+     * @param {string} type
+     * @param {string} aqueous
+     */
     const industrialBarrelPebbles = (type, aqueous) => {
         event.recipes.gtceu
             .industrial_barrel_magmatic(id(`${type}_pebbles`))
@@ -164,6 +179,13 @@ ServerEvents.recipes((event) => {
     industrialBarrelPebbles('blackstone', 'exnihilosequentia:witch_water');
     industrialBarrelPebbles('basalt', 'exnihilosequentia:witch_water');
 
+    /**
+     * @param {string} item
+     * @param {string} fluid
+     * @param {number} dur
+     * @param {string} mod
+     * @param {string} output
+     */
     const industrialBarrelItemAqueous = (item, fluid, dur, mod, output) => {
         event.recipes.gtceu
             .industrial_barrel_aqueous(id(`${output}_large_barrel`))

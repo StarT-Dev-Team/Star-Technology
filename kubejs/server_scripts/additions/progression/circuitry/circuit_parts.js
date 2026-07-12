@@ -5,6 +5,13 @@ ServerEvents.recipes((event) => {
     // const getDataItem = global.getDataItem;
 
     // === Living SMDs ===
+
+    /**
+     * @param {string} type
+     * @param {number} quantity
+     * @param {string[]} inputs
+     * @param {number} polymerAmount
+     */
     const livingSMD = (type, quantity, inputs, polymerAmount /*, cwu */) => {
         event.recipes.gtceu
             .assembler(id(`living_smd_${type}`))

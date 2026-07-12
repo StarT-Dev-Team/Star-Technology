@@ -125,6 +125,20 @@ ServerEvents.recipes((event) => {
     //[3]-[0]-[4]
     //--[5]-[6]--
 
+    /**
+     * @param {string} RecipeID
+     * @param {string} Output
+     * @param {string} Fluid
+     * @param {string} Center
+     * @param {string} st1
+     * @param {string} nd2
+     * @param {string} rd3
+     * @param {string} th4
+     * @param {string} th5
+     * @param {string} th6
+     * @param {number} duration
+     * @param {number} eut
+     */
     const infusion = (RecipeID, Output, Fluid, Center, st1, nd2, rd3, th4, th5, th6, duration, eut) => {
         event.recipes.gtceu
             .draco_infusion(id(RecipeID))

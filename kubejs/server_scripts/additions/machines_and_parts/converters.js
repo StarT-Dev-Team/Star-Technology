@@ -64,6 +64,10 @@ ServerEvents.recipes((event) => {
         },
     };
 
+    /**
+     * @param {number} amps
+     * @param {string} thickness
+     */
     function converterCraftingRecipe(amps, thickness) {
         for (const [tier, info] of Object.entries(converterMaterials)) {
             event

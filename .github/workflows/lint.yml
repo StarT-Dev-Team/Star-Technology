@@ -41,6 +41,11 @@ jobs:
             --format json \
             --output-file eslint-report.json || true
 
+      - name: Run Typecheck
+        id: typecheck
+        run: |
+          npm run lint:typecheck || true
+
       - name: Run Prettier (check mode + diff)
         id: prettier
         run: |

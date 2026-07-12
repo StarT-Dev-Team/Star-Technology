@@ -1,5 +1,9 @@
 //priority: 1
 StartupEvents.registry('block', (event) => {
+    /**
+     * @param {string} id
+     * @param {string} texture
+     */
     function pallaridiumCasing(id, texture) {
         event
             .create(id)
