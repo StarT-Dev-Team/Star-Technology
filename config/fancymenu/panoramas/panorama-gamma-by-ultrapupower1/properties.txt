@@ -1,9 +1,0 @@
-type = panorama
-
-panorama-meta {
-  name = gamma_by_ultrapupower1
-  speed = 1.0
-  fov = 85.0
-  angle = 25.0
-  start_rotation = 0
-}

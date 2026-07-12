@@ -1,9 +1,0 @@
-type = panorama
-
-panorama-meta {
-  name = beta_7_by_stellaurora
-  speed = 1.0
-  fov = 85.0
-  angle = 25.0
-  start_rotation = 0
-}
