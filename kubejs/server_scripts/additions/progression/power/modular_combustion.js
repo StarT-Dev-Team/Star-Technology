@@ -4,30 +4,28 @@ ServerEvents.recipes((event) => {
     const getRecipeTier = global.getRecipeTier;
     const assline = event.recipes.gtceu.assembly_line;
 
-    assline(id('modular_combustion_frame'))
-        .itemInputs(
-            'gtceu:luv_machine_hull',
-            '2x #gtceu:circuits/luv',
-            Item.of('gtceu:lapotronic_energy_orb_cluster'),
-            '4x gtceu:luv_emitter',
-            '4x gtceu:luv_sensor',
-            '4x gtceu:luv_fluid_regulator',
-            `8x gtceu:${componentMaterials.luv.materials.cable}_quadruple_cable`,
-            `32x gtceu:fine_${componentMaterials.luv.materials.wireMechanical}_wire`
-        )
-        .inputFluids(
-            `gtceu:${componentMaterials.luv.materials.lubricant} 4608`,
-            `gtceu:${componentMaterials.luv.materials.plastic} 1152`
-        )
-        .itemOutputs('start_core:modular_combustion_frame')
-        ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:iridium_frame'))
-                .duration(600)
-                .EUt(GTValues.VHA[GTValues.IV])
-        )
-        .duration(600)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+    $(
+        assline(id('modular_combustion_frame'))
+            .itemInputs(
+                'gtceu:luv_machine_hull',
+                '2x #gtceu:circuits/luv',
+                Item.of('gtceu:lapotronic_energy_orb_cluster'),
+                '4x gtceu:luv_emitter',
+                '4x gtceu:luv_sensor',
+                '4x gtceu:luv_fluid_regulator',
+                `8x gtceu:${componentMaterials.luv.materials.cable}_quadruple_cable`,
+                `32x gtceu:fine_${componentMaterials.luv.materials.wireMechanical}_wire`
+            )
+            .inputFluids(
+                `gtceu:${componentMaterials.luv.materials.lubricant} 4608`,
+                `gtceu:${componentMaterials.luv.materials.plastic} 1152`
+            )
+            .itemOutputs('start_core:modular_combustion_frame')
+            .duration(600)
+            .EUt(GTValues.VHA[GTValues.LuV])
+    ).scannerResearch((researchRecipeBuilder) =>
+        researchRecipeBuilder.researchStack(Item.of('gtceu:iridium_frame')).duration(600).EUt(GTValues.VHA[GTValues.IV])
+    );
 
     /** @type {const} */ ([
         { tier: 'luv', researchItem: 'gtceu:extreme_combustion_engine' },
@@ -64,7 +62,7 @@ ServerEvents.recipes((event) => {
             .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]]);
 
         if (machine.tier === 'luv') {
-            mainRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
+            $(mainRecipe).scannerResearch((researchRecipeBuilder) =>
                 researchRecipeBuilder
                     .researchStack(Item.of(machine.researchItem))
                     .duration(300)

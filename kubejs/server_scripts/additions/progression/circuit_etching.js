@@ -85,7 +85,7 @@ ServerEvents.recipes((event) => {
             .EUt(type.energy);
 
         if (type.clean) {
-            cuclBoard.cleanroom(CleanroomType.CLEANROOM);
+            $(cuclBoard).cleanroom();
         }
     });
 

@@ -13,175 +13,199 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.VHA[GTValues.UIV]);
 
     // === Magmatic ===
-    event.recipes.gtceu
-        .magmatic_drill(id('abydos'))
-        .notConsumable('minecraft:sand')
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 25')
-        .itemOutputsRanged('gtceu:zapolite_dust', 0, 8192)
-        .itemOutputsRanged('gtceu:celestine_dust', 0, 3072)
-        .itemOutputsRanged('gtceu:scheelite_dust', 0, 3072)
-        .itemOutputsRanged('gtceu:crookesite_dust', 0, 6144)
-        .itemOutputsRanged('gtceu:kitkaite_dust', 0, 5120)
-        .itemOutputsRanged('gtceu:naquadite_dust', 0, 8192)
-        .itemOutputsRanged('gtceu:monazite_dust', 0, 5120)
-        .itemOutputsRanged('gtceu:lautarite_dust', 0, 3072)
-        .itemOutputsRanged('gtceu:chromite_dust', 0, 5120)
-        .itemOutputsRanged('gtceu:xenotime_dust', 0, 6144)
-        .itemOutputsRanged('gtceu:strontianite_dust', 0, 6144)
-        .itemOutputsRanged('gtceu:titanite_dust', 0, 8192)
-        .outputFluidsRanged('gtceu:gritty_akreyrium', 0, 4096000)
-        .duration(240)
-        .genericStartEU(250000000) //consumes 250MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.UV]);
+    $(
+        event.recipes.gtceu
+            .magmatic_drill(id('abydos'))
+            .notConsumable('minecraft:sand')
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 25')
+            .outputFluidsRanged('gtceu:gritty_akreyrium', 0, 4096000)
+            .duration(240)
+            .genericStartEU(250000000) //consumes 250MEU to start the recipe
+            .EUt(GTValues.VA[GTValues.UV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:zapolite_dust', range: [0, 8192] },
+        { id: 'gtceu:celestine_dust', range: [0, 3072] },
+        { id: 'gtceu:scheelite_dust', range: [0, 3072] },
+        { id: 'gtceu:crookesite_dust', range: [0, 6144] },
+        { id: 'gtceu:kitkaite_dust', range: [0, 5120] },
+        { id: 'gtceu:naquadite_dust', range: [0, 8192] },
+        { id: 'gtceu:monazite_dust', range: [0, 5120] },
+        { id: 'gtceu:lautarite_dust', range: [0, 3072] },
+        { id: 'gtceu:chromite_dust', range: [0, 5120] },
+        { id: 'gtceu:xenotime_dust', range: [0, 6144] },
+        { id: 'gtceu:strontianite_dust', range: [0, 6144] },
+        { id: 'gtceu:titanite_dust', range: [0, 8192] },
+    ]);
 
-    event.recipes.gtceu
-        .magmatic_drill(id('nether'))
-        .notConsumable('minecraft:netherrack')
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 50')
-        .itemOutputsRanged('gtceu:netherrack_dust', 0, 128)
-        .itemOutputsRanged('gtceu:atomic_nether_sludge_dust', 0, 96)
-        .itemOutputsRanged('gtceu:estaltadyne_dust', 0, 64)
-        .itemOutputsRanged('gtceu:mythrillic_dust', 0, 64)
-        .itemOutputsRanged('gtceu:adamantamite_dust', 0, 64)
-        .itemOutputsRanged('gtceu:enriched_estalt_dust', 0, 32)
-        .itemOutputsRanged('gtceu:ancient_debris_dust', 0, 128)
-        .itemOutputsRanged('gtceu:debris_dust', 0, 512)
-        .outputFluidsRanged('gtceu:infernal_concentrate', 0, 1024000)
-        .duration(1332)
-        .genericStartEU(2500000000) //consumes 2.5GEU to start the recipe
-        .EUt(GTValues.VA[GTValues.UEV]);
+    $(
+        event.recipes.gtceu
+            .magmatic_drill(id('nether'))
+            .notConsumable('minecraft:netherrack')
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 50')
+            .outputFluidsRanged('gtceu:infernal_concentrate', 0, 1024000)
+            .duration(1332)
+            .genericStartEU(2500000000) //consumes 2.5GEU to start the recipe
+            .EUt(GTValues.VA[GTValues.UEV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:netherrack_dust', range: [0, 128] },
+        { id: 'gtceu:atomic_nether_sludge_dust', range: [0, 96] },
+        { id: 'gtceu:estaltadyne_dust', range: [0, 64] },
+        { id: 'gtceu:mythrillic_dust', range: [0, 64] },
+        { id: 'gtceu:adamantamite_dust', range: [0, 64] },
+        { id: 'gtceu:enriched_estalt_dust', range: [0, 32] },
+        { id: 'gtceu:ancient_debris_dust', range: [0, 128] },
+        { id: 'gtceu:debris_dust', range: [0, 512] },
+    ]);
 
     // === Voidic ===
-    event.recipes.gtceu
-        .voidic_refinement(id('void_1_dust'))
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 5')
-        .itemOutputsRanged('gtceu:pentlandite_dust', 0, 768)
-        .itemOutputsRanged('gtceu:sodalite_dust', 0, 768)
-        .itemOutputsRanged('gtceu:gold_dust', 0, 768)
-        .itemOutputsRanged('gtceu:silver_dust', 0, 768)
-        .itemOutputsRanged('gtceu:coal_dust', 0, 768)
-        .itemOutputsRanged('gtceu:realgar_dust', 0, 768)
-        .itemOutputsRanged('gtceu:rare_earth_dust', 0, 512)
-        .itemOutputsRanged('gtceu:cobaltite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:vanadium_magnetite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:chromite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:magnesite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:lepidolite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:pyrochlore_dust', 0, 512)
-        .itemOutputsRanged('gtceu:pyrolusite_dust', 0, 512)
-        .circuit(1)
-        .duration(600)
-        .genericStartEU(20000000) //consumes 20MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.EV]);
+    $(
+        event.recipes.gtceu
+            .voidic_refinement(id('void_1_dust'))
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 5')
+            .circuit(1)
+            .duration(600)
+            .genericStartEU(20000000) //consumes 20MEU to start the recipe
+            .EUt(GTValues.VA[GTValues.EV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:pentlandite_dust', range: [0, 768] },
+        { id: 'gtceu:sodalite_dust', range: [0, 768] },
+        { id: 'gtceu:gold_dust', range: [0, 768] },
+        { id: 'gtceu:silver_dust', range: [0, 768] },
+        { id: 'gtceu:coal_dust', range: [0, 768] },
+        { id: 'gtceu:realgar_dust', range: [0, 768] },
+        { id: 'gtceu:rare_earth_dust', range: [0, 512] },
+        { id: 'gtceu:cobaltite_dust', range: [0, 512] },
+        { id: 'gtceu:vanadium_magnetite_dust', range: [0, 512] },
+        { id: 'gtceu:chromite_dust', range: [0, 512] },
+        { id: 'gtceu:magnesite_dust', range: [0, 512] },
+        { id: 'gtceu:lepidolite_dust', range: [0, 512] },
+        { id: 'gtceu:pyrochlore_dust', range: [0, 512] },
+        { id: 'gtceu:pyrolusite_dust', range: [0, 512] },
+    ]);
 
-    event.recipes.gtceu
-        .voidic_refinement(id('void_2_dust'))
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 5')
-        .itemOutputsRanged('gtceu:barite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:chalcopyrite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:bornite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:zavaritskite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:beryllium_dust', 0, 512)
-        .itemOutputsRanged('gtceu:tantalite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:pollucite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:cassiterite_dust', 0, 512)
-        .itemOutputsRanged('gtceu:bastnasite_dust', 0, 256)
-        .itemOutputsRanged('gtceu:pitchblende_dust', 0, 256)
-        .itemOutputsRanged('gtceu:bauxite_dust', 0, 256)
-        .itemOutputsRanged('gtceu:tungstate_dust', 0, 256)
-        .itemOutputsRanged('gtceu:cooperite_dust', 0, 256)
-        .itemOutputsRanged('gtceu:ilmenite_dust', 0, 256)
-        .itemOutputsRanged('gtceu:molybdenite_dust', 0, 256)
-        .circuit(2)
-        .duration(600)
-        .genericStartEU(75000000) //consumes 75MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.IV]);
+    $(
+        event.recipes.gtceu
+            .voidic_refinement(id('void_2_dust'))
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 5')
+            .circuit(2)
+            .duration(600)
+            .genericStartEU(75000000) //consumes 75MEU to start the recipe
+            .EUt(GTValues.VA[GTValues.IV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:barite_dust', range: [0, 512] },
+        { id: 'gtceu:chalcopyrite_dust', range: [0, 512] },
+        { id: 'gtceu:bornite_dust', range: [0, 512] },
+        { id: 'gtceu:zavaritskite_dust', range: [0, 512] },
+        { id: 'gtceu:beryllium_dust', range: [0, 512] },
+        { id: 'gtceu:tantalite_dust', range: [0, 512] },
+        { id: 'gtceu:pollucite_dust', range: [0, 512] },
+        { id: 'gtceu:cassiterite_dust', range: [0, 512] },
+        { id: 'gtceu:bastnasite_dust', range: [0, 256] },
+        { id: 'gtceu:pitchblende_dust', range: [0, 256] },
+        { id: 'gtceu:bauxite_dust', range: [0, 256] },
+        { id: 'gtceu:tungstate_dust', range: [0, 256] },
+        { id: 'gtceu:cooperite_dust', range: [0, 256] },
+        { id: 'gtceu:ilmenite_dust', range: [0, 256] },
+        { id: 'gtceu:molybdenite_dust', range: [0, 256] },
+    ]);
 
-    event.recipes.gtceu
-        .voidic_refinement(id('void_1_ore'))
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 8')
-        .itemOutputsRanged('gtceu:crushed_pentlandite_ore', 0, 384)
-        .itemOutputsRanged('gtceu:crushed_sodalite_ore', 0, 384)
-        .itemOutputsRanged('gtceu:crushed_gold_ore', 0, 384)
-        .itemOutputsRanged('gtceu:crushed_silver_ore', 0, 384)
-        .itemOutputsRanged('gtceu:crushed_coal_ore', 0, 384)
-        .itemOutputsRanged('gtceu:crushed_realgar_ore', 0, 384)
-        .itemOutputsRanged('gtceu:crushed_cobaltite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_vanadium_magnetite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_chromite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_magnesite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_lepidolite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_pyrochlore_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_pyrolusite_ore', 0, 256)
-        .circuit(11)
-        .duration(900)
-        .genericStartEU(20000000) //consumes 20MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.EV]);
+    $(
+        event.recipes.gtceu
+            .voidic_refinement(id('void_1_ore'))
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 8')
+            .circuit(11)
+            .duration(900)
+            .genericStartEU(20000000) //consumes 20MEU to start the recipe
+            .EUt(GTValues.VA[GTValues.EV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:crushed_pentlandite_ore', range: [0, 384] },
+        { id: 'gtceu:crushed_sodalite_ore', range: [0, 384] },
+        { id: 'gtceu:crushed_gold_ore', range: [0, 384] },
+        { id: 'gtceu:crushed_silver_ore', range: [0, 384] },
+        { id: 'gtceu:crushed_coal_ore', range: [0, 384] },
+        { id: 'gtceu:crushed_realgar_ore', range: [0, 384] },
+        { id: 'gtceu:crushed_cobaltite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_vanadium_magnetite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_chromite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_magnesite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_lepidolite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_pyrochlore_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_pyrolusite_ore', range: [0, 256] },
+    ]);
 
-    event.recipes.gtceu
-        .voidic_refinement(id('void_2_ore'))
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 8')
-        .itemOutputsRanged('gtceu:crushed_barite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_chalcopyrite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_bornite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_zavaritskite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_beryllium_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_tantalite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_pollucite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_cassiterite_ore', 0, 256)
-        .itemOutputsRanged('gtceu:crushed_bastnasite_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_pitchblende_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_bauxite_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_tungstate_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_cooperite_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_ilmenite_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_molybdenite_ore', 0, 128)
-        .circuit(12)
-        .duration(900)
-        .genericStartEU(75000000) //consumes 75MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.IV]);
+    $(
+        event.recipes.gtceu
+            .voidic_refinement(id('void_2_ore'))
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 8')
+            .circuit(12)
+            .duration(900)
+            .genericStartEU(75000000) //consumes 75MEU to start the recipe
+            .EUt(GTValues.VA[GTValues.IV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:crushed_barite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_chalcopyrite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_bornite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_zavaritskite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_beryllium_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_tantalite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_pollucite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_cassiterite_ore', range: [0, 256] },
+        { id: 'gtceu:crushed_bastnasite_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_pitchblende_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_bauxite_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_tungstate_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_cooperite_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_ilmenite_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_molybdenite_ore', range: [0, 128] },
+    ]);
 
-    event.recipes.gtceu
-        .voidic_refinement(id('geode_1_dust'))
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 4')
-        .itemOutputsRanged('gtceu:diamond_dust', 0, 256)
-        .itemOutputsRanged('gtceu:emerald_dust', 0, 256)
-        .itemOutputsRanged('gtceu:ruby_dust', 0, 256)
-        .itemOutputsRanged('gtceu:sapphire_dust', 0, 256)
-        .itemOutputsRanged('gtceu:green_sapphire_dust', 0, 256)
-        .itemOutputsRanged('gtceu:quartzite_dust', 0, 256)
-        .itemOutputsRanged('gtceu:topaz_dust', 0, 256)
-        .itemOutputsRanged('gtceu:blue_topaz_dust', 0, 256)
-        .itemOutputsRanged('gtceu:spessartine_dust', 0, 256)
-        .itemOutputsRanged('gtceu:certus_quartz_dust', 0, 256)
-        .itemOutputsRanged('gtceu:apatite_dust', 0, 256)
-        .itemOutputsRanged('gtceu:monazite_dust', 0, 256)
-        .itemOutputsRanged('gtceu:realgar_dust', 0, 256)
-        .circuit(3)
-        .duration(600)
-        .genericStartEU(5000000) //consumes 5MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.HV]);
+    $(
+        event.recipes.gtceu
+            .voidic_refinement(id('geode_1_dust'))
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 4')
+            .circuit(3)
+            .duration(600)
+            .genericStartEU(5000000) //consumes 5MEU to start the recipe
+            .EUt(GTValues.VA[GTValues.HV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:diamond_dust', range: [0, 256] },
+        { id: 'gtceu:emerald_dust', range: [0, 256] },
+        { id: 'gtceu:ruby_dust', range: [0, 256] },
+        { id: 'gtceu:sapphire_dust', range: [0, 256] },
+        { id: 'gtceu:green_sapphire_dust', range: [0, 256] },
+        { id: 'gtceu:quartzite_dust', range: [0, 256] },
+        { id: 'gtceu:topaz_dust', range: [0, 256] },
+        { id: 'gtceu:blue_topaz_dust', range: [0, 256] },
+        { id: 'gtceu:spessartine_dust', range: [0, 256] },
+        { id: 'gtceu:certus_quartz_dust', range: [0, 256] },
+        { id: 'gtceu:apatite_dust', range: [0, 256] },
+        { id: 'gtceu:monazite_dust', range: [0, 256] },
+        { id: 'gtceu:realgar_dust', range: [0, 256] },
+    ]);
 
-    event.recipes.gtceu
-        .voidic_refinement(id('geode_1_ore'))
-        .inputFluids('gtceu:kaleidoscope_agitation_serum 6')
-        .itemOutputsRanged('gtceu:crushed_diamond_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_emerald_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_ruby_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_sapphire_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_green_sapphire_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_quartzite_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_topaz_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_blue_topaz_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_spessartine_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_certus_quartz_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_apatite_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_monazite_ore', 0, 128)
-        .itemOutputsRanged('gtceu:crushed_realgar_ore', 0, 128)
-        .circuit(13)
-        .duration(900)
-        .genericStartEU(5000000) //consumes 5MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.HV]);
+    $(
+        event.recipes.gtceu
+            .voidic_refinement(id('geode_1_ore'))
+            .inputFluids('gtceu:kaleidoscope_agitation_serum 6')
+            .circuit(13)
+            .duration(900)
+            .genericStartEU(5000000) //consumes 5MEU to start the recipe
+            .EUt(GTValues.VA[GTValues.HV])
+    ).rangedItemOutputs([
+        { id: 'gtceu:crushed_diamond_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_emerald_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_ruby_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_sapphire_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_green_sapphire_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_quartzite_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_topaz_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_blue_topaz_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_spessartine_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_certus_quartz_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_apatite_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_monazite_ore', range: [0, 128] },
+        { id: 'gtceu:crushed_realgar_ore', range: [0, 128] },
+    ]);
 
     // === Modules ===
     const researchBuilder = global.researchBuilder;

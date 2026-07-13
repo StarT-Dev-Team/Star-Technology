@@ -111,7 +111,7 @@ ServerEvents.recipes((event) => {
 
                 event.remove({ id: `gtceu:research_station/1_x_gtceu_${tier}_${type}` });
             } else {
-                assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
+                $(assemblyLineRecipe).scannerResearch((researchRecipeBuilder) =>
                     researchRecipeBuilder
                         .researchStack(Item.of(`gtceu:${tier1}_${type}`))
                         .duration(typeSpecial ? duraS : duraD * 20)
@@ -264,6 +264,7 @@ ServerEvents.recipes((event) => {
             [
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 6, itemId: `gtceu:${primMaterial}_plate` },
+                // @ts-ignore
                 { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
                 { count: 2, itemId: `gtceu:${tier}_emitter` },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
@@ -280,6 +281,7 @@ ServerEvents.recipes((event) => {
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 1, itemId: `gtceu:${tier}_electric_motor` },
                 { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
+                // @ts-ignore
                 { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
@@ -295,6 +297,7 @@ ServerEvents.recipes((event) => {
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 1, itemId: `gtceu:${tier}_electric_motor` },
                 { count: 4, itemId: `gtceu:${primMaterial}_plate` },
+                // @ts-ignore
                 { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:${miscMaterial}_foil` },

@@ -22,6 +22,11 @@ extendedRecipeBuilder.prototype.stabilized = function () {
     return this;
 };
 
+extendedRecipeBuilder.prototype.abyssalRoom = function () {
+    this.recipe.cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
+    return this;
+};
+
 /** @typedef {internal.com.gregtechceu.gtceu.api.recipe.ResearchRecipeBuilder$ScannerRecipeBuilder} ScannerResearchBuilder */
 
 /**
@@ -76,7 +81,7 @@ extendedRecipeBuilder.prototype.chancedOutputFluids = function (inputs) {
 
 /**
  * @typedef RangedIngredientObj
- * @property {string} ingredientId
+ * @property {string} id
  * @property {Range} range
  */
 
@@ -86,7 +91,14 @@ extendedRecipeBuilder.prototype.chancedOutputFluids = function (inputs) {
  */
 extendedRecipeBuilder.prototype.rangedItemOutputs = function (inputs) {
     inputs.forEach((item) => {
-        this.recipe.itemOutputsRanged(item.ingredientId, item.range[0], item.range[1]);
+        // validate range:
+        if (item.range[0] < 0 || item.range[1] < 0) {
+            throw new Error('Range must be non-negative in recipe: ' + this.recipe);
+        }
+        if (item.range[0] >= item.range[1]) {
+            throw new Error('Min range must be less than max range in recipe: ' + this.recipe);
+        }
+        this.recipe.itemOutputsRanged(item.id, item.range[0], item.range[1]);
     });
     return this;
 };
