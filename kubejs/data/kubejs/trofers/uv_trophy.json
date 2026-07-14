@@ -1,0 +1,25 @@
+{
+  "name": "§3§lUV Era Trophy",
+  "item": {
+    "item": "kubejs:uv_universal_circuit",
+    "count": 1
+  },
+  "display": {
+    "scale": 1.2,
+    "offset": {
+      "x": 0.0,
+      "y": 2.5,
+      "z": 0.0
+    }
+  },
+  "animation": {
+    "type": "spinning",
+    "speed": 0.3
+  },
+  "colors": {
+    "base": "#6B6B6B",
+    "accent": "#00AAAA"
+  },
+  "effects": {},
+  "hidden": true
+}

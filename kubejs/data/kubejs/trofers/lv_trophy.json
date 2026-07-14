@@ -1,0 +1,25 @@
+{
+  "name": "§7§lLV Era Trophy",
+  "item": {
+    "item": "kubejs:lv_universal_circuit",
+    "count": 1
+  },
+  "display": {
+    "scale": 1.2,
+    "offset": {
+      "x": 0.0,
+      "y": 2.5,
+      "z": 0.0
+    }
+  },
+  "animation": {
+    "type": "spinning",
+    "speed": 0.3
+  },
+  "colors": {
+    "base": "#6B6B6B",
+    "accent": "#AAAAAA"
+  },
+  "effects": {},
+  "hidden": true
+}
