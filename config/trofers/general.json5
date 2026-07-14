@@ -1,0 +1,8 @@
+{
+	// The chance an entity from a supported mod drops a trophy when killed
+	"trophyChance": 0,
+	// Whether trophies can drop loot when right-clicked
+	"enableTrophyLoot": false,
+	// Whether trophies can apply potion effects when right-clicked
+	"enableTrophyEffects": false
+}
