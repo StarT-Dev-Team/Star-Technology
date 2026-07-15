@@ -16,11 +16,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ),
         ])
         .pattern((definition) =>
-            newFactoryBlockPatternWithDirections(
-                $RelativeDirection.LEFT,
-                $RelativeDirection.UP,
-                $RelativeDirection.FRONT
-            )(['XXX|XXX|XXX', 'XXX|XAX|XXX', blockPatternRepeatable(1, 8), 'XXX|XSX|XXX'])
+            newFactoryBlockPattern(['XXX|XXX|XXX', 'XXX|XAX|XXX', blockPatternRepeatable(1, 8), 'XXX|XSX|XXX'])
                 .whereDict({
                     S: P.controller(definition),
                     A: P.gtBlock('advanced_computer_casing'),
