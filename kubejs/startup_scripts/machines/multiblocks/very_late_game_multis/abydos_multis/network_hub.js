@@ -16,16 +16,19 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ),
         ])
         .pattern((definition) =>
-            newFactoryBlockPattern(['XXX|XXX|XXX', 'XXX|XAX|XXX', blockPatternRepeatable(1, 8), 'XXX|XSX|XXX'])
+            newFactoryBlockPattern(['CCC|CCC|CCC', 'XXX|XAX|XXX', blockPatternRepeatable(1, 8), 'CCC|CSC|CCC'])
                 .whereDict({
                     S: P.controller(definition),
                     A: P.gtBlock('advanced_computer_casing'),
-                    V: P.gtBlock('computer_heat_vent'),
-                    X: P.ability(PA.fluidIn, { min: 1, max: 2 }),
                     C: P.anyOf([
-                        P.gtBlock('computer_casing', { min: 5 }),
-                        // @ts-ignore
-                        Predicates.autoAbilities(true, false, false),
+                        P.gtBlock('computer_casing'),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
+                        P.ability(PA.muffler, { exact: 1 }),
+                    ]),
+                    X: P.anyOf([
+                        P.gtBlock('computer_casing', { minLayer: 4 }),
+                        P.ability(PA.compIn, { minLayer: 1 }),
+                        P.ability(PA.compIn, { minLayer: 1 }),
                     ]),
                 })
                 .build()

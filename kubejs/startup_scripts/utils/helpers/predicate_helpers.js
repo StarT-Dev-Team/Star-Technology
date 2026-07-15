@@ -4,6 +4,8 @@
  * @typedef {Object} PredicateSettings
  * @property {number} [min] - Minimum global limit for the predicate (calls `setMinGlobalLimited`)
  * @property {number} [max] - Maximum global limit for the predicate (calls `setMaxGlobalLimited`)
+ * @property {number} [minLayer] - Minimum global limit for the predicate (calls `setMinGlobalLimited`)
+ * @property {number} [maxLayer] - Maximum global limit for the predicate (calls `setMaxGlobalLimited`)
  * @property {number} [exact] - Exact required count for the predicate (calls `setExactLimit`)
  * @property {number} [view] - How many to show in the structure preview (calls `setPreviewCount`)
  */
@@ -19,6 +21,8 @@ function applySettings(predicate, settings) {
     if (settings === undefined) return predicate;
     if (settings.min) predicate = predicate.setMinGlobalLimited(settings.min);
     if (settings.max) predicate = predicate.setMaxGlobalLimited(settings.max);
+    if (settings.minLayer) predicate = predicate.setMinLayerLimited(settings.minLayer);
+    if (settings.maxLayer) predicate = predicate.setMaxLayerLimited(settings.maxLayer);
     if (settings.exact) predicate = predicate.setExactLimit(settings.exact);
     if (settings.view) predicate = predicate.setPreviewCount(settings.view);
     return predicate;
