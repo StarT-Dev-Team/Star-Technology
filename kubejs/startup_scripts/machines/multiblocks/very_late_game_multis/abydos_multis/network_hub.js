@@ -23,7 +23,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.anyOf([
                         P.gtBlock('computer_casing'),
                         P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
-                        P.ability(PA.muffler, { exact: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     X: P.anyOf([
                         P.gtBlock('computer_casing', { minLayer: 4 }),
