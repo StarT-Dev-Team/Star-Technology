@@ -99,6 +99,7 @@ export default [
                 $FormattingUtil: 'readonly',
                 $FluidPipeProperties: 'readonly',
                 GTFluidState: 'readonly',
+                $NetworkSwitchMachine: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
                 FillDirection: 'readonly',
