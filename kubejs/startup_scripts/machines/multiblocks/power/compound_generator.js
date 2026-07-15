@@ -34,11 +34,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             .appearanceBlock(() => Block.getBlock(`gtceu:${generator.casing}`))
             .generator()
             .pattern((definition) =>
-                newFactoryBlockPatternWithDirections(
-                    $RelativeDirection.BACK,
-                    $RelativeDirection.UP,
-                    $RelativeDirection.RIGHT
-                )(['CCC|C@C| C ', 'FKF|KPK|FKF', blockPatternRepeatable(1, 8), 'CCC|CMC| C '])
+                newFactoryBlockPattern(['CCC|CMC| C ', 'FKF|KPK|FKF', blockPatternRepeatable(1, 8), 'CCC|C@C| C '])
                     // todo
                     .whereDict({
                         C: P.anyOf([
