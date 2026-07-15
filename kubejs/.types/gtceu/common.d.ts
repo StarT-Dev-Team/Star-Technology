@@ -1231,6 +1231,24 @@ declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.elect
     const OpticalComputationMachine: $class<OpticalComputationMachine> & {
         new (holder: IMachineBlockEntity, ...args: any[]): OpticalComputationMachine;
     };
+
+    interface DataBankMachine extends $object<
+        'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.DataBankMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const DataBankMachine: $class<DataBankMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): DataBankMachine;
+    };
+
+    interface NetworkSwitchMachine extends $object<
+        'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.DataBankMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const NetworkSwitchMachine: $class<NetworkSwitchMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): NetworkSwitchMachine;
+    };
 }
 
 declare namespace internal.kjs {
@@ -1242,5 +1260,6 @@ declare namespace internal.kjs {
         'com.gregtechceu.gtceu.common.machine.multiblock.part.CleaningMaintenanceHatchPartMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.part.CleaningMaintenanceHatchPartMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.part.MufflerPartMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.part.MufflerPartMachine;
         'com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
+        'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.NetworkSwitchMachine': typeof internal.com.gregtechceu.gtceu.common.machine.multiblock.electric.research.NetworkSwitchMachine;
     }
 }
