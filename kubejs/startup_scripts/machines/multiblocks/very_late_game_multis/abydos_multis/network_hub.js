@@ -33,5 +33,6 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     ]),
                 })
                 .build()
-        );
+        )
+        .workableCasingModel('gtceu:block/casings/hpca/high_power_casing', 'gtceu:block/multiblock/data_bank');
 });
