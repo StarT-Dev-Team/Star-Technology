@@ -120,6 +120,8 @@ export default [
                 $BulkingMulti: 'readonly',
                 $BulkingCoiledMulti: 'readonly',
                 $BulkingThreadedMulti: 'readonly',
+                $ArborealExtractorMachine: 'readonly',
+                $StarTArborealPredicates: 'readonly',
                 // Miscellaneous globals
                 Ponder: 'readonly',
                 Direction: 'readonly',

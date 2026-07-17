@@ -1,6 +1,6 @@
 GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
     event
-        .create('latex_plantation')
+        .create('arboreal_extractor')
         .category('primitive')
         .setMaxIOSize(3, 0, 0, 1)
         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT);
@@ -8,9 +8,10 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
-        .create('latex_plantation', 'primitive')
+        .create('large_arboreal_extractor', 'primitive')
+        .machine((holder) => new $ArborealExtractorMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
-        .recipeType('latex_plantation')
+        .recipeType('arboreal_extractor')
         .appearanceBlock(GTBlocks.CASING_PRIMITIVE_BRICKS)
         .pattern((definition) =>
             newFactoryBlockPattern([
@@ -24,8 +25,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     O: P.anyOf([P.ability(PA.fluidOut), P.block('minecraft:bricks')]),
                     I: P.anyOf([P.ability(PA.itemIn), P.block('minecraft:bricks')]),
                     S: P.block('minecraft:brick_slab'),
-                    L: P.block('minecraft:jungle_leaves'),
-                    G: P.block('minecraft:jungle_log'),
+                    L: P.leaves(),
+                    G: P.logs(),
                     D: P.block('minecraft:dirt'),
                     ' ': P.any(),
                 })
@@ -35,7 +36,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .editableUI(
             global.uiBuilder({
                 group: 'primitive',
-                name: 'latex',
+                name: 'arboreal_extractor',
                 size: [166, 100],
                 background: GuiTextures.PRIMITIVE_BACKGROUND,
                 progress: {

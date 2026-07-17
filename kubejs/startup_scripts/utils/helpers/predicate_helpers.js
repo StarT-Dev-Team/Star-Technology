@@ -145,6 +145,14 @@ const P = {
      */
     vacuumPumps: () => $StarTVacuumPumpPredicates.vacuumPumps(),
     /**
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
+     */
+    leaves: () => $StarTArborealPredicates.leaves(),
+    /**
+     * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
+     */
+    logs: () => $StarTArborealPredicates.logs(),
+    /**
      * Combines an array of predicates into a single predicate using logical OR (`.or()`).
      * The first predicate in the array is used as the accumulator.
      *
