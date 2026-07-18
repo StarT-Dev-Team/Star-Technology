@@ -132,7 +132,7 @@ const $BulkingCoiledMulti = Java.loadClass('com.startechnology.start_core.machin
 const $BulkingThreadedMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingThreadedMachine');
 
 const $ArborealExtractorMachine = Java.loadClass(
-    'com.startechnology.start_core.machine.arboreal_extarctor.ArborealExtractorMachine'
+    'com.startechnology.start_core.machine.arboreal_extractor.ArborealExtractorMachine'
 );
 
 const $StarTArborealPredicates = Java.loadClass(
