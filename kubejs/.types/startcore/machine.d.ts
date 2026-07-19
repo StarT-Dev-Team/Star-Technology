@@ -176,6 +176,47 @@ declare namespace internal.com.startechnology.start_core.machine.arboreal_extrac
     };
 }
 
+declare namespace internal.com.startechnology.start_core.machine.bulking {
+    import WorkableElectricMultiblockMachine = com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+
+    interface IBulking extends $object<'com.startechnology.start_core.machine.bulking.IBulking'> {}
+
+    interface BulkingMachine extends $object<
+        'com.startechnology.start_core.machine.bulking.BulkingMachine',
+        WorkableElectricMultiblockMachine,
+        IBulking
+    > {}
+
+    const BulkingMachine: $class<BulkingMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): BulkingMachine;
+    };
+
+    import CoilWorkableElectricMultiblockMachine = com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
+
+    interface BulkingCoiledMachine extends $object<
+        'com.startechnology.start_core.machine.bulking.BulkingCoiledMachine',
+        CoilWorkableElectricMultiblockMachine,
+        IBulking
+    > {}
+
+    const BulkingCoiledMachine: $class<BulkingCoiledMachine> & {
+        new (holder: IMachineBlockEntity): BulkingCoiledMachine;
+    };
+
+    import StarTThreadingCapableMachine = threading.StarTThreadingCapableMachine;
+
+    interface BulkingThreadedMachine extends $object<
+        'com.startechnology.start_core.machine.bulking.BulkingThreadedMachine',
+        StarTThreadingCapableMachine,
+        IBulking
+    > {}
+
+    const BulkingThreadedMachine: $class<BulkingThreadedMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): BulkingThreadedMachine;
+    };
+}
+
 declare namespace internal.kjs {
     interface LoadableClasses {
         'com.startechnology.start_core.machine.StarTPartAbility': typeof internal.com.startechnology.start_core.machine.StarTPartAbility;
@@ -190,5 +231,8 @@ declare namespace internal.kjs {
         'com.startechnology.start_core.machine.abyssal_containment.StarTAbyssalContainmentMachine': typeof internal.com.startechnology.start_core.machine.abyssal_containment.StarTAbyssalContainmentMachine;
         'com.startechnology.start_core.machine.arboreal_extractor.ArborealExtractorMachine': typeof internal.com.startechnology.start_core.machine.arboreal_extractor.ArborealExtractorMachine;
         'com.startechnology.start_core.machine.arboreal_extractor.StarTArborealPredicates': typeof internal.com.startechnology.start_core.machine.arboreal_extractor.StarTArborealPredicates;
+        'com.startechnology.start_core.machine.bulking.BulkingMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingMachine;
+        'com.startechnology.start_core.machine.bulking.BulkingCoiledMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingCoiledMachine;
+        'com.startechnology.start_core.machine.bulking.BulkingThreadedMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingThreadedMachine;
     }
 }
