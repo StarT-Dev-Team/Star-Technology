@@ -1,7 +1,7 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    event
+    event.recipes.gtceu
         .shaped('gtceu:casket', ['RPR', 'SMS', 'TTT'], {
             T: 'gtceu:treated_wood_slab',
             M: 'exnihilosequentia:string_mesh',
@@ -9,7 +9,8 @@ ServerEvents.recipes((event) => {
             P: 'gtceu:wrought_iron_plate',
             S: 'gtceu:treated_wood_rod',
         })
-        .id(id('shaped/casket'));
+        .id(id('shaped/casket'))
+        .addMaterialInfo();
 
     /**
      * @param {string[]} input

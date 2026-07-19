@@ -43,7 +43,8 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${solder} ${scaler * 144}`)
                 .itemOutputs(`gtceu:${tier}_energy_${type}_hatch_4a`)
                 .duration(100)
-                .EUt(EU * 2);
+                .EUt(EU * 2)
+                .addMaterialInfo(true, true);
 
             event.recipes.gtceu
                 .assembler(id(`${tier}_energy_${type}_hatch_16a`))
@@ -57,7 +58,8 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${solder} ${scaler * 288}`)
                 .itemOutputs(`gtceu:${tier}_energy_${type}_hatch_16a`)
                 .duration(200)
-                .EUt(EU * 3);
+                .EUt(EU * 3)
+                .addMaterialInfo(true, true);
 
             event.recipes.gtceu
                 .assembler(id(`${tier}_substation_${type}_hatch_64a`))
@@ -71,7 +73,8 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${solder} ${scaler * 432}`)
                 .itemOutputs(`gtceu:${tier}_substation_${type}_hatch_64a`)
                 .duration(400)
-                .EUt(EU * 4);
+                .EUt(EU * 4)
+                .addMaterialInfo(true, true);
 
             if (tier !== 'ev') {
                 event.recipes.gtceu
@@ -86,7 +89,8 @@ ServerEvents.recipes((event) => {
                     .inputFluids(`gtceu:${solder} ${scaler * 576}`)
                     .itemOutputs(`gtceu:${tier}_256a_laser_${laserType}_hatch`)
                     .duration(600)
-                    .EUt(EU * 4);
+                    .EUt(EU * 4)
+                    .addMaterialInfo(true, true);
 
                 event.recipes.gtceu
                     .assembler(id(`${tier}_1024a_laser_${laserType}_hatch`))
@@ -100,7 +104,8 @@ ServerEvents.recipes((event) => {
                     .inputFluids(`gtceu:${solder} ${scaler * 720}`)
                     .itemOutputs(`gtceu:${tier}_1024a_laser_${laserType}_hatch`)
                     .duration(900)
-                    .EUt(EU * 4);
+                    .EUt(EU * 4)
+                    .addMaterialInfo(true, true);
 
                 event.recipes.gtceu
                     .assembler(id(`${tier}_4096a_laser_${laserType}_hatch`))
@@ -114,7 +119,8 @@ ServerEvents.recipes((event) => {
                     .inputFluids(`gtceu:${solder} ${scaler * 864}`)
                     .itemOutputs(`gtceu:${tier}_4096a_laser_${laserType}_hatch`)
                     .duration(1200)
-                    .EUt(EU * 4);
+                    .EUt(EU * 4)
+                    .addMaterialInfo(true, true);
             }
         });
     }

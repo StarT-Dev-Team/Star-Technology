@@ -2,16 +2,17 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     // UHV Containers
-    event
+    event.recipes.gtceu
         .shaped('gtceu:uhv_quantum_chest', ['CPC', 'PHP', 'CFC'], {
             C: '#gtceu:circuits/uhv',
             P: 'gtceu:dense_neutronium_plate',
             H: 'gtceu:uhv_machine_hull',
             F: 'gtceu:zpm_field_generator',
         })
-        .id(id('uhv_quantum_chest'));
+        .id(id('uhv_quantum_chest'))
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped('gtceu:uhv_quantum_tank', ['CFC', 'PHP', 'CMC'], {
             C: '#gtceu:circuits/uhv',
             P: 'gtceu:dense_neutronium_plate',
@@ -19,5 +20,6 @@ ServerEvents.recipes((event) => {
             F: 'gtceu:zpm_field_generator',
             M: 'gtceu:uhv_electric_pump',
         })
-        .id(id('uhv_quantum_tank'));
+        .id(id('uhv_quantum_tank'))
+        .addMaterialInfo();
 });

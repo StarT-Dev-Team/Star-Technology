@@ -70,12 +70,13 @@ ServerEvents.recipes((event) => {
      */
     function converterCraftingRecipe(amps, thickness) {
         for (const [tier, info] of Object.entries(converterMaterials)) {
-            event
+            event.recipes.gtceu
                 .shaped(Item.of(`gtceu:${tier}_${amps}a_energy_converter`), ['   ', 'WCW', 'WSW'], {
                     W: `${info.superconductor}_${thickness}_wire`,
                     C: `#gtceu:circuits/${tier}`,
                     S: `gtceu:${tier}_machine_hull`,
                 })
+                .addMaterialInfo()
                 .id(`start:shaped/${tier}_${amps}a_energy_converter`);
         }
     }
@@ -93,7 +94,8 @@ ServerEvents.recipes((event) => {
             .itemInputs(`#gtceu:circuits/${tier}`, `16x ${info.superconductor}_hex_wire`, `gtceu:${tier}_machine_hull`)
             .itemOutputs(Item.of(`start_core:${tier}_64a_energy_converter`))
             .duration(600)
-            .EUt(1625);
+            .EUt(1625)
+            .addMaterialInfo(true);
     }
 });
 

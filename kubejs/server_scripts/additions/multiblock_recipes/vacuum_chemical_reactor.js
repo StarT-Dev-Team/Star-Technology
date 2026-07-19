@@ -7,14 +7,15 @@ ServerEvents.recipes((event) => {
      * @param {string} casing
      */
     const pumpBlockTiers = (tier, rotor, casing) => {
-        event
+        event.recipes.gtceu
             .shaped(`start_core:${tier}_vacuum_pump`, ['ABA', 'CDC', 'ABA'], {
                 A: `gtceu:double_${casing}_plate`,
                 B: `gtceu:${rotor}_rotor`,
                 C: `gtceu:${tier}_electric_pump`,
                 D: `gtceu:${tier}_rotor_holder`,
             })
-            .id(`gtceu:${tier}_vacuum_pump_block`);
+            .id(`gtceu:${tier}_vacuum_pump_block`)
+            .addMaterialInfo();
     };
 
     pumpBlockTiers('zpm', 'dragonsteel', 'enriched_naquadah');
@@ -40,7 +41,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_gas_collector')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
-        .EUtVHA(ZPM);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('dual_chambered_vacuum_complex_controller'))
@@ -62,7 +64,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UHV])
                 .CWUt(96)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('auroric_vacuum_isolation_reactor_controller'))
@@ -88,5 +91,6 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UEV])
                 .CWUt(200)
         )
-        .EUtVHA(UIV);
+        .EUtVHA(UIV)
+        .addMaterialInfo(true, true);
 });

@@ -43,7 +43,7 @@ ServerEvents.recipes((event) => {
         let math = scaler - 3;
 
         // Machines
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_machine_casing`), ['PPP', 'PWP', 'PPP'], {
                 P: `gtceu:${tierMaterial}_plate`,
                 W: '#forge:tools/wrenches',
@@ -56,9 +56,10 @@ ServerEvents.recipes((event) => {
             .circuit(8)
             .itemOutputs(`gtceu:${tier}_machine_casing`)
             .duration(50)
-            .EUt(16);
+            .EUt(16)
+            .addMaterialInfo(true);
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_machine_hull`), ['   ', 'LPL', 'CMC'], {
                 P: `gtceu:${tierMaterial}_plate`,
                 L: `gtceu:${plastic}_plate`,
@@ -73,18 +74,20 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${plastic} 288`)
             .itemOutputs(`gtceu:${tier}_machine_hull`)
             .duration(50)
-            .EUt(16);
+            .EUt(16)
+            .addMaterialInfo(true);
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_electric_furnace`), ['IWI', 'WHW', 'CWC'], {
                 I: `#gtceu:circuits/${tier}`,
                 W: `gtceu:${wire}_double_wire`,
                 C: `gtceu:${cable}_single_cable`,
                 H: `gtceu:${tier}_machine_hull`,
             })
-            .id(`start:shaped/${tier}_electric_furnace`);
+            .id(`start:shaped/${tier}_electric_furnace`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_electric_blaster`), ['IDI', 'WHW', 'CQC'], {
                 I: `#gtceu:circuits/${tier}`,
                 W: `gtceu:${wire}_double_wire`,
@@ -93,9 +96,10 @@ ServerEvents.recipes((event) => {
                 Q: `gtceu:${wire}_quadruple_wire`,
                 D: `gtceu:double_${tierMaterial}_plate`,
             })
-            .id(`start:shaped/${tier}_electric_blaster`);
+            .id(`start:shaped/${tier}_electric_blaster`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_electric_smoker`), ['ISI', 'WHW', 'CQC'], {
                 I: `#gtceu:circuits/${tier}`,
                 W: `gtceu:${wire}_double_wire`,
@@ -104,18 +108,20 @@ ServerEvents.recipes((event) => {
                 Q: `gtceu:${wire}_quadruple_wire`,
                 S: `gtceu:${wire}_spring`,
             })
-            .id(`start:shaped/${tier}_electric_smoker`);
+            .id(`start:shaped/${tier}_electric_smoker`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_alloy_smelter`), ['IWI', 'WHW', 'CWC'], {
                 I: `#gtceu:circuits/${tier}`,
                 W: `gtceu:${wire}_quadruple_wire`,
                 C: `gtceu:${cable}_single_cable`,
                 H: `gtceu:${tier}_machine_hull`,
             })
-            .id(`start:shaped/${tier}_alloy_smelter`);
+            .id(`start:shaped/${tier}_alloy_smelter`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_arc_furnace`), ['CGC', 'IHI', 'PPP'], {
                 I: `#gtceu:circuits/${tier}`,
                 G: 'gtceu:graphite_dust',
@@ -123,9 +129,10 @@ ServerEvents.recipes((event) => {
                 H: `gtceu:${tier}_machine_hull`,
                 P: `gtceu:${tierMaterial}_plate`,
             })
-            .id(`start:shaped/${tier}_arc_furnace`);
+            .id(`start:shaped/${tier}_arc_furnace`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_assembler`), ['AIA', 'VHV', 'CIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 C: `gtceu:${cable}_single_cable`,
@@ -133,9 +140,10 @@ ServerEvents.recipes((event) => {
                 A: `gtceu:${tier}_robot_arm`,
                 V: `gtceu:${tier}_conveyor_module`,
             })
-            .id(`start:shaped/${tier}_assembler`);
+            .id(`start:shaped/${tier}_assembler`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_autoclave`), ['PGP', 'PHP', 'IUI'], {
                 I: `#gtceu:circuits/${tier}`,
                 G: `${glass}`,
@@ -143,9 +151,10 @@ ServerEvents.recipes((event) => {
                 P: `gtceu:${tierMaterial}_plate`,
                 U: `gtceu:${tier}_electric_pump`,
             })
-            .id(`start:shaped/${tier}_autoclave`);
+            .id(`start:shaped/${tier}_autoclave`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_bender`), ['SPS', 'IHI', 'MCM'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -154,9 +163,10 @@ ServerEvents.recipes((event) => {
                 M: `gtceu:${tier}_electric_motor`,
                 S: `gtceu:${tier}_electric_piston`,
             })
-            .id(`start:shaped/${tier}_bender`);
+            .id(`start:shaped/${tier}_bender`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_brewery`), ['GUG', 'CHC', 'ISI'], {
                 G: `${glass}`,
                 I: `#gtceu:circuits/${tier}`,
@@ -165,9 +175,10 @@ ServerEvents.recipes((event) => {
                 U: `gtceu:${tier}_electric_pump`,
                 S: `gtceu:${wire}_spring`,
             })
-            .id(`start:shaped/${tier}_brewery`);
+            .id(`start:shaped/${tier}_brewery`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_canner`), ['CUC', 'IHI', 'GGG'], {
                 G: `${glass}`,
                 I: `#gtceu:circuits/${tier}`,
@@ -175,18 +186,20 @@ ServerEvents.recipes((event) => {
                 C: `gtceu:${cable}_single_cable`,
                 U: `gtceu:${tier}_electric_pump`,
             })
-            .id(`start:shaped/${tier}_canner`);
+            .id(`start:shaped/${tier}_canner`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_centrifuge`), ['IMI', 'CHC', 'IMI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
                 C: `gtceu:${cable}_single_cable`,
                 M: `gtceu:${tier}_electric_motor`,
             })
-            .id(`start:shaped/${tier}_centrifuge`);
+            .id(`start:shaped/${tier}_centrifuge`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_chemical_bath`), ['VGC', 'UGV', 'IHI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -195,9 +208,10 @@ ServerEvents.recipes((event) => {
                 V: `gtceu:${tier}_conveyor_module`,
                 G: `${glass}`,
             })
-            .id(`start:shaped/${tier}_chemical_bath`);
+            .id(`start:shaped/${tier}_chemical_bath`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_chemical_reactor`), ['ERE', 'CMC', 'IHI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -206,18 +220,20 @@ ServerEvents.recipes((event) => {
                 R: `gtceu:${tierMaterial}_rotor`,
                 M: `gtceu:${tier}_electric_motor`,
             })
-            .id(`start:shaped/${tier}_chemical_reactor`);
+            .id(`start:shaped/${tier}_chemical_reactor`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_compressor`), [' I ', 'SHS', 'CIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
                 C: `gtceu:${cable}_single_cable`,
                 S: `gtceu:${tier}_electric_piston`,
             })
-            .id(`start:shaped/${tier}_compressor`);
+            .id(`start:shaped/${tier}_compressor`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_cutter`), ['CIG', 'VHB', 'ICM'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -227,9 +243,10 @@ ServerEvents.recipes((event) => {
                 G: `${glass}`,
                 B: `gtceu:${buzz}_buzz_saw_blade`,
             })
-            .id(`start:shaped/${tier}_cutter`);
+            .id(`start:shaped/${tier}_cutter`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_distillery`), ['GSG', 'IHI', 'CUC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -238,9 +255,10 @@ ServerEvents.recipes((event) => {
                 S: `gtceu:${wire}_spring`,
                 U: `gtceu:${tier}_electric_pump`,
             })
-            .id(`start:shaped/${tier}_distillery`);
+            .id(`start:shaped/${tier}_distillery`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_electrolyzer`), ['WGW', 'WHW', 'ICI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -248,9 +266,10 @@ ServerEvents.recipes((event) => {
                 G: `${glass}`,
                 W: `gtceu:${elctrlyzWire}_single_wire`,
             })
-            .id(`start:shaped/${tier}_electrolyzer`);
+            .id(`start:shaped/${tier}_electrolyzer`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_electromagnetic_separator`), ['VCW', 'CHG', 'ICW'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -259,9 +278,10 @@ ServerEvents.recipes((event) => {
                 W: `gtceu:${cable}_octal_wire`,
                 V: `gtceu:${tier}_conveyor_module`,
             })
-            .id(`start:shaped/${tier}_electromagnetic_separator`);
+            .id(`start:shaped/${tier}_electromagnetic_separator`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_extractor`), ['GIG', 'SHU', 'CIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -270,9 +290,10 @@ ServerEvents.recipes((event) => {
                 U: `gtceu:${tier}_electric_pump`,
                 S: `gtceu:${tier}_electric_piston`,
             })
-            .id(`start:shaped/${tier}_extractor`);
+            .id(`start:shaped/${tier}_extractor`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_extruder`), ['WWI', 'SHE', 'WWI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -280,9 +301,10 @@ ServerEvents.recipes((event) => {
                 W: `gtceu:${wire}_quadruple_wire`,
                 E: `gtceu:${pipeMaterial}_normal_fluid_pipe`,
             })
-            .id(`start:shaped/${tier}_extruder`);
+            .id(`start:shaped/${tier}_extruder`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_fermenter`), ['CUC', 'GHG', 'CIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -290,9 +312,10 @@ ServerEvents.recipes((event) => {
                 G: `${glass}`,
                 U: `gtceu:${tier}_electric_pump`,
             })
-            .id(`start:shaped/${tier}_fermenter`);
+            .id(`start:shaped/${tier}_fermenter`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_fluid_heater`), ['WGW', 'UHU', 'CIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -301,9 +324,10 @@ ServerEvents.recipes((event) => {
                 U: `gtceu:${tier}_electric_pump`,
                 W: `gtceu:${wire}_quadruple_wire`,
             })
-            .id(`start:shaped/${tier}_fluid_heater`);
+            .id(`start:shaped/${tier}_fluid_heater`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_fluid_solidifier`), ['UGU', 'CHC', 'IRI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -312,9 +336,10 @@ ServerEvents.recipes((event) => {
                 R: 'minecraft:chest',
                 U: `gtceu:${tier}_electric_pump`,
             })
-            .id(`start:shaped/${tier}_fluid_solidifier`);
+            .id(`start:shaped/${tier}_fluid_solidifier`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_forge_hammer`), ['CSC', 'IHI', 'CRC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -322,18 +347,20 @@ ServerEvents.recipes((event) => {
                 S: `gtceu:${tier}_electric_piston`,
                 R: 'minecraft:anvil',
             })
-            .id(`start:shaped/${tier}_forge_hammer`);
+            .id(`start:shaped/${tier}_forge_hammer`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_forming_press`), ['CSC', 'IHI', 'CSC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
                 C: `gtceu:${cable}_single_cable`,
                 S: `gtceu:${tier}_electric_piston`,
             })
-            .id(`start:shaped/${tier}_forming_press`);
+            .id(`start:shaped/${tier}_forming_press`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_lathe`), ['CIC', 'MHR', 'ICS'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -342,9 +369,10 @@ ServerEvents.recipes((event) => {
                 M: `gtceu:${tier}_electric_motor`,
                 R: 'gtceu:tungsten_grinding_head',
             })
-            .id(`start:shaped/${tier}_lathe`);
+            .id(`start:shaped/${tier}_lathe`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_scanner`), ['IEI', 'CHC', 'ISI'], {
                 I: `#gtceu:circuits/${tier0}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -352,9 +380,10 @@ ServerEvents.recipes((event) => {
                 E: `gtceu:${tier}_emitter`,
                 S: `gtceu:${tier}_sensor`,
             })
-            .id(`start:shaped/${tier}_scanner`);
+            .id(`start:shaped/${tier}_scanner`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_mixer`), ['GRG', 'GMG', 'IHI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -362,9 +391,10 @@ ServerEvents.recipes((event) => {
                 R: `gtceu:${tierMaterial}_rotor`,
                 M: `gtceu:${tier}_electric_motor`,
             })
-            .id(`start:shaped/${tier}_mixer`);
+            .id(`start:shaped/${tier}_mixer`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_ore_washer`), ['RGR', 'IMI', 'CHC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -373,9 +403,10 @@ ServerEvents.recipes((event) => {
                 R: `gtceu:${tierMaterial}_rotor`,
                 M: `gtceu:${tier}_electric_motor`,
             })
-            .id(`start:shaped/${tier}_ore_washer`);
+            .id(`start:shaped/${tier}_ore_washer`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_packer`), ['RIR', 'AHV', 'CIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -384,18 +415,20 @@ ServerEvents.recipes((event) => {
                 V: `gtceu:${tier}_conveyor_module`,
                 R: 'minecraft:chest',
             })
-            .id(`start:shaped/${tier}_packer`);
+            .id(`start:shaped/${tier}_packer`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_polarizer`), ['WGW', 'CHC', 'WGW'], {
                 H: `gtceu:${tier}_machine_hull`,
                 C: `gtceu:${cable}_single_cable`,
                 G: `gtceu:${primMagnet}_rod`,
                 W: `gtceu:${cable}_octal_wire`,
             })
-            .id(`start:shaped/${tier}_polarizer`);
+            .id(`start:shaped/${tier}_polarizer`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_laser_engraver`), ['SES', 'IHI', 'CIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -403,9 +436,10 @@ ServerEvents.recipes((event) => {
                 E: `gtceu:${tier}_emitter`,
                 S: `gtceu:${tier}_electric_piston`,
             })
-            .id(`start:shaped/${tier}_laser_engraver`);
+            .id(`start:shaped/${tier}_laser_engraver`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_sifter`), ['CFC', 'SHS', 'IFI'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -413,9 +447,10 @@ ServerEvents.recipes((event) => {
                 F: 'gtceu:item_filter',
                 S: `gtceu:${tier}_electric_piston`,
             })
-            .id(`start:shaped/${tier}_sifter`);
+            .id(`start:shaped/${tier}_sifter`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_thermal_centrifuge`), ['IMI', 'WHW', 'CMC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -423,18 +458,20 @@ ServerEvents.recipes((event) => {
                 M: `gtceu:${tier}_electric_motor`,
                 W: `gtceu:${wire}_quadruple_wire`,
             })
-            .id(`start:shaped/${tier}_thermal_centrifuge`);
+            .id(`start:shaped/${tier}_thermal_centrifuge`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_wiremill`), ['MCM', 'IHI', 'MCM'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
                 C: `gtceu:${cable}_single_cable`,
                 M: `gtceu:${tier}_electric_motor`,
             })
-            .id(`start:shaped/${tier}_wiremill`);
+            .id(`start:shaped/${tier}_wiremill`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_circuit_assembler`), ['AIE', 'VHV', 'CIC'], {
                 I: `#gtceu:circuits/${tier0}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -443,9 +480,10 @@ ServerEvents.recipes((event) => {
                 V: `gtceu:${tier}_conveyor_module`,
                 E: `gtceu:${tier}_emitter`,
             })
-            .id(`start:shaped/${tier}_circuit_assembler`);
+            .id(`start:shaped/${tier}_circuit_assembler`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_macerator`), ['SMR', 'CCH', 'IIC'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -454,9 +492,10 @@ ServerEvents.recipes((event) => {
                 M: `gtceu:${tier}_electric_motor`,
                 R: 'gtceu:tungsten_grinding_head',
             })
-            .id(`start:shaped/${tier}_macerator`);
+            .id(`start:shaped/${tier}_macerator`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_gas_collector`), ['BFB', 'UHU', 'BIB'], {
                 I: `#gtceu:circuits/${tier}`,
                 H: `gtceu:${tier}_machine_hull`,
@@ -464,9 +503,10 @@ ServerEvents.recipes((event) => {
                 F: 'gtceu:fluid_filter',
                 B: 'minecraft:iron_bars',
             })
-            .id(`start:shaped/${tier}_gas_collector`);
+            .id(`start:shaped/${tier}_gas_collector`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_rock_crusher`), ['SMR', 'CHC', 'GGG'], {
                 H: `gtceu:${tier}_machine_hull`,
                 C: `gtceu:${cable}_single_cable`,
@@ -475,32 +515,35 @@ ServerEvents.recipes((event) => {
                 R: 'gtceu:tungsten_grinding_head',
                 G: `${glass}`,
             })
-            .id(`start:shaped/${tier}_rock_crusher`);
+            .id(`start:shaped/${tier}_rock_crusher`)
+            .addMaterialInfo();
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_muffler_hatch`), ['HM', 'PR'], {
                 H: `gtceu:${tier}_machine_hull`,
                 M: `gtceu:${tier}_electric_motor`,
                 P: `gtceu:${pipeMaterial}_normal_fluid_pipe`,
                 R: `gtceu:${tierMaterial}_rotor`,
             })
-            .id(`start:shaped/${tier}_muffler_hatch`);
+            .id(`start:shaped/${tier}_muffler_hatch`)
+            .addMaterialInfo();
 
         [
             { size: '4x', cableThickness: 'quadruple' },
             { size: '8x', cableThickness: 'octal' },
             { size: '16x', cableThickness: 'hex' },
         ].forEach((bufferData) => {
-            event
+            event.recipes.gtceu
                 .shaped(Item.of(`gtceu:${tier}_battery_buffer_${bufferData.size}`), ['   ', 'WCW', 'WHW'], {
                     H: `gtceu:${tier}_machine_hull`,
                     W: `gtceu:${wire}_${bufferData.cableThickness}_wire`,
                     C: 'minecraft:chest',
                 })
-                .id(`start:shaped/${tier}_battery_buffer_${bufferData.size}`);
+                .id(`start:shaped/${tier}_battery_buffer_${bufferData.size}`)
+                .addMaterialInfo();
         });
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_charger_4x`), ['WRW', 'WHW', 'CIC'], {
                 H: `gtceu:${tier}_machine_hull`,
                 W: `gtceu:${wire}_quadruple_wire`,
@@ -508,7 +551,8 @@ ServerEvents.recipes((event) => {
                 I: `#gtceu:circuits/${tier}`,
                 C: `gtceu:${cable}_single_cable`,
             })
-            .id(`start:shaped/${tier}_charger_4x`);
+            .id(`start:shaped/${tier}_charger_4x`)
+            .addMaterialInfo();
 
         [
             { type: 'input', powerTr: 'single_cable' },
@@ -537,8 +581,11 @@ ServerEvents.recipes((event) => {
                         .CWUt(math * 64 + 64)
                 )
                 .duration(800)
-                .EUt(491520 * Math.pow(4, math));
-        }); //multi-amp and laser in large_energy_hatches_file
+                .EUt(491520 * Math.pow(4, math))
+                .addMaterialInfo(true, true);
+        });
+
+        //multi-amp and laser in large_energy_hatches_file
     }
 
     postUVMachines('uhv');
@@ -558,7 +605,7 @@ ServerEvents.recipes((event) => {
 
         event.remove({ output: `gtceu:${tier}_machine_hull` });
 
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`gtceu:${tier}_machine_hull`), ['   ', 'LPL', 'CMC'], {
                 P: `gtceu:${tierMaterial}_plate`,
                 L: `gtceu:${plastic}_plate`,
@@ -573,7 +620,8 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${plastic} 288`)
             .itemOutputs(`gtceu:${tier}_machine_hull`)
             .duration(50)
-            .EUt(16);
+            .EUt(16)
+            .addMaterialInfo(true);
     }
 
     luvUVMachines('luv');

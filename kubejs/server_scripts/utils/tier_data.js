@@ -378,3 +378,17 @@ global.componentMaterials = /** @type {const} */ ({
         },
     },
 });
+
+global.casingMaterials = {
+    lv: `gtceu:${global.componentMaterials.lv.materials.tierMaterial}`,
+    mv: `gtceu:${global.componentMaterials.mv.materials.tierMaterial}`,
+    hv: `gtceu:${global.componentMaterials.hv.materials.tierMaterial}`,
+    ev: `gtceu:${global.componentMaterials.ev.materials.tierMaterial}`,
+    iv: `gtceu:${global.componentMaterials.iv.materials.tierMaterial}`,
+    luv: `gtceu:${global.componentMaterials.luv.materials.tierMaterial}`,
+    zpm: `gtceu:${global.componentMaterials.zpm.materials.tierMaterial}`,
+    uv: `gtceu:${global.componentMaterials.uv.materials.tierMaterial}`,
+    uhv: `gtceu:${global.componentMaterials.uhv.materials.tierMaterial}`,
+    uev: `gtceu:${global.componentMaterials.uev.materials.tierMaterial}`,
+    uiv: `gtceu:${global.componentMaterials.uiv.materials.tierMaterial}`,
+};

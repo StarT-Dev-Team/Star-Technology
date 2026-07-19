@@ -26,7 +26,7 @@ ServerEvents.recipes((event) => {
         'gtceu:wrought_iron_screw'
     );
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('gtceu:solid_blast_furnace'), ['HRS', 'PBR', 'FRS'], {
             H: '#forge:tools/hammers',
             R: 'gtceu:steel_rod',
@@ -35,7 +35,8 @@ ServerEvents.recipes((event) => {
             B: 'kubejs:high_steam_machine_casing',
             F: '#forge:tools/screwdrivers',
         })
-        .id('start:shaped/solid_blast_furnace');
+        .id('start:shaped/solid_blast_furnace')
+        .addMaterialInfo();
 
     // === SBF ===
     const coalType = ['coal', 'charcoal'];
