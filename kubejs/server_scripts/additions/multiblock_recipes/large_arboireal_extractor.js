@@ -34,35 +34,40 @@ ServerEvents.recipes((event) => {
         .treeType('resin')
         .duration(400);
 
-    const taps = [
-        { fuel: 'minecraft:bone_meal', circ: 1 },
-        { fuel: 'thermal:compost', circ: 2 },
-        { fuel: 'gtceu:fertilizer', circ: 3 },
-    ];
+    const fertilizers = ['minecraft:bone_meal', 'thermal:compost', 'gtceu:fertilizer'];
 
-    taps.forEach((latex) => {
+    /**
+     * @param {string} fluid Fluid that will be outputed by the extractor
+     * @param {string} fertilizer Ferilizer used in the recipe
+     */
+    const generateExtractorRecipe = (fluid, fertilizer) => {
+        let outFluid = fluid.split(':')[1];
+        let inFert = fertilizer.split(':')[1];
         event.recipes.gtceu
-            .arboreal_extractor(id(`latex_${latex.circ}`))
-            .chancedInput(latex.fuel, 2500, 0)
+            .arboreal_extractor(id(`${outFluid}_${inFert}`))
             .notConsumable('gtceu:iron_screw')
-            .circuit(latex.circ)
-            .outputFluids(`thermal:latex ${100 + 50 * latex.circ}`)
+            .chancedInput(fertilizer, 2500, 0)
+            .outputFluids(`${fluid}} ${150}`)
             .duration(400);
 
         event.recipes.gtceu
-            .arboreal_extractor(id(`sap_${latex.circ}`))
-            .chancedInput(latex.fuel, 2500, 0)
+            .arboreal_extractor(id(`${outFluid}_${inFert}`))
             .notConsumable('gtceu:iron_screw')
-            .circuit(latex.circ)
-            .outputFluids(`thermal:sap ${100 + 50 * latex.circ}`)
+            .chancedInput(fertilizer, 2500, 0)
+            .outputFluids(`${fluid}} ${200}`)
             .duration(400);
 
         event.recipes.gtceu
-            .arboreal_extractor(id(`resin_${latex.circ}`))
-            .chancedInput(latex.fuel, 2500, 0)
+            .arboreal_extractor(id(`${outFluid}_${inFert}`))
             .notConsumable('gtceu:iron_screw')
-            .circuit(latex.circ)
-            .outputFluids(`thermal:resin ${100 + 50 * latex.circ}`)
+            .chancedInput(fertilizer, 2500, 0)
+            .outputFluids(`${fluid}} ${250}`)
             .duration(400);
+    };
+
+    fertilizers.forEach((fertilizer) => {
+        generateExtractorRecipe('thermal:latex', fertilizer);
+        generateExtractorRecipe('thermal:sap', fertilizer);
+        generateExtractorRecipe('thermal:resin', fertilizer);
     });
 });
