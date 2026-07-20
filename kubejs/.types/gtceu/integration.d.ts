@@ -98,6 +98,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
+        tiersBetween(minTier: number, maxTier: number): this;
         machine(machine: $wrapped<KJSTieredMachineBuilder$TieredCreationFunction>): this;
         definition(definition: $wrapped<KJSTieredMachineBuilder$DefinitionFunction>): this;
     }
