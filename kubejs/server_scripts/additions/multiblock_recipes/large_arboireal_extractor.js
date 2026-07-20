@@ -34,40 +34,28 @@ ServerEvents.recipes((event) => {
         .treeType('resin')
         .duration(400);
 
-    const fertilizers = ['minecraft:bone_meal', 'thermal:compost', 'gtceu:fertilizer'];
-
     /**
      * @param {string} fluid Fluid that will be outputed by the extractor
      * @param {string} fertilizer Ferilizer used in the recipe
+     * @param {number} buffMultipler By how much to multiply the output buff
      */
-    const generateExtractorRecipe = (fluid, fertilizer) => {
+    const generateExtractorRecipe = (fluid, fertilizer, buffMultipler) => {
         let outFluid = fluid.split(':')[1];
         let inFert = fertilizer.split(':')[1];
-        event.recipes.gtceu
-            .arboreal_extractor(id(`${outFluid}_${inFert}`))
-            .notConsumable('gtceu:iron_screw')
-            .chancedInput(fertilizer, 2500, 0)
-            .outputFluids(`${fluid}} ${150}`)
-            .duration(400);
 
         event.recipes.gtceu
             .arboreal_extractor(id(`${outFluid}_${inFert}`))
             .notConsumable('gtceu:iron_screw')
             .chancedInput(fertilizer, 2500, 0)
-            .outputFluids(`${fluid}} ${200}`)
-            .duration(400);
-
-        event.recipes.gtceu
-            .arboreal_extractor(id(`${outFluid}_${inFert}`))
-            .notConsumable('gtceu:iron_screw')
-            .chancedInput(fertilizer, 2500, 0)
-            .outputFluids(`${fluid}} ${250}`)
+            .outputFluids(`${fluid}} ${100 + 50 * buffMultipler}`)
             .duration(400);
     };
 
-    fertilizers.forEach((fertilizer) => {
-        generateExtractorRecipe('thermal:latex', fertilizer);
-        generateExtractorRecipe('thermal:sap', fertilizer);
-        generateExtractorRecipe('thermal:resin', fertilizer);
+    const fertilizers = ['minecraft:bone_meal', 'thermal:compost', 'gtceu:fertilizer'];
+
+    fertilizers.forEach((fertilizer, index) => {
+        generateExtractorRecipe('thermal:latex', fertilizer, index + 1);
+        generateExtractorRecipe('thermal:sap', fertilizer, index + 1);
+        generateExtractorRecipe('thermal:resin', fertilizer, index + 1);
     });
 });
