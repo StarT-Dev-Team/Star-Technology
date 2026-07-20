@@ -52,7 +52,7 @@ ServerEvents.recipes((event) => {
         'argon',
         'infernal',
         568,
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         43.6
     );
     hellForgeMat(
@@ -62,7 +62,7 @@ ServerEvents.recipes((event) => {
         'magmatic',
         'infernal',
         708,
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         52.4
     );
     hellForgeMat(
@@ -72,7 +72,7 @@ ServerEvents.recipes((event) => {
         'oxygen',
         'infernal',
         633,
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         39.8
     );
     hellForgeMat(
@@ -82,7 +82,7 @@ ServerEvents.recipes((event) => {
         'nickel',
         'infernal',
         878,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         37.4
     );
     hellForgeMat(
@@ -97,7 +97,7 @@ ServerEvents.recipes((event) => {
         'nitrogen',
         'ascendant',
         444,
-        GTValues.VA[GTValues.UHV],
+        GTValues.VA[UHV],
         76.8
     );
     hellForgeMat(
@@ -113,7 +113,7 @@ ServerEvents.recipes((event) => {
         'preon',
         'abyssal',
         1723,
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         46.1
     );
     hellForgeMat(
@@ -123,7 +123,7 @@ ServerEvents.recipes((event) => {
         'voidic',
         'abyssal',
         1586,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         38.5
     );
     hellForgeMat(
@@ -139,7 +139,7 @@ ServerEvents.recipes((event) => {
         'paradox',
         'abyssal',
         1472,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         43.7
     );
     hellForgeMat(
@@ -155,7 +155,7 @@ ServerEvents.recipes((event) => {
         'paradox',
         'abyssal',
         1351,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         46.9
     );
     hellForgeMat(
@@ -171,7 +171,7 @@ ServerEvents.recipes((event) => {
         'voidic',
         'abyssal',
         1444,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         16.0
     );
     hellForgeMat(
@@ -181,7 +181,7 @@ ServerEvents.recipes((event) => {
         'preon',
         'abyssal',
         1658,
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         39.4
     );
     hellForgeMat(
@@ -196,7 +196,7 @@ ServerEvents.recipes((event) => {
         'americium',
         'infernal',
         863,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         32.7
     );
     hellForgeMat(
@@ -212,7 +212,7 @@ ServerEvents.recipes((event) => {
         'tin',
         'ascendant',
         946,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         34.3
     );
     hellForgeMat(
@@ -229,7 +229,7 @@ ServerEvents.recipes((event) => {
         'argon',
         'ascendant',
         974,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         31.5
     );
     hellForgeMat(
@@ -245,7 +245,7 @@ ServerEvents.recipes((event) => {
         'iron',
         'ascendant',
         916,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         29.4
     );
     hellForgeMat(
@@ -261,7 +261,7 @@ ServerEvents.recipes((event) => {
         'helium',
         'infernal',
         981,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         35.1
     );
     hellForgeMat(
@@ -271,7 +271,7 @@ ServerEvents.recipes((event) => {
         'nickel',
         'ascendant',
         955,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         31.4
     );
     hellForgeMat(
@@ -287,7 +287,7 @@ ServerEvents.recipes((event) => {
         'magmatic',
         'abyssal',
         1343,
-        GTValues.VA[GTValues.UXV],
+        GTValues.VA[UXV],
         21.6
     );
     hellForgeMat(
@@ -303,7 +303,7 @@ ServerEvents.recipes((event) => {
         'iron',
         'ascendant',
         966,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         36.7
     );
     hellForgeMat(
@@ -319,7 +319,7 @@ ServerEvents.recipes((event) => {
         'helium',
         'infernal',
         927,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         26.5
     );
     hellForgeMat(
@@ -335,7 +335,7 @@ ServerEvents.recipes((event) => {
         'magmatic',
         'abyssal',
         1021,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         41.1
     );
     hellForgeMat(
@@ -351,7 +351,7 @@ ServerEvents.recipes((event) => {
         'americium',
         'ascendant',
         951,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         27.3
     );
     hellForgeMat(
@@ -367,7 +367,7 @@ ServerEvents.recipes((event) => {
         'nitrogen',
         'ascendant',
         1158,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         13.8
     );
     hellForgeMat(
@@ -382,7 +382,7 @@ ServerEvents.recipes((event) => {
         'voidic',
         'ascendant',
         2184,
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         6.3
     );
 
@@ -393,21 +393,21 @@ ServerEvents.recipes((event) => {
         .chancedInput('kubejs:ancient_netherite_reinforced_mesh', 750, -125)
         .outputFluids('gtceu:infernal_concentrate 15000')
         .duration(1150)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .heat_chamber(id('superheated_infernal_concentrate'))
         .inputFluids('gtceu:infernal_concentrate 950', 'gtceu:utopian_akreyrium 50')
         .outputFluids('gtceu:superheated_infernal_concentrate 1000')
         .duration(640)
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     event.recipes.gtceu
         .injection_mixer(id('sub_stellar_infernal_concentrate'))
         .inputFluids('gtceu:superheated_infernal_concentrate 7500', 'gtceu:borealic_concentrate 36')
         .outputFluids('gtceu:sub_stellar_infernal_concentrate 5000')
         .duration(960)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     // Super Stellar Recipe
 
@@ -425,13 +425,13 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${origin} 50000`)
             .outputFluids(`start_core:${type} 5000`)
             .duration(1500)
-            .EUt(GTValues.VA[GTValues.UV] * Math.pow(4, scaler));
+            .EUt(GTValues.VA[UV] * Math.pow(4, scaler));
         event.recipes.gtceu
             .molten_destabilizing(id(better))
             .inputFluids(`start_core:${type} 10000`)
             .outputFluids(`gtceu:${origin} 70000`, 'gtceu:infernal_concentrate 5000', `start_core:${better} 2000`)
             .duration(1200)
-            .EUt(GTValues.VA[GTValues.UV] * Math.pow(4, scaler));
+            .EUt(GTValues.VA[UV] * Math.pow(4, scaler));
     };
     hellforgeHeater('flamewake_solvent', 'superheated_infernal_concentrate', 1, 'cinderbrew_solvent');
     hellforgeHeater('emberheart_nectar', 'sub_stellar_infernal_concentrate', 2, 'corefire_nectar');
@@ -447,7 +447,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('gtceu:tetrahedrite_dust', 500, 75)
         .outputFluids('gtceu:infernal_concentrate 100')
         .duration(20)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .manifold_centrifuge(id('hellfire_ash_decomposition'))
@@ -460,7 +460,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('gtceu:biotite_dust', 500, 75)
         .outputFluids('start_core:infernal_tar 25')
         .duration(50)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     //Catalyst
 
@@ -476,7 +476,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate ${512 + scaler * 64}`)
             .itemOutputs(`96x kubejs:${type}_catalyst`)
             .duration(600)
-            .EUt(GTValues.VHA[GTValues.UV] * Math.pow(4, scaler));
+            .EUt(GTValues.VHA[UV] * Math.pow(4, scaler));
     };
     catalyst(
         'ascendant',

@@ -282,6 +282,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         outputFluidsRanged(output: $wrapped<FluidStackJS>, min: number, max: number): this;
         duration(duration: number): this;
         EUt(eut: $wrapped<EnergyStack$WithIO>): this;
+        EUtV(eut: number): this;
+        EUtVH(eut: number): this;
+        EUtVA(eut: number): this;
+        EUtVHA(eut: number): this;
         circuit(configuration: number): this;
         stationResearch(research: $wrapped<UnaryOperator<ResearchRecipeBuilder$StationRecipeBuilder>>): this;
         'scannerResearch(java.util.function.UnaryOperator)'(

@@ -24,10 +24,10 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:iridium_frame'))
                 .duration(600)
-                .EUt(GTValues.VHA[GTValues.IV])
+                .EUt(GTValues.VHA[LuV])
         )
         .duration(600)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     /** @type {const} */ ([
         { tier: 'luv', researchItem: 'gtceu:extreme_combustion_engine' },
@@ -68,7 +68,7 @@ ServerEvents.recipes((event) => {
                 researchRecipeBuilder
                     .researchStack(Item.of(machine.researchItem))
                     .duration(300)
-                    .EUt(GTValues.VHA[GTValues.IV])
+                    .EUt(GTValues.VHA[LuV])
             );
         } else {
             mainRecipe.stationResearch((researchRecipeBuilder) =>

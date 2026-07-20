@@ -21,12 +21,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:dimensional_finder')
         .duration(3600)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('kubejs:coordinate_crystal'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('kubejs:coordinate_crystal')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     //Coordinate Crystals
 
@@ -37,7 +34,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:abydos_coordinate_crystal', 500, 0)
         .CWUt(48)
         .totalCWU(230400)
-        .EUt(GTValues.VHA[GTValues.UV])
+        .EUtVHA(UV)
         .dimension('minecraft:overworld');
 
     event.recipes.gtceu
@@ -47,7 +44,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:nether_coordinate_crystal', 500, 0)
         .CWUt(192)
         .totalCWU(921600)
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .EUtVHA(UEV)
         .dimension('sgjourney:abydos');
 
     event.recipes.gtceu
@@ -57,7 +54,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:end_coordinate_crystal', 500, 0)
         .CWUt(384)
         .totalCWU(1843200)
-        .EUt(GTValues.VA[GTValues.UIV])
+        .EUtVA(UIV)
         .dimension('minecraft:the_nether');
 
     /*event.recipes.gtceu.dimensional_finder(id('lantea_coordinate_crystal'))
@@ -65,7 +62,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:lantea_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .EUtVHA(UEV)
         .dimension('minecraft:the_nether');
 
     event.recipes.gtceu.dimensional_finder(id('cavum_coordinate_crystal'))
@@ -73,7 +70,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:cavum_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(GTValues.VHA[GTValues.UIV])
+        .EUtVHA(UIV)
         .dimension('minecraft:the_end');
 
     event.recipes.gtceu.dimensional_finder(id('sea_coordinate_crystal'))
@@ -81,7 +78,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:sea_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(GTValues.VHA[GTValues.UXV])
+        .EUtVHA(UXV)
         .dimension('minecraft:lantea');
 
     event.recipes.gtceu.dimensional_finder(id('void_coordinate_crystal'))
@@ -89,7 +86,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:void_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(4*GTValues.VHA[GTValues.UXV])
+        .EUt(4*GTValues.VHA[UXV])
         .dimension('minecraft:cavum_tenebrae');*/
 
     /**
@@ -102,7 +99,7 @@ ServerEvents.recipes((event) => {
             .itemInputs('kubejs:coordinate_crystal', `kubejs:${type}_coordinate_crystal`)
             .itemOutputs(`2x kubejs:${type}_coordinate_crystal`)
             .duration(3000)
-            .EUt(GTValues.VHA[GTValues.ZPM] * Math.pow(4, EUTScale));
+            .EUt(GTValues.VHA[ZPM] * Math.pow(4, EUTScale));
     };
     crystalDuping('abydos', 0);
     crystalDuping('nether', 1);

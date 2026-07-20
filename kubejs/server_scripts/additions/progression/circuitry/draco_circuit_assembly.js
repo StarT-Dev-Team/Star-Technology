@@ -42,10 +42,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:large_circuit_assembler'))
-                .EUt(GTValues.VA[GTValues.UEV])
+                .EUt(GTValues.VA[UEV])
                 .CWUt(192)
         )
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // === Draconic Circuits ===
 
@@ -105,7 +105,7 @@ ServerEvents.recipes((event) => {
         [drCirBoard, 'gtceu:crystal_soc', `4x ${res}`, `4x ${cap}`, `4x ${tra}`, '4x gtceu:fine_europium_wire'],
         [`${solder} 72`, `${PEDOT_PSS} 36`, `${DB} 50`],
         400,
-        GTValues.VHA[GTValues.UHV],
+        GTValues.VHA[UHV],
         drCirBoard,
         144
     );
@@ -123,7 +123,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 144`, `${PEDOT_PSS} 72`, `${DB} 75`],
         400,
-        GTValues.VHA[GTValues.UHV],
+        GTValues.VHA[UHV],
         'kubejs:draconic_microchip_processor',
         144
     );
@@ -142,7 +142,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 288`, `${PEDOT_PSS} 144`, `${DB} 125`],
         800,
-        GTValues.VA[GTValues.UHV],
+        GTValues.VA[UHV],
         'kubejs:draconic_processor',
         160
     );
@@ -164,7 +164,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 1152`, `${PEDOT_PSS} 576`, `${DB} 250`],
         1200,
-        GTValues.VA[GTValues.UHV],
+        GTValues.VA[UHV],
         'kubejs:draconic_processor_assembly',
         176
     );
@@ -189,7 +189,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 2304`, `${PEDOT_PSS} 1152`, `${DB} 500`],
         1800,
-        GTValues.VA[GTValues.UEV],
+        GTValues.VA[UEV],
         'kubejs:draconic_processor_computer',
         192
     );
@@ -204,7 +204,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 72`, `${PEDOT_PSS} 18`, `${DB} 25`],
         100,
-        GTValues.VHA[GTValues.UEV] * 1.2,
+        GTValues.VHA[UEV] * 1.2,
         'kubejs:draco_advanced_soc',
         160
     );
@@ -214,7 +214,7 @@ ServerEvents.recipes((event) => {
         [drCPU, 'kubejs:draco_advanced_soc', '4x gtceu:fine_polonium_bismide_wire', '4x gtceu:europium_bolt'],
         [`${solder} 72`, `${PEDOT_PSS} 36`, `${DB} 50`],
         100,
-        GTValues.VHA[GTValues.UIV] * 1.2,
+        GTValues.VHA[UIV] * 1.2,
         'kubejs:draco_advanced_soc_wafer',
         160
     );
@@ -236,7 +236,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 576`, `${PEDOT_PSS} 288`, `${DES} 125`],
         800,
-        GTValues.VA[GTValues.UEV],
+        GTValues.VA[UEV],
         abCirBoard,
         200
     );
@@ -255,7 +255,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 1152`, `${PEDOT_PSS} 576`, `${DES} 250`],
         800,
-        GTValues.VA[GTValues.UEV],
+        GTValues.VA[UEV],
         'kubejs:abyssal_processor',
         216
     );
@@ -278,7 +278,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 2304`, `${PEDOT_PSS} 1152`, `${DES} 500`],
         1200,
-        GTValues.VA[GTValues.UEV],
+        GTValues.VA[UEV],
         'kubejs:abyssal_processor_assembly',
         240
     );
@@ -305,7 +305,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 4608`, `${PEDOT_PSS} 2304`, `${DES} 1000`],
         1800,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'kubejs:abyssal_processor_computer',
         256
     );
@@ -320,7 +320,7 @@ ServerEvents.recipes((event) => {
         ],
         [`${solder} 432`, `${PEDOT_PSS} 216`, `${DES} 75`],
         100,
-        GTValues.VHA[GTValues.UIV] * 1.2,
+        GTValues.VHA[UIV] * 1.2,
         'kubejs:rift_infused_soc',
         216
     );
@@ -384,7 +384,7 @@ ServerEvents.recipes((event) => {
         ],
         ['gtceu:soldering_alloy 72'],
         200,
-        GTValues.VA[GTValues.HV] / 3.5,
+        GTValues.VA[HV] / 3.5,
         4
     );
     dracoBulkCircuiter(
@@ -393,7 +393,7 @@ ServerEvents.recipes((event) => {
         ['gtceu:plastic_printed_circuit_board', 'gtceu:soc', '2x gtceu:fine_copper_wire', '2x gtceu:tin_bolt'],
         ['gtceu:soldering_alloy 72'],
         25,
-        GTValues.VA[GTValues.IV] / 3.5,
+        GTValues.VA[IV] / 3.5,
         12
     );
     dracoBulkCircuiter(
@@ -407,7 +407,7 @@ ServerEvents.recipes((event) => {
         ],
         ['gtceu:soldering_alloy 72'],
         25,
-        GTValues.VA[GTValues.LuV] / 3.5,
+        GTValues.VA[LuV] / 3.5,
         24
     );
     dracoBulkCircuiter(
@@ -421,7 +421,7 @@ ServerEvents.recipes((event) => {
         ],
         ['gtceu:soldering_alloy 72'],
         25,
-        GTValues.VA[GTValues.ZPM] / 3.5,
+        GTValues.VA[ZPM] / 3.5,
         64
     );
     dracoBulkCircuiter(
@@ -435,7 +435,7 @@ ServerEvents.recipes((event) => {
         ],
         ['gtceu:soldering_alloy 72'],
         25,
-        GTValues.VA[GTValues.UV] / 3.5,
+        GTValues.VA[UV] / 3.5,
         96
     );
     dracoBulkCircuiter(
@@ -449,7 +449,7 @@ ServerEvents.recipes((event) => {
         ],
         ['gtceu:soldering_alloy 72'],
         50,
-        GTValues.VA[GTValues.UV] / 3.5,
+        GTValues.VA[UV] / 3.5,
         128
     );
     dracoBulkCircuiter(
@@ -463,7 +463,7 @@ ServerEvents.recipes((event) => {
         ],
         ['gtceu:soldering_alloy 72'],
         50,
-        GTValues.VA[GTValues.UHV] / 3.5,
+        GTValues.VA[UHV] / 3.5,
         144
     );
 });

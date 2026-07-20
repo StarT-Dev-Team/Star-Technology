@@ -48,10 +48,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:cleaning_maintenance_hatch'))
-                .EUt(GTValues.VHA[GTValues.UEV])
+                .EUt(GTValues.VHA[UEV])
                 .CWUt(176)
         )
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .assembly_line(id('absolute_stabilization_module'))
@@ -71,12 +71,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:uhv_stabilization_module')
         .duration(200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:auto_maintenance_hatch'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(144)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:auto_maintenance_hatch')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     // === Variadic Hatches ===
     event.recipes.gtceu
@@ -93,5 +90,5 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:soldering_alloy 288')
         .duration(600)
         .circuit(4)
-        .EUt(GTValues.V[GTValues.EV]);
+        .EUtV(EV);
 });

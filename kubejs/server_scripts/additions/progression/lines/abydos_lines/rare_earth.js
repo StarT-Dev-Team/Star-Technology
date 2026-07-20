@@ -53,8 +53,8 @@ ServerEvents.recipes((event) => {
     event.remove({ input: /gtceu:.*magnetic_zapolgium.*/ });
 
     [
-        { type: 'dysprosium', duration: 200, energy: GTValues.VA[GTValues.LuV] },
-        { type: 'zapolgium', duration: 300, energy: GTValues.VA[GTValues.UV] },
+        { type: 'dysprosium', duration: 200, energy: GTValues.VA[LuV] },
+        { type: 'zapolgium', duration: 300, energy: GTValues.VA[UV] },
     ].forEach((magIngot) => {
         event.recipes.gtceu
             .polarizer(id(`magnetic_${magIngot.type}_rod`))

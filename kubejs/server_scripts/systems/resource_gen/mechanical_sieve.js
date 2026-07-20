@@ -71,14 +71,14 @@ ServerEvents.recipes((event) => {
             .notConsumable('exnihilosequentia:string_mesh')
             .itemOutputs(outputs)
             .duration(800)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
 
         event.recipes.gtceu
             .large_sieve(id(`${input.path}_sieving`))
             .itemInputs(`48x ${input}`)
             .itemOutputs(outputs)
             .duration(200)
-            .EUt(GTValues.VA[GTValues.HV]);
+            .EUtVA(HV);
     };
 
     mechanicalSieving('minecraft:gravel', [

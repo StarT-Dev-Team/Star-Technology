@@ -22,7 +22,7 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:naquadria 1440')
             .itemOutputs(`2x kubejs:ruined_${type}`)
             .duration(1200)
-            .EUt(GTValues.VA[GTValues.UHV]);
+            .EUtVA(UHV);
     });
 
     // === Component Parts ===
