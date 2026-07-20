@@ -17,13 +17,13 @@ ServerEvents.recipes((event) => {
         .arboreal_extractor(id('latex'))
         .notConsumable('gtceu:wood_screw')
         .outputFluids('thermal:latex 100')
-        .treeType('latext')
+        .treeType('latex')
         .duration(400);
 
     event.recipes.gtceu
         .arboreal_extractor(id('sap'))
         .notConsumable('gtceu:wood_screw')
-        .outputFluids('thermal:tree_sap 100')
+        .outputFluids('thermal:sap 100')
         .treeType('sap')
         .duration(400);
 
@@ -43,7 +43,7 @@ ServerEvents.recipes((event) => {
     taps.forEach((latex) => {
         event.recipes.gtceu
             .arboreal_extractor(id(`latex_${latex.circ}`))
-            .chancedInput(`${latex.fuel}`, 2500, 0)
+            .chancedInput(latex.fuel, 2500, 0)
             .notConsumable('gtceu:iron_screw')
             .circuit(latex.circ)
             .outputFluids(`thermal:latex ${100 + 50 * latex.circ}`)
@@ -51,15 +51,15 @@ ServerEvents.recipes((event) => {
 
         event.recipes.gtceu
             .arboreal_extractor(id(`sap_${latex.circ}`))
-            .chancedInput(`${latex.fuel}`, 2500, 0)
+            .chancedInput(latex.fuel, 2500, 0)
             .notConsumable('gtceu:iron_screw')
             .circuit(latex.circ)
-            .outputFluids(`thermal:tree_sap ${100 + 50 * latex.circ}`)
+            .outputFluids(`thermal:sap ${100 + 50 * latex.circ}`)
             .duration(400);
 
         event.recipes.gtceu
             .arboreal_extractor(id(`resin_${latex.circ}`))
-            .chancedInput(`${latex.fuel}`, 2500, 0)
+            .chancedInput(latex.fuel, 2500, 0)
             .notConsumable('gtceu:iron_screw')
             .circuit(latex.circ)
             .outputFluids(`thermal:resin ${100 + 50 * latex.circ}`)
