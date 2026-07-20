@@ -127,8 +127,12 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
         getRealEUt(recipe: GTRecipe): number;
     };
 
+    import Function = java.util.function_.Function;
+    import CompoundTag = net.minecraft.nbt.CompoundTag;
+
     interface GTRecipeType extends $object<'com.gregtechceu.gtceu.api.recipe.GTRecipeType'> {
         setMaxIOSize(maxInputs: number, maxOutputs: number, maxFluidInputs: number, maxFluidOutputs: number): this;
+        addDataInfo(dataInfo: $wrapped<Function<CompoundTag, String>>): this;
     }
 
     import ItemStack = net.minecraft.world.item.ItemStack;
@@ -1356,6 +1360,12 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry {
     interface GTRegistry<K, V> extends $object<'com.gregtechceu.gtceu.api.registry.GTRegistry', Iterable<V>> {
         containKey(key: $wrapped<K>): boolean;
         containValue(value: $wrapped<V>): boolean;
+        freeze(): void;
+        unfreeze(): void;
+        register<T extends V>(key: $wrapped<K>, value: T): T;
+        get(key: $wrapped<K>): V;
+        getOrDefault(key: $wrapped<K>, defaultValue: V): V;
+        getKey(value: $wrapped<V>): K;
     }
 
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
@@ -1366,10 +1376,11 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry {
     > {}
 
     import MachineDefinition = machine.MachineDefinition;
+    import GTRecipeType = recipe.GTRecipeType;
 
     const GTRegistries: {
         // ELEMENTS: GTRegistry.String<Element>;
-        // RECIPE_TYPES: GTRegistry$RL<GTRecipeType>;
+        RECIPE_TYPES: GTRegistry$RL<GTRecipeType>;
         // RECIPE_CATEGORIES: GTRegistry$RL<GTRecipeCategory>;
         // COVERS: GTRegistry$RL<CoverDefinition>;
         MACHINES: GTRegistry$RL<MachineDefinition>;

@@ -6,6 +6,16 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT);
 });
 
+GTCEuStartupEvents.registry('gtceu:recipe_category', () => {
+    // kjs recipe types don't support addDataInfo
+    // we add it here because it's called after recipe_types are registered.
+    GTRecipeTypes.get('arboreal_extractor').addDataInfo((tag) => {
+        // TODO: localization
+        const variant = tag.getString('treeVariant');
+        return `Tree variant: ${variant}`;
+    });
+});
+
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('large_arboreal_extractor', 'primitive')
