@@ -28,7 +28,7 @@ ServerEvents.recipes((event) => {
     );
 
     /** @type {const} */ ([
-        { tier: 'luv', researchItem: 'gtceu:extreme_combustion_engine' },
+        { tier: 'luv', researchItem: 'gtceu:extreme_combustion_engine', cwuT: 0 },
         { tier: 'zpm', researchItem: 'start_core:luv_combustion_module', cwuT: 24 },
         { tier: 'uv', researchItem: 'start_core:zpm_combustion_module', cwuT: 64 },
         { tier: 'uev', researchItem: 'start_core:uv_combustion_module', cwuT: 160 },
@@ -43,45 +43,73 @@ ServerEvents.recipes((event) => {
         const { tierMaterial, primMaterial, supMaterial, wireMechanical, cable, lubricant, plastic } =
             componentMaterials[machine.tier].materials;
 
-        const mainRecipe = assline(id(`${machine.tier}_combustion_module`));
-
-        mainRecipe
-            .itemInputs(
-                `gtceu:${machine.tier}_machine_hull`,
-                `${circuitCount}x #gtceu:circuits/${machine.tier}`,
-                `${plateCount}x gtceu:dense_${tierMaterial}_plate`,
-                `${otherCounts}x gtceu:${primMaterial}_gear`,
-                `${otherCounts}x gtceu:small_${supMaterial}_gear`,
-                `${otherCounts}x gtceu:${machine.tier}_electric_motor`,
-                `${otherCounts}x gtceu:${machine.tier}_electric_piston`,
-                `8x gtceu:${cable}_${cableType}_cable`
+        $(
+            assline(id(`${machine.tier}_combustion_module`))
+                .itemInputs(
+                    `gtceu:${machine.tier}_machine_hull`,
+                    `${circuitCount}x #gtceu:circuits/${machine.tier}`,
+                    `${plateCount}x gtceu:dense_${tierMaterial}_plate`,
+                    `${otherCounts}x gtceu:${primMaterial}_gear`,
+                    `${otherCounts}x gtceu:small_${supMaterial}_gear`,
+                    `${otherCounts}x gtceu:${machine.tier}_electric_motor`,
+                    `${otherCounts}x gtceu:${machine.tier}_electric_piston`,
+                    `8x gtceu:${cable}_${cableType}_cable`
+                )
+                .inputFluids(
+                    `gtceu:${lubricant} ${4608 * fluidMultiplier}`,
+                    `gtceu:${plastic} ${1152 * fluidMultiplier}`
+                )
+                .itemOutputs(`start_core:${machine.tier}_combustion_module`)
+                .duration(600)
+                .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]])
+        )
+            .ifElse(
+                machine.tier === 'luv',
+                (recipe) => {
+                    $(recipe).scannerResearch((researchRecipeBuilder) =>
+                        researchRecipeBuilder
+                            .researchStack(Item.of('gtceu:iridium_frame'))
+                            .duration(600)
+                            .EUt(GTValues.VHA[GTValues.IV])
+                    );
+                    return recipe;
+                },
+                (recipe) =>
+                    recipe.stationResearch((researchRecipeBuilder) =>
+                        researchRecipeBuilder
+                            .researchStack(Item.of(machine.researchItem))
+                            .CWUt(machine.cwuT)
+                            .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]])
+                    )
             )
-            .inputFluids(`gtceu:${lubricant} ${4608 * fluidMultiplier}`, `gtceu:${plastic} ${1152 * fluidMultiplier}`)
-            .itemOutputs(`start_core:${machine.tier}_combustion_module`)
-            .duration(600)
-            .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]]);
+            .if(machineType === 'rocket', (recipe) =>
+                recipe.itemInputs(
+                    `${otherCounts}x gtceu:${machine.tier}_fluid_regulator`,
+                    `32x gtceu:fine_${wireMechanical}_wire`
+                )
+            );
 
-        if (machine.tier === 'luv') {
-            $(mainRecipe).scannerResearch((researchRecipeBuilder) =>
-                researchRecipeBuilder
-                    .researchStack(Item.of(machine.researchItem))
-                    .duration(300)
-                    .EUt(GTValues.VHA[GTValues.IV])
-            );
-        } else {
-            mainRecipe.stationResearch((researchRecipeBuilder) =>
-                researchRecipeBuilder
-                    .researchStack(Item.of(machine.researchItem))
-                    .CWUt(machine.cwuT)
-                    .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]])
-            );
-        }
+        // if (machine.tier === 'luv') {
+        //     $(mainRecipe).scannerResearch((researchRecipeBuilder) =>
+        //         researchRecipeBuilder
+        //             .researchStack(Item.of(machine.researchItem))
+        //             .duration(300)
+        //             .EUt(GTValues.VHA[GTValues.IV])
+        //     );
+        // } else {
+        //     mainRecipe.stationResearch((researchRecipeBuilder) =>
+        //         researchRecipeBuilder
+        //             .researchStack(Item.of(machine.researchItem))
+        //             .CWUt(machine.cwuT)
+        //             .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]])
+        //     );
+        // }
 
-        if (machineType === 'rocket') {
-            mainRecipe.itemInputs(
-                `${otherCounts}x gtceu:${machine.tier}_fluid_regulator`,
-                `32x gtceu:fine_${wireMechanical}_wire`
-            );
-        }
+        // if (machineType === 'rocket') {
+        //     mainRecipe.itemInputs(
+        //         `${otherCounts}x gtceu:${machine.tier}_fluid_regulator`,
+        //         `32x gtceu:fine_${wireMechanical}_wire`
+        //     );
+        // }
     });
 });
