@@ -87,28 +87,5 @@ ServerEvents.recipes((event) => {
                     `32x gtceu:fine_${wireMechanical}_wire`
                 )
             );
-
-        // if (machine.tier === 'luv') {
-        //     $(mainRecipe).scannerResearch((researchRecipeBuilder) =>
-        //         researchRecipeBuilder
-        //             .researchStack(Item.of(machine.researchItem))
-        //             .duration(300)
-        //             .EUt(GTValues.VHA[GTValues.IV])
-        //     );
-        // } else {
-        //     mainRecipe.stationResearch((researchRecipeBuilder) =>
-        //         researchRecipeBuilder
-        //             .researchStack(Item.of(machine.researchItem))
-        //             .CWUt(machine.cwuT)
-        //             .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]])
-        //     );
-        // }
-
-        // if (machineType === 'rocket') {
-        //     mainRecipe.itemInputs(
-        //         `${otherCounts}x gtceu:${machine.tier}_fluid_regulator`,
-        //         `32x gtceu:fine_${wireMechanical}_wire`
-        //     );
-        // }
     });
 });
