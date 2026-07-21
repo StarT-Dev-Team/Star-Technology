@@ -1,5 +1,7 @@
 // priority: 10000
 
+/** @typedef {internal.com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS} GTRecipeJS */
+
 /**
  * @param {internal.com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS} recipe
  */
@@ -100,6 +102,18 @@ extendedRecipeBuilder.prototype.rangedItemOutputs = function (inputs) {
         }
         this.recipe.itemOutputsRanged(item.id, item.range[0], item.range[1]);
     });
+    return this;
+};
+
+/**
+ * @param {boolean} condition
+ * @param {(builder: GTRecipeJS) => GTRecipeJS} builder
+ * @returns
+ */
+extendedRecipeBuilder.prototype.if = function (condition, builder) {
+    if (condition) {
+        builder(this.recipe);
+    }
     return this;
 };
 
