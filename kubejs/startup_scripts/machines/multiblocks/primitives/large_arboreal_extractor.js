@@ -22,6 +22,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .machine((holder) => new $ArborealExtractorMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('arboreal_extractor')
+        .recipeModifier($StarTRecipeModifiers.ARBOREAL_EXTRACTOR)
         .appearanceBlock(GTBlocks.CASING_PRIMITIVE_BRICKS)
         .pattern((definition) =>
             newFactoryBlockPattern([
