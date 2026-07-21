@@ -21,10 +21,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('start_core:modular_combustion_frame')
         ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:iridium_frame'))
-                .duration(600)
-                .EUt(GTValues.VHA[LuV])
+            researchRecipeBuilder.researchStack(Item.of('gtceu:iridium_frame')).duration(600).EUt(GTValues.VHA[LuV])
         )
         .duration(600)
         .EUtVHA(LuV);
@@ -65,10 +62,7 @@ ServerEvents.recipes((event) => {
 
         if (machine.tier === 'luv') {
             mainRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-                researchRecipeBuilder
-                    .researchStack(Item.of(machine.researchItem))
-                    .duration(300)
-                    .EUt(GTValues.VHA[LuV])
+                researchRecipeBuilder.researchStack(Item.of(machine.researchItem)).duration(300).EUt(GTValues.VHA[LuV])
             );
         } else {
             mainRecipe.stationResearch((researchRecipeBuilder) =>

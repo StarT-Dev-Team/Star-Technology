@@ -711,10 +711,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:polyether_ether_ketone 12000', 'gtceu:utopian_akreyrium 750')
         .itemOutputs('gtceu:bulk_ore_processing_array')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:ore_processing_plant'))
-                .EUt(GTValues.VHA[UHV])
-                .CWUt(144)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:ore_processing_plant')).EUt(GTValues.VHA[UHV]).CWUt(144)
         )
         .duration(3000)
         .EUtVHA(UEV);
