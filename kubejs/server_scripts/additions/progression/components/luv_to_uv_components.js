@@ -264,8 +264,7 @@ ServerEvents.recipes((event) => {
             [
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 6, itemId: `gtceu:${primMaterial}_plate` },
-                // @ts-ignore
-                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: tier === 'zpm' ? 2 : 1, itemId: /** @type {string} */ (catalyst).split(' ')[1] },
                 { count: 2, itemId: `gtceu:${tier}_emitter` },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:fine_${superconductor}_wire` },
@@ -281,8 +280,7 @@ ServerEvents.recipes((event) => {
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 1, itemId: `gtceu:${tier}_electric_motor` },
                 { count: 4, itemId: `gtceu:long_${primMaterial}_rod` },
-                // @ts-ignore
-                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: tier === 'zpm' ? 2 : 1, itemId: /** @type {string} */ (catalyst).split(' ')[1] },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
                 { count: 32, itemId: `gtceu:${miscMaterial}_foil` },
@@ -297,8 +295,7 @@ ServerEvents.recipes((event) => {
                 { count: 1, itemId: `gtceu:${primMaterial}_frame` },
                 { count: 1, itemId: `gtceu:${tier}_electric_motor` },
                 { count: 4, itemId: `gtceu:${primMaterial}_plate` },
-                // @ts-ignore
-                { count: tier === 'zpm' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: tier === 'zpm' ? 2 : 1, itemId: /** @type {string} */ (catalyst).split(' ')[1] },
                 { count: 2, itemId: `#gtceu:circuits/${tier}` },
                 { count: 64, itemId: `gtceu:${miscMaterial}_foil` },
                 { count: 32, itemId: `gtceu:${miscMaterial}_foil` },
