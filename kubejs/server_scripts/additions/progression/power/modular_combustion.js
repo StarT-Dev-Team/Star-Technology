@@ -63,7 +63,7 @@ ServerEvents.recipes((event) => {
                 .duration(600)
                 .EUt(GTValues.VHA[GTValues[getRecipeTier(machine.tier)]])
         )
-            .ifElse(
+            .if(
                 machine.tier === 'luv',
                 (recipe) => {
                     $(recipe).scannerResearch((researchRecipeBuilder) =>
@@ -72,7 +72,6 @@ ServerEvents.recipes((event) => {
                             .duration(600)
                             .EUt(GTValues.VHA[GTValues.IV])
                     );
-                    return recipe;
                 },
                 (recipe) =>
                     recipe.stationResearch((researchRecipeBuilder) =>

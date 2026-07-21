@@ -107,27 +107,15 @@ extendedRecipeBuilder.prototype.rangedItemOutputs = function (inputs) {
 
 /**
  * @param {boolean} condition
- * @param {(builder: GTRecipeJS) => void} builder
- * @returns
- */
-extendedRecipeBuilder.prototype.if = function (condition, builder) {
-    if (condition) {
-        builder(this.recipe);
-    }
-    return this;
-};
-
-/**
- * @param {boolean} condition
  * @param {(builder: GTRecipeJS) => void} builderTrue
- * @param {(builder: GTRecipeJS) => void} builderFalse
+ * @param {(builder: GTRecipeJS) => void} [builderFalse]
  * @returns
  */
-extendedRecipeBuilder.prototype.ifElse = function (condition, builderTrue, builderFalse) {
+extendedRecipeBuilder.prototype.if = function (condition, builderTrue, builderFalse) {
     if (condition) {
         builderTrue(this.recipe);
     } else {
-        builderFalse(this.recipe);
+        if (builderFalse !== undefined) builderFalse(this.recipe);
     }
     return this;
 };
