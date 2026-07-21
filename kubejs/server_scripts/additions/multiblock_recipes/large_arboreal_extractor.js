@@ -15,38 +15,34 @@ ServerEvents.recipes((event) => {
     //Usage
 
     /**
-     * @param {'latex' | 'sap' | 'resin'} fluid Fluid output and tree type of the recipe
-     * @param {string | null} fertilizer Fertilizer used in the recipe
-     * @param {number} buffMultipler By how much to multiply the output buff
+     * @type {{fluid: 'latex' | 'sap' | 'resin', fertilizer: string | null, buffMultipler: number}[]}
      */
-    const generateExtractorRecipe = (fluid, fertilizer, buffMultipler) => {
-        let recipeId = `${fluid}${fertilizer ? `_${fertilizer.split(':')[1]}` : ''}`;
+    const arborealData = [
+        { fluid: 'latex', fertilizer: null, buffMultipler: 0 },
+        { fluid: 'latex', fertilizer: 'minecraft:bone_meal', buffMultipler: 1 },
+        { fluid: 'latex', fertilizer: 'thermal:compost', buffMultipler: 2 },
+        { fluid: 'latex', fertilizer: 'gtceu:fertilizer', buffMultipler: 3 },
+        { fluid: 'sap', fertilizer: null, buffMultipler: 0 },
+        { fluid: 'sap', fertilizer: 'minecraft:bone_meal', buffMultipler: 1 },
+        { fluid: 'sap', fertilizer: 'thermal:compost', buffMultipler: 2 },
+        { fluid: 'sap', fertilizer: 'gtceu:fertilizer', buffMultipler: 3 },
+        { fluid: 'resin', fertilizer: null, buffMultipler: 0 },
+        { fluid: 'resin', fertilizer: 'minecraft:bone_meal', buffMultipler: 1 },
+        { fluid: 'resin', fertilizer: 'thermal:compost', buffMultipler: 2 },
+        { fluid: 'resin', fertilizer: 'gtceu:fertilizer', buffMultipler: 3 },
+    ];
 
-        console.log(
-            `id: "${recipeId}" | fluid/tree type: "${fluid}" | fertilizer: "${fertilizer}" | multiplier: "${buffMultipler}"`
-        );
-
+    arborealData.forEach((entry) => {
+        let { fluid, fertilizer, buffMultipler } = entry;
         let recipe = event.recipes.gtceu
-            .arboreal_extractor(id(recipeId))
+            .arboreal_extractor(id(`${fluid}${fertilizer ? `_${fertilizer.split(':')[1]}` : ''}`))
+            .notConsumable(fertilizer ? 'gtceu:iron_screw' : 'gtceu:wood_screw')
             .outputFluids(`thermal:${fluid} ${100 + 50 * buffMultipler}`)
             .treeType(fluid)
             .duration(400);
 
         if (fertilizer) {
             recipe.chancedInput(fertilizer, 2500, 0);
-            recipe.notConsumable('gtceu:iron_screw');
-            console.log('fertilizing');
-        } else {
-            recipe.notConsumable('gtceu:wood_screw');
-            console.log('no shit');
         }
-    };
-
-    const fertilizers = [null, 'minecraft:bone_meal', 'thermal:compost', 'gtceu:fertilizer'];
-
-    fertilizers.forEach((fertilizer, index) => {
-        generateExtractorRecipe('latex', fertilizer, index); // bone meal
-        generateExtractorRecipe('sap', fertilizer, index);
-        generateExtractorRecipe('resin', fertilizer, index); // null, compost, fertilizer
     });
 });
