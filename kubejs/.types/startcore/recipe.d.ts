@@ -15,7 +15,6 @@ declare namespace internal.com.startechnology.start_core.recipe {
         VACUUM_CHEMICAL_REACTION_CHAMBER: RecipeModifier;
         FAKE_FUSION_OVERCLOCK: RecipeModifier;
         REFLECTOR_FUSION_REACTOR: RecipeModifier;
-        ARBOREAL_EXTRACTOR: RecipeModifier;
     };
 }
 

@@ -150,11 +150,15 @@ declare namespace internal.com.startechnology.start_core.machine.arboreal_extrac
     import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
     import TraceabilityPredicate = gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
+    import TreeType = start_core.block.arboreal_extractor.TreeType;
 
     interface ArborealExtractorMachine extends $object<
         'com.startechnology.start_core.machine.arboreal_extractor.ArborealExtractorMachine',
         WorkableElectricMultiblockMachine
-    > {}
+    > {
+        getTreeType(): TreeType;
+        get treeType(): TreeType;
+    }
 
     const ArborealExtractorMachine: $class<ArborealExtractorMachine> & {
         new (holder: IMachineBlockEntity, ...args: any[]): ArborealExtractorMachine;
