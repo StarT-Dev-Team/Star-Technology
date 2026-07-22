@@ -1,13 +1,4 @@
 {
-    "block.gtceu.lv_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-    "block.gtceu.mv_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-    "block.gtceu.hv_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-    "block.gtceu.ev_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-    "block.gtceu.iv_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-    "block.gtceu.luv_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-    "block.gtceu.zpm_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-    "block.gtceu.uv_mystical_greenhouse.tooltip": "§7체를 쓰는 건 지루하니, 농업을 하는 건 어떨까요?",
-
     "block.gtceu.theta2Removals.tooltip": "§4§l다음 업데이트인 Theta-2에서 삭제 예정입니다.",
 
     "block.gtceu.dimensional_finder.tooltip.0": "§7차원 단위로 멘션을 받아보세요!",
@@ -97,10 +88,6 @@
     "block.gtceu.void_extractor.tooltip.0": "§7당신 발밑의 공허에서 자원을 추출하는 멀티블록입니다. 어디에서 왔는진 모르지만, 이런 질문을 할 시간이 없습니다.",
     "block.gtceu.void_extractor.tooltip.1": "오직 §b하나§r의 전력 해치만 사용 가능합니다",
     "block.gtceu.void_extractor.tooltip.2": "§7여러 개의 출력 버스와 해치가 필요할지도 모릅니다.",
-
-    "block.gtceu.essence_enchancer.tooltip.0": "§7복잡한 기계로, 신비한 에센스를 많은 전력을 통해 융합시켜 더 유용하게 만듭니다.",
-
-    "block.gtceu.essence_replicator.tooltip.0": "§7에센스를 무한히 복제하는 기계입니다. 강력한 에센스엔 특별한 액체가 있어야 작동합니다.",
 
     "block.gtceu.dimensional_destabiliser.tooltip.0": "§7우주 어딘가에 있는 틈에서 이제껏 보지 못한 무거운 원소들을 수집하는 신비한 구조물입니다",
 
@@ -198,15 +185,10 @@
     "material.gtceu.debris": "잔해",
     "material.gtceu.purified_debris": "정제된 잔해",
     "material.gtceu.netherite": "네더라이트",
-    "block.gtceu.essence_replicator": "에센스 복제기 [ER]",
-    "block.gtceu.essence_enchancer": "에센스 강화기 [EE]",
     "block.gtceu.greenhouse": "온실",
     "gtceu.tree_greenhouse": "나무 온실",
     "gtceu.crop_greenhouse": "작물 온실",
     "gtceu.wild_garden": "야생 채집",
-    "gtceu.essence_burning": "에센스 태우기",
-    "gtceu.essence_enchancing": "에센스 강화",
-    "gtceu.essence_replication": "에센스 복제",
     "gtceu.greenhouse_growing": "신비 농업 온실 성장",
     "block.gtceu.primitive_ore_factory": "원시 광석 정제 공장 [POF]",
     "gtceu.primitive_ore_processing": "원시 광석 정제",
