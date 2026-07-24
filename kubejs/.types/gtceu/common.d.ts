@@ -1242,8 +1242,8 @@ declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.elect
     };
 
     interface NetworkSwitchMachine extends $object<
-        'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.DataBankMachine',
-        WorkableElectricMultiblockMachine
+        'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.NetworkSwitchMachine',
+        DataBankMachine
     > {}
 
     const NetworkSwitchMachine: $class<NetworkSwitchMachine> & {
