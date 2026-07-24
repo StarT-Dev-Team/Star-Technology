@@ -284,8 +284,11 @@ ServerEvents.recipes((event) => {
             'catalyst_core',
             [
                 { count: 4, itemId: `gtceu:${primMaterial}_rod` },
-                { count: 1, itemId: glass },
-                { count: tier === 'uhv' || tier === 'uev' ? 2 : 1, itemId: catalyst.split(' ')[1] },
+                { count: 1, itemId: /** @type {string} */ (glass) },
+                {
+                    count: tier === 'uhv' || tier === 'uev' ? 2 : 1,
+                    itemId: /** @type {string} */ (catalyst).split(' ')[1],
+                },
                 { count: 32, itemId: `gtceu:fine_${superconductor}_wire` },
                 { count: 1, itemId: `gtceu:${tier1}_emitter` },
                 { count: 4, itemId: `gtceu:${supMaterial}_ring` },

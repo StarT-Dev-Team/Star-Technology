@@ -376,6 +376,8 @@ declare namespace internal.net.minecraft.world.item {
         withChance(chance: number): OutputItem;
     }
 
+    const ItemStack: $class<ItemStack> & {};
+
     import Enum = java.lang.Enum;
 
     interface UseAnim extends $object<

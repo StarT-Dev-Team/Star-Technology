@@ -107,7 +107,7 @@ declare namespace internal.kjs {
         // typeWrappers.registerSimple(MachineDefinition.class, o -> {
         // typeWrappers.registerSimple(TagPrefix.class, o -> {
         // typeWrappers.registerSimple(MaterialEntry.class, MaterialEntry::of);
-        // typeWrappers.registerSimple(RecipeCapability.class, o -> {
+        'com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability': string;
         // typeWrappers.registerSimple(ChanceLogic.class, o -> {
         // typeWrappers.registerSimple(ExtendedOutputItem.class, ExtendedOutputItem::of);
         'com.gregtechceu.gtceu.integration.kjs.recipe.components.ExtendedOutputItem':
@@ -229,10 +229,6 @@ declare namespace internal.kjs {
 
     interface RecipeFunctions {
         gtceu: RecipeFunctions_gtceu;
-    }
-
-    interface TypeWrappers {
-        'com.gregtechceu.gtceu.api.data.chemical.material.Material': string;
     }
 }
 

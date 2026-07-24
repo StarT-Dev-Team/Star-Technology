@@ -34,41 +34,6 @@ ServerEvents.recipes((event) => {
         .duration(240)
         .EUt(8);
 
-    // Controller Block
-    event
-        .shaped('gtceu:latex_plantation', ['RSR', 'PGP', 'BTB'], {
-            R: 'gtceu:iron_rod',
-            S: 'gtceu:lead_spring',
-            P: 'gtceu:iron_plate',
-            G: '#forge:glass',
-            B: 'minecraft:bricks',
-            T: 'thermal:redstone_servo',
-        })
-        .id('start:shaped/latex_plantation');
-
-    //Usage
-    event.recipes.gtceu
-        .latex_plantation(id('latex'))
-        .notConsumable('gtceu:wood_screw')
-        .outputFluids('thermal:latex 100')
-        .duration(400);
-
-    const latexType = [
-        { fuel: 'minecraft:bone_meal', circ: 1 },
-        { fuel: 'thermal:compost', circ: 2 },
-        { fuel: 'gtceu:fertilizer', circ: 3 },
-    ];
-
-    latexType.forEach((latex) => {
-        event.recipes.gtceu
-            .latex_plantation(id(`latex_${latex.circ}`))
-            .chancedInput(`${latex.fuel}`, 2500, 0)
-            .notConsumable('gtceu:iron_screw')
-            .circuit(latex.circ)
-            .outputFluids(`thermal:latex ${100 + 50 * latex.circ}`)
-            .duration(400);
-    });
-
     event.recipes.gtceu
         .fluid_solidifier(id('raw_rubber'))
         .notConsumable('gtceu:ball_casting_mold')
