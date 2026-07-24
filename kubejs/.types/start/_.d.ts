@@ -18,7 +18,7 @@ declare namespace internal.kjs {
         large_barrel(id: $wrapped<ResourceLocation>): GTRecipeJS;
         large_farm(id: $wrapped<ResourceLocation>): GTRecipeJS;
         large_stone_barrel(id: $wrapped<ResourceLocation>): GTRecipeJS;
-        latex_plantation(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        arboreal_extractor(id: $wrapped<ResourceLocation>): GTRecipeJS;
         solid_blast_furnace(id: $wrapped<ResourceLocation>): GTRecipeJS;
         steam_kiln(id: $wrapped<ResourceLocation>): GTRecipeJS;
         // Multiblocks -> Resource Production

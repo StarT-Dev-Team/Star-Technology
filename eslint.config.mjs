@@ -56,6 +56,7 @@ export default [
                 BlockProperties: 'readonly',
                 $SectionPos: 'readonly',
                 GuiTextureGroup: 'readonly',
+                JavaAdapter: 'readonly',
                 // GTm Globals
                 $MultiblockMachineDefinition: 'readonly',
                 GTRegistries: 'readonly',
