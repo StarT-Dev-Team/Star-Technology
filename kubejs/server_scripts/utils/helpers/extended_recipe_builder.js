@@ -93,12 +93,21 @@ extendedRecipeBuilder.prototype.chancedOutputFluids = function (inputs) {
  */
 extendedRecipeBuilder.prototype.rangedItemOutputs = function (inputs) {
     inputs.forEach((item) => {
-        // validate range:
+        // validate range and normalize as a fail-safe
         if (item.range[0] < 0 || item.range[1] < 0) {
-            throw new Error('Range must be non-negative in recipe: ' + this.recipe);
+            console.error('Range must be non-negative in recipe: ' + this.recipe);
+            item.range[0] = item.range[0] < 0 ? 0 : item.range[0];
+            item.range[1] = item.range[0] < 0 ? 16 : item.range[1];
         }
-        if (item.range[0] >= item.range[1]) {
-            throw new Error('Min range must be less than max range in recipe: ' + this.recipe);
+        if (item.range[0] === item.range[1]) {
+            console.error('Min range must be less than max range in recipe: ' + this.recipe);
+            item.range[1] += 16;
+        }
+        if (item.range[0] > item.range[1]) {
+            console.error('Min range must be less than max range in recipe: ' + this.recipe);
+            let temp = item.range[0];
+            item.range[0] = item.range[1];
+            item.range[1] = temp;
         }
         this.recipe.itemOutputsRanged(item.id, item.range[0], item.range[1]);
     });
