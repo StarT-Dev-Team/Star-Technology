@@ -2,7 +2,6 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('network_hub', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        // @ts-ignore
         .machine((holder) => new $NetworkSwitchMachine(holder))
         .appearanceBlock(GTBlocks.COMPUTER_CASING)
         .recipeType('dummy')
