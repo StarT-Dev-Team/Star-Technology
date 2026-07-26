@@ -15,7 +15,11 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ),
         ])
         .pattern((definition) =>
-            newFactoryBlockPattern(['CCC|CCC|CCC', 'XXX|XAX|XXX', blockPatternRepeatable(1, 8), 'CCC|CSC|CCC'])
+            newFactoryBlockPatternWithDirections(
+                $RelativeDirection.LEFT,
+                $RelativeDirection.UP,
+                $RelativeDirection.BACK
+            )(['CCC|CSC|CCC', 'XXX|XAX|XXX', blockPatternRepeatable(1, 8), 'CCC|CCC|CCC'])
                 .whereDict({
                     S: P.controller(definition),
                     A: P.gtBlock('advanced_computer_casing'),
@@ -32,5 +36,6 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 })
                 .build()
         )
+        ['partSorter(java.util.function.Function)']((mc) => $AssemblyLineMulti.partSorter(mc))
         .workableCasingModel('gtceu:block/casings/hpca/high_power_casing', 'gtceu:block/multiblock/data_bank');
 });
