@@ -30,55 +30,55 @@
 
     // Flags
     // Generic flags
-    const noUnify = 'no_unification';
-    const electrolyze = 'decomposition_by_electrolyzing';
-    const centrifuge = 'decomposition_by_centrifuging';
-    const noDecomp = 'disable_decomposition';
-    const explosive = 'explosive';
-    const flammable = 'flammable';
-    const sticky = 'sticky';
-    const phosphorescent = 'phosphorescent';
+    const noUnify = FLAGS.noUnify;
+    const electrolyze = FLAGS.electrolyze;
+    const centrifuge = FLAGS.centrifuge;
+    const noDecomp = FLAGS.noDecomp;
+    const explosive = FLAGS.explosive;
+    const flammable = FLAGS.flammable;
+    const sticky = FLAGS.sticky;
+    const phosphorescent = FLAGS.phosphorescent;
     // Generation Flags
     // Dust Flags
-    const plates = 'generate_plate';
-    const densePlate = 'generate_dense';
-    const rod = 'generate_rod';
-    const boltAndScrew = 'generate_bolt_screw';
-    const frame = 'generate_frame';
-    const gear = 'generate_gear';
-    const longRod = 'generate_long_rod';
-    const block = 'force_generate_block';
+    const plates = FLAGS.plates;
+    const densePlate = FLAGS.densePlate;
+    const rod = FLAGS.rod;
+    const boltAndScrew = FLAGS.boltAndScrew;
+    const frame = FLAGS.frame;
+    const gear = FLAGS.gear;
+    const longRod = FLAGS.longRod;
+    const block = FLAGS.block;
     // Ingot Flags
-    const foil = 'generate_foil';
-    const ring = 'generate_ring';
-    const spring = 'generate_spring';
-    const smallSpring = 'generate_spring_small';
-    const smallGear = 'generate_small_gear';
-    const fineWire = 'generate_fine_wire';
-    const rotor = 'generate_rotor';
-    const round = 'generate_round';
-    const magnetic = 'is_magnetic';
+    const foil = FLAGS.foil;
+    const ring = FLAGS.ring;
+    const spring = FLAGS.spring;
+    const smallSpring = FLAGS.smallSpring;
+    const smallGear = FLAGS.smallGear;
+    const fineWire = FLAGS.fineWire;
+    const rotor = FLAGS.rotor;
+    const round = FLAGS.round;
+    const magnetic = FLAGS.magnetic;
     // Gem Flags
-    const crystallizable = 'crystallizable';
-    const lens = 'generate_lens';
+    const crystallizable = FLAGS.crystallizable;
+    const lens = FLAGS.lens;
     // Fluid Flags
-    const solderMat = 'solder_material';
-    const solderMatBad = 'solder_material_bad';
-    const solderMatGood = 'solder_material_good';
+    const solderMat = FLAGS.solderMat;
+    const solderMatBad = FLAGS.solderMatBad;
+    const solderMatGood = FLAGS.solderMatGood;
     // Ore Flags
-    const moreSifter = 'high_sifter_output';
+    const moreSifter = FLAGS.moreSifter;
     // Misc
-    const noBlockCraft = 'exclude_block_crafting_recipes';
-    const noPlateCompressorCraft = 'exclude_plate_compressor_recipe';
-    const noHandCraft = 'exclude_block_crafting_by_hand_recipes';
-    const mortarGrind = 'mortar_grindable';
-    const noWorking = 'no_working';
-    const noSmashing = 'no_smashing';
-    const noSmelt = 'no_smelting';
-    const blastFurnaceDouble = 'blast_furnace_calcite_double';
-    const blastFurnaceTriple = 'blast_furnace_calcite_triple';
-    const noABSRecipe = 'disable_alloy_blast';
-    const notAlloy = 'disable_alloy_property';
+    const noBlockCraft = FLAGS.noBlockCraft;
+    const noPlateCompressorCraft = FLAGS.noPlateCompressorCraft;
+    const noHandCraft = FLAGS.noHandCraft;
+    const mortarGrind = FLAGS.mortarGrind;
+    const noWorking = FLAGS.noWorking;
+    const noSmashing = FLAGS.noSmashing;
+    const noSmelt = FLAGS.noSmashing;
+    const blastFurnaceDouble = FLAGS.blastFurnaceDouble;
+    const blastFurnaceTriple = FLAGS.blastFurnaceTriple;
+    const noABSRecipe = FLAGS.noABSRecipe;
+    const notAlloy = FLAGS.notAlloy;
 
     // Useful functions
     /** @param {GTTier} voltage */

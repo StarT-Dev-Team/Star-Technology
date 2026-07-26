@@ -1,4 +1,4 @@
-GTCEuStartupEvents.materialModification((event) => {
+GTCEuStartupEvents.materialModification((_event) => {
     GTMaterials.Glowstone.setFormula('(Si(FeS2)5(CrAl2O3)Hg3)Au');
 
     GTMaterials.Netherite.setFormula('Nr');
@@ -146,15 +146,12 @@ GTCEuStartupEvents.materialModification((event) => {
     blast('lutetium', 6600, 'mid', global.va.luv, 120);
 
     // Fluid Pipes
-    GTMaterials.NaquadahEnriched.setProperty(
-        PropertyKey.FLUID_PIPE,
-        new $FluidPipeProperties(8000, 500, true, true, true, false)
-    );
+    // if (GTMaterials.NaquadahEnriched.getProperty(PropertyKey.FLUID_PIPE)) {
+    //     GTMaterials.NaquadahEnriched.setProperty(
+    //         PropertyKey.FLUID_PIPE,
+    //         new $FluidPipeProperties(8000, 500, true, true, true, false)
+    //     );
+    // }
 
-    // Fluid Pipes
-    GTMaterials.NaquadahEnriched.setProperty(
-        PropertyKey.FLUID_PIPE,
-        new $FluidPipeProperties(8000, 500, true, true, true, false)
-    );
     GTMaterials.Netherite.setComponents('1x debris', '1x gold');
 });
