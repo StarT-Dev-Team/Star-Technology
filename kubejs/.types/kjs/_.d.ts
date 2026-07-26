@@ -376,6 +376,22 @@ declare namespace internal.kjs.kubejs {
     }
 }
 
+declare namespace internal.kjs.rhino {
+    type JavaAdapter__ConstructorParams<T, TObject> = T extends new (...args: infer TParams) => TObject ? TParams : [];
+
+    type JavaAdapter__Methods<T> = {
+        [K in keyof T]: T[K] extends (...args: any[]) => any ? T[K] : never;
+    };
+
+    interface JavaAdapter {
+        new <T extends $class<any>>(
+            base: T,
+            impl: Partial<JavaAdapter__Methods<T extends $class<infer TObject> ? TObject : never>>,
+            ...args: JavaAdapter__ConstructorParams<T, T extends $class<infer TObject> ? TObject : never>
+        ): $object<'__java__adapter', T extends $class<infer TObject> ? TObject : never>;
+    }
+}
+
 // TODO: move to JavaWrapper
 declare const Java: {
     loadClass: { <K extends keyof internal.kjs.LoadableClasses>(name: K): internal.kjs.LoadableClasses[K] };
@@ -399,3 +415,5 @@ declare const PlayerEvents: internal.kjs.kubejs.PlayerEvents;
 
 declare const BlockProperties: typeof internal.net.minecraft.world.level.block.state.properties.BlockStateProperties;
 declare const Direction: typeof internal.net.minecraft.core.Direction;
+
+declare const JavaAdapter: internal.kjs.rhino.JavaAdapter;
