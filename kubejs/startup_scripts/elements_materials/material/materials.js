@@ -108,6 +108,8 @@
 
         // Materials
 
+        /*
+
         MH.elemDust('uranium_233', 0x4fbb4f, [noSmelt]);
 
         MH.elemDustFluid('plutonium_238', 0xc13d3d, [noSmelt]);
@@ -207,6 +209,8 @@
             .flags(longRod)
             .arcSmeltInto('dysprosium')
             .ingotSmeltInto('dysprosium');
+        
+        */
 
         // Thermal Superconductors
         MH.conductorSuper(
