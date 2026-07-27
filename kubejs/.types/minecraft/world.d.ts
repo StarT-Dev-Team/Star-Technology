@@ -178,8 +178,7 @@ declare namespace internal.net.minecraft.world.level {
 
     import Item = item.Item;
 
-    interface ItemLike {
-        readonly __net_minecraft_world_level_ItemLike: unique symbol;
+    interface ItemLike extends $object<'net.minecraft.world.level.ItemLike'> {
         asItem(): Item;
     }
 }

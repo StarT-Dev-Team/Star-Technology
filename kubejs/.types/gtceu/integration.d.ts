@@ -114,7 +114,6 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
         name: 'internal.com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMachineBuilder$DefinitionFunction';
         functionalInterface: 'apply';
     }> {
-        readonly __com_gregtechceu_gtceu_integration_kjs_builders_machine_KJSTieredMachineBuilder$DefinitionFunction: unique symbol;
         apply(tier: number, builder: MachineBuilder<MachineDefinition>): void;
     }
 
@@ -153,7 +152,6 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
         name: 'internal.com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMultiblockBuilder$DefinitionFunction';
         functionalInterface: 'apply';
     }> {
-        readonly __com_gregtechceu_gtceu_integration_kjs_builders_machine_KJSTieredMultiblockBuilder$DefinitionFunction: unique symbol;
         apply(tier: number, builder: MultiblockMachineBuilder): void;
     }
 
