@@ -481,6 +481,7 @@
         // Extras
         // MH.compDust('sulfate', ['1x sulfur', '4x oxygen'], 0xd5ba23, []);
 
+        /*
         MH.compIngotLiquid(
             'osthendah',
             ['1x osmium', '1x ruthenium', '2x naquadah'],
@@ -498,7 +499,9 @@
             [8750, 'higher', VA('zpm'), 1000],
             [plates, rod, frame, fineWire, foil, densePlate]
         );
+        */
 
+        /*
         MH.compLiquid('perchloric_acid', ['1x hydrogen', '1x chlorine', '4x oxygen'], 0xffe6e6, []);
 
         MH.compDust('calcium_perchlorate', ['1x calcium', '2x chlorine', '8x oxygen'], 0xffff99, []);
@@ -516,17 +519,21 @@
         MH.compDust('strontium_titanium_oxide', ['1x strontium', '1x titanium', '3x oxygen'], 0xff0000, []);
 
         MH.compDust('copper_chloride', ['1x copper', '1x chlorine'], 0xfff9e8, []);
+        */
 
+        /*
         MH.compLiquid(
             'npk_solution',
             ['15x apatite', '5x potassium', '1x sulfur_trioxide', '1x nitrogen', '2x water'],
             0xb8c3f5,
             []
         );
+        */
 
-        MH.compLiquid('cupric_chloride_solution', ['1x copper_chloride', '1x hydrochloric_acid'], 0x336600, []);
+        // MH.compLiquid('cupric_chloride_solution', ['1x copper_chloride', '1x hydrochloric_acid'], 0x336600, []);
 
         // Netherite Derivatives/Alloys
+        /*
         MH.elemIngotFluid(
             'pure_netherite',
             0x1a0d00,
@@ -568,6 +575,7 @@
             OPAL,
             []
         );
+        */
 
         // Ores and bedrock fluids
 
