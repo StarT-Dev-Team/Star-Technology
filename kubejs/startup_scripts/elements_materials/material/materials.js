@@ -213,6 +213,7 @@
         */
 
         // Thermal Superconductors
+        /*
         MH.conductorSuper(
             'soul_infused',
             ['1x invar', '2x soul'],
@@ -301,6 +302,7 @@
             [V('uev'), 256, 0, true],
             [6400, 320, 15, 38500]
         );
+        */
 
         // Nuclear Reactor Materials
         MH.compIngot(
