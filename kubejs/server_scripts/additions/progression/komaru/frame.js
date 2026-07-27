@@ -63,7 +63,7 @@ ServerEvents.recipes((event) => {
         1200,
         444,
         444 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'kubejs:komaru_plating'
     );
 
@@ -81,9 +81,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:komaru_gravitational_stabilisers')
         .duration(1500)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack('komarumod:komaru_powder').EUt(GTValues.VA[GTValues.UIV]).CWUt(444)
+            researchRecipeBuilder.researchStack('komarumod:komaru_powder').EUt(GTValues.VA[UIV]).CWUt(444)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     event.recipes.gtceu
         .assembly_line(id('komaru_plating'))
@@ -99,9 +99,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:komaru_plating')
         .duration(1500)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack('komarumod:komaru_powder').EUt(GTValues.VA[GTValues.UIV]).CWUt(444)
+            researchRecipeBuilder.researchStack('komarumod:komaru_powder').EUt(GTValues.VA[UIV]).CWUt(444)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     event.recipes.gtceu
         .assembly_line(id('komaru_rift_caller'))
@@ -117,7 +117,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:komaru_rift_caller')
         .duration(1500)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack('komarumod:komaru_powder').EUt(GTValues.VA[GTValues.UIV]).CWUt(444)
+            researchRecipeBuilder.researchStack('komarumod:komaru_powder').EUt(GTValues.VA[UIV]).CWUt(444)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 });

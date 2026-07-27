@@ -151,7 +151,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('#forge:cobblestone')
         .outputFluids('minecraft:lava 10000')
         .duration(1600)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     /**
      * @param {string} type
@@ -165,7 +165,7 @@ ServerEvents.recipes((event) => {
             .notConsumableFluid(`${aqueous} 1`)
             .itemOutputs(`64x exnihilosequentia:${type}_pebble`)
             .duration(1 * 64)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
     };
 
     industrialBarrelPebbles('stone', 'minecraft:water');
@@ -193,7 +193,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`${fluid} 250`)
             .itemOutputs(`${mod}:${output}`)
             .duration(dur)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
     };
 
     industrialBarrelItemAqueous('exnihilosequentia:dust', 'minecraft:water', 5, 'minecraft', 'clay');
@@ -221,7 +221,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('exnihilosequentia:witch_water 250')
         .itemOutputs('minecraft:brown_mushroom_block')
         .duration(10)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('crimson_nylium_spores'))
@@ -229,7 +229,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:nether_air 500')
         .itemOutputs('exnihilosequentia:crimson_nylium_spores')
         .duration(200)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('warped_nylium_spores'))
@@ -237,7 +237,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:ender_air 500')
         .itemOutputs('exnihilosequentia:warped_nylium_spores')
         .duration(200)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('nether_wart_block'))
@@ -245,7 +245,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:fermented_biomass 500')
         .itemOutputs('minecraft:nether_wart_block')
         .duration(160)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('warped_wart_block'))
@@ -253,7 +253,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:fermented_biomass 500')
         .itemOutputs('minecraft:warped_wart_block')
         .duration(160)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('witch_water'))
@@ -261,7 +261,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('minecraft:water 1000')
         .outputFluids('exnihilosequentia:witch_water 1000')
         .duration(80)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('sea_water'))
@@ -269,7 +269,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('minecraft:water 1000')
         .outputFluids('exnihilosequentia:sea_water 1000')
         .duration(80)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('slimeshroom_dupe'))
@@ -277,7 +277,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('exnihilosequentia:witch_water 100')
         .chancedOutput('thermal:slime_mushroom_spores', 9500, 0)
         .duration(20)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('mycelium_growth_bonemeal'))
@@ -285,7 +285,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('minecraft:bone_meal', 'exnihilosequentia:mycelium_spores')
         .inputFluids('minecraft:water 500')
         .itemOutputs('kubejs:mycelium_growth')
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .industrial_barrel_aqueous(id('mycelium_spores'))
@@ -294,5 +294,5 @@ ServerEvents.recipes((event) => {
         .itemInputs('4x minecraft:dirt')
         .inputFluids('exnihilosequentia:witch_water 750')
         .chancedOutput('exnihilosequentia:mycelium_spores', 8500, 0)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 });

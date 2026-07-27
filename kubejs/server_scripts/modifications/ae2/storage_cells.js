@@ -109,14 +109,14 @@ ServerEvents.recipes((event) => {
             .itemInputs('expandedae:dual_cell_housing', `ae2:cell_component_${type}k`)
             .itemOutputs(`expandedae:dual_storage_cell_${type}k`)
             .duration(400)
-            .EUt(GTValues.VA[GTValues.MV]);
+            .EUtVA(MV);
 
         event.recipes.gtceu
             .canner(id(`dual_storage_cell_${type}m`))
             .itemInputs('expandedae:mega_dual_cell_housing', `megacells:cell_component_${type}m`)
             .itemOutputs(`expandedae:dual_storage_cell_${type}m`)
             .duration(400)
-            .EUt(GTValues.VA[GTValues.IV]);
+            .EUtVA(IV);
     });
 
     event.remove({ id: 'megacells:cells/standard/bulk_item_cell' });
@@ -371,5 +371,5 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576')
         .itemOutputs('expandedae:singularity_crafting_storage')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 });

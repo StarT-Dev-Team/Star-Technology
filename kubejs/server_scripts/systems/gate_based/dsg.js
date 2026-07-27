@@ -42,7 +42,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_field_stabiliser'
     );
 
@@ -63,7 +63,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_stellar_dialer'
     );
 
@@ -91,7 +91,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_computational_matrix'
     );
 
@@ -124,7 +124,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:abyssal_processor_mainframe'
     );
 
@@ -146,7 +146,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'sgjourney:milky_way_dhd'
     );
 
@@ -170,7 +170,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_energy_modulator'
     );
 
@@ -198,7 +198,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_chevron'
     );
 
@@ -224,7 +224,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_reinforced_plating'
     );
 
@@ -252,7 +252,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_stellar_access_point'
     );
 
@@ -273,7 +273,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'gtceu:prismatic_hypergurmalium_bucket'
     );
 
@@ -294,7 +294,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'gtceu:riftic_concentrate_bucket'
     );
 
@@ -315,7 +315,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'gtceu:primordial_residue_bucket'
     );
 
@@ -334,7 +334,7 @@ ServerEvents.recipes((event) => {
         3000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:prismalic_fragment'
     );
 
@@ -353,7 +353,7 @@ ServerEvents.recipes((event) => {
         3000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:riftic_fragment'
     );
 
@@ -372,7 +372,7 @@ ServerEvents.recipes((event) => {
         3000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:primordial_fragment'
     );
 
@@ -390,7 +390,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:raging_rimulatia 41472')
         .itemOutputs('kubejs:ascension_core')
         .duration(6000)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .supreme_chemistry(id('dsg_enscription_plate'))
@@ -407,7 +407,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:dsg_enscription_plate')
         .duration(4000)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     cut(id('dsg_enscription_chip'))
         .itemInputs('kubejs:dsg_enscription_plate')
@@ -415,7 +415,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:dsg_enscription_chip')
         .duration(3000)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     rotor(id('dsg_stargate_rod_base'))
         .layeredRecipe((layers) =>
@@ -457,7 +457,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:dsg_stargate_rod_base')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     rotor(id('primordicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
@@ -494,7 +494,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:primordicly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     rotor(id('kaleidoscopicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
@@ -527,7 +527,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:kaleidoscopicly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     rotor(id('prismaticly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
@@ -564,7 +564,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:prismaticly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     riftEnh(id('faetic_stargate_rod'))
         .itemInputs('kubejs:prismaticly_infused_stargate_rod')
@@ -572,7 +572,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:faetic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     riftEnh(id('riftic_stargate_rod'))
         .itemInputs('kubejs:kaleidoscopicly_infused_stargate_rod')
@@ -580,7 +580,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:riftic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     riftEnh(id('temporic_stargate_rod'))
         .itemInputs('kubejs:primordicly_infused_stargate_rod')
@@ -588,7 +588,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:temporic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     stargateComponent('dsg_ring')
         .layeredRecipe((layers) =>
@@ -621,7 +621,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_ring_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     stargateComponent('dsg_chevron')
         .layeredRecipe((layers) =>
@@ -684,7 +684,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_chevron_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     stargateComponent('dsg_base')
         .layeredRecipe((layers) =>
@@ -747,7 +747,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_base_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.create
         .mechanical_crafting(

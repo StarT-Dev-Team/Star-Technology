@@ -9,7 +9,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:hydrogen 2000', 'gtceu:fluorine 7000')
         .outputFluids('gtceu:fluoroantimonic_acid 1000')
         .duration(150)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu // +5% on original platline for Ru, Rh, Os and Ir
         .chemical_skip(id('plat_line_skip'))
@@ -25,7 +25,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:nitric_acid 8000', 'gtceu:hydrochloric_acid 16000')
         .duration(485)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .chemical_skip(id('naquadah_line_skip'))
@@ -41,7 +41,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:hydrogen 4000', 'gtceu:fluorine 14000')
         .duration(1645)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .chemical_skip(id('uranite_line_skip'))
@@ -50,7 +50,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('9x gtceu:uranium_dust', 'gtceu:uranium_235_dust')
         .outputFluids('gtceu:fluorine 40000', 'gtceu:hydrogen 40000', 'gtceu:oxygen 20000')
         .duration(216)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .chemical_skip(id('sodium_persulfate_skip'))
@@ -58,7 +58,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:oxygen 4000')
         .outputFluids('gtceu:sodium_persulfate 500')
         .duration(30)
-        .EUt(GTValues.VHA[GTValues.EV]);
+        .EUtVHA(EV);
 
     event.recipes.gtceu
         .chemical_skip(id('iron_iii_chloride_skip'))
@@ -66,7 +66,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:chlorine 3000')
         .outputFluids('gtceu:iron_iii_chloride 1000')
         .duration(30)
-        .EUt(GTValues.VA[GTValues.EV]);
+        .EUtVA(EV);
 
     event.recipes.gtceu
         .chemical_skip(id('cupric_chloride_solution_skip'))
@@ -74,7 +74,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:hydrogen 1000', 'gtceu:chlorine 2000')
         .outputFluids('gtceu:cupric_chloride_solution 1000')
         .duration(30)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu
         .chemical_skip(id('borax_skip'))
@@ -83,7 +83,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('23x gtceu:borax_dust')
         .outputFluids('gtceu:diluted_sulfuric_acid 3000')
         .duration(720)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu
         .chemical_skip(id('14_butanediol_skip'))
@@ -97,7 +97,7 @@ ServerEvents.recipes((event) => {
         )
         .duration(105)
         .circuit(8)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .chemical_skip(id('benzophenone_3344_tetracarboxylic_dianhydridenediol_skip'))
@@ -118,7 +118,7 @@ ServerEvents.recipes((event) => {
         )
         .duration(30)
         .circuit(6)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .chemical_skip(id('tungstate_line'))
@@ -127,7 +127,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x gtceu:tungsten_dust', '2x gtceu:lithium_dust')
         .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000', 'gtceu:oxygen 4000')
         .duration(175)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .chemical_skip(id('scheelite_line'))
@@ -136,7 +136,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x gtceu:tungsten_dust', '1x gtceu:calcium_dust')
         .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000', 'gtceu:oxygen 4000')
         .duration(175)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .chemical_skip(id('mutagen_skip'))
@@ -144,7 +144,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:biomass 9000', 'gtceu:bacteria 9000')
         .outputFluids('gtceu:mutagen 1800')
         .duration(12)
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .EUtVHA(UEV)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     event.recipes.gtceu
@@ -155,7 +155,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:carbon_dioxide 1000')
         .duration(20)
         .circuit(0)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .chemical_skip(id('glycerol_skip'))
@@ -164,7 +164,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:glycerol 1000')
         .duration(160)
         .circuit(3)
-        .EUt(GTValues.VHA[GTValues.HV]);
+        .EUtVHA(HV);
 
     event.recipes.gtceu
         .chemical_skip(id('caprolactam_skip'))
@@ -174,7 +174,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('19x gtceu:caprolactam_dust')
         .duration(42)
         .circuit(14)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     event.recipes.gtceu
         .chemical_skip(id('zapolgium_skip'))
@@ -188,7 +188,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('minecraft:water 29000', 'gtceu:oxygen 21000')
         .duration(66)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .chemical_skip(id('zirconium_skip'))
@@ -202,7 +202,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:oxygen 10000')
         .duration(14)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // === Enlightened Chemistry ===
 
@@ -215,7 +215,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('16x kubejs:draconic_stem_cells')
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
         .duration(53)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .ordered_chemistry(id('better_draco_brain_matter_cells'))
@@ -230,5 +230,5 @@ ServerEvents.recipes((event) => {
         .itemOutputs('32x kubejs:draconic_brain_matter_cells')
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
         .duration(93)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 });

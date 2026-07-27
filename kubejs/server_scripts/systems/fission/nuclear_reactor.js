@@ -39,7 +39,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(coolant)
             .itemOutputs('kubejs:depleted_' + type + '_fuel_rod')
             .duration((560 * modifier) / boost)
-            .EUt(-GTValues.V[GTValues.EV] * boost * Math.pow(2, tier));
+            .EUt(-GTValues.V[EV] * boost * Math.pow(2, tier));
     };
 
     nuclearReactor('thr', 1, 1.05, 1);

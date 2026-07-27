@@ -31,7 +31,7 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${plastic} ${216 + scaler * 36}`)
                 .itemOutputs(`gtceu:${tier}_${ioData.typeIO}_bus`)
                 .duration(300)
-                .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, scaler))
+                .EUt(GTValues.VA[IV] * Math.pow(4, scaler))
                 .circuit(ioData.circ);
 
             event.recipes.gtceu
@@ -40,7 +40,7 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${plastic} ${216 + scaler * 36}`)
                 .itemOutputs(`gtceu:${tier}_${ioData.typeIO}_hatch`)
                 .duration(300)
-                .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, scaler))
+                .EUt(GTValues.VA[IV] * Math.pow(4, scaler))
                 .circuit(ioData.circ);
 
             event.recipes.gtceu
@@ -54,7 +54,7 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${plastic} ${864 + scaler * 144}`)
                 .itemOutputs(`gtceu:${tier}_dual_${ioData.typeIO}_hatch`)
                 .duration(300)
-                .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, scaler))
+                .EUt(GTValues.VA[IV] * Math.pow(4, scaler))
                 .circuit(ioData.circ);
         });
 

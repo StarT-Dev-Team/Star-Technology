@@ -28,5 +28,5 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('gtceu:dimensional_destabiliser')
         .duration(1800)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 });

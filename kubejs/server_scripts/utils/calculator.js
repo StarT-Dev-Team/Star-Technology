@@ -1101,7 +1101,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'ULV amps',
                 description:
                     "converts the number to the EU/t equivalent of ULV amps; it's the same as number * " +
-                    GTV[GTValues.ULV].toString(),
+                    GTV[ULV].toString(),
             },
             {
                 names: ['LV'],
@@ -1109,7 +1109,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'LV amps',
                 description:
                     "converts the number to the EU/t equivalent of LV amps; it's the same as number * " +
-                    GTV[GTValues.LV].toString(),
+                    GTV[LV].toString(),
             },
             {
                 names: ['MV'],
@@ -1117,7 +1117,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'MV amps',
                 description:
                     "converts the number to the EU/t equivalent of MV amps; it's the same as number * " +
-                    GTV[GTValues.MV].toString(),
+                    GTV[MV].toString(),
             },
             {
                 names: ['HV'],
@@ -1125,7 +1125,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'HV amps',
                 description:
                     "converts the number to the EU/t equivalent of HV amps; it's the same as number * " +
-                    GTV[GTValues.HV].toString(),
+                    GTV[HV].toString(),
             },
             {
                 names: ['EV'],
@@ -1133,7 +1133,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'EV amps',
                 description:
                     "converts the number to the EU/t equivalent of EV amps; it's the same as number * " +
-                    GTV[GTValues.EV].toString(),
+                    GTV[EV].toString(),
             },
             {
                 names: ['IV'],
@@ -1141,7 +1141,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'IV amps',
                 description:
                     "converts the number to the EU/t equivalent of IV amps; it's the same as number * " +
-                    GTV[GTValues.IV].toString(),
+                    GTV[IV].toString(),
             },
             {
                 names: ['LuV'],
@@ -1149,7 +1149,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'LuV amps',
                 description:
                     "converts the number to the EU/t equivalent of LuV amps; it's the same as number * " +
-                    GTV[GTValues.LuV].toString(),
+                    GTV[LuV].toString(),
             },
             {
                 names: ['ZPM'],
@@ -1157,7 +1157,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'ZPM amps',
                 description:
                     "converts the number to the EU/t equivalent of ZPM amps; it's the same as number * " +
-                    GTV[GTValues.ZPM].toString(),
+                    GTV[ZPM].toString(),
             },
             {
                 names: ['UV'],
@@ -1165,7 +1165,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'UV amps',
                 description:
                     "converts the number to the EU/t equivalent of UV amps; it's the same as number * " +
-                    GTV[GTValues.UV].toString(),
+                    GTV[UV].toString(),
             },
             {
                 names: ['UHV'],
@@ -1173,7 +1173,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'UHV amps',
                 description:
                     "converts the number to the EU/t equivalent of UHV amps; it's the same as number * " +
-                    GTV[GTValues.UHV].toString(),
+                    GTV[UHV].toString(),
             },
             {
                 names: ['UEV'],
@@ -1181,7 +1181,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'UEV amps',
                 description:
                     "converts the number to the EU/t equivalent of UEV amps; it's the same as number * " +
-                    GTV[GTValues.UEV].toString(),
+                    GTV[UEV].toString(),
             },
             {
                 names: ['UIV'],
@@ -1189,7 +1189,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'UIV amps',
                 description:
                     "converts the number to the EU/t equivalent of UIV amps; it's the same as number * " +
-                    GTV[GTValues.UIV].toString(),
+                    GTV[UIV].toString(),
             },
             {
                 names: ['UXV'],
@@ -1197,7 +1197,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'UXV amps',
                 description:
                     "converts the number to the EU/t equivalent of UXV amps; it's the same as number * " +
-                    GTV[GTValues.UXV].toString(),
+                    GTV[UXV].toString(),
             },
             {
                 names: ['OpV'],
@@ -1205,7 +1205,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'OpV amps',
                 description:
                     "converts the number to the EU/t equivalent of OpV amps; it's the same as number * " +
-                    GTV[GTValues.OpV].toString(),
+                    GTV[OpV].toString(),
             },
             {
                 names: ['MAX'],
@@ -1213,7 +1213,7 @@ let calculatorDefinitions = (() => {
                 fullName: 'MAX amps',
                 description:
                     "converts the number to the EU/t equivalent of MAX amps; it's the same as number * " +
-                    GTV[GTValues.MAX].toString(),
+                    GTV[MAX].toString(),
             },
         ],
     };
@@ -1752,35 +1752,35 @@ function calculatorParse(tokens) {
                     case 'secs':
                         return { type: 'number', value: number * 20 };
                     case 'ULV':
-                        return { type: 'number', value: number * GTV[GTValues.ULV] };
+                        return { type: 'number', value: number * GTV[ULV] };
                     case 'LV':
-                        return { type: 'number', value: number * GTV[GTValues.LV] };
+                        return { type: 'number', value: number * GTV[LV] };
                     case 'MV':
-                        return { type: 'number', value: number * GTV[GTValues.MV] };
+                        return { type: 'number', value: number * GTV[MV] };
                     case 'HV':
-                        return { type: 'number', value: number * GTV[GTValues.HV] };
+                        return { type: 'number', value: number * GTV[HV] };
                     case 'EV':
-                        return { type: 'number', value: number * GTV[GTValues.EV] };
+                        return { type: 'number', value: number * GTV[EV] };
                     case 'IV':
-                        return { type: 'number', value: number * GTV[GTValues.IV] };
+                        return { type: 'number', value: number * GTV[IV] };
                     case 'LuV':
-                        return { type: 'number', value: number * GTV[GTValues.LuV] };
+                        return { type: 'number', value: number * GTV[LuV] };
                     case 'ZPM':
-                        return { type: 'number', value: number * GTV[GTValues.ZPM] };
+                        return { type: 'number', value: number * GTV[ZPM] };
                     case 'UV':
-                        return { type: 'number', value: number * GTV[GTValues.UV] };
+                        return { type: 'number', value: number * GTV[UV] };
                     case 'UHV':
-                        return { type: 'number', value: number * GTV[GTValues.UHV] };
+                        return { type: 'number', value: number * GTV[UHV] };
                     case 'UEV':
-                        return { type: 'number', value: number * GTV[GTValues.UEV] };
+                        return { type: 'number', value: number * GTV[UEV] };
                     case 'UIV':
-                        return { type: 'number', value: number * GTV[GTValues.UIV] };
+                        return { type: 'number', value: number * GTV[UIV] };
                     case 'UXV':
-                        return { type: 'number', value: number * GTV[GTValues.UXV] };
+                        return { type: 'number', value: number * GTV[UXV] };
                     case 'OpV':
-                        return { type: 'number', value: number * GTV[GTValues.OpV] };
+                        return { type: 'number', value: number * GTV[OpV] };
                     case 'MAX':
-                        return { type: 'number', value: number * GTV[GTValues.MAX] };
+                        return { type: 'number', value: number * GTV[MAX] };
                     default:
                         throw new Error("invalid number suffix '" + suffix + "'");
                 }

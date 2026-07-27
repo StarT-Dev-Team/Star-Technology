@@ -10,7 +10,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:highly_unstable_rift_source 27500')
         .duration(1800)
         .genericStartEU(25000000000) //consumes 25GEU to start the recipe
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // === Magmatic ===
     event.recipes.gtceu
@@ -32,7 +32,7 @@ ServerEvents.recipes((event) => {
         .outputFluidsRanged('gtceu:gritty_akreyrium', 0, 4096000)
         .duration(240)
         .genericStartEU(250000000) //consumes 250MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .magmatic_drill(id('nether'))
@@ -49,7 +49,7 @@ ServerEvents.recipes((event) => {
         .outputFluidsRanged('gtceu:infernal_concentrate', 0, 1024000)
         .duration(1332)
         .genericStartEU(2500000000) //consumes 2.5GEU to start the recipe
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     // === Voidic ===
     event.recipes.gtceu
@@ -72,7 +72,7 @@ ServerEvents.recipes((event) => {
         .circuit(1)
         .duration(600)
         .genericStartEU(20000000) //consumes 20MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.EV]);
+        .EUtVA(EV);
 
     event.recipes.gtceu
         .voidic_refinement(id('void_2_dust'))
@@ -95,7 +95,7 @@ ServerEvents.recipes((event) => {
         .circuit(2)
         .duration(600)
         .genericStartEU(75000000) //consumes 75MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     event.recipes.gtceu
         .voidic_refinement(id('void_1_ore'))
@@ -116,7 +116,7 @@ ServerEvents.recipes((event) => {
         .circuit(11)
         .duration(900)
         .genericStartEU(20000000) //consumes 20MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.EV]);
+        .EUtVA(EV);
 
     event.recipes.gtceu
         .voidic_refinement(id('void_2_ore'))
@@ -139,7 +139,7 @@ ServerEvents.recipes((event) => {
         .circuit(12)
         .duration(900)
         .genericStartEU(75000000) //consumes 75MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     event.recipes.gtceu
         .voidic_refinement(id('geode_1_dust'))
@@ -160,7 +160,7 @@ ServerEvents.recipes((event) => {
         .circuit(3)
         .duration(600)
         .genericStartEU(5000000) //consumes 5MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.HV]);
+        .EUtVA(HV);
 
     event.recipes.gtceu
         .voidic_refinement(id('geode_1_ore'))
@@ -181,7 +181,7 @@ ServerEvents.recipes((event) => {
         .circuit(13)
         .duration(900)
         .genericStartEU(5000000) //consumes 5MEU to start the recipe
-        .EUt(GTValues.VA[GTValues.HV]);
+        .EUtVA(HV);
 
     // === Modules ===
     const researchBuilder = global.researchBuilder;
@@ -210,7 +210,7 @@ ServerEvents.recipes((event) => {
         2400,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:primordial_infusion'
     );
 
@@ -235,7 +235,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'start_core:abyssal_harvester'
     );
 
@@ -253,7 +253,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         'gtceu:void_extractor'
     );
 
@@ -271,7 +271,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         'start_core:zpm_fluid_drilling_rig'
     );
 
@@ -289,7 +289,7 @@ ServerEvents.recipes((event) => {
         1800,
         500,
         500 * 1800,
-        GTValues.VA[GTValues.UXV],
+        GTValues.VA[UXV],
         'gtceu:multithreaded_component_synthesis_forge'
     );
 });

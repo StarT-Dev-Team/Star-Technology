@@ -8,13 +8,13 @@ ServerEvents.recipes((event) => {
             .outputFluids('gtceu:hexafluorobutadiene 500', 'gtceu:hydrogen 6000')
             .circuit(1)
             .duration(412)
-            .EUt(GTValues.VHA[GTValues.IV]);
+            .EUtVHA(IV);
 
         CR(id('perfluoroelastomer_rubber'))
             .itemInputs('9x gtceu:raw_perfluoroelastomer_rubber_dust', '1x gtceu:sulfur_dust')
             .outputFluids('gtceu:perfluoroelastomer_rubber 1296')
             .duration(600)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
     });
 
     event.recipes.gtceu
@@ -28,7 +28,7 @@ ServerEvents.recipes((event) => {
         )
         .circuit(3)
         .duration(328)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('raw_perfluoroelastomer_rubber'))
@@ -39,5 +39,5 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('38x gtceu:raw_perfluoroelastomer_rubber_dust')
         .duration(486)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 });

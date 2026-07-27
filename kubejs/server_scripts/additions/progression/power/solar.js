@@ -17,7 +17,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`${count}x kubejs:ev_energy_core`)
             .circuit(3)
             .duration(400)
-            .EUt(GTValues.VHA[GTValues.HV] * count);
+            .EUt(GTValues.VHA[HV] * count);
     });
 
     const COMPONENTS = global.componentMaterials;

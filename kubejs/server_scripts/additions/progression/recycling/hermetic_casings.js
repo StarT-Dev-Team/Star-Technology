@@ -23,7 +23,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`${prefix + tier}_hermetic_casing`)
             .itemOutputs(outputs)
             .duration(calculateDuration(outputs))
-            .EUt(GTValues.VA[GTValues.LV])
+            .EUtVA(LV)
             .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
     };
 
