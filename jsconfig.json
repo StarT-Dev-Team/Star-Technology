@@ -2,7 +2,7 @@
     "compilerOptions": {
         "checkJs": true,
         "skipLibCheck": false,
-        "lib": ["ES2016", "ES2017.Object"],
+        "lib": ["ES2016", "ES2017.Object", "ES2019.Array"],
         "noEmit": true
     },
     "include": [

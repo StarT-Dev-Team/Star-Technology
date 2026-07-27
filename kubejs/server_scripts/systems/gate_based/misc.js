@@ -18,10 +18,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 3456', 'gtceu:yttrium_barium_cuprate 5184')
         .itemOutputs('gtceu:large_rotor_machine')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_lathe')).EUt(GTValues.VHA[GTValues.ZPM]).CWUt(16)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_lathe')).EUt(GTValues.VHA[ZPM]).CWUt(16)
         )
         .duration(3600)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .assembly_line(id('runic_engraver'))
@@ -46,13 +46,10 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('gtceu:runic_circuitry_assembling_station')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:zpm_laser_engraver'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(16)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_laser_engraver')).EUt(GTValues.VHA[ZPM]).CWUt(16)
         )
         .duration(6000)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     // event.recipes.gtceu.assembly_line(id('quantum_compressor'))
     //         .itemInputs('gtceu:melodium_frame', '3x #gtceu:circuits/uv', '2x gtceu:double_trinaquadalloy_plate',
@@ -94,10 +91,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('kubejs:activated_stargate_rod'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
+                .EUt(GTValues.VHA[ZPM])
                 .CWUt(24)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .assembly_line(id('runic_wave_generator'))
@@ -124,18 +121,18 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:exquisite_runic_laser_source_base_gem'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
+                .EUt(GTValues.VHA[ZPM])
                 .CWUt(24)
         )
         .duration(7200)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .assembler(id('laser_casing'))
         .itemInputs('6x gtceu:double_prismalium_plate', 'gtceu:prismalium_frame', 'kubejs:runic_wave_generator')
         .itemOutputs('kubejs:laser_casing')
         .duration(6000)
-        .EUt(GTValues.VHA[GTValues.ZPM])
+        .EUtVHA(ZPM)
         .circuit(7);
 
     event.recipes.gtceu
@@ -147,7 +144,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:inscribe_casing')
         .duration(8000)
-        .EUt(GTValues.VA[GTValues.UHV])
+        .EUtVA(UHV)
         .circuit(7);
 });
 

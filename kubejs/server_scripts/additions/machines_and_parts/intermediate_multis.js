@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:multiblock_upgrade_kit')
         .duration(800)
-        .EUt(GTValues.V[GTValues.HV]);
+        .EUtV(HV);
 
     [
         'bender',
@@ -116,12 +116,12 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:soldering_alloy 432')
             .itemOutputs('gtceu:super_vacuum_freezer')
             .duration(400)
-            .EUt(GTValues.VHA[GTValues.IV])
+            .EUtVHA(IV)
     ).scannerResearch((researchRecipeBuilder) =>
         researchRecipeBuilder
             .researchStack(Item.of('gtceu:vacuum_freezer'))
             .duration(1800)
-            .EUt(GTValues.VHA[GTValues.EV])
+            .EUt(GTValues.VHA[EV])
     );
 
     $(
@@ -141,12 +141,12 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:soldering_alloy 1152')
             .itemOutputs('gtceu:super_barrel')
             .duration(400)
-            .EUt(GTValues.VHA[GTValues.LuV])
+            .EUtVHA(LuV)
     ).scannerResearch((researchRecipeBuilder) =>
         researchRecipeBuilder
             .researchStack(Item.of('gtceu:industrial_barrel'))
             .duration(1800)
-            .EUt(GTValues.VHA[GTValues.LuV])
+            .EUt(GTValues.VHA[LuV])
     );
 
     event.recipes.gtceu
@@ -163,13 +163,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:soldering_alloy 1008', 'gtceu:polybenzimidazole 432')
         .itemOutputs('gtceu:super_abs')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:alloy_blast_smelter'))
-                .EUt(GTValues.VHA[GTValues.LuV])
-                .CWUt(12)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:alloy_blast_smelter')).EUt(GTValues.VHA[LuV]).CWUt(12)
         )
         .duration(400)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     $(
         event.recipes.gtceu
@@ -187,12 +184,12 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:soldering_alloy 1152')
             .itemOutputs('gtceu:super_gas_collector')
             .duration(400)
-            .EUt(GTValues.VHA[GTValues.LuV])
+            .EUtVHA(LuV);
     ).scannerResearch((researchRecipeBuilder) =>
         researchRecipeBuilder
             .researchStack(Item.of('gtceu:iv_gas_collector'))
             .duration(1800)
-            .EUt(GTValues.VHA[GTValues.LuV])
+            .EUt(GTValues.VHA[LuV])
     );
 
     event.shaped('gtceu:industrial_extraction_chamber', ['TPG', 'AMA', 'GCT'], {

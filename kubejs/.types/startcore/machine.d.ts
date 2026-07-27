@@ -146,6 +146,36 @@ declare namespace internal.com.startechnology.start_core.machine.abyssal_contain
     };
 }
 
+declare namespace internal.com.startechnology.start_core.machine.arboreal_extractor {
+    import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+    import TraceabilityPredicate = gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
+    import TreeType = start_core.block.arboreal_extractor.TreeType;
+
+    interface ArborealExtractorMachine extends $object<
+        'com.startechnology.start_core.machine.arboreal_extractor.ArborealExtractorMachine',
+        WorkableElectricMultiblockMachine
+    > {
+        getTreeType(): TreeType;
+        get treeType(): TreeType;
+    }
+
+    const ArborealExtractorMachine: $class<ArborealExtractorMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): ArborealExtractorMachine;
+    };
+
+    interface StarTArborealPredicates extends $object<
+        'com.startechnology.start_core.machine.arboreal_extractor.StarTArborealPredicates',
+        {}
+    > {}
+
+    const StarTArborealPredicates: $class<StarTArborealPredicates> & {
+        new (): StarTArborealPredicates;
+        leaves(): TraceabilityPredicate;
+        logs(): TraceabilityPredicate;
+    };
+}
+
 declare namespace internal.com.startechnology.start_core.machine.bulking {
     import WorkableElectricMultiblockMachine = com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
@@ -199,6 +229,8 @@ declare namespace internal.kjs {
         'com.startechnology.start_core.machine.draconic_infusion.StarTDraconicInfusionMachine': typeof internal.com.startechnology.start_core.machine.draconic_infusion.StarTDraconicInfusionMachine;
         'com.startechnology.start_core.machine.vcrc.VacuumChemicalReactionChamberMachine': typeof internal.com.startechnology.start_core.machine.vcrc.VacuumChemicalReactionChamberMachine;
         'com.startechnology.start_core.machine.abyssal_containment.StarTAbyssalContainmentMachine': typeof internal.com.startechnology.start_core.machine.abyssal_containment.StarTAbyssalContainmentMachine;
+        'com.startechnology.start_core.machine.arboreal_extractor.ArborealExtractorMachine': typeof internal.com.startechnology.start_core.machine.arboreal_extractor.ArborealExtractorMachine;
+        'com.startechnology.start_core.machine.arboreal_extractor.StarTArborealPredicates': typeof internal.com.startechnology.start_core.machine.arboreal_extractor.StarTArborealPredicates;
         'com.startechnology.start_core.machine.bulking.BulkingMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingMachine;
         'com.startechnology.start_core.machine.bulking.BulkingCoiledMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingCoiledMachine;
         'com.startechnology.start_core.machine.bulking.BulkingThreadedMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingThreadedMachine;

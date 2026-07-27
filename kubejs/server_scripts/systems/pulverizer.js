@@ -33,7 +33,7 @@ ServerEvents.recipes((event) => {
                     .itemOutputs(`${itemOutput.count}x ${itemOutput.ingredient.item}`)
                     .circuit(0)
                     .duration(300)
-                    .EUt(GTValues.VA[GTValues.LV]);
+                    .EUtVA(LV);
             }
         }
     });
@@ -62,7 +62,7 @@ ServerEvents.recipes((event) => {
                 .circuit(1)
                 .duration(300)
                 .category('pulverizer_heated')
-                .EUt(GTValues.VA[GTValues.LV]);
+                .EUtVA(LV);
 
             event.recipes.gtceu
                 .pulverizer(id(`raw_heated_${oreName}`))
@@ -71,7 +71,7 @@ ServerEvents.recipes((event) => {
                 .circuit(1)
                 .duration(300)
                 .category('pulverizer_heated')
-                .EUt(GTValues.VA[GTValues.LV]);
+                .EUtVA(LV);
         }
     });
 });

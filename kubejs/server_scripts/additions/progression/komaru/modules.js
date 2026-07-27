@@ -10,7 +10,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:highly_unstable_rift_source 27500')
         .duration(1800)
         .genericStartEU(25000000000) //consumes 25GEU to start the recipe
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // === Magmatic ===
     $(
@@ -21,7 +21,7 @@ ServerEvents.recipes((event) => {
             .outputFluidsRanged('gtceu:gritty_akreyrium', 0, 4096000)
             .duration(240)
             .genericStartEU(250000000) //consumes 250MEU to start the recipe
-            .EUt(GTValues.VA[GTValues.UV])
+            .EUtVA(UV)
     ).rangedItemOutputs([
         { id: 'gtceu:zapolite_dust', range: [0, 8192] },
         { id: 'gtceu:celestine_dust', range: [0, 3072] },
@@ -45,7 +45,7 @@ ServerEvents.recipes((event) => {
             .outputFluidsRanged('gtceu:infernal_concentrate', 0, 1024000)
             .duration(1332)
             .genericStartEU(2500000000) //consumes 2.5GEU to start the recipe
-            .EUt(GTValues.VA[GTValues.UEV])
+            .EUtVA(UEV)
     ).rangedItemOutputs([
         { id: 'gtceu:netherrack_dust', range: [0, 128] },
         { id: 'gtceu:atomic_nether_sludge_dust', range: [0, 96] },
@@ -65,7 +65,7 @@ ServerEvents.recipes((event) => {
             .circuit(1)
             .duration(600)
             .genericStartEU(20000000) //consumes 20MEU to start the recipe
-            .EUt(GTValues.VA[GTValues.EV])
+            .EUtVA(EV)
     ).rangedItemOutputs([
         { id: 'gtceu:pentlandite_dust', range: [0, 768] },
         { id: 'gtceu:sodalite_dust', range: [0, 768] },
@@ -90,7 +90,7 @@ ServerEvents.recipes((event) => {
             .circuit(2)
             .duration(600)
             .genericStartEU(75000000) //consumes 75MEU to start the recipe
-            .EUt(GTValues.VA[GTValues.IV])
+            .EUtVA(IV)
     ).rangedItemOutputs([
         { id: 'gtceu:barite_dust', range: [0, 512] },
         { id: 'gtceu:chalcopyrite_dust', range: [0, 512] },
@@ -116,7 +116,7 @@ ServerEvents.recipes((event) => {
             .circuit(11)
             .duration(900)
             .genericStartEU(20000000) //consumes 20MEU to start the recipe
-            .EUt(GTValues.VA[GTValues.EV])
+            .EUtVA(EV)
     ).rangedItemOutputs([
         { id: 'gtceu:crushed_pentlandite_ore', range: [0, 384] },
         { id: 'gtceu:crushed_sodalite_ore', range: [0, 384] },
@@ -140,7 +140,7 @@ ServerEvents.recipes((event) => {
             .circuit(12)
             .duration(900)
             .genericStartEU(75000000) //consumes 75MEU to start the recipe
-            .EUt(GTValues.VA[GTValues.IV])
+            .EUtVA(IV)
     ).rangedItemOutputs([
         { id: 'gtceu:crushed_barite_ore', range: [0, 256] },
         { id: 'gtceu:crushed_chalcopyrite_ore', range: [0, 256] },
@@ -166,7 +166,7 @@ ServerEvents.recipes((event) => {
             .circuit(3)
             .duration(600)
             .genericStartEU(5000000) //consumes 5MEU to start the recipe
-            .EUt(GTValues.VA[GTValues.HV])
+            .EUtVA(HV)
     ).rangedItemOutputs([
         { id: 'gtceu:diamond_dust', range: [0, 256] },
         { id: 'gtceu:emerald_dust', range: [0, 256] },
@@ -190,7 +190,7 @@ ServerEvents.recipes((event) => {
             .circuit(13)
             .duration(900)
             .genericStartEU(5000000) //consumes 5MEU to start the recipe
-            .EUt(GTValues.VA[GTValues.HV])
+            .EUtVA(HV)
     ).rangedItemOutputs([
         { id: 'gtceu:crushed_diamond_ore', range: [0, 128] },
         { id: 'gtceu:crushed_emerald_ore', range: [0, 128] },
@@ -234,7 +234,7 @@ ServerEvents.recipes((event) => {
         2400,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:primordial_infusion'
     );
 
@@ -259,7 +259,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'start_core:abyssal_harvester'
     );
 
@@ -277,7 +277,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         'gtceu:void_extractor'
     );
 
@@ -295,7 +295,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         'start_core:zpm_fluid_drilling_rig'
     );
 
@@ -313,7 +313,7 @@ ServerEvents.recipes((event) => {
         1800,
         500,
         500 * 1800,
-        GTValues.VA[GTValues.UXV],
+        GTValues.VA[UXV],
         'gtceu:multithreaded_component_synthesis_forge'
     );
 });

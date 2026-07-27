@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('32x gtceu:netherrack_dust')
         .duration(3600)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .electrolyzer(id('adamantamite_dust'))
@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:mystical_nether_magma 250')
         .itemOutputs('gtceu:adamantamite_dust', 'gtceu:small_adamantamite_dust')
         .duration(140)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .ordered_chemistry(id('adamantine_hydroxide'))
@@ -40,14 +40,14 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('5x gtceu:adamantine_hydroxide_dust')
         .duration(180)
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('adamantine'))
         .itemInputs('gtceu:adamantine_hydroxide_dust', '3x gtceu:sodium_dust')
         .itemOutputs('gtceu:adamantine_dust', '9x gtceu:sodium_hydroxide_dust')
         .duration(540)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.replaceInput(
         { id: 'gtceu:electric_blast_furnace/blast_adamantine_gas' },

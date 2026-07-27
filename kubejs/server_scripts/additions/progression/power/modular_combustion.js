@@ -22,9 +22,9 @@ ServerEvents.recipes((event) => {
             )
             .itemOutputs('start_core:modular_combustion_frame')
             .duration(600)
-            .EUt(GTValues.VHA[GTValues.LuV])
+            .EUtVHA(LuV)
     ).scannerResearch((researchRecipeBuilder) =>
-        researchRecipeBuilder.researchStack(Item.of('gtceu:iridium_frame')).duration(600).EUt(GTValues.VHA[GTValues.IV])
+        researchRecipeBuilder.researchStack(Item.of('gtceu:iridium_frame')).duration(600).EUt(GTValues.VHA[IV])
     );
 
     /** @type {const} */ ([
@@ -70,7 +70,7 @@ ServerEvents.recipes((event) => {
                         researchRecipeBuilder
                             .researchStack(Item.of('gtceu:iridium_frame'))
                             .duration(600)
-                            .EUt(GTValues.VHA[GTValues.IV])
+                            .EUt(GTValues.VHA[IV])
                     );
                 },
                 (recipe) =>

@@ -50,7 +50,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(fermentationMixture)
             .outputFluids(`kubejs:${potionID} 125`)
             .duration(100)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
     };
 
     potionRecipes(['3x thermal:corn', '3x minecraft:wheat', '2x minecraft:sugar'], 'sweetcorn_beer'); // Haste

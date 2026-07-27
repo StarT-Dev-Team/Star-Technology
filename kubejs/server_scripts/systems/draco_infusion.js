@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('minecraft:dragon_egg')
         .outputFluids('gtceu:dragon_breath 750')
         .duration(1000)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .canner(id('dragon_breath'))
@@ -16,7 +16,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:dragon_breath 250')
         .itemOutputs('minecraft:dragon_breath')
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.remove({ id: 'minecraft:popped_chorus_fruit' });
     event.replaceInput(
@@ -33,10 +33,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('minecraft:popped_chorus_fruit'))
-                .EUt(GTValues.VHA[GTValues.UHV])
+                .EUt(GTValues.VHA[UHV])
                 .CWUt(192)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .heat_chamber(id('popped_chorus_fruit'))
@@ -44,7 +44,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:oganesson 10')
         .itemOutputs('minecraft:popped_chorus_fruit')
         .duration(2400)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .assembler(id('core_casing'))
@@ -59,7 +59,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:core_casing')
         .circuit(7)
         .duration(2400)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     // Draconic Infusion Array
 
@@ -85,12 +85,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:draco_infusion')
         .duration(2400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('minecraft:dragon_head'))
-                .EUt(GTValues.VA[GTValues.UEV])
-                .CWUt(216)
+            researchRecipeBuilder.researchStack(Item.of('minecraft:dragon_head')).EUt(GTValues.VA[UEV]).CWUt(216)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     event.recipes.gtceu
         .assembly_line(id('primordial_infusion'))
@@ -112,12 +109,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:primordial_infusion')
         .duration(2400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:draco_infusion'))
-                .EUt(GTValues.VA[GTValues.UIV])
-                .CWUt(312)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:draco_infusion')).EUt(GTValues.VA[UIV]).CWUt(312)
         )
-        .EUt(GTValues.VA[GTValues.UXV]);
+        .EUtVA(UXV);
 
     // Infusion
 
@@ -161,7 +155,7 @@ ServerEvents.recipes((event) => {
         '4x gtceu:draconyallium_foil',
         '2x kubejs:helish_star',
         400,
-        GTValues.VHA[GTValues.UIV]
+        GTValues.VHA[UIV]
     );
 
     infusion(
@@ -176,7 +170,7 @@ ServerEvents.recipes((event) => {
         'gtceu:echo_shard_lens',
         'gtceu:nether_star_lens',
         640,
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     infusion(
@@ -191,7 +185,7 @@ ServerEvents.recipes((event) => {
         'gtceu:luv_emitter',
         'gtceu:wetware_circuit_board',
         640,
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     infusion(
@@ -206,7 +200,7 @@ ServerEvents.recipes((event) => {
         'gtceu:dense_obsidian_plate',
         'gtceu:dense_magnetic_steel_plate',
         2560,
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     infusion(
@@ -221,20 +215,20 @@ ServerEvents.recipes((event) => {
         '32x gtceu:silicon_block',
         '32x gtceu:neutronium_foil',
         6000,
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     // infusion('draco_ware_casing','3x kubejs:draco_ware_casing','gtceu:dragon_breath 5000','3x gtceu:high_power_casing', '1x #gtceu:circuits/uev',
     // '4x kubejs:draconic_brain_matter_cells','16x gtceu:fine_aurourium_wire','1x #gtceu:circuits/uev','1x gtceu:uev_sensor', '16x gtceu:fine_aurourium_wire',
-    // 800,GTValues.VHA[GTValues.UEV]);
+    // 800,GTValues.VHA[UEV]);
 
     // infusion('draco_resilient_fusion_glass','2x kubejs:draco_resilient_fusion_glass','gtceu:dragon_breath 2000','2x gtceu:fusion_glass',
     // '2x kubejs:draconic_scale_cells', '4x gtceu:neutron_reflector', 'gtceu:uhv_field_generator', 'gtceu:uhv_field_generator',
-    // '4x gtceu:neutron_reflector', '2x kubejs:draconic_scale_cells',400,GTValues.VHA[GTValues.UEV]);
+    // '4x gtceu:neutron_reflector', '2x kubejs:draconic_scale_cells',400,GTValues.VHA[UEV]);
 
     // infusion('draco_assembly_grating','3x kubejs:draco_assembly_grating','gtceu:dragon_breath 4000','3x gtceu:assembly_line_grating',
     // '1x gtceu:uev_electric_motor', '4x gtceu:dragonsteel_rotor', '8x gtceu:void_foil', '1x gtceu:uev_electric_motor',
-    // '1x gtceu:uev_electric_piston', '8x gtceu:void_foil', 600, GTValues.VHA[GTValues.UEV]);
+    // '1x gtceu:uev_electric_piston', '8x gtceu:void_foil', 600, GTValues.VHA[UEV]);
 
     infusion(
         'dragon_egg',
@@ -248,16 +242,16 @@ ServerEvents.recipes((event) => {
         'gtceu:dense_naquadria_plate',
         'gtceu:dense_enriched_naquadah_plate',
         900,
-        GTValues.VHA[GTValues.UIV]
+        GTValues.VHA[UIV]
     );
 
     // infusion('abyssal_inductor','3x kubejs:abyssal_inductor','gtceu:dragon_breath 250','3x gtceu:blacklight','4x gtceu:draco_abyssal_screw',
     // '8x gtceu:polonium_bismide_single_cable','2x gtceu:lepton_resonant_thallium_antimonide_spring','4x gtceu:draco_abyssal_screw',
-    // 'gtceu:uiv_emitter','2x gtceu:lepton_resonant_thallium_antimonide_spring',900,GTValues.VHA[GTValues.UIV]);
+    // 'gtceu:uiv_emitter','2x gtceu:lepton_resonant_thallium_antimonide_spring',900,GTValues.VHA[UIV]);
 
     // infusion('abyssal_inductor_hull','2x kubejs:abyssal_inductor_hull','gtceu:abyssal_alloy 1000','2x gtceu:sterilizing_filter_casing','kubejs:abyssal_inductor',
     // '#gtceu:circuits/uiv','kubejs:voidic_reinforced_mesh','kubejs:abyssal_inductor','kubejs:uiv_microfluidic_flow_valve','kubejs:voidic_reinforced_mesh', 150,
-    // GTValues.VA[GTValues.UXV]);
+    // GTValues.VA[UXV]);
 
     infusion(
         'saturation_core_low',
@@ -271,7 +265,7 @@ ServerEvents.recipes((event) => {
         'gtceu:void_ring',
         'gtceu:small_tungsten_carbide_gear',
         400,
-        GTValues.VA[GTValues.UHV]
+        GTValues.VA[UHV]
     );
 
     infusion(
@@ -286,7 +280,7 @@ ServerEvents.recipes((event) => {
         'gtceu:void_ring',
         'gtceu:small_tungsten_carbide_gear',
         400,
-        GTValues.VA[GTValues.UHV]
+        GTValues.VA[UHV]
     );
 
     infusion(
@@ -301,7 +295,7 @@ ServerEvents.recipes((event) => {
         'gtceu:void_ring',
         'gtceu:small_tungsten_carbide_gear',
         400,
-        GTValues.VA[GTValues.UHV]
+        GTValues.VA[UHV]
     );
 
     infusion(
@@ -316,7 +310,7 @@ ServerEvents.recipes((event) => {
         '2x gtceu:hvga_steel_ultradense_plate',
         '2x gtceu:draconyallium_ultradense_plate',
         1500,
-        GTValues.VA[GTValues.UXV]
+        GTValues.VA[UXV]
     );
 
     event.recipes.gtceu
@@ -326,5 +320,5 @@ ServerEvents.recipes((event) => {
         .itemOutputs('16x kubejs:void_saturation_sponge')
         .duration(900)
         .circuit(3)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 });

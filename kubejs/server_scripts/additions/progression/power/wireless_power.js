@@ -48,7 +48,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:active_transformer',
         128,
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     wirelessControllers(
@@ -72,7 +72,7 @@ ServerEvents.recipes((event) => {
         ],
         'start_core:dream_link_node',
         160,
-        GTValues.VHA[GTValues.UEV]
+        GTValues.VHA[UEV]
     );
 
     wirelessControllers(
@@ -98,7 +98,7 @@ ServerEvents.recipes((event) => {
         ],
         'start_core:oneiric_relay',
         192,
-        GTValues.VHA[GTValues.UIV]
+        GTValues.VHA[UIV]
     );
 
     // === Hatches & Covers ===
@@ -221,6 +221,6 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576')
         .itemOutputs('start_core:lucinducer')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.UV])
+        .EUtVA(UV)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 });

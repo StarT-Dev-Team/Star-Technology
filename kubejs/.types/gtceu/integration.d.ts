@@ -98,6 +98,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
+        tiersBetween(minTier: number, maxTier: number): this;
         machine(machine: $wrapped<KJSTieredMachineBuilder$TieredCreationFunction>): this;
         definition(definition: $wrapped<KJSTieredMachineBuilder$DefinitionFunction>): this;
     }
@@ -254,14 +255,20 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
     import Fluid = net.minecraft.world.level.material.Fluid;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import Tag = net.minecraft.nbt.Tag;
+    // import NBTPredicate = api.recipe.ingredient.nbtpredicate.NBTPredicate;
 
     interface GTRecipeSchema$GTRecipeJS extends $object<
         'com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS',
         RecipeJS
     > {
+        perTick(perTick: boolean): this;
+        chance(chance: number): this;
+        maxChance(maxChance: number): this;
+        tierChanceBoost(tierChanceBoost: number): this;
         category(category: $wrapped<GTRecipeCategory>): this;
         itemInputs(...inputs: $wrapped<InputItem>[]): this;
         itemInputs(inputs: readonly $wrapped<InputItem>[]): this;
+        // inputItemNbtPredicate(itemStack: $wrapped<ItemStack>, predicate: NBTPredicate): this;
         inputFluids(...inputs: $wrapped<GTRecipeComponents$FluidIngredientJS>[]): this;
         inputFluids(inputs: readonly $wrapped<GTRecipeComponents$FluidIngredientJS>[]): this;
         fluidInputs(...inputs: $wrapped<GTRecipeComponents$FluidIngredientJS>[]): this;
@@ -281,6 +288,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         outputFluidsRanged(output: $wrapped<FluidStackJS>, min: number, max: number): this;
         duration(duration: number): this;
         EUt(eut: $wrapped<EnergyStack$WithIO>): this;
+        EUtV(eut: number): this;
+        EUtVH(eut: number): this;
+        EUtVA(eut: number): this;
+        EUtVHA(eut: number): this;
         circuit(configuration: number): this;
         stationResearch(research: $wrapped<UnaryOperator<ResearchRecipeBuilder$StationRecipeBuilder>>): this;
         'scannerResearch(java.util.function.UnaryOperator)'(
@@ -304,9 +315,11 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         dimension(dimension: $wrapped<ResourceLocation>, reverse: boolean): this;
         daytime(): this;
         addData(key: string, data: $wrapped<Tag>): this;
+        addData(key: string, data: string): this;
         addDataString(key: string, data: string): this;
         addDataNumber(key: string, data: number): this;
         addDataBool(key: string, data: boolean): this;
+        treeType(treeType: 'latex' | 'sap' | 'resin'): this;
     }
 
     interface GTShapedRecipeSchema$ShapedRecipeJS extends $object<

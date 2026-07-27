@@ -1,5 +1,7 @@
 declare namespace internal.net.minecraft.util {
     interface FormattedCharSequence extends $object<'net.minecraft.util.FormattedCharSequence'> {}
+
+    interface StringRepresentable extends $object<'net.minecraft.util.StringRepresentable'> {}
 }
 
 declare namespace internal.net.minecraft.util.valueproviders {

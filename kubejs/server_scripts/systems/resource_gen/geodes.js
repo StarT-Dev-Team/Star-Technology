@@ -32,7 +32,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:quartzite_geode', 3500, 500)
         .duration(1200)
         .circuit(0)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .rock_filtrator(id('mv_geodes'))
@@ -46,7 +46,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:certus_quartz_geode', 4500, 750)
         .duration(960)
         .circuit(0)
-        .EUt(GTValues.VHA[GTValues.MV]);
+        .EUtVHA(MV);
 
     //Specialist Recipes LV
     let specialChanceMod = 1.2;
@@ -61,7 +61,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:ruby_geode', 4500 * specialChanceMod, 750)
         .duration(1200 * specialDuraionMod)
         .circuit(1)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .rock_filtrator(id('lv_geodes_sapphire'))
@@ -71,7 +71,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:sapphire_geode', 5000 * specialChanceMod, 500)
         .duration(1200 * specialDuraionMod)
         .circuit(2)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.recipes.gtceu
         .rock_filtrator(id('lv_geodes_rough'))
@@ -81,7 +81,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:realgar_geode', 4000 * specialChanceMod, 750)
         .duration(1200 * specialDuraionMod)
         .circuit(3)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     //Specialist Recipes MV
     event.recipes.gtceu
@@ -93,7 +93,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:monazite_geode', 3750 * specialChanceMod, 750)
         .duration(960 * specialDuraionMod)
         .circuit(1)
-        .EUt(GTValues.VHA[GTValues.MV]);
+        .EUtVHA(MV);
 
     event.recipes.gtceu
         .rock_filtrator(id('mv_geodes_2'))
@@ -104,7 +104,7 @@ ServerEvents.recipes((event) => {
         .chancedOutput('kubejs:certus_quartz_geode', 4500 * specialChanceMod, 750)
         .duration(960 * specialDuraionMod)
         .circuit(2)
-        .EUt(GTValues.VHA[GTValues.MV]);
+        .EUtVHA(MV);
 
     //Geode Harvesting
     const geode = [
@@ -129,7 +129,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`kubejs:${type}_geode`)
             .itemOutputs(`gtceu:raw_${type}`, 'gtceu:stone_dust')
             .duration(200)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
 
         event.recipes.gtceu
             .macerator(id(`${type}_geode`))
@@ -139,6 +139,6 @@ ServerEvents.recipes((event) => {
             .chancedOutput(`gtceu:crushed_${type}_ore`, 2500, 125)
             .chancedOutput(`gtceu:impure_${type}_dust`, 2500, 50)
             .duration(200)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
     });
 });
