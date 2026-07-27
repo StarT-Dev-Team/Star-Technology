@@ -10,4 +10,11 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquid('hot_pcb_coolant', ['1x pcb_coolant', '1x mystery'], 0xc9ca81, [noDecomp]);
 
     MH.compGem('diatron', [], 0x6699ff, ICONSETS.lapis, [noDecomp]);
+
+    MH.compLiquid(
+        'npk_solution',
+        ['15x apatite', '5x potassium', '1x sulfur_trioxide', '1x nitrogen', '2x water'],
+        0xb8c3f5,
+        []
+    );
 });

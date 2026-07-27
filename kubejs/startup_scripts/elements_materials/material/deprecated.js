@@ -1,4 +1,4 @@
-GTCEuStartupEvents.registry('gtceu:material', (event) => {
+GTCEuStartupEvents.registry('gtceu:material', (_event) => {
     // [
     //     {tier: 'inferium', color: 0x66ff33},
     //     {tier: 'prudentium', color: 0x336600},
