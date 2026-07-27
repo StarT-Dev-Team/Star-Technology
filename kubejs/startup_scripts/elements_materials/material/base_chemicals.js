@@ -58,4 +58,10 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquid('pyrophosphoric_acid', ['4x hydrogen', '1x pyrophosphate'], 0xb3a36d, []);
 
     MH.compDust('polonium_carbonate', ['1x polonium', '1x carbon', '3x oxygen'], 0x2f5637, [noDecomp]);
+
+    MH.compDust('indium_oxide', ['2x indium', '3x oxygen'], 0xe3d28e, []);
+
+    MH.compDustLiquid('tungsten_disulfide', ['1x tungsten', '2x sulfur'], 0x928897, [noDecomp]);
+
+    MH.compDust('iron_titanium_oxide', ['3x iron', '2x titanium', '7x oxygen'], 0x82229b, [noDecomp]);
 });

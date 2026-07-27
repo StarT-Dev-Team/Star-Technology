@@ -1,7 +1,7 @@
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
-    const { noDecomp } = FLAGS;
+    const { noDecomp, noSmelt } = FLAGS;
 
     MH.compLiquid('nuclear_steam', ['1x steam', '1x mystery'], 0xcccccc, [noDecomp]);
 
@@ -17,4 +17,10 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0xb8c3f5,
         []
     );
+
+    MH.elemGem('purified_naquadah', 0x000807, null, [noDecomp]);
+
+    event.create('warped').dust().color(0x4fbb85).flags([noSmelt]);
+
+    MH.compDust('hellfire_ash', ['1x mystery'], 0x5e4646, [noSmelt, noDecomp]);
 });

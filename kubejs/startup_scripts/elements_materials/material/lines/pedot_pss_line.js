@@ -1,6 +1,8 @@
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
+    const { noDecomp, foil, plates, ring } = FLAGS;
+
     MH.compLiquid('maleic_anhydride', ['4x carbon', '2x hydrogen', '3x oxygen'], 0xaaa099, [noDecomp]);
 
     MH.compLiquid('dimethyl_maleate', ['6x carbon', '10x hydrogen', '4x oxygen'], 0xc2bfb7, [noDecomp]);
@@ -64,6 +66,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         ['8x carbon', '7x hydrogen', '1x sulfur', '3x oxygen'],
         0x26396d,
         [675, 800, true, true, true, false],
-        [foil, plates, ring, plates, noDecomp]
+        [foil, plates, ring, noDecomp]
     ); //PEDOT
 });

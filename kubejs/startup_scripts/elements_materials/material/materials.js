@@ -1414,6 +1414,7 @@
         */
 
         // Akreyium Line
+        /*
         MH.elemFluid('utopian_akreyrium', 'akreyrium', 0xffffff, []);
 
         MH.compIngotLiquid(
@@ -1513,8 +1514,10 @@
         MH.compLiquidStill('sparse_electron_akreyrium', ['1x utopian_akreyrium', '1x mystery'], [noDecomp]);
 
         MH.compLiquidStill('dense_electron_akreyrium', ['1x utopian_akreyrium', '1x mystery'], [noDecomp]);
+        */
 
         // Resource Gen
+        /*
         // compLiquid('brackish_water', ['1x water', '1x mystery'], 0x459ea4, [noDecomp]);
 
         MH.compLiquid('iron_mixture', ['1x mystery'], 0xc42626, [noDecomp]);
@@ -1522,16 +1525,18 @@
         MH.compLiquid('copper_mixture', ['1x mystery'], 0xc86524, [noDecomp]);
 
         MH.compLiquid('quartz_mixture', ['1x mystery'], 0xabc5e0, [noDecomp]);
+        */
 
-        /*/reflective metal
-    event.create('reflective_metal')
-        .ingot()
-        .components('5x aluminium', '3x steel', '2x glowstone')
-        .color(0xA1ABBC)
-        .flags(plates, rod, frame)
-        .iconSet(DULL)
-        .blastTemp(2000, 'low', VA('mv'), 600);*/
+        /*reflective metal
+        event.create('reflective_metal')
+            .ingot()
+            .components('5x aluminium', '3x steel', '2x glowstone')
+            .color(0xA1ABBC)
+            .flags(plates, rod, frame)
+            .iconSet(DULL)
+            .blastTemp(2000, 'low', VA('mv'), 600);*/
 
+        /*
         MH.compLiquid('rare_ore_residue', ['1x mystery'], 0x556278, [noDecomp]);
 
         MH.compDust('chromite_sludge', ['2x chromite', '1x mystery'], 0x4c3c4c, [noDecomp]);
@@ -1572,8 +1577,10 @@
         MH.elemGem('purified_naquadah', 0x000807, null, [noDecomp]);
 
         MH.compDust('indium_oxide', ['2x indium', '3x oxygen'], 0xe3d28e, []);
+        */
 
         //nether star line essences
+        /*
         MH.compLiquid('blitz', ['1x mystery'], 0xfdf3c4, [noDecomp]);
 
         MH.compLiquid('blizz', ['1x mystery'], 0xb4effa, [noDecomp]);
@@ -1595,6 +1602,7 @@
         MH.compLiquid('nether_tempered_blizz', ['1x mystery'], 0xcff5fc, [noDecomp]);
 
         MH.compLiquid('nether_tempered_basalz', ['1x mystery'], 0x9f2414, [noDecomp]);
+        */
 
         // Quantrum Comporessor Infusions
         // noCompFluid('intangibility_infusion', 0x00AAAA);
@@ -1615,6 +1623,7 @@
         2Mg₃N₂ - Magnesium Nitride
         *Nr*₃Mg₆N₇Si₂O8F - Runic Convergence Infusion
     */
+        /*
         MH.compLiquid(
             'netherite_trisulfate_complex',
             ['1x pure_netherite', '3x sulfur', '12x oxygen', '2x hydroxide'],
@@ -1648,7 +1657,9 @@
             0xcc0099,
             [noDecomp]
         );
+        */
 
+        /*
         MH.compIngot(
             'neutronium_silicon_carbide',
             ['2x neutronium', '7x silicon_carbide', '3x niobium_nitride', '3x graphene'],
@@ -1665,8 +1676,10 @@
             OPAL,
             []
         );
+        */
 
         //Abyss Harvesting
+        /*
         MH.compLiquidTemp('low_saturation_voidic_excression', 19999, ['1x mystery'], 0x0a0a0a, [noDecomp]);
 
         MH.compLiquidTemp('moderate_saturation_voidic_excression', 19999, ['1x mystery'], 0x111111, [noDecomp]);
@@ -1708,9 +1721,10 @@
         MH.compLiquidTemp('chaos_centric_void', 80000, ['1x mystery'], 0xc040f0, [noDecomp]);
 
         MH.compLiquidTemp('voidic_waste_residue', 10000, ['1x mystery'], 0x6b4a2f, [noDecomp]);
+        */
 
         //Infernal Concentrates
-
+        /*
         MH.compLiquidTemp('crude_infernal_concentrate', 40000, ['1x mystery'], 0x6e1a00, [noDecomp]);
 
         MH.compLiquidTemp('infernal_concentrate', 45000, ['1x mystery'], 0xb02e00, [noDecomp]);
@@ -1722,8 +1736,10 @@
         MH.compLiquidTemp('super_stellar_infernal_concentrate', 100000, ['1x mystery'], 0xf4faff, [noDecomp]);
 
         MH.compLiquidTemp('hyper_stellar_infernal_concentrate', 125000, ['1x mystery'], 0x9cd7ff, [noDecomp]);
+        */
 
         //Plasmas
+        /*
         event
             .create('magmatic')
             .components('1x mystery', '1x excited', '1x iron', '1x excited', '1x mystery')
@@ -1755,8 +1771,10 @@
             .plasma()
             .color(0xefe987)
             .flags(noDecomp);
+        */
 
         //UEV Materials
+        /*
         MH.compDustLiquid('tungsten_disulfide', ['1x tungsten', '2x sulfur'], 0x928897, [noDecomp]);
 
         event.create('warped').dust().color(0x4fbb85).flags([noSmelt]);
@@ -1881,9 +1899,11 @@
             [V('uev'), 32, 0, true],
             [noDecomp, noABSRecipe, fineWire, frame]
         );
+        */
 
-        MH.compDust('iron_titanium_oxide', ['3x iron', '2x titanium', '7x oxygen'], 0x82229b, [noDecomp]);
+        // MH.compDust('iron_titanium_oxide', ['3x iron', '2x titanium', '7x oxygen'], 0x82229b, [noDecomp]);
 
+        /*
         MH.conductor(
             'astatium_bioselex_carbonite',
             ['1x astatine', '2x bismuth', '3x selenium', '2x thallium', '4x sulfur', '1x carbon'],
@@ -1895,8 +1915,10 @@
         );
 
         MH.compLiquidStill('borealic_concentrate', ['1x aurourium', '15x stellarium'], [noDecomp]);
+        */
 
         //UIV Materials
+        /*
         MH.conductor(
             'polonium_bismide',
             ['1x polonium', '1x bismuth'],
@@ -2062,6 +2084,7 @@
                 noABSRecipe
             )
             .rotorStats(12800, 400, 50, 45000);
+        */
 
         //Threaded
         MH.compIngotPlasmaSecColor(
