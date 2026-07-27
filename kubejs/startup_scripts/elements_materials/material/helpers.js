@@ -230,7 +230,7 @@ global.blastProperty = (material, temperature, gasTier, voltage, duration) => {
 };
 
 /** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.Material} Material */
-/** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag} MaterialFlag */
+/** @typedef {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag>} MaterialFlag */
 /** @typedef {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet>} MaterialIconSet */
 /** @typedef {OverloadedParameters<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder["fluidPipeProperties"]>} ParamFluidPipeProperties */
 /** @typedef {OverloadedParameters<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder["blastTemp"]>} ParamBlastTemp */
@@ -245,7 +245,7 @@ global.blastProperty = (material, temperature, gasTier, voltage, duration) => {
  * @param {number} color
  * @param {MaterialIconSet | null} icon
  * @param {ParamBlastTemp | null | undefined} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compIngot = (event, name, elements, color, icon, blasting, flags) => {
     let builder = event.create(name).ingot().components(elements).color(color).iconSet(icon).flags(flags);
@@ -264,7 +264,7 @@ const compIngot = (event, name, elements, color, icon, blasting, flags) => {
  * @param {number} color
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp | null | undefined} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemIngot = (event, name, element, color, icon, blasting, flags) => {
     let builder = event.create(name).ingot().element(GTElements.get(element)).color(color).iconSet(icon).flags(flags);
@@ -283,7 +283,7 @@ const elemIngot = (event, name, element, color, icon, blasting, flags) => {
  * @param {number} color
  * @param {MaterialIconSet | null} icon
  * @param {ParamBlastTemp | null | undefined} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compIngotLiquid = (event, name, elements, color, icon, blasting, flags) => {
     let builder = event.create(name).ingot().fluid().components(elements).color(color).iconSet(icon).flags(flags);
@@ -301,7 +301,7 @@ const compIngotLiquid = (event, name, elements, color, icon, blasting, flags) =>
  * @param {number} color2
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp | null | undefined} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compIngotLiquidSecColor = (event, name, elements, color1, color2, icon, blasting, flags) => {
     let builder = event
@@ -326,7 +326,7 @@ const compIngotLiquidSecColor = (event, name, elements, color1, color2, icon, bl
  * @param {number} color2
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp | null | undefined} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemLiquidSecColor = (event, name, color1, color2, icon, blasting, flags) => {
     let builder = event
@@ -350,7 +350,7 @@ const elemLiquidSecColor = (event, name, color1, color2, icon, blasting, flags) 
  * @param {number} color
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp | null | undefined} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemIngotFluid = (event, name, color, icon, blasting, flags) => {
     let builder = event
@@ -372,7 +372,7 @@ const elemIngotFluid = (event, name, color, icon, blasting, flags) => {
  * @param {string} name
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compLiquid = (event, name, elements, color, flags) => {
     return event.create(name).fluid().components(elements).color(color).flags(flags);
@@ -383,7 +383,7 @@ const compLiquid = (event, name, elements, color, flags) => {
  * @param {string} name
  * @param {string} element
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemFluid = (event, name, element, color, flags) => {
     return event.create(name).fluid().element(GTElements.get(element)).color(color).flags(flags);
@@ -395,7 +395,7 @@ const elemFluid = (event, name, element, color, flags) => {
  * @param {number} heat
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compLiquidTemp = (event, name, heat, elements, color, flags) => {
     return event
@@ -410,7 +410,7 @@ const compLiquidTemp = (event, name, heat, elements, color, flags) => {
  * @param {MaterialRegistryEvent} event
  * @param {string} name
  * @param {(string | Material)[]} elements
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compLiquidStill = (event, name, elements, flags) => {
     return event
@@ -425,7 +425,7 @@ const compLiquidStill = (event, name, elements, flags) => {
  * @param {string} name
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compDustLiquid = (event, name, elements, color, flags) => {
     return event.create(name).dust().fluid().components(elements).color(color).flags(flags);
@@ -435,7 +435,7 @@ const compDustLiquid = (event, name, elements, color, flags) => {
  * @param {MaterialRegistryEvent} event
  * @param {string} name
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemDustFluid = (event, name, color, flags) => {
     return event.create(name).dust().fluid().element(GTElements.get(name)).color(color).flags(flags);
@@ -446,7 +446,7 @@ const elemDustFluid = (event, name, color, flags) => {
  * @param {string} name
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compDust = (event, name, elements, color, flags) => {
     return event.create(name).dust().components(elements).color(color).flags(flags);
@@ -458,7 +458,7 @@ const compDust = (event, name, elements, color, flags) => {
  * @param {(string | Material)[]} elements
  * @param {number} color
  * @param {MaterialIconSet} icon
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compDustIcon = (event, name, elements, color, icon, flags) => {
     return event.create(name).dust().components(elements).color(color).iconSet(icon).flags(flags);
@@ -468,7 +468,7 @@ const compDustIcon = (event, name, elements, color, icon, flags) => {
  * @param {MaterialRegistryEvent} event
  * @param {string} name
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemDust = (event, name, color, flags) => {
     return event.create(name).dust().element(GTElements.get(name)).color(color).flags(flags);
@@ -480,7 +480,7 @@ const elemDust = (event, name, color, flags) => {
  * @param {(string | Material)[]} elements
  * @param {number} color
  * @param {MaterialIconSet} icon
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compGem = (event, name, elements, color, icon, flags) => {
     return event.create(name).gem().components(elements).color(color).iconSet(icon).flags(flags);
@@ -491,7 +491,7 @@ const compGem = (event, name, elements, color, icon, flags) => {
  * @param {string} name
  * @param {number} color
  * @param {MaterialIconSet | null} icon
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemGem = (event, name, color, icon, flags) => {
     return event.create(name).gem().element(GTElements.get(name)).iconSet(icon).color(color).flags(flags);
@@ -502,7 +502,7 @@ const elemGem = (event, name, color, icon, flags) => {
  * @param {string} name
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compGas = (event, name, elements, color, flags) => {
     return event.create(name).gas().components(elements).color(color).flags(flags);
@@ -512,7 +512,7 @@ const compGas = (event, name, elements, color, flags) => {
  * @param {MaterialRegistryEvent} event
  * @param {string} name
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const elemGas = (event, name, color, flags) => {
     return event.create(name).gas().element(GTElements.get(name)).color(color).flags(flags);
@@ -524,7 +524,7 @@ const elemGas = (event, name, color, flags) => {
  * @param {(string | Material)[]} elements
  * @param {number} color
  * @param {ParamFluidPipeProperties} pipe
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const polymerFluidPipe = (event, name, elements, color, pipe, flags) => {
     let builder = event.create(name).polymer().fluid().components(elements).color(color).flags(flags);
@@ -537,7 +537,7 @@ const polymerFluidPipe = (event, name, elements, color, pipe, flags) => {
  * @param {string} name
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const polymerFluid = (event, name, elements, color, flags) => {
     return event.create(name).polymer().fluid().components(elements).color(color).flags(flags);
@@ -551,7 +551,7 @@ const polymerFluid = (event, name, elements, color, flags) => {
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp} blasting
  * @param {ParamCableProperties} cable
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const conductor = (event, name, elements, color, icon, blasting, cable, flags) => {
     let builder = event.create(name).ingot().fluid().components(elements).color(color).iconSet(icon).flags(flags);
@@ -603,7 +603,7 @@ const conductorSuper = (event, name, elements, color, blasting, cable, rotorstat
  * @param {string} name
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compDustLiquidOre = (event, name, elements, color, flags) => {
     event.create(name).dust().liquid().ore(2, 1).components(elements).color(color).flags(flags);
@@ -614,7 +614,7 @@ const compDustLiquidOre = (event, name, elements, color, flags) => {
  * @param {string} name
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compDustOre = (event, name, elements, color, flags) => {
     event.create(name).dust().ore(2, 1).components(elements).color(color).flags(flags);
@@ -626,7 +626,7 @@ const compDustOre = (event, name, elements, color, flags) => {
  * @param {(string | Material)[]} elements
  * @param {number} color
  * @param {MaterialIconSet} icon
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compGemOre = (event, name, elements, color, icon, flags) => {
     event.create(name).gem().ore(2, 1).components(elements).color(color).iconSet(icon).flags(flags);
@@ -639,7 +639,7 @@ const compGemOre = (event, name, elements, color, icon, flags) => {
  * @param {number} color
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compIngotPlasma = (event, name, elements, color, icon, blasting, flags) => {
     let builder = event
@@ -663,7 +663,7 @@ const compIngotPlasma = (event, name, elements, color, icon, blasting, flags) =>
  * @param {number} color2
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp} blasting
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compIngotPlasmaSecColor = (event, name, elements, color1, color2, icon, blasting, flags) => {
     let builder = event
@@ -688,7 +688,7 @@ const compIngotPlasmaSecColor = (event, name, elements, color1, color2, icon, bl
  * @param {MaterialIconSet} icon
  * @param {ParamBlastTemp} blasting
  * @param {ParamCableProperties} cable
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const conductorPlasma = (event, name, elements, color, icon, blasting, cable, flags) => {
     let builder = event
@@ -720,7 +720,7 @@ const noCompFluid = (event, name, color) => {
  * @param {number} temp
  * @param {(string | Material)[]} elements
  * @param {number} color
- * @param {internal.$wrapped<MaterialFlag>[]} flags
+ * @param {MaterialFlag[]} flags
  */
 const compPlasma = (event, name, temp, elements, color, flags) => {
     event
@@ -743,7 +743,7 @@ global.materialHelpers = (event) => {
          * @param {number} color
          * @param {MaterialIconSet | null} icon
          * @param {ParamBlastTemp | null | undefined} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compIngot: (name, elements, color, icon, blasting, flags) =>
             compIngot(event, name, elements, color, icon, blasting, flags),
@@ -753,7 +753,7 @@ global.materialHelpers = (event) => {
          * @param {number} color
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp | null | undefined} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemIngot: (name, element, color, icon, blasting, flags) =>
             elemIngot(event, name, element, color, icon, blasting, flags),
@@ -763,7 +763,7 @@ global.materialHelpers = (event) => {
          * @param {number} color
          * @param {MaterialIconSet | null} icon
          * @param {ParamBlastTemp | null | undefined} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compIngotLiquid: (name, elements, color, icon, blasting, flags) =>
             compIngotLiquid(event, name, elements, color, icon, blasting, flags),
@@ -774,7 +774,7 @@ global.materialHelpers = (event) => {
          * @param {number} color2
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp | null | undefined} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compIngotLiquidSecColor: (name, elements, color1, color2, icon, blasting, flags) =>
             compIngotLiquidSecColor(event, name, elements, color1, color2, icon, blasting, flags),
@@ -784,7 +784,7 @@ global.materialHelpers = (event) => {
          * @param {number} color2
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp | null | undefined} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemLiquidSecColor: (name, color1, color2, icon, blasting, flags) =>
             elemLiquidSecColor(event, name, color1, color2, icon, blasting, flags),
@@ -793,7 +793,7 @@ global.materialHelpers = (event) => {
          * @param {number} color
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp | null | undefined} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemIngotFluid: (name, color, icon, blasting, flags) =>
             elemIngotFluid(event, name, color, icon, blasting, flags),
@@ -801,14 +801,14 @@ global.materialHelpers = (event) => {
          * @param {string} name
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compLiquid: (name, elements, color, flags) => compLiquid(event, name, elements, color, flags),
         /**
          * @param {string} name
          * @param {string} element
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemFluid: (name, element, color, flags) => elemFluid(event, name, element, color, flags),
         /**
@@ -816,34 +816,34 @@ global.materialHelpers = (event) => {
          * @param {number} heat
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compLiquidTemp: (name, heat, elements, color, flags) =>
             compLiquidTemp(event, name, heat, elements, color, flags),
         /**
          * @param {string} name
          * @param {(string | Material)[]} elements
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compLiquidStill: (name, elements, flags) => compLiquidStill(event, name, elements, flags),
         /**
          * @param {string} name
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compDustLiquid: (name, elements, color, flags) => compDustLiquid(event, name, elements, color, flags),
         /**
          * @param {string} name
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemDustFluid: (name, color, flags) => elemDustFluid(event, name, color, flags),
         /**
          * @param {string} name
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compDust: (name, elements, color, flags) => compDust(event, name, elements, color, flags),
         /**
@@ -851,13 +851,13 @@ global.materialHelpers = (event) => {
          * @param {(string | Material)[]} elements
          * @param {number} color
          * @param {MaterialIconSet} icon
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compDustIcon: (name, elements, color, icon, flags) => compDustIcon(event, name, elements, color, icon, flags),
         /**
          * @param {string} name
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemDust: (name, color, flags) => elemDust(event, name, color, flags),
         /**
@@ -865,27 +865,27 @@ global.materialHelpers = (event) => {
          * @param {(string | Material)[]} elements
          * @param {number} color
          * @param {MaterialIconSet} icon
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compGem: (name, elements, color, icon, flags) => compGem(event, name, elements, color, icon, flags),
         /**
          * @param {string} name
          * @param {number} color
          * @param {MaterialIconSet | null} icon
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemGem: (name, color, icon, flags) => elemGem(event, name, color, icon, flags),
         /**
          * @param {string} name
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compGas: (name, elements, color, flags) => compGas(event, name, elements, color, flags),
         /**
          * @param {string} name
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         elemGas: (name, color, flags) => elemGas(event, name, color, flags),
         /**
@@ -893,7 +893,7 @@ global.materialHelpers = (event) => {
          * @param {(string | Material)[]} elements
          * @param {number} color
          * @param {ParamFluidPipeProperties} pipe
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         polymerFluidPipe: (name, elements, color, pipe, flags) =>
             polymerFluidPipe(event, name, elements, color, pipe, flags),
@@ -901,7 +901,7 @@ global.materialHelpers = (event) => {
          * @param {string} name
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         polymerFluid: (name, elements, color, flags) => polymerFluid(event, name, elements, color, flags),
         /**
@@ -911,7 +911,7 @@ global.materialHelpers = (event) => {
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp} blasting
          * @param {ParamCableProperties} cable
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         conductor: (name, elements, color, icon, blasting, cable, flags) =>
             conductor(event, name, elements, color, icon, blasting, cable, flags),
@@ -929,14 +929,14 @@ global.materialHelpers = (event) => {
          * @param {string} name
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compDustLiquidOre: (name, elements, color, flags) => compDustLiquidOre(event, name, elements, color, flags),
         /**
          * @param {string} name
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compDustOre: (name, elements, color, flags) => compDustOre(event, name, elements, color, flags),
         /**
@@ -944,7 +944,7 @@ global.materialHelpers = (event) => {
          * @param {(string | Material)[]} elements
          * @param {number} color
          * @param {MaterialIconSet} icon
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compGemOre: (name, elements, color, icon, flags) => compGemOre(event, name, elements, color, icon, flags),
         /**
@@ -953,7 +953,7 @@ global.materialHelpers = (event) => {
          * @param {number} color
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compIngotPlasma: (name, elements, color, icon, blasting, flags) =>
             compIngotPlasma(event, name, elements, color, icon, blasting, flags),
@@ -964,7 +964,7 @@ global.materialHelpers = (event) => {
          * @param {number} color2
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp} blasting
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compIngotPlasmaSecColor: (name, elements, color1, color2, icon, blasting, flags) =>
             compIngotPlasmaSecColor(event, name, elements, color1, color2, icon, blasting, flags),
@@ -975,7 +975,7 @@ global.materialHelpers = (event) => {
          * @param {MaterialIconSet} icon
          * @param {ParamBlastTemp} blasting
          * @param {ParamCableProperties} cable
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         conductorPlasma: (name, elements, color, icon, blasting, cable, flags) =>
             conductorPlasma(event, name, elements, color, icon, blasting, cable, flags),
@@ -989,7 +989,7 @@ global.materialHelpers = (event) => {
          * @param {number} temp
          * @param {(string | Material)[]} elements
          * @param {number} color
-         * @param {internal.$wrapped<MaterialFlag>[]} flags
+         * @param {MaterialFlag[]} flags
          */
         compPlasma: (name, temp, elements, color, flags) => compPlasma(event, name, temp, elements, color, flags),
     };
