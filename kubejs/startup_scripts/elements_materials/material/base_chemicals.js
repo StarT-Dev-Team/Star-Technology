@@ -24,4 +24,38 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquid('cupric_chloride_solution', ['1x copper_chloride', '1x hydrochloric_acid'], 0x336600, []);
 
     MH.compLiquid('hydroiodic_acid', ['1x hydrogen', '1x iodine'], 0x906ad6, [noDecomp]);
+
+    MH.compDustIcon('nickel_fluoride', ['1x nickel', '2x fluorine'], 0xa7a9a8, ICONSETS.metallic, []);
+
+    MH.compDustIcon('caesium_fluoride', ['1x caesium', '1x fluorine'], 0x969d9b, ICONSETS.dull, []);
+
+    MH.compLiquid('bromine_pentafluoride', ['1x bromine', '5x fluorine'], 0x8e6565, []);
+
+    MH.compLiquid('hexafluorobromine', ['1x bromine', '6x fluorine'], 0x000000, [noDecomp]);
+
+    MH.compLiquid('caesium_hexafluorobromine', ['1x caesium', '1x hexafluorobromine'], 0x988585, [noDecomp]);
+
+    MH.compLiquid('hexafluorobromic_acid', ['1x hydrogen', '1x hexafluorobromine'], 0xa15e5e, [noDecomp]);
+
+    MH.compDust('sulfur_hexafluoride', ['1x sulfur', '6x fluorine'], 0xc0ba63, [noDecomp]);
+
+    MH.compDust('magnesium_hydroxide', ['1x magnesium', '2x hydroxide'], 0x766b73, [noDecomp]);
+
+    MH.compDust('iron_2_hydroxide', ['1x iron', '2x hydroxide'], 0x929a98, [noDecomp]);
+
+    MH.compDust('sodium_astatide', ['1x sodium', '1x astatine'], 0x5f5076, [noDecomp]);
+
+    MH.compLiquid('silicic_acid', ['4x hydrogen', '1x silicate'], 0xb4bbbe, [noDecomp]);
+
+    MH.compDust('seaborgium_dioxide', ['1x seaborgium', '2x oxygen'], 0x12a190, [noDecomp]);
+
+    MH.compDust('hafnium_hexachloride', ['1x hafnium', '6x chlorine'], 0xa0a8a6, [noDecomp]);
+
+    MH.compDust('silver_sulfate', ['2x silver', '1x sulfur', '4x oxygen'], 0xd4cf91, []);
+
+    MH.compDust('flerovium_tetrafluoride', ['1x flerovium', '4x fluorine'], 0x254722, [noDecomp]);
+
+    MH.compLiquid('pyrophosphoric_acid', ['4x hydrogen', '1x pyrophosphate'], 0xb3a36d, []);
+
+    MH.compDust('polonium_carbonate', ['1x polonium', '1x carbon', '3x oxygen'], 0x2f5637, [noDecomp]);
 });

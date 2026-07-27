@@ -1012,6 +1012,7 @@
         */
 
         // PEEK plastic Line
+        /*
         MH.compDust('disodium_salt_of_hydroquinone', ['6x carbon', '4x hydrogen', '2x oxygen', '2x sodium'], 0xeaeaf9, [
             noDecomp,
         ]);
@@ -1048,8 +1049,10 @@
             [550, 600, true, true, true, false],
             [foil, plates, ring, noDecomp]
         );
+        */
 
         // SiC/Bi2Te3 Line
+        /*
         MH.compDust('sodium_borohydride', ['1x sodium', '1x boron', '4x hydrogen'], 0xe3dec8, [noDecomp]);
 
         MH.compGas('nitrate', ['1x nitrogen', '3x oxygen'], 0xdbc365, [noDecomp]); //Hide in JEI
@@ -1070,8 +1073,10 @@
             0x86c455,
             []
         );
+        */
 
         //Hexafluorobromic Acid
+        /*
         MH.compDustIcon('nickel_fluoride', ['1x nickel', '2x fluorine'], 0xa7a9a8, METALLIC, []);
 
         MH.compDustIcon('caesium_fluoride', ['1x caesium', '1x fluorine'], 0x969d9b, DULL, []);
@@ -1083,10 +1088,12 @@
         MH.compLiquid('caesium_hexafluorobromine', ['1x caesium', '1x hexafluorobromine'], 0x988585, [noDecomp]);
 
         MH.compLiquid('hexafluorobromic_acid', ['1x hydrogen', '1x hexafluorobromine'], 0xa15e5e, [noDecomp]);
+        */
 
         //ANSD Line
         // compLiquid('oganesson_rich_sludge_concentrate', ['1x mystery','1x oganesson','1x mystery'], 0xFFFFFF, [noDecomp]);
 
+        /*
         MH.compDust('hafnastide_rich_sludge', ['1x mystery', '1x hafnium', '1x astatine', '1x mystery'], 0xa8798a, [
             noDecomp,
         ]);
@@ -1098,17 +1105,18 @@
         MH.compDust('pologium_rich_sludge', ['1x mystery', '1x polonium', '1x seaborgium', '1x mystery'], 0x576b62, [
             noDecomp,
         ]);
+        */
 
-        MH.compDust('silicate', ['1x silicon', '4x oxygen'], 0xc0ba97, [noDecomp]);
+        // MH.compDust('silicate', ['1x silicon', '4x oxygen'], 0xc0ba97, [noDecomp]);
 
-        MH.compDust('pyrophosphate', ['2x phosphorus', '7x oxygen'], 0xc08b63, []);
+        // MH.compDust('pyrophosphate', ['2x phosphorus', '7x oxygen'], 0xc08b63, []);
 
-        MH.compDust('sulfur_hexafluoride', ['1x sulfur', '6x fluorine'], 0xc0ba63, [noDecomp]);
+        // MH.compDust('sulfur_hexafluoride', ['1x sulfur', '6x fluorine'], 0xc0ba63, [noDecomp]);
 
         // compDust('plutonium_octofluoride', ['2x plutonium', '8x fluorine'], 0x000000, [noDecomp]);
         // compLiquid('uranium_tetrafluoride', ['1x uranium', '4x fluorine'], 0x6CAB3F, [noDecomp]);
 
-        MH.compLiquid('hydroxide', ['1x oxygen', '1x hydrogen'], 0xc0d4dd, []); //Hide in JEI
+        // MH.compLiquid('hydroxide', ['1x oxygen', '1x hydrogen'], 0xc0d4dd, []); //Hide in JEI
 
         // compLiquid('caesium_oganesson_hexanitrate', ['2x caesium', '1x oganesson', '6x nitrate'], 0x769192, [noDecomp]);
         // compLiquid('caesium_oganesson_trioxide', ['2x caesium', '1x oganesson', '3x oxygen'], 0x4E7577, [noDecomp]);
@@ -1116,11 +1124,11 @@
 
         // compLiquid('oganesson_tetranitrate', ['1x oganesson', '4x nitrate'], 0x948FAD, [noDecomp]);
 
-        MH.compDust('magnesium_hydroxide', ['1x magnesium', '2x hydroxide'], 0x766b73, [noDecomp]);
+        // MH.compDust('magnesium_hydroxide', ['1x magnesium', '2x hydroxide'], 0x766b73, [noDecomp]);
 
         // compDust('hafnium_thorium_iron_2_hydroxide_potassium_disilicate', ['1x hafnium', '1x thorium', '1x iron', '2x hydroxide', '4x potassium', '2x silicate'], 0x618782, [noDecomp]);
 
-        MH.compDust('iron_2_hydroxide', ['1x iron', '2x hydroxide'], 0x929a98, [noDecomp]);
+        // MH.compDust('iron_2_hydroxide', ['1x iron', '2x hydroxide'], 0x929a98, [noDecomp]);
 
         // compDust('hafnium_thorium_octachloride', ['1x hafnium', '1x thorium', '8x chlorine'], 0x637770, [noDecomp]);
         // compDust('thorium_dioxide', ['1x thorium', '2x oxygen'], 0x384F47, [noDecomp]);
@@ -1132,11 +1140,11 @@
 
         // compDust('barium_carbonate', ['1x barium', '1x carbon', '3x oxygen'], 0x9B8F77, []);
 
-        MH.compDust('sodium_astatide', ['1x sodium', '1x astatine'], 0x5f5076, [noDecomp]);
+        // MH.compDust('sodium_astatide', ['1x sodium', '1x astatine'], 0x5f5076, [noDecomp]);
 
         // compLiquid('hydroastatic_acid', ['1x hydrogen', '1x astatine'], 0xB56C5B, [noDecomp]);
 
-        MH.compLiquid('silicic_acid', ['4x hydrogen', '1x silicate'], 0xb4bbbe, [noDecomp]);
+        // MH.compLiquid('silicic_acid', ['4x hydrogen', '1x silicate'], 0xb4bbbe, [noDecomp]);
 
         // compDust('seaborgium_cerium_tricarbon_octasulfate', ['1x seaborgium', '1x cerium', '3x carbon', '8x sulfate'], 0x75A99E, [noDecomp]);
         // compDust('cerium_4_sulfate', ['1x cerium', '2x sulfate'], 0x828685, [noDecomp]);
@@ -1146,9 +1154,9 @@
         // compDust('seaborgium_trioxide', ['1x seaborgium', '3x oxygen'], 0x4B827B, [noDecomp]);
         // compDust('sodium_seaborgate', ['2x sodium', '1x seaborgium', '4x oxygen'], 0x298B80, [noDecomp]);
 
-        MH.compDust('seaborgium_dioxide', ['1x seaborgium', '2x oxygen'], 0x12a190, [noDecomp]);
+        // MH.compDust('seaborgium_dioxide', ['1x seaborgium', '2x oxygen'], 0x12a190, [noDecomp]);
 
-        MH.compDust('hafnium_hexachloride', ['1x hafnium', '6x chlorine'], 0xa0a8a6, [noDecomp]);
+        // MH.compDust('hafnium_hexachloride', ['1x hafnium', '6x chlorine'], 0xa0a8a6, [noDecomp]);
 
         // compDust('hafnium_thorium_iron_magnesium_disilicate_monosulfate', ['1x hafnium', '1x thorium', '1x iron', '2x magnesium', '2x silicate', '1x sulfate'], 0x98B4B0, [noDecomp]);
         // compDust('seaborgium_cerium_tricarbon_tetrakis_orthosilicate', ['1x seaborgium', '1x cerium', '3x carbon', '4x silicate'], 0x268075, [noDecomp]);
@@ -1156,15 +1164,15 @@
         // compDust('dipolonium_diplatinum_tris_pyrophosphate', ['2x polonium', '2x platinum', '3x pyrophosphate'], 0xA0664D, [noDecomp]);
         // compDust('flerovium_hexadecafluoride_di_sulfur_trioxide', ['1x flerovium', '2x sulfur_trioxide', '16x fluorine'], 0x36413F, [noDecomp]);
 
-        MH.compDust('silver_sulfate', ['2x silver', '1x sulfur', '4x oxygen'], 0xd4cf91, []);
+        // MH.compDust('silver_sulfate', ['2x silver', '1x sulfur', '4x oxygen'], 0xd4cf91, []);
 
         // compDust('flerovium_hexadecafluoride', ['1x flerovium', '16x fluorine'], 0x5A6759, [noDecomp]);
 
-        MH.compDust('flerovium_tetrafluoride', ['1x flerovium', '4x fluorine'], 0x254722, [noDecomp]);
+        // MH.compDust('flerovium_tetrafluoride', ['1x flerovium', '4x fluorine'], 0x254722, [noDecomp]);
 
         // compDust('polonium_pyrophosphate', ['1x polonium', '1x pyrophosphate'], 0x356231, [noDecomp]);
 
-        MH.compLiquid('pyrophosphoric_acid', ['4x hydrogen', '1x pyrophosphate'], 0xb3a36d, []);
+        // MH.compLiquid('pyrophosphoric_acid', ['4x hydrogen', '1x pyrophosphate'], 0xb3a36d, []);
 
         // compLiquid('orthophosphoric_acid', ['3x hydrogen', '1x phosphorus', '4x oxygen'], 0xD5C385, [noDecomp]);
 
@@ -1173,7 +1181,7 @@
         // compDust('polonium_tetrachloride', ['1x polonium', '4x chlorine'], 0x357C44, [noDecomp]);
         // compDust('polonium_hydroxide', ['1x polonium', '4x hydroxide'], 0x0E5A1F, [noDecomp]);
 
-        MH.compDust('polonium_carbonate', ['1x polonium', '1x carbon', '3x oxygen'], 0x2f5637, [noDecomp]);
+        // MH.compDust('polonium_carbonate', ['1x polonium', '1x carbon', '3x oxygen'], 0x2f5637, [noDecomp]);
 
         // compDust('flerovium_hexaoxide_octafluorosulfatoplutonate', ['1x flerovium', '6x oxygen', '2x sulfur_hexafluoride', '2x plutonium_octofluoride'], 0x582914, [noDecomp]);
         // compLiquid('caesium_oganesson_hexanitrate_tetrafluorouranate', ['2x caesium', '1x oganesson', '6x nitrate', '2x uranium_tetrafluoride'], 0x427A21, [noDecomp]);
@@ -1182,6 +1190,7 @@
         // compDust('flerovium_hexaoxide_octafluorosulfatoplutonate_enriched_rare_earth', ['4x flerovium_hexaoxide_octafluorosulfatoplutonate', '3x mystery'], 0x6A4852, [noDecomp]);
 
         // PEDOT:PSS plastic Line
+        /*
         MH.compLiquid('maleic_anhydride', ['4x carbon', '2x hydrogen', '3x oxygen'], 0xaaa099, [noDecomp]);
 
         MH.compLiquid('dimethyl_maleate', ['6x carbon', '10x hydrogen', '4x oxygen'], 0xc2bfb7, [noDecomp]);
@@ -1222,7 +1231,7 @@
             0x7c8fb2,
             [noDecomp]
         ); //PEDOT
-
+        
         MH.compLiquid('sorbitol', ['6x carbon', '14x hydrogen', '6x oxygen'], 0xf8f0e8, [noDecomp]); //gotten from bacteria
 
         MH.compLiquid('sorbitan', ['6x carbon', '12x hydrogen', '5x oxygen'], 0xe8d6c6, [noDecomp]); //losses a water to steam
@@ -1252,8 +1261,10 @@
             [675, 800, true, true, true, false],
             [foil, plates, ring, plates, noDecomp]
         ); //PEDOT
+        */
 
         //FFKM Line [Rubber After SBR]
+        /*
         MH.compLiquid('perfluoromethyl_vinyl_ether', ['3x carbon', '6x fluorine', '1x oxygen'], 0xd0e5e5, [noDecomp]);
 
         MH.compLiquid('hexafluorobutadiene', ['4x carbon', '6x fluorine'], 0xb8d2d9, [noDecomp]);
@@ -1277,8 +1288,10 @@
                     .unbreakable()
                     .build()
             );
+        */
 
         //Polyimide Line [Insulator UHV+]
+        /*
         MH.compLiquid('azanide', ['1x nitrogen', '2x hydrogen'], 0xbfc7e5, [noDecomp]); //Hide in JEI
 
         MH.compLiquid('benzophenone', ['13x carbon', '10x hydrogen', '1x oxygen'], 0xe5d3b5, [noDecomp]);
@@ -1311,14 +1324,11 @@
             rod,
             noDecomp,
         ]);
+        */
 
         // Large Multis
 
-        /**
-         * @param {string} name
-         * @param {(Material | string)[]} components
-         * @param {number} color
-         */
+        /*
         const largeMulti = (name, components, color) => {
             MH.compIngot(name, components, color, DULL, [2200, 'low', VA('mv'), 1500], [plates, frame, rod]);
         };
@@ -1339,10 +1349,12 @@
         largeMulti('tumbaga', ['20x copper', '6x gold', '1x silver'], 0xffdb4d);
         largeMulti('manganin', ['20x copper', '6x manganese', '1x nickel'], 0xf8aa92);
         largeMulti('galvanized_steel', ['7x steel', '1x zinc'], 0x999999);
+        */
 
         // Ultimate (Akreyrium-Tier-Start) Multiblocks
 
         // Thallium-Tungstate and intermediates
+        /*
         MH.compDustIcon('thallium_tungstate', ['2x thallium', '1x tungsten', '4x oxygen'], 0xe3d18a, DULL, []);
 
         MH.compDustIcon('tungsten_trioxide', ['1x tungsten', '3x oxygen'], 0xadb426, DULL, []);
@@ -1399,6 +1411,7 @@
             [8990, 'highest', VHA('uv'), 2400],
             [plates, rod, frame, smallGear, gear, round, ring, boltAndScrew, longRod, foil, densePlate]
         );
+        */
 
         // Akreyium Line
         MH.elemFluid('utopian_akreyrium', 'akreyrium', 0xffffff, []);

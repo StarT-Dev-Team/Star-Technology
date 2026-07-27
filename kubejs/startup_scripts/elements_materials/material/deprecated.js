@@ -26,6 +26,7 @@ GTCEuStartupEvents.registry('gtceu:material', (_event) => {
     // compDust('metmalic_estaltadyne', ['4x estalt','3x titanium','2x aluminium','5x sulfur'], 0x8E0560, [noDecomp]);
     // compDust('magnemalic_estaltadyne', ['4x estalt','3x titanium','5x sulfur'], 0x8E0480, [noDecomp]);
     // compDust('tytite_estaltadyne', ['4x estalt','3x titanium'], 0x8E0340, [noDecomp]);
+    // compLiquid('oganesson_rich_sludge_concentrate', ['1x mystery','1x oganesson','1x mystery'], 0xFFFFFF, [noDecomp]);
     // compLiquid('enriched_estaltadyne_slurry', ['1x mystery','1x enriched_estalt','1x mystery'], 0xBE4777, [noDecomp]);
     // compLiquid('enriched_estaltadyne_naquide_slurry_mixture', ['1x mystery','1x enriched_estalt','1x enriched_naquadah','1x mystery'], 0xBE4697, [noDecomp]);
     // compLiquid('hyper_enriched_estaltadyne_slurry_mixture', ['1x mystery','2x enriched_estalt'], 0xBE4697, [noDecomp]);
