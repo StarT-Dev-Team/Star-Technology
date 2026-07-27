@@ -671,6 +671,7 @@
         // Nether
 
         //Extended Debris
+        /*
         MH.compDustLiquid('ancient_debris', ['1x mystery'], 0x603d1a, [noDecomp]);
 
         MH.elemIngotFluid(
@@ -680,6 +681,7 @@
             [12349, 'low', VA('uev'), 1200],
             [plates, rod, noDecomp, densePlate, frame, longRod, foil]
         );
+        */
 
         //Atomic Nether Dust Line
         MH.compDustIcon(
