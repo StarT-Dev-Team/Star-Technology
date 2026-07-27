@@ -33,6 +33,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .recipeModifiers([$StarTRecipeModifiers.COMPOUND_GENERATOR])
                 .appearanceBlock(() => Block.getBlock(`gtceu:${generator.casing}`))
                 .regressWhenWaiting(false)
+                .generator(true)
                 .pattern((definition) =>
                     newFactoryBlockPatternWithDirections(
                         $RelativeDirection.LEFT,
@@ -48,7 +49,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                             ]),
                             K: P.anyOf([
                                 P.gtBlock(generator.casing),
-                                P.block(GTMachines.ENERGY_OUTPUT_HATCH[tier].block, { max: 1, view: 1 }),
+                                P.block(GTMachines.ENERGY_OUTPUT_HATCH[tier].block, { minLayer: 1, maxLayer: 1 }),
                             ]),
                             F: P.frame(GTMaterials.get(generator.frame)),
                             M: P.ability(PA.muffler),
