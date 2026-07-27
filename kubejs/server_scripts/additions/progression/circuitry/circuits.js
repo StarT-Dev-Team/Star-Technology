@@ -60,19 +60,20 @@ ServerEvents.recipes((event) => {
      * @param {string} toScan
      */
     const assemblyLineCircuitNoRS = (type, mod, inputs, fluids, eut, dura, toScan) => {
-        event.recipes.gtceu
-            .assembly_line(id(type))
-            .itemInputs(inputs)
-            .inputFluids(fluids)
-            .itemOutputs(`${mod}:${type}`)
-            ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-                researchRecipeBuilder
-                    .researchStack(Item.of(toScan))
-                    .duration(dura * 2)
-                    .EUt(eut / 4)
-            )
-            .duration(dura)
-            .EUt(eut);
+        $(
+            event.recipes.gtceu
+                .assembly_line(id(type))
+                .itemInputs(inputs)
+                .inputFluids(fluids)
+                .itemOutputs(`${mod}:${type}`)
+                .duration(dura)
+                .EUt(eut)
+        ).scannerResearch((researchRecipeBuilder) =>
+            researchRecipeBuilder
+                .researchStack(Item.of(toScan))
+                .duration(dura * 2)
+                .EUt(eut / 4)
+        );
     };
 
     /**

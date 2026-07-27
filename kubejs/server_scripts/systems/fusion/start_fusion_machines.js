@@ -13,27 +13,25 @@ ServerEvents.recipes((event) => {
         event.remove({ id: idRemoved });
     });
 
-    event.recipes.gtceu
-        .assembly_line(id('luv_fusion_reactor'))
-        .itemInputs(
-            'gtceu:superconducting_coil',
-            '4x #gtceu:circuits/zpm',
-            'gtceu:double_plutonium_241_plate',
-            'gtceu:double_osmiridium_plate',
-            '2x gtceu:iv_field_generator',
-            '64x gtceu:uhpic_chip',
-            '32x gtceu:indium_tin_barium_titanium_cuprate_single_wire'
-        )
-        .inputFluids('gtceu:soldering_alloy 1152', 'gtceu:niobium_titanium 1152')
-        .itemOutputs('start_core:luv_fusion_reactor')
-        ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:superconducting_coil'))
-                .duration(1200)
-                .EUt(GTValues.VA[LuV])
-        )
-        .duration(1200)
-        .EUtVA(LuV);
+    $(
+        event.recipes.gtceu
+            .assembly_line(id('luv_fusion_reactor'))
+            .itemInputs(
+                'gtceu:superconducting_coil',
+                '4x #gtceu:circuits/zpm',
+                'gtceu:double_plutonium_241_plate',
+                'gtceu:double_osmiridium_plate',
+                '2x gtceu:iv_field_generator',
+                '64x gtceu:uhpic_chip',
+                '32x gtceu:indium_tin_barium_titanium_cuprate_single_wire'
+            )
+            .inputFluids('gtceu:soldering_alloy 1152', 'gtceu:niobium_titanium 1152')
+            .itemOutputs('start_core:luv_fusion_reactor')
+            .duration(1200)
+            .EUtVA(LuV)
+    ).scannerResearch((researchRecipeBuilder) =>
+        researchRecipeBuilder.researchStack(Item.of('gtceu:superconducting_coil')).duration(1200).EUt(GTValues.VA[IV])
+    );
 
     event.recipes.gtceu
         .assembly_line(id('zpm_fusion_reactor'))

@@ -56,25 +56,31 @@ ServerEvents.recipes((event) => {
     for (let i = 0; i <= 2; i++) {
         let rod = ['neutronium', 'draco_abyssal', 'raging_rimulatia'];
 
-        event.recipes.gtceu
-            .riftion_accelerator(id('riftion_scattering_' + rod[i]))
-            .inputFluids(`gtceu:riftion_plasma ${500 * Math.pow(2, i)}`)
-            .chancedInput(`gtceu:${rod[i]}_ultradense_plate`, 6000 - 2000 * i, 0)
-            .itemOutputsRanged('kubejs:up_undina_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:down_undina_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:up_sylvestris_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:down_sylvestris_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:up_gnomus_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:down_gnomus_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:up_vulcanus_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:down_vulcanus_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:up_illustris_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:down_illustris_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:up_tenebrosus_riftion', 0, 32 * Math.pow(4, i))
-            .itemOutputsRanged('kubejs:down_tenebrosus_riftion', 0, 32 * Math.pow(4, i))
-            .CWUt(500 + 250 * i)
-            .totalCWU(2500000 * Math.pow(2, i))
-            .EUtVHA(UXV);
+        /** @type {[number, number]} Range */
+        let range = [0, 32 * Math.pow(4, i)];
+
+        $(
+            event.recipes.gtceu
+                .riftion_accelerator(id('riftion_scattering_' + rod[i]))
+                .inputFluids(`gtceu:riftion_plasma ${500 * Math.pow(2, i)}`)
+                .chancedInput(`gtceu:${rod[i]}_ultradense_plate`, 6000 - 2000 * i, 0)
+                .CWUt(500 + 250 * i)
+                .totalCWU(2500000 * Math.pow(2, i))
+                .EUtVHA(UXV)
+        ).rangedItemOutputs([
+            { id: 'kubejs:up_undina_riftion', range: range },
+            { id: 'kubejs:down_undina_riftion', range: range },
+            { id: 'kubejs:up_sylvestris_riftion', range: range },
+            { id: 'kubejs:down_sylvestris_riftion', range: range },
+            { id: 'kubejs:up_gnomus_riftion', range: range },
+            { id: 'kubejs:down_gnomus_riftion', range: range },
+            { id: 'kubejs:up_vulcanus_riftion', range: range },
+            { id: 'kubejs:down_vulcanus_riftion', range: range },
+            { id: 'kubejs:up_illustris_riftion', range: range },
+            { id: 'kubejs:down_illustris_riftion', range: range },
+            { id: 'kubejs:up_tenebrosus_riftion', range: range },
+            { id: 'kubejs:down_tenebrosus_riftion', range: range },
+        ]);
     }
 
     let riftion = ['undina', 'sylvestris', 'gnomus', 'vulcanus', 'illustris', 'tenebrosus'];
