@@ -3,6 +3,10 @@
 /** @global */
 // eslint-disable-next-line no-unused-vars
 let ponderMultis = (() => {
+    /** @typedef {import("./types").MultiBlockStructure} MultiBlockStructure */
+    /** @typedef {internal.net.minecraft.world.level.block.state.BlockState} BlockState */
+    /** @typedef {internal.$wrapped<internal.net.minecraft.world.level.block.state.BlockState>} BlockStateWrapped */
+
     let { block } = ponderUtils;
 
     return {
@@ -26,8 +30,8 @@ let ponderMultis = (() => {
         },
 
         /**
-         * @param {boolean} casingsOnly
-         * @param {Internal.BlockState | undefined} [coil]
+         * @param {boolean=} casingsOnly
+         * @param {BlockState=} coil
          * @returns {MultiBlockStructure}
          */
         electricBlastFurnace: (casingsOnly, coil) => {

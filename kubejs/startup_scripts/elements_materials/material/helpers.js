@@ -94,78 +94,88 @@ global.flags = {
     notAlloy: GTMaterialFlags.DISABLE_ALLOY_PROPERTY,
 };
 
+/** @typedef {'ulv' | 'lv' | 'mv' | 'hv' | 'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv' | 'uxv' | 'opv' | 'max'} GTTier */
+
+/** @type {Record<GTTier, number>} */
 global.v = {
-    ulv: GTValues.V[GTValues.ULV],
-    lv: GTValues.V[GTValues.LV],
-    mv: GTValues.V[GTValues.MV],
-    hv: GTValues.V[GTValues.HV],
-    ev: GTValues.V[GTValues.EV],
-    iv: GTValues.V[GTValues.IV],
-    luv: GTValues.V[GTValues.LuV],
-    zpm: GTValues.V[GTValues.ZPM],
-    uv: GTValues.V[GTValues.UV],
-    uhv: GTValues.V[GTValues.UHV],
-    uev: GTValues.V[GTValues.UEV],
-    uiv: GTValues.V[GTValues.UIV],
-    uxv: GTValues.V[GTValues.UXV],
-    opv: GTValues.V[GTValues.OpV],
-    max: GTValues.V[GTValues.MAX],
+    ulv: GTValues.V[ULV],
+    lv: GTValues.V[LV],
+    mv: GTValues.V[MV],
+    hv: GTValues.V[HV],
+    ev: GTValues.V[EV],
+    iv: GTValues.V[IV],
+    luv: GTValues.V[LuV],
+    zpm: GTValues.V[ZPM],
+    uv: GTValues.V[UV],
+    uhv: GTValues.V[UHV],
+    uev: GTValues.V[UEV],
+    uiv: GTValues.V[UIV],
+    uxv: GTValues.V[UXV],
+    opv: GTValues.V[OpV],
+    max: GTValues.V[MAX],
 };
 
+/** @type {Record<GTTier, number>} */
 global.va = {
-    ulv: GTValues.VA[GTValues.ULV],
-    lv: GTValues.VA[GTValues.LV],
-    mv: GTValues.VA[GTValues.MV],
-    hv: GTValues.VA[GTValues.HV],
-    ev: GTValues.VA[GTValues.EV],
-    iv: GTValues.VA[GTValues.IV],
-    luv: GTValues.VA[GTValues.LuV],
-    zpm: GTValues.VA[GTValues.ZPM],
-    uv: GTValues.VA[GTValues.UV],
-    uhv: GTValues.VA[GTValues.UHV],
-    uev: GTValues.VA[GTValues.UEV],
-    uiv: GTValues.VA[GTValues.UIV],
-    uxv: GTValues.VA[GTValues.UXV],
-    opv: GTValues.VA[GTValues.OpV],
-    max: GTValues.VA[GTValues.MAX],
+    ulv: GTValues.VA[ULV],
+    lv: GTValues.VA[LV],
+    mv: GTValues.VA[MV],
+    hv: GTValues.VA[HV],
+    ev: GTValues.VA[EV],
+    iv: GTValues.VA[IV],
+    luv: GTValues.VA[LuV],
+    zpm: GTValues.VA[ZPM],
+    uv: GTValues.VA[UV],
+    uhv: GTValues.VA[UHV],
+    uev: GTValues.VA[UEV],
+    uiv: GTValues.VA[UIV],
+    uxv: GTValues.VA[UXV],
+    opv: GTValues.VA[OpV],
+    max: GTValues.VA[MAX],
 };
 
+/** @type {Record<GTTier, number>} */
 global.vh = {
-    ulv: GTValues.VH[GTValues.ULV],
-    lv: GTValues.VH[GTValues.LV],
-    mv: GTValues.VH[GTValues.MV],
-    hv: GTValues.VH[GTValues.HV],
-    ev: GTValues.VH[GTValues.EV],
-    iv: GTValues.VH[GTValues.IV],
-    luv: GTValues.VH[GTValues.LuV],
-    zpm: GTValues.VH[GTValues.ZPM],
-    uv: GTValues.VH[GTValues.UV],
-    uhv: GTValues.VH[GTValues.UHV],
-    uev: GTValues.VH[GTValues.UEV],
-    uiv: GTValues.VH[GTValues.UIV],
-    uxv: GTValues.VH[GTValues.UXV],
-    opv: GTValues.VH[GTValues.OpV],
-    max: GTValues.VH[GTValues.MAX],
+    ulv: GTValues.VH[ULV],
+    lv: GTValues.VH[LV],
+    mv: GTValues.VH[MV],
+    hv: GTValues.VH[HV],
+    ev: GTValues.VH[EV],
+    iv: GTValues.VH[IV],
+    luv: GTValues.VH[LuV],
+    zpm: GTValues.VH[ZPM],
+    uv: GTValues.VH[UV],
+    uhv: GTValues.VH[UHV],
+    uev: GTValues.VH[UEV],
+    uiv: GTValues.VH[UIV],
+    uxv: GTValues.VH[UXV],
+    opv: GTValues.VH[OpV],
+    max: GTValues.VH[MAX],
 };
 
+/** @type {Record<GTTier, number>} */
 global.vha = {
-    ulv: GTValues.VHA[GTValues.ULV],
-    lv: GTValues.VHA[GTValues.LV],
-    mv: GTValues.VHA[GTValues.MV],
-    hv: GTValues.VHA[GTValues.HV],
-    ev: GTValues.VHA[GTValues.EV],
-    iv: GTValues.VHA[GTValues.IV],
-    luv: GTValues.VHA[GTValues.LuV],
-    zpm: GTValues.VHA[GTValues.ZPM],
-    uv: GTValues.VHA[GTValues.UV],
-    uhv: GTValues.VHA[GTValues.UHV],
-    uev: GTValues.VHA[GTValues.UEV],
-    uiv: GTValues.VHA[GTValues.UIV],
-    uxv: GTValues.VHA[GTValues.UXV],
-    opv: GTValues.VHA[GTValues.OpV],
-    max: GTValues.VHA[GTValues.MAX],
+    ulv: GTValues.VHA[ULV],
+    lv: GTValues.VHA[LV],
+    mv: GTValues.VHA[MV],
+    hv: GTValues.VHA[HV],
+    ev: GTValues.VHA[EV],
+    iv: GTValues.VHA[IV],
+    luv: GTValues.VHA[LuV],
+    zpm: GTValues.VHA[ZPM],
+    uv: GTValues.VHA[UV],
+    uhv: GTValues.VHA[UHV],
+    uev: GTValues.VHA[UEV],
+    uiv: GTValues.VHA[UIV],
+    uxv: GTValues.VHA[UXV],
+    opv: GTValues.VHA[OpV],
+    max: GTValues.VHA[MAX],
 };
 
+/**
+ * @param {string} material
+ * @param {'ingot' | 'dust' | 'fluid' | 'gas' | 'plasma' | 'molten' | 'gas_plasma'} type
+ */
 global.periodicTableElement = (material, type) => {
     let mat = GTMaterials.get(material);
     switch (type) {
@@ -206,6 +216,13 @@ global.periodicTableElement = (material, type) => {
     }
 };
 
+/**
+ * @param {string} material
+ * @param {number} temperature
+ * @param {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty$GasTier>} gasTier
+ * @param {number} voltage
+ * @param {number} duration
+ */
 global.blastProperty = (material, temperature, gasTier, voltage, duration) => {
     let mat = GTMaterials.get(material);
     mat.setProperty(PropertyKey.BLAST, new $BlastProperty(temperature, gasTier, voltage, duration, -1, -1));

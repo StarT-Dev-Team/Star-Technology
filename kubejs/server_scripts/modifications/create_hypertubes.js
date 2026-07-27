@@ -11,6 +11,13 @@ ServerEvents.recipes((event) => {
         event.remove({ id: recipeID });
     });
 
+    /**
+     * @param {string[]} input
+     * @param {string} output
+     * @param {number} duration
+     * @param {number} eu
+     * @param {string} recipeID
+     */
     const assembler = (input, output, duration, eu, recipeID) => {
         event.recipes.gtceu.assembler(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
     };

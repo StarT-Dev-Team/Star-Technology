@@ -1,6 +1,11 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /**
+     * @param {GTTier} tier
+     * @param {string} rotor
+     * @param {string} casing
+     */
     const pumpBlockTiers = (tier, rotor, casing) => {
         event
             .shaped(`start_core:${tier}_vacuum_pump`, ['ABA', 'CDC', 'ABA'], {
@@ -33,12 +38,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:vacuum_chemical_reaction_chamber')
         .duration(2000)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:zpm_gas_collector'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_gas_collector')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .assembly_line(id('dual_chambered_vacuum_complex_controller'))
@@ -57,10 +59,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:vacuum_chemical_reaction_chamber'))
-                .EUt(GTValues.VHA[GTValues.UHV])
+                .EUt(GTValues.VHA[UHV])
                 .CWUt(96)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('auroric_vacuum_isolation_reactor_controller'))
@@ -83,8 +85,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:dual_chambered_vacuum_complex'))
-                .EUt(GTValues.VHA[GTValues.UEV])
+                .EUt(GTValues.VHA[UEV])
                 .CWUt(200)
         )
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 });

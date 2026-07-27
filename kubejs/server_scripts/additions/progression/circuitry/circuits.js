@@ -31,6 +31,15 @@ ServerEvents.recipes((event) => {
     const lsmdResistor = 'kubejs:living_smd_resistor';
     const lsmdCapacitor = 'kubejs:living_smd_capacitor';
 
+    /**
+     * @param {number} quant
+     * @param {string} type
+     * @param {string} mod
+     * @param {string[]} inputs
+     * @param {number} eu
+     * @param {number} dura
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     */
     const circuitAssembler = (quant, type, mod, inputs, eu, dura, clean) => {
         event.recipes.gtceu
             .circuit_assembler(id(type))
@@ -41,22 +50,44 @@ ServerEvents.recipes((event) => {
             .EUt(eu);
     };
 
+    /**
+     * @param {string} type
+     * @param {string} mod
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {number} eut
+     * @param {number} dura
+     * @param {string} toScan
+     */
     const assemblyLineCircuitNoRS = (type, mod, inputs, fluids, eut, dura, toScan) => {
-        event.recipes.gtceu
-            .assembly_line(id(type))
-            .itemInputs(inputs)
-            .inputFluids(fluids)
-            .itemOutputs(`${mod}:${type}`)
-            ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-                researchRecipeBuilder
-                    .researchStack(Item.of(toScan))
-                    .duration(dura * 2)
-                    .EUt(eut / 4)
-            )
-            .duration(dura)
-            .EUt(eut);
+        $(
+            event.recipes.gtceu
+                .assembly_line(id(type))
+                .itemInputs(inputs)
+                .inputFluids(fluids)
+                .itemOutputs(`${mod}:${type}`)
+                .duration(dura)
+                .EUt(eut)
+        ).scannerResearch((researchRecipeBuilder) =>
+            researchRecipeBuilder
+                .researchStack(Item.of(toScan))
+                .duration(dura * 2)
+                .EUt(eut / 4)
+        );
     };
 
+    /**
+     * @param {number} quant
+     * @param {string} type
+     * @param {string} mod
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {number} eut
+     * @param {number} dura
+     * @param {string} from
+     * @param {number} cwu
+     * @param {number} eutFrom
+     */
     const assemblyLineCircuitRS = (quant, type, mod, inputs, fluids, eut, dura, from, cwu, eutFrom) => {
         event.recipes.gtceu
             .assembly_line(id(type))
@@ -84,7 +115,7 @@ ServerEvents.recipes((event) => {
             `8x ${asmdDiode}`,
             '8x gtceu:platinum_single_wire',
         ],
-        'gtceu:soldering_alloy 576',
+        ['gtceu:soldering_alloy 576'],
         30720,
         600,
         'gtceu:quantum_processor_computer'
@@ -102,7 +133,7 @@ ServerEvents.recipes((event) => {
             '32x gtceu:nand_memory_chip',
             '24x gtceu:fine_niobium_titanium_wire',
         ],
-        'gtceu:soldering_alloy 576',
+        ['gtceu:soldering_alloy 576'],
         30720,
         400,
         'gtceu:crystal_processor_assembly'
@@ -124,7 +155,7 @@ ServerEvents.recipes((event) => {
             '12x gtceu:niobium_titanium_single_wire',
             '4x gtceu:yttrium_barium_cuprate_plate',
         ],
-        'gtceu:soldering_alloy 1152',
+        ['gtceu:soldering_alloy 1152'],
         61440,
         1000,
         'gtceu:crystal_processor_computer',
@@ -328,7 +359,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:raw_growth_medium 7500')
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .duration(1500)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     // === Boards and PUs ===
     event.recipes.gtceu
@@ -345,7 +376,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('16x gtceu:wetware_circuit_board')
         .duration(1200)
         .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .circuit_assembler(id('runic_circuit_board'))
@@ -361,7 +392,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('32x kubejs:runic_circuit_board')
         .duration(1200)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     event.recipes.gtceu
         .circuit_assembler(id('runic_convergence_processing_unit'))
@@ -377,7 +408,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x kubejs:runic_convergence_processing_unit')
         .duration(600)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .circuit_assembler(id('draconic_circuit_board'))
@@ -393,7 +424,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('48x kubejs:draconic_circuit_board')
         .duration(1200)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .circuit_assembler(id('draconic_processing_unit'))
@@ -409,7 +440,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x kubejs:draconic_processing_unit')
         .duration(600)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .circuit_assembler(id('abyssal_circuit_board'))
@@ -425,7 +456,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('64x kubejs:abyssal_circuit_board')
         .duration(1200)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .circuit_assembler(id('abyssal_processing_unit'))
@@ -441,7 +472,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x kubejs:abyssal_processing_unit')
         .duration(1200)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     // === Wafers and Chips ===
 
@@ -451,7 +482,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:neutronium 576')
         .itemOutputs('kubejs:uepic_wafer')
         .duration(1200)
-        .EUt(GTValues.VA[GTValues.ZPM])
+        .EUtVA(ZPM)
         .cleanroom(CleanroomType.CLEANROOM);
 
     event.recipes.gtceu
@@ -459,7 +490,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:uepic_wafer')
         .itemOutputs('2x kubejs:uepic_chip')
         .duration(900)
-        .EUt(GTValues.VA[GTValues.ZPM])
+        .EUtVA(ZPM)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     event.recipes.gtceu
@@ -476,14 +507,14 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:pure_dragon_breath 2000')
         .itemOutputs('kubejs:uipic_wafer')
         .duration(3600)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .cutter(id('uipic_chip'))
         .itemInputs('kubejs:uipic_wafer')
         .itemOutputs('2x kubejs:uipic_chip')
         .duration(900)
-        .EUt(GTValues.VA[GTValues.UV])
+        .EUtVA(UV)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     event.recipes.gtceu
@@ -491,7 +522,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:draco_advanced_soc_wafer')
         .itemOutputs('6x kubejs:draco_advanced_soc')
         .duration(1800)
-        .EUt(GTValues.VA[GTValues.UV])
+        .EUtVA(UV)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     event.recipes.gtceu
@@ -499,7 +530,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:draco_boule')
         .itemOutputs('64x kubejs:draco_wafer', '64x kubejs:draco_wafer')
         .duration(3200)
-        .EUt(GTValues.VA[GTValues.ZPM])
+        .EUtVA(ZPM)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     event.recipes.gtceu
@@ -508,7 +539,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:carbon 500')
         .itemOutputs('kubejs:hyper_nand_memory_wafer')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.LuV])
+        .EUtVHA(LuV)
         .cleanroom(CleanroomType.CLEANROOM);
 
     event.recipes.gtceu
@@ -516,7 +547,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:hyper_nand_memory_wafer')
         .itemOutputs('12x kubejs:hyper_nand_memory_chip')
         .duration(900)
-        .EUt(GTValues.VA[GTValues.IV])
+        .EUtVA(IV)
         .cleanroom(CleanroomType.CLEANROOM);
 
     event.recipes.gtceu
@@ -525,7 +556,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:carbon 500')
         .itemOutputs('kubejs:hyper_nor_memory_wafer')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.LuV])
+        .EUtVHA(LuV)
         .cleanroom(CleanroomType.CLEANROOM);
 
     event.recipes.gtceu
@@ -533,7 +564,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:hyper_nor_memory_wafer')
         .itemOutputs('6x kubejs:hyper_nor_memory_chip')
         .duration(900)
-        .EUt(GTValues.VA[GTValues.IV])
+        .EUtVA(IV)
         .cleanroom(CleanroomType.CLEANROOM);
 
     event.recipes.gtceu
@@ -542,7 +573,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:radon 500')
         .itemOutputs('kubejs:qram_wafer')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.ZPM])
+        .EUtVHA(ZPM)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     event.recipes.gtceu
@@ -550,7 +581,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:qram_wafer')
         .itemOutputs('12x kubejs:qram_chip')
         .duration(900)
-        .EUt(GTValues.VA[GTValues.LuV])
+        .EUtVA(LuV)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     event.recipes.gtceu
@@ -559,7 +590,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:borealic_concentrate 432')
         .itemOutputs('kubejs:stellar_ram_wafer')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UHV])
+        .EUtVHA(UHV)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
     event.recipes.gtceu
@@ -567,7 +598,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:stellar_ram_wafer')
         .itemOutputs('8x kubejs:stellar_ram_chip')
         .duration(900)
-        .EUt(GTValues.VA[GTValues.UV])
+        .EUtVA(UV)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
     // === Wafer Engraving ===
@@ -588,6 +619,13 @@ ServerEvents.recipes((event) => {
         draconic: 1,
     };
 
+    /**
+     * @param {string} modID
+     * @param {string} output
+     * @param {keyof typeof WAFER_DURATION} waferTier
+     * @param {string} lens
+     * @param {boolean} lensIsTag
+     */
     const dracoWaferEngraving = (modID, output, waferTier, lens, lensIsTag) => {
         let duration = WAFER_DURATION[waferTier];
         let quantity = WAFER_QUANTITY[waferTier];
@@ -598,7 +636,7 @@ ServerEvents.recipes((event) => {
             .notConsumable(lensIsTag ? `#forge:lenses/${lens}` : `gtceu:${lens}_lens`)
             .itemOutputs(`${quantity}x ${modID}:${output}_wafer`)
             .duration(duration)
-            .EUt(GTValues.VA[GTValues.LuV])
+            .EUtVA(LuV)
             .cleanroom(CleanroomType.CLEANROOM);
     };
 

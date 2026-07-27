@@ -26,4 +26,5 @@ const $ResourceLocation = Java.loadClass('net.minecraft.resources.ResourceLocati
 const $Registries = Java.loadClass('net.minecraft.core.registries.Registries');
 const $HolderSet = Java.loadClass('net.minecraft.core.HolderSet');
 const $Holder = Java.loadClass('net.minecraft.core.Holder');
+
 /* eslint-enable */

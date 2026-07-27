@@ -28,10 +28,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('kubejs:abyssal_inductor_hull'))
-                .EUt(GTValues.VHA[GTValues.UIV])
+                .EUt(GTValues.VHA[UIV])
                 .CWUt(224)
         )
-        .EUt(GTValues.VA[GTValues.UXV]);
+        .EUtVA(UXV);
 
     // === CHEF ===
     event.recipes.gtceu
@@ -59,12 +59,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:ultimate_ebf')
         .duration(1800)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:mega_blast_furnace'))
-                .EUt(GTValues.VHA[GTValues.UIV])
-                .CWUt(192)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:mega_blast_furnace')).EUt(GTValues.VHA[UIV]).CWUt(192)
         )
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UXV);
 
     // === Part Hub ===
     event.recipes.gtceu
@@ -90,10 +87,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:component_part_assembly'))
-                .EUt(GTValues.VHA[GTValues.UEV])
+                .EUt(GTValues.VHA[UEV])
                 .CWUt(192)
         )
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // === Chem Plant ===
     event.recipes.gtceu
@@ -123,12 +120,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:atomic_materialization_plant')
         .duration(1200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:chemical_plant'))
-                .EUt(GTValues.VA[GTValues.UIV])
-                .CWUt(216)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:chemical_plant')).EUt(GTValues.VA[UIV]).CWUt(216)
         )
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UXV);
 
     // === Incomprehensible Chemical Reactor ===
     event.recipes.gtceu
@@ -146,10 +140,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:extreme_chemical_reactor'))
-                .EUt(GTValues.VHA[GTValues.UIV])
+                .EUt(GTValues.VHA[UIV])
                 .CWUt(192)
         )
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // === True Synthesis Plant ===
     event.recipes.gtceu
@@ -170,10 +164,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:advanced_synthesis_plant'))
-                .EUt(GTValues.VHA[GTValues.UIV])
+                .EUt(GTValues.VHA[UIV])
                 .CWUt(256)
         )
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UXV);
 
     // === Ak stabiliser 2 ===
     event.recipes.gtceu
@@ -197,8 +191,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:folding_akreyrium_stabiliser'))
-                .EUt(GTValues.VHA[GTValues.UIV])
+                .EUt(GTValues.VHA[UIV])
                 .CWUt(216)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 });

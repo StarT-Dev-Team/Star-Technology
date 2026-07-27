@@ -18,12 +18,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:supreme_plasma_turbine')
         .duration(600)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:plasma_large_turbine'))
-                .EUt(GTValues.VHA[GTValues.UHV])
-                .CWUt(128)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:plasma_large_turbine')).EUt(GTValues.VHA[UHV]).CWUt(128)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('nyinsane_plasma_turbine'))
@@ -49,10 +46,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:supreme_plasma_turbine'))
-                .EUt(GTValues.VHA[GTValues.UIV])
+                .EUt(GTValues.VHA[UIV])
                 .CWUt(192)
         )
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // Rotor Holders
     event.remove({ output: /gtceu:.*rotor_holder/ });
@@ -64,7 +61,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:hv_rotor_holder')
         .circuit(3)
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.HV]);
+        .EUtVHA(HV);
 
     event.recipes.gtceu
         .assembler(id('ev_rotor_holder'))
@@ -78,7 +75,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:ev_rotor_holder')
         .circuit(3)
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.EV]);
+        .EUtVHA(EV);
 
     event.recipes.gtceu
         .assembler(id('iv_rotor_holder'))
@@ -93,7 +90,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:iv_rotor_holder')
         .circuit(3)
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu
         .assembler(id('luv_rotor_holder'))
@@ -109,7 +106,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:luv_rotor_holder')
         .circuit(3)
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .assembler(id('zpm_rotor_holder'))
@@ -126,7 +123,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:zpm_rotor_holder')
         .circuit(3)
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .assembler(id('uv_rotor_holder'))
@@ -144,7 +141,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:uv_rotor_holder')
         .circuit(3)
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('uhv_rotor_holder'))
@@ -163,12 +160,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:uhv_rotor_holder')
         .duration(400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:uv_rotor_holder'))
-                .EUt(GTValues.VA[GTValues.UV])
-                .CWUt(128)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:uv_rotor_holder')).EUt(GTValues.VA[UV]).CWUt(128)
         )
-        .EUt(GTValues.VA[GTValues.UHV]);
+        .EUtVA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('uev_rotor_holder'))
@@ -188,12 +182,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:uev_rotor_holder')
         .duration(400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:uhv_rotor_holder'))
-                .EUt(GTValues.VA[GTValues.UHV])
-                .CWUt(160)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:uhv_rotor_holder')).EUt(GTValues.VA[UHV]).CWUt(160)
         )
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     event.recipes.gtceu
         .assembly_line(id('uiv_rotor_holder'))
@@ -214,18 +205,20 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:uiv_rotor_holder')
         .duration(400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:uev_rotor_holder'))
-                .EUt(GTValues.VA[GTValues.UEV])
-                .CWUt(192)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:uev_rotor_holder')).EUt(GTValues.VA[UEV]).CWUt(192)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     // Plasma Turbine Recipes
     event.remove({ type: 'gtceu:plasma_generator' });
 
+    /**
+     * @param {string} type
+     * @param {number} duration
+     * @param {boolean} ifGas
+     */
     const plasmaTurbine = (type, duration, ifGas) => {
-        let quantity = ifGas === true ? 5 : 1;
+        let quantity = ifGas ? 5 : 1;
         event.recipes.gtceu
             .plasma_generator(id(`${type}_from_${type}_plasma`))
             .inputFluids(`gtceu:${type}_plasma ${quantity}`)
@@ -234,8 +227,14 @@ ServerEvents.recipes((event) => {
             .EUt(-2048);
     };
 
+    /**
+     * @param {string} type
+     * @param {string} output
+     * @param {number} duration
+     * @param {boolean} ifGas
+     */
     const plasmaTurbineUnique = (type, output, duration, ifGas) => {
-        let quantity = ifGas === true ? 5 : 1;
+        let quantity = ifGas ? 5 : 1;
         event.recipes.gtceu
             .plasma_generator(id(`${output}_from_${type}_plasma`))
             .inputFluids(`gtceu:${type}_plasma ${quantity}`)
@@ -259,6 +258,11 @@ ServerEvents.recipes((event) => {
         event.remove({ output: `gtceu:${type}_turbine_blade` });
         event.remove({ id: `gtceu:assembler/assemble_${type}_turbine_blade` });
     });
+
+    /**
+     * @param {string} type
+     * @param {string} Fluid
+     */
     const turbineBlade = (type, Fluid) => {
         event.recipes.gtceu
             .assembler(id(`${type}_turbine_blade`))
@@ -266,7 +270,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(Fluid)
             .itemOutputs(`gtceu:${type}_turbine_blade`)
             .duration(50)
-            .EUt(GTValues.VHA[GTValues.UEV]);
+            .EUtVHA(UEV);
     };
     turbineBlade('draco_abyssal', 'gtceu:void 720');
 
@@ -282,10 +286,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs(Item.of('gtceu:turbine_rotor', '{GT.PartStats:{Material:"gtceu:draco_abyssal"}}'))
         .duration(600)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:draco_abyssal_rotor'))
-                .EUt(GTValues.VA[GTValues.UEV])
-                .CWUt(192)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:draco_abyssal_rotor')).EUt(GTValues.VA[UEV]).CWUt(192)
         )
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 });

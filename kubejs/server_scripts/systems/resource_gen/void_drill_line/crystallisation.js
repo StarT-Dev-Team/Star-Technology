@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('32x gtceu:stone_dust', '16x #forge:crushed_ores')
         .outputFluids('gtceu:molten_ore_mixture 6000')
         .duration(800)
-        .EUt(GTValues.VA[GTValues.EV]);
+        .EUtVA(EV);
 
     event.recipes.gtceu
         .mixer(id('molten_ore_mixture_looping'))
@@ -16,7 +16,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('48x gtceu:stone_dust', '2x gtceu:metal_mixture_dust')
         .outputFluids('gtceu:molten_ore_mixture 20000')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     //distilling
     event.recipes.gtceu
@@ -33,7 +33,7 @@ ServerEvents.recipes((event) => {
             'gtceu:molten_cooperite_ore 2250'
         )
         .duration(1200)
-        .EUt(GTValues.VA[GTValues.EV]);
+        .EUtVA(EV);
 
     event.recipes.gtceu
         .molten_destabilizing(id('molten_ore_mixture'))
@@ -50,7 +50,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('minecraft:lava 40000')
         .duration(1200)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     //amethyst line
     event.recipes.gtceu
@@ -92,6 +92,6 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:molten_${type}_ore 500`)
             .itemOutputs(`gtceu:raw_${type}`)
             .duration(160)
-            .EUt(GTValues.VA[GTValues.HV]);
+            .EUtVA(HV);
     });
 });

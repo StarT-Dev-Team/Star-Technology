@@ -4,7 +4,7 @@ ServerEvents.recipes((event) => {
 
     const researchBuilder = global.researchBuilder;
     // global.researchBuilder = (machineType, recId, inputsI, inputsF, outputsI, duration, cwuT, totalCWU, euT, researched)
-    const riftAss = 'riftic_infusion_assembly';
+    const riftAss = /** @type {const} */ ('riftic_infusion_assembly');
     // const assLine = 'assembly_line';
 
     researchBuilder(
@@ -31,7 +31,7 @@ ServerEvents.recipes((event) => {
         1800,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'start_core:hellforge'
     );
 
@@ -61,7 +61,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:mega_abs'
     );
 
@@ -79,7 +79,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:neutronium_block'
     );
 
@@ -97,7 +97,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:titan_forge'
     );
 
@@ -115,7 +115,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:injection_mixer'
     );
 
@@ -133,7 +133,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:cyclonic_sifter'
     );
 

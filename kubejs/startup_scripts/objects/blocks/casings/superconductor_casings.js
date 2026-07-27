@@ -1,4 +1,8 @@
 StartupEvents.registry('block', (event) => {
+    /**
+     * @param {string} material
+     * @param {boolean} emmitsLight
+     */
     const scCasing = (material, emmitsLight) => {
         event
             .create(`${material}_casing`)

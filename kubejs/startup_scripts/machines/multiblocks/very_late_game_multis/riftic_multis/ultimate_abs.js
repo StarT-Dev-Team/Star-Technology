@@ -2,13 +2,13 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('ultimate_abs', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .machine((holder) => new $CoiledMulti(holder))
+        .machine((holder) => new $BulkingCoiledMulti(holder))
         .recipeType('alloy_blast_smelter')
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.EBF_OVERCLOCK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
-            $StarTRecipeModifiers.BULK_PROCESSING,
+            $StarTRecipeModifiers.BULKING,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:absolute_temperature_smelting_casing'))

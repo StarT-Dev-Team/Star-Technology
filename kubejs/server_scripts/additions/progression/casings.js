@@ -1,6 +1,11 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} casingId
+     */
     const casing = (type, material, casingId) => {
         event
             .shaped(Item.of(`2x ${casingId}:${type}_casing`), ['PHP', 'PFP', 'PWP'], {
@@ -52,6 +57,11 @@ ServerEvents.recipes((event) => {
     casing('manganin', 'manganin', 'kubejs');
     casing('galvanized_steel', 'galvanized_steel', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} casingId
+     */
     const casingDouble = (type, material, casingId) => {
         event
             .shaped(Item.of(`${casingId}:${type}_casing`, 2), ['PHP', 'PFP', 'PWP'], {
@@ -83,9 +93,14 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:silicone_rubber 216')
         .itemOutputs('kubejs:silicone_rubber_casing')
         .duration(50)
-        .EUt(GTValues.VH[GTValues.MV])
+        .EUtVH(MV)
         .circuit(6);
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} casingId
+     */
     const turbine = (type, material, casingId) => {
         event
             .shaped(Item.of(`${casingId}:${type}_turbine_casing`, 2), ['PHP', 'PFP', 'PWP'], {
@@ -109,6 +124,12 @@ ServerEvents.recipes((event) => {
     turbine('enriched_naquadah', 'enriched_naquadah', 'kubejs');
     turbine('nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} frame
+     * @param {string} casingId
+     */
     const firebox = (type, material, frame, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_firebox_casing`, ['PRP', 'RFR', 'PRP'], {
@@ -123,6 +144,12 @@ ServerEvents.recipes((event) => {
     firebox('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     firebox('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} frame
+     * @param {string} casingId
+     */
     const heatEscape = (type, material, frame, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_heat_escape_casing`, ['PTP', 'RFR', 'PTP'], {
@@ -137,6 +164,12 @@ ServerEvents.recipes((event) => {
     heatEscape('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     heatEscape('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} frame
+     * @param {string} casingId
+     */
     const gearbox = (type, material, frame, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_gearbox`, ['PHP', 'GFG', 'PWP'], {
@@ -161,6 +194,12 @@ ServerEvents.recipes((event) => {
     gearbox('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     gearbox('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} pipe
+     * @param {string} casingId
+     */
     const pipe = (type, material, pipe, casingId) => {
         event
             .shaped(`2x ${casingId}:${type}_pipe_casing`, ['PLP', 'LFL', 'PLP'], {
@@ -175,7 +214,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`4x gtceu:${material}_plate`, `1x gtceu:${pipe}_frame`, `4x gtceu:${pipe}_normal_fluid_pipe`)
             .itemOutputs(`2x ${casingId}:${type}_pipe_casing`)
             .duration(50)
-            .EUt(GTValues.VH[GTValues.LV])
+            .EUtVH(LV)
             .circuit(9);
     };
 
@@ -183,6 +222,13 @@ ServerEvents.recipes((event) => {
     pipe('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     pipe('nyanium', 'nyanium', 'nyanium', 'kubejs');
 
+    /**
+     * @param {string} type
+     * @param {string} material
+     * @param {string} pipe
+     * @param {string} casingId
+     * @param {string} usedCasing
+     */
     const engineIntake = (type, material, pipe, casingId, usedCasing) => {
         event
             .shaped(`2x ${casingId}:${type}_engine_intake_casing`, ['PHP', 'RFR', 'PWP'], {
@@ -246,6 +292,11 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
+    /**
+     * @param {string} nameCasing
+     * @param {string} plate
+     * @param {string} frameMat
+     */
     const ultimateCasing = (nameCasing, plate, frameMat) => {
         event.recipes.gtceu
             .assembler(id(`${nameCasing}_casing`))
@@ -269,6 +320,12 @@ ServerEvents.recipes((event) => {
     ultimateCasing('tectonic_defiance', 'vastaqalloy_cr_4200x', 'melastrium_mox');
     ultimateCasing('true_revitilization', 'soul_ascendant_cuperite', 'soul_infused');
 
+    /**
+     * @param {string} nameCasing
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {string} researched
+     */
     const specialUltimateCasing = (nameCasing, inputs, fluids, researched) => {
         event.recipes.gtceu
             .assembly_line(id(`${nameCasing}`))
@@ -277,9 +334,9 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`2x kubejs:${nameCasing}`)
             .duration(400)
             .stationResearch((researchRecipeBuilder) =>
-                researchRecipeBuilder.researchStack(Item.of(researched)).EUt(GTValues.VA[GTValues.UEV]).CWUt(216)
+                researchRecipeBuilder.researchStack(Item.of(researched)).EUt(GTValues.VA[UEV]).CWUt(216)
             )
-            .EUt(GTValues.VHA[GTValues.UIV]);
+            .EUtVHA(UIV);
     };
 
     specialUltimateCasing(
@@ -454,14 +511,14 @@ ServerEvents.recipes((event) => {
         .itemInputs('16x kubejs:brimstone')
         .itemOutputs('kubejs:reinforced_brimstone_casing')
         .duration(320)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .compressor(id('reinforced_cryostone_casing'))
         .itemInputs('16x kubejs:cryostone')
         .itemOutputs('kubejs:reinforced_cryostone_casing')
         .duration(320)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembler(id('polycarbonate_casing'))
@@ -469,7 +526,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:polycarbonate 216')
         .itemOutputs('kubejs:polycarbonate_casing')
         .duration(200)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event
         .shaped(Item.of('2x gtceu:palladium_substation'), ['PHP', 'PFP', 'PWP'], {
@@ -480,6 +537,9 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/palladium_substation');
 
+    /**
+     * @param {keyof typeof global.componentMaterials} tier
+     */
     const hermeticCasing = (tier) => {
         const casingMaterial = global.componentMaterials[tier].materials.tierMaterial;
         const pipeMaterial = global.componentMaterials[tier].materials.pipeMaterial;
@@ -504,10 +564,10 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`${prefix + tier}_hermetic_casing`)
             .circuit(10)
             .duration(50)
-            .EUt(GTValues.VH[GTValues.LV]);
+            .EUtVH(LV);
     };
 
-    ['luv', 'zpm', 'uv', 'uhv'].forEach((tier) => {
+    /** @type {const} */ (['luv', 'zpm', 'uv', 'uhv']).forEach((tier) => {
         hermeticCasing(tier);
     });
 
@@ -518,7 +578,7 @@ ServerEvents.recipes((event) => {
         .circuit(6)
         .itemOutputs('kubejs:peek_casing')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .assembler(id('cattomolymer_casing'))
@@ -526,7 +586,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 216')
         .circuit(6)
         .itemOutputs('kubejs:cattomolymer_casing')
-        .EUt(GTValues.VHA[GTValues.UHV])
+        .EUtVHA(UHV)
         .duration(750);
 
     event.recipes.gtceu
@@ -540,6 +600,6 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 432')
         .itemOutputs('kubejs:rhenotax_coil')
-        .EUt(GTValues.VHA[GTValues.UIV])
+        .EUtVHA(UIV)
         .duration(1200);
 });

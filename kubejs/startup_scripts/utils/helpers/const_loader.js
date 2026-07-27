@@ -130,3 +130,6 @@ const $OpticalComputationMachine = Java.loadClass(
 const $CompoundGeneratorMachine = Java.loadClass(
     'com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine'
 );
+const $BulkingMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingMachine');
+const $BulkingCoiledMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingCoiledMachine');
+const $BulkingThreadedMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingThreadedMachine');

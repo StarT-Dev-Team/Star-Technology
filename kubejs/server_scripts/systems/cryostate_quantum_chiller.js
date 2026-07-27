@@ -9,7 +9,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('16x gtceu:dense_zalloy_plate')
         .itemOutputs('kubejs:zalloyic_empty_mold')
         .duration(900)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .forming_press(id('zalloyic_fluid_mold'))
@@ -17,18 +17,20 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:zalloyic_empty_mold')
         .itemOutputs('kubejs:zalloyic_fluid_mold')
         .duration(480)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     // VF Recipe Pull
     event.forEachRecipe({ type: 'gtceu:vacuum_freezer' }, (vacParse) => {
-        let bulkVac = JSON.parse(vacParse.json);
+        let bulkVac = JSON.parse(/** @type {any} */ (vacParse.json));
         let duration = bulkVac.duration;
         let eut = bulkVac.tickInputs.eu[0].content;
-        let inItem = false;
-        let inFluid1 = false;
-        let inFluid2 = false;
-        let outFluid = false;
-        let outItem = false;
+
+        let inItem;
+        let inFluid1;
+        let inFluid2;
+        let outFluid;
+        let outItem;
+
         if (bulkVac.inputs.item?.length === 1) {
             inItem = bulkVac.inputs.item[0].content;
         }
@@ -82,7 +84,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:oganesson 500')
         .outputFluids('gtceu:helium 2500')
         .duration(80)
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     event.recipes.gtceu
         .quantum_cooling(id('bec_og'))
@@ -91,7 +93,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:bec_og 500')
         .outputFluids('gtceu:helium_3 5000')
         .duration(320)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .quantum_cooling(id('superstate_helium_3'))
@@ -100,9 +102,14 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:superstate_helium_3 5000')
         .outputFluids('gtceu:helium 2500')
         .duration(400)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     // >15000K Cooling
+
+    /**
+     * @param {string} type
+     * @param {number} dur
+     */
     const material15000PlusAlloy = (type, dur) => {
         event.remove({ id: `gtceu:vacuum_freezer/${type}` });
         event.recipes.gtceu
@@ -113,7 +120,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`gtceu:${type}_ingot`)
             .outputFluids('gtceu:helium_3 250')
             .duration(dur * 20)
-            .EUt(GTValues.VA[GTValues.UV]);
+            .EUtVA(UV);
 
         event.recipes.gtceu
             .vacuum_freezer(id(`liquid_${type}_from_molten`))
@@ -123,7 +130,7 @@ ServerEvents.recipes((event) => {
             .outputFluids(`gtceu:${type} 144`)
             .outputFluids('gtceu:helium_3 250')
             .duration(dur * 20 * 1.05)
-            .EUt(GTValues.VA[GTValues.UV]);
+            .EUtVA(UV);
 
         event.recipes.gtceu
             .quantum_cooling(id(`${type}`))
@@ -132,7 +139,7 @@ ServerEvents.recipes((event) => {
             .outputFluids(`gtceu:molten_${type} 144`)
             .outputFluids('gtceu:oganesson 200')
             .duration(dur * 6)
-            .EUt(GTValues.VHA[GTValues.UEV]);
+            .EUtVHA(UEV);
     };
 
     material15000PlusAlloy('mythrolic_alloy', 36.9);

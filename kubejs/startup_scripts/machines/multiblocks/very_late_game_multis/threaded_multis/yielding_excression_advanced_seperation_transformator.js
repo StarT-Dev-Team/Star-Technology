@@ -1,7 +1,7 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('yielding_excression_advanced_seperation_transformator', 'multiblock')
-        .machine((holder) => new $StarTThreadingCapableMachine(holder))
+        .machine((holder) => new $BulkingThreadedMulti(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .tooltips([Text.translate('block.start_core.gap'), Text.translate('block.kubejs.threading.tooltip')])
         .recipeTypes(['distillation_tower', 'distillery', 'brewery', 'fermenter', 'fluid_heater'])
@@ -9,7 +9,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             $StarTRecipeModifiers.THREADING_MACHINE,
-            $StarTRecipeModifiers.BULK_PROCESSING,
+            $StarTRecipeModifiers.BULKING,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:quantumly_resistant_casing'))

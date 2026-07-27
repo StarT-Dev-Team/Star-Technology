@@ -1,6 +1,15 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /** @typedef {internal.$wrapped<internal.dev.latvian.mods.kubejs.item.InputItem>} ItemInput */
+
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {ItemInput[]} input
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     const assembler = (id1, output, input, eu, circuit) => {
         const recipe = event.recipes.gtceu.assembler(id(`${id1}`));
 
@@ -11,12 +20,27 @@ ServerEvents.recipes((event) => {
         }
     };
 
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {ItemInput[]} input
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     // eslint-disable-next-line no-unused-vars
     const assemblerRem = (id1, output, input, eu, circuit) => {
         event.remove({ output: `${output}` });
         assembler(id1, output, input, eu, circuit);
     };
 
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {string | string[]} inputit
+     * @param {string | string[]} inputfl
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     const assemblerFluid = (id1, output, inputit, inputfl, eu, circuit) => {
         const recipe = event.recipes.gtceu.assembler(id(`${id1}`));
 
@@ -27,11 +51,23 @@ ServerEvents.recipes((event) => {
         }
     };
 
+    /**
+     * @param {string} id1
+     * @param {string} output
+     * @param {string | string[]} inputit
+     * @param {string | string[]} inputfl
+     * @param {number} eu
+     * @param {number=} circuit
+     */
     const assemblerFluidRem = (id1, output, inputit, inputfl, eu, circuit) => {
         event.remove({ output: `${output}` });
         assemblerFluid(id1, output, inputit, inputfl, eu, circuit);
     };
 
+    /**
+     * @param {string} item
+     * @param {string} input
+     */
     const extended = (item, input) => {
         assemblerFluidRem(
             `extended_${item}`,
@@ -43,24 +79,28 @@ ServerEvents.recipes((event) => {
                 '8x gtceu:diamond_skystone_alloy_plate',
             ],
             'sky_steel 576',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
     };
 
+    /**
+     * @param {string} item
+     * @param {string} input
+     */
     const assemblerspecex = (item, input) => {
         assemblerFluidRem(
             `${item}_storage_bus`,
             `expatternprovider:${item}_storage_bus`,
             ['2x ae2:storage_bus', `${input}`],
             'soldering_alloy 144',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
         assemblerFluidRem(
             `${item}_export_bus`,
             `expatternprovider:${item}_export_bus`,
             ['2x ae2:export_bus', `${input}`],
             'soldering_alloy 144',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
     };
 
@@ -70,7 +110,7 @@ ServerEvents.recipes((event) => {
         'megacells:mega_energy_cell',
         ['gtceu:netherite_gold_skystone_alloy_frame', '8x ae2:dense_energy_cell', 'gtceu:lapotronic_energy_orb'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     assemblerFluidRem(
@@ -78,7 +118,7 @@ ServerEvents.recipes((event) => {
         'expandedae:exp_energy_cell',
         ['gtceu:void_frame', '8x megacells:mega_energy_cell', 'gtceu:max_battery'],
         'netherite_gold_skystone_alloy 1152',
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     //Interfaces
@@ -92,7 +132,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:diamond_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.HV]
+        GTValues.VA[HV]
     );
 
     assemblerFluid(
@@ -105,7 +145,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_certus_quartz_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluid(
@@ -113,7 +153,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:oversize_interface',
         ['expatternprovider:ex_interface', '4x ae2:capacity_card', '4x gtceu:gold_skystone_alloy_plate'],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     //Pattern Providers
@@ -127,7 +167,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:diamond_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.HV]
+        GTValues.VA[HV]
     );
 
     assemblerFluid(
@@ -140,7 +180,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_gold_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluid(
@@ -153,30 +193,29 @@ ServerEvents.recipes((event) => {
             '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     assemblerFluid(
         'giga_pattern_provider',
         'expandedae:giga_pattern_provider',
         [
-            '3x expandedae:exp_pattern_provider',
+            'expandedae:exp_pattern_provider',
             '16x ae2:engineering_processor',
             '#gtceu:circuits/uhv',
             '8x gtceu:double_netherite_gold_skystone_alloy_plate',
         ],
         'fluix_steel 2304',
-        GTValues.VA[GTValues.UHV]
+        GTValues.VA[UHV]
     );
 
     //Upgrade Kits
-    let ppu = 'pattern_provider_upgrade';
     assemblerFluidRem(
         'pattern_terminal_upgrade',
         'expatternprovider:pattern_terminal_upgrade',
         ['4x gtceu:double_certus_quartz_skystone_alloy_plate', '4x ae2:engineering_processor', '#gtceu:circuits/ev'],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -190,7 +229,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:gold_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -204,7 +243,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:certus_quartz_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -219,9 +258,11 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_certus_quartz_skystone_alloy_plate',
         ],
         'sky_steel 1152',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
+
+    const ppu = 'pattern_provider_upgrade';
 
     assemblerFluidRem(
         ppu,
@@ -234,9 +275,30 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_gold_skystone_alloy_plate',
         ],
         'sky_steel 1152',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
+
+    assemblerFluidRem(
+        `ext_${ppu}`,
+        `expandedae:ext_${ppu}`,
+        ['4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],
+        'fluix_steel 576',
+        GTValues.VA[IV],
+        1
+    );
+
+    assemblerFluid(
+        `exp2g_${ppu}`,
+        `expandedae:exp2g_${ppu}`,
+        ['16x ae2:engineering_processor', '#gtceu:circuits/uhv', '8x gtceu:double_netherite_gold_skystone_alloy_plate'],
+        'fluix_steel 2304',
+        GTValues.VA[UHV],
+        1
+    );
+
+    // Compounded PPU's
+    event.remove({ id: 'expandedae:crafting/exp_pattern_provider_upgrade' });
 
     assemblerFluidRem(
         `mega_${ppu}`,
@@ -248,77 +310,24 @@ ServerEvents.recipes((event) => {
             'gtceu:double_gold_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.HV],
+        GTValues.VA[HV],
         1
     );
 
-    assemblerFluidRem(
-        `ext_${ppu}`,
-        `expandedae:ext_${ppu}`,
-        ['4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],
-        'fluix_steel 576',
-        GTValues.VA[GTValues.IV],
-        1
-    );
-
-    assemblerFluidRem(
-        `expanded_${ppu}`,
-        `expandedae:exp_${ppu}`,
-        [
-            `expatternprovider:${ppu}`,
-            '4x ae2:engineering_processor',
-            '#gtceu:circuits/iv',
-            '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-        ],
-        'fluix_steel 576',
-        GTValues.VA[GTValues.IV],
-        1
-    );
-
-    assemblerFluid(
-        `m2g_${ppu}`,
-        `expandedae:m2g_${ppu}`,
-        [
-            `expandedae:ext2g_${ppu}`,
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            '4x gtceu:double_gold_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[GTValues.EV],
-        1
-    );
-
-    assemblerFluid(
-        `ext2g_${ppu}`,
-        `expandedae:ext2g_${ppu}`,
-        [
-            `expandedae:exp2g_${ppu}`,
-            '4x ae2:engineering_processor',
-            '#gtceu:circuits/iv',
-            '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-        ],
-        'fluix_steel 576',
-        GTValues.VA[GTValues.IV],
-        1
-    );
-
-    assemblerFluid(
-        `exp2g_${ppu}`,
-        `expandedae:exp2g_${ppu}`,
-        ['16x ae2:engineering_processor', '#gtceu:circuits/uhv', '8x gtceu:double_netherite_gold_skystone_alloy_plate'],
-        'fluix_steel 2304',
-        GTValues.VA[GTValues.UHV],
-        1
-    );
-
-    event.recipes.gtceu
-        .assembler(id(`p2g_${ppu}`))
-        .itemInputs(`expatternprovider:${ppu}`, `expandedae:ext2g_${ppu}`)
-        .itemOutputs(`expandedae:p2g_${ppu}`)
-        .circuit(5)
-        .duration(1)
-        .EUt(GTValues.VHA[GTValues.ULV]);
+    [
+        { upgrade: `exp_${ppu}`, main: `expandedae:ext_${ppu}`, addition: `expatternprovider:${ppu}` },
+        { upgrade: `p2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:exp_${ppu}` },
+        { upgrade: `m2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:mega_${ppu}` },
+        { upgrade: `ext2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:ext_${ppu}` },
+    ].forEach((set) => {
+        const { upgrade, main, addition } = set;
+        event.recipes.gtceu
+            .canner(id(upgrade))
+            .itemInputs(main, addition)
+            .itemOutputs(`expandedae:${upgrade}`)
+            .duration(40)
+            .EUt(256);
+    });
 
     //Infinity Cells
     ['minecraft:sand', 'minecraft:gravel', 'exnihilosequentia:dust', 'exnihilosequentia:crushed_blackstone'].forEach(
@@ -349,6 +358,11 @@ ServerEvents.recipes((event) => {
         .duration(40)
         .EUt(16);
 
+    /**
+     * @param {string} output
+     * @param {[string, string, string] | [string, string]} pattern
+     * @param {Record<string, string>} key
+     */
     const shapedRecipeRem = (output, pattern, key) => {
         event.remove({ output: `${output}` });
         event.shaped(`${output}`, pattern, key).id(`start:shaped/ae/${output.split(':')[1]}`);
@@ -411,11 +425,14 @@ ServerEvents.recipes((event) => {
         B: 'ae2:fluix_glass_cable',
     });
 
-    shapedRecipeRem('ae2:energy_acceptor', ['HFH', 'FCF', 'HFH'], {
-        C: 'gtceu:sky_steel_frame',
-        F: 'ae2:quartz_glass',
-        H: 'gtceu:sky_steel_plate',
-    });
+    event.remove('ae2:network/blocks/energy_energy_acceptor');
+    event
+        .shaped('ae2:energy_acceptor', ['HFH', 'FCF', 'HFH'], {
+            C: 'gtceu:sky_steel_frame',
+            F: 'ae2:quartz_glass',
+            H: 'gtceu:sky_steel_plate',
+        })
+        .id('start:shaped/ae/energy_acceptor');
 
     shapedRecipeRem('ae2:drive', ['HFH', 'BAB', 'HFH'], {
         F: 'ae2:engineering_processor',
@@ -529,7 +546,7 @@ ServerEvents.recipes((event) => {
             '6x gtceu:double_fluix_steel_plate',
         ],
         'soldering_alloy 144',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluid(
@@ -542,7 +559,7 @@ ServerEvents.recipes((event) => {
             'gtceu:ev_field_generator',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     //Assembler Matrix
@@ -551,7 +568,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_frame',
         ['gtceu:plascrete', '2x ae2:fluix_smart_dense_cable', '4x gtceu:ruthenium_plate'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -559,7 +576,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_wall',
         ['gtceu:plascrete', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -567,7 +584,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_glass',
         ['gtceu:cleanroom_glass', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -575,7 +592,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_pattern',
         ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_pattern_provider'],
         'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -583,7 +600,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_crafter',
         ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_molecular_assembler'],
         'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -591,22 +608,15 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_speed',
         ['expatternprovider:assembler_matrix_wall', '2x ae2:speed_card'],
         'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
-    //ME Hatches
-    let consTier;
-    let input;
-    let casingMaterial;
-    let pipeMaterial;
-    let circuit;
-    let recId;
-    let fluidMulti;
+    // ME Hatches
 
-    ['luv', 'zpm'].forEach((tier) => {
-        casingMaterial = global.casingMaterials[tier];
-        consTier = tier === 'luv' ? 'ZPM' : 'UV';
-        input = tier === 'luv' ? 'input' : 'stocking_input';
+    /** @type {const} */ (['luv', 'zpm']).forEach((tier) => {
+        const casingMaterial = global.casingMaterials[tier];
+        const consTier = tier === 'luv' ? 'ZPM' : 'UV';
+        const input = tier === 'luv' ? 'input' : 'stocking_input';
 
         ['bus', 'hatch'].forEach((type) => {
             assembler(
@@ -623,26 +633,22 @@ ServerEvents.recipes((event) => {
         });
     });
 
-    ['luv'].forEach((tier) => {
+    /** @type {const} */ (['luv']).forEach((tier) => {
         //to allow for dual stockings to be thrown into this when done
-        casingMaterial = global.casingMaterials[tier];
-        pipeMaterial = tier === 'luv' ? 'gtceu:niobium_titanium' : 'gtceu:polybenzimidazole';
-        fluidMulti = tier === 'luv' ? 7 : 8;
-        consTier = tier === 'luv' ? 'ZPM' : 'UV';
+        const casingMaterial = global.casingMaterials[tier];
+        const pipeMaterial = tier === 'luv' ? 'gtceu:niobium_titanium' : 'gtceu:polybenzimidazole';
+        const fluidMulti = tier === 'luv' ? 7 : 8;
+        const consTier = tier === 'luv' ? 'ZPM' : 'UV';
 
-        ['input', 'output'].forEach((io) => {
-            recId =
+        /** @type {const} */ (['input', 'output']).forEach((io) => {
+            const recId =
                 io === 'input' && tier === 'luv'
                     ? 'input'
                     : io === 'input' && tier === 'luv'
                       ? 'stocking_input'
                       : 'output';
-            input = tier === 'luv' ? 'input' : 'stocking_input';
-            circuit = io === 'input' ? 1 : 2;
-
-            if (io === 'output' && tier === 'zpm') {
-                return;
-            }
+            const input = tier === 'luv' ? 'input' : 'stocking_input';
+            const circuit = io === 'input' ? 1 : 2;
 
             assemblerFluid(
                 `dual_me_${recId}_hatch`,
@@ -678,7 +684,7 @@ ServerEvents.recipes((event) => {
                 'gtceu:zpm_sensor',
                 'gtceu:zpm_emitter',
             ],
-            GTValues.VHA[GTValues.ZPM]
+            GTValues.VHA[ZPM]
         );
     });
 
@@ -693,7 +699,7 @@ ServerEvents.recipes((event) => {
             'gtceu:zpm_sensor',
         ],
         'indium_tin_lead_cadmium_soldering_alloy 576',
-        GTValues.VA[GTValues.ZPM]
+        GTValues.VA[ZPM]
     );
 
     //Misc
@@ -708,7 +714,7 @@ ServerEvents.recipes((event) => {
             'gtceu:ev_emitter',
         ],
         'soldering_alloy 576',
-        GTValues.VHA[GTValues.EV]
+        GTValues.VHA[EV]
     );
 
     ['molecular_assembler', 'drive', 'io_port'].forEach((type) => {
@@ -720,7 +726,7 @@ ServerEvents.recipes((event) => {
         'megacells:mega_crafting_unit',
         ['gtceu:netherite_certus_quartz_skystone_alloy_frame', '8x ae2:crafting_unit', '#gtceu:circuits/iv'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     assemblerFluidRem(
@@ -733,7 +739,7 @@ ServerEvents.recipes((event) => {
             '#gtceu:circuits/hv',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.MV]
+        GTValues.VA[MV]
     );
 
     assemblerFluidRem(
@@ -746,7 +752,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     ['import_bus', 'export_bus'].forEach((type) => {
@@ -761,7 +767,7 @@ ServerEvents.recipes((event) => {
                 '4x gtceu:gold_skystone_alloy_plate',
             ],
             'sky_steel 576',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
     });
 
@@ -770,6 +776,12 @@ ServerEvents.recipes((event) => {
     assemblerspecex('precise', 'gtceu:mv_robot_arm');
 
     //Replaced Inputs
+
+    /**
+     * @param {string} recId
+     * @param {string} target
+     * @param {string} replace
+     */
     const repIn = (recId, target, replace) => {
         event.replaceInput({ id: recId }, target, replace);
     };
@@ -840,7 +852,7 @@ ServerEvents.recipes((event) => {
         1800,
         256,
         256 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'megacells:fluid_storage_cell_256m'
     );
 
@@ -863,7 +875,7 @@ ServerEvents.recipes((event) => {
         1800,
         256,
         256 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'megacells:item_storage_cell_256m'
     );
 });

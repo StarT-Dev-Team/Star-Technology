@@ -1,4 +1,8 @@
 StartupEvents.registry('block', (event) => {
+    /**
+     * @param {string} id
+     * @param {string} texture
+     */
     function naqCasing(id, texture) {
         event
             .create(id)

@@ -10,6 +10,8 @@ StartupEvents.registry('item', (event) => {
     */
 
     //all items => upgrade kits
+
+    /** @param {string} tier */
     const upgradeKit = (tier) => {
         event
             .create(`${tier}_upgrade_kit`)
@@ -18,6 +20,8 @@ StartupEvents.registry('item', (event) => {
     };
 
     //dynamo's => auxiliary reaction kits
+
+    /** @param {string} tier */
     const arcKit = (tier) => {
         event
             .create(`${tier}_arc_kit`)
@@ -26,6 +30,8 @@ StartupEvents.registry('item', (event) => {
     };
 
     //dynamo's => multi-cycle injectors kits
+
+    /** @param {string} tier */
     const mciKit = (tier) => {
         event
             .create(`${tier}_mci_kit`)
@@ -40,6 +46,7 @@ StartupEvents.registry('item', (event) => {
     });
 
     //fluid cells => storage upgrade kits
+    /** @param {string} tier */
     const flsKit = (tier) => {
         event
             .create(`${tier}_fls_kit`)
@@ -48,6 +55,7 @@ StartupEvents.registry('item', (event) => {
     };
 
     //rf cells => general upgrade kits
+    /** @param {string} tier */
     const rfcKit = (tier) => {
         event
             .create(`${tier}_rfc_kit`)
@@ -56,6 +64,7 @@ StartupEvents.registry('item', (event) => {
     };
 
     //rf cells => storage upgrade kits
+    /** @param {string} tier */
     const rfsKit = (tier) => {
         event
             .create(`${tier}_rfs_kit`)
@@ -64,6 +73,7 @@ StartupEvents.registry('item', (event) => {
     };
 
     //rf cells => transfer upgrade kits
+    /** @param {string} tier */
     const rftKit = (tier) => {
         event
             .create(`${tier}_rft_kit`)
