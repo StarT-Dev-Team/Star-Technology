@@ -305,6 +305,7 @@
         */
 
         // Nuclear Reactor Materials
+        /*
         MH.compIngot(
             'austenitic_stainless_steel_304',
             ['35x steel', '10x chromium', '4x nickel', '1x manganese', '1x silicon'],
@@ -322,14 +323,18 @@
             [3500, 'low', VA('ev'), 1500],
             [plates, rod, frame]
         );
+        */
 
+        /*
         MH.compLiquid('nuclear_steam', ['1x steam', '1x mystery'], 0xcccccc, [noDecomp]);
 
         MH.compLiquid('hot_sodium_potassium', ['1x sodium_potassium', '1x mystery'], 0x82fcc3, [noDecomp]);
 
         MH.compLiquid('hot_pcb_coolant', ['1x pcb_coolant', '1x mystery'], 0xc9ca81, [noDecomp]);
+        */
 
         // Netherite Line
+        /*
         MH.elemDustFluid('debris', 0x804000, [noDecomp]);
 
         MH.compDust('purified_debris', ['debris'], 0xcc0000, []);
@@ -337,8 +342,10 @@
         MH.compLiquid('chlorine_trifluoride', ['1x chlorine', '3x fluorine'], 0xb3ff99, []);
 
         MH.compLiquid('tetrachloroethylene', ['2x carbon', '4x chlorine'], 0xd966ff, []);
+        */
 
         // Crown Ethers
+        /*
         MH.compLiquid('sulfur_dichloride', ['1x sulfur', '2x chlorine'], 0xcc0000, []);
 
         MH.compLiquid('thionyl_chloride', ['1x sulfur', '1x oxygen', '2x chlorine'], 0xffffcc, [noDecomp]);
@@ -432,6 +439,7 @@
             0x602020,
             [noDecomp]
         );
+        */
 
         // Mystical Agriculture Alloys
         // [
@@ -447,9 +455,10 @@
         // })
 
         // Diatrons
-        MH.compGem('diatron', [], 0x6699ff, LAPIS, [noDecomp]);
+        //MH.compGem('diatron', [], 0x6699ff, LAPIS, [noDecomp]);
 
         // Echo/Void Line
+        /*
         MH.elemFluid('echo_r', 'echo_r', 0x003333, []);
 
         MH.compIngot('raw_void', ['1x echo_r', '1x neutronium'], 0x006666, DULL, null, [noDecomp]);
@@ -462,6 +471,7 @@
             [10000, 'highest', VA('uiv'), 8000],
             [rod, foil, plates, longRod, frame, noDecomp, noABSRecipe, boltAndScrew, ring]
         );
+        */
 
         //Extended Sculk
         // compDustIcon('ionized_sculk', [], 0x061A0D, RADIOACTIVE, [noDecomp]);
@@ -469,7 +479,7 @@
         // compDust('sodium_over_sculk', ['1x sodium','1x mystery'], 0x071A22, [noDecomp]);
 
         // Extras
-        MH.compDust('sulfate', ['1x sulfur', '4x oxygen'], 0xd5ba23, []);
+        // MH.compDust('sulfate', ['1x sulfur', '4x oxygen'], 0xd5ba23, []);
 
         MH.compIngotLiquid(
             'osthendah',
