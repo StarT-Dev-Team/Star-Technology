@@ -684,6 +684,7 @@
         */
 
         //Atomic Nether Dust Line
+        /*
         MH.compDustIcon(
             'atomic_nether_sludge',
             ['1x mystery', '1x mystery', '1x mystery', '1x mystery'],
@@ -695,8 +696,10 @@
         MH.compDust('deactivated_nether', ['1x mystery', '1x mystery'], 0x664c4c, [noDecomp]);
 
         MH.compDust('activated_nether', ['1x mystery', '1x mystery'], 0xa01819, [noDecomp]);
+        */
 
         //Estalt Line
+        /*
         MH.compLiquidTemp('molten_estaltadyne_mixture', 3500, ['1x mystery', '1x estalt', '1x mystery'], 0x8e0505, [
             noDecomp,
         ]);
@@ -717,6 +720,7 @@
         MH.compLiquid('enriched_estaltadyne_solution', ['1x mystery', '1x enriched_estalt', '1x mystery'], 0xbe4717, [
             noDecomp,
         ]);
+        */
 
         // Partial Line Deprication
         // compLiquid('enriched_estaltadyne_slurry', ['1x mystery','1x enriched_estalt','1x mystery'], 0xBE4777, [noDecomp]);
@@ -727,6 +731,7 @@
         // compLiquid('hyper_enriched_estaltadyne_concentrate', ['2x enriched_estalt','1x mystery'], 0xBE4587, [noDecomp]);
 
         //Adamantine Line
+        /*
         MH.compLiquid('enriched_adamantamite_mixture', ['1x mystery', '1x adamantine', '1x mystery'], 0x866e4b, [
             noDecomp,
         ]);
@@ -747,8 +752,10 @@
         // compDust('adamantine_5', ['5x adamantine'], 0xCB9D58, [noDecomp]);
 
         MH.compDust('adamantine_hydroxide', ['1x adamantine', '3x hydrogen', '3x oxygen'], 0xcb8858, [noDecomp]);
+        */
 
         //Mythril Line
+        /*
         MH.compLiquid('enriched_mythrillic_mixture', ['1x mystery', '1x mythril', '1x mystery'], 0x238213, [noDecomp]);
 
         MH.compLiquidTemp('molten_mythrillic_mixture', 3100, ['1x mystery', '1x mythril', '1x mystery'], 0x238342, [
@@ -762,8 +769,10 @@
         // compDust('mythrillic_metnide', ['6x mythril','3x zirconium'], 0x238432, [noDecomp]);
 
         MH.compDust('mythrillic_hydride', ['1x mythril', '2x hydrogen'], 0x238338, [noDecomp]);
+        */
 
         // Calamatium/Isovol Line
+        /*
         MH.compLiquid('impure_calamatium_solution', [], 0x990000, []);
 
         MH.compLiquid('impure_isovol_solution', [], 0x000066, []);
@@ -775,8 +784,10 @@
         MH.compDust('calamatium_fluoride', ['1x calamatium', '2x fluorine'], 0xcc0066, [noDecomp]);
 
         MH.compDust('isovol_fluoride', ['1x isovol', '2x fluorine'], 0x9900ff, [noDecomp]);
+        */
 
         // Magmas
+        /*
         MH.compLiquidTemp('highly_unstable_nether_magma', 9001, ['1x mystery'], 0xffa025, [noDecomp]);
 
         MH.compLiquidTemp('debris_rich_nether_magma', 7600, ['1x mystery'], 0x6c3628, [noDecomp]);
@@ -816,11 +827,13 @@
             0xf26b87,
             [noDecomp]
         );
+        */
 
         // End
 
         // Abydos
         // Titanite(Zirconium) Line
+        /*
         MH.compLiquid('titanite_slurry', ['1x titanite', '1x mystery'], 0x862d2d, [noDecomp]);
 
         MH.compLiquid('titanite_slurry_residue', ['1x rutile', '1x mystery'], 0xbf4040, [noDecomp]);
@@ -839,8 +852,10 @@
         ]);
 
         MH.compDust('zirconium_tetrachloride', ['1x zirconium', '4x chlorine'], 0xffad33, [noDecomp]);
+        */
 
         // Zapolite(Zapolgium) line
+        /*
         MH.compDust('zapolgium_aluminium_oxide', ['1x zapolgium', '2x iodine', '2x aluminium', '4x oxygen'], 0x6666ff, [
             noDecomp,
         ]);
@@ -854,8 +869,10 @@
         MH.compDust('zapolgium_chloride', ['1x zapolgium', '2x chlorine'], 0x99ff33, [noDecomp]);
 
         MH.compDust('zapolgium_hydroxide', ['1x zapolgium', '2x oxygen', '2x hydrogen'], 0x00ff99, [noDecomp]);
+        */
 
         // Xenotime RE line
+        /*
         MH.compLiquid('rare_earth_sulfate_solution', ['2x mystery', '3x sulfate'], 0xc6c2a8, [noDecomp]);
 
         MH.compLiquid('rare_earth_leach_mixture', ['3x mystery', '3x sulfate'], 0xafad9f, [noDecomp]);
@@ -863,11 +880,14 @@
         MH.compLiquid('rare_earth_concentrate', ['1x mystery', '1x sulfur', '4x oxygen'], 0x8c8a7e, [noDecomp]);
 
         MH.compDust('rich_rare_earth', ['1x mystery'], 0xb5ac90, [noDecomp]);
+        */
 
         // Naquadite Line
+        /*
         MH.compLiquid('hydroiodic_acid', ['1x hydrogen', '1x iodine'], 0x906ad6, [noDecomp]);
 
         MH.compLiquid('naquadite_solution', ['1x naquadite', '1x mystery'], 0x524848, [noDecomp]);
+        */
 
         // Alloys and other compounds
         MH.conductor(

@@ -22,4 +22,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compDust('copper_chloride', ['1x copper', '1x chlorine'], 0xfff9e8, []);
 
     MH.compLiquid('cupric_chloride_solution', ['1x copper_chloride', '1x hydrochloric_acid'], 0x336600, []);
+
+    MH.compLiquid('hydroiodic_acid', ['1x hydrogen', '1x iodine'], 0x906ad6, [noDecomp]);
 });
