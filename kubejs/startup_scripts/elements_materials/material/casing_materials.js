@@ -1,7 +1,23 @@
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
-    const { plates, rod, frame, smallGear, gear, round, ring, boltAndScrew, longRod, foil, densePlate } = FLAGS;
+    const {
+        plates,
+        rod,
+        frame,
+        smallGear,
+        gear,
+        round,
+        ring,
+        boltAndScrew,
+        longRod,
+        foil,
+        densePlate,
+        noDecomp,
+        noABSRecipe,
+        fineWire,
+        rotor,
+    } = FLAGS;
     const { metallic, shiny, dull } = ICONSETS;
 
     MH.compIngot(
@@ -100,5 +116,144 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         metallic,
         [8990, 'highest', GTValues.VHA[UV], 2400],
         [plates, rod, frame, smallGear, gear, round, ring, boltAndScrew, longRod, foil, densePlate]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'expetidalloy_d_17',
+        ['2x hafnide_ceramic_base', '11x hastelloy_c_276', '3x dragonsteel', '1x rhodium_plated_palladium'],
+        0xa78e99,
+        0x948da6,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.conductorPlasma(
+        'rhenate_w',
+        ['2x rhenium', '5x tungsten', '1x neutronium', '18x rose_gold', '7x neodymium'],
+        0x87bcd0,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [GTValues.V[UIV], 1, 192, false],
+        [noDecomp, noABSRecipe, fineWire]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'borealic_steel',
+        [
+            '2x prismalium',
+            '4x rose_gold',
+            '8x aurourium',
+            '2x tritan_steel',
+            '1x ancient_netherite',
+            '3x borealic_concentrate',
+        ],
+        0x8f7090,
+        0x70907c,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'hvga_steel',
+        ['1x signalum', '3x hssg', '1x draco_abyssal', '8x hsla_steel', '3x tritan_steel'],
+        0x280c6c,
+        0x2561b7,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe, foil]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'melastrium_mox',
+        ['2x osmiridium', '7x astrenalloy_nx', '3x melodium', '1x potin'],
+        0x7d486d,
+        0x4c487d,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'trikoductive_neutro_steel',
+        ['6x isovol', '5x tritan_steel', '1x estalt', '3x ruthenium_trinium_americium_neutronate', '2x twinite'],
+        0x908080,
+        0x6a3f3f,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'soul_ascendant_cuperite',
+        [
+            '12x soul_infused',
+            '3x nickel_zinc_ferrite',
+            '6x magnalium',
+            '5x niobium_nitride',
+            '1x mercury_barium_calcium_cuprate',
+        ],
+        0x9ca58b,
+        0x83805a,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'mythrotight_carbide_steel',
+        ['8x watertight_steel', '2x mythril', '5x samarium_iron_arsenic_oxide', '3x tungsten_carbide', '1x kanthal'],
+        0x2b4951,
+        0x37265e,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'aerorelient_steel',
+        ['3x cobalt_brass', '6x red_steel', '2x watertight_steel', '5x hsse', '1x indium'],
+        0x6e644d,
+        0x50583e,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, rotor, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'vastaqalloy_cr_4200x',
+        ['5x thacoloy_nq_42x', '4x stellite_100', '2x vanadium_gallium', '3x tungsten_steel', '1x chromium'],
+        0x6f7343,
+        0x534531,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'ultispestalloy_cmsh',
+        ['2x magmada_alloy', '3x shellite', '15x ultimet', '6x hastelloy_c_276', '1x hafnium'],
+        0x684e6f,
+        0x4b1146,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.compIngotPlasmaSecColor(
+        'zeroidic_trinate_steel',
+        [
+            '3x enriched_naquadah_trinium_europium_duranide',
+            '7x zeron_100',
+            '1x xeproda',
+            '2x tritan_steel',
+            '4x calamatium',
+        ],
+        0x77686f,
+        0x3d075c,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
     );
 });

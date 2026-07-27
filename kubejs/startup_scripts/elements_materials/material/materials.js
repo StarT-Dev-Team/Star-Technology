@@ -2087,6 +2087,7 @@
         */
 
         //Threaded
+        /*
         MH.compIngotPlasmaSecColor(
             'expetidalloy_d_17',
             ['2x hafnide_ceramic_base', '11x hastelloy_c_276', '3x dragonsteel', '1x rhodium_plated_palladium'],
@@ -2231,8 +2232,10 @@
             [18880, 'highest', VA('uxv'), 600],
             [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
         );
+        */
 
         //DES + PBD Line
+        /*
         MH.noCompFluid('draconic_hormone_residue', 0x6c4d6e);
 
         MH.noCompFluid('drac_endrocritic_medium', 0x75577a);
@@ -2272,6 +2275,7 @@
         MH.noCompFluid('pyrothyin', 0x8c4d3a);
 
         MH.noCompFluid('growth_hormone_complex', 0x756b7d);
+        */
 
         //UXV Materials
         MH.compDustLiquid('netherite_triselex_oxide', ['4x netherite', '3x selenium', '8x oxygen'], 0xcfd9a3, [

@@ -131,19 +131,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
             noABSRecipe
         );
 
-    event
-        .create('nyanium')
-        .components('7x aurourium', '4x uranium_rhodium_dinaquadide', '1x magnesium_nitride', '2x pure_netherite')
-        .ingot()
-        .fluid()
-        .plasma()
-        .color(0xe4c6eb)
-        .secondaryColor(0xa45ef5)
-        .blastTemp(17290, 'highest', GTValues.VA[UEV], 600)
-        .iconSet(shiny) // Will Have Own in Theta? but that is a LOT of work
-        .fluidPipeProperties(78500, 2500, true, true, true, true)
-        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noDecomp, noABSRecipe);
-
     MH.compIngotPlasma(
         'starium_alloy',
         ['4x nether_star_concentrate', '2x trinaquadalloy', '2x estalt'],
