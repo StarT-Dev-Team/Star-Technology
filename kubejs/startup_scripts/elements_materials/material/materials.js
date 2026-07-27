@@ -578,7 +578,7 @@
         */
 
         // Ores and bedrock fluids
-
+        /*
         MH.compDustOre('titanite', ['1x calcium', '1x titanium', '1x silicon', '5x oxygen'], 0x66ffff, [noDecomp]);
 
         MH.compDustOre('zapolite', ['2x zapolgium', '4x iodine', '2x aluminium', '5x oxygen'], 0xcc0099, [noDecomp]);
@@ -666,6 +666,7 @@
             0xad2705,
             [noDecomp]
         );
+        */
 
         // Nether
 
