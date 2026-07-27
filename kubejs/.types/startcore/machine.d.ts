@@ -218,16 +218,15 @@ declare namespace internal.com.startechnology.start_core.machine.bulking {
 }
 
 declare namespace internal.com.startechnology.start_core.machine.compound_generator {
-    import WorkableElectricMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import WorkableElectricMultiblockMachine = com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
     import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
-
     interface CompoundGeneratorMachine extends $object<
         'com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine',
         WorkableElectricMultiblockMachine
     > {}
 
     const CompoundGeneratorMachine: $class<CompoundGeneratorMachine> & {
-        new (holder: IMachineBlockEntity, tier: number): CompoundGeneratorMachine;
+        new (holder: IMachineBlockEntity, tier: number, ...args: any[]): CompoundGeneratorMachine;
     };
 }
 

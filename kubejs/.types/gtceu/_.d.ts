@@ -242,8 +242,8 @@ declare const GTRecipeModifiers: typeof internal.com.gregtechceu.gtceu.common.da
 declare const GTSoundEntries: typeof internal.com.gregtechceu.gtceu.common.data.GTSoundEntries;
 declare const GCYMBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GCYMBlocks;
 declare const GTBlocks: typeof internal.com.gregtechceu.gtceu.common.data.GTBlocks;
+declare const GTMachines: typeof internal.com.gregtechceu.gtceu.common.data.GTMachines;
 declare const GCYMMachines: typeof internal.com.gregtechceu.gtceu.common.data.machines.GCYMMachines;
-declare const GTMachines: typeof internal.com.gregtechceu.gtceu.common.data.machines.GTMachines;
 declare const GTCEuStartupEvents: internal.kjs.gtceu.StartupEvents;
 declare const GTCEuServerEvents: internal.kjs.gtceu.ServerEvents;
 declare const GTValues: typeof internal.com.gregtechceu.gtceu.api.GTValues;

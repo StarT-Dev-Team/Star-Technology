@@ -135,8 +135,8 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {}
 
     import MultiblockMachineDefinition = api.machine.MultiblockMachineDefinition;
-    import MultiblockControllerMachine = gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
-    import MultiblockMachineBuilder = gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder;
+    import MultiblockControllerMachine = api.machine.multiblock.MultiblockControllerMachine;
+    import MultiblockMachineBuilder = api.registry.registrate.MultiblockMachineBuilder;
 
     interface KJSWrappingMultiblockBuilder extends $object<
         'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingMultiblockBuilder',
@@ -144,8 +144,24 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
-        machine(machine: (holder: IMachineBlockEntity, definition: number) => MultiblockControllerMachine): this;
-        definition(definition: (tier: number, builder: MultiblockMachineBuilder) => void): this;
+        tiersBetween(minTier: number, maxTier: number): this;
+        machine(machine: $wrapped<KJSTieredMultiblockBuilder$TieredCreationFunction>): this;
+        definition(definition: $wrapped<KJSTieredMultiblockBuilder$DefinitionFunction>): this;
+    }
+
+    interface KJSTieredMultiblockBuilder$DefinitionFunction extends $object<{
+        name: 'internal.com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMultiblockBuilder$DefinitionFunction';
+        functionalInterface: 'apply';
+    }> {
+        readonly __com_gregtechceu_gtceu_integration_kjs_builders_machine_KJSTieredMultiblockBuilder$DefinitionFunction: unique symbol;
+        apply(tier: number, builder: MultiblockMachineBuilder): void;
+    }
+
+    interface KJSTieredMultiblockBuilder$TieredCreationFunction extends $object<{
+        name: 'internal.com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMultiblockBuilder$TieredCreationFunction';
+        functionalInterface: 'create';
+    }> {
+        create(holder: IMachineBlockEntity, tier: number): MultiblockControllerMachine;
     }
 
     interface KJSWrappingMachineBuilder extends $object<
