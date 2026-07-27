@@ -118,10 +118,7 @@ ServerEvents.recipes((event) => {
             .duration(400)
             .EUtVHA(IV)
     ).scannerResearch((researchRecipeBuilder) =>
-        researchRecipeBuilder
-            .researchStack(Item.of('gtceu:vacuum_freezer'))
-            .duration(1800)
-            .EUt(GTValues.VHA[EV])
+        researchRecipeBuilder.researchStack(Item.of('gtceu:vacuum_freezer')).duration(1800).EUt(GTValues.VHA[EV])
     );
 
     $(
@@ -143,10 +140,7 @@ ServerEvents.recipes((event) => {
             .duration(400)
             .EUtVHA(LuV)
     ).scannerResearch((researchRecipeBuilder) =>
-        researchRecipeBuilder
-            .researchStack(Item.of('gtceu:industrial_barrel'))
-            .duration(1800)
-            .EUt(GTValues.VHA[LuV])
+        researchRecipeBuilder.researchStack(Item.of('gtceu:industrial_barrel')).duration(1800).EUt(GTValues.VHA[LuV])
     );
 
     event.recipes.gtceu
@@ -184,12 +178,9 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:soldering_alloy 1152')
             .itemOutputs('gtceu:super_gas_collector')
             .duration(400)
-            .EUtVHA(LuV);
+            .EUtVHA(LuV)
     ).scannerResearch((researchRecipeBuilder) =>
-        researchRecipeBuilder
-            .researchStack(Item.of('gtceu:iv_gas_collector'))
-            .duration(1800)
-            .EUt(GTValues.VHA[LuV])
+        researchRecipeBuilder.researchStack(Item.of('gtceu:iv_gas_collector')).duration(1800).EUt(GTValues.VHA[LuV])
     );
 
     event.shaped('gtceu:industrial_extraction_chamber', ['TPG', 'AMA', 'GCT'], {

@@ -30,10 +30,7 @@ ServerEvents.recipes((event) => {
             .duration(1200)
             .EUtVA(LuV)
     ).scannerResearch((researchRecipeBuilder) =>
-        researchRecipeBuilder
-            .researchStack(Item.of('gtceu:superconducting_coil'))
-            .duration(1200)
-            .EUt(GTValues.VA[IV])
+        researchRecipeBuilder.researchStack(Item.of('gtceu:superconducting_coil')).duration(1200).EUt(GTValues.VA[IV])
     );
 
     event.recipes.gtceu
