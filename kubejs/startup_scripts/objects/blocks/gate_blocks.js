@@ -1,4 +1,10 @@
 StartupEvents.registry('block', (event) => {
+    /**
+     * @param {string} gate
+     * @param {string} type
+     * @param {string} side
+     * @param {string} front
+     */
     const gateRingBlocks = (gate, type, side, front) => {
         event
             .create(gate + '_stargate_' + type + '_block')

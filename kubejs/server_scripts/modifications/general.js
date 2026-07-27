@@ -12,13 +12,16 @@ ServerEvents.recipes((event) => {
 
     event.remove({ id: 'create:splashing/stained_glass' });
 
+    /**
+     * @param {string} mod
+     */
     const nuggetFixMod = (mod) => {
-        event.replaceOutput({ output: `${mod}:copper_nugget` }, `${mod}:copper_nugget`, `gtceu:copper_nugget`);
-        event.replaceOutput({ output: `${mod}:zinc_nugget` }, `${mod}:zinc_nugget`, `gtceu:zinc_nugget`);
-        event.replaceOutput({ output: `${mod}:brass_nugget` }, `${mod}:brass_nugget`, `gtceu:brass_nugget`);
-        event.replaceInput({ input: `${mod}:copper_nugget` }, `${mod}:copper_nugget`, `gtceu:copper_nugget`);
-        event.replaceInput({ input: `${mod}:zinc_nugget` }, `${mod}:zinc_nugget`, `gtceu:zinc_nugget`);
-        event.replaceInput({ input: `${mod}:brass_nugget` }, `${mod}:brass_nugget`, `gtceu:brass_nugget`);
+        event.replaceOutput({ output: `${mod}:copper_nugget` }, `${mod}:copper_nugget`, 'gtceu:copper_nugget');
+        event.replaceOutput({ output: `${mod}:zinc_nugget` }, `${mod}:zinc_nugget`, 'gtceu:zinc_nugget');
+        event.replaceOutput({ output: `${mod}:brass_nugget` }, `${mod}:brass_nugget`, 'gtceu:brass_nugget');
+        event.replaceInput({ input: `${mod}:copper_nugget` }, `${mod}:copper_nugget`, 'gtceu:copper_nugget');
+        event.replaceInput({ input: `${mod}:zinc_nugget` }, `${mod}:zinc_nugget`, 'gtceu:zinc_nugget');
+        event.replaceInput({ input: `${mod}:brass_nugget` }, `${mod}:brass_nugget`, 'gtceu:brass_nugget');
     };
 
     nuggetFixMod('create');
@@ -97,6 +100,12 @@ ServerEvents.recipes((event) => {
 
     // Effortless Building Upgrade Accessibility
     global.withEffortlessBuilding(() => {
+        /**
+         * @param {string} type
+         * @param {string} mat
+         * @param {string} dye
+         * @param {string} core
+         */
         const reachUpgrade = (type, mat, dye, core) => {
             event.remove({ output: `effortlessbuilding:reach_upgrade${type}` });
             event
@@ -108,9 +117,9 @@ ServerEvents.recipes((event) => {
                 .id(`start:shaped/reach_upgrade${type}`);
         };
 
-        reachUpgrade('1', 'minecraft:slime_ball', 'minecraft:lime_dye', `minecraft:ender_pearl`);
-        reachUpgrade('2', 'minecraft:glowstone_dust', 'minecraft:orange_dye', `effortlessbuilding:reach_upgrade1`);
-        reachUpgrade('3', 'minecraft:amethyst_shard', 'minecraft:purple_dye', `effortlessbuilding:reach_upgrade2`);
+        reachUpgrade('1', 'minecraft:slime_ball', 'minecraft:lime_dye', 'minecraft:ender_pearl');
+        reachUpgrade('2', 'minecraft:glowstone_dust', 'minecraft:orange_dye', 'effortlessbuilding:reach_upgrade1');
+        reachUpgrade('3', 'minecraft:amethyst_shard', 'minecraft:purple_dye', 'effortlessbuilding:reach_upgrade2');
     });
 
     // Bingus

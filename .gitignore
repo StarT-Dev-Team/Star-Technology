@@ -51,14 +51,24 @@ config/*
 !config/thermal-common.toml
 !config/toms_storage-common.toml
 
+# Misc
+.DS_Store
+
 # Linting stuff
 !package.json
 !package-lock.json
 !eslint.config.mjs
 !.prettierignore
 !.prettierrc
+!jsconfig.json
+
 # wth is this jank
 !.vscode/
-.vscode/* 
+.vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# AI docs
+!AGENTS.md
+!CLAUDE.md
+!.gemini/

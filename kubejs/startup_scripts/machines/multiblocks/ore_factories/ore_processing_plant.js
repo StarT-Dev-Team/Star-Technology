@@ -20,29 +20,31 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' AAA ', ' FFF ', ' FFF ', '  F  ', '     ', '     ', '     ')
-                .aisle('AFFFA', 'FG GF', 'F   F', ' F F ', ' FFF ', '  F  ', '  B  ')
-                .aisle('AFFFA', 'F P F', 'F P F', 'F P F', ' FPF ', ' FMF ', ' B B ')
-                .aisle('AFFFA', 'FG GF', 'F   F', ' F F ', ' FFF ', '  F  ', '  B  ')
-                .aisle(' AAA ', ' FCF ', ' FFF ', '  F  ', '     ', '     ', '     ')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'F',
-                    Predicates.blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get()) //All Hatches have a max
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('M', Predicates.abilities(PartAbility.MUFFLER))
-                .where('P', Predicates.blocks(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()))
-                .where('G', Predicates.blocks(GTBlocks.CASING_TUNGSTENSTEEL_GEARBOX.get()))
-                .where('A', Predicates.blocks(GTBlocks.FIREBOX_TUNGSTENSTEEL.get()))
-                .where('B', Predicates.blocks('gtceu:bronze_machine_casing'))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                ' AAA | FFF | FFF |  F  |     |     |     ',
+                'AFFFA|FG GF|F   F| F F | FFF |  F  |  B  ',
+                'AFFFA|F P F|F P F|F P F| FPF | FMF | B B ',
+                'AFFFA|FG GF|F   F| F F | FFF |  F  |  B  ',
+                ' AAA | FCF | FFF |  F  |     |     |     ',
+            ])
+                .whereDict({
+                    C: P.controller(definition),
+                    F: P.anyOf([
+                        P.block(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get()), //All Hatches have a max
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 2 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    M: P.ability(PA.muffler),
+                    P: P.block(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()),
+                    G: P.block(GTBlocks.CASING_TUNGSTENSTEEL_GEARBOX.get()),
+                    A: P.block(GTBlocks.FIREBOX_TUNGSTENSTEEL.get()),
+                    B: P.gtBlock('bronze_machine_casing'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

@@ -33,7 +33,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('gtceu:purified_debris_dust')
         .inputFluids('gtceu:tetrachloroethylene 100')
         .itemOutputs('gtceu:pure_netherite_dust')
-        .duration(300)
+        .duration(200)
         .EUt(20450);
 
     event.recipes.gtceu

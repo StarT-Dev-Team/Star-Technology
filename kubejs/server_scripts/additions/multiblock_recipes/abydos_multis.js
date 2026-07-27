@@ -14,15 +14,12 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:chemical_plant')
         .duration(1200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:large_chemical_reactor'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(64)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:large_chemical_reactor')).EUt(GTValues.VHA[UV]).CWUt(64)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
-        .assembly_line(id(`advanced_synthesis_plant`))
+        .assembly_line(id('advanced_synthesis_plant'))
         .itemInputs(
             'gtceu:zpm_machine_hull',
             '4x gtceu:zpm_sensor',
@@ -36,12 +33,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:advanced_synthesis_plant')
         .duration(1200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:zpm_chemical_reactor'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(64)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_chemical_reactor')).EUt(GTValues.VHA[UV]).CWUt(64)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('bacteria_synthesizer'))
@@ -56,12 +50,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:bacteria_synthesizer')
         .duration(1200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:uv_chemical_reactor'))
-                .EUt(GTValues.VHA[GTValues.UHV])
-                .CWUt(96)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:uv_chemical_reactor')).EUt(GTValues.VHA[UHV]).CWUt(96)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('cyclonic_sifter'))
@@ -79,12 +70,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:cyclonic_sifter')
         .duration(1600)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:large_sifting_funnel'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:large_sifting_funnel')).EUt(GTValues.VHA[UV]).CWUt(24)
         )
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('manifold_centrifuge'))
@@ -104,12 +92,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:manifold_centrifuge')
         .duration(2400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:large_centrifuge'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(144)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:large_centrifuge')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('injection_mixer'))
@@ -127,9 +112,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:injection_mixer')
         .duration(2400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:large_mixer')).EUt(GTValues.VHA[GTValues.UV]).CWUt(144)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:large_mixer')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('molten_destabiliser'))
@@ -147,12 +132,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:molten_destabiliser')
         .duration(2250)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:large_distillery'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:large_distillery')).EUt(GTValues.VHA[UV]).CWUt(24)
         )
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('titan_forge'))
@@ -170,9 +152,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:titan_forge')
         .duration(1600)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:large_extruder')).EUt(GTValues.VA[GTValues.ZPM]).CWUt(64)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:large_extruder')).EUt(GTValues.VA[ZPM]).CWUt(64)
         )
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('compact_assembly_line'))
@@ -194,9 +176,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:compact_assembly_line')
         .duration(1500)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:assembly_line')).EUt(GTValues.VHA[GTValues.UV]).CWUt(128)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:assembly_line')).EUt(GTValues.VHA[UV]).CWUt(128)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('component_nexus'))
@@ -221,12 +203,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:component_nexus')
         .duration(1800)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:compact_assembly_line'))
-                .EUt(GTValues.VHA[GTValues.UHV])
-                .CWUt(144)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:compact_assembly_line')).EUt(GTValues.VHA[UHV]).CWUt(144)
         )
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .assembly_line(id('super_heat_chamber'))
@@ -246,10 +225,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:hsse 6912', 'gtceu:niobium_titanium 1728')
         .itemOutputs('gtceu:super_pressure_heat_chamber')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:heat_chamber')).EUt(GTValues.VHA[GTValues.UV]).CWUt(128)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:heat_chamber')).EUt(GTValues.VHA[UV]).CWUt(128)
         )
         .duration(3200)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('exotic_rock_crusher'))
@@ -267,10 +246,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:exotic_tectonic_formation_apparatus')
         .duration(2400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:uv_rock_crusher'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:uv_rock_crusher')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 });

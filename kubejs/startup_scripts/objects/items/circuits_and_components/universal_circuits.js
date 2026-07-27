@@ -19,7 +19,7 @@ StartupEvents.registry('item', (event) => {
     ['ulv', 'lv', 'mv', 'hv', 'ev', 'iv', 'luv', 'zpm', 'uv', 'uhv', 'uev', 'uiv', 'uxv'].forEach((tier) => {
         event
             .create(`${tier}_universal_circuit`)
-            .tooltip(Text.translate(`item.kubejs.universal_circuit.tooltip`))
+            .tooltip(Text.translate('item.kubejs.universal_circuit.tooltip'))
             .texture(`kubejs:item/circuits_and_components/universal_circuits/${tier}_universal_circuit`);
     });
 });

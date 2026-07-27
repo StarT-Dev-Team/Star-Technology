@@ -20,148 +20,37 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:nyanium_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(
-                    '                           ',
-                    '                           ',
-                    '             B             ',
-                    '             B             ',
-                    '             B             ',
-                    '             B             ',
-                    '             B             ',
-                    '                           ',
-                    '                           '
-                )
-                .aisle(
-                    '                           ',
-                    '             B             ',
-                    '             B             ',
-                    '                           ',
-                    '          BCCCCCB          ',
-                    '                           ',
-                    '             B             ',
-                    '             B             ',
-                    '                           '
-                )
-                .aisle(
-                    '           BBBBB           ',
-                    '                           ',
-                    '                           ',
-                    '                           ',
-                    '         B       B         ',
-                    '                           ',
-                    '                           ',
-                    '                           ',
-                    '           BBBBB           '
-                )
-                .aisle(
-                    '          BBDDDBB          ',
-                    '                           ',
-                    '         CCCCCCCCC         ',
-                    'B       B         B       B',
-                    'BB      BB       BB      BB',
-                    'B       B         B       B',
-                    '         CCCCCCCCC         ',
-                    '                           ',
-                    '          BBDDDBB          '
-                )
-                .aisle(
-                    '          BDDDDDB          ',
-                    '                           ',
-                    'B       B         B       B',
-                    'BEE    EEE       EEE    EEB',
-                    'BEFFDDFFFE       EFFFDDFFEB',
-                    'BEE    EEE       EEE    EEB',
-                    'B       B         B       B',
-                    '                           ',
-                    '          BDDDDDB          '
-                )
-                .aisle(
-                    '          BDDGDDB          ',
-                    '         B   G   B         ',
-                    'BB      BB   G   BB      BB',
-                    'BEFFDDFFFE   G   EFFFDDFFEB',
-                    'HGGGGGGGGGGGGGGGGGGGGGGGGGH',
-                    'BEFFDDFFFE   G   EFFFDDFFEB',
-                    'BB      BB   G   BB      BB',
-                    '         B   G   B         ',
-                    '          BDDGDDB          '
-                )
-                .aisle(
-                    '          BDDDDDB          ',
-                    '                           ',
-                    'B       B         B       B',
-                    'BEE    EEE       EEE    EEB',
-                    'BEFFDDFFFE   G   EFFFDDFFEB',
-                    'BEE    EEE       EEE    EEB',
-                    'B       B         B       B',
-                    '                           ',
-                    '          BDDDDDB          '
-                )
-                .aisle(
-                    '          BBDDDBB          ',
-                    '                           ',
-                    '         CCCCCCCCC         ',
-                    'B       B         B       B',
-                    'BB      BB   G   BB      BB',
-                    'B       B         B       B',
-                    '         CCCCCCCCC         ',
-                    '                           ',
-                    '          BBDDDBB          '
-                )
-                .aisle(
-                    '           BBBBB           ',
-                    '                           ',
-                    '                           ',
-                    '                           ',
-                    '         B   G   B         ',
-                    '                           ',
-                    '                           ',
-                    '                           ',
-                    '           BBBBB           '
-                )
-                .aisle(
-                    '                           ',
-                    '             B             ',
-                    '             B             ',
-                    '                           ',
-                    '          BCCGCCB          ',
-                    '                           ',
-                    '             B             ',
-                    '             B             ',
-                    '                           '
-                )
-                .aisle(
-                    '                           ',
-                    '                           ',
-                    '             B             ',
-                    '             B             ',
-                    '             @             ',
-                    '             B             ',
-                    '             B             ',
-                    '                           ',
-                    '                           '
-                )
-                .where(' ', Predicates.any())
-                .where('B', Predicates.blocks('kubejs:nyanium_machine_casing'))
-                .where('C', Predicates.blocks('gtceu:draconyallium_frame'))
-                .where(
-                    'D',
-                    Predicates.blocks('kubejs:draco_resilient_fusion_glass')
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('E', Predicates.blocks('kubejs:draco_ware_casing'))
-                .where('F', Predicates.blocks('kubejs:draco_assembly_grating'))
-                .where('G', Predicates.blocks('kubejs:dragonsteel_casing'))
-                .where(
-                    'H',
-                    Predicates.abilities(PartAbility.IMPORT_ITEMS).or(Predicates.abilities(PartAbility.IMPORT_FLUIDS))
-                )
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                '                           |                           |             B             |             B             |             B             |             B             |             B             |                           |                           ',
+                '                           |             B             |             B             |                           |          BCCCCCB          |                           |             B             |             B             |                           ',
+                '           BBBBB           |                           |                           |                           |         B       B         |                           |                           |                           |           BBBBB           ',
+                '          BBDDDBB          |                           |         CCCCCCCCC         |B       B         B       B|BB      BB       BB      BB|B       B         B       B|         CCCCCCCCC         |                           |          BBDDDBB          ',
+                '          BDDDDDB          |                           |B       B         B       B|BEE    EEE       EEE    EEB|BEFFDDFFFE       EFFFDDFFEB|BEE    EEE       EEE    EEB|B       B         B       B|                           |          BDDDDDB          ',
+                '          BDDGDDB          |         B   G   B         |BB      BB   G   BB      BB|BEFFDDFFFE   G   EFFFDDFFEB|HGGGGGGGGGGGGGGGGGGGGGGGGGH|BEFFDDFFFE   G   EFFFDDFFEB|BB      BB   G   BB      BB|         B   G   B         |          BDDGDDB          ',
+                '          BDDDDDB          |                           |B       B         B       B|BEE    EEE       EEE    EEB|BEFFDDFFFE   G   EFFFDDFFEB|BEE    EEE       EEE    EEB|B       B         B       B|                           |          BDDDDDB          ',
+                '          BBDDDBB          |                           |         CCCCCCCCC         |B       B         B       B|BB      BB   G   BB      BB|B       B         B       B|         CCCCCCCCC         |                           |          BBDDDBB          ',
+                '           BBBBB           |                           |                           |                           |         B   G   B         |                           |                           |                           |           BBBBB           ',
+                '                           |             B             |             B             |                           |          BCCGCCB          |                           |             B             |             B             |                           ',
+                '                           |                           |             B             |             B             |             @             |             B             |             B             |                           |                           ',
+            ])
+                .whereDict({
+                    ' ': P.any(),
+                    B: P.kjsBlock('nyanium_machine_casing'),
+                    C: P.gtBlock('draconyallium_frame'),
+                    D: P.anyOf([
+                        P.kjsBlock('draco_resilient_fusion_glass'),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2 }),
+                        P.ability(PA.fluidOut, { max: 2 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    E: P.kjsBlock('draco_ware_casing'),
+                    F: P.kjsBlock('draco_assembly_grating'),
+                    G: P.kjsBlock('dragonsteel_casing'),
+                    H: P.abilityOr([PA.itemIn, PA.fluidIn]),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel('kubejs:block/casings/nyanium/casing', 'gtceu:block/multiblock/hpca');

@@ -18,17 +18,18 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('DDD', 'PPP', 'PPP', 'PPP')
                 .aisle('DDD', 'P P', 'P P', 'P P')
                 .aisle('DDD', 'PCP', 'PPP', 'PPP')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'P',
-                    Predicates.blocks('minecraft:stone')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                )
-                .where('D', Predicates.blocks('minecraft:stone_bricks'))
-                .where(' ', Predicates.air())
+                .whereDict({
+                    C: P.controller(definition),
+                    P: P.anyOf([
+                        P.block('minecraft:stone'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                    ]),
+                    D: P.block('minecraft:stone_bricks'),
+                    ' ': P.air(),
+                })
                 .build()
         )
         .workableCasingModel('minecraft:block/stone', 'kubejs:block/multiblock/primitive_blast_furnace')
@@ -50,7 +51,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         type: 'fluid',
                         index: 0,
                         pos: [24, 20],
-                        texture: GuiTextureGroup(
+                        texture: new GuiTextureGroup(
                             GuiTextures.PRIMITIVE_SLOT,
                             GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.getSubTexture(0, 0.04, 1, 0.22)
                         ),
@@ -59,7 +60,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         type: 'fluid',
                         index: 1,
                         pos: [24, 38],
-                        texture: GuiTextureGroup(
+                        texture: new GuiTextureGroup(
                             GuiTextures.PRIMITIVE_SLOT,
                             GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.getSubTexture(0, 0.04, 1, 0.22)
                         ),
@@ -71,7 +72,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         type: 'fluid',
                         index: 0,
                         pos: [114, 38],
-                        texture: GuiTextureGroup(
+                        texture: new GuiTextureGroup(
                             GuiTextures.PRIMITIVE_SLOT,
                             GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.getSubTexture(0, 0.04, 1, 0.22)
                         ),

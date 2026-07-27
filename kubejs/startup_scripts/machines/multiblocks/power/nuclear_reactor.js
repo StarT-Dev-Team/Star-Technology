@@ -18,36 +18,35 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('HHHXHHH', ' VHGHV ', ' VHGHV ', ' VHGHV ', 'HHHHHHH')
-                .aisle(' VHHHV ', '  E E  ', '  H H  ', '  E E  ', ' VHHHV ')
-                .aisle(' VHHHV ', '  HPH  ', '  G G  ', '  HPH  ', ' VHHHV ')
-                .aisle(' VHHHV ', '  EPE  ', '  HPH  ', '  EPE  ', ' VHHHV ')
-                .aisle('HHHHHHH', ' VHPHV ', ' VHPHV ', ' VHPHV ', 'HHHHHHH')
-                .aisle(' VHHHV ', '  EPE  ', '  HPH  ', '  EPE  ', ' VHHHV ')
-                .aisle(' VHHHV ', '  HPH  ', '  G G  ', '  HPH  ', ' VHHHV ')
-                .aisle(' VHHHV ', '  E E  ', '  H H  ', '  E E  ', ' VHHHV ')
-                .aisle('HHH@HHH', ' VHGHV ', ' VHGHV ', ' VHGHV ', 'HHHHHHH')
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'H',
-                    Predicates.blocks('gtceu:high_temperature_smelting_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('V', Predicates.blocks('gtceu:heat_vent'))
-                .where('G', Predicates.blocks('gtceu:laminated_glass'))
-                .where('P', Predicates.blocks('gtceu:tungstensteel_pipe_casing'))
-                .where('E', Predicates.blocks('kubejs:pallaridium_engine_intake_casing'))
-                .where(
-                    'X',
-                    Predicates.abilities(PartAbility.OUTPUT_ENERGY).or(Predicates.abilities(PartAbility.OUTPUT_LASER))
-                )
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                'HHHXHHH| VHGHV | VHGHV | VHGHV |HHHHHHH',
+                ' VHHHV |  E E  |  H H  |  E E  | VHHHV ',
+                ' VHHHV |  HPH  |  G G  |  HPH  | VHHHV ',
+                ' VHHHV |  EPE  |  HPH  |  EPE  | VHHHV ',
+                'HHHHHHH| VHPHV | VHPHV | VHPHV |HHHHHHH',
+                ' VHHHV |  EPE  |  HPH  |  EPE  | VHHHV ',
+                ' VHHHV |  HPH  |  G G  |  HPH  | VHHHV ',
+                ' VHHHV |  E E  |  H H  |  E E  | VHHHV ',
+                'HHH@HHH| VHGHV | VHGHV | VHGHV |HHHHHHH',
+            ])
+                .whereDict({
+                    '@': P.controller(definition),
+                    H: P.anyOf([
+                        P.gtBlock('high_temperature_smelting_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    V: P.gtBlock('heat_vent'),
+                    G: P.gtBlock('laminated_glass'),
+                    P: P.gtBlock('tungstensteel_pipe_casing'),
+                    E: P.kjsBlock('pallaridium_engine_intake_casing'),
+                    X: P.abilityOr([PA.euOut, PA.laserOut]),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

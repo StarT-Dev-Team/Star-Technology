@@ -8,7 +8,7 @@ StartupEvents.registry('item', (event) => {
 
     event
         .create('worries_about_it')
-        .displayName(`§4DON'T§r Worry About It :)`)
+        .displayName("§4DON'T§r Worry About It :)")
         .texture('kubejs:item/stargate/gate_items/misc/worry');
 
     event

@@ -69,7 +69,7 @@ ServerEvents.recipes((event) => {
     event.remove({ id: 'gtceu:combustion_generator/naphtha' });
     event.recipes.gtceu.combustion_generator(id('naphtha')).inputFluids('gtceu:naphtha 4').duration(30).EUt(-32);
 
-    /* 
+    /*
     event.recipes.gtceu.brewery(id('sunflower_oil'))
         .itemInputs('16x minecraft:sunflower')
         .outputFluids('thermal_extra:sunflower_oil 500')
@@ -129,11 +129,11 @@ ServerEvents.recipes((event) => {
     event.custom({
         type: 'systeams:boiling',
         ingredient: {
-            fluid: `minecraft:water`,
+            fluid: 'minecraft:water',
             amount: 100,
         },
         result: {
-            fluid: `systeams:steam`,
+            fluid: 'systeams:steam',
             amount: 400,
         },
     });
@@ -142,11 +142,11 @@ ServerEvents.recipes((event) => {
         type: 'systeams:boiling',
         ingredient: {
             // eslint-disable-next-line id-match, camelcase
-            fluid_tag: `forge:steam`,
+            fluid_tag: 'forge:steam',
             amount: 50,
         },
         result: {
-            fluid: `systeams:steamier`,
+            fluid: 'systeams:steamier',
             amount: 100,
         },
     });
@@ -156,12 +156,17 @@ ServerEvents.recipes((event) => {
     steamToIer.add('value', { tag: 'forge:steam' });
 
     event.recipes.gtceu
-        .fluid_heater(id(`steam_tag`))
+        .fluid_heater(id('steam_tag'))
         .inputFluids(FluidIngredientJS.of(steamToIer))
-        .outputFluids(`systeams:steamier 1000`)
+        .outputFluids('systeams:steamier 1000')
         .duration(20)
         .EUt(30);
 
+    /**
+     * @param {string} type
+     * @param {string} prior
+     * @param {number} scale
+     */
     const systeamSteams = (type, prior, scale) => {
         event.recipes.gtceu
             .steam_turbine(id(`${type}`))
@@ -271,7 +276,7 @@ ServerEvents.recipes((event) => {
         .duration(600)
         .EUt(28);
 
-    [
+    /** @type {const} */ ([
         {
             id: 'hardened',
             glass: 'thermal:obsidian',
@@ -328,7 +333,7 @@ ServerEvents.recipes((event) => {
             fluid: 'gtceu:dragonsteel 144',
             voltage: 'zpm',
         },
-    ].forEach((type) => {
+    ]).forEach((type) => {
         event.recipes.gtceu
             .fluid_solidifier(id(`${type.id}_glass`))
             .itemInputs(`${type.base}_glass`)

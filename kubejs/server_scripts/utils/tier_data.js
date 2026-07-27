@@ -1,6 +1,29 @@
 // priority: 1000
 
-global.componentMaterials = {
+/* eslint-disable no-unused-vars */
+/** @global */ const ULV = 0;
+/** @global */ const LV = 1;
+/** @global */ const MV = 2;
+/** @global */ const HV = 3;
+/** @global */ const EV = 4;
+/** @global */ const IV = 5;
+// eslint-disable-next-line id-match
+/** @global */ const LuV = 6;
+/** @global */ const ZPM = 7;
+/** @global */ const UV = 8;
+/** @global */ const UHV = 9;
+/** @global */ const UEV = 10;
+/** @global */ const UIV = 11;
+/** @global */ const UXV = 12;
+// eslint-disable-next-line id-match
+/** @global */ const OpV = 13;
+/** @global */ const MAX = 14;
+/* eslint-enable no-unused-vars */
+
+/**
+ * @type {Record<Exclude<GTTier, 'uxv' | 'opv' | 'max'>, import("../additions/progression/components/component_materials_type").ComponentMaterial>}
+ */
+global.componentMaterials = /** @type {const} */ ({
     ulv: {
         tiers: { tier: 'ulv' },
         materials: {
@@ -67,7 +90,7 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 1,
-            EU: GTValues.VA[GTValues.HV],
+            EU: GTValues.VA[HV],
         },
     },
     iv: {
@@ -88,7 +111,7 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 1,
-            EU: GTValues.VA[GTValues.EV],
+            EU: GTValues.VA[EV],
         },
     },
     luv: {
@@ -127,11 +150,11 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 1,
-            EU: GTValues.VA[GTValues.IV],
+            EU: GTValues.VA[IV],
         },
         researchData: {
-            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[GTValues.EV] },
-            special: { ifSRS: false, cwuS: 0, duraS: 60, EUTS: GTValues.VA[GTValues.IV] },
+            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[EV] },
+            special: { ifSRS: false, cwuS: 0, duraS: 60, EUTS: GTValues.VA[IV] },
         },
     },
 
@@ -170,11 +193,11 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 2,
-            EU: GTValues.VA[GTValues.LuV],
+            EU: GTValues.VA[LuV],
         },
         researchData: {
-            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[GTValues.IV] },
-            special: { ifSRS: true, cwuS: 4, duraS: 90, EUTS: GTValues.VA[GTValues.LuV] },
+            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[IV] },
+            special: { ifSRS: true, cwuS: 4, duraS: 90, EUTS: GTValues.VA[LuV] },
         },
     },
 
@@ -214,11 +237,11 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 3,
-            EU: GTValues.VA[GTValues.ZPM],
+            EU: GTValues.VA[ZPM],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 32, duraD: 180, EUTD: GTValues.VA[GTValues.ZPM] },
-            special: { ifSRS: true, cwuS: 48, duraS: 180, EUTS: GTValues.VA[GTValues.UV] },
+            default: { ifDRS: true, cwuD: 32, duraD: 180, EUTD: GTValues.VA[ZPM] },
+            special: { ifSRS: true, cwuS: 48, duraS: 180, EUTS: GTValues.VA[UV] },
         },
     },
 
@@ -259,11 +282,11 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 4,
-            EU: GTValues.VA[GTValues.UV],
+            EU: GTValues.VA[UV],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 128, duraD: 180, EUTD: GTValues.VA[GTValues.UV] },
-            special: { ifSRS: true, cwuS: 144, duraS: 180, EUTS: GTValues.VA[GTValues.UV] },
+            default: { ifDRS: true, cwuD: 128, duraD: 180, EUTD: GTValues.VA[UV] },
+            special: { ifSRS: true, cwuS: 144, duraS: 180, EUTS: GTValues.VA[UV] },
         },
     },
 
@@ -303,11 +326,11 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 5,
-            EU: GTValues.VA[GTValues.UHV],
+            EU: GTValues.VA[UHV],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 160, duraD: 180, EUTD: GTValues.VA[GTValues.UHV] },
-            special: { ifSRS: true, cwuS: 176, duraS: 180, EUTS: GTValues.VA[GTValues.UHV] },
+            default: { ifDRS: true, cwuD: 160, duraD: 180, EUTD: GTValues.VA[UHV] },
+            special: { ifSRS: true, cwuS: 176, duraS: 180, EUTS: GTValues.VA[UHV] },
         },
     },
 
@@ -347,11 +370,11 @@ global.componentMaterials = {
         },
         scaling: {
             scaler: 6,
-            EU: GTValues.VA[GTValues.UEV],
+            EU: GTValues.VA[UEV],
         },
         researchData: {
-            default: { ifDRS: true, cwuD: 192, duraD: 180, EUTD: GTValues.VA[GTValues.UEV] },
-            special: { ifSRS: true, cwuS: 208, duraS: 180, EUTS: GTValues.VA[GTValues.UEV] },
+            default: { ifDRS: true, cwuD: 192, duraD: 180, EUTD: GTValues.VA[UEV] },
+            special: { ifSRS: true, cwuS: 208, duraS: 180, EUTS: GTValues.VA[UEV] },
         },
     },
-};
+});

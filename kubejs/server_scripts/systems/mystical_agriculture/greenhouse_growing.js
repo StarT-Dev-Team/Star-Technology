@@ -8,38 +8,21 @@ ServerEvents.recipes((event) => {
     const dust5 = 'mysticalagriculture:supremium_essence';
     const dust6 = 'mysticalagriculture:awakened_supremium_essence';
 
+    /**
+     * @param {string} type
+     * @param {string} dust
+     */
     function greenHouseGrowing(type, dust) {
-        let eut;
-        switch (dust) {
-            case 'mysticalagriculture:inferium_essence': {
-                eut = 20;
-                break;
-            }
-            case 'mysticalagriculture:prudentium_essence': {
-                eut = 80;
-                break;
-            }
-            case 'mysticalagriculture:tertium_essence': {
-                eut = 400;
-                break;
-            }
-            case 'mysticalagriculture:imperium_essence': {
-                eut = 1024;
-                break;
-            }
-            case 'mysticalagriculture:supremium_essence': {
-                eut = 6400;
-                break;
-            }
-            case 'mysticalagriculture:awakened_supremium_essence': {
-                eut = 16000;
-                break;
-            }
-            case 'mysticalagriculture:insanium_essence': {
-                eut = 100000;
-                break;
-            }
-        }
+        const eut =
+            {
+                'mysticalagriculture:inferium_essence': 20,
+                'mysticalagriculture:prudentium_essence': 80,
+                'mysticalagriculture:tertium_essence': 400,
+                'mysticalagriculture:imperium_essence': 1024,
+                'mysticalagriculture:supremium_essence': 6400,
+                'mysticalagriculture:awakened_supremium_essence': 16000,
+                'mysticalagriculture:insanium_essence': 100000,
+            }[dust] || 1;
 
         event.recipes.gtceu
             .greenhouse_growing(id(`${type}_essence_growing`))

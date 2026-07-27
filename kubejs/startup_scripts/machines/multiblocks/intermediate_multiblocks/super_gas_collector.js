@@ -11,32 +11,33 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('       ', '       ', '       ', '       ', '       ', '       ', '  FFF  ')
-                .aisle('  PPP  ', '  CCC  ', '  CGC  ', '  CGC  ', '  CGC  ', '  CCC  ', ' FMMMF ')
-                .aisle(' PCCCP ', ' CIIIC ', ' CIIIC ', ' CIIIC ', ' CIIIC ', ' CIIIC ', 'FMEEEMF')
-                .aisle(' PCCCP ', ' HIIIH ', ' HIPIH ', ' HIPIH ', ' HIPIH ', ' HIPIH ', 'FMEPEMF')
-                .aisle(' PCCCP ', ' CIIIC ', ' CIIIC ', ' CIIIC ', ' CIIIC ', ' CIIIC ', 'FMEEEMF')
-                .aisle('  PPP  ', '  C@C  ', '  CGC  ', '  CGC  ', '  CGC  ', '  CCC  ', ' FMMMF ')
-                .aisle('       ', '       ', '       ', '       ', '       ', '       ', '  FFF  ')
-                .where(
-                    'C',
-                    Predicates.blocks('gtceu:clean_machine_casing')
-                        .setMinGlobalLimited(10)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('P', Predicates.blocks('kubejs:pallaridium_pipe_casing'))
-                .where('G', Predicates.blocks('gtceu:laminated_glass'))
-                .where('F', Predicates.blocks('gtceu:iridium_frame'))
-                .where('M', Predicates.blocks('gtceu:molybdenum_disilicide_coil_block'))
-                .where('I', Predicates.blocks('gtceu:inert_machine_casing'))
-                .where('E', Predicates.blocks('kubejs:pallaridium_engine_intake_casing'))
-                .where('H', Predicates.blocks('gtceu:high_power_casing'))
-                .where(' ', Predicates.any())
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                '       |       |       |       |       |       |  FFF  ',
+                '  PPP  |  CCC  |  CGC  |  CGC  |  CGC  |  CCC  | FMMMF ',
+                ' PCCCP | CIIIC | CIIIC | CIIIC | CIIIC | CIIIC |FMEEEMF',
+                ' PCCCP | HIIIH | HIPIH | HIPIH | HIPIH | HIPIH |FMEPEMF',
+                ' PCCCP | CIIIC | CIIIC | CIIIC | CIIIC | CIIIC |FMEEEMF',
+                '  PPP  |  C@C  |  CGC  |  CGC  |  CGC  |  CCC  | FMMMF ',
+                '       |       |       |       |       |       |  FFF  ',
+            ])
+                .whereDict({
+                    C: P.anyOf([
+                        P.gtBlock('clean_machine_casing', { min: 10 }),
+                        P.ability(PA.itemIn, { max: 1 }),
+                        P.ability(PA.fluidIn, { max: 1 }),
+                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    P: P.kjsBlock('pallaridium_pipe_casing'),
+                    G: P.gtBlock('laminated_glass'),
+                    F: P.gtBlock('iridium_frame'),
+                    M: P.gtBlock('molybdenum_disilicide_coil_block'),
+                    I: P.gtBlock('inert_machine_casing'),
+                    E: P.kjsBlock('pallaridium_engine_intake_casing'),
+                    H: P.gtBlock('high_power_casing'),
+                    ' ': P.any(),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

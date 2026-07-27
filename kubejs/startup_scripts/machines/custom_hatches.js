@@ -23,7 +23,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             builder
                 .langValue('§bAbsolute Stabilization §rModule')
                 .rotationState(RotationState.ALL)
-                .abilities(PartAbility.MAINTENANCE)
+                .abilities(PA.maintenance)
                 .modelPropertyBool($GTMachineModelProperties.IS_FORMED, false)
                 .workableTieredHullModel('kubejs:block/machines/stabilization_core');
         });

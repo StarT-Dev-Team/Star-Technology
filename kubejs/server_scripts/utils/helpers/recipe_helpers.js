@@ -21,7 +21,8 @@ global.calculateRecyclingDuration = (itemOutputs) => {
 };
 
 /**
- * https://github.com/primchCEu/GregTech-Modern/blob/v1.6.4-1.20.1/src/main/java/com/gregtechceu/gtceu/data/recipe/misc/RecyclingRecipes.javatotalCounts.valueCount += componentRecycleCounts.value.primCount;
+ * https://github.com/primchCEu/GregTech-Modern/blob/v1.6.4-1.20.1/src/main/java/com/gregtechceu/gtceu/data/recipe/misc/RecyclingRecipes.java
+ * totalCounts.valueCount += componentRecycleCounts.value.primCount;
  * totalCounts.valueCount cableCount componentRecycleCounts.value.cableCount;
  * totalCounts.valueCount += wireounts.value.wireCount;
  * totalCounts.valueCount += foilnentRecycleCounts.value.foilCountL389
@@ -49,7 +50,11 @@ global.calculateRecyclingVoltageMultiplier = (itemOutputs) => {
     return 16;
 };
 
-// breaks components down into their base materials
+/**
+ * breaks components down into their base materials
+ * @param {string[]} components
+ * @param {any} tierBracket
+ */
 global.getComponentTotal = (components, tierBracket) => {
     const componentRecycleCounts =
         tierBracket === 'UHVPLUS'
@@ -59,6 +64,7 @@ global.getComponentTotal = (components, tierBracket) => {
         tierBracket === 'UHVPLUS'
             ? ['primCount', 'cableCount', 'secCount', 'tertCount']
             : ['primCount', 'cableCount', 'wireCount', 'foilCount'];
+    /** @type {any} */
     let totalCounts = {};
 
     totalCountsTypes.forEach((type) => {
@@ -67,6 +73,7 @@ global.getComponentTotal = (components, tierBracket) => {
 
     components.forEach((component) => {
         totalCountsTypes.forEach((type) => {
+            // @ts-expect-error
             totalCounts[type] += componentRecycleCounts[component][type];
         });
     });
@@ -78,17 +85,31 @@ global.getComponentTotal = (components, tierBracket) => {
     return totalCounts;
 };
 
+/**
+ * @param {number} a
+ * @param {number} b
+ */
 function compareNumbers(a, b) {
     return b - a;
 }
+
 // checks if input value is too big for one output slot, then breaks down into block form
+/**
+ * @param {*} tempTotals
+ * @param {*} blockType
+ * @param {*} auxCoilBool
+ * @param {*} casingBool
+ * @param {*} fusionCasingBool
+ */
 global.checkRecyclingCount = (tempTotals, blockType, auxCoilBool, casingBool, fusionCasingBool) => {
     let finalOutput = {
         blockBools: {},
         totals: {},
         outputOrder: [],
     };
+    /** @type {any[]} */
     let finalOutputTypes = [];
+    /** @type {any[]} */
     let toBeSorted = [];
 
     if (blockType === 'singleblock_UHVPLUS' || blockType === 'parallel_hatch_UHVPLUS') {
@@ -110,16 +131,20 @@ global.checkRecyclingCount = (tempTotals, blockType, auxCoilBool, casingBool, fu
     let position = 0;
     finalOutputTypes.forEach((type) => {
         toBeSorted[position] = tempTotals[type + 'Count'];
+        // @ts-expect-error
         finalOutput.blockBools[type + 'Block'] = false;
+        // @ts-expect-error
         finalOutput.totals[type + 'Count'] = 0;
         position++;
     });
 
     for (let x = 0; x < finalOutputTypes.length - 1; x++) {
+        // @ts-expect-error
         finalOutput.outputOrder[x] = '';
     }
 
     // orders outputs by size
+    /** @type {any[]} */
     let knownPositions = [];
     let material;
     let found;
@@ -143,6 +168,7 @@ global.checkRecyclingCount = (tempTotals, blockType, auxCoilBool, casingBool, fu
                     n++;
                 } else {
                     knownPositions.push(n);
+                    // @ts-expect-error
                     finalOutput.outputOrder[n] = material;
                     found = true;
                 }
@@ -156,6 +182,7 @@ global.checkRecyclingCount = (tempTotals, blockType, auxCoilBool, casingBool, fu
     finalOutputTypes.forEach((type) => {
         // reduces fusion coil/casing outputs to the actual value
         if (type === 'casing') {
+            // @ts-expect-error
             finalOutput.totals[type + 'Count'] = tempTotals[type + 'Count'];
         } else {
             if (auxCoilBool) {
@@ -167,9 +194,12 @@ global.checkRecyclingCount = (tempTotals, blockType, auxCoilBool, casingBool, fu
 
             // checks if item should be changed to block form
             if (tempTotals[type + 'Count'] > 64) {
+                // @ts-expect-error
                 finalOutput.blockBools[type + 'Block'] = true;
+                // @ts-expect-error
                 finalOutput.totals[type + 'Count'] = Math.floor(tempTotals[type + 'Count'] / 9);
             } else {
+                // @ts-expect-error
                 finalOutput.totals[type + 'Count'] = tempTotals[type + 'Count'];
             }
         }
@@ -178,6 +208,7 @@ global.checkRecyclingCount = (tempTotals, blockType, auxCoilBool, casingBool, fu
 };
 
 //gives ending parameters to the outputs dependent on whether the output is a block or not
+// @ts-ignore
 global.getFinalRecycleOutputs = (outputs, blockType, macBool, specialBool) => {
     let finalOutputs = [];
     let blockBools;
@@ -210,8 +241,10 @@ global.getFinalRecycleOutputs = (outputs, blockType, macBool, specialBool) => {
             }
         } else {
             //adds end sig to every output
+            // @ts-expect-error
             for (let x = 0; x < blockBoolStartPos; x++) {
                 //if item is a block
+                // @ts-expect-error
                 if (blockBools[x]) {
                     finalOutputs[x] = `${outputs[x]}_dust_block`;
                 }
@@ -238,8 +271,10 @@ global.getFinalRecycleOutputs = (outputs, blockType, macBool, specialBool) => {
             }
         } else {
             //adds end sig to every output
+            // @ts-expect-error
             for (let x = 0; x < blockBoolStartPos; x++) {
                 //if item is a block
+                // @ts-expect-error
                 if (blockBools[x]) {
                     finalOutputs[x] = `${outputs[x]}_block`;
                 }
@@ -254,12 +289,19 @@ global.getFinalRecycleOutputs = (outputs, blockType, macBool, specialBool) => {
     return finalOutputs;
 };
 
+/**
+ *
+ * @param {GTTier} tier
+ * @returns {'ULV' | 'LV' | 'MV' | 'HV' | 'EV' | 'IV' | 'LuV' | 'ZPM' | 'UV' | 'UHV' | 'UEV' | 'UIV' | 'UXV' | 'OpV' | 'MAX'}
+ */
 global.getRecipeTier = (tier) => {
     const recipeTier = tier === 'luv' ? 'LuV' : tier === 'opv' ? 'OpV' : tier.toUpperCase();
-
-    return recipeTier;
+    return /** @type {any} */ (recipeTier);
 };
 
+/**
+ * @param {number} cwu
+ */
 global.getDataItem = (cwu) =>
     cwu >= 320
         ? 'start_core:component_data_core'
@@ -268,6 +310,34 @@ global.getDataItem = (cwu) =>
           : cwu >= 32
             ? 'gtceu:data_module'
             : 'gtceu:data_orb';
+
+/**
+ *
+ * @param {Exclude<keyof internal.kjs.RecipeFunctions_gtceu, "shaped">} machineType
+ * @param {string} recId
+ * @param {string[]} inputsI
+ * @param {string[]} inputsF
+ * @param {string[]} outputsI
+ * @param {number} duration
+ * @param {number} cwuT
+ * @param {number} totalCWU
+ * @param {number} euT
+ * @param {string} researched
+ */
+
+global.researchBuilder = (
+    /* eslint-disable no-unused-vars */
+    machineType,
+    recId,
+    inputsI,
+    inputsF,
+    outputsI,
+    duration,
+    cwuT,
+    totalCWU,
+    euT,
+    researched
+) => {};
 
 ServerEvents.recipes((event) => {
     global.researchBuilder = (
@@ -332,10 +402,10 @@ const modRequirements = {
 Object.entries(modRequirements).forEach(([name, mod]) => {
     const mods = Array.isArray(mod) ? mod : [mod];
     /**
-     * @param {function} ifTrue - Function to execute if current mod is loaded'.
-     * @param {function} ifFalse - Function to execute if current mod is NOT loaded'.
+     * @param {() => void} ifTrue Function to execute if current mod is loaded'.
+     * @param {() => void} ifFalse Function to execute if current mod is NOT loaded'.
      */
-    global[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = (ifTrue, ifFalse) => {
+    const fn = (ifTrue, ifFalse) => {
         if (mods.every((m) => Platform.isLoaded(m))) {
             if (ifTrue && typeof ifTrue === 'function') {
                 ifTrue();
@@ -344,4 +414,34 @@ Object.entries(modRequirements).forEach(([name, mod]) => {
             ifFalse();
         }
     };
+
+    /** @type {any} */ (global)[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = fn;
 });
+
+/**
+ * Implosion Compressor recipe helper
+ * @param {string} id recipe id
+ * @param {string} input item input
+ * @param {string} output item output
+ * @param {number} tier voltage tier
+ * @param {number | undefined} durationMultiplier duration multiplier (default 0)
+ * @param {internal.dev.latvian.mods.kubejs.recipe.RecipesEventJS} event
+ */
+const implosionHelper = (id, input, output, tier, durationMultiplier, event) => {
+    [
+        { name: 'tnt', explosive: '4x minecraft:tnt' },
+        { name: 'dynamite', explosive: '2x gtceu:dynamite' },
+        { name: 'itnt', explosive: 'gtceu:industrial_tnt' },
+        { name: 'powderbarrel', explosive: '8x gtceu:powderbarrel' },
+    ].forEach((explosive) => {
+        event.recipes.gtceu
+            .implosion_compressor(global.id(`${id}_${explosive.name}`))
+            .itemInputs(input, explosive.explosive)
+            .itemOutputs(output)
+            .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
+            .duration(20 * (durationMultiplier !== undefined ? durationMultiplier : 1))
+            .EUt(GTValues.VHA[tier]);
+    });
+};
+
+global.implosion = implosionHelper;

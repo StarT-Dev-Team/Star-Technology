@@ -1,4 +1,4 @@
-global.notHardmode(() => {
+ServerEvents.recipes((event) => {
     const id = global.id;
 
     /*
@@ -6,6 +6,8 @@ global.notHardmode(() => {
      * Since STM removed the Create Ccompatability, there is no point in these tags.
      * General structure remains from their PR
      */
+
+    /** @typedef { { material: string; secondary: string; tertiary: string; quaternary?: string; quinary?: string } } OreProcMaterial */
 
     const oreProcessableTiers = {
         primitive: [
@@ -19,7 +21,12 @@ global.notHardmode(() => {
         ],
 
         lv: [
-            { material: 'coal', secondary: 'carbon', tertiary: 'thorium', quaternary: 'graphite' }, // check
+            {
+                material: 'coal',
+                secondary: 'carbon',
+                tertiary: 'thorium',
+                quaternary: 'graphite',
+            }, // check
             {
                 material: 'sodalite',
                 secondary: 'lazurite',
@@ -38,8 +45,18 @@ global.notHardmode(() => {
                 tertiary: 'iron',
                 quaternary: 'sulfur',
             },
-            { material: 'silver', secondary: 'gold', tertiary: 'lead', quaternary: 'sulfur' },
-            { material: 'gold', secondary: 'silver', tertiary: 'copper', quaternary: 'nickel' },
+            {
+                material: 'silver',
+                secondary: 'gold',
+                tertiary: 'lead',
+                quaternary: 'sulfur',
+            },
+            {
+                material: 'gold',
+                secondary: 'silver',
+                tertiary: 'copper',
+                quaternary: 'nickel',
+            },
             {
                 material: 'diamond',
                 secondary: 'carbon',
@@ -82,7 +99,12 @@ global.notHardmode(() => {
                 tertiary: 'opal',
                 quaternary: 'barite',
             }, // check
-            { material: 'rock_salt', secondary: 'salt', tertiary: 'salt', quaternary: 'borax' },
+            {
+                material: 'rock_salt',
+                secondary: 'salt',
+                tertiary: 'salt',
+                quaternary: 'borax',
+            },
             {
                 material: 'saltpeter',
                 secondary: 'salt',
@@ -102,7 +124,12 @@ global.notHardmode(() => {
                 tertiary: 'amethyst',
                 quaternary: 'amethyst',
             },
-            { material: 'sulfur', secondary: 'sulfur', tertiary: 'sulfur', quaternary: 'sulfur' },
+            {
+                material: 'sulfur',
+                secondary: 'sulfur',
+                tertiary: 'sulfur',
+                quaternary: 'sulfur',
+            },
             // { material: 'redstone', secondary: 'cinnabar', tertiary: 'rare_earth', quaternary: 'ruby' }, // not gonna rewrite entire thing just for an MA ore (is minecraft:redstone not gtceu:redstone_dust)
             {
                 material: 'lapis',
@@ -207,14 +234,24 @@ global.notHardmode(() => {
                 tertiary: 'pyrite',
                 quaternary: 'cobalt',
             },
-            { material: 'bornite', secondary: 'gold', tertiary: 'cadmium', quaternary: 'cobalt' },
+            {
+                material: 'bornite',
+                secondary: 'gold',
+                tertiary: 'cadmium',
+                quaternary: 'cobalt',
+            },
             {
                 material: 'barite',
                 secondary: 'pyrite',
                 tertiary: 'pyrite',
                 quaternary: 'chalcopyrite',
             }, // check
-            { material: 'cassiterite', secondary: 'tin', tertiary: 'tin', quaternary: 'bismuth' },
+            {
+                material: 'cassiterite',
+                secondary: 'tin',
+                tertiary: 'tin',
+                quaternary: 'bismuth',
+            },
             {
                 material: 'tantalite',
                 secondary: 'manganese',
@@ -266,7 +303,12 @@ global.notHardmode(() => {
                 tertiary: 'thorium',
                 quaternary: 'uraninite',
             },
-            { material: 'ilmenite', secondary: 'iron', tertiary: 'iron', quaternary: 'rutile' },
+            {
+                material: 'ilmenite',
+                secondary: 'iron',
+                tertiary: 'iron',
+                quaternary: 'rutile',
+            },
             {
                 material: 'molybdenite',
                 secondary: 'molybdenum',
@@ -286,7 +328,12 @@ global.notHardmode(() => {
                 tertiary: 'sulfur',
                 quaternary: 'cobalt',
             },
-            { material: 'chromite', secondary: 'iron', tertiary: 'magnesium', quaternary: 'iron' },
+            {
+                material: 'chromite',
+                secondary: 'iron',
+                tertiary: 'magnesium',
+                quaternary: 'iron',
+            },
         ],
 
         iv: [
@@ -373,12 +420,22 @@ global.notHardmode(() => {
         ],
     };
 
+    /**
+     * @param {string} mat
+     * @param {number} amount
+     */
     const crushedOre = (mat, amount) => {
         return `${amount}x gtceu:crushed_${mat}_ore`;
     };
+
+    /**
+     * @param {string} mat
+     * @param {number} amount
+     */
     const dust = (mat, amount) => {
         return `${amount}x gtceu:${mat}_dust`;
     };
+
     const fluids = {
         water: 'minecraft:water 100',
         water5x: 'minecraft:water 500',
@@ -389,12 +446,12 @@ global.notHardmode(() => {
         sodiumPersulfate25x: 'gtceu:sodium_persulfate 2500',
     };
 
-    /*
+    /**
      * Fuel based ore processing.
      * Blocks 10x the recipe while only 9x the duration.
+     * @param {OreProcMaterial} materialObj
      */
-
-    const primitiveProcessing = (event, materialObj) => {
+    const primitiveProcessing = (materialObj) => {
         [
             { item: '2x #minecraft:coals', id: 'coals' },
             { item: '2x #gtceu:coal_dusts', id: 'coal_dusts' },
@@ -429,15 +486,16 @@ global.notHardmode(() => {
             .chancedOutput(dust(materialObj.secondary, 1), 2500, 0)
             .chancedOutput(dust(materialObj.tertiary, 1), 1250, 0)
             .duration(320)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
     };
 
-    /*
+    /**
      * Copies the recipes from primitive ore processing, but without fuels.
      * Much faster than using coke fuel and generates more products per second than using blocks.
      * Chances are bossted.
+     * @param {OreProcMaterial} materialObj
      */
-    const electricPrimitiveProcessing = (event, materialObj) => {
+    const electricPrimitiveProcessing = (materialObj) => {
         event.recipes.gtceu
             .electric_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -447,19 +505,21 @@ global.notHardmode(() => {
             .chancedOutput(dust(materialObj.secondary, 1), 4500, 0)
             .chancedOutput(dust(materialObj.tertiary, 1), 3250, 0)
             .duration(160)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
     };
 
-    /*
+    /**
      * Energy based ore processing.
      * Needs distilled water or sodium persulfate.
+     * @param {Required<OreProcMaterial>} materialObj
+     * @param {'lv' | 'mv' | 'hv' | 'ev'} tier
      */
-    const electricProcessing = (event, materialObj, tier) => {
+    const electricProcessing = (materialObj, tier) => {
         const voltages = {
-            lv: GTValues.VA[GTValues.LV],
-            mv: GTValues.VA[GTValues.MV],
-            hv: GTValues.VA[GTValues.HV],
-            ev: GTValues.VA[GTValues.EV],
+            lv: GTValues.VA[LV],
+            mv: GTValues.VA[MV],
+            hv: GTValues.VA[HV],
+            ev: GTValues.VA[EV],
         };
         const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
         event.recipes.gtceu
@@ -475,12 +535,13 @@ global.notHardmode(() => {
             .EUt(voltages[tier]);
     };
 
-    /*
+    /**
      * Improved energy based primitive ore processing.
      * Uses less energy and is quicker.
      * Chances are boosted.
+     * @param {OreProcMaterial} materialObj
      */
-    const plantPrimitiveProcessing = (event, materialObj) => {
+    const plantPrimitiveProcessing = (materialObj) => {
         event.recipes.gtceu
             .plant_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -490,7 +551,7 @@ global.notHardmode(() => {
             .chancedOutput(dust(materialObj.secondary, 1), 6500, 0)
             .chancedOutput(dust(materialObj.tertiary, 1), 5250, 0)
             .duration(240)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
 
         event.recipes.gtceu
             .bulk_ore_processing_array(id(`${materialObj.material}`))
@@ -501,20 +562,22 @@ global.notHardmode(() => {
             .itemOutputs(dust(materialObj.secondary, 8))
             .itemOutputs(dust(materialObj.tertiary, 6))
             .duration(2400)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
     };
 
-    /*
+    /**
      * Improved energy based ore processing.
      * Uses less energy and is quicker.
      * Chances are boosted.
+     * @param {Required<OreProcMaterial>} materialObj
+     * @param {'lv' | 'mv' | 'hv' | 'ev'} tier
      */
-    const plantElectricProcessing = (event, materialObj, tier) => {
+    const plantElectricProcessing = (materialObj, tier) => {
         const voltages = {
-            lv: GTValues.VHA[GTValues.LV],
-            mv: GTValues.VHA[GTValues.MV],
-            hv: GTValues.VHA[GTValues.HV],
-            ev: GTValues.VHA[GTValues.EV],
+            lv: GTValues.VHA[LV],
+            mv: GTValues.VHA[MV],
+            hv: GTValues.VHA[HV],
+            ev: GTValues.VHA[EV],
         };
         const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
         const fluid5x = tier === 'lv' || tier === 'mv' ? fluids.distilledWater5x : fluids.sodiumPersulfate5x;
@@ -543,10 +606,11 @@ global.notHardmode(() => {
             .EUt(voltages[tier]);
     };
 
-    /*
+    /**
      * Final form of 1-step ore processing.
+     * @param {Required<OreProcMaterial>} materialObj
      */
-    const plantOreProcessing = (event, materialObj) => {
+    const plantOreProcessing = (materialObj) => {
         event.recipes.gtceu
             .plant_ore_processing(id(`${materialObj.material}`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -558,7 +622,7 @@ global.notHardmode(() => {
             .chancedOutput(dust(materialObj.quaternary, 1), 2000, 0)
             .chancedOutput(dust(materialObj.quinary, 1), 1000, 0)
             .duration(320)
-            .EUt(GTValues.VA[GTValues.IV]);
+            .EUtVA(IV);
 
         event.recipes.gtceu
             .bulk_ore_processing_array(id(`${materialObj.material}`))
@@ -571,10 +635,13 @@ global.notHardmode(() => {
             .itemOutputs(dust(materialObj.quaternary, 3))
             .itemOutputs(dust(materialObj.quinary, 2))
             .duration(3200)
-            .EUt(GTValues.VA[GTValues.IV]);
+            .EUtVA(IV);
     };
 
-    const pulverizer = (event, materialObj) => {
+    /**
+     * @param {OreProcMaterial} materialObj
+     */
+    const pulverizer = (materialObj) => {
         event.recipes.gtceu
             .pulverizer(id(`${materialObj.material}_dust`))
             .itemInputs(crushedOre(materialObj.material, 1))
@@ -582,93 +649,88 @@ global.notHardmode(() => {
             .chancedOutput(dust(materialObj.material, 1), 2500, 250)
             .circuit(0)
             .duration(300)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
     };
 
     /* Final Product */
-    ServerEvents.recipes((event) => {
-        // Controllers
-        event
-            .shaped(Item.of('gtceu:primitive_ore_factory'), ['HRS', 'PBR', 'FRS'], {
-                H: '#forge:tools/hammers',
-                R: 'gtceu:brass_rod',
-                S: 'gtceu:brass_screw',
-                P: 'gtceu:brass_plate',
-                B: 'gtceu:firebricks',
-                F: '#forge:tools/screwdrivers',
-            })
-            .id('start:shaped/primitive_ore_factory');
+    // Controllers
+    event
+        .shaped(Item.of('gtceu:primitive_ore_factory'), ['HRS', 'PBR', 'FRS'], {
+            H: '#forge:tools/hammers',
+            R: 'gtceu:brass_rod',
+            S: 'gtceu:brass_screw',
+            P: 'gtceu:brass_plate',
+            B: 'gtceu:firebricks',
+            F: '#forge:tools/screwdrivers',
+        })
+        .id('start:shaped/primitive_ore_factory');
 
-        event
-            .shaped(Item.of('gtceu:steam_ore_factory'), ['HRS', 'PBR', 'FRS'], {
-                H: '#forge:tools/hammers',
-                R: 'gtceu:invar_rod',
-                S: 'gtceu:invar_screw',
-                P: 'gtceu:invar_plate',
-                B: 'kubejs:high_steam_machine_casing',
-                F: '#forge:tools/screwdrivers',
-            })
-            .id('start:shaped/steam_ore_factory');
+    event
+        .shaped(Item.of('gtceu:steam_ore_factory'), ['HRS', 'PBR', 'FRS'], {
+            H: '#forge:tools/hammers',
+            R: 'gtceu:invar_rod',
+            S: 'gtceu:invar_screw',
+            P: 'gtceu:invar_plate',
+            B: 'kubejs:high_steam_machine_casing',
+            F: '#forge:tools/screwdrivers',
+        })
+        .id('start:shaped/steam_ore_factory');
 
-        event
-            .shaped(Item.of('gtceu:electric_ore_factory'), ['GCG', 'PLP', 'WPW'], {
-                G: 'gtceu:bronze_gear',
-                C: '#gtceu:circuits/lv',
-                P: 'gtceu:steel_plate',
-                L: 'gtceu:lv_machine_hull',
-                W: 'gtceu:tin_single_cable',
-            })
-            .id('start:shaped/electric_ore_factory');
+    event
+        .shaped(Item.of('gtceu:electric_ore_factory'), ['GCG', 'PLP', 'WPW'], {
+            G: 'gtceu:bronze_gear',
+            C: '#gtceu:circuits/lv',
+            P: 'gtceu:steel_plate',
+            L: 'gtceu:lv_machine_hull',
+            W: 'gtceu:tin_single_cable',
+        })
+        .id('start:shaped/electric_ore_factory');
 
-        event
-            .shaped(Item.of('gtceu:ore_processing_plant'), ['GCG', 'PLP', 'WPW'], {
-                G: 'gtceu:tungsten_carbide_gear',
-                C: '#gtceu:circuits/iv',
-                P: 'gtceu:tungsten_carbide_plate',
-                L: 'gtceu:iv_machine_hull',
-                W: 'gtceu:platinum_single_cable',
-            })
-            .id('start:shaped/ore_processing_plant');
+    event
+        .shaped(Item.of('gtceu:ore_processing_plant'), ['GCG', 'PLP', 'WPW'], {
+            G: 'gtceu:tungsten_carbide_gear',
+            C: '#gtceu:circuits/iv',
+            P: 'gtceu:tungsten_carbide_plate',
+            L: 'gtceu:iv_machine_hull',
+            W: 'gtceu:platinum_single_cable',
+        })
+        .id('start:shaped/ore_processing_plant');
 
-        event.recipes.gtceu
-            .assembly_line(id('bulk_processing_array'))
-            .itemInputs(
-                'gtceu:uhv_machine_hull',
-                '18x #gtceu:circuits/uhv',
-                '64x kubejs:uepic_chip',
-                '8x gtceu:uhv_electric_motor',
-                '12x kubejs:uhv_super_magnetic_core',
-                '8x kubejs:uhv_microfluidic_flow_valve',
-                '6x gtceu:pure_netherite_gear',
-                '4x gtceu:small_zircalloy_4_gear'
-            )
-            .inputFluids('gtceu:polyether_ether_ketone 12000', 'gtceu:utopian_akreyrium 750')
-            .itemOutputs('gtceu:bulk_ore_processing_array')
-            .stationResearch((researchRecipeBuilder) =>
-                researchRecipeBuilder
-                    .researchStack(Item.of('gtceu:ore_processing_plant'))
-                    .EUt(GTValues.VHA[GTValues.UHV])
-                    .CWUt(144)
-            )
-            .duration(3000)
-            .EUt(GTValues.VHA[GTValues.UEV]);
+    event.recipes.gtceu
+        .assembly_line(id('bulk_processing_array'))
+        .itemInputs(
+            'gtceu:uhv_machine_hull',
+            '18x #gtceu:circuits/uhv',
+            '64x kubejs:uepic_chip',
+            '8x gtceu:uhv_electric_motor',
+            '12x kubejs:uhv_super_magnetic_core',
+            '8x kubejs:uhv_microfluidic_flow_valve',
+            '6x gtceu:pure_netherite_gear',
+            '4x gtceu:small_zircalloy_4_gear'
+        )
+        .inputFluids('gtceu:polyether_ether_ketone 12000', 'gtceu:utopian_akreyrium 750')
+        .itemOutputs('gtceu:bulk_ore_processing_array')
+        .stationResearch((researchRecipeBuilder) =>
+            researchRecipeBuilder.researchStack(Item.of('gtceu:ore_processing_plant')).EUt(GTValues.VHA[UHV]).CWUt(144)
+        )
+        .duration(3000)
+        .EUtVHA(UEV);
 
-        // Iterate over each tier and processable item and register the recipes
-        Object.keys(oreProcessableTiers).forEach((tier) => {
-            oreProcessableTiers[tier].forEach((item) => {
-                pulverizer(event, item);
+    // Iterate over each tier and processable item and register the recipes
+    /** @type {(keyof typeof oreProcessableTiers)[]} */ (Object.keys(oreProcessableTiers)).forEach((tier) => {
+        oreProcessableTiers[tier].forEach((item) => {
+            pulverizer(item);
 
-                if (tier === 'primitive') {
-                    primitiveProcessing(event, item);
-                    electricPrimitiveProcessing(event, item);
-                    plantPrimitiveProcessing(event, item);
-                } else if (tier === 'iv') {
-                    plantOreProcessing(event, item);
-                } else {
-                    electricProcessing(event, item, tier);
-                    plantElectricProcessing(event, item, tier);
-                }
-            });
+            if (tier === 'primitive') {
+                primitiveProcessing(item);
+                electricPrimitiveProcessing(item);
+                plantPrimitiveProcessing(item);
+            } else if (tier === 'iv') {
+                plantOreProcessing(/** @type {any} */ (item));
+            } else {
+                electricProcessing(/** @type {any} */ (item), tier);
+                plantElectricProcessing(/** @type {any} */ (item), tier);
+            }
         });
     });
 });

@@ -7,7 +7,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:sorbitan 450', 'gtceu:steam 2456')
         .duration(120)
         .circuit(6)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('sorbitan_esteration'))
@@ -15,7 +15,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:sorbitan_monoester 1000', 'gtceu:diluted_sulfuric_acid 1500')
         .duration(864)
         .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .mixer(id('sorbitan_polyermation'))
@@ -23,38 +23,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:polysorbate_20 100')
         .duration(215)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.UHV]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('benzene_oxidization'))
-        .inputFluids('gtceu:benzene 1500', 'gtceu:oxygen 11500')
-        .outputFluids('gtceu:maleic_anhydride 2000', 'minecraft:water 2500', 'gtceu:carbon_dioxide 1000')
-        .circuit(3)
-        .duration(526)
-        .EUt(GTValues.VHA[GTValues.LuV]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('maleic_anhydride_esterification'))
-        .inputFluids('gtceu:maleic_anhydride 250', 'gtceu:methanol 500')
-        .outputFluids('gtceu:dimethyl_maleate 250', 'gtceu:oxygen 250')
-        .duration(418)
-        .EUt(GTValues.VHA[GTValues.UV]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('dimethyl_maleate_hydrogenation'))
-        .inputFluids('gtceu:dimethyl_maleate 1000', 'gtceu:hydrogen 5000')
-        .notConsumable('gtceu:palladium_on_carbon_dust')
-        .outputFluids('gtceu:dimethyl_succinate 1500')
-        .duration(763)
-        .EUt(GTValues.VA[GTValues.ZPM]);
-
-    event.recipes.gtceu
-        .large_chemical_reactor(id('dimethyl_succinate_hydrogenation'))
-        .inputFluids('gtceu:dimethyl_succinate 800', 'gtceu:hydrogen 2400')
-        .outputFluids('gtceu:14_butanediol 400', 'gtceu:methanol 1600')
-        .duration(617)
-        .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('14_butanediol_transformation'))
@@ -63,7 +32,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:pyrophosphoric_acid 2000', 'gtceu:sulfuric_acid 1000', 'gtceu:hydrogen 8000')
         .itemOutputs('9x gtceu:thiophene_dust')
         .duration(654)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('benzoyl_peroxidization'))
@@ -72,7 +41,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:hydrogen_chloride 2000')
         .itemOutputs('28x gtceu:benzoyl_peroxide_dust', '1x gtceu:calcium_dust')
         .duration(451)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     const crType = [event.recipes.gtceu.large_chemical_reactor, event.recipes.gtceu.chemical_reactor];
     crType.forEach((CR) => {
@@ -80,19 +49,19 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:dimethylamine 1000', 'gtceu:formic_acid 1000')
             .outputFluids('gtceu:dimethylformamide 1000', 'minecraft:water 1000')
             .duration(567)
-            .EUt(GTValues.VA[GTValues.LuV]);
+            .EUtVA(LuV);
 
         CR(id('hydrogen_chloride'))
             .inputFluids('gtceu:monochloramine 1000', 'gtceu:hydrogen 2000')
             .outputFluids('gtceu:hydrogen_chloride 1000', 'gtceu:ammonia 1000')
             .duration(248)
-            .EUt(GTValues.VA[GTValues.HV]);
+            .EUtVA(HV);
 
         CR(id('chlorosulfonic_acid'))
             .inputFluids('gtceu:hydrogen_chloride 500', 'gtceu:sulfur_trioxide 500')
             .outputFluids('gtceu:chlorosulfonic_acid 500')
             .duration(352)
-            .EUt(GTValues.VA[GTValues.EV]);
+            .EUtVA(EV);
 
         CR(id('ferric_nitrate'))
             .inputFluids('gtceu:nitric_acid 3000')
@@ -100,14 +69,14 @@ ServerEvents.recipes((event) => {
             .outputFluids('gtceu:hydrogen 3000')
             .itemOutputs('10x gtceu:ferric_nitrate_dust')
             .duration(289)
-            .EUt(GTValues.VA[GTValues.EV]);
+            .EUtVA(EV);
 
         CR(id('12_dibromoethane'))
             .inputFluids('gtceu:ethylene 1000', 'gtceu:bromine 2000')
             .notConsumableFluid('gtceu:iron_iii_chloride 250')
             .outputFluids('gtceu:12_dibromoethane 1000')
             .duration(324)
-            .EUt(GTValues.VHA[GTValues.EV]);
+            .EUtVHA(EV);
     });
 
     event.recipes.gtceu
@@ -124,7 +93,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:34_ethylenedioxythiophene 2000', 'gtceu:ethane 1000')
         .duration(242)
         .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .ordered_chemistry(id('pss_synthesis'))
@@ -140,7 +109,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:polystyrene_sulfate 1500', 'gtceu:hydrogen_chloride 500', 'gtceu:ethenone 500')
         .duration(139)
         .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('pedot_synthesis'))
@@ -155,7 +124,7 @@ ServerEvents.recipes((event) => {
         )
         .duration(126)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('pedot_doping'))
@@ -167,7 +136,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution 1000')
         .duration(316)
         .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .distillery(id('pedot_pss_purification'))
@@ -176,7 +145,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste_dust')
         .duration(180)
         .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.recipes.gtceu
         .chemical_bath(id('pedot_pss_finalization'))
@@ -185,5 +154,5 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 864')
         .duration(82)
         .cleanroom(CleanroomType.CLEANROOM)
-        .EUt(GTValues.VA[GTValues.UHV]);
+        .EUtVA(UHV);
 });

@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+GTCEuStartupEvents.registry('gtceu:machine', () => {
     GCYMMachines.LARGE_MACERATION_TOWER.setRecipeTypes([
         GTRecipeTypes.MACERATOR_RECIPES,
         GTRecipeTypes.get('pulverizer'),

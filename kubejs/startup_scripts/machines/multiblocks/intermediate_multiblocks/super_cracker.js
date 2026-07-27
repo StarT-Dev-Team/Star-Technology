@@ -12,29 +12,31 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GTBlocks.CASING_PALLADIUM_SUBSTATION)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' BCCCDDDCCCB ', ' B   BBB   B ', 'BBBBBBEBBBBBB', ' B   BBB   B ', ' BCCCDDDCCCB ')
-                .aisle(' B   BBB   B ', 'BBFFF   FFFBB', 'BBFFF   FFFBB', 'BBFFF   FFFBB', ' B   BBB   B ')
-                .aisle('BBBBBBBBBBBBB', 'BBFFF   FFFBB', 'GHHHHHHHHHHHG', 'BBFFF   FFFBB', 'BBBBBBBBBBBBB')
-                .aisle(' B   BBB   B ', 'BBFFF   FFFBB', 'BBFFF   FFFBB', 'BBFFF   FFFBB', ' B   BBB   B ')
-                .aisle(' BCCCDDDCCCB ', ' B   BBB   B ', 'BBBBBB@BBBBBB', ' B   BBB   B ', ' BCCCDDDCCCB ')
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:palladium_substation')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('C', Predicates.blocks('gtceu:birmabright_frame'))
-                .where('D', Predicates.blocks('kubejs:pallaridium_firebox_casing'))
-                .where('E', Predicates.abilities(PartAbility.MUFFLER))
-                .where('F', Predicates.heatingCoils())
-                .where('G', Predicates.blocks('kubejs:pallaridium_engine_intake_casing'))
-                .where('H', Predicates.blocks('kubejs:pallaridium_pipe_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                ' BCCCDDDCCCB | B   BBB   B |BBBBBBEBBBBBB| B   BBB   B | BCCCDDDCCCB ',
+                ' B   BBB   B |BBFFF   FFFBB|BBFFF   FFFBB|BBFFF   FFFBB| B   BBB   B ',
+                'BBBBBBBBBBBBB|BBFFF   FFFBB|GHHHHHHHHHHHG|BBFFF   FFFBB|BBBBBBBBBBBBB',
+                ' B   BBB   B |BBFFF   FFFBB|BBFFF   FFFBB|BBFFF   FFFBB| B   BBB   B ',
+                ' BCCCDDDCCCB | B   BBB   B |BBBBBB@BBBBBB| B   BBB   B | BCCCDDDCCCB ',
+            ])
+                .whereDict({
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.gtBlock('palladium_substation'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    C: P.gtBlock('birmabright_frame'),
+                    D: P.kjsBlock('pallaridium_firebox_casing'),
+                    E: P.ability(PA.muffler),
+                    F: P.heatingCoil(),
+                    G: P.kjsBlock('pallaridium_engine_intake_casing'),
+                    H: P.kjsBlock('pallaridium_pipe_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

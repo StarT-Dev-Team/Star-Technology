@@ -22,27 +22,28 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:peek_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('FHHHF', 'TFFFT', 'T   T', 'T   T', 'T   T', 'FFFFF')
-                .aisle('HFFFH', 'FPPPF', ' FFF ', ' MMM ', ' FFF ', 'FEEEF')
-                .aisle('HFFFH', 'FP PF', ' F F ', ' M M ', ' F F ', 'FEEEF')
-                .aisle('HFFFH', 'FPPPF', ' FFF ', ' MMM ', ' FFF ', 'FEEEF')
-                .aisle('FHHHF', 'TFCFT', 'T   T', 'T   T', 'T   T', 'FFFFF')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'F',
-                    Predicates.blocks('kubejs:peek_casing')
-                        .setMinGlobalLimited(40)
-                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('E', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('H', Predicates.blocks(GCYMBlocks.HEAT_VENT.get()))
-                .where('M', Predicates.heatingCoils())
-                .where('P', Predicates.blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
-                .where('T', Predicates.blocks('gtceu:tungsten_frame'))
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                'FHHHF|TFFFT|T   T|T   T|T   T|FFFFF',
+                'HFFFH|FPPPF| FFF | MMM | FFF |FEEEF',
+                'HFFFH|FP PF| F F | M M | F F |FEEEF',
+                'HFFFH|FPPPF| FFF | MMM | FFF |FEEEF',
+                'FHHHF|TFCFT|T   T|T   T|T   T|FFFFF',
+            ])
+                .whereDict({
+                    C: P.controller(definition),
+                    F: P.anyOf([
+                        P.kjsBlock('peek_casing', { min: 40 }),
+                        P.autoAbilities(definition.getRecipeTypes()),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    E: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    H: P.block(GCYMBlocks.HEAT_VENT.get()),
+                    M: P.heatingCoil(),
+                    P: P.block(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()),
+                    T: P.gtBlock('tungsten_frame'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

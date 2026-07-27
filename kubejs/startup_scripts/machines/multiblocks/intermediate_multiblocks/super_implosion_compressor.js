@@ -8,28 +8,29 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([GTRecipeModifiers.MULTI_SMELTER_PARALLEL, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(() => Block.getBlock('gtceu:stress_proof_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('AABAA', 'CBBBC', 'CBDBC', 'CBBBC', 'AABAA')
-                .aisle('ABBBA', 'BEEEB', 'BE#EB', 'BEEEB', 'ABBBA')
-                .aisle('BBBBB', 'BE#EB', 'D###D', 'BE#EB', 'BBBBB')
-                .aisle('ABBBA', 'BEEEB', 'BE#EB', 'BEEEB', 'ABBBA')
-                .aisle('AABAA', 'CBBBC', 'CB@BC', 'CBBBC', 'AABAA')
-                .where('A', Predicates.blocks('gtceu:steel_firebox_casing'))
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:stress_proof_casing')
-                        .setMinGlobalLimited(5)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('C', Predicates.blocks('gtceu:stainless_steel_frame'))
-                .where('D', Predicates.heatingCoils())
-                .where('E', Predicates.blocks('gtceu:steel_pipe_casing'))
-                .where('#', Predicates.air())
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                'AABAA|CBBBC|CBDBC|CBBBC|AABAA',
+                'ABBBA|BEEEB|BE#EB|BEEEB|ABBBA',
+                'BBBBB|BE#EB|D###D|BE#EB|BBBBB',
+                'ABBBA|BEEEB|BE#EB|BEEEB|ABBBA',
+                'AABAA|CBBBC|CB@BC|CBBBC|AABAA',
+            ])
+                .whereDict({
+                    A: P.gtBlock('steel_firebox_casing'),
+                    B: P.anyOf([
+                        P.gtBlock('stress_proof_casing', { min: 5 }),
+                        P.ability(PA.itemIn, { view: 1 }),
+                        P.ability(PA.itemOut, { view: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
+                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    C: P.gtBlock('stainless_steel_frame'),
+                    D: P.heatingCoil(),
+                    E: P.gtBlock('steel_pipe_casing'),
+                    '#': P.air(),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(
