@@ -1,7 +1,7 @@
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
-    const { bright, dull, opal, shiny } = ICONSETS;
+    const { bright, dull, opal, shiny, gemVertical } = ICONSETS;
     const {
         plates,
         rod,
@@ -22,6 +22,8 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         smallSpring,
         rotor,
     } = FLAGS;
+
+    event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
 
     MH.compIngotLiquid(
         'osthendah',
@@ -315,4 +317,68 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .iconSet(shiny)
         .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, fineWire, noDecomp, noABSRecipe)
         .rotorStats(12800, 400, 50, 45000);
+
+    MH.compDustLiquid('netherite_triselex_oxide', ['4x netherite', '3x selenium', '8x oxygen'], 0xcfd9a3, [noDecomp]);
+
+    MH.compIngotLiquid(
+        'neutrindium_soldering_alloy',
+        [
+            '2x neutronium',
+            '51x indium',
+            '6x tin',
+            '4x darmstadtium',
+            '5x cadmium',
+            '4x enriched_naquadah',
+            '2x hafnium',
+        ],
+        0xf8f2fa,
+        null,
+        null,
+        []
+    );
+
+    MH.compDust('thallium_antimonide', ['1x thallium', '1x antimony'], 0xadc5e3, []);
+
+    MH.compLiquidStill('lepton_dense_akreyrium', ['1x utopian_akreyrium', '1x mystery'], [noDecomp]);
+
+    MH.conductor(
+        'lepton_resonant_thallium_antimonide',
+        ['1x thallium', '1x antimony', '1x mystery'],
+        0x74638f,
+        dull,
+        [18250, 'highest', GTValues.VHA[UIV], 1800],
+        [GTValues.V[UXV], 7, 48, false],
+        [boltAndScrew, spring, smallSpring, noABSRecipe, noDecomp, fineWire]
+    );
+
+    event
+        .create('raging_rimulatia') //Shadowyrm
+        .components('1x rifitc', '1x draco_abyssal', '1x riftic')
+        .ingot()
+        .fluid()
+        .color(0xe357f2)
+        .secondaryColor(0x163f5e)
+        .iconSet(shiny)
+        .flags(plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, fineWire)
+        .rotorStats(14400, 560, 100, 96000);
+
+    event
+        .create('primordially_stellarized_weapon_grade_naquadah')
+        .components('1x voidic', '157x stellarized_weapon_grade_naquadah', '1x voidic')
+        .ingot()
+        .fluid()
+        .plasma()
+        .color(0x9881de)
+        .secondaryColor(0x489957)
+        .blastTemp(18880, 'highest', GTValues.VA[UXV], 600)
+        .iconSet(shiny)
+        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, fineWire, noDecomp, noABSRecipe);
+
+    MH.compGem(
+        'aquariadic_rimuli_dragonix',
+        ['5x pure_dragon_breath', '7x akreyriadic_runixium', '4x raging_rimulatia'],
+        0x16269e,
+        gemVertical,
+        [noDecomp]
+    );
 });

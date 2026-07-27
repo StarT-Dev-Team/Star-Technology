@@ -2278,6 +2278,7 @@
         */
 
         //UXV Materials
+        /*
         MH.compDustLiquid('netherite_triselex_oxide', ['4x netherite', '3x selenium', '8x oxygen'], 0xcfd9a3, [
             noDecomp,
         ]);
@@ -2312,8 +2313,10 @@
             [V('uxv'), 7, 48, false],
             [boltAndScrew, spring, smallSpring, noABSRecipe, noDecomp, fineWire]
         );
+        */
 
         //Agriculture
+        /*
         MH.compLiquid('raw_silkworm_oil', [], 0x8b5a2b, [noDecomp]);
         MH.compLiquid('refined_silkworm_oil', [], 0xf5de93, [noDecomp]);
         MH.compLiquid('silkworm_gel', [], 0xcdbe86, [noDecomp]);
@@ -2333,8 +2336,10 @@
             0x72a677,
             [noDecomp]
         );
+        */
 
         //Bromine Line
+        /*
         event
             .create('acidic_bromine_solution')
             .liquid()
@@ -2381,8 +2386,10 @@
             .flags(noDecomp);
 
         event.create('acidic_bromine_exhaust').gas().color(0x8f681e).components('3x steam', '1x chlorine');
+        */
 
         //aerogel line
+        /*
         MH.compLiquid('linoleic_acid', ['18x carbon', '31x hydrogen', '2x oxygen'], 0xdbdcdb, [noDecomp]);
         MH.compDust('sodium_linoleate', ['18x carbon', '31x hydrogen', '2x oxygen', 'sodium'], 0xe3ffff, [noDecomp]);
         MH.noCompFluid('aerogel_solvent_mixture', 0x9de4db);
@@ -2400,8 +2407,10 @@
             .color(0x9fcad9)
             .secondaryColor(0xe5f1ee)
             .flags(foil, plates);
+            */
 
         //Polycarbonate Line
+        /*
         MH.compDust('sodium_diphenoxide', ['2x sodium', '2x oxygen', '15x carbon', '16x hydrogen'], 0xfefefe, [
             noDecomp,
         ]);
@@ -2413,14 +2422,18 @@
             [388, 300, true, true, false, false],
             [noDecomp, foil, plates]
         );
+        */
 
         //De-Ionized Water Line
+        /*
         MH.compLiquid('purified_water', ['2x hydrogen', 'oxygen'], 0x4a94ff, [noDecomp]);
         MH.compLiquid('acidic_water', ['2x hydrogen', 'oxygen'], 0x2e85ff, [noDecomp]);
         MH.compLiquid('divinylbenzene', ['10x carbon', '10x hydrogen'], 0x9fb1b8, [noDecomp]);
         MH.compLiquid('deionized_water', ['2x hydrogen', 'oxygen'], 0x006aff, [noDecomp]);
+        */
 
         //Faematter + Filaments
+        /*
         MH.compLiquid('impure_faematter', ['1x mystery', '1x faetic', '1x mystery'], 0xe8bce7, [noDecomp]);
         MH.compLiquid('faematter', ['1x faetic'], 0xf593f3, [noDecomp]);
 
@@ -2454,8 +2467,10 @@
         );
 
         MH.compLiquid('kaleidoscope_agitation_serum', ['1x mystery'], 0x9afc88, [noDecomp]);
+        */
 
         //Riftions + Rift Line
+        /*
         MH.compLiquid('riftion_extract', ['999x mystery', '1x riftic', '999x mystery'], 0x8f5d8c, [noDecomp]);
         MH.compPlasma('riftion', 999989999, ['1x riftion_extract', '1x neutronium'], 0xf0fbff, [noDecomp]);
         MH.compLiquid('highly_unstable_rift_source', ['1x riftic', '1x excited'], 0x5e1c5b, [noDecomp]);
@@ -2472,8 +2487,10 @@
         MH.compLiquid('riftic_concentrate', ['8x riftic'], 0xb5109a, [noDecomp]);
         MH.compLiquid('faetic_extract', ['1x riftic', '1x faetic', '1x mystery'], 0x7da7b0, [noDecomp]);
         MH.compLiquid('prismatic_hypergurmalium', ['1x riftic', '1x faetic'], 0x4fdfff, [noDecomp]);
+        */
 
         //DSG
+        /*
         event
             .create('raging_rimulatia') //Shadowyrm
             .components('1x rifitc', '1x draco_abyssal', '1x riftic')
@@ -2517,9 +2534,10 @@
             GEM_VERTICAL,
             [noDecomp]
         );
+        */
 
         //Combustion fuels and oxidizers
-
+        /*
         MH.compLiquid('kerosene', ['12x carbon', '26x hydrogen'], 0xe8d44d, [noDecomp]);
         MH.compLiquid('hydrofined_kerosene', ['12x carbon', '26x hydrogen'], 0xf2ec9a, [noDecomp]);
         MH.compLiquid('rp_1', ['12x carbon', '26x hydrogen'], 0xf2ec9a, [noDecomp]);
@@ -2556,10 +2574,12 @@
         MH.compLiquid('fluorinated_ferrocene', ['15x carbon', '5x hydrogen', '15x fluorine', '1x iron'], 0x00aa00, [
             noDecomp,
         ]);
+        */
 
-        event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
+        //event.create('latex').polymer().color(0xcfbdac).flags(plates, noDecomp);
 
         // Fuel rod base dusts :D
+        /*
         const $U238 = 'uranium';
         const $Pu239 = 'plutonium';
         const $Cf252 = 'californium_252';
@@ -2570,5 +2590,6 @@
         MH.compDust('mox238_blend', ['3x plutonium_238', `1x ${$Cf252}`], 0x4f2f04, [centrifuge]);
         MH.compDust('etu_blend', ['2x curium_244', `1x ${$Cf252}`, '1x americium_241'], 0x3d5434, [centrifuge]);
         MH.compDust('nqe_blend', ['2x purified_naquadah', '2x einsteinium_253'], 0x3f3c18, [centrifuge]);
+        */
     });
 })();
