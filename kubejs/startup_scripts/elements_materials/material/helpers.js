@@ -5,12 +5,11 @@ const $IngotProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.m
 const $DustProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty');
 const $FluidProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty');
 const $BlastProperty = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty');
-// eslint-disable-next-line no-unused-vars
+
 const $FluidPipeProperties = Java.loadClass(
     'com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidPipeProperties'
 );
 
-// eslint-disable-next-line no-unused-vars
 const ICONSETS = {
     dull: GTMaterialIconSet.DULL,
     metallic: GTMaterialIconSet.METALLIC,
@@ -38,7 +37,6 @@ const ICONSETS = {
     radioactive: GTMaterialIconSet.RADIOACTIVE,
 };
 
-// eslint-disable-next-line no-unused-vars
 const FLAGS = {
     // Generic flags
     noUnify: GTMaterialFlags.NO_UNIFICATION,

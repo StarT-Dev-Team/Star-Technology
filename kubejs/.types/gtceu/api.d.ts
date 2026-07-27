@@ -738,10 +738,9 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.info
         RADIOACTIVE: MaterialIconSet;
     };
 
-    interface MaterialFlag extends $object<{
-        name: 'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag';
-        enumClass: typeof MaterialFlags;
-    }> {}
+    interface MaterialFlag extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag'> {}
+
+    interface MaterialFlags extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags'> {}
 
     const MaterialFlags: $class<MaterialFlag> & {
         NO_UNIFICATION: MaterialFlag;
