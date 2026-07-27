@@ -890,6 +890,7 @@
         */
 
         // Alloys and other compounds
+        /*
         MH.conductor(
             'zalloy',
             ['3x zapolgium', '4x duranium', '2x europium'],
@@ -918,8 +919,10 @@
             [9100, 'higher', VA('luv'), 1800],
             [gear, smallGear, rotor, round, frame]
         );
+        */
 
         // Misc
+        /*
         MH.compIngotLiquid(
             'indium_tin_lead_cadmium_soldering_alloy',
             ['14x indium', '3x tin', '2x lead', '1x cadmium'],
@@ -937,6 +940,7 @@
             null,
             []
         );
+        
 
         MH.compIngotLiquid(
             'thorium_plut_duranide_241',
@@ -946,8 +950,10 @@
             [10199, 'highest', VA('uv'), 850],
             [fineWire, noDecomp, foil]
         );
+        */
 
         // AE2 (constants left due to sec color components)
+        /*
         MH.elemFluid('skystone', 'skystone', 0x414445, []);
 
         event.create('fluix').element(GTElements.get('fluix')).flags(lens).iconSet('fluix');
@@ -960,12 +966,7 @@
             [1600, 'low', VA('mv'), 400],
             [noDecomp, plates, rod, frame]
         );
-
-        /**
-         * @param {string} material
-         * @param {number} color
-         * @param {MaterialIconSet} icon
-         */
+        
         const skystoneAlloys = (material, color, icon) => {
             event
                 .create(`${material}_skystone_alloy`)
@@ -992,11 +993,7 @@
             [noDecomp, plates, rod, frame, foil]
         );
 
-        /**
-         * @param {string} material
-         * @param {number} color
-         * @param {MaterialIconSet} icon
-         */
+        
         const netheriteSkystoneAlloys = (material, color, icon) => {
             event
                 .create(`netherite_${material}_skystone_alloy`)
@@ -1012,6 +1009,7 @@
 
         netheriteSkystoneAlloys('gold', 0x978b2d, 'METALLIC');
         netheriteSkystoneAlloys('certus_quartz', 0x396a6c, 'DULL');
+        */
 
         // PEEK plastic Line
         MH.compDust('disodium_salt_of_hydroquinone', ['6x carbon', '4x hydrogen', '2x oxygen', '2x sodium'], 0xeaeaf9, [
