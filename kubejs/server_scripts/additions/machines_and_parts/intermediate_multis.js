@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:multiblock_upgrade_kit')
         .duration(800)
-        .EUt(GTValues.V[GTValues.HV]);
+        .EUtV(HV);
 
     [
         'bender',
@@ -102,50 +102,46 @@ ServerEvents.recipes((event) => {
         B: 'gtceu:tungsten_single_cable',
     });
 
-    event.recipes.gtceu
-        .assembly_line(id('super_vacuum_freezer'))
-        .itemInputs(
-            'gtceu:aluminium_frame',
-            '2x #gtceu:circuits/luv',
-            '4x gtceu:double_kanthal_plate',
-            '2x gtceu:iv_fluid_regulator',
-            '8x gtceu:stainless_steel_tiny_fluid_pipe',
-            '4x gtceu:niobium_titanium_screw'
-        )
-        .inputFluids('gtceu:soldering_alloy 432')
-        .itemOutputs('gtceu:super_vacuum_freezer')
-        ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:vacuum_freezer'))
-                .duration(1800)
-                .EUt(GTValues.VHA[GTValues.EV])
-        )
-        .duration(400)
-        .EUt(GTValues.VHA[GTValues.IV]);
+    $(
+        event.recipes.gtceu
+            .assembly_line(id('super_vacuum_freezer'))
+            .itemInputs(
+                'gtceu:aluminium_frame',
+                '2x #gtceu:circuits/luv',
+                '4x gtceu:double_kanthal_plate',
+                '2x gtceu:iv_fluid_regulator',
+                '8x gtceu:stainless_steel_tiny_fluid_pipe',
+                '4x gtceu:niobium_titanium_screw'
+            )
+            .inputFluids('gtceu:soldering_alloy 432')
+            .itemOutputs('gtceu:super_vacuum_freezer')
+            .duration(400)
+            .EUtVHA(IV)
+    ).scannerResearch((researchRecipeBuilder) =>
+        researchRecipeBuilder.researchStack(Item.of('gtceu:vacuum_freezer')).duration(1800).EUt(GTValues.VHA[EV])
+    );
 
-    event.recipes.gtceu
-        .assembly_line(id('super_barrel'))
-        .itemInputs(
-            '8x gtceu:rhodium_plated_palladium_frame',
-            '4x gtceu:double_niobium_titanium_plate',
-            '16x gtceu:stainless_steel_plate',
-            '4x gtceu:niobium_titanium_huge_fluid_pipe',
-            '6x gtceu:niobium_titanium_large_fluid_pipe',
-            '4x gtceu:luv_fluid_regulator',
-            '4x gtceu:hssg_spring',
-            '4x #gtceu:circuits/luv',
-            '8x gtceu:niobium_titanium_double_cable'
-        )
-        .inputFluids('gtceu:soldering_alloy 1152')
-        .itemOutputs('gtceu:super_barrel')
-        ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:industrial_barrel'))
-                .duration(1800)
-                .EUt(GTValues.VHA[GTValues.LuV])
-        )
-        .duration(400)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+    $(
+        event.recipes.gtceu
+            .assembly_line(id('super_barrel'))
+            .itemInputs(
+                '8x gtceu:rhodium_plated_palladium_frame',
+                '4x gtceu:double_niobium_titanium_plate',
+                '16x gtceu:stainless_steel_plate',
+                '4x gtceu:niobium_titanium_huge_fluid_pipe',
+                '6x gtceu:niobium_titanium_large_fluid_pipe',
+                '4x gtceu:luv_fluid_regulator',
+                '4x gtceu:hssg_spring',
+                '4x #gtceu:circuits/luv',
+                '8x gtceu:niobium_titanium_double_cable'
+            )
+            .inputFluids('gtceu:soldering_alloy 1152')
+            .itemOutputs('gtceu:super_barrel')
+            .duration(400)
+            .EUtVHA(LuV)
+    ).scannerResearch((researchRecipeBuilder) =>
+        researchRecipeBuilder.researchStack(Item.of('gtceu:industrial_barrel')).duration(1800).EUt(GTValues.VHA[LuV])
+    );
 
     event.recipes.gtceu
         .assembly_line(id('super_abs'))
@@ -161,36 +157,31 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:soldering_alloy 1008', 'gtceu:polybenzimidazole 432')
         .itemOutputs('gtceu:super_abs')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:alloy_blast_smelter'))
-                .EUt(GTValues.VHA[GTValues.LuV])
-                .CWUt(12)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:alloy_blast_smelter')).EUt(GTValues.VHA[LuV]).CWUt(12)
         )
         .duration(400)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
-    event.recipes.gtceu
-        .assembly_line(id('super_gas_collector'))
-        .itemInputs(
-            '8x gtceu:iridium_frame',
-            '4x gtceu:double_iridium_plate',
-            '16x gtceu:stainless_steel_plate',
-            '6x gtceu:iridium_large_fluid_pipe',
-            '4x gtceu:iv_fluid_regulator',
-            '4x gtceu:hssg_spring',
-            '4x #gtceu:circuits/luv',
-            '8x gtceu:niobium_titanium_double_cable'
-        )
-        .inputFluids('gtceu:soldering_alloy 1152')
-        .itemOutputs('gtceu:super_gas_collector')
-        ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:iv_gas_collector'))
-                .duration(1800)
-                .EUt(GTValues.VHA[GTValues.LuV])
-        )
-        .duration(400)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+    $(
+        event.recipes.gtceu
+            .assembly_line(id('super_gas_collector'))
+            .itemInputs(
+                '8x gtceu:iridium_frame',
+                '4x gtceu:double_iridium_plate',
+                '16x gtceu:stainless_steel_plate',
+                '6x gtceu:iridium_large_fluid_pipe',
+                '4x gtceu:iv_fluid_regulator',
+                '4x gtceu:hssg_spring',
+                '4x #gtceu:circuits/luv',
+                '8x gtceu:niobium_titanium_double_cable'
+            )
+            .inputFluids('gtceu:soldering_alloy 1152')
+            .itemOutputs('gtceu:super_gas_collector')
+            .duration(400)
+            .EUtVHA(LuV)
+    ).scannerResearch((researchRecipeBuilder) =>
+        researchRecipeBuilder.researchStack(Item.of('gtceu:iv_gas_collector')).duration(1800).EUt(GTValues.VHA[LuV])
+    );
 
     event.shaped('gtceu:industrial_extraction_chamber', ['TPG', 'AMA', 'GCT'], {
         M: 'gtceu:hv_extractor',

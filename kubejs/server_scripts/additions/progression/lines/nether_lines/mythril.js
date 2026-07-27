@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('32x gtceu:netherrack_dust')
         .duration(3600)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .electrolyzer(id('mythrillic_dust'))
@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:mystical_nether_magma 250')
         .itemOutputs('gtceu:mythrillic_dust', 'gtceu:small_mythrillic_dust')
         .duration(140)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .ordered_chemistry(id('mythrillic_hydroxide'))
@@ -37,7 +37,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:oxygen 1875')
         .duration(116)
         .itemOutputs('6x gtceu:mythrillic_hydride_dust')
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     event.recipes.gtceu
         .electric_blast_furnace(id('mythril'))
@@ -47,7 +47,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:hydrogen_sulfide 1000')
         .duration(420)
         .blastFurnaceTemp(9100)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.replaceInput(
         { id: 'gtceu:electric_blast_furnace/blast_mythril_gas' },

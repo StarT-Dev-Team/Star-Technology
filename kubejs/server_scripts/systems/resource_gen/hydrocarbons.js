@@ -80,7 +80,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`${main} 3000`)
             .outputFluids(`gtceu:${primary} 1000`, `gtceu:${secondary} 1000`, `gtceu:${terniary} 1000`)
             .duration(80)
-            .EUt(GTValues.VA[GTValues.IV]);
+            .EUtVA(IV);
     });
 
     /** @type {const} */ ([
@@ -88,70 +88,70 @@ ServerEvents.recipes((event) => {
             output: 'polyimide 3024',
             fluidInput: [`${PS} 4125`, `${FS} 850`, `${BC} 825`, 'gtceu:nitric_acid 975', 'minecraft:water 9250'],
             inputItem: false,
-            voltage: GTValues.VHA[GTValues.UIV],
+            voltage: GTValues.VHA[UIV],
             duration: 274,
         },
         {
             output: 'polyvinyl_chloride 1512',
             fluidInput: [`${CV} 950`, 'gtceu:hydrochloric_acid 875', 'gtceu:oxygen 6250'],
             inputItem: false,
-            voltage: GTValues.VHA[GTValues.EV],
+            voltage: GTValues.VHA[EV],
             duration: 96,
         },
         {
             output: 'polyphenylene_sulfide 1000',
             fluidInput: [`${PS} 1425`, 'gtceu:oxygen 6500'],
             inputItem: ['1x gtceu:sulfur_dust'],
-            voltage: GTValues.VHA[GTValues.EV],
+            voltage: GTValues.VHA[EV],
             duration: 216,
         },
         {
             output: 'epoxy 1000',
             fluidInput: [`${BC} 1875`, `${PS} 1625`, 'gtceu:perchloric_acid 750'],
             inputItem: false,
-            voltage: GTValues.VHA[GTValues.LuV],
+            voltage: GTValues.VHA[LuV],
             duration: 150,
         },
         {
             output: 'polyvinyl_butyral 720',
             fluidInput: [`${BC} 875`, `${CV} 500`, `${FS} 500`, 'gtceu:oxygen 2500'],
             inputItem: ['gtceu:carbon_dust'],
-            voltage: GTValues.VHA[GTValues.LuV],
+            voltage: GTValues.VHA[LuV],
             duration: 75,
         },
         {
             output: 'perfluoroelastomer_rubber 9072',
             fluidInput: [`${CV} 9625`, `${BC} 1375`, `${FS} 250`, 'gtceu:fluorine 18500'],
             inputItem: ['7x gtceu:sulfur_dust'],
-            voltage: GTValues.VHA[GTValues.UHV],
+            voltage: GTValues.VHA[UHV],
             duration: 83,
         },
         {
             output: 'silicone_rubber 1296',
             fluidInput: [`${CV} 2000`, 'gtceu:silicic_acid 1000'],
             inputItem: ['gtceu:sulfur_dust'],
-            voltage: GTValues.VA[GTValues.EV],
+            voltage: GTValues.VA[EV],
             duration: 25,
         },
         {
             output: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate 864',
             fluidInput: [`${BC} 11250`, `${FS} 9750`, `${PS} 7500`, `${CV} 4250`, 'gtceu:bromine 25'],
             inputItem: ['gtceu:sulfur_dust', '6x minecraft:sugar'],
-            voltage: GTValues.VA[GTValues.UXV] / 3,
+            voltage: GTValues.VA[UXV] / 3,
             duration: 117,
         },
         {
             output: 'polyether_ether_ketone 3456',
             fluidInput: [`${BC} 1250`, `${PS} 625`, 'gtceu:oxygen 750'],
             inputItem: false,
-            voltage: GTValues.VA[GTValues.UEV] / 3,
+            voltage: GTValues.VA[UEV] / 3,
             duration: 42,
         },
         {
             output: 'polybenzimidazole 9072',
             fluidInput: [`${PS} 24625`, `${CV} 16250`, `${XC} 7625`, 'gtceu:ammonia 6500'],
             inputItem: ['gtceu:copper_dust'],
-            voltage: GTValues.VHA[GTValues.ZPM],
+            voltage: GTValues.VHA[ZPM],
             duration: 285,
         },
     ]).forEach((superSkip) => {

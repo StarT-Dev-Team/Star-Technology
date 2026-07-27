@@ -1,14 +1,16 @@
 declare namespace internal.java.util {
-    interface Comparator<T> extends $object<'Comparator'> {
+    interface Comparator<T> extends $object<'java.util.Comparator'> {
         compare(o1: T, o2: T): number;
         equals(o: any): boolean;
     }
 
-    interface Iterator<V> extends $object<'java.lang.Iterable'> {}
+    interface Iterator<V> extends $object<'java.util.Iterator'> {
+        [Symbol.iterator](): { next(): globalThis.IteratorResult<V, BuiltinIteratorReturn> };
+    }
 
     import Iterable = java.lang.Iterable;
 
-    interface Collection<E> extends $object<'Collection', Iterable<E>> {
+    interface Collection<E> extends $object<'java.util.Collection', Iterable<E>> {
         size(): number;
         isEmpty(): boolean;
         contains(v: unknown): boolean;
@@ -18,7 +20,9 @@ declare namespace internal.java.util {
         removeAll(c: Collection<E>): boolean;
     }
 
-    interface List<E> extends $object<'List', Omit<Collection<E>, 'add' | 'addAll'>> {
+    interface List<E> extends $object<'java.util.List', Omit<Collection<E>, 'add' | 'addAll'>> {}
+
+    interface List<E> extends $object<'java.util.List', Omit<Collection<E>, 'add' | 'addAll'>> {
         add(v: E): void;
         add(index: number, v: E): void;
         remove(v: unknown): void;
@@ -26,7 +30,7 @@ declare namespace internal.java.util {
         addAll(index: number, c: Collection<E>): boolean;
     }
 
-    interface Optional<T> extends $object<'java.lang.Optional'> {
+    interface Optional<T> extends $object<'java.util.Optional'> {
         get(): T;
         isPresent(): boolean;
         get present(): boolean;
@@ -38,7 +42,17 @@ declare namespace internal.java.util {
         ofNullable<T>(value: T | null): Optional<T>;
     };
 
-    interface UUID extends $object<'java.lang.UUID'> {}
+    interface UUID extends $object<'java.util.UUID'> {}
+
+    interface Map<K, V> extends $object<'java.util.Map'> {
+        size(): number;
+        isEmpty(): boolean;
+        containsKey(key: any): boolean;
+        containsValue(value: any): boolean;
+        get(key: any): V | null;
+        put(key: K, value: V): V;
+        remove(key: any): V | null;
+    }
 }
 
 declare namespace internal.java.util.function_ {

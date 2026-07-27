@@ -19,19 +19,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('mystical_greenhouse', 'simple')
-        .tiers(
-            GTValues.LV,
-            GTValues.MV,
-            GTValues.HV,
-            GTValues.EV,
-            GTValues.IV,
-            GTValues.LuV,
-            GTValues.ZPM,
-            GTValues.UV,
-            GTValues.UHV,
-            GTValues.UEV,
-            GTValues.UIV
-        )
+        .tiersBetween(GTValues.LV, GTValues.UIV)
         .definition((tier, builder) => {
             return builder.recipeType('greenhouse_growing').workableTieredHullModel('gtceu:block/machines/extruder');
         });

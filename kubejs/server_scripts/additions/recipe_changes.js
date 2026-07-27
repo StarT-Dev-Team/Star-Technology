@@ -123,7 +123,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:data_dna_disk')
         .duration(400)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.V[GTValues.UHV]);
+        .EUtV(UHV);
 
     event.recipes.gtceu
         .circuit_assembler(id('component_data_core'))
@@ -139,7 +139,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:component_data_core')
         .duration(400)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.V[GTValues.UIV]);
+        .EUtV(UIV);
 
     // StarT Core Cell* Emptying
     ['drum', 'fluid_cell'].forEach((container) => {
@@ -217,7 +217,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 2880')
         .duration(280)
         .blastFurnaceTemp(3000)
-        .EUt(GTValues.VH[GTValues.ZPM])
+        .EUtVH(ZPM)
         .circuit(14);
 
     event.recipes.gtceu
@@ -235,7 +235,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:naquadated_soldering_alloy 5760')
         .duration(2250)
         .blastFurnaceTemp(8980)
-        .EUt(GTValues.VH[GTValues.UHV])
+        .EUtVH(UHV)
         .circuit(8);
 
     event.recipes.gtceu
@@ -252,7 +252,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:neutrindium_soldering_alloy 10656')
         .duration(4810)
         .blastFurnaceTemp(14895)
-        .EUt(GTValues.VH[GTValues.UIV])
+        .EUtVH(UIV)
         .circuit(7);
 
     event.remove({ output: 'gtceu:uv_voltage_coil' });
@@ -262,7 +262,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:uv_voltage_coil')
         .circuit(1)
         .duration(200)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     //certus fixes
     [
@@ -286,7 +286,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:echo_r 144')
         .itemOutputs('gtceu:echo_shard_dust')
         .duration(160)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     event.recipes.gtceu
         .heat_chamber(id('tiny_purified_naquadah'))
@@ -314,7 +314,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:naquadria_solution 3000')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     event.recipes.gtceu
         .centrifuge(id('impure_enriched_naquadah_solution_separation'))
@@ -322,7 +322,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('3x gtceu:trinium_sulfide_dust', '4x gtceu:antimony_trifluoride_dust')
         .outputFluids('gtceu:enriched_naquadah_solution 3000')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     event.remove({ id: /gtceu:.*\/hypochlorous_acid/ });
     event.recipes.gtceu

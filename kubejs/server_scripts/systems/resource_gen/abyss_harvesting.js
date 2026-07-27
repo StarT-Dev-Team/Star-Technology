@@ -25,12 +25,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:abyssal_harvester')
         .duration(2400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:uev_gas_collector'))
-                .EUt(GTValues.VA[GTValues.UEV])
-                .CWUt(216)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:uev_gas_collector')).EUt(GTValues.VA[UEV]).CWUt(216)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     // event.recipes.gtceu.draco_infusion(id('draneko_casing'))
     //     .itemInputs('gtceu:nyanium_frame', '2x gtceu:double_isovol_plate', 'gtceu:double_nyanium_plate', '2x kubejs:draconic_scale_cells',
@@ -51,7 +48,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('2x kubejs:abyssal_drill_1')
         .duration(250)
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .EUtVHA(UEV)
         .circuit(6);
 
     event.recipes.gtceu
@@ -65,7 +62,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('2x kubejs:abyssal_drill_2')
         .duration(250)
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .EUtVHA(UEV)
         .circuit(6);
 
     // === //
@@ -76,7 +73,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:pure_netherite 576')
         .itemOutputs('1x kubejs:voidic_reinforced_mesh')
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     // Abyss Harvesting
 
@@ -93,7 +90,7 @@ ServerEvents.recipes((event) => {
         .addData('max_saturation', 750)
         .duration(920)
         .dimension('minecraft:the_end')
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     event.recipes.gtceu
         .abyssal_harvester(id('low_saturation_voidic_excression'))
@@ -108,7 +105,7 @@ ServerEvents.recipes((event) => {
         .addData('max_saturation', 4000)
         .duration(920)
         .dimension('minecraft:the_end')
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     event.recipes.gtceu
         .abyssal_harvester(id('moderate_saturation_voidic_excression'))
@@ -123,7 +120,7 @@ ServerEvents.recipes((event) => {
         .addData('max_saturation', 7000)
         .duration(920)
         .dimension('minecraft:the_end')
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     event.recipes.gtceu
         .abyssal_harvester(id('high_saturation_voidic_excression'))
@@ -138,7 +135,7 @@ ServerEvents.recipes((event) => {
         .addData('max_saturation', 10000)
         .duration(920)
         .dimension('minecraft:the_end')
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     event.recipes.gtceu
         .abyssal_harvester(id('desaturation'))
@@ -148,7 +145,7 @@ ServerEvents.recipes((event) => {
         .addData('max_saturation', 12000)
         .duration(200)
         .dimension('minecraft:the_end')
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     // Processing Line
 
@@ -165,7 +162,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs('gtceu:tiny_echo_shard_dust')
             .outputFluids(outputs)
             .duration(quantityBuckets * 6)
-            .EUt(GTValues.VHA[GTValues.UIV]);
+            .EUtVHA(UIV);
     };
     entropyVoid('high', 50, ['gtceu:vibrant_voidic_slurry 18500']);
     entropyVoid('moderate', 50, ['gtceu:tempered_voidic_slurry 18500']);
@@ -182,7 +179,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${slurryType}_voidic_slurry 1000`)
             .outputFluids(`gtceu:${state1}_state_void_sludge 500`, `gtceu:${state2}_state_void_sludge 500`)
             .duration(125)
-            .EUt(GTValues.V[GTValues.UEV]);
+            .EUtV(UEV);
     };
     quantumDecomp('vibrant', 'gamma', 'zeta');
     quantumDecomp('tempered', 'beta', 'epsilon');
@@ -198,7 +195,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${state}_state_void_sludge 1000`)
             .outputFluids(`gtceu:${state}_state_void_residue 750`, 'gtceu:voidic_waste_residue 250')
             .duration(time)
-            .EUt(GTValues.VA[GTValues.UHV]);
+            .EUtVA(UHV);
     };
     voidState('alpha', 380); // Alpha Last 38 Days
     voidState('beta', 304); // Beta Last 304 Days
@@ -216,7 +213,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:order_centric_void 2400')
         .duration(160)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .injection_mixer(id('chaos_centric_void'))
@@ -227,7 +224,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:chaos_centric_void 2400')
         .duration(160)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .manifold_centrifuge(id('voidic_waste_residue'))
@@ -235,7 +232,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('5x gtceu:small_rhenium_dust', '2x gtceu:tiny_echo_shard_dust')
         .outputFluids('gtceu:naquadria_waste 6250', 'gtceu:molten_ore_mixture 5000')
         .duration(480)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     // Voidic Metals
 
@@ -252,7 +249,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${VoidType}_centric_void 1000`)
             .itemOutputs(`7x gtceu:${Material}_dust`)
             .duration(PerSeconds * 7 * 20)
-            .EUt(GTValues.VHA[GTValues.UEV]);
+            .EUtVHA(UEV);
 
         event.replaceInput(
             { id: `gtceu:electric_blast_furnace/blast_${Material}_gas` },

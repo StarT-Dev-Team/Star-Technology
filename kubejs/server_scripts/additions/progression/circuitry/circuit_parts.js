@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:polyimide ${polymerAmount}`)
             .itemOutputs(`${quantity}x kubejs:living_smd_${type}`)
             .duration(15 * quantity)
-            .EUt(GTValues.VHA[GTValues.ZPM]);
+            .EUtVHA(ZPM);
     };
 
     livingSMD(
@@ -105,10 +105,10 @@ ServerEvents.recipes((event) => {
             .stationResearch((researchRecipeBuilder) =>
                 researchRecipeBuilder
                     .researchStack(Item.of(`kubejs:living_smd_${type}`))
-                    .EUt(GTValues.VHA[GTValues.UHV] * 0.8)
+                    .EUt(GTValues.VHA[UHV] * 0.8)
                     .CWUt(180)
             )
-            .EUt(GTValues.VHA[GTValues.UHV]);
+            .EUtVHA(UHV);
 
         event.recipes.gtceu
             .research_station(`1_x_gtceu_advanced_smd_${type}`)
@@ -122,7 +122,7 @@ ServerEvents.recipes((event) => {
             )
             .CWUt(180)
             .totalCWU(180 * 120 * 20)
-            .EUt(GTValues.VHA[GTValues.UHV] / 4);
+            .EUt(GTValues.VHA[UHV] / 4);
 
         const mtscfItems = items.map((itemObj) => {
             return `${itemObj.count * scalerMCSF * 0.75}x ${itemObj.itemId}`;
@@ -141,10 +141,10 @@ ServerEvents.recipes((event) => {
             .stationResearch((researchRecipeBuilder) =>
                 researchRecipeBuilder
                     .researchStack(Item.of(`kubejs:draconic_qmd_${type}`))
-                    .EUt(GTValues.VHA[GTValues.UHV])
+                    .EUt(GTValues.VHA[UHV])
                     .CWUt(320)
             )
-            .EUt(GTValues.VHA[GTValues.UHV])
+            .EUtVHA(UHV)
             .cleanroom(CleanroomType.getByName('stabilized'));
 
         event.recipes.gtceu
@@ -159,7 +159,7 @@ ServerEvents.recipes((event) => {
             )
             .CWUt(320)
             .totalCWU(384000)
-            .EUt(GTValues.VHA[GTValues.UHV]);
+            .EUtVHA(UHV);
     };
 
     dracoQMD(

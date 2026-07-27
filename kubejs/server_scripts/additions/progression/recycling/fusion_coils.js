@@ -95,7 +95,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`${prefix + coil}`)
             .itemOutputs(outputs)
             .duration(calculateDuration(outputs))
-            .EUt(GTValues.VA[GTValues.LV])
+            .EUtVA(LV)
             .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
     };
 

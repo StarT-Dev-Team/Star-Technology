@@ -83,7 +83,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`gtceu:${tier}_${component}`)
             .itemOutputs(outputs)
             .duration(calculateDuration(outputs))
-            .EUt(GTValues.VA[GTValues.LV])
+            .EUtVA(LV)
             .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
     };
 

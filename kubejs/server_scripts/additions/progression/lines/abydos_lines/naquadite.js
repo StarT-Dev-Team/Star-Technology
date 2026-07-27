@@ -7,14 +7,14 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:hydrogen 1000')
         .outputFluids('gtceu:hydrogen_iodide 1000')
         .duration(275)
-        .EUt(GTValues.VHA[GTValues.HV]);
+        .EUtVHA(HV);
 
     event.recipes.gtceu
         .mixer(id('hydroiodic_acid'))
         .inputFluids('gtceu:hydrogen_iodide 4000', 'minecraft:water 1000')
         .outputFluids('gtceu:hydroiodic_acid 5000')
         .duration(400)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .chemical_bath(id('naquadite_solution'))
@@ -22,12 +22,12 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:hydroiodic_acid 500')
         .outputFluids('gtceu:naquadite_solution 1000')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .centrifuge(id('naquadah_from_naquadite'))
         .inputFluids('gtceu:naquadite_solution 1000')
         .itemOutputs('4x gtceu:naquadah_dust', 'gtceu:magnesite_dust', 'gtceu:magnesia_dust')
         .duration(120)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 });

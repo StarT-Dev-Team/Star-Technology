@@ -79,7 +79,7 @@ ServerEvents.recipes((event) => {
                 '8x gtceu:diamond_skystone_alloy_plate',
             ],
             'sky_steel 576',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
     };
 
@@ -93,14 +93,14 @@ ServerEvents.recipes((event) => {
             `expatternprovider:${item}_storage_bus`,
             ['2x ae2:storage_bus', `${input}`],
             'soldering_alloy 144',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
         assemblerFluidRem(
             `${item}_export_bus`,
             `expatternprovider:${item}_export_bus`,
             ['2x ae2:export_bus', `${input}`],
             'soldering_alloy 144',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
     };
 
@@ -110,7 +110,7 @@ ServerEvents.recipes((event) => {
         'megacells:mega_energy_cell',
         ['gtceu:netherite_gold_skystone_alloy_frame', '8x ae2:dense_energy_cell', 'gtceu:lapotronic_energy_orb'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     assemblerFluidRem(
@@ -118,7 +118,7 @@ ServerEvents.recipes((event) => {
         'expandedae:exp_energy_cell',
         ['gtceu:void_frame', '8x megacells:mega_energy_cell', 'gtceu:max_battery'],
         'netherite_gold_skystone_alloy 1152',
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     //Interfaces
@@ -132,7 +132,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:diamond_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.HV]
+        GTValues.VA[HV]
     );
 
     assemblerFluid(
@@ -145,7 +145,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_certus_quartz_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluid(
@@ -153,7 +153,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:oversize_interface',
         ['expatternprovider:ex_interface', '4x ae2:capacity_card', '4x gtceu:gold_skystone_alloy_plate'],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     //Pattern Providers
@@ -167,7 +167,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:diamond_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.HV]
+        GTValues.VA[HV]
     );
 
     assemblerFluid(
@@ -180,7 +180,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_gold_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluid(
@@ -193,7 +193,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     assemblerFluid(
@@ -206,7 +206,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:double_netherite_gold_skystone_alloy_plate',
         ],
         'fluix_steel 2304',
-        GTValues.VA[GTValues.UHV]
+        GTValues.VA[UHV]
     );
 
     //Upgrade Kits
@@ -215,7 +215,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:pattern_terminal_upgrade',
         ['4x gtceu:double_certus_quartz_skystone_alloy_plate', '4x ae2:engineering_processor', '#gtceu:circuits/ev'],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -229,7 +229,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:gold_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -243,7 +243,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:certus_quartz_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -258,7 +258,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_certus_quartz_skystone_alloy_plate',
         ],
         'sky_steel 1152',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -275,7 +275,7 @@ ServerEvents.recipes((event) => {
             '4x gtceu:double_gold_skystone_alloy_plate',
         ],
         'sky_steel 1152',
-        GTValues.VA[GTValues.EV],
+        GTValues.VA[EV],
         1
     );
 
@@ -284,7 +284,7 @@ ServerEvents.recipes((event) => {
         `expandedae:ext_${ppu}`,
         ['4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV],
+        GTValues.VA[IV],
         1
     );
 
@@ -293,7 +293,7 @@ ServerEvents.recipes((event) => {
         `expandedae:exp2g_${ppu}`,
         ['16x ae2:engineering_processor', '#gtceu:circuits/uhv', '8x gtceu:double_netherite_gold_skystone_alloy_plate'],
         'fluix_steel 2304',
-        GTValues.VA[GTValues.UHV],
+        GTValues.VA[UHV],
         1
     );
 
@@ -310,7 +310,7 @@ ServerEvents.recipes((event) => {
             'gtceu:double_gold_skystone_alloy_plate',
         ],
         'sky_steel 576',
-        GTValues.VA[GTValues.HV],
+        GTValues.VA[HV],
         1
     );
 
@@ -546,7 +546,7 @@ ServerEvents.recipes((event) => {
             '6x gtceu:double_fluix_steel_plate',
         ],
         'soldering_alloy 144',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluid(
@@ -559,7 +559,7 @@ ServerEvents.recipes((event) => {
             'gtceu:ev_field_generator',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     //Assembler Matrix
@@ -568,7 +568,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_frame',
         ['gtceu:plascrete', '2x ae2:fluix_smart_dense_cable', '4x gtceu:ruthenium_plate'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -576,7 +576,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_wall',
         ['gtceu:plascrete', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -584,7 +584,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_glass',
         ['gtceu:cleanroom_glass', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -592,7 +592,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_pattern',
         ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_pattern_provider'],
         'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -600,7 +600,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_crafter',
         ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_molecular_assembler'],
         'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     assemblerFluidRem(
@@ -608,7 +608,7 @@ ServerEvents.recipes((event) => {
         'expatternprovider:assembler_matrix_speed',
         ['expatternprovider:assembler_matrix_wall', '2x ae2:speed_card'],
         'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[GTValues.EV]
+        GTValues.VA[EV]
     );
 
     // ME Hatches
@@ -684,7 +684,7 @@ ServerEvents.recipes((event) => {
                 'gtceu:zpm_sensor',
                 'gtceu:zpm_emitter',
             ],
-            GTValues.VHA[GTValues.ZPM]
+            GTValues.VHA[ZPM]
         );
     });
 
@@ -699,7 +699,7 @@ ServerEvents.recipes((event) => {
             'gtceu:zpm_sensor',
         ],
         'indium_tin_lead_cadmium_soldering_alloy 576',
-        GTValues.VA[GTValues.ZPM]
+        GTValues.VA[ZPM]
     );
 
     //Misc
@@ -714,7 +714,7 @@ ServerEvents.recipes((event) => {
             'gtceu:ev_emitter',
         ],
         'soldering_alloy 576',
-        GTValues.VHA[GTValues.EV]
+        GTValues.VHA[EV]
     );
 
     ['molecular_assembler', 'drive', 'io_port'].forEach((type) => {
@@ -726,7 +726,7 @@ ServerEvents.recipes((event) => {
         'megacells:mega_crafting_unit',
         ['gtceu:netherite_certus_quartz_skystone_alloy_frame', '8x ae2:crafting_unit', '#gtceu:circuits/iv'],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     assemblerFluidRem(
@@ -739,7 +739,7 @@ ServerEvents.recipes((event) => {
             '#gtceu:circuits/hv',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.MV]
+        GTValues.VA[MV]
     );
 
     assemblerFluidRem(
@@ -752,7 +752,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
         ],
         'fluix_steel 576',
-        GTValues.VA[GTValues.IV]
+        GTValues.VA[IV]
     );
 
     ['import_bus', 'export_bus'].forEach((type) => {
@@ -767,7 +767,7 @@ ServerEvents.recipes((event) => {
                 '4x gtceu:gold_skystone_alloy_plate',
             ],
             'sky_steel 576',
-            GTValues.VA[GTValues.EV]
+            GTValues.VA[EV]
         );
     });
 
@@ -852,7 +852,7 @@ ServerEvents.recipes((event) => {
         1800,
         256,
         256 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'megacells:fluid_storage_cell_256m'
     );
 
@@ -875,7 +875,7 @@ ServerEvents.recipes((event) => {
         1800,
         256,
         256 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'megacells:item_storage_cell_256m'
     );
 });

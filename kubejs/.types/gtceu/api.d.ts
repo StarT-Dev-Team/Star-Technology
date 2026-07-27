@@ -89,7 +89,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
     interface IRecipeHandler<K> extends $object<
         'com.gregtechceu.gtceu.api.capability.recipe.IRecipeHandler',
         IFilteredHandler<K>
-    > {}
+    > {
+        getSize(): number;
+        getContents(): any[];
+    }
 
     import Enum = internal.java.lang.Enum;
     import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
@@ -109,6 +112,20 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
         NONE: IO;
         values(): IO[];
     };
+
+    import Map = java.util.Map;
+    import List = java.util.List;
+    import RecipeHandlerList = machine.trait.RecipeHandlerList;
+
+    interface IRecipeCapabilityHolder extends $object<'com.gregtechceu.gtceu.api.capability.recipe.IRecipeCapabilityHolder'> {
+        hasCapabilityProxies(): boolean;
+        getCapabilitiesProxy(): Map<IO, List<RecipeHandlerList>>;
+        getCapabilitiesFlat(): Map<IO, Map<$wrapped<RecipeCapability<unknown>>, List<IRecipeHandler<unknown>>>>;
+        getCapabilitiesForIO(io: $wrapped<IO>): RecipeHandlerList;
+        getCapabilitiesFlat(io: $wrapped<IO>, cap: $wrapped<RecipeCapability<unknown>>): List<IRecipeHandler<unknown>>;
+    }
+
+    interface RecipeCapability<T> extends $object<'com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability'> {}
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe {
@@ -127,9 +144,26 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
         getRealEUt(recipe: GTRecipe): number;
     };
 
+    import Function = java.util.function_.Function;
+    import CompoundTag = net.minecraft.nbt.CompoundTag;
+    import GTRecipeBuilder = gtceu.data.recipe.builder.GTRecipeBuilder;
+
     interface GTRecipeType extends $object<'com.gregtechceu.gtceu.api.recipe.GTRecipeType'> {
+        recipeBuilder(id: string): GTRecipeBuilder;
         setMaxIOSize(maxInputs: number, maxOutputs: number, maxFluidInputs: number, maxFluidOutputs: number): this;
+        addDataInfo(dataInfo: $wrapped<Function<CompoundTag, String>>): this;
+        addCustomRecipeLogic(recipeLogic: GTRecipeType$ICustomRecipeLogic): this;
+        addToMainCategory(recipe: GTRecipe): void;
     }
+
+    import IRecipeCapabilityHolder = capability.recipe.IRecipeCapabilityHolder;
+
+    interface GTRecipeType$ICustomRecipeLogic extends $object<'com.gregtechceu.gtceu.api.recipe.GTRecipeType$ICustomRecipeLogic'> {
+        createCustomRecipe(holder: IRecipeCapabilityHolder): GTRecipe | null;
+        buildRepresentativeRecipes(): void;
+    }
+
+    const GTRecipeType$ICustomRecipeLogic: $class<GTRecipeType$ICustomRecipeLogic> & {};
 
     import ItemStack = net.minecraft.world.item.ItemStack;
     import FluidStack = net.minecraftforge.fluids.FluidStack;
@@ -1359,6 +1393,12 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry {
     interface GTRegistry<K, V> extends $object<'com.gregtechceu.gtceu.api.registry.GTRegistry', Iterable<V>> {
         containKey(key: $wrapped<K>): boolean;
         containValue(value: $wrapped<V>): boolean;
+        freeze(): void;
+        unfreeze(): void;
+        register<T extends V>(key: $wrapped<K>, value: T): T;
+        get(key: $wrapped<K>): V;
+        getOrDefault(key: $wrapped<K>, defaultValue: V): V;
+        getKey(value: $wrapped<V>): K;
     }
 
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
@@ -1369,10 +1409,11 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry {
     > {}
 
     import MachineDefinition = machine.MachineDefinition;
+    import GTRecipeType = recipe.GTRecipeType;
 
     const GTRegistries: {
         // ELEMENTS: GTRegistry.String<Element>;
-        // RECIPE_TYPES: GTRegistry$RL<GTRecipeType>;
+        RECIPE_TYPES: GTRegistry$RL<GTRecipeType>;
         // RECIPE_CATEGORIES: GTRegistry$RL<GTRecipeCategory>;
         // COVERS: GTRegistry$RL<CoverDefinition>;
         MACHINES: GTRegistry$RL<MachineDefinition>;
@@ -1401,6 +1442,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         Supplier<T>
     > {
         id: $wrapped<ResourceLocation>;
+        register(): T;
     }
 
     interface BuilderBase<T> extends BuilderBase__Blueprint<T, BuilderBase<T>> {}
@@ -2018,13 +2060,18 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.trait {
 
     import Ingredient = net.minecraft.world.item.crafting.Ingredient;
     import CustomItemStackHandler = transfer.item.CustomItemStackHandler;
+    import IItemHandlerModifiable = net.minecraftforge.items.IItemHandlerModifiable;
 
     interface NotifiableItemStackHandler extends $object<
         'com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler',
-        NotifiableRecipeHandlerTrait<Ingredient>
+        NotifiableRecipeHandlerTrait<Ingredient>,
+        ICapabilityTrait,
+        IItemHandlerModifiable
     > {
         readonly storage: CustomItemStackHandler;
     }
+
+    const NotifiableItemStackHandler: $class<NotifiableItemStackHandler> & {};
 
     import FluidIngredient = recipe.ingredient.FluidIngredient;
     import CustomFluidTank = transfer.fluid.CustomFluidTank;
@@ -2057,6 +2104,16 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.trait {
         WAITING: RecipeLogic$Status;
         SUSPEND: RecipeLogic$Status;
     };
+
+    interface RecipeHandlerList extends $object<'com.gregtechceu.gtceu.api.machine.trait.RecipeHandlerList'> {}
+
+    import IO = capability.recipe.IO;
+
+    interface ICapabilityTrait extends $object<'com.gregtechceu.gtceu.api.machine.trait.ICapabilityTrait'> {
+        getCapabilityIO(): IO;
+        canCapInput(): boolean;
+        canCapOutput(): boolean;
+    }
 }
 declare namespace internal.com.gregtechceu.gtceu.api.pipenet {
     interface IPipeType<NodeDataType> extends $object<'com.gregtechceu.gtceu.api.pipenet.IPipeType'> {}
@@ -2082,6 +2139,7 @@ declare namespace internal.kjs {
     interface LoadableClasses {
         'com.gregtechceu.gtceu.api.recipe.GTRecipe': typeof internal.com.gregtechceu.gtceu.api.recipe.GTRecipe;
         'com.gregtechceu.gtceu.api.recipe.RecipeHelper': typeof internal.com.gregtechceu.gtceu.api.recipe.RecipeHelper;
+        'com.gregtechceu.gtceu.api.recipe.GTRecipeType$ICustomRecipeLogic': typeof internal.com.gregtechceu.gtceu.api.recipe.GTRecipeType$ICustomRecipeLogic;
         'com.gregtechceu.gtceu.api.pattern.util.RelativeDirection': typeof internal.com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
         'com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition': typeof internal.com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
         'com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine': typeof internal.com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
@@ -2090,6 +2148,7 @@ declare namespace internal.kjs {
         'com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties': typeof internal.com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
         'com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController': typeof internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
         'com.gregtechceu.gtceu.api.machine.feature.multiblock.IMufflerMachine': typeof internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMufflerMachine;
+        'com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler': typeof internal.com.gregtechceu.gtceu.api.machine.trait.NotifiableItemStackHandler;
         'com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status': typeof internal.com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status;
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.AlloyBlastProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.AlloyBlastProperty;
         'com.gregtechceu.gtceu.api.data.chemical.material.properties.ArmorProperty': typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ArmorProperty;

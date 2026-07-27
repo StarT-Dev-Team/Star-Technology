@@ -7,7 +7,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:epoxy 288')
         .itemOutputs('kubejs:netherite_reinforced_mesh')
         .duration(100)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     event.recipes.gtceu
         .mixer(id('new_soldering_alloy'))
@@ -44,7 +44,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('5x gtceu:ferrosilite_dust', '2x gtceu:titanium_oxide_dust')
         .itemOutputs('4x gtceu:iron_titanium_oxide_dust', '3x gtceu:silicon_dioxide_dust')
         .duration(960)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('tungsten_disulfide'))
@@ -53,7 +53,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('3x gtceu:tungsten_disulfide_dust')
         .outputFluids('minecraft:water 3000')
         .duration(480)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .mixer(id('cerium_tritelluride'))
@@ -61,7 +61,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('4x gtceu:cerium_tritelluride_dust')
         .duration(900)
         .circuit(4)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .mixer(id('thorium_plut_duranide_241'))
@@ -69,7 +69,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('8x gtceu:thorium_plut_duranide_241_dust')
         .circuit(4)
         .duration(1000)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     // NtSiC line
     event.remove({ output: 'gtceu:hot_neutronium_silicon_carbide_ingot' });
@@ -85,7 +85,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('15x gtceu:neutronium_silicon_carbide_dust')
         .duration(465)
         .circuit(2)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .heat_chamber(id('hot_neutronium_silicon_carbide'))
@@ -93,5 +93,5 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:polyether_ether_ketone 36')
         .itemOutputs('gtceu:hot_neutronium_silicon_carbide_ingot')
         .duration(200)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 });

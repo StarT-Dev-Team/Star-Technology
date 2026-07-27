@@ -1,5 +1,26 @@
 // priority: 1000
 
+/* eslint-disable no-unused-vars */
+// @ts-ignore
+/** @global */ const ULV = 0;
+/** @global */ const LV = 1;
+/** @global */ const MV = 2;
+/** @global */ const HV = 3;
+/** @global */ const EV = 4;
+/** @global */ const IV = 5;
+// eslint-disable-next-line id-match
+/** @global */ const LuV = 6;
+/** @global */ const ZPM = 7;
+/** @global */ const UV = 8;
+/** @global */ const UHV = 9;
+/** @global */ const UEV = 10;
+/** @global */ const UIV = 11;
+/** @global */ const UXV = 12;
+// eslint-disable-next-line id-match
+/** @global */ const OpV = 13;
+/** @global */ const MAX = 14;
+/* eslint-enable no-unused-vars */
+
 /** @param {internal.$wrapped<internal.net.minecraft.world.item.ItemStack>} item */
 global.getGtMaterial = (item) => {
     // eslint-disable-next-line id-match, no-undef

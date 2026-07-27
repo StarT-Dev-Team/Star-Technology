@@ -15,10 +15,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:zpm_fluid_drilling_rig')
         .duration(400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:ev_fluid_drilling_rig'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(144)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:ev_fluid_drilling_rig')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 });

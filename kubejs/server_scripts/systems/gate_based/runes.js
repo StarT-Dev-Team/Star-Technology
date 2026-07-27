@@ -30,7 +30,7 @@ ServerEvents.recipes((event) => {
         'csg_enscription_plate',
         '64x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 576',
-        GTValues.VHA[GTValues.ZPM],
+        GTValues.VHA[ZPM],
         600
     );
     rcasRecipe(
@@ -39,7 +39,7 @@ ServerEvents.recipes((event) => {
         'csg_enscription_plate',
         '64x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 576',
-        GTValues.VHA[GTValues.ZPM],
+        GTValues.VHA[ZPM],
         600
     );
     rcasRecipe(
@@ -48,7 +48,7 @@ ServerEvents.recipes((event) => {
         'csg_enscription_plate',
         '64x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 576',
-        GTValues.VHA[GTValues.ZPM],
+        GTValues.VHA[ZPM],
         600
     );
     rcasRecipe(
@@ -57,7 +57,7 @@ ServerEvents.recipes((event) => {
         'csg_enscription_chip',
         '8x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 72',
-        GTValues.VHA[GTValues.ZPM],
+        GTValues.VHA[ZPM],
         600
     );
 
@@ -67,7 +67,7 @@ ServerEvents.recipes((event) => {
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         600
     );
     rcasRecipe(
@@ -76,7 +76,7 @@ ServerEvents.recipes((event) => {
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         600
     );
     rcasRecipe(
@@ -85,7 +85,7 @@ ServerEvents.recipes((event) => {
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         600
     );
     rcasRecipe(
@@ -94,7 +94,7 @@ ServerEvents.recipes((event) => {
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         600
     );
     rcasRecipe(
@@ -103,7 +103,7 @@ ServerEvents.recipes((event) => {
         'asg_enscription_chip',
         '8x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 750',
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         600
     );
 
@@ -113,7 +113,7 @@ ServerEvents.recipes((event) => {
         'dsg_enscription_plate',
         'kubejs:undina_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         600
     );
     rcasRecipe(
@@ -122,7 +122,7 @@ ServerEvents.recipes((event) => {
         'dsg_enscription_plate',
         'kubejs:sylvestris_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         600
     );
     rcasRecipe(
@@ -131,7 +131,7 @@ ServerEvents.recipes((event) => {
         'dsg_enscription_plate',
         'kubejs:gnomus_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         600
     );
     rcasRecipe(
@@ -140,7 +140,7 @@ ServerEvents.recipes((event) => {
         'dsg_enscription_plate',
         'kubejs:vulcanus_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         600
     );
     rcasRecipe(
@@ -149,7 +149,7 @@ ServerEvents.recipes((event) => {
         'dsg_enscription_plate',
         'kubejs:illustris_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         600
     );
     rcasRecipe(
@@ -158,7 +158,7 @@ ServerEvents.recipes((event) => {
         'dsg_enscription_plate',
         'kubejs:tenebrosus_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
-        GTValues.VHA[GTValues.UXV],
+        GTValues.VHA[UXV],
         600
     );
 
@@ -168,7 +168,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:dsg_dpu')
         .genericStartEU(12500000000) //consumes 12.5GEU to start the recipe
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UXV);
 
     //     /*
     //     ** Runic Plating Engraving
@@ -233,7 +233,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:naquadria 21600')
         .itemOutputs('kubejs:runic_tablet_complete')
         .duration(400)
-        .EUt(GTValues.VHA[GTValues.UHV])
+        .EUtVHA(UHV)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 
     for (let i = 1; i <= 6; i++) {
@@ -244,7 +244,7 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:naquadria 1080')
             .itemOutputs(`kubejs:runic_tablet_${o}`)
             .duration(600)
-            .EUt(GTValues.VHA[GTValues.UV]);
+            .EUtVHA(UV);
     }
 
     //     // === Rune Infusion ===
@@ -282,7 +282,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:void 576')
         .itemOutputs('kubejs:blank_runic_casing')
         .duration(2000)
-        .EUt(GTValues.VA[GTValues.UHV]);
+        .EUtVA(UHV);
 
     ['pathway', 'transportation', 'stabilization'].forEach((rune) => {
         event.recipes.gtceu
@@ -291,7 +291,7 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:runic_convergence_infusion')
             .itemOutputs(`kubejs:runic_${rune}_casing`)
             .duration(4000)
-            .EUt(GTValues.VA[GTValues.UHV]);
+            .EUtVA(UHV);
     });
 
     // === Controller ===
@@ -312,10 +312,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:runic_inscribe_manipulate')
         .duration(5400)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('kubejs:runic_tablet_complete'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(176)
+            researchRecipeBuilder.researchStack(Item.of('kubejs:runic_tablet_complete')).EUt(GTValues.VHA[UV]).CWUt(176)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 });

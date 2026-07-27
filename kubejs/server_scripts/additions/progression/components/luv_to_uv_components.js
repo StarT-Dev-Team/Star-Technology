@@ -111,7 +111,7 @@ ServerEvents.recipes((event) => {
 
                 event.remove({ id: `gtceu:research_station/1_x_gtceu_${tier}_${type}` });
             } else {
-                assemblyLineRecipe['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
+                $(assemblyLineRecipe).scannerResearch((researchRecipeBuilder) =>
                     researchRecipeBuilder
                         .researchStack(Item.of(`gtceu:${tier1}_${type}`))
                         .duration(typeSpecial ? duraS : duraD * 20)

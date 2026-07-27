@@ -6,7 +6,7 @@ global.addedByStarT = {
         'large_stone_barrel',
         'primitive_ore_factory',
         'steam_ore_factory',
-        'latex_plantation',
+        'large_arboreal_extractor',
         'solid_blast_furnace',
         'steam_kiln',
         'high_pressure_steam_hammer',

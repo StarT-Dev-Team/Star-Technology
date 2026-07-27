@@ -31,7 +31,7 @@ ServerEvents.recipes((event) => {
         1800,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'start_core:hellforge'
     );
 
@@ -61,7 +61,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:mega_abs'
     );
 
@@ -79,7 +79,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:neutronium_block'
     );
 
@@ -97,7 +97,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:titan_forge'
     );
 
@@ -115,7 +115,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:injection_mixer'
     );
 
@@ -133,7 +133,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:cyclonic_sifter'
     );
 
