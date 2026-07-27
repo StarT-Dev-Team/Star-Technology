@@ -82,6 +82,7 @@ ServerEvents.recipes((event) => {
             .haunting(Item.of(prop.output), Item.of(prop.input))
             .id(`start:haunting/${prop.output.split(':')[1]}`);
     });
+    event.remove({ type: 'architects_palette:warping' });
 
     event.replaceInput({ id: 'chipped:benches/mechanist_workbench' }, 'minecraft:tnt', 'minecraft:red_concrete');
 
