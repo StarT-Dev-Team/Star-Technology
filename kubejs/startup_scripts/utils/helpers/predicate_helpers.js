@@ -8,6 +8,8 @@
  * @property {number} [view] - How many to show in the structure preview (calls `setPreviewCount`)
  */
 
+/** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.Material} Material */
+
 /**
  * Applies optional min/max/exact/preview settings to a predicate instance.
  *
@@ -130,7 +132,7 @@ const P = {
      */
     powerSubstationBattery: (settings) => applySettings(Predicates.powerSubstationBatteries(), settings),
     /**
-     * @param {string | string[]} materials
+     * @param {string | string[] | Material | Material[]} materials
      * @param {PredicateSettings} [settings]
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */

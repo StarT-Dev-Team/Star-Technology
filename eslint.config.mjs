@@ -100,6 +100,7 @@ export default [
                 $FormattingUtil: 'readonly',
                 $FluidPipeProperties: 'readonly',
                 GTFluidState: 'readonly',
+                GTMachines: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
                 FillDirection: 'readonly',

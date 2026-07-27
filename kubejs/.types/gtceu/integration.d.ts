@@ -91,6 +91,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import BuilderBase__Blueprint = api.registry.registrate.BuilderBase__Blueprint;
     import MachineDefinition = api.machine.MachineDefinition;
+    import WorkableMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 
     interface KJSWrappingTieredMachineBuilder extends $object<
         'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingTieredMachineBuilder',
@@ -134,6 +135,8 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {}
 
     import MultiblockMachineDefinition = api.machine.MultiblockMachineDefinition;
+    import MultiblockControllerMachine = gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
+    import MultiblockMachineBuilder = gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder;
 
     interface KJSWrappingMultiblockBuilder extends $object<
         'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingMultiblockBuilder',
@@ -141,6 +144,8 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
+        machine(machine: (holder: IMachineBlockEntity, definition: number) => MultiblockControllerMachine): this;
+        definition(definition: (tier: number, builder: MultiblockMachineBuilder) => void): this;
     }
 
     interface KJSWrappingMachineBuilder extends $object<

@@ -1101,6 +1101,10 @@ declare namespace internal.com.gregtechceu.gtceu.common.data.machines {
         MEGA_BLAST_FURNACE: MultiblockMachineDefinition;
         MEGA_VACUUM_FREEZER: MultiblockMachineDefinition;
     };
+
+    const GTMachines = {
+        ENERGY_OUTPUT_HATCH: MachineDefinition[];
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.common.machine.multiblock.part {
