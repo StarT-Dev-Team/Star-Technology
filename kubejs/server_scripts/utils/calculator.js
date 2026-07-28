@@ -320,6 +320,52 @@ let calculatorDefinitions = (() => {
         );
     }
 
+    /**
+     * @param {number} su
+     * @param {number} magnetForce
+     * @param {number} rpm
+     */
+    function createCoilsOptimizer(su, magnetForce, rpm) {
+        let coilCost = rpm * (24 + 12 * magnetForce);
+
+        let fullCoils = Math.floor(su / coilCost);
+        let partialMagnets = 0;
+
+        let remainingSu = su - fullCoils * coilCost;
+        if (remainingSu > rpm * 24) {
+            // can fit another coil
+            partialMagnets = (remainingSu - rpm * 24) / (rpm * magnetForce);
+        }
+
+        let totalCoils = fullCoils + (partialMagnets > 0 ? 1 : 0);
+        let totalMagnets = fullCoils * 12 + partialMagnets;
+        let totalBrushes = Math.ceil(totalCoils / 8);
+
+        console.log(`partialMagnets: ${partialMagnets}`);
+
+        let totalFE = (rpm * (fullCoils * 12 * magnetForce + partialMagnets * magnetForce)) / 20;
+
+        let tierIndex = $GTUtil.getFloorTierByVoltage(totalFE / 4);
+        let perc = totalFE / 4 / GTV[tierIndex];
+        let gtAmps = numberToString(perc) + 'A of ' + GTValues.VNF[tierIndex] + '§r';
+
+        return `Generates §6${totalFE} FE/t§r (${gtAmps}), using §6${totalBrushes}§r brushes, §6${totalCoils}§r coils, and §6${totalMagnets}§r magnet blocks`;
+    }
+
+    /**
+     * @param {number} coils
+     * @param {number} magnets
+     * @param {number} magnetForce
+     * @param {number} rpm
+     * @returns {[number, number]}
+     */
+    function createCoils(coils, magnets, magnetForce, rpm) {
+        let tmf = magnets * magnetForce;
+        let su = rpm * (tmf + coils * 24);
+        let fe = (rpm * tmf) / 20;
+        return [fe, su];
+    }
+
     return {
         functions: [
             {
@@ -769,11 +815,11 @@ let calculatorDefinitions = (() => {
             {
                 name: 'parallels',
                 usage: formatOverloads('parallels', [
-                    ['EUt:number', 'overclocks:number'],
-                    ['recipe:vec2', 'overclocks:number'],
+                    ['EUt:number', 'ocTier:number'],
+                    ['recipe:vec2', 'ocTier:number'],
                 ]),
                 description:
-                    "returns the maximum number of parallels for a recipe with the specified EU/t cost and overclocked the specified times; if the first input parameter is a vec2 then it's considerered a (EU/t, duration) pair and the paralleled duration is also calculated",
+                    "returns the maximum number of parallels for a recipe with the specified EU/t cost and overclocked to the specified voltage tier; if the first input parameter is a vec2 then it's considerered a (EU/t, duration) pair and the paralleled duration is also calculated",
                 implementation: [
                     typedFn({
                         arguments: ['number', 'number'],
@@ -824,6 +870,58 @@ let calculatorDefinitions = (() => {
                         };
                     },
                 }),
+            },
+            {
+                name: 'createCoils',
+                usage: formatOverloads('createCoils', [
+                    ['coils:number', 'blocks:number'],
+                    ['coils:number', 'blocks:number', 'magnetForce:number'],
+                    ['coils:number', 'blocks:number', 'magnetForce:number', 'rpm:number'],
+                ]),
+                description:
+                    'returns the FE generation and stress units consumed of the specified configuration of Create: New Age coils, as a vec2(FE/tick, SU). By default it considers the magnet to be Fluxuated Magnetite (magnetForce = 8) and RPM to be 256',
+                implementation: [
+                    typedFn({
+                        arguments: ['number', 'number'],
+                        fn: (coils, magnets) => ({ t: 'vec2', v: createCoils(coils.v, magnets.v, 8, 256) }),
+                    }),
+                    typedFn({
+                        arguments: ['number', 'number', 'number'],
+                        fn: (coils, magnets, magnetForce) => ({
+                            t: 'vec2',
+                            v: createCoils(coils.v, magnets.v, magnetForce.v, 256),
+                        }),
+                    }),
+                    typedFn({
+                        arguments: ['number', 'number', 'number', 'number'],
+                        fn: (coils, magnets, magnetForce, rpm) => ({
+                            t: 'vec2',
+                            v: createCoils(coils.v, magnets.v, magnetForce.v, rpm.v),
+                        }),
+                    }),
+                ],
+            },
+            {
+                name: 'createCoilsOptimizer',
+                usage: formatOverloads('createCoilsOptimizer', [['SU:number'], ['SU:number', 'magnetForce:number']]),
+                description:
+                    'returns the optimal setup for Create: New Age coils given the available stress units. By default it considers the magnet to be Fluxuated Magnetite (magnetForce = 8)',
+                implementation: [
+                    typedFn({
+                        arguments: ['number'],
+                        fn: (su) => ({
+                            t: 'string',
+                            v: createCoilsOptimizer(su.v, 8, 256),
+                        }),
+                    }),
+                    typedFn({
+                        arguments: ['number', 'number'],
+                        fn: (su, magnetForce) => ({
+                            t: 'string',
+                            v: createCoilsOptimizer(su.v, magnetForce.v, 256),
+                        }),
+                    }),
+                ],
             },
         ],
         operators: [
