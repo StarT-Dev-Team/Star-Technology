@@ -26,6 +26,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .machine((holder, tier) => new $CompoundGeneratorMachine(holder, tier))
         .definition((tier, definition) => {
             let generator = versions[tier - 1];
+            let slices = 8;
 
             definition
                 .rotationState(RotationState.ALL)
@@ -34,7 +35,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .appearanceBlock(() => Block.getBlock(`gtceu:${generator.casing}`))
                 .tooltips([
                     Text.translate('block.gtceu.compound_generator.desc'),
-                    Text.translate('block.gtceu.compound_generator.max_generation', GTValues.V[tier + 2]),
+                    Text.translate('block.gtceu.compound_generator.max_generation', GTValues.V[tier] * 2 * slices),
                 ])
                 .regressWhenWaiting(false)
                 .generator(true)
@@ -43,7 +44,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         $RelativeDirection.LEFT,
                         $RelativeDirection.UP,
                         $RelativeDirection.BACK
-                    )(['CCC|C@C| C ', 'FKF|KPK|FKF', blockPatternRepeatable(1, 8), 'CCC|CMC| C '])
+                    )(['CCC|C@C| C ', 'FKF|KPK|FKF', blockPatternRepeatable(1, slices), 'CCC|CMC| C '])
                         // todo
                         .whereDict({
                             C: P.anyOf([
