@@ -1,6 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
-    const MH = global.materialHelpers(event);
-
     const { noDecomp, plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noABSRecipe } = FLAGS;
 
     event

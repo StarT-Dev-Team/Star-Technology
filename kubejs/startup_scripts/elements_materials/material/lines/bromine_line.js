@@ -1,6 +1,4 @@
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
-    const MH = global.materialHelpers(event);
-
     const { noDecomp } = FLAGS;
 
     event

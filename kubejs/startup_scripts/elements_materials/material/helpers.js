@@ -229,7 +229,6 @@ global.blastProperty = (material, temperature, gasTier, voltage, duration) => {
     mat.setProperty(PropertyKey.BLAST, new $BlastProperty(temperature, gasTier, voltage, duration, -1, -1));
 };
 
-/** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.Material} Material */
 /** @typedef {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag>} MaterialFlag */
 /** @typedef {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet>} MaterialIconSet */
 /** @typedef {OverloadedParameters<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material$Builder["fluidPipeProperties"]>} ParamFluidPipeProperties */
