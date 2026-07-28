@@ -32,6 +32,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .recipeTypes(['combustion_generator', 'gas_turbine', 'steam_turbine'])
                 .recipeModifiers([$StarTRecipeModifiers.COMPOUND_GENERATOR])
                 .appearanceBlock(() => Block.getBlock(`gtceu:${generator.casing}`))
+                .tooltips([
+                    Text.translate('block.gtceu.compound_generator.desc'),
+                    Text.translate('block.gtceu.compound_generator.max_generation', GTValues.V[tier + 2]),
+                ])
                 .regressWhenWaiting(false)
                 .generator(true)
                 .pattern((definition) =>
