@@ -1297,6 +1297,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
         /** @deprecated */
         setMaxGlobalLimited(max: number): TraceabilityPredicate;
         /** @deprecated */
+        setMinLayerLimited(min: number): TraceabilityPredicate;
+        /** @deprecated */
+        setMaxLayerLimited(max: number): TraceabilityPredicate;
+        /** @deprecated */
         setExactLimit(limit: number): TraceabilityPredicate;
         /** @deprecated */
         setPreviewCount(count: number): TraceabilityPredicate;

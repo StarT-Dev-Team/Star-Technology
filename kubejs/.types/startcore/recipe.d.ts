@@ -16,6 +16,7 @@ declare namespace internal.com.startechnology.start_core.recipe {
         FAKE_FUSION_OVERCLOCK: RecipeModifier;
         REFLECTOR_FUSION_REACTOR: RecipeModifier;
         BULKING: RecipeModifier;
+        COMPOUND_GENERATOR: RecipeModifier;
     };
 }
 
