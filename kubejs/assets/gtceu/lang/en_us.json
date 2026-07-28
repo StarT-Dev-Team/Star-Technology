@@ -1436,5 +1436,11 @@
     "block.gtceu.catto_shrine.tooltip.1": "§8§oMake your offerings known....",
     "gtceu.catto_shrine": "Catto Shrine",
 
-    "material.gtceu.latex": "Latex"
+    "material.gtceu.latex": "Latex",
+
+    "block.gtceu.lv_compound_generator": "Basic Compound Generator [BCG]",
+    "block.gtceu.mv_compound_generator": "§bAdvanced Compound Generator§r [ACG]",
+    "block.gtceu.hv_compound_generator": "§6Advanced Compound Generator II§r [ACG II]",
+    "block.gtceu.compound_generator.desc": "§7A machine that can extend in size to generate more power. Can extend up to 8 slices, where each slice has 1 dynamo hatch and generates 2A of power.",
+    "block.gtceu.compound_generator.max_generation": "§7Maximum Generation: §f%s EU/t"
 }
