@@ -178,7 +178,17 @@ global.vha = {
  * @param {'ingot' | 'dust' | 'fluid' | 'gas' | 'plasma' | 'molten' | 'gas_plasma'} type
  */
 global.periodicTableElement = (material, type) => {
-    let mat = GTMaterials.get(material);
+    const mat = GTMaterials.get(material);
+    const setFluidProperty = (
+        /** @type {internal.com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey[]} */ keys
+    ) => {
+        const prop = new $FluidProperty();
+        keys.forEach((/** @type {internal.com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey} */ key) =>
+            prop.getStorage().enqueueRegistration(key, new GTFluidBuilder())
+        );
+        mat.setProperty(PropertyKey.FLUID, prop);
+    };
+
     switch (type) {
         case 'ingot':
             mat.setProperty(PropertyKey.INGOT, new $IngotProperty());
@@ -187,33 +197,20 @@ global.periodicTableElement = (material, type) => {
             mat.setProperty(PropertyKey.DUST, new $DustProperty());
             break;
         case 'fluid':
-        case 'gas':
-        case 'plasma':
-        case 'molten':
-        case 'gas_plasma': {
-            let prop = new $FluidProperty();
-            switch (type) {
-                case 'fluid':
-                    prop.getStorage().enqueueRegistration(GTFluidStorageKeys.LIQUID, new GTFluidBuilder());
-                    break;
-                case 'gas':
-                    prop.getStorage().enqueueRegistration(GTFluidStorageKeys.GAS, new GTFluidBuilder());
-                    break;
-                case 'plasma':
-                    prop.getStorage().enqueueRegistration(GTFluidStorageKeys.PLASMA, new GTFluidBuilder());
-                    break;
-                case 'molten':
-                    prop.getStorage().enqueueRegistration(GTFluidStorageKeys.MOLTEN, new GTFluidBuilder());
-                    break;
-                case 'gas_plasma': {
-                    prop.getStorage().enqueueRegistration(GTFluidStorageKeys.GAS, new GTFluidBuilder());
-                    prop.getStorage().enqueueRegistration(GTFluidStorageKeys.PLASMA, new GTFluidBuilder());
-                    break;
-                }
-            }
-            mat.setProperty(PropertyKey.FLUID, prop);
+            setFluidProperty([GTFluidStorageKeys.LIQUID]);
             break;
-        }
+        case 'gas':
+            setFluidProperty([GTFluidStorageKeys.GAS]);
+            break;
+        case 'plasma':
+            setFluidProperty([GTFluidStorageKeys.PLASMA]);
+            break;
+        case 'molten':
+            setFluidProperty([GTFluidStorageKeys.MOLTEN]);
+            break;
+        case 'gas_plasma':
+            setFluidProperty([GTFluidStorageKeys.GAS, GTFluidStorageKeys.PLASMA]);
+            break;
     }
 };
 
