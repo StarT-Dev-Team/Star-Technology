@@ -179,13 +179,9 @@ global.vha = {
  */
 global.periodicTableElement = (material, type) => {
     const mat = GTMaterials.get(material);
-    const setFluidProperty = (
-        /** @type {internal.com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey[]} */ keys
-    ) => {
+    const setFluidProperty = (/** @type {internal.com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey} */ key) => {
         const prop = new $FluidProperty();
-        keys.forEach((/** @type {internal.com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey} */ key) =>
-            prop.getStorage().enqueueRegistration(key, new GTFluidBuilder())
-        );
+        prop.getStorage().enqueueRegistration(key, new GTFluidBuilder());
         mat.setProperty(PropertyKey.FLUID, prop);
     };
 
@@ -197,19 +193,20 @@ global.periodicTableElement = (material, type) => {
             mat.setProperty(PropertyKey.DUST, new $DustProperty());
             break;
         case 'fluid':
-            setFluidProperty([GTFluidStorageKeys.LIQUID]);
+            setFluidProperty(GTFluidStorageKeys.LIQUID);
             break;
         case 'gas':
-            setFluidProperty([GTFluidStorageKeys.GAS]);
+            setFluidProperty(GTFluidStorageKeys.GAS);
             break;
         case 'plasma':
-            setFluidProperty([GTFluidStorageKeys.PLASMA]);
+            setFluidProperty(GTFluidStorageKeys.PLASMA);
             break;
         case 'molten':
-            setFluidProperty([GTFluidStorageKeys.MOLTEN]);
+            setFluidProperty(GTFluidStorageKeys.MOLTEN);
             break;
         case 'gas_plasma':
-            setFluidProperty([GTFluidStorageKeys.GAS, GTFluidStorageKeys.PLASMA]);
+            setFluidProperty(GTFluidStorageKeys.GAS);
+            setFluidProperty(GTFluidStorageKeys.PLASMA);
             break;
     }
 };
