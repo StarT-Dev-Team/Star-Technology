@@ -296,14 +296,14 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
         // get materialInfo(): MaterialInfo;
         setMaterialARGB(materialRGB: number): void;
         set materialARGB(materialRGB: number);
-        setMaterialIconSet(materialIconSet: MaterialIconSet): void;
+        setMaterialIconSet(materialIconSet: $wrapped<MaterialIconSet>): void;
         set materialIconSet(materialIconSet: MaterialIconSet);
         getMaterialIconSet(): MaterialIconSet;
         get materialIconSet(): MaterialIconSet;
         getMass(): number;
         get mass(): number;
-        addFlags(...flags: MaterialFlag[]): void;
-        addFlags(flags: MaterialFlag[]): void;
+        addFlags(...flags: $wrapped<MaterialFlag>[]): void;
+        addFlags(flags: $wrapped<MaterialFlag>[]): void;
         hasFlag(flag: MaterialFlag): boolean;
         setFormula(formula: string): this;
         setFormula(formula: string, withFormatting: boolean): this;
@@ -366,8 +366,8 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material {
         // componentStacks(ImmutableList<MaterialStack> components)
         // kjs$components(MaterialStackWrapper... components)
         // kjs$components(ImmutableList<MaterialStackWrapper> components)
-        flags(flags: MaterialFlag[]): this;
-        flags(...flags: MaterialFlag[]): this;
+        flags(flags: $wrapped<MaterialFlag>[]): this;
+        flags(...flags: $wrapped<MaterialFlag>[]): this;
         // appendFlags(Collection<MaterialFlag> f1, MaterialFlag... f2)
         // ignoredTagPrefixes(TagPrefix... prefixes)
         // customTags(TagKey<Item> key)
@@ -740,7 +740,9 @@ declare namespace internal.com.gregtechceu.gtceu.api.data.chemical.material.info
 
     interface MaterialFlag extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag'> {}
 
-    const MaterialFlags: {
+    interface MaterialFlags extends $object<'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags'> {}
+
+    const MaterialFlags: $class<MaterialFlag> & {
         NO_UNIFICATION: MaterialFlag;
         DISABLE_MATERIAL_RECIPES: MaterialFlag;
         DECOMPOSITION_BY_ELECTROLYZING: MaterialFlag;

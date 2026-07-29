@@ -138,6 +138,8 @@ export default [
                 ponderMultis: 'readonly',
                 P: 'writable',
                 PA: 'writable',
+                ICONSETS: 'writable',
+                FLAGS: 'writable',
                 $: 'writable',
                 ULV: 'readonly',
                 LV: 'readonly',
