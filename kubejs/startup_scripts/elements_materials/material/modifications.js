@@ -146,6 +146,7 @@ GTCEuStartupEvents.materialModification((_event) => {
     blast('lutetium', 6600, 'mid', global.va.luv, 120);
 
     // Fluid Pipes
+    // Seems that the Core mod change is prioritized over this
     // if (GTMaterials.NaquadahEnriched.getProperty(PropertyKey.FLUID_PIPE)) {
     //     GTMaterials.NaquadahEnriched.setProperty(
     //         PropertyKey.FLUID_PIPE,
