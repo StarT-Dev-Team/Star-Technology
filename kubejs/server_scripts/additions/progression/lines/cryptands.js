@@ -19,6 +19,22 @@ ServerEvents.recipes((event) => {
         .circuit(0);
 
     event.recipes.gtceu
+        .chemical_reactor(id('diethylene_glycol'))
+        .inputFluids('gtceu:ethylene_oxide 2000', 'minecraft:water 1000')
+        .outputFluids('gtceu:diethylene_glycol 1000')
+        .duration(740)
+        .EUt(120)
+        .circuit(1);
+
+    event.recipes.gtceu
+        .chemical_reactor(id('triethylene_glycol'))
+        .inputFluids('gtceu:ethylene_oxide 3000', 'gtceu:oxygen 1000')
+        .outputFluids('gtceu:triethylene_glycol 1000')
+        .duration(880)
+        .EUt(120)
+        .circuit(2);
+
+    event.recipes.gtceu
         .chemical_reactor(id('sodium_chlorate'))
         .inputFluids('gtceu:salt_water 1000', 'gtceu:oxygen 3000')
         .itemOutputs('gtceu:sodium_chlorate_dust')
@@ -35,6 +51,15 @@ ServerEvents.recipes((event) => {
         .EUt(120);
 
     event.recipes.gtceu
+        .chemical_reactor(id('lithium_perchlorate'))
+        .itemInputs('gtceu:sodium_perchlorate_dust', 'gtceu:lithium_chloride_dust')
+        .inputFluids('minecraft:water 1000')
+        .itemOutputs('gtceu:lithium_perchlorate_dust')
+        .outputFluids('gtceu:salt_water 1000')
+        .duration(560)
+        .EUt(120);
+
+    event.recipes.gtceu
         .chemical_reactor(id('potassium_hydroxide'))
         .itemInputs('gtceu:potassium_dust')
         .inputFluids('minecraft:water 1000')
@@ -42,6 +67,22 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:hydrogen 1000')
         .duration(800)
         .EUtVA(MV);
+
+    // event.recipes.gtceu.chemical_reactor(id('sodium_hydroxide'))
+    //     .itemInputs('gtceu:sodium_dust')
+    //     .inputFluids('minecraft:water 1000')
+    //     .itemOutputs('gtceu:sodium_hydroxide_dust')
+    //     .outputFluids('gtceu:hydrogen 1000')
+    //     .duration(100)
+    //     .EUt(120);
+
+    event.recipes.gtceu
+        .chemical_reactor(id('lithium_chloride_dust'))
+        .itemInputs('gtceu:lithium_dust')
+        .inputFluids('gtceu:chlorine 1000')
+        .itemOutputs('gtceu:lithium_chloride_dust')
+        .duration(1200)
+        .EUt(120);
 
     event.recipes.gtceu
         .chemical_reactor(id('silver_oxide'))
@@ -358,4 +399,53 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x gtceu:palladium_on_carbon_dust')
         .duration(1200)
         .EUt(396);
+
+    event.recipes.gtceu
+        .large_chemical_reactor(id('diamine'))
+        .itemInputs('gtceu:triethylene_glycol_diazide_dust')
+        .notConsumable('gtceu:palladium_on_carbon_dust')
+        .inputFluids('gtceu:hydrogen 4000')
+        .itemOutputs('gtceu:triethylene_glycol_diamine_dust')
+        .outputFluids('gtceu:nitrogen 4000')
+        .duration(4800)
+        .EUt(1024);
+
+    event.recipes.gtceu
+        .large_chemical_reactor(id('cryptand'))
+        .itemInputs(
+            'gtceu:triethylene_glycol_diamine_dust',
+            '2x gtceu:triethylene_glycol_ditosylate_dust',
+            '2x gtceu:soda_ash_dust'
+        )
+        .itemOutputs('4x gtceu:sodium_p_toluenesulfonate_dust')
+        .outputFluids('gtceu:cryptand 1000', 'gtceu:carbon_dioxide 2000', 'minecraft:water 2000')
+        .duration(9600)
+        .EUt(1024);
+
+    event.recipes.gtceu
+        .mixer(id('cryptand_k'))
+        .itemInputs('gtceu:rock_salt_dust', 'gtceu:sodium_dust')
+        .inputFluids('gtceu:cryptand 1000')
+        .itemOutputs('gtceu:salt_dust')
+        .outputFluids('gtceu:cryptand_k 1000')
+        .duration(4800)
+        .EUt(1024);
+
+    event.recipes.gtceu
+        .mixer(id('cryptand_na'))
+        .itemInputs('gtceu:sodium_perchlorate_dust', 'gtceu:lithium_dust')
+        .inputFluids('gtceu:cryptand 1000')
+        .itemOutputs('gtceu:lithium_perchlorate_dust')
+        .outputFluids('gtceu:cryptand_na 1000')
+        .duration(4800)
+        .EUt(1024);
+
+    event.recipes.gtceu
+        .mixer(id('cryptand_li'))
+        .itemInputs('gtceu:lithium_perchlorate_dust', 'gtceu:sodium_dust')
+        .inputFluids('gtceu:cryptand 1000')
+        .itemOutputs('gtceu:sodium_perchlorate_dust')
+        .outputFluids('gtceu:cryptand_li 1000')
+        .duration(4800)
+        .EUt(1024);
 });
