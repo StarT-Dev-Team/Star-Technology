@@ -14,12 +14,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:heart_of_the_flame')
         .duration(6000)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('kubejs:husk_of_the_flame'))
-                .EUt(GTValues.VHA[GTValues.UHV])
-                .CWUt(192)
+            researchRecipeBuilder.researchStack(Item.of('kubejs:husk_of_the_flame')).EUt(GTValues.VHA[UHV]).CWUt(192)
         )
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .assembly_line(id('hellforge'))
@@ -37,12 +34,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:hellforge')
         .duration(2800)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('kubejs:heart_of_the_flame'))
-                .EUt(GTValues.VA[GTValues.UHV])
-                .CWUt(192)
+            researchRecipeBuilder.researchStack(Item.of('kubejs:heart_of_the_flame')).EUt(GTValues.VA[UHV]).CWUt(192)
         )
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     // === Cryostate ===
 
@@ -62,12 +56,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:cryostate_quantum_chiller')
         .duration(1800)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:mega_vacuum_freezer'))
-                .EUt(GTValues.VA[GTValues.UHV])
-                .CWUt(192)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:mega_vacuum_freezer')).EUt(GTValues.VA[UHV]).CWUt(192)
         )
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     // === HAM ===
 
@@ -94,9 +85,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:mega_abs')
         .duration(1800)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:super_abs')).EUt(GTValues.VHA[GTValues.UHV]).CWUt(160)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:super_abs')).EUt(GTValues.VHA[UHV]).CWUt(160)
         )
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .assembly_line(id('super_compact_heat_chamber'))
@@ -116,11 +107,11 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:super_pressure_heat_chamber'))
-                .EUt(GTValues.VHA[GTValues.UHV])
+                .EUt(GTValues.VHA[UHV])
                 .CWUt(160)
         )
         .duration(4000)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('omega_pressure_heat_chamber'))
@@ -142,9 +133,9 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:super_compact_heat_chamber'))
-                .EUt(GTValues.VHA[GTValues.UEV])
+                .EUt(GTValues.VHA[UEV])
                 .CWUt(192)
         )
         .duration(4800)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 });

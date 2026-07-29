@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:dissipated_helish_concentrate 7450')
         .duration(720)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .pressure_heat_chamber(id('helish_concentrate'))
@@ -28,7 +28,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('7x gtceu:netherrack_dust')
         .outputFluids('gtceu:helish_concentrate 504')
         .duration(560)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .hellforge(id('helish_star'))
@@ -39,7 +39,7 @@ ServerEvents.recipes((event) => {
         .blastFurnaceTemp(1000)
         .duration(240)
         .circuit(1)
-        .EUt(GTValues.VA[GTValues.UHV]);
+        .EUtVA(UHV);
 
     /**
      * @param {string} type
@@ -51,7 +51,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(type)
             .itemOutputs(`${size}x gtceu:warped_dust`)
             .duration(100 * size)
-            .EUt(GTValues.VA[GTValues.LuV]);
+            .EUtVA(LuV);
     };
     global.withChipped(
         () => {
@@ -76,7 +76,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:niobium_nitride 576')
         .itemOutputs('1x kubejs:ancient_netherite_reinforced_mesh')
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.remove({ id: /^blast_ancient_netherite.*/ });
     event.recipes.gtceu
@@ -86,7 +86,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x gtceu:hot_ancient_netherite_ingot')
         .blastFurnaceTemp(13300)
         .duration(2500)
-        .EUt((GTValues.VHA[GTValues.UHV] * 2) / 3);
+        .EUt((GTValues.VHA[UHV] * 2) / 3);
 
     event.recipes.gtceu
         .macerator(id('ancient_debris_dust'))
@@ -103,7 +103,7 @@ ServerEvents.recipes((event) => {
             output: 32,
             consumedFluid: 'thermal:ender',
             circ: 1,
-            energy: GTValues.VHA[GTValues.HV],
+            energy: GTValues.VHA[HV],
         },
         {
             stone: 'kubejs:cryostone',
@@ -112,7 +112,7 @@ ServerEvents.recipes((event) => {
             output: 2,
             consumedFluid: 'gtceu:liquid_helium',
             circ: 2,
-            energy: GTValues.VHA[GTValues.LuV],
+            energy: GTValues.VHA[LuV],
         },
         {
             stone: 'kubejs:brimstone',
@@ -121,7 +121,7 @@ ServerEvents.recipes((event) => {
             output: 2,
             consumedFluid: 'gtceu:blaze',
             circ: 3,
-            energy: GTValues.VHA[GTValues.LuV],
+            energy: GTValues.VHA[LuV],
         },
     ].forEach((type) => {
         event.recipes.gtceu
@@ -142,5 +142,5 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x gtceu:polonium_bismide_dust')
         .duration(600)
         .circuit(2)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 });

@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
             'gtceu:fluorine 4000'
         )
         .duration(480)
-        .EUt(GTValues.VHA[GTValues.ZPM])
+        .EUtVHA(ZPM)
         .vacuumLevel(90);
 
     event.recipes.gtceu

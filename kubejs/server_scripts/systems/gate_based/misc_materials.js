@@ -12,7 +12,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:fluorine 12000', 'gtceu:oxygen 32000')
         .itemOutputs('59x gtceu:naquadic_netherite_dust')
         .duration(7600)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .mixer(id('weapon_grade_naquadah'))
@@ -20,7 +20,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:naquadria 1008', 'gtceu:fluorine 12000')
         .itemOutputs('29x gtceu:weapon_grade_naquadah_dust')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .heat_chamber(id('nether_star_concentrate'))
@@ -33,14 +33,14 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:nether_star_concentrate 576')
         .duration(250)
-        .EUt((1 / 3) * GTValues.VA[GTValues.UV]);
+        .EUt((1 / 3) * GTValues.VA[UV]);
 
     event.recipes.gtceu
         .mixer(id('runic_laser_source_base_dust'))
         .itemInputs('6x gtceu:naquadic_netherite_dust', '6x gtceu:neptunium_dust', '5x gtceu:trinium_dust')
         .itemOutputs('17x gtceu:runic_laser_source_base_dust')
         .duration(12000)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .mixer(id('akreyriadic_runixium_dust'))
@@ -52,7 +52,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:utopian_akreyrium 5000')
         .itemOutputs('18x gtceu:akreyriadic_runixium_dust')
         .duration(10800)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .injection_mixer(id('aquariadic_rimuli_dragonix_dust'))
@@ -61,7 +61,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('16x gtceu:aquariadic_rimuli_dragonix_dust')
         .duration(7350)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UXV);
 
     event.remove({ type: 'gtceu:implosion_compressor', input: 'gtceu:naquadic_netherite_dust' });
     global.implosion(
@@ -115,14 +115,14 @@ ServerEvents.recipes((event) => {
         .notConsumable('gtceu:nether_star_lens')
         .itemOutputs('kubejs:coordinate_crystal')
         .duration(240)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .extractor(id('echo_fluid'))
         .itemInputs('minecraft:echo_shard')
         .outputFluids('gtceu:echo_r 144')
         .duration(5000)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .fluid_solidifier(id('raw_void_ingot'))
@@ -130,7 +130,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:echo_r 144')
         .itemOutputs('gtceu:raw_void_ingot')
         .duration(4000)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.remove({ output: 'gtceu:hot_void_ingot' });
 
@@ -139,14 +139,14 @@ ServerEvents.recipes((event) => {
         .itemInputs('gtceu:raw_void_ingot')
         .itemOutputs('gtceu:hot_void_ingot')
         .duration(6000)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .pressure_heat_chamber(id('dust_to_void_ingot'))
         .itemInputs('gtceu:void_dust')
         .itemOutputs('gtceu:hot_void_ingot')
         .duration(3000)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.replaceInput(
         { id: 'gtceu:electric_blast_furnace/blast_weapon_grade_naquadah_gas' },
@@ -166,7 +166,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('4x gtceu:nether_star_foil')
         .duration(300)
         .circuit(1)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     event.recipes.gtceu
         .bender(id('echo_shard_foil'))
@@ -174,7 +174,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('4x gtceu:echo_shard_foil')
         .duration(160)
         .circuit(1)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .titan_forge(id('nether_star_ream'))

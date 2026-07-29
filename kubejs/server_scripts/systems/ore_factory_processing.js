@@ -486,7 +486,7 @@ ServerEvents.recipes((event) => {
             .chancedOutput(dust(materialObj.secondary, 1), 2500, 0)
             .chancedOutput(dust(materialObj.tertiary, 1), 1250, 0)
             .duration(320)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
     };
 
     /**
@@ -505,7 +505,7 @@ ServerEvents.recipes((event) => {
             .chancedOutput(dust(materialObj.secondary, 1), 4500, 0)
             .chancedOutput(dust(materialObj.tertiary, 1), 3250, 0)
             .duration(160)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
     };
 
     /**
@@ -516,10 +516,10 @@ ServerEvents.recipes((event) => {
      */
     const electricProcessing = (materialObj, tier) => {
         const voltages = {
-            lv: GTValues.VA[GTValues.LV],
-            mv: GTValues.VA[GTValues.MV],
-            hv: GTValues.VA[GTValues.HV],
-            ev: GTValues.VA[GTValues.EV],
+            lv: GTValues.VA[LV],
+            mv: GTValues.VA[MV],
+            hv: GTValues.VA[HV],
+            ev: GTValues.VA[EV],
         };
         const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
         event.recipes.gtceu
@@ -551,7 +551,7 @@ ServerEvents.recipes((event) => {
             .chancedOutput(dust(materialObj.secondary, 1), 6500, 0)
             .chancedOutput(dust(materialObj.tertiary, 1), 5250, 0)
             .duration(240)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
 
         event.recipes.gtceu
             .bulk_ore_processing_array(id(`${materialObj.material}`))
@@ -562,7 +562,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(dust(materialObj.secondary, 8))
             .itemOutputs(dust(materialObj.tertiary, 6))
             .duration(2400)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
     };
 
     /**
@@ -574,10 +574,10 @@ ServerEvents.recipes((event) => {
      */
     const plantElectricProcessing = (materialObj, tier) => {
         const voltages = {
-            lv: GTValues.VHA[GTValues.LV],
-            mv: GTValues.VHA[GTValues.MV],
-            hv: GTValues.VHA[GTValues.HV],
-            ev: GTValues.VHA[GTValues.EV],
+            lv: GTValues.VHA[LV],
+            mv: GTValues.VHA[MV],
+            hv: GTValues.VHA[HV],
+            ev: GTValues.VHA[EV],
         };
         const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
         const fluid5x = tier === 'lv' || tier === 'mv' ? fluids.distilledWater5x : fluids.sodiumPersulfate5x;
@@ -622,7 +622,7 @@ ServerEvents.recipes((event) => {
             .chancedOutput(dust(materialObj.quaternary, 1), 2000, 0)
             .chancedOutput(dust(materialObj.quinary, 1), 1000, 0)
             .duration(320)
-            .EUt(GTValues.VA[GTValues.IV]);
+            .EUtVA(IV);
 
         event.recipes.gtceu
             .bulk_ore_processing_array(id(`${materialObj.material}`))
@@ -635,7 +635,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(dust(materialObj.quaternary, 3))
             .itemOutputs(dust(materialObj.quinary, 2))
             .duration(3200)
-            .EUt(GTValues.VA[GTValues.IV]);
+            .EUtVA(IV);
     };
 
     /**
@@ -649,7 +649,7 @@ ServerEvents.recipes((event) => {
             .chancedOutput(dust(materialObj.material, 1), 2500, 250)
             .circuit(0)
             .duration(300)
-            .EUt(GTValues.VA[GTValues.LV]);
+            .EUtVA(LV);
     };
 
     /* Final Product */
@@ -711,13 +711,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:polyether_ether_ketone 12000', 'gtceu:utopian_akreyrium 750')
         .itemOutputs('gtceu:bulk_ore_processing_array')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:ore_processing_plant'))
-                .EUt(GTValues.VHA[GTValues.UHV])
-                .CWUt(144)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:ore_processing_plant')).EUt(GTValues.VHA[UHV]).CWUt(144)
         )
         .duration(3000)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     // Iterate over each tier and processable item and register the recipes
     /** @type {(keyof typeof oreProcessableTiers)[]} */ (Object.keys(oreProcessableTiers)).forEach((tier) => {

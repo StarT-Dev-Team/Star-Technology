@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:impure_faematter 5000')
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
         .duration(60)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .pressure_heat_chamber(id('faematter'))
@@ -16,7 +16,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:faematter 8750')
         .itemOutputs('15x gtceu:tiny_stellarium_dust', '1x gtceu:tiny_aurourium_dust')
         .duration(85)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     //T1 Filament
     event.recipes.gtceu
@@ -26,7 +26,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:stabilization_mixture_base 32000')
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
         .duration(960)
-        .EUt(GTValues.VA[GTValues.UEV] / 3);
+        .EUt(GTValues.VA[UEV] / 3);
 
     event.recipes.gtceu
         .injection_mixer(id('infernal_stabilization_mixture'))
@@ -34,7 +34,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('gtceu:magmada_alloy_dust')
         .outputFluids('gtceu:infernal_stabilization_mixture 25000')
         .duration(90)
-        .EUt(GTValues.VA[GTValues.UEV] / 3);
+        .EUt(GTValues.VA[UEV] / 3);
 
     event.recipes.gtceu
         .injection_mixer(id('abyssal_stabilization_mixture'))
@@ -42,14 +42,14 @@ ServerEvents.recipes((event) => {
         .itemInputs('gtceu:abyssal_alloy_dust')
         .outputFluids('gtceu:abyssal_stabilization_mixture 25000')
         .duration(90)
-        .EUt(GTValues.VA[GTValues.UEV] / 3);
+        .EUt(GTValues.VA[UEV] / 3);
 
     event.recipes.gtceu
         .pressure_heat_chamber(id('draconic_stabilization_mixture'))
         .inputFluids('gtceu:abyssal_stabilization_mixture 10000', 'gtceu:infernal_stabilization_mixture 10000')
         .outputFluids('gtceu:draconic_stabilization_mixture 10000')
         .duration(230)
-        .EUt(GTValues.VHA[GTValues.UXV] / 3);
+        .EUt(GTValues.VHA[UXV] / 3);
 
     event.recipes.gtceu
         .autoclave(id('komaru_filament_t1'))
@@ -57,7 +57,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:draconic_stabilization_mixture 18')
         .itemOutputs('4x kubejs:komaru_filament_t1')
         .duration(480)
-        .EUt(GTValues.VHA[GTValues.UHV] / 3);
+        .EUt(GTValues.VHA[UHV] / 3);
 
     event.recipes.gtceu
         .autoclave(id('komaru_filament_t2'))
@@ -65,5 +65,5 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:draconic_stabilization_mixture 36')
         .itemOutputs('4x kubejs:komaru_filament_t2')
         .duration(420)
-        .EUt(GTValues.VA[GTValues.UHV] / 3);
+        .EUt(GTValues.VA[UHV] / 3);
 });

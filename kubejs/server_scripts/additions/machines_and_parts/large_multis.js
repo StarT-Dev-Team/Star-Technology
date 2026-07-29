@@ -19,13 +19,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:soldering_alloy 1152')
         .itemOutputs('gtceu:mega_vacuum_freezer')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:super_vacuum_freezer'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:super_vacuum_freezer')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
         .duration(400)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('mega_blast_furnace'))
@@ -41,10 +38,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:soldering_alloy 1152')
         .itemOutputs('gtceu:mega_blast_furnace')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:super_ebf')).EUt(GTValues.VHA[GTValues.UV]).CWUt(64)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:super_ebf')).EUt(GTValues.VHA[UV]).CWUt(64)
         )
         .duration(400)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     // === AE ===
     event.recipes.gtceu

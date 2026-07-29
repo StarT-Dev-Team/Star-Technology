@@ -10,14 +10,14 @@ ServerEvents.recipes((event) => {
         .outputFluids('minecraft:water 2000')
         .duration(300)
         .circuit(2)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     CR(id('phosgene'))
         .notConsumable('gtceu:activated_carbon_dust')
         .inputFluids('gtceu:carbon_monoxide 1000', 'gtceu:chlorine 2000')
         .outputFluids('gtceu:phosgene 1000')
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     CR(id('polycarbonate'))
         .itemInputs('1x gtceu:sodium_diphenoxide_dust')
@@ -25,5 +25,5 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x gtceu:salt_dust')
         .outputFluids('gtceu:polycarbonate 1000')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 });

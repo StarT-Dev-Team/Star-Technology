@@ -31,13 +31,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 1520', 'start_core:flamewake_solvent 10000')
         .itemOutputs('kubejs:compass_of_the_flame')
         .duration(1800)
-        .EUt(GTValues.VH[GTValues.UEV]);
+        .EUtVH(UEV);
 
     cpaRecipe.stationResearch((researchRecipeBuilder) =>
-        researchRecipeBuilder
-            .researchStack(Item.of('minecraft:recovery_compass'))
-            .EUt(GTValues.VHA[GTValues.UHV])
-            .CWUt(160)
+        researchRecipeBuilder.researchStack(Item.of('minecraft:recovery_compass')).EUt(GTValues.VHA[UHV]).CWUt(160)
     );
 
     event.recipes.gtceu
@@ -52,7 +49,7 @@ ServerEvents.recipes((event) => {
         )
         .CWUt(160)
         .totalCWU(160 * 20 * 60)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('catto_shrine'))
@@ -76,11 +73,11 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids('gtceu:polybenzimidazole 7200')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('minecraft:cod')).EUt(GTValues.VHA[GTValues.LuV]).CWUt(32)
+            researchRecipeBuilder.researchStack(Item.of('minecraft:cod')).EUt(GTValues.VHA[LuV]).CWUt(32)
         )
         .itemOutputs('gtceu:catto_shrine')
         .duration(3072000)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.remove({ mod: 'placeablemaxwell' });
 
@@ -113,7 +110,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`512x minecraft:${dye2}_wool`, '512x #forge:cooked_fishes')
             .itemOutputs(`placeablemaxwell:${name}`)
             .duration(168000)
-            .EUt(GTValues.VH[GTValues.ZPM] * Math.pow(4, scaler));
+            .EUt(GTValues.VH[ZPM] * Math.pow(4, scaler));
     };
 
     cat('mars', 'zpm', 'light_gray', 'gray', 'yttrium_barium_cuprate', 1);
@@ -170,7 +167,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('4x gtceu:osthendah_dust')
         .circuit(3)
         .duration(360)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 });
 
 ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {

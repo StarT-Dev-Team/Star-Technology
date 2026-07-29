@@ -217,6 +217,19 @@ declare namespace internal.com.startechnology.start_core.machine.bulking {
     };
 }
 
+declare namespace internal.com.startechnology.start_core.machine.compound_generator {
+    import WorkableElectricMultiblockMachine = com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+    interface CompoundGeneratorMachine extends $object<
+        'com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const CompoundGeneratorMachine: $class<CompoundGeneratorMachine> & {
+        new (holder: IMachineBlockEntity, tier: number, ...args: any[]): CompoundGeneratorMachine;
+    };
+}
+
 declare namespace internal.kjs {
     interface LoadableClasses {
         'com.startechnology.start_core.machine.StarTPartAbility': typeof internal.com.startechnology.start_core.machine.StarTPartAbility;
@@ -234,5 +247,6 @@ declare namespace internal.kjs {
         'com.startechnology.start_core.machine.bulking.BulkingMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingMachine;
         'com.startechnology.start_core.machine.bulking.BulkingCoiledMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingCoiledMachine;
         'com.startechnology.start_core.machine.bulking.BulkingThreadedMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingThreadedMachine;
+        'com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine': typeof internal.com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine;
     }
 }

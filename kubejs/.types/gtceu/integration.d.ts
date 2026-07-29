@@ -91,6 +91,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import BuilderBase__Blueprint = api.registry.registrate.BuilderBase__Blueprint;
     import MachineDefinition = api.machine.MachineDefinition;
+    import WorkableMultiblockMachine = gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 
     interface KJSWrappingTieredMachineBuilder extends $object<
         'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingTieredMachineBuilder',
@@ -98,6 +99,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
+        tiersBetween(minTier: number, maxTier: number): this;
         machine(machine: $wrapped<KJSTieredMachineBuilder$TieredCreationFunction>): this;
         definition(definition: $wrapped<KJSTieredMachineBuilder$DefinitionFunction>): this;
     }
@@ -112,7 +114,6 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
         name: 'internal.com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMachineBuilder$DefinitionFunction';
         functionalInterface: 'apply';
     }> {
-        readonly __com_gregtechceu_gtceu_integration_kjs_builders_machine_KJSTieredMachineBuilder$DefinitionFunction: unique symbol;
         apply(tier: number, builder: MachineBuilder<MachineDefinition>): void;
     }
 
@@ -133,6 +134,8 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {}
 
     import MultiblockMachineDefinition = api.machine.MultiblockMachineDefinition;
+    import MultiblockControllerMachine = api.machine.multiblock.MultiblockControllerMachine;
+    import MultiblockMachineBuilder = api.registry.registrate.MultiblockMachineBuilder;
 
     interface KJSWrappingMultiblockBuilder extends $object<
         'com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSWrappingMultiblockBuilder',
@@ -140,6 +143,23 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders.machin
     > {
         tiers(tiers: number[]): this;
         tiers(...tiers: number[]): this;
+        tiersBetween(minTier: number, maxTier: number): this;
+        machine(machine: $wrapped<KJSTieredMultiblockBuilder$TieredCreationFunction>): this;
+        definition(definition: $wrapped<KJSTieredMultiblockBuilder$DefinitionFunction>): this;
+    }
+
+    interface KJSTieredMultiblockBuilder$DefinitionFunction extends $object<{
+        name: 'internal.com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMultiblockBuilder$DefinitionFunction';
+        functionalInterface: 'apply';
+    }> {
+        apply(tier: number, builder: MultiblockMachineBuilder): void;
+    }
+
+    interface KJSTieredMultiblockBuilder$TieredCreationFunction extends $object<{
+        name: 'internal.com.gregtechceu.gtceu.integration.kjs.builders.machine.KJSTieredMultiblockBuilder$TieredCreationFunction';
+        functionalInterface: 'create';
+    }> {
+        create(holder: IMachineBlockEntity, tier: number): MultiblockControllerMachine;
     }
 
     interface KJSWrappingMachineBuilder extends $object<
@@ -287,6 +307,10 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         outputFluidsRanged(output: $wrapped<FluidStackJS>, min: number, max: number): this;
         duration(duration: number): this;
         EUt(eut: $wrapped<EnergyStack$WithIO>): this;
+        EUtV(eut: number): this;
+        EUtVH(eut: number): this;
+        EUtVA(eut: number): this;
+        EUtVHA(eut: number): this;
         circuit(configuration: number): this;
         stationResearch(research: $wrapped<UnaryOperator<ResearchRecipeBuilder$StationRecipeBuilder>>): this;
         'scannerResearch(java.util.function.UnaryOperator)'(

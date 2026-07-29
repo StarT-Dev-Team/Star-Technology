@@ -13,7 +13,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:mixed_mineral_residue 750', 'gtceu:molten_ore_mixture 250')
         .duration(240)
-        .EUt(GTValues.VA[GTValues.MV]);
+        .EUtVA(MV);
 
     //dissolving
     event.recipes.gtceu
@@ -22,19 +22,19 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:crushed_beryllium_ore', 'gtceu:crushed_zavaritskite_ore')
         .outputFluids('gtceu:sulfuric_mineral_mixture 400', 'gtceu:oxygenous_mineral_mixture 600')
         .duration(240)
-        .EUt(GTValues.VA[GTValues.HV]);
+        .EUtVA(HV);
 
     event.recipes.gtceu
         .centrifuge(id('sulfuric_mineral_mixture'))
         .inputFluids('gtceu:sulfuric_mineral_mixture 500')
         .itemOutputs('gtceu:crushed_barite_ore', 'gtceu:crushed_chalcopyrite_ore', 'gtceu:crushed_bornite_ore')
         .duration(230)
-        .EUt(GTValues.VA[GTValues.HV]);
+        .EUtVA(HV);
 
     event.recipes.gtceu
         .centrifuge(id('oxygenous_mineral_mixture'))
         .inputFluids('gtceu:oxygenous_mineral_mixture 500')
         .itemOutputs('gtceu:crushed_tantalite_ore', 'gtceu:crushed_pollucite_ore', 'gtceu:crushed_cassiterite_ore')
         .duration(230)
-        .EUt(GTValues.VA[GTValues.HV]);
+        .EUtVA(HV);
 });

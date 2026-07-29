@@ -120,7 +120,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(`start_core:${tier}_absolute_parallel_hatch`)
                 .itemOutputs(absoluteOutputs)
                 .duration(calculateDuration(absoluteOutputs))
-                .EUt(GTValues.VA[GTValues.LV])
+                .EUtVA(LV)
                 .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
 
             outputs = getFinalOutputs(
@@ -134,7 +134,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(`start_core:${tier}_parallel_hatch`)
                 .itemOutputs(outputs)
                 .duration(calculateDuration(outputs))
-                .EUt(GTValues.VA[GTValues.LV])
+                .EUtVA(LV)
                 .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
         } else {
             outputs = getFinalOutputs(
@@ -148,7 +148,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(`gtceu:${tier}_parallel_hatch`)
                 .itemOutputs(outputs)
                 .duration(calculateDuration(outputs))
-                .EUt(GTValues.VA[GTValues.LV])
+                .EUtVA(LV)
                 .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
         }
     };

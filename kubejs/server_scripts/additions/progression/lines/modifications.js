@@ -91,7 +91,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('3x gtceu:potassium_dust')
         .outputFluids('gtceu:carbon_acid 500')
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     // Styrene from Benzene fix
     event.recipes.gtceu
@@ -100,7 +100,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:hydrogen 2000', 'gtceu:styrene 1000')
         .duration(120)
         .circuit(3)
-        .EUt(GTValues.VA[GTValues.LV]);
+        .EUtVA(LV);
 
     // Maint Decomp
     event.recipes.gtceu

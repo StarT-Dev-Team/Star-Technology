@@ -16,19 +16,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_category', (event) => {
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('pulverizer', 'simple')
-        .tiers(
-            GTValues.LV,
-            GTValues.MV,
-            GTValues.HV,
-            GTValues.EV,
-            GTValues.IV,
-            GTValues.LuV,
-            GTValues.ZPM,
-            GTValues.UV,
-            GTValues.UHV,
-            GTValues.UEV,
-            GTValues.UIV
-        )
+        .tiersBetween(GTValues.LV, GTValues.UIV)
         .definition((tier, builder) => {
             builder.recipeType('pulverizer').workableTieredHullModel('gtceu:block/machines/pulverizer');
         });

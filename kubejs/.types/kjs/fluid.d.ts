@@ -2,7 +2,6 @@ declare namespace internal.dev.latvian.mods.kubejs.fluid {
     import ReplacementMatch = recipe.ReplacementMatch;
 
     interface FluidLike extends $object<'dev.latvian.mods.kubejs.fluid.FluidLike', ReplacementMatch> {
-        readonly __dev_latvian_mods_kubejs_fluid_FluidLike: unique symbol;
         getAmount(): number;
         get amount(): number;
         isEmpty(): boolean;
@@ -12,22 +11,17 @@ declare namespace internal.dev.latvian.mods.kubejs.fluid {
 
     import InputReplacement = recipe.InputReplacement;
 
-    interface InputFluid extends $object<'dev.latvian.mods.kubejs.fluid.InputFluid', FluidLike, InputReplacement> {
-        readonly __dev_latvian_mods_kubejs_fluid_InputFluid: unique symbol;
-    }
+    interface InputFluid extends $object<'dev.latvian.mods.kubejs.fluid.InputFluid', FluidLike, InputReplacement> {}
 
     import OutputReplacement = recipe.OutputReplacement;
 
-    interface OutputFluid extends $object<'dev.latvian.mods.kubejs.fluid.OutputFluid', FluidLike, OutputReplacement> {
-        readonly __dev_latvian_mods_kubejs_fluid_OutputFluid: unique symbol;
-    }
+    interface OutputFluid extends $object<'dev.latvian.mods.kubejs.fluid.OutputFluid', FluidLike, OutputReplacement> {}
 
     import FluidStack = architectury.fluid.FluidStack;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import Fluid = net.minecraft.world.level.material.Fluid;
 
     interface FluidStackJS extends $object<'dev.latvian.mods.kubejs.fluid.FluidStackJS', FluidLike, InputReplacement> {
-        readonly __dev_latvian_mods_kubejs_fluid_FluidStackJS: unique symbol;
         getId(): string;
         getTags(): ResourceLocation[];
         getFluidStack(): FluidStack;

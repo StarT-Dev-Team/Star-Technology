@@ -97,7 +97,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(`${converterPrefix}:${tier}_${amps}a_energy_converter`)
                 .itemOutputs(outputsArc)
                 .duration(calculateDuration(outputsArc))
-                .EUt(GTValues.VA[GTValues.LV])
+                .EUtVA(LV)
                 .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
 
             event.recipes.gtceu
