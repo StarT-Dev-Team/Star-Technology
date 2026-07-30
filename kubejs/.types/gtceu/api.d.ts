@@ -1471,6 +1471,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     import Block = net.minecraft.world.level.block.Block;
     import EditableMachineUI = gui.editor.EditableMachineUI;
     import Boolean = java.lang.Boolean;
+    import ItemStack = net.minecraft.world.item.ItemStack;
 
     interface MachineBuilder__Blueprint<T extends MachineDefinition, TSelf> extends $object<
         'com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder',
@@ -1479,6 +1480,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         machine(machine: $wrapped<Function<IMachineBlockEntity, MetaMachine>>): TSelf;
         rotationState(state: $wrapped<RotationState>): TSelf;
         tooltips(components: Component[]): TSelf;
+        tooltipBuilder(builder: $wrapped<BiConsumer<ItemStack, List<Component>>>): TSelf;
         paginatedTooltips(pages: Component[][]): TSelf;
         bottomTooltips(components: Component[]): TSelf;
         langValue(langValue: string): TSelf;
