@@ -101,6 +101,7 @@ export default [
                 $FluidPipeProperties: 'readonly',
                 GTFluidState: 'readonly',
                 GTMachines: 'readonly',
+                $TooltipHelper: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
                 FillDirection: 'readonly',

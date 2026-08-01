@@ -133,3 +133,5 @@ const $CompoundGeneratorMachine = Java.loadClass(
 const $BulkingMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingMachine');
 const $BulkingCoiledMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingCoiledMachine');
 const $BulkingThreadedMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingThreadedMachine');
+
+const $TooltipHelper = Java.loadClass('com.gregtechceu.gtceu.client.util.TooltipHelper');

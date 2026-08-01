@@ -10,7 +10,13 @@ declare namespace internal.net.minecraft.network.chat {
 
     const Component: $class<Component> & {};
 
-    interface MutableComponent extends $object<'net.minecraft.network.chat.MutableComponent', Component> {}
+    interface MutableComponent extends $object<'net.minecraft.network.chat.MutableComponent', Component> {
+        append(component: Component): MutableComponent;
+    }
 
     const MutableComponent: $class<MutableComponent> & {};
+
+    interface Style extends $object<'net.minecraft.network.chat.Style'> {}
+
+    const Style: $class<Style> & {};
 }
