@@ -10,7 +10,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('gtceu:stable_machine_casing'))
         .pattern((definition) =>
-            newFactoryBlockPattern([ //
+            newFactoryBlockPattern([
                 '       |       |       |       ',
                 ' GCCCG | GTTTG | GTTTG |  GGG  ',
                 ' CPPPC | T   T | T   T | GCCCG ',
@@ -19,7 +19,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 ' GC@CG | GTTTG | GTTTG |  GGG  ',
                 '       |       |       |       ',
             ])
-                .whereDict({ //
+                .whereDict({
                     C: P.anyOf([
                         P.gtBlock("titanium_firebox_casing", { min: 6 }),
                         P.ability(PA.itemIn, { max: 1 }),
@@ -38,7 +38,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 })
                 .build()
         )
-        .workableCasingModel( //
+        .workableCasingModel(
             'gtceu:block/casings/solid/machine_casing_stable_titanium',
             'gtceu:block/machines/brewery'
         );

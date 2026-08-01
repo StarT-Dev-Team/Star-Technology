@@ -189,7 +189,7 @@ ServerEvents.recipes((event) => {
         P: 'gtceu:tempered_glass',
         C: 'gtceu:lumium_quadruple_wire',
         G: 'gtceu:stainless_steel_plate',
-        A: '#gtceu:circuits/hv',
+        A: '#gtceu:circuits/hv'
     });
 
     event.shaped('gtceu:distillery_column', ['TPG', 'AMA', 'GCT'], {
@@ -199,7 +199,7 @@ ServerEvents.recipes((event) => {
         M: 'gtceu:ev_distillery',
         A: 'gtceu:aluminium_quadruple_cable',
         C: 'gtceu:ev_electric_pump'
-    })
+    });
 
     event.shaped('gtceu:industrial_brewing_station', ['TPG', 'AMA', 'GCT'], {
         M: 'gtceu:ev_brewery',
@@ -207,6 +207,6 @@ ServerEvents.recipes((event) => {
         P: 'gtceu:laminated_glass',
         C: 'gtceu:aluminium_quadruple_cable',
         G: 'gtceu:titanium_plate',
-        A: '#gtceu:circuits/iv',
+        A: '#gtceu:circuits/iv'
     });
 });
