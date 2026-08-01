@@ -198,7 +198,7 @@ ServerEvents.recipes((event) => {
         G: 'gtceu:titanium_normal_fluid_pipe',
         M: 'gtceu:ev_distillery',
         A: 'gtceu:aluminium_quadruple_cable',
-        C: 'gtceu:ev_electric_pump'
+        C: 'gtceu:ev_electric_pump',
     });
 
     event.shaped('gtceu:industrial_brewing_station', ['TPG', 'AMA', 'GCT'], {
@@ -207,6 +207,6 @@ ServerEvents.recipes((event) => {
         P: 'gtceu:laminated_glass',
         C: 'gtceu:aluminium_quadruple_cable',
         G: 'gtceu:titanium_plate',
-        A: '#gtceu:circuits/iv'
+        A: '#gtceu:circuits/iv',
     });
 });
