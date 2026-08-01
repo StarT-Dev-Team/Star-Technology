@@ -4,9 +4,13 @@ declare namespace internal.kjs {
 
     interface TypeWrappers {
         'com.almostreliable.lootjs.core.LootEntry':
-            OutputItem | TypeWrappers['dev.latvian.mods.kubejs.item.OutputItem'];
+            | OutputItem
+            | TypeWrappers['dev.latvian.mods.kubejs.item.OutputItem'];
         'com.almostreliable.lootjs.kube.builder.ResourceLocationFilter':
-            ResourceLocation | RegExp | string | (ResourceLocation | RegExp | string)[];
+            | ResourceLocation
+            | RegExp
+            | string
+            | (ResourceLocation | RegExp | string)[];
     }
 }
 

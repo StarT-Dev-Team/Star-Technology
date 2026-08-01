@@ -2,7 +2,16 @@ declare namespace internal.net.minecraft.sounds {
     interface SoundEvent extends $object<{ name: 'net.minecraft.sounds.SoundEvent'; registryEntry: true }> {}
 
     type SoundSource__EnumKeys =
-        'MASTER' | 'MUSIC' | 'RECORDS' | 'WEATHER' | 'BLOCKS' | 'HOSTILE' | 'NEUTRAL' | 'PLAYERS' | 'AMBIENT' | 'VOICE';
+        | 'MASTER'
+        | 'MUSIC'
+        | 'RECORDS'
+        | 'WEATHER'
+        | 'BLOCKS'
+        | 'HOSTILE'
+        | 'NEUTRAL'
+        | 'PLAYERS'
+        | 'AMBIENT'
+        | 'VOICE';
 
     interface SoundSource extends $object<{
         name: 'net.minecraft.sounds.SoundSource';
