@@ -189,7 +189,7 @@ ServerEvents.recipes((event) => {
         P: 'gtceu:tempered_glass',
         C: 'gtceu:lumium_quadruple_wire',
         G: 'gtceu:stainless_steel_plate',
-        A: '#gtceu:circuits/hv'
+        A: '#gtceu:circuits/hv',
     });
 
     event.shaped('gtceu:distillery_column', ['TPG', 'AMA', 'GCT'], {
