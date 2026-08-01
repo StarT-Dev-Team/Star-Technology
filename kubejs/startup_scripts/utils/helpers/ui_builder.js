@@ -4,6 +4,7 @@ const $EditableMachineUI = Java.loadClass('com.gregtechceu.gtceu.api.gui.editor.
 const $GTSlotWidget = Java.loadClass('com.gregtechceu.gtceu.api.gui.widget.SlotWidget');
 const $GTTankWidget = Java.loadClass('com.gregtechceu.gtceu.api.gui.widget.TankWidget');
 
+/** @param {UIBuilderParams} settings */
 global.uiBuilder = (settings) => {
     const { group, name, size, background, progress, inputs, outputs } = settings;
 
@@ -11,18 +12,26 @@ global.uiBuilder = (settings) => {
         group,
         'gtceu:' + name,
         () => new WidgetGroup(),
+        /**
+         * @param {internal.com.gregtechceu.gtceu.api.machine.WorkableTieredMachine} machine
+         */
         (template, machine) => {
             template.setSize(size[0], size[1]);
             template.setBackground(background);
 
             template.addWidget(
                 new ProgressWidget(
-                    () => machine.getRecipeLogic().getProgressPercent(),
+                    () =>
+                        /** @type {internal.com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine} */ (
+                            /** @type {unknown} */ (machine)
+                        )
+                            .getRecipeLogic()
+                            .getProgressPercent(),
                     progress.pos[0],
                     progress.pos[1],
                     progress.size[0],
                     progress.size[1],
-                    progress.texture
+                    /** @type {any} */ (progress.texture)
                 )
             );
 

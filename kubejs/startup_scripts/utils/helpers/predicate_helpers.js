@@ -4,9 +4,13 @@
  * @typedef {Object} PredicateSettings
  * @property {number} [min] - Minimum global limit for the predicate (calls `setMinGlobalLimited`)
  * @property {number} [max] - Maximum global limit for the predicate (calls `setMaxGlobalLimited`)
+ * @property {number} [minLayer] - Minimum global limit for the predicate (calls `setMinGlobalLimited`)
+ * @property {number} [maxLayer] - Maximum global limit for the predicate (calls `setMaxGlobalLimited`)
  * @property {number} [exact] - Exact required count for the predicate (calls `setExactLimit`)
  * @property {number} [view] - How many to show in the structure preview (calls `setPreviewCount`)
  */
+
+/** @typedef {internal.com.gregtechceu.gtceu.api.data.chemical.material.Material} Material */
 
 /**
  * Applies optional min/max/exact/preview settings to a predicate instance.
@@ -19,6 +23,8 @@ function applySettings(predicate, settings) {
     if (settings === undefined) return predicate;
     if (settings.min) predicate = predicate.setMinGlobalLimited(settings.min);
     if (settings.max) predicate = predicate.setMaxGlobalLimited(settings.max);
+    if (settings.minLayer) predicate = predicate.setMinLayerLimited(settings.minLayer);
+    if (settings.maxLayer) predicate = predicate.setMaxLayerLimited(settings.maxLayer);
     if (settings.exact) predicate = predicate.setExactLimit(settings.exact);
     if (settings.view) predicate = predicate.setPreviewCount(settings.view);
     return predicate;
@@ -48,7 +54,7 @@ const P = {
      */
     controller: (definition) => Predicates.controller(Predicates.blocks(definition.get())),
     /**
-     * @param {string | } id
+     * @param {string | internal.net.minecraft.world.level.block.Block} id
      * @param {PredicateSettings} [settings]
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
@@ -130,15 +136,12 @@ const P = {
      */
     powerSubstationBattery: (settings) => applySettings(Predicates.powerSubstationBatteries(), settings),
     /**
-     * @param {string | string[]} materials
+     * @param {internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material> | internal.$wrapped<internal.com.gregtechceu.gtceu.api.data.chemical.material.Material>[]} materials
      * @param {PredicateSettings} [settings]
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
     frame: (materials, settings) =>
-        applySettings(
-            Predicates.frames.apply(Predicates, Array.isArray(materials) ? materials : [materials]),
-            settings
-        ),
+        applySettings(Predicates.frames(Array.isArray(materials) ? materials : [materials]), settings),
     /**
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */

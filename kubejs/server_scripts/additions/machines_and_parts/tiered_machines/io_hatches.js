@@ -5,20 +5,21 @@ ServerEvents.recipes((event) => {
 
     //UV/UHV Regular IO, No UEV or higher as they all scale the same as UHV as of current
 
+    /** @param {'luv' | 'zpm' | 'uv' | 'uhv'} tierKey */
     function tierIOHatches(tierKey) {
         const tierData = components[tierKey];
-
         if (!tierData) return;
 
         const {
             tiers: { tier },
             materials: { tierMaterial, plastic, pipeMaterial, fluidStorage, itemStorage },
-            scaling: { scaler },
+            scaling: tierScalingData,
         } = tierData;
+        const { scaler } = tierScalingData || { scaler: 1 };
 
         [
-            { typeIO: 'input', circ: '1' },
-            { typeIO: 'output', circ: '2' },
+            { typeIO: 'input', circ: 1 },
+            { typeIO: 'output', circ: 2 },
         ].forEach((ioData) => {
             event.remove({ output: `gtceu:${tier}_${ioData.typeIO}_hatch` });
             event.remove({ output: `gtceu:${tier}_dual_${ioData.typeIO}_hatch` });
@@ -26,20 +27,20 @@ ServerEvents.recipes((event) => {
 
             event.recipes.gtceu
                 .assembler(id(`${tier}_${ioData.typeIO}_bus`))
-                .itemInputs(`gtceu:${tier}_machine_hull`, itemStorage)
+                .itemInputs(`gtceu:${tier}_machine_hull`, itemStorage || '')
                 .inputFluids(`gtceu:${plastic} ${216 + scaler * 36}`)
                 .itemOutputs(`gtceu:${tier}_${ioData.typeIO}_bus`)
                 .duration(300)
-                .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, scaler))
+                .EUt(GTValues.VA[IV] * Math.pow(4, scaler))
                 .circuit(ioData.circ);
 
             event.recipes.gtceu
                 .assembler(id(`${tier}_${ioData.typeIO}_hatch`))
-                .itemInputs(`gtceu:${tier}_machine_hull`, fluidStorage)
+                .itemInputs(`gtceu:${tier}_machine_hull`, fluidStorage || '')
                 .inputFluids(`gtceu:${plastic} ${216 + scaler * 36}`)
                 .itemOutputs(`gtceu:${tier}_${ioData.typeIO}_hatch`)
                 .duration(300)
-                .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, scaler))
+                .EUt(GTValues.VA[IV] * Math.pow(4, scaler))
                 .circuit(ioData.circ);
 
             event.recipes.gtceu
@@ -53,7 +54,7 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${plastic} ${864 + scaler * 144}`)
                 .itemOutputs(`gtceu:${tier}_dual_${ioData.typeIO}_hatch`)
                 .duration(300)
-                .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, scaler))
+                .EUt(GTValues.VA[IV] * Math.pow(4, scaler))
                 .circuit(ioData.circ);
         });
 

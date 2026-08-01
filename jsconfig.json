@@ -1,3 +1,17 @@
 {
-    "include": ["kubejs"]
+    "compilerOptions": {
+        "checkJs": true,
+        "skipLibCheck": false,
+        "lib": ["ES2016", "ES2017.Object", "ES2019.Array"],
+        "noEmit": true
+    },
+    "include": [
+        "kubejs/client_scripts/**/*.js",
+        "kubejs/server_scripts/**/*.js",
+        "kubejs/startup_scripts/**/*.js",
+        "kubejs/.types/**/*.d.ts",
+        "kubejs/.types/**/*.ts",
+        "kubejs/.types/minecraft/_kjs.ts",
+        "kubejs/.types/startcore/startcore.ts"
+    ]
 }

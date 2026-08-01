@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('32x gtceu:netherrack_dust')
         .duration(3600)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .electrolyzer(id('estaltadyne_dust'))
@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:mystical_nether_magma 250')
         .itemOutputs('gtceu:estaltadyne_dust', 'gtceu:small_estaltadyne_dust')
         .duration(140)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .ordered_chemistry(id('estaltadyne_hydride'))
@@ -38,7 +38,7 @@ ServerEvents.recipes((event) => {
                 .inputFluids('gtceu:nitric_acid 2000')
         )
         .itemOutputs('gtceu:estaltadyne_hydride_dust')
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .EUtVHA(UEV)
         .duration(160);
 
     event.recipes.gtceu
@@ -48,7 +48,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('4x gtceu:estalt_dust')
         .outputFluids('gtceu:phosphoric_acid 3000')
         .duration(1200)
-        .EUt(GTValues.V[GTValues.UV]);
+        .EUtV(UV);
 
     event.replaceInput(
         { id: 'gtceu:electric_blast_furnace/blast_estalt_gas' },
@@ -71,7 +71,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('1x gtceu:enriched_estalt_dust')
         .outputFluids('gtceu:enriched_mystical_concentrate 500')
         .duration(190)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .manifold_centrifuge(id('enriched_mystical_concentrate_decomposition'))
@@ -80,7 +80,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:enriched_estaltadyne_mixture 1000')
         .outputFluids('gtceu:enriched_adamantamite_mixture 1000')
         .duration(300)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.replaceInput(
         { id: 'gtceu:electric_blast_furnace/blast_enriched_estalt_gas' },

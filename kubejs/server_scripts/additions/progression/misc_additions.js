@@ -31,13 +31,10 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 1520', 'start_core:flamewake_solvent 10000')
         .itemOutputs('kubejs:compass_of_the_flame')
         .duration(1800)
-        .EUt(GTValues.VH[GTValues.UEV]);
+        .EUtVH(UEV);
 
     cpaRecipe.stationResearch((researchRecipeBuilder) =>
-        researchRecipeBuilder
-            .researchStack(Item.of('minecraft:recovery_compass'))
-            .EUt(GTValues.VHA[GTValues.UHV])
-            .CWUt(160)
+        researchRecipeBuilder.researchStack(Item.of('minecraft:recovery_compass')).EUt(GTValues.VHA[UHV]).CWUt(160)
     );
 
     event.recipes.gtceu
@@ -52,7 +49,7 @@ ServerEvents.recipes((event) => {
         )
         .CWUt(160)
         .totalCWU(160 * 20 * 60)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('catto_shrine'))
@@ -76,14 +73,22 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids('gtceu:polybenzimidazole 7200')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('minecraft:cod')).EUt(GTValues.VHA[GTValues.LuV]).CWUt(32)
+            researchRecipeBuilder.researchStack(Item.of('minecraft:cod')).EUt(GTValues.VHA[LuV]).CWUt(32)
         )
         .itemOutputs('gtceu:catto_shrine')
         .duration(3072000)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     event.remove({ mod: 'placeablemaxwell' });
 
+    /**
+     * @param {string} name
+     * @param {GTTier} tier
+     * @param {string} dye
+     * @param {string} dye2
+     * @param {string} wire
+     * @param {number} scaler
+     */
     const cat = (name, tier, dye, dye2, wire, scaler) => {
         event.recipes.gtceu
             .catto_shrine(id(name))
@@ -105,7 +110,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`512x minecraft:${dye2}_wool`, '512x #forge:cooked_fishes')
             .itemOutputs(`placeablemaxwell:${name}`)
             .duration(168000)
-            .EUt(GTValues.VH[GTValues.ZPM] * Math.pow(4, scaler));
+            .EUt(GTValues.VH[ZPM] * Math.pow(4, scaler));
     };
 
     cat('mars', 'zpm', 'light_gray', 'gray', 'yttrium_barium_cuprate', 1);
@@ -162,15 +167,19 @@ ServerEvents.recipes((event) => {
         .itemOutputs('4x gtceu:osthendah_dust')
         .circuit(3)
         .duration(360)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 });
 
 ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
+    /** @typedef {internal.net.minecraft.world.level.levelgen.structure.Structure} Structure */
+
     let { level, player } = event;
-    if (!(level instanceof ServerLevel)) return;
+    if (!(level instanceof $ServerLevel)) return;
     let registryAccess = level.registryAccess();
-    let structureRegistry = registryAccess.registryOrThrow(Registries.STRUCTURE);
-    let structureKey = structureRegistry.getResourceKey(structureRegistry.get('minecraft:ruined_portal_nether')).get();
+    let structureRegistry = registryAccess.registryOrThrow($Registries.STRUCTURE);
+    let structureKey = structureRegistry
+        .getResourceKey(/** @type {Structure} */ (structureRegistry.get('minecraft:ruined_portal_nether')))
+        .get();
     let structureHolder = structureRegistry.getHolderOrThrow(structureKey);
 
     if (!structureHolder) {
@@ -179,15 +188,15 @@ ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {
     }
 
     let structure = structureHolder.get();
-    let holderSet = HolderSet.direct([structureHolder]);
-    let origin = new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
+    let holderSet = $HolderSet.direct([structureHolder]);
+    let origin = new $BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ());
     let generator = level.getChunkSource().getGenerator();
     let result = generator.findNearestMapStructure(level, holderSet, origin, 100, false);
 
-    if (result !== null) {
+    if (result) {
         let pos = result.getFirst();
-        let chunkPos = new ChunkPos(pos);
-        let sectionPos = SectionPos.of(chunkPos, level.getMinSection());
+        let chunkPos = new $ChunkPos(pos);
+        let sectionPos = $SectionPos.of(chunkPos, level.getMinSection());
         let chunk = level.getChunk(chunkPos.x, chunkPos.z);
         let start = level.structureManager().getStartForStructure(sectionPos, structure, chunk);
         if (start && start.isValid()) {

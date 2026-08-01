@@ -29,6 +29,12 @@ ServerEvents.recipes((event) => {
         6: 'start_core:neutronium_fluid_cell',
     };
 
+    /**
+     * @param {string} type
+     * @param {keyof typeof FLUID_CELL_TYPE} tier
+     * @param {string | string[]} composition
+     * @param {string | string[]} decomposition
+     */
     const nuclearRod = (type, tier, composition, decomposition) => {
         const cell = FLUID_CELL_TYPE[tier];
         let blend = composition;
@@ -39,7 +45,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(composition)
                 .itemOutputs(`4x gtceu:${type}_blend_dust`)
                 .duration(1200 / Math.pow(2, tier))
-                .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));
+                .EUt(GTValues.VA[HV] * Math.pow(4, tier));
 
             blend = `4x gtceu:${type}_blend_dust`;
         }
@@ -50,7 +56,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(blend)
             .itemOutputs('kubejs:' + type + '_fuel_rod')
             .duration(1200 / Math.pow(2, tier))
-            .EUt(GTValues.VA[GTValues.HV] * Math.pow(4, tier));
+            .EUt(GTValues.VA[HV] * Math.pow(4, tier));
 
         event.recipes.gtceu
             .centrifuge(id(`depleted_${type}_fuel_rod_decomposition`))
@@ -58,7 +64,7 @@ ServerEvents.recipes((event) => {
             .itemOutputs(cell)
             .itemOutputs(decomposition)
             .duration(1600 / Math.pow(2, tier))
-            .EUt(GTValues.VHA[GTValues.HV] * Math.pow(4, tier));
+            .EUt(GTValues.VHA[HV] * Math.pow(4, tier));
     };
 
     nuclearRod('thr', 1, `4x ${$Th230}`, `4x ${$U235}`);

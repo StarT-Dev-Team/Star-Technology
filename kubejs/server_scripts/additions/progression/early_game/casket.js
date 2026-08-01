@@ -11,6 +11,14 @@ ServerEvents.recipes((event) => {
         })
         .id(id('shaped/casket'));
 
+    /**
+     * @param {string[]} input
+     * @param {string | null} outputItem
+     * @param {string} outputFluid
+     * @param {number} duration
+     * @param {string} recipeID
+     * @param {number=} circuit
+     */
     const fermenting = (input, outputItem, outputFluid, duration, recipeID, circuit) => {
         const recipe = event.recipes.gtceu.fermenting(id(recipeID));
         recipe.itemInputs(input);
@@ -24,10 +32,14 @@ ServerEvents.recipes((event) => {
         }
     };
 
-    fermenting('8x #forge:crops', 'gtceu:bio_chaff', 'gtceu:ethanol 200', 600, 'ethanol', 1);
+    fermenting(['8x #forge:crops'], 'gtceu:bio_chaff', 'gtceu:ethanol 200', 600, 'ethanol', 1);
 
+    /**
+     * @param {string[]} fermentationMixture
+     * @param {string} potionID
+     */
     const potionRecipes = (fermentationMixture, potionID) => {
-        fermenting(fermentationMixture, false, `kubejs:${potionID} 100`, 100, potionID);
+        fermenting(fermentationMixture, null, `kubejs:${potionID} 100`, 100, potionID);
 
         event.recipes.create
             .filling(`kubejs:${potionID}`, [Fluid.of(`kubejs:${potionID}`, 250), 'minecraft:glass_bottle'])
@@ -38,7 +50,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(fermentationMixture)
             .outputFluids(`kubejs:${potionID} 125`)
             .duration(100)
-            .EUt(GTValues.VHA[GTValues.LV]);
+            .EUtVHA(LV);
     };
 
     potionRecipes(['3x thermal:corn', '3x minecraft:wheat', '2x minecraft:sugar'], 'sweetcorn_beer'); // Haste

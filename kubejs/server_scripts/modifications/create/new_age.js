@@ -3,6 +3,13 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /**
+     * @param {string} input
+     * @param {string} output
+     * @param {number} duration
+     * @param {number} eu
+     * @param {string} recipeID
+     */
     const polarizer = (input, output, duration, eu, recipeID) => {
         event.recipes.gtceu.polarizer(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
     };
@@ -11,6 +18,13 @@ ServerEvents.recipes((event) => {
     polarizer('gtceu:magnetic_iron_ingot', 'create_new_age:overcharged_iron', 16, 16, 'energized_iron');
     polarizer('minecraft:diamond', 'create_new_age:overcharged_diamond', 160, 16, 'energized_diamond');
 
+    /**
+     * @param {string} input
+     * @param {string} output
+     * @param {number} duration
+     * @param {number} eu
+     * @param {string} recipeID
+     */
     const bender = (input, output, duration, eu, recipeID) => {
         event.recipes.gtceu.bender(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
     };
@@ -30,6 +44,13 @@ ServerEvents.recipes((event) => {
         'overcharged_gold_plate'
     );
 
+    /**
+     * @param {string} input
+     * @param {string} output
+     * @param {number} duration
+     * @param {number} eu
+     * @param {string} recipeID
+     */
     const wiremill = (input, output, duration, eu, recipeID) => {
         event.recipes.gtceu.wiremill(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
     };

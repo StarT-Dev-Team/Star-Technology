@@ -51,7 +51,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     H: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
                     I: P.kjsBlock('enriched_naquadah_machine_casing'),
                     J: P.gtBlock('naquadah_coil_block'),
-                    K: P.gtBlock('lv_muffler_hatch'),
+                    K: P.ability(PA.muffler),
                     '@': P.controller(definition),
                 })
                 .build()

@@ -10,6 +10,13 @@ ServerEvents.recipes((event) => {
         .duration(400)
         .EUt(global.v['ulv']);
 
+    /**
+     * @param {string} higher
+     * @param {string} lower
+     * @param {GTTier} voltage
+     * @param {string} wire
+     * @param {number} multiplier
+     */
     const storageBase = (higher, lower, voltage, wire, multiplier) => {
         event.remove({ output: higher });
         event.recipes.gtceu
@@ -55,6 +62,11 @@ ServerEvents.recipes((event) => {
         .duration(400)
         .EUt(global.v['luv']);
 
+    /**
+     * @param {string} tier
+     * @param {string} storage
+     * @param {GTTier} voltage
+     */
     const spatial = (tier, storage, voltage) => {
         event.remove({ output: `ae2:spatial_cell_component_${tier}` });
         event.recipes.gtceu

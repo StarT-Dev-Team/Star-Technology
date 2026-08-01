@@ -13,7 +13,7 @@
 			id: "727DEC5336F4793D"
 			linked_quest: "37E3EF96EDE85C86"
 			x: 5.5d
-			y: -5.5d
+			y: -7.5d
 		}
 		{
 			id: "220DBF269EDBAC7A"
@@ -50,14 +50,14 @@
 		{
 			id: "2896C9473F6FC7A7"
 			linked_quest: "6D573ACD05D0EF96"
-			x: 7.5d
-			y: -1.5d
+			x: 9.5d
+			y: -3.5d
 		}
 		{
 			id: "15BD5419D917BE19"
 			linked_quest: "31EADD276ECB7B25"
-			x: -0.5d
-			y: 2.5d
+			x: 1.5d
+			y: 6.5d
 		}
 		{
 			id: "468440329AA0B7DD"
@@ -112,7 +112,7 @@
 				item: "gtceu:zalloy_ingot"
 				type: "item"
 			}]
-			x: 7.5d
+			x: 5.5d
 			y: -5.5d
 		}
 		{
@@ -368,8 +368,8 @@
 				item: "gtceu:ancient_runicalium_ingot"
 				type: "item"
 			}]
-			x: 5.5d
-			y: -1.5d
+			x: 7.5d
+			y: -3.5d
 		}
 		{
 			dependencies: ["30C974448C57F0EC"]
@@ -385,8 +385,8 @@
 				item: "gtceu:ancient_runicalium_single_wire"
 				type: "item"
 			}]
-			x: 4.5d
-			y: -0.5d
+			x: 8.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -434,8 +434,8 @@
 				type: "item"
 			}]
 			title: "{ftbquests.abydos.radon.title}"
-			x: 9.5d
-			y: -5.5d
+			x: 3.5d
+			y: -7.5d
 		}
 		{
 			dependencies: ["6110BA7B3E84F06F"]
@@ -479,8 +479,8 @@
 				}
 				type: "item"
 			}]
-			x: 11.5d
-			y: -1.5d
+			x: 8.5d
+			y: -0.5d
 		}
 		{
 			dependencies: [
@@ -535,7 +535,7 @@
 			]
 			title: "{ftbquests.abydos.uepic_chip.title}"
 			x: -0.5d
-			y: -7.5d
+			y: -5.5d
 		}
 		{
 			dependencies: ["493DD013C818BB7B"]
@@ -785,7 +785,7 @@
 			]
 			title: "{ftbquests.abydos.abydos_alloys.title}"
 			x: -2.5d
-			y: -3.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -886,7 +886,7 @@
 				type: "item"
 			}]
 			x: 7.5d
-			y: -3.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -947,8 +947,8 @@
 				item: "gtceu:uhv_stabilization_module"
 				type: "item"
 			}]
-			x: 9.5d
-			y: -3.5d
+			x: 7.5d
+			y: -5.5d
 		}
 		{
 			dependencies: ["4B7A774ADE857893"]
@@ -1026,7 +1026,7 @@
 					type: "item"
 				}
 			]
-			x: -6.5d
+			x: -4.5d
 			y: 2.5d
 		}
 		{
@@ -1048,8 +1048,8 @@
 				item: "gtceu:neuro_processing_unit"
 				type: "item"
 			}]
-			x: -4.5d
-			y: 2.5d
+			x: -2.5d
+			y: 0.5d
 		}
 		{
 			dependencies: ["18D5591BF53AD07F"]
@@ -1067,7 +1067,7 @@
 				type: "item"
 			}]
 			x: -2.5d
-			y: 0.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["01AF9486EA6DA792"]
@@ -1106,7 +1106,7 @@
 				type: "item"
 			}]
 			x: 1.5d
-			y: 0.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["0962C36622E385B8"]
@@ -1124,7 +1124,7 @@
 				type: "item"
 			}]
 			x: -0.5d
-			y: 0.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["2911EC7333E0E9C5"]
@@ -1206,7 +1206,7 @@
 				type: "item"
 			}]
 			x: -4.5d
-			y: -5.5d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -1387,7 +1387,7 @@
 				type: "item"
 			}]
 			x: 1.5d
-			y: -1.5d
+			y: 0.5d
 		}
 		{
 			dependencies: [
@@ -1410,7 +1410,7 @@
 				type: "item"
 			}]
 			x: 1.5d
-			y: -3.5d
+			y: -1.5d
 		}
 		{
 			dependencies: ["314B6ABE72E4A438"]
@@ -1430,7 +1430,7 @@
 				type: "item"
 			}]
 			x: 1.5d
-			y: -5.5d
+			y: -3.5d
 		}
 		{
 			dependencies: ["5BDA17962F4630EB"]
@@ -1447,7 +1447,7 @@
 				type: "item"
 			}]
 			x: 3.5d
-			y: -5.5d
+			y: -3.5d
 		}
 		{
 			dependencies: ["5BDA17962F4630EB"]
@@ -1464,7 +1464,7 @@
 				type: "item"
 			}]
 			x: 3.5d
-			y: -3.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -1483,7 +1483,7 @@
 				item: "gtceu:uhv_energy_input_hatch"
 				type: "item"
 			}]
-			x: 3.5d
+			x: 5.5d
 			y: -1.5d
 		}
 		{
@@ -1539,7 +1539,7 @@
 				type: "item"
 			}]
 			x: -2.5d
-			y: -7.5d
+			y: -5.5d
 		}
 		{
 			dependencies: ["1AC8CBF01196D1F3"]
@@ -1563,7 +1563,7 @@
 					type: "item"
 				}
 			]
-			x: 5.5d
+			x: -0.5d
 			y: -7.5d
 		}
 		{
@@ -1583,7 +1583,7 @@
 				item: "gtceu:neutronium_wafer"
 				type: "item"
 			}]
-			x: 3.5d
+			x: 1.5d
 			y: -7.5d
 		}
 		{
@@ -1601,7 +1601,7 @@
 				type: "item"
 			}]
 			x: 1.5d
-			y: -7.5d
+			y: -5.5d
 		}
 		{
 			dependencies: ["678B90BF2ACE2BBA"]
@@ -1630,8 +1630,8 @@
 					type: "item"
 				}
 			]
-			x: -2.5d
-			y: -1.5d
+			x: -4.5d
+			y: -5.5d
 		}
 		{
 			dependencies: [
@@ -1651,7 +1651,7 @@
 				type: "item"
 			}]
 			x: -0.5d
-			y: -3.5d
+			y: -1.5d
 		}
 		{
 			dependencies: ["253AECE450920D99"]
@@ -1685,7 +1685,7 @@
 				type: "item"
 			}]
 			x: -0.5d
-			y: -5.5d
+			y: -3.5d
 		}
 		{
 			dependencies: ["707C2E9BA62A60C5"]
@@ -1704,7 +1704,7 @@
 				type: "item"
 			}]
 			x: -0.5d
-			y: -1.5d
+			y: 0.5d
 		}
 		{
 			dependencies: ["141911C5DD68CD2A"]
@@ -1806,7 +1806,7 @@
 				item: "gtceu:chemical_plant"
 				type: "item"
 			}]
-			x: -2.5d
+			x: -6.5d
 			y: 2.5d
 		}
 		{
@@ -1848,7 +1848,10 @@
 			y: -5.5d
 		}
 		{
-			dependencies: ["6110BA7B3E84F06F"]
+			dependencies: [
+				"6110BA7B3E84F06F"
+				"5BDA17962F4630EB"
+			]
 			description: ["{ftbquests.abydos.compact_assembly_line.description}"]
 			hide_dependent_lines: true
 			id: "57E4168A83E31D62"
@@ -1862,8 +1865,8 @@
 				item: "gtceu:compact_assembly_line"
 				type: "item"
 			}]
-			x: 9.5d
-			y: -7.5d
+			x: 3.5d
+			y: -5.5d
 		}
 		{
 			dependencies: [
@@ -1882,7 +1885,7 @@
 				type: "item"
 			}]
 			x: -2.5d
-			y: -5.5d
+			y: -3.5d
 		}
 		{
 			dependencies: ["31EADD276ECB7B25"]
@@ -1920,7 +1923,7 @@
 				}
 			]
 			x: 1.5d
-			y: 2.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [

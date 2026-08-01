@@ -21,7 +21,7 @@ ServerEvents.recipes((event) => {
                 .itemOutputs(`${guaranteed}x kubejs:naquadic_netherite_fibers`)
                 .chancedOutput('kubejs:naquadic_netherite_fibers', bonus, 0)
                 .duration(148)
-                .EUt(GTValues.VHA[GTValues.UHV]);
+                .EUtVHA(UHV);
         } else {
             event.recipes.gtceu
                 .autoclave(id('naquadic_netherite_fibers/' + plastic))
@@ -29,7 +29,7 @@ ServerEvents.recipes((event) => {
                 .inputFluids(`gtceu:${plastic} ${amount}`)
                 .chancedOutput('kubejs:naquadic_netherite_fibers', chance, 0)
                 .duration(148)
-                .EUt(GTValues.VHA[GTValues.UHV]);
+                .EUtVHA(UHV);
         }
     });
 
@@ -57,10 +57,10 @@ ServerEvents.recipes((event) => {
             )
             .itemOutputs(netherPiece)
             .stationResearch((researchRecipeBuilder) =>
-                researchRecipeBuilder.researchStack(jaffa).EUt(GTValues.VHA[GTValues.UHV]).CWUt(144)
+                researchRecipeBuilder.researchStack(jaffa).EUt(GTValues.VHA[UHV]).CWUt(144)
             )
             .duration(2400)
-            .EUt(GTValues.VHA[GTValues.UEV]);
+            .EUtVHA(UEV);
 
         event.recipes.gtceu
             .assembly_line(id(`end_${part}`))
@@ -80,10 +80,10 @@ ServerEvents.recipes((event) => {
             )
             .itemOutputs(endPiece)
             .stationResearch((researchRecipeBuilder) =>
-                researchRecipeBuilder.researchStack(netherPiece).EUt(GTValues.VHA[GTValues.UHV]).CWUt(160)
+                researchRecipeBuilder.researchStack(netherPiece).EUt(GTValues.VHA[UHV]).CWUt(160)
             )
             .duration(2400)
-            .EUt(GTValues.VHA[GTValues.UIV]);
+            .EUtVHA(UIV);
     });
 
     event.recipes.create
@@ -123,5 +123,5 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:dragon_breath 1200')
         .itemOutputs('kubejs:end_talisman')
         .duration(320)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 });

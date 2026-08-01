@@ -13,27 +13,25 @@ ServerEvents.recipes((event) => {
         event.remove({ id: idRemoved });
     });
 
-    event.recipes.gtceu
-        .assembly_line(id('luv_fusion_reactor'))
-        .itemInputs(
-            'gtceu:superconducting_coil',
-            '4x #gtceu:circuits/zpm',
-            'gtceu:double_plutonium_241_plate',
-            'gtceu:double_osmiridium_plate',
-            '2x gtceu:iv_field_generator',
-            '64x gtceu:uhpic_chip',
-            '32x gtceu:indium_tin_barium_titanium_cuprate_single_wire'
-        )
-        .inputFluids('gtceu:soldering_alloy 1152', 'gtceu:niobium_titanium 1152')
-        .itemOutputs('start_core:luv_fusion_reactor')
-        ['scannerResearch(java.util.function.UnaryOperator)']((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:superconducting_coil'))
-                .duration(1200)
-                .EUt(GTValues.VA[GTValues.IV])
-        )
-        .duration(1200)
-        .EUt(GTValues.VA[GTValues.LuV]);
+    $(
+        event.recipes.gtceu
+            .assembly_line(id('luv_fusion_reactor'))
+            .itemInputs(
+                'gtceu:superconducting_coil',
+                '4x #gtceu:circuits/zpm',
+                'gtceu:double_plutonium_241_plate',
+                'gtceu:double_osmiridium_plate',
+                '2x gtceu:iv_field_generator',
+                '64x gtceu:uhpic_chip',
+                '32x gtceu:indium_tin_barium_titanium_cuprate_single_wire'
+            )
+            .inputFluids('gtceu:soldering_alloy 1152', 'gtceu:niobium_titanium 1152')
+            .itemOutputs('start_core:luv_fusion_reactor')
+            .duration(1200)
+            .EUtVA(LuV)
+    ).scannerResearch((researchRecipeBuilder) =>
+        researchRecipeBuilder.researchStack(Item.of('gtceu:superconducting_coil')).duration(1200).EUt(GTValues.VA[IV])
+    );
 
     event.recipes.gtceu
         .assembly_line(id('zpm_fusion_reactor'))
@@ -53,10 +51,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('start_core:luv_fusion_reactor'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
+                .EUt(GTValues.VHA[ZPM])
                 .CWUt(16)
         )
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     event.recipes.gtceu
         .assembly_line(id('uv_fusion_reactor'))
@@ -74,12 +72,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:uv_fusion_reactor')
         .duration(1500)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('start_core:zpm_fusion_reactor'))
-                .EUt(GTValues.VHA[GTValues.UV])
-                .CWUt(96)
+            researchRecipeBuilder.researchStack(Item.of('start_core:zpm_fusion_reactor')).EUt(GTValues.VHA[UV]).CWUt(96)
         )
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('uhv_fusion_reactor'))
@@ -99,10 +94,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('start_core:uv_fusion_reactor'))
-                .EUt(GTValues.VHA[GTValues.UHV])
+                .EUt(GTValues.VHA[UHV])
                 .CWUt(144)
         )
-        .EUt(GTValues.VA[GTValues.UHV]);
+        .EUtVA(UHV);
 
     event.recipes.gtceu
         .assembly_line(id('uev_fusion_reactor'))
@@ -122,10 +117,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('start_core:uhv_fusion_reactor'))
-                .EUt(GTValues.VHA[GTValues.UEV])
+                .EUt(GTValues.VHA[UEV])
                 .CWUt(160)
         )
-        .EUt(GTValues.VA[GTValues.UEV]);
+        .EUtVA(UEV);
 
     event.recipes.gtceu
         .assembly_line(id('uiv_fusion_reactor'))
@@ -145,10 +140,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('start_core:uev_fusion_reactor'))
-                .EUt(GTValues.VHA[GTValues.UIV])
+                .EUt(GTValues.VHA[UIV])
                 .CWUt(192)
         )
-        .EUt(GTValues.VA[GTValues.UIV]);
+        .EUtVA(UIV);
 
     // === Reflector Panels ===
     event.remove({ output: 'gtceu:neutron_reflector' });
@@ -168,6 +163,15 @@ ServerEvents.recipes((event) => {
     const t6Reflector = 'kubejs:dragonic_reflector_casing';
     const t7Reflector = 'kubejs:prismalic_reflector_casing';
 
+    /**
+     * @param {string} output
+     * @param {string} primary
+     * @param {string} secondary
+     * @param {string} backing
+     * @param {string} solder
+     * @param {number} eut
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     */
     let reflectorPanel = (output, primary, secondary, backing, solder, eut, clean) => {
         event.recipes.gtceu
             .assembler(id(output.split(':')[1]))
@@ -185,7 +189,7 @@ ServerEvents.recipes((event) => {
         'beryllium',
         'gtceu:double_tungsten_carbide_plate',
         'tin_alloy 2304',
-        GTValues.VHA[GTValues.EV],
+        GTValues.VHA[EV],
         CleanroomType.CLEANROOM
     );
     reflectorPanel(
@@ -194,7 +198,7 @@ ServerEvents.recipes((event) => {
         'naquadah',
         t1Panel,
         'soldering_alloy 1152',
-        GTValues.VHA[GTValues.IV],
+        GTValues.VHA[IV],
         CleanroomType.CLEANROOM
     );
     reflectorPanel(
@@ -203,7 +207,7 @@ ServerEvents.recipes((event) => {
         'zirconium',
         t2Panel,
         'soldering_alloy 2304',
-        GTValues.VHA[GTValues.LuV],
+        GTValues.VHA[LuV],
         CleanroomType.CLEANROOM
     );
     reflectorPanel(
@@ -212,7 +216,7 @@ ServerEvents.recipes((event) => {
         'tritanium',
         t3Panel,
         'indium_tin_lead_cadmium_soldering_alloy 1152',
-        GTValues.VHA[GTValues.ZPM],
+        GTValues.VHA[ZPM],
         CleanroomType.STERILE_CLEANROOM
     );
     reflectorPanel(
@@ -221,7 +225,7 @@ ServerEvents.recipes((event) => {
         'void',
         t4Panel,
         'indium_tin_lead_cadmium_soldering_alloy 2304',
-        GTValues.VHA[GTValues.UV],
+        GTValues.VHA[UV],
         CleanroomType.STERILE_CLEANROOM
     );
     reflectorPanel(
@@ -230,7 +234,7 @@ ServerEvents.recipes((event) => {
         'mythrotight_carbide_steel',
         t5Panel,
         'naquadated_soldering_alloy 1152',
-        GTValues.VHA[GTValues.UHV],
+        GTValues.VHA[UHV],
         CleanroomType.STERILE_CLEANROOM
     );
     reflectorPanel(
@@ -239,10 +243,20 @@ ServerEvents.recipes((event) => {
         'hvga_steel',
         t6Panel,
         'naquadated_soldering_alloy 2304',
-        GTValues.VHA[GTValues.UEV],
+        GTValues.VHA[UEV],
         $StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM
     );
 
+    /**
+     * @param {string} output
+     * @param {string} core
+     * @param {string} tierFG
+     * @param {string} cable
+     * @param {string} plate
+     * @param {string} fluid
+     * @param {number} tier
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     */
     let reflectorBlock = (output, core, tierFG, cable, plate, fluid, tier, clean) => {
         let fusionReflectorRecipe = event.recipes.gtceu
             .assembler(id(output.split(':')[1]))
@@ -255,7 +269,7 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:' + fluid)
             .itemOutputs('2x ' + output)
             .duration(400)
-            .EUt(GTValues.VA[GTValues.EV] * Math.pow(4, tier))
+            .EUt(GTValues.VA[EV] * Math.pow(4, tier))
             .cleanroom(clean);
         if (tier === 1) {
             fusionReflectorRecipe.itemInputs('6x gtceu:trinium_foil');
@@ -340,7 +354,14 @@ ServerEvents.recipes((event) => {
     );
 
     // === Coils ===
+
     event.remove({ output: 'gtceu:superconducting_coil' });
+
+    /**
+     * @param {GTTier} tier
+     * @param {string} superCond
+     * @param {number} quant
+     */
     let superconductingCoil = (tier, superCond, quant) => {
         event.recipes.gtceu
             .assembler(id(`superconducting_coil_${tier}`))
@@ -352,7 +373,7 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:trinium 1728')
             .itemOutputs(`${Math.pow(2, quant - 1)}x gtceu:superconducting_coil`)
             .duration(100)
-            .EUt(GTValues.VA[GTValues.IV] * Math.pow(4, quant));
+            .EUt(GTValues.VA[IV] * Math.pow(4, quant));
     };
     superconductingCoil('luv', 'indium_tin_barium_titanium_cuprate', 1);
     superconductingCoil('zpm', 'uranium_rhodium_dinaquadide', 2);
@@ -362,6 +383,15 @@ ServerEvents.recipes((event) => {
     superconductingCoil('uiv', 'rhenium_super_composite_alloy', 6);
 
     event.remove({ output: 'gtceu:fusion_coil' });
+
+    /**
+     * @param {string} output
+     * @param {string[]} inputs
+     * @param {string} fluid
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     * @param {number} dura
+     * @param {number} eut
+     */
     let fusionCoil = (output, inputs, fluid, clean, dura, eut) => {
         event.recipes.gtceu
             .assembler(id(`${output.split(':')[1]}`))
@@ -386,7 +416,7 @@ ServerEvents.recipes((event) => {
         'gtceu:vanadium_gallium 576',
         CleanroomType.CLEANROOM,
         150,
-        GTValues.VA[GTValues.ZPM]
+        GTValues.VA[ZPM]
     );
     fusionCoil(
         '3x start_core:auxiliary_fusion_coil_mk1',
@@ -402,7 +432,7 @@ ServerEvents.recipes((event) => {
         'gtceu:europium 1152',
         CleanroomType.CLEANROOM,
         300,
-        GTValues.VA[GTValues.UHV]
+        GTValues.VA[UHV]
     );
     fusionCoil(
         '1x start_core:advanced_fusion_coil',
@@ -418,7 +448,7 @@ ServerEvents.recipes((event) => {
         'gtceu:cerium_tritelluride 576',
         CleanroomType.STERILE_CLEANROOM,
         150,
-        GTValues.VA[GTValues.UEV]
+        GTValues.VA[UEV]
     );
     fusionCoil(
         '3x start_core:auxiliary_fusion_coil_mk2',
@@ -434,7 +464,7 @@ ServerEvents.recipes((event) => {
         'gtceu:polonium_bismide 1152',
         CleanroomType.STERILE_CLEANROOM,
         300,
-        GTValues.VA[GTValues.UIV]
+        GTValues.VA[UIV]
     );
 
     // === Casings ===
@@ -442,6 +472,17 @@ ServerEvents.recipes((event) => {
     event.remove({ output: 'gtceu:fusion_casing_mk2' });
     event.remove({ output: 'gtceu:fusion_casing_mk3' });
 
+    /**
+     *
+     * @param {string} output
+     * @param {'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv' } tier
+     * @param {string} VcoilMod
+     * @param {string} reflector
+     * @param {string} coil
+     * @param {string} fluid
+     * @param {internal.com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType | null} clean
+     * @param {number} eut
+     */
     let fusionCasing = (output, tier, VcoilMod, reflector, coil, fluid, clean, eut) => {
         let tierData = {
             luv: 'iv',
@@ -477,7 +518,7 @@ ServerEvents.recipes((event) => {
         'gtceu:superconducting_coil',
         'gtceu:polybenzimidazole 288',
         CleanroomType.CLEANROOM,
-        GTValues.VA[GTValues.LuV]
+        GTValues.VA[LuV]
     );
     fusionCasing(
         '2x gtceu:fusion_casing_mk2',
@@ -487,7 +528,7 @@ ServerEvents.recipes((event) => {
         'gtceu:fusion_coil',
         'gtceu:polybenzimidazole 576',
         CleanroomType.CLEANROOM,
-        GTValues.VA[GTValues.LuV]
+        GTValues.VA[LuV]
     );
     fusionCasing(
         '2x gtceu:fusion_casing_mk3',
@@ -497,7 +538,7 @@ ServerEvents.recipes((event) => {
         'gtceu:fusion_coil',
         'gtceu:polyether_ether_ketone 288',
         CleanroomType.CLEANROOM,
-        GTValues.VA[GTValues.LuV]
+        GTValues.VA[LuV]
     );
     fusionCasing(
         '2x start_core:auxiliary_boosted_fusion_casing_mk1',
@@ -507,7 +548,7 @@ ServerEvents.recipes((event) => {
         'start_core:auxiliary_fusion_coil_mk1',
         'gtceu:polyether_ether_ketone 576',
         CleanroomType.CLEANROOM,
-        GTValues.VA[GTValues.LuV]
+        GTValues.VA[LuV]
     );
     fusionCasing(
         '2x start_core:fusion_casing_mk4',
@@ -517,7 +558,7 @@ ServerEvents.recipes((event) => {
         'start_core:advanced_fusion_coil',
         'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 288',
         CleanroomType.CLEANROOM,
-        GTValues.VA[GTValues.LuV]
+        GTValues.VA[LuV]
     );
     fusionCasing(
         '2x start_core:auxiliary_boosted_fusion_casing_mk2',
@@ -527,7 +568,7 @@ ServerEvents.recipes((event) => {
         'start_core:auxiliary_fusion_coil_mk2',
         'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 576',
         CleanroomType.CLEANROOM,
-        GTValues.VA[GTValues.LuV]
+        GTValues.VA[LuV]
     );
 
     event.remove({ output: 'gtceu:fusion_glass' });
@@ -537,7 +578,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:polybenzimidazole 144')
         .itemOutputs('2x gtceu:fusion_glass')
         .duration(50)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .assembler(id('reinforced_fusion_glass'))
@@ -545,5 +586,5 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:polyether_ether_ketone 432')
         .itemOutputs('2x kubejs:reinforced_fusion_glass')
         .duration(200)
-        .EUt(GTValues.VA[GTValues.UV]);
+        .EUtVA(UV);
 });

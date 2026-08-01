@@ -3,6 +3,7 @@ ServerEvents.recipes((event) => {
 
     const components = global.componentMaterials;
 
+    /** @param {'ulv' | 'lv' | 'mv' | 'hv' | 'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv'} tierKey  */
     function tierTransformer(tierKey) {
         const tierData = components[tierKey];
 

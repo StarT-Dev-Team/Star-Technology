@@ -1,3 +1,9 @@
+/**
+ * @param {string} dimension
+ * @param {string} armorType
+ * @param {string[]} talismanList
+ * @param {string[]} effectList
+ */
 const dimensionEffect = (dimension, armorType, talismanList, effectList) => {
     PlayerEvents.tick((event) => {
         const { player } = event;

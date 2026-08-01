@@ -1,7 +1,7 @@
 // priority: 100
 
 /**
- * @type {Record<string, (scene: Internal.SceneBuilder, util: Internal.SceneBuildingUtil) => void>}
+ * @type {Record<string, (scene: internal.net.createmod.ponder.api.scene.SceneBuilder, util: internal.net.createmod.ponder.api.scene.SceneBuildingUtil) => void>}
  * @global
  */
 let ponderScenes = {};
@@ -9,11 +9,28 @@ let ponderScenes = {};
 /** @global */
 // eslint-disable-next-line no-unused-vars
 let ponderUtils = (() => {
+    /** @typedef {[number, number, number]} Position */
+    /** @typedef {import("./types").SortStrategy} SortStrategy */
+    /** @typedef {import("./types").MultiBlockStructure} MultiBlockStructure */
+    /** @typedef {import("./types").ComputedMultiblockStructure} ComputedMultiblockStructure */
+    /** @typedef {import("./types").MachineBlock} MachineBlock */
+    /** @typedef {import("./types").MachineBlockWrapped} MachineBlockWrapped */
+    /** @typedef {internal.net.createmod.ponder.api.scene.Selection} Selection */
+    /** @typedef {internal.$wrapped<Selection>} SelectionWrapped */
+    /** @typedef {internal.net.minecraft.core.BlockPos} BlockPos */
+    /** @typedef {internal.net.minecraft.core.Direction} Direction */
+    /** @typedef {internal.$wrapped<BlockPos>} BlockPosWrapped */
+    /** @typedef {internal.net.createmod.ponder.foundation.PonderScene} PonderScene */
+    /** @typedef {internal.net.createmod.ponder.api.scene.SceneBuilder} SceneBuilder */
+    /** @typedef {internal.net.createmod.ponder.api.scene.SceneBuildingUtil} SceneBuildingUtil */
+
+    let $UtilsJS = Java.loadClass('dev.latvian.mods.kubejs.util.UtilsJS');
     let $MetaMachineBlockEntity = Java.loadClass('com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity');
     let $IMachineBlock = Java.loadClass('com.gregtechceu.gtceu.api.block.IMachineBlock');
+    let $IMufflerMachine = Java.loadClass('com.gregtechceu.gtceu.api.machine.feature.multiblock.IMufflerMachine');
     let $RelativeDirection = Java.loadClass('com.gregtechceu.gtceu.api.pattern.util.RelativeDirection');
     let $RecipeLogicStatus = Java.loadClass('com.gregtechceu.gtceu.api.machine.trait.RecipeLogic$Status');
-    let $IPipeNode = Java.loadClass('com.gregtechceu.gtceu.api.pipenet.IPipeNode');
+    let $PipeBlockEntity = Java.loadClass('com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity');
     let $InputWindowElement = Java.loadClass('net.createmod.ponder.foundation.element.InputWindowElement');
     let $ShowInputInstruction = Java.loadClass('net.createmod.ponder.foundation.instruction.ShowInputInstruction');
     let $ReplaceBlocksInstruction = Java.loadClass(
@@ -30,35 +47,22 @@ let ponderUtils = (() => {
     let P = {
         /**
          * @param {string} id
-         * @param {Direction} facing
-         * @returns {Internal.BlockState}
+         * @param {internal.net.minecraft.core.Direction=} facing
+         * @returns {internal.net.minecraft.world.level.block.state.BlockState}
          */
         block: function (id, facing) {
             let block = $ForgeRegistries.BLOCKS.getValue(id);
             if (facing && block instanceof $IMachineBlock) {
-                /** @type {Internal.IMachineBlock} */
-                let machine = block;
-                if (machine.getRotationState() !== RotationState.NONE) {
-                    return block.defaultBlockState().setValue(machine.getRotationState().property, facing);
+                if (block.getRotationState() !== RotationState.NONE) {
+                    return block.self().defaultBlockState().setValue(block.getRotationState().property, facing);
                 }
             }
             return block.defaultBlockState();
         },
 
         /**
-         * @param {Internal.BlockState} block
-         * @param {Internal.RelativeDirection} direction
-         */
-        blockSetFacing: function (block, direction) {
-            let optionalFacing = block.getOptionalValue(BlockProperties.FACING);
-            if (optionalFacing.present) {
-                block.setValue(BlockProperties.FACING, direction.getActualFacing(optionalFacing.get()));
-            }
-        },
-
-        /**
          * @template T
-         * @template U
+         * @template {string} U
          * @param {T[]} arr
          * @param {(value: T) => U} groupByFn
          * @returns {Record<U, T[]>}
@@ -82,6 +86,7 @@ let ponderUtils = (() => {
          * @returns {[keyof Dict, Dict[keyof Dict]][]}
          */
         objectEntries: function (dict) {
+            /** @type {[keyof Dict, Dict[keyof Dict]][]} */
             let ret = [];
             for (let k in dict) {
                 ret.push([k, dict[k]]);
@@ -98,7 +103,7 @@ let ponderUtils = (() => {
                             block: block,
                             layer: block.pos.equals(controller) ? -Infinity : block.pos.y,
                         })),
-                        (e) => e.layer
+                        (e) => `${e.layer}`
                     )
                 ).map((arr) => arr[1]);
                 groups.sort((a, b) => a[0].layer - b[0].layer);
@@ -112,7 +117,7 @@ let ponderUtils = (() => {
                             block: block,
                             distance: util.vector().centerOf(block.pos).distanceToSqr(controllerVec),
                         })),
-                        (e) => e.distance
+                        (e) => `${e.distance}`
                     )
                 ).map((arr) => arr[1]);
                 groups.sort((a, b) => a[0].distance - b[0].distance);
@@ -171,7 +176,7 @@ let ponderUtils = (() => {
                 ];
 
                 return blocks
-                    .filter((b) => b.state.block.idLocation !== 'minecraft:air')
+                    .filter((b) => b.state.block.id !== 'minecraft:air')
                     .map((b) => {
                         let offX = Math.floor(centerBlock[0]) - b.pos.x;
                         let offZ = Math.floor(centerBlock[2]) - b.pos.z;
@@ -210,7 +215,7 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuildingUtil} util
+         * @param {SceneBuildingUtil} util
          * @param {MultiBlockStructure} structure
          * @param {Position} controllerPosition
          * @returns {ComputedMultiblockStructure}
@@ -219,8 +224,12 @@ let ponderUtils = (() => {
             /** @type {BlockPos} */
             let controllerBlockPos = util.grid().at.apply(util.grid(), controllerPosition);
             /** @type {BlockPos} */
-            let structureControllerBlockPos = null;
-            let dimensions = [structure.pattern[0][0].length, structure.pattern[0].length, structure.pattern.length];
+            let structureControllerBlockPos = /** @type {any} */ (null);
+            let dimensions = /** @type {const} */ ([
+                structure.pattern[0][0].length,
+                structure.pattern[0].length,
+                structure.pattern.length,
+            ]);
 
             P.iterateBlockPattern(structure.pattern, (x, y, z, block) => {
                 if (block === structure.controller) {
@@ -260,7 +269,7 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
+         * @param {SceneBuilder} scene
          */
         triggerRerender(scene) {
             scene.addInstruction(
@@ -269,12 +278,13 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {BlockPos | [number, number, number]} controllerPosition
+         * @param {SceneBuilder} scene
+         * @param {BlockPosWrapped} controllerPosition
          */
         formMultiblock: function (scene, controllerPosition) {
             scene.world().modifyBlockEntity(controllerPosition, $MetaMachineBlockEntity, (be) => {
-                let metaMachine = be.getMetaMachine();
+                /** @type {internal.com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController} */
+                let metaMachine = /** @type {any} */ (be.getMetaMachine());
                 let pattern = metaMachine.getPattern();
                 if (pattern !== null && pattern.checkPatternAt(metaMachine.getMultiblockState(), true)) {
                     metaMachine.onStructureFormed();
@@ -284,19 +294,21 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {(BlockPos | Position)[]} positions
+         * @param {SceneBuilder} scene
+         * @param {BlockPosWrapped[]} positions
          */
         sectionFromPositions: function (scene, positions) {
             let util = scene.scene.sceneBuildingUtil;
-            return positions.reduce(
-                (prev, next) => (prev ? prev.add(util.select().position(next)) : util.select().position(next)),
-                /** @type {Internal.Selection} */ (null)
+            return /** @type {Selection} */ (
+                positions.reduce(
+                    (prev, next) => (prev ? prev.add(util.select().position(next)) : util.select().position(next)),
+                    /** @type {Selection | null} */ (null)
+                )
             );
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
+         * @param {SceneBuilder} scene
          * @param {number} size
          */
         buildDefaultFloor: function (scene, size) {
@@ -306,7 +318,7 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
+         * @param {SceneBuilder} scene
          * @param {number} size
          */
         buildStarTFloor: function (scene, size) {
@@ -322,29 +334,26 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
+         * @param {SceneBuilder} scene
          * @param {number} size
-         * @param {(x: number,  z: number) => string | Internal.BlockState} block
-         * @param {number} offset
+         * @param {(x: number,  z: number) => string | internal.net.minecraft.world.level.block.state.BlockState} block
+         * @param {number=} offset
          */
         buildFloor: function (scene, size, block, offset) {
             offset = offset || 0;
             let sceneBuilder = scene;
-            scene.addInstruction(
-                /** @param {Internal.PonderScene} scene */
-                (scene) => {
-                    for (let x = -offset; x < size + offset; x++) {
-                        for (let z = -offset; z < size + offset; z++) {
-                            scene.world.setBlock([x, 0, z], block(x, z), 0);
-                        }
+            scene.addInstruction((scene) => {
+                for (let x = -offset; x < size + offset; x++) {
+                    for (let z = -offset; z < size + offset; z++) {
+                        scene.world.setBlock([x, 0, z], block(x, z), 0);
                     }
-                    sceneBuilder.configureBasePlate(0, 0, size);
                 }
-            );
+                sceneBuilder.configureBasePlate(0, 0, size);
+            });
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
+         * @param {SceneBuilder} scene
          * @param {number} size
          * @param {boolean} first
          */
@@ -352,7 +361,7 @@ let ponderUtils = (() => {
             let util = scene.scene.sceneBuildingUtil;
 
             if (!first) {
-                let everywhere = util.select().cuboid(util.grid().zero, util.grid().at(100, 100, 100));
+                let everywhere = util.select().cuboid(util.grid().zero(), util.grid().at(100, 100, 100));
                 scene.world().hideSection(everywhere, Direction.DOWN);
                 scene.idle(20);
                 scene.world().restoreBlocks(everywhere);
@@ -376,14 +385,15 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {MachineBlock[]} blocks
-         * @param {Internal.Direction | undefined} direction
+         * @param {SceneBuilder} scene
+         * @param {MachineBlockWrapped[]} blocks
+         * @param {internal.$wrapped<Direction> =} direction
          */
         revealBlocks: function (scene, blocks, direction) {
             blocks.forEach((block) => {
+                const blockPos = $UtilsJS.blockPosOf(block.pos);
                 scene.world().setBlock(block.pos, block.state, false);
-                if (block.onPlace) block.onPlace(scene, block.pos);
+                if (block.onPlace) block.onPlace(scene, blockPos);
             });
 
             let section = P.sectionFromPositions(
@@ -394,8 +404,8 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {(BlockPos | Position)[]} blocks
+         * @param {SceneBuilder} scene
+         * @param {(BlockPosWrapped)[]} blocks
          */
         breakBlocksAndHide: function (scene, blocks) {
             blocks.forEach((block) => scene.world().setBlock(block, 'minecraft:air', true));
@@ -406,8 +416,9 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {(BlockPos | Position)[]} blocks
+         * @param {SceneBuilder} scene
+         * @param {(BlockPosWrapped)[]} blocks
+         * @param {Direction=} direction
          */
         hideSectionAndRemoveBlocks: function (scene, blocks, direction) {
             let section = P.sectionFromPositions(scene, blocks);
@@ -417,9 +428,9 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {BlockPos | Position} scenePosition
-         * @param {PonderPointing} direction
+         * @param {SceneBuilder} scene
+         * @param {internal.$wrapped<internal.net.minecraft.world.phys.Vec3>} scenePosition
+         * @param {InstanceType<typeof PonderPointing>} direction
          * @param {number} from
          * @param {number} to
          * @param {number} duration
@@ -443,15 +454,14 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {BlockPos | Position} controllerPosition
+         * @param {SceneBuilder} scene
+         * @param {BlockPosWrapped} controllerPosition
          * @param {boolean} active
          */
         setMultiblockActiveState(scene, controllerPosition, active) {
-            // let util = scene.scene.sceneBuildingUtil;
-
             scene.world().modifyBlockEntity(controllerPosition, $MetaMachineBlockEntity, (be) => {
-                let metaMachine = be.getMetaMachine();
+                /** @type {internal.com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine} */
+                let metaMachine = /** @type {any} */ (be.getMetaMachine());
                 metaMachine.notifyStatusChanged(
                     active ? $RecipeLogicStatus.IDLE : $RecipeLogicStatus.WORKING,
                     active ? $RecipeLogicStatus.WORKING : $RecipeLogicStatus.IDLE
@@ -459,28 +469,19 @@ let ponderUtils = (() => {
             });
             P.triggerRerender(scene);
         },
-        /**
-         * @param {string} clz
-         */
-        javaReflectionClassName: function (clz) {
-            return Java.loadClass(clz).__javaObject__.getName();
-        },
 
         /**
          * @param {string} clz
          * @param {string[]} args
          * @param {string} ret
-         * @returns {Internal.Method}
          */
         javaReflectionGetMethod: function (clz, args, ret) {
-            /** @type {Internal.Method[]} */
-            let methods = Java.loadClass(clz).__javaObject__.getDeclaredMethods();
+            const javaClz = /** @type {internal.$class<unknown>} */ (Java.loadClass(/** @type {any} */ (clz)));
+            let methods = javaClz.__javaObject__.getDeclaredMethods();
             return methods.find((x) => {
                 return (
                     x.parameterCount === args.length &&
-                    x.parameters.every(
-                        /** @param {Internal.Parameter} p */ (p, i) => p.getType().getName() === args[i]
-                    ) &&
+                    x.parameters.every((p, i) => p.getType().getName() === args[i]) &&
                     x.returnType.getName() === ret
                 );
             });
@@ -489,12 +490,11 @@ let ponderUtils = (() => {
         /**
          * @param {string} clz
          * @param {string} name
-         * @returns {Internal.Method}
          */
         javaReflectionGetMethodByName: function (clz, name) {
-            /** @type {Internal.Method[]} */
-            let methods = Java.loadClass(clz).__javaObject__.getDeclaredMethods();
-            let method = methods.find((x) => x.name === name);
+            const javaClz = /** @type {internal.$class<unknown>} */ (Java.loadClass(/** @type {any} */ (clz)));
+            let methods = javaClz.getDeclaredMethods();
+            let method = /** @type {internal.java.lang.reflect.Method} */ (methods.find((x) => x.name === name));
             method.setAccessible(true);
             return function () {
                 let args = Array.from(arguments);
@@ -504,27 +504,29 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {BlockPos | Position} scenePosition
+         * @param {SceneBuilder} scene
+         * @param {BlockPosWrapped} position
+         * @param {number} duration
          */
         animateMufflerHatch(scene, position, duration) {
             scene.addInstruction(
                 new PonderTickingInstruction(false, duration).onTick((scene) => {
                     let be = scene.world.getBlockEntity(position);
+                    if (!(be instanceof $MetaMachineBlockEntity)) return;
                     let metaMachine = be.getMetaMachine();
-                    // TODO: validate if it's the correct type
+                    if (!(metaMachine instanceof $IMufflerMachine)) return;
                     metaMachine.emitPollutionParticles();
                 })
             );
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {BlockPos | Position} position
-         * @param {Internal.Direction[]} connections
+         * @param {SceneBuilder} scene
+         * @param {BlockPosWrapped} position
+         * @param {Direction[]} connections
          */
         setPipeConnections(scene, position, connections) {
-            scene.world().modifyBlockEntity(position, $IPipeNode, (be) => {
+            scene.world().modifyBlockEntity(position, $PipeBlockEntity, (be) => {
                 let mask = 0;
                 for (let connection of connections) {
                     mask |= 1 << connection.ordinal();
@@ -535,15 +537,15 @@ let ponderUtils = (() => {
 
         /**
          * @param {string} sceneName
-         * @param {(scene: Internal.SceneBuilder, util: Internal.SceneBuildingUtil) => void} scene
+         * @param {(scene: SceneBuilder, util: SceneBuildingUtil) => void} scene
          */
         defineScene: function (sceneName, scene) {
             ponderScenes[sceneName] = scene;
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {Selection} selection
+         * @param {SceneBuilder} scene
+         * @param {SelectionWrapped} selection
          */
         showSectionImmediately: function (scene, selection) {
             scene.addInstruction(
@@ -552,8 +554,8 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
-         * @param {Selection} selection
+         * @param {SceneBuilder} scene
+         * @param {SelectionWrapped} selection
          */
         hideSectionImmediately: function (scene, selection) {
             scene.addInstruction(
@@ -562,7 +564,7 @@ let ponderUtils = (() => {
         },
 
         /**
-         * @param {Internal.SceneBuilder} scene
+         * @param {SceneBuilder} scene
          * @param {ComputedMultiblockStructure} multi
          * @param {Position} offset
          * @param {number} duration

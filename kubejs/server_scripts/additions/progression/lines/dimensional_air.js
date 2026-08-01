@@ -39,7 +39,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:air 32000')
         .outputFluids('gtceu:nether_air 24000')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.HV]);
+        .EUtVHA(HV);
 
     event.recipes.gtceu
         .mixer(id('ender_air_mix'))
@@ -47,5 +47,5 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:nether_air 32000')
         .outputFluids('gtceu:ender_air 24000')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.HV]);
+        .EUtVHA(HV);
 });

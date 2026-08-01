@@ -7,10 +7,10 @@
         scene.scaleSceneView(0.8);
 
         let coke = computeMultiData(util, cokeOven(), [10, 2, 5]);
-        for (let block of cokeOven.blocks) {
+        for (let block of coke.blocks) {
             scene.world().setBlock(block.pos, block.state, true);
         }
-        formMultiblock(scene, cokeOven.controller);
+        formMultiblock(scene, coke.controller);
 
         let ebf = computeMultiData(util, electricBlastFurnace(), [6, 1, 5]);
         for (let block of ebf.blocks) {

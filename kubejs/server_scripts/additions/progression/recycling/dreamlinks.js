@@ -50,7 +50,7 @@ ServerEvents.recipes((event) => {
             .itemInputs(`start_core:${tier}_2a_dream_link_cover_item`)
             .itemOutputs(coverOutputs)
             .duration(calculateDuration(coverOutputs))
-            .EUt(GTValues.VA[GTValues.LV])
+            .EUtVA(LV)
             .category(GTRecipeCategories.ARC_FURNACE_RECYCLING);
     };
 
