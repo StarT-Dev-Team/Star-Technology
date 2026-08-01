@@ -1318,6 +1318,8 @@
     "block.gtceu.super_gas_collector.tooltip.0": "§7Collects gas just a bit faster.",
 
     "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
+    "block.gtceu.distillery_column.tooltip.0": "§7A large distillery with higher efficiency to replace your singleblocks.",
+    "block.gtceu.industrial_brewing_station.tooltip.0": "§7A large brewery with throughput boosting to replace your singleblocks.",
 
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§bStellarized§f Weapon Grade Naquadah",

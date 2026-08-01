@@ -890,5 +890,9 @@
     "item.kubejs.runic_wave_generator": "Runic Wave Generator",
     "item.kubejs.stainless_steel_firebox_casing": "Stainless Steel Firebox Casing",
     "item.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber",
-    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber"
+    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber",
+    "item.gtceu.distillery_column": "Distillery Column",
+    "block.gtceu.distillery_column": "Distillery Column",
+    "item.gtceu.industrial_brewing_station": "Industrial Brewing Station",
+    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station"
 }
