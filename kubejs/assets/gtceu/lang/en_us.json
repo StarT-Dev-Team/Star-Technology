@@ -1317,8 +1317,9 @@
     "block.gtceu.super_gas_collector": "Compression Gas Siphon [CGS]",
     "block.gtceu.super_gas_collector.tooltip.0": "§7Collects gas just a bit faster.",
 
-    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber",
     "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
+    "block.gtceu.distillery_column.tooltip.0": "§7A large distillery with higher efficiency to replace your singleblocks.",
+    "block.gtceu.industrial_brewing_station.tooltip.0": "§7A large brewery with throughput boosting to replace your singleblocks.",
 
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§bStellarized§f Weapon Grade Naquadah",
@@ -1442,5 +1443,9 @@
     "block.gtceu.mv_compound_generator": "§bAdvanced Compound Generator§r [ACG]",
     "block.gtceu.hv_compound_generator": "§6Advanced Compound Generator II§r [ACG II]",
     "block.gtceu.compound_generator.desc": "§7A machine that can extend in size to generate more power. Can extend up to 8 slices, where each slice has 1 dynamo hatch and generates 2A of power.",
-    "block.gtceu.compound_generator.max_generation": "§7Maximum Generation: §f%s EU/t"
+    "block.gtceu.compound_generator.max_generation": "§7Maximum Generation: §f%s EU/t",
+
+    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber [IEC]",
+    "block.gtceu.distillery_column": "Distillery Column [DC]",
+    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]"
 }
