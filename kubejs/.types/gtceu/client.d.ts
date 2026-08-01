@@ -4,6 +4,7 @@ declare namespace internal.com.gregtechceu.gtceu.client.util {
     import UnaryOperator = java.util.function_.UnaryOperator;
     import Style = net.minecraft.network.chat.Style;
     import ChatFormatting = net.minecraft.ChatFormatting;
+    import MutableComponent = net.minecraft.network.chat.MutableComponent;
 
     interface TooltipHelper extends $object<'com.gregtechceu.gtceu.client.util.TooltipHelper'> {}
 
@@ -20,6 +21,7 @@ declare namespace internal.com.gregtechceu.gtceu.client.util {
         BLINKING_GRAY: GTFormattingCode;
         createNewCode(rate: number, codes: ChatFormatting[]): GTFormattingCode;
         onClientTick(): void;
+        rainbowify(component: MutableComponent): MutableComponent;
     };
 
     interface GTFormattingCode extends $object<'com.gregtechceu.gtceu.client.util.TooltipHelper$GTFormattingCode'> {}

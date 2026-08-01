@@ -11,9 +11,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .tooltipBuilder((stack, components) => {
             components.add(
                 Component.translatable('gtceu.machine.active_transformer.tooltip.2').append(
-                    Component.translatable('gtceu.machine.active_transformer.tooltip.3').withStyle(
-                        $TooltipHelper.RAINBOW_HSL_SLOW
-                    )
+                    $TooltipHelper.rainbowify(Component.translatable('gtceu.machine.active_transformer.tooltip.3'))
                 )
             );
         })
@@ -81,9 +79,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .tooltipBuilder((stack, components) => {
             components.add(
                 Component.translatable('gtceu.machine.active_transformer.tooltip.2').append(
-                    Component.translatable('gtceu.machine.active_transformer.tooltip.3').withStyle(
-                        $TooltipHelper.RAINBOW_HSL_SLOW
-                    )
+                    $TooltipHelper.rainbowify(Component.translatable('gtceu.machine.active_transformer.tooltip.3'))
                 )
             );
         })
