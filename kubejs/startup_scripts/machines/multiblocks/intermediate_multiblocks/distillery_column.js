@@ -21,7 +21,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             ])
                 .whereDict({
                     C: P.anyOf([
-                        P.gtBlock("stable_machine_casing", { min: 10 }),
+                        P.gtBlock('stable_machine_casing', { min: 10 }),
                         P.ability(PA.itemIn, { max: 1 }),
                         P.ability(PA.itemOut, { max: 1 }),
                         P.ability(PA.fluidIn, { max: 1 }),
