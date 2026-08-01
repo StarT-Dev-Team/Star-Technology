@@ -111,12 +111,10 @@ declare namespace internal.kjs {
         // typeWrappers.registerSimple(ChanceLogic.class, o -> {
         // typeWrappers.registerSimple(ExtendedOutputItem.class, ExtendedOutputItem::of);
         'com.gregtechceu.gtceu.integration.kjs.recipe.components.ExtendedOutputItem':
-            | OutputItem
-            | TypeWrappers['dev.latvian.mods.kubejs.item.OutputItem'];
+            OutputItem | TypeWrappers['dev.latvian.mods.kubejs.item.OutputItem'];
         'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet': string & Record<never, never>;
         'com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack':
-            | com.gregtechceu.gtceu.api.data.chemical.material.Material
-            | string;
+            com.gregtechceu.gtceu.api.data.chemical.material.Material | string;
         // typeWrappers.registerSimple(MaterialStackWrapper.class, o -> {
         'com.gregtechceu.gtceu.api.data.worldgen.IWorldGenLayer': string;
         // typeWrappers.registerSimple(HeightRangePlacement.class, o -> {
@@ -140,10 +138,7 @@ declare namespace internal.kjs {
               )[];
         // typeWrappers.registerSimple(EnergyStack.class, KJSHelpers::parseEnergyStack);
         'com.gregtechceu.gtceu.api.recipe.ingredient.EnergyStack$WithIO':
-            | number
-            | string
-            | { v: number; a: number }
-            | { V: number; A: number };
+            number | string | { v: number; a: number } | { V: number; A: number };
     }
 
     import ActiveBlockBuilder = com.gregtechceu.gtceu.integration.kjs.builders.block.ActiveBlockBuilder;

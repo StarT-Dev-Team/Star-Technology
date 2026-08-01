@@ -44,12 +44,7 @@ declare namespace internal.kjs {
 
     // TODO: move ClickEventAction
     type ClickEventAction =
-        | 'open_url'
-        | 'open_file'
-        | 'run_command'
-        | 'suggest_command'
-        | 'change_page'
-        | 'copy_to_clipboard';
+        'open_url' | 'open_file' | 'run_command' | 'suggest_command' | 'change_page' | 'copy_to_clipboard';
 
     type ComponentJsonAttributes = {
         color?: $wrapped<dev.latvian.mods.rhino.mod.util.color.Color>;
@@ -144,14 +139,11 @@ declare namespace internal.kjs {
         // typeWrappers.registerSimple(Set.class, ListJS::ofSet);
         'net.minecraft.world.item.ItemStack': net.minecraft.resources.ResourceLocation | RegExp | string;
         'net.minecraft.world.item.crafting.Ingredient':
-            | IngredientWrapperBase
-            | (IngredientWrapperBase | net.minecraft.world.item.crafting.Ingredient)[];
+            IngredientWrapperBase | (IngredientWrapperBase | net.minecraft.world.item.crafting.Ingredient)[];
         'dev.latvian.mods.kubejs.recipe.InputReplacement':
-            | dev.latvian.mods.kubejs.item.InputItem
-            | TypeWrappers['dev.latvian.mods.kubejs.item.InputItem'];
+            dev.latvian.mods.kubejs.item.InputItem | TypeWrappers['dev.latvian.mods.kubejs.item.InputItem'];
         'dev.latvian.mods.kubejs.recipe.OutputReplacement':
-            | dev.latvian.mods.kubejs.item.OutputItem
-            | TypeWrappers['dev.latvian.mods.kubejs.item.OutputItem'];
+            dev.latvian.mods.kubejs.item.OutputItem | TypeWrappers['dev.latvian.mods.kubejs.item.OutputItem'];
         'dev.latvian.mods.kubejs.item.InputItem':
             | net.minecraft.world.item.ItemStack
             | net.minecraft.world.item.crafting.Ingredient
