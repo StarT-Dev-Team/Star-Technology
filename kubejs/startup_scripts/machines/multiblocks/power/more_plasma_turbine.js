@@ -6,7 +6,6 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             Text.translate('block.gtceu.supreme_plasma_turbine.top.0'),
             Text.translate('block.gtceu.supreme_plasma_turbine.top.1'),
             Text.translate('block.start_core.gap'),
-            /* Text.translate('block.gtceu.supreme_plasma_turbine.bottom'), */
         ])
         .tooltipBuilder((stack, components) => {
             components.add(
@@ -74,7 +73,6 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             Text.translate('block.gtceu.supreme_plasma_turbine.top.0'),
             Text.translate('block.gtceu.supreme_plasma_turbine.top.1'),
             Text.translate('block.start_core.gap'),
-            /* Text.translate('block.gtceu.supreme_plasma_turbine.bottom'), */
         ])
         .tooltipBuilder((stack, components) => {
             components.add(
