@@ -22,7 +22,8 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`2x ${casingId}:${type}_casing`)
             .duration(50)
             .EUt(16)
-            .circuit(6);
+            .circuit(6)
+            .addMaterialInfo(true, true);
     };
 
     casing('soul_infused', 'soul_infused', 'kubejs');
@@ -78,7 +79,8 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`2x ${casingId}:${type}_casing`)
             .duration(50)
             .EUt(16)
-            .circuit(6);
+            .circuit(6)
+            .addMaterialInfo(true, true);
     };
 
     casingDouble('atomic', 'trinaquadalloy', 'gtceu');
@@ -94,7 +96,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:silicone_rubber_casing')
         .duration(50)
         .EUtVH(MV)
-        .circuit(6);
+        .circuit(6)
+        .addMaterialInfo(true, true);
 
     /**
      * @param {string} type
@@ -117,7 +120,8 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`2x ${casingId}:${type}_turbine_casing`)
             .duration(50)
             .EUt(16)
-            .circuit(6);
+            .circuit(6)
+            .addMaterialInfo(true, true);
     };
 
     turbine('pallaridium', 'palladium', 'kubejs');
@@ -131,13 +135,14 @@ ServerEvents.recipes((event) => {
      * @param {string} casingId
      */
     const firebox = (type, material, frame, casingId) => {
-        event
+        event.recipes.gtceu
             .shaped(`2x ${casingId}:${type}_firebox_casing`, ['PRP', 'RFR', 'PRP'], {
                 P: `gtceu:${material}_plate`,
                 F: `gtceu:${frame}_frame`,
                 R: `gtceu:${material}_rod`,
             })
-            .id(`${casingId}:${type}_firebox_casing`);
+            .id(`${casingId}:${type}_firebox_casing`)
+            .addMaterialInfo();
     };
 
     firebox('pallaridium', 'palladium', 'iridium', 'kubejs');
@@ -151,14 +156,15 @@ ServerEvents.recipes((event) => {
      * @param {string} casingId
      */
     const heatEscape = (type, material, frame, casingId) => {
-        event
+        event.recipes.gtceu
             .shaped(`2x ${casingId}:${type}_heat_escape_casing`, ['PTP', 'RFR', 'PTP'], {
                 T: `gtceu:${material}_rotor`,
                 P: `gtceu:${material}_plate`,
                 F: `gtceu:${frame}_frame`,
                 R: `gtceu:${material}_rod`,
             })
-            .id(`${casingId}:${type}_heat_escape_casing`);
+            .id(`${casingId}:${type}_heat_escape_casing`)
+            .addMaterialInfo();
     };
 
     heatEscape('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
@@ -187,7 +193,8 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`2x ${casingId}:${type}_gearbox`)
             .duration(50)
             .EUt(16)
-            .circuit(4);
+            .circuit(4)
+            .addMaterialInfo(true, true);
     };
 
     gearbox('pallaridium', 'palladium', 'iridium', 'kubejs');
@@ -215,7 +222,8 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`2x ${casingId}:${type}_pipe_casing`)
             .duration(50)
             .EUtVH(LV)
-            .circuit(9);
+            .circuit(9)
+            .addMaterialInfo(true, true);
     };
 
     pipe('pallaridium', 'palladium', 'iridium', 'kubejs');
@@ -245,7 +253,8 @@ ServerEvents.recipes((event) => {
             .itemInputs(`2x gtceu:${material}_rotor`, `4x gtceu:${pipe}_normal_fluid_pipe`, `${usedCasing}`)
             .itemOutputs(`2x ${casingId}:${type}_engine_intake_casing`)
             .duration(50)
-            .EUt(16);
+            .EUt(16)
+            .addMaterialInfo(true, true);
     };
 
     engineIntake('pallaridium', 'palladium', 'iridium', 'kubejs', 'gtceu:palladium_substation');
@@ -268,7 +277,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:extreme_temperature_smelting_casing')
         .circuit(6)
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('subzero_casing'))
@@ -276,7 +286,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:subzero_casing')
         .circuit(6)
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('draneko_casing'))
@@ -290,7 +301,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:draneko_casing')
         .circuit(8)
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
     /**
      * @param {string} nameCasing
@@ -304,7 +316,8 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`2x kubejs:${nameCasing}_casing`)
             .circuit(6)
             .duration(50)
-            .EUt(16);
+            .EUt(16)
+            .addMaterialInfo(true, true);
     };
 
     ultimateCasing('advanced_assembly', 'expetidalloy_d_17', 'isovol');
@@ -327,7 +340,7 @@ ServerEvents.recipes((event) => {
      * @param {string} researched
      */
     const specialUltimateCasing = (nameCasing, inputs, fluids, researched) => {
-        event.recipes.gtceu
+        return event.recipes.gtceu
             .assembly_line(id(`${nameCasing}`))
             .itemInputs(inputs)
             .inputFluids(fluids)
@@ -336,7 +349,8 @@ ServerEvents.recipes((event) => {
             .stationResearch((researchRecipeBuilder) =>
                 researchRecipeBuilder.researchStack(Item.of(researched)).EUt(GTValues.VA[UEV]).CWUt(216)
             )
-            .EUtVHA(UIV);
+            .EUtVHA(UIV)
+            .addMaterialInfo(true, true);
     };
 
     specialUltimateCasing(
@@ -460,7 +474,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:tritanic_blasting_casing')
         .circuit(6)
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('aberration_casing'))
@@ -468,7 +483,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:aberration_casing')
         .circuit(6)
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('infernally_reinforced_casing'))
@@ -476,7 +492,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:infernally_reinforced_casing')
         .circuit(6)
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('absolute_temperature_smelting_casing'))
@@ -488,37 +505,44 @@ ServerEvents.recipes((event) => {
         .itemOutputs('2x kubejs:absolute_temperature_smelting_casing')
         .circuit(6)
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
-    event.shaped('2x kubejs:superdense_assembly_control_casing', ['PGP', 'AFA', 'PGP'], {
-        P: 'gtceu:double_neutronium_plate',
-        G: 'gtceu:pure_netherite_gear',
-        A: 'gtceu:uhv_robot_arm',
-        F: 'gtceu:zircalloy_4_frame',
-    });
+    event.recipes.gtceu
+        .shaped('2x kubejs:superdense_assembly_control_casing', ['PGP', 'AFA', 'PGP'], {
+            P: 'gtceu:double_neutronium_plate',
+            G: 'gtceu:pure_netherite_gear',
+            A: 'gtceu:uhv_robot_arm',
+            F: 'gtceu:zircalloy_4_frame',
+        })
+        .addMaterialInfo();
 
-    event.shaped('2x kubejs:superdense_assembly_machine_casing', ['CUC', 'SFE', 'CMC'], {
-        C: '#gtceu:circuits/uv',
-        U: 'gtceu:uhpic_chip',
-        S: 'gtceu:uhv_sensor',
-        E: 'gtceu:uhv_emitter',
-        M: 'gtceu:uhv_electric_motor',
-        F: 'gtceu:zircalloy_4_frame',
-    });
+    event.recipes.gtceu
+        .shaped('2x kubejs:superdense_assembly_machine_casing', ['CUC', 'SFE', 'CMC'], {
+            C: '#gtceu:circuits/uv',
+            U: 'gtceu:uhpic_chip',
+            S: 'gtceu:uhv_sensor',
+            E: 'gtceu:uhv_emitter',
+            M: 'gtceu:uhv_electric_motor',
+            F: 'gtceu:zircalloy_4_frame',
+        })
+        .addMaterialInfo();
 
     event.recipes.gtceu
         .compressor(id('reinforced_brimstone_casing'))
         .itemInputs('16x kubejs:brimstone')
         .itemOutputs('kubejs:reinforced_brimstone_casing')
         .duration(320)
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .compressor(id('reinforced_cryostone_casing'))
         .itemInputs('16x kubejs:cryostone')
         .itemOutputs('kubejs:reinforced_cryostone_casing')
         .duration(320)
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('polycarbonate_casing'))
@@ -526,16 +550,18 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:polycarbonate 216')
         .itemOutputs('kubejs:polycarbonate_casing')
         .duration(200)
-        .EUtVHA(LuV);
+        .EUtVHA(LuV)
+        .addMaterialInfo(true, true);
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('2x gtceu:palladium_substation'), ['PHP', 'PFP', 'PWP'], {
             P: 'gtceu:palladium_plate',
             F: 'gtceu:iridium_frame',
             H: '#forge:tools/hammers',
             W: '#forge:tools/wrenches',
         })
-        .id('start:shaped/palladium_substation');
+        .id('start:shaped/palladium_substation')
+        .addMaterialInfo();
 
     /**
      * @param {keyof typeof global.componentMaterials} tier
@@ -564,7 +590,8 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`${prefix + tier}_hermetic_casing`)
             .circuit(10)
             .duration(50)
-            .EUtVH(LV);
+            .EUtVH(LV)
+            .addMaterialInfo(true, true);
     };
 
     /** @type {const} */ (['luv', 'zpm', 'uv', 'uhv']).forEach((tier) => {
@@ -578,7 +605,8 @@ ServerEvents.recipes((event) => {
         .circuit(6)
         .itemOutputs('kubejs:peek_casing')
         .duration(600)
-        .EUtVA(LuV);
+        .EUtVA(LuV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('cattomolymer_casing'))
@@ -587,7 +615,8 @@ ServerEvents.recipes((event) => {
         .circuit(6)
         .itemOutputs('kubejs:cattomolymer_casing')
         .EUtVHA(UHV)
-        .duration(750);
+        .duration(750)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('rhenotax_coil'))
@@ -601,5 +630,6 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 432')
         .itemOutputs('kubejs:rhenotax_coil')
         .EUtVHA(UIV)
-        .duration(1200);
+        .duration(1200)
+        .addMaterialInfo(true, true);
 });

@@ -151,7 +151,8 @@ ServerEvents.recipes((event) => {
                         .CWUt(320)
                 )
                 .EUt(EU)
-                .cleanroom(CleanroomType.getByName('stabilized'));
+                .cleanroom(CleanroomType.getByName('stabilized'))
+                .addMaterialInfo(true, true);
 
             if (tier === 'uv') {
                 mtscfRecipe.inputFluids(`gtceu:${tierFluid} ${576 * scalerMCSF * 0.75}`);

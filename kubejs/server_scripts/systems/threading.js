@@ -124,7 +124,8 @@ ServerEvents.recipes((event) => {
                     .EUt(eut / 4)
                     .CWUt(cwu)
             )
-            .EUt(eut);
+            .EUt(eut)
+            .addMaterialInfo(true, true);
     };
 
     assemblyThreadMachine(
@@ -471,7 +472,8 @@ ServerEvents.recipes((event) => {
                     .CWUt(128)
             )
             .duration(600)
-            .EUtVA(UEV);
+            .EUtVA(UEV)
+            .addMaterialInfo(true, true);
     };
 
     specialAssemblyHelix('overdrive', 'transmission_assembly');
@@ -496,7 +498,8 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder.researchStack(Item.of('gtceu:draconyallium_frame')).EUt(GTValues.VA[UEV]).CWUt(160)
         )
         .duration(800)
-        .EUtVA(UIV);
+        .EUtVA(UIV)
+        .addMaterialInfo(true, true);
 
     // === Needs K.O.M.A.R.U ===
     // Special 2+, Gen 3+

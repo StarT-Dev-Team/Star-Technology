@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
             const tierComponents = components[voltage].materials;
 
             // === AE ===
-            event
+            event.recipes.gtceu
                 .shaped(`gtceu:${voltage}_me_assembler`, ['ABC', 'DED', 'FFG'], {
                     A: `gtceu:${voltage}_emitter`,
                     B: `gtceu:${voltage}_conveyor_module`,
@@ -18,10 +18,11 @@ ServerEvents.recipes((event) => {
                     F: `gtceu:${tierComponents.cable}_single_cable`,
                     G: `gtceu:${voltage}_electric_motor`,
                 })
-                .id(`start:shaped/${voltage}_me_assembler`);
+                .id(`start:shaped/${voltage}_me_assembler`)
+                .addMaterialInfo();
 
             // === Pulverizer ===
-            event
+            event.recipes.gtceu
                 .shaped(`gtceu:${voltage}_pulverizer`, ['ABC', 'DEF', 'AGH'], {
                     A: `gtceu:${tierComponents.cable}_single_cable`,
                     B: `gtceu:${voltage}_electric_piston`,
@@ -32,7 +33,8 @@ ServerEvents.recipes((event) => {
                     G: 'minecraft:anvil',
                     H: `#gtceu:circuits/${voltage}`,
                 })
-                .id(`start:shaped/${voltage}_pulverizer`);
+                .id(`start:shaped/${voltage}_pulverizer`)
+                .addMaterialInfo();
         }
     );
 
@@ -49,7 +51,8 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:soldering_alloy 144')
             .itemOutputs(`${output}`)
             .duration(400)
-            .EUt(eu);
+            .EUt(eu)
+            .addMaterialInfo(true, true);
     }
 
     ['input_bus', 'output_bus', 'input_hatch', 'output_hatch'].forEach((type) => {

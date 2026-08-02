@@ -12,18 +12,20 @@ ServerEvents.recipes((event) => {
             { type: 'output', shape: ['   ', ' M ', ' C '] },
         ].forEach((type) => {
             // Busses
-            event
+            event.recipes.gtceu
                 .shaped(Item.of(`gtceu:${tier.tier}_${type.type}_bus`), type.shape, {
                     C: tier.item,
                     M: `gtceu:${tier.tier}_machine_hull`,
                 })
+                .addMaterialInfo()
                 .id(`start:shaped/${tier.tier}_${type.type}_bus`);
             // Hatches
-            event
+            event.recipes.gtceu
                 .shaped(Item.of(`gtceu:${tier.tier}_${type.type}_hatch`), type.shape, {
                     C: tier.fluid,
                     M: `gtceu:${tier.tier}_machine_hull`,
                 })
+                .addMaterialInfo()
                 .id(`start:shaped/${tier.tier}_${type.type}_hatch`);
         });
     });
@@ -51,7 +53,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UEV])
                 .CWUt(176)
         )
-        .EUtVHA(UIV);
+        .EUtVHA(UIV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('absolute_stabilization_module'))
@@ -73,7 +76,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:auto_maintenance_hatch')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     // === Variadic Hatches ===
     event.recipes.gtceu
@@ -90,5 +94,6 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:soldering_alloy 288')
         .duration(600)
         .circuit(4)
-        .EUtV(EV);
+        .EUtV(EV)
+        .addMaterialInfo(true);
 });

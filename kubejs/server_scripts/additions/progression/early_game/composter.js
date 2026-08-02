@@ -1,7 +1,7 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    event
+    event.recipes.gtceu
         .shaped('gtceu:advanced_composter', ['PRP', 'PGP', 'ISI'], {
             P: 'gtceu:treated_wood_slab',
             G: 'minecraft:glass',
@@ -11,7 +11,7 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/advanced_composter');
 
-    event
+    event.recipes.gtceu
         .shaped('gtceu:composting_factory', ['AAB', 'BCD', 'EFE'], {
             A: '#gtceu:circuits/iv',
             B: 'gtceu:iv_electric_piston',
@@ -20,7 +20,8 @@ ServerEvents.recipes((event) => {
             E: 'gtceu:tungsten_single_cable',
             F: 'gtceu:iv_electric_motor',
         })
-        .id('start:shaped/composting_factory');
+        .id('start:shaped/composting_factory')
+        .addMaterialInfo();
 
     /**
      * @param {number} odds

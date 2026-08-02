@@ -119,7 +119,8 @@ ServerEvents.recipes((event) => {
                         .CWUt(320)
                 )
                 .EUt(EU)
-                .cleanroom(CleanroomType.getByName('stabilized'));
+                .cleanroom(CleanroomType.getByName('stabilized'))
+                .addMaterialInfo(true, true);
 
             event.recipes.gtceu
                 .research_station(`1_x_gtceu_${tier}_${type}_mcsf`)

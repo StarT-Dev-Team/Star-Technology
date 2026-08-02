@@ -48,7 +48,8 @@ ServerEvents.recipes((event) => {
                     )
                     .itemOutputs(`gtceu:${tier}_transformer_${transformerData.amps}`)
                     .duration(5)
-                    .EUt(30);
+                    .EUt(30)
+                    .addMaterialInfo(true);
             } else {
                 event
                     .shaped(Item.of(`gtceu:${tier}_transformer_${transformerData.amps}`), [' LL', 'UH ', ' LL'], {
@@ -67,7 +68,8 @@ ServerEvents.recipes((event) => {
                     )
                     .itemOutputs(`gtceu:${tier}_transformer_${transformerData.amps}`)
                     .duration(5)
-                    .EUt(30);
+                    .EUt(30)
+                    .addMaterialInfo(true);
             }
         });
     }

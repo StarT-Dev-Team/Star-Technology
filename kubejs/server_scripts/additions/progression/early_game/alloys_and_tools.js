@@ -19,20 +19,36 @@ ServerEvents.recipes((event) => {
     });
 
     [
-        { result: 'bronze', amount: 3, ingredients: ['3x gtceu:copper', 'gtceu:tin'] },
+        {
+            result: 'bronze',
+            amount: 3,
+            ingredients: ['3x gtceu:copper', 'gtceu:tin'],
+        },
         {
             result: 'red_alloy',
             amount: 1,
             ingredients: ['gtceu:copper', '4x minecraft:redstone'],
         },
-        { result: 'brass', amount: 3, ingredients: ['3x gtceu:copper', 'gtceu:zinc'] },
-        { result: 'invar', amount: 2, ingredients: ['2x gtceu:iron', 'gtceu:nickel'] },
+        {
+            result: 'brass',
+            amount: 3,
+            ingredients: ['3x gtceu:copper', 'gtceu:zinc'],
+        },
+        {
+            result: 'invar',
+            amount: 2,
+            ingredients: ['2x gtceu:iron', 'gtceu:nickel'],
+        },
         {
             result: 'soul_infused',
             amount: 1,
             ingredients: ['2x thermal_extra:soul_sand', 'gtceu:invar'],
         },
-        { result: 'tin_alloy', amount: 1, ingredients: ['gtceu:tin', 'gtceu:iron'] },
+        {
+            result: 'tin_alloy',
+            amount: 1,
+            ingredients: ['gtceu:tin', 'gtceu:iron'],
+        },
     ].forEach((alloy) => {
         const { result, amount, ingredients } = alloy;
 
@@ -55,10 +71,12 @@ ServerEvents.recipes((event) => {
             .mixing(`${resultStack}_ingot`, ingotIngredients)
             .heatRequirement('lowheated')
             .id(`start:create_mixing/${result}`);
+
         event.recipes.create
             .mixing(`${resultStack}_ingot`, dustIngredients)
             .heatRequirement('lowheated')
             .id(`start:create_mixing/${result}_with_dust`);
+
         event.shapeless(`${resultStack}_dust`, dustIngredients).id(`start:shapeless/${result}_dust`);
     });
 });
