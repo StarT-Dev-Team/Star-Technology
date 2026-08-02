@@ -616,7 +616,7 @@
 			]
 			dependency_requirement: "one_completed"
 			description: ["{ftbquests.early_game.cured_rubber.description}"]
-			icon: "gtceu:latex_plantation"
+			icon: "start_core:large_arboreal_extractor"
 			id: "0A41C4FB379984C0"
 			optional: true
 			rewards: [{
@@ -635,7 +635,7 @@
 				}
 				{
 					id: "2169C43BE0EB4B19"
-					item: "gtceu:latex_plantation"
+					item: "start_core:large_arboreal_extractor"
 					optional_task: true
 					type: "item"
 				}
@@ -889,8 +889,8 @@
 		}
 		{
 			dependencies: ["03ACC7D2577A2C66"]
-			description: ["{ftbquests.early_game.ulv_barrel.description}"]
-			icon: "gtceu:ulv_barrel"
+			description: ["{ftbquests.early_game.barrel.description}"]
+			icon: "gtceu:barrel"
 			id: "2D1184752D7ACA66"
 			rewards: [{
 				id: "33CC60792D4A7D78"
@@ -898,11 +898,11 @@
 				type: "item"
 			}]
 			tasks: [{
-				id: "0B64D2D98654B971"
-				item: "gtceu:ulv_barrel"
+				id: "73D64A9D0D26D32E"
+				item: "gtceu:barrel"
 				type: "item"
 			}]
-			title: "{ftbquests.early_game.ulv_barrel.title}"
+			title: "{ftbquests.early_game.barrel.title}"
 			x: -6.0d
 			y: 0.5d
 		}
@@ -1709,8 +1709,8 @@
 			shape: "gear"
 			size: 1.5d
 			tasks: [{
-				id: "67E293DD7B193FF1"
-				item: "gtceu:ulv_stone_barrel"
+				id: "55EAB817E63165AB"
+				item: "gtceu:stone_barrel"
 				type: "item"
 			}]
 			title: "{ftbquests.early_game.stone_barrel.title}"
@@ -2115,8 +2115,8 @@
 				type: "item"
 			}]
 			tasks: [{
-				id: "4661585B2B492844"
-				item: "gtceu:ulv_advanced_composter"
+				id: "4AB1A8869741C3BF"
+				item: "gtceu:advanced_composter"
 				type: "item"
 			}]
 			x: 5.5d
@@ -2271,11 +2271,18 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			tasks: [{
-				id: "2686626F2E18E539"
-				item: "gtceu:ulv_casket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "2686626F2E18E539"
+					item: "gtceu:ulv_casket"
+					type: "item"
+				}
+				{
+					id: "578C91901A1D4780"
+					item: "gtceu:casket"
+					type: "item"
+				}
+			]
 			x: 7.0d
 			y: -2.5d
 		}
