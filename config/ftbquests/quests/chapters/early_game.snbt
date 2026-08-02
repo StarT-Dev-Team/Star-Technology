@@ -2273,11 +2273,6 @@
 			}]
 			tasks: [
 				{
-					id: "2686626F2E18E539"
-					item: "gtceu:ulv_casket"
-					type: "item"
-				}
-				{
 					id: "578C91901A1D4780"
 					item: "gtceu:casket"
 					type: "item"
