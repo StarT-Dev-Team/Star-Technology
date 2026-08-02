@@ -1429,5 +1429,8 @@
 
     "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber [IEC]",
     "block.gtceu.distillery_column": "Distillery Column [DC]",
-    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]"
+    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]",
+
+    "block.gtceu.network_hub": "Network Hub [NH]",
+    "gtceu.machine.network_hub.tooltip": "Can extend in size to accommodate more computation hatches."
 }

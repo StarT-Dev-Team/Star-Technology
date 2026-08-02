@@ -134,4 +134,7 @@ const $BulkingMulti = Java.loadClass('com.startechnology.start_core.machine.bulk
 const $BulkingCoiledMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingCoiledMachine');
 const $BulkingThreadedMulti = Java.loadClass('com.startechnology.start_core.machine.bulking.BulkingThreadedMachine');
 
+const $NetworkSwitchMachine = Java.loadClass(
+    'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.NetworkSwitchMachine'
+);
 const $TooltipHelper = Java.loadClass('com.gregtechceu.gtceu.client.util.TooltipHelper');

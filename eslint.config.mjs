@@ -100,6 +100,7 @@ export default [
                 $FormattingUtil: 'readonly',
                 $FluidPipeProperties: 'readonly',
                 GTFluidState: 'readonly',
+                $NetworkSwitchMachine: 'readonly',
                 GTMachines: 'readonly',
                 $TooltipHelper: 'readonly',
                 // LDLib globals

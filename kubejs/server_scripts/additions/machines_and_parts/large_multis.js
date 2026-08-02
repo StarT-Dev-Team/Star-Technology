@@ -60,28 +60,4 @@ ServerEvents.recipes((event) => {
         .duration(600)
         .EUt(8192)
         .addMaterialInfo(true, true);
-
-    // === MA ===
-    event.recipes.gtceu
-        .shaped(Item.of('gtceu:essence_replicator'), ['PSP', 'EHE', 'CSC'], {
-            P: 'gtceu:double_invar_plate',
-            S: '#gtceu:circuits/hv',
-            E: 'gtceu:mv_emitter',
-            H: 'gtceu:heatproof_machine_casing',
-            C: 'gtceu:gold_single_cable',
-        })
-        .id('start:shaped/essence_replicator')
-        .addMaterialInfo();
-
-    event.recipes.gtceu
-        .shaped(Item.of('gtceu:essence_enchancer'), ['SAP', 'EHE', 'CAC'], {
-            P: 'gtceu:double_stainless_steel_plate',
-            A: '#gtceu:circuits/ev',
-            S: 'gtceu:hv_sensor',
-            E: 'gtceu:hv_emitter',
-            H: 'gtceu:clean_machine_casing',
-            C: 'gtceu:aluminium_single_cable',
-        })
-        .id('start:shaped/essence_enhancer')
-        .addMaterialInfo();
 });
