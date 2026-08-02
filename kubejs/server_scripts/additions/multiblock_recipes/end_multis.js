@@ -31,7 +31,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(224)
         )
-        .EUtVA(UXV);
+        .EUtVA(UXV)
+        .addMaterialInfo(true, true);
 
     // === CHEF ===
     event.recipes.gtceu
@@ -61,7 +62,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:mega_blast_furnace')).EUt(GTValues.VHA[UIV]).CWUt(192)
         )
-        .EUtVHA(UXV);
+        .EUtVHA(UXV)
+        .addMaterialInfo(true, true);
 
     // === Part Hub ===
     event.recipes.gtceu
@@ -90,7 +92,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UEV])
                 .CWUt(192)
         )
-        .EUtVHA(UIV);
+        .EUtVHA(UIV)
+        .addMaterialInfo(true, true);
 
     // === Chem Plant ===
     event.recipes.gtceu
@@ -122,7 +125,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:chemical_plant')).EUt(GTValues.VA[UIV]).CWUt(216)
         )
-        .EUtVHA(UXV);
+        .EUtVHA(UXV)
+        .addMaterialInfo(true, true);
 
     // === Incomprehensible Chemical Reactor ===
     event.recipes.gtceu
@@ -143,7 +147,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(192)
         )
-        .EUtVHA(UIV);
+        .EUtVHA(UIV)
+        .addMaterialInfo(true, true);
 
     // === True Synthesis Plant ===
     event.recipes.gtceu
@@ -167,7 +172,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(256)
         )
-        .EUtVHA(UXV);
+        .EUtVHA(UXV)
+        .addMaterialInfo(true, true);
 
     // === Ak stabiliser 2 ===
     event.recipes.gtceu
@@ -194,5 +200,6 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(216)
         )
-        .EUtVA(UIV);
+        .EUtVA(UIV)
+        .addMaterialInfo(true, true);
 });

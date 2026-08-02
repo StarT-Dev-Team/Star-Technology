@@ -22,7 +22,8 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder.researchStack(Item.of('gtceu:super_vacuum_freezer')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
         .duration(400)
-        .EUtVHA(UV);
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('mega_blast_furnace'))
@@ -41,7 +42,8 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder.researchStack(Item.of('gtceu:super_ebf')).EUt(GTValues.VHA[UV]).CWUt(64)
         )
         .duration(400)
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     // === AE ===
     event.recipes.gtceu
@@ -56,10 +58,11 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('gtceu:large_me_assembler')
         .duration(600)
-        .EUt(8192);
+        .EUt(8192)
+        .addMaterialInfo(true, true);
 
     // === MA ===
-    event
+    event.recipes.gtceu
         .shaped(Item.of('gtceu:essence_replicator'), ['PSP', 'EHE', 'CSC'], {
             P: 'gtceu:double_invar_plate',
             S: '#gtceu:circuits/hv',
@@ -67,9 +70,10 @@ ServerEvents.recipes((event) => {
             H: 'gtceu:heatproof_machine_casing',
             C: 'gtceu:gold_single_cable',
         })
-        .id('start:shaped/essence_replicator');
+        .id('start:shaped/essence_replicator')
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('gtceu:essence_enchancer'), ['SAP', 'EHE', 'CAC'], {
             P: 'gtceu:double_stainless_steel_plate',
             A: '#gtceu:circuits/ev',
@@ -78,5 +82,6 @@ ServerEvents.recipes((event) => {
             H: 'gtceu:clean_machine_casing',
             C: 'gtceu:aluminium_single_cable',
         })
-        .id('start:shaped/essence_enhancer');
+        .id('start:shaped/essence_enhancer')
+        .addMaterialInfo();
 });

@@ -1,13 +1,4 @@
 {
-    "block.gtceu.lv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.mv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.hv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.ev_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.iv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.luv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.zpm_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.uv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-
     "block.gtceu.theta2Removals.tooltip": "§4§lDeprecated. Will be removed in Theta 2",
 
     "block.gtceu.dimensional_finder.tooltip.0": "§7Get Dimensionally Pinged",
@@ -97,10 +88,6 @@
     "block.gtceu.void_extractor.tooltip.0": "§7A machine that uses the ever present abyss under your feet to extract resources. Where they come from is unknown, but there is no time for those questions.",
     "block.gtceu.void_extractor.tooltip.1": "",
     "block.gtceu.void_extractor.tooltip.2": "§7You are gonna need multiple Output Buses and Hatches",
-
-    "block.gtceu.essence_enchancer.tooltip.0": "§7A convoluted machine, that can infuse mystical essences with large amounts of electricity to trigger a change in their composition, making them more useful.",
-
-    "block.gtceu.essence_replicator.tooltip.0": "§7A machine that can duplicate essences indefinitely, although for the more advanced ones, it requires special fluids to function properly.",
 
     "block.gtceu.dimensional_destabiliser.tooltip.0": "§7A mysterious structure that can stimulate cracks in space to harvest heavy elements from it that have never been observed before.",
 
@@ -198,15 +185,10 @@
     "material.gtceu.debris": "Debris",
     "material.gtceu.purified_debris": "Purified Debris",
     "material.gtceu.netherite": "Netherite",
-    "block.gtceu.essence_replicator": "Essence Replicator [ER]",
-    "block.gtceu.essence_enchancer": "Essence Enhancer [EE]",
     "block.gtceu.greenhouse": "Greenhouse",
     "gtceu.tree_greenhouse": "Tree Greenhouse",
     "gtceu.crop_greenhouse": "Crop Greenhouse",
     "gtceu.wild_garden": "Wild Garden",
-    "gtceu.essence_burning": "Essence Burning",
-    "gtceu.essence_enchancing": "Essence Enchancing",
-    "gtceu.essence_replication": "Essence Replication",
     "gtceu.greenhouse_growing": "Mystical Greenhouse Growing",
     "block.gtceu.primitive_ore_factory": "Primitive Ore Factory [POF]",
     "gtceu.primitive_ore_processing": "Primitive Ore Processing",
@@ -1317,8 +1299,9 @@
     "block.gtceu.super_gas_collector": "Compression Gas Siphon [CGS]",
     "block.gtceu.super_gas_collector.tooltip.0": "§7Collects gas just a bit faster.",
 
-    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber",
     "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
+    "block.gtceu.distillery_column.tooltip.0": "§7A large distillery with higher efficiency to replace your singleblocks.",
+    "block.gtceu.industrial_brewing_station.tooltip.0": "§7A large brewery with throughput boosting to replace your singleblocks.",
 
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§bStellarized§f Weapon Grade Naquadah",
@@ -1442,5 +1425,9 @@
     "block.gtceu.mv_compound_generator": "§bAdvanced Compound Generator§r [ACG]",
     "block.gtceu.hv_compound_generator": "§6Advanced Compound Generator II§r [ACG II]",
     "block.gtceu.compound_generator.desc": "§7A machine that can extend in size to generate more power. Can extend up to 8 slices, where each slice has 1 dynamo hatch and generates 2A of power.",
-    "block.gtceu.compound_generator.max_generation": "§7Maximum Generation: §f%s EU/t"
+    "block.gtceu.compound_generator.max_generation": "§7Maximum Generation: §f%s EU/t",
+
+    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber [IEC]",
+    "block.gtceu.distillery_column": "Distillery Column [DC]",
+    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]"
 }

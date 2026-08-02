@@ -102,6 +102,7 @@ export default [
                 GTFluidState: 'readonly',
                 $NetworkSwitchMachine: 'readonly',
                 GTMachines: 'readonly',
+                $TooltipHelper: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
                 FillDirection: 'readonly',
@@ -139,6 +140,8 @@ export default [
                 ponderMultis: 'readonly',
                 P: 'writable',
                 PA: 'writable',
+                ICONSETS: 'writable',
+                FLAGS: 'writable',
                 $: 'writable',
                 ULV: 'readonly',
                 LV: 'readonly',

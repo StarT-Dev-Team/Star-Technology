@@ -1,4 +1,4 @@
-// priority: 1000
+// priority: 20000
 
 /* eslint-disable no-unused-vars */
 // @ts-ignore

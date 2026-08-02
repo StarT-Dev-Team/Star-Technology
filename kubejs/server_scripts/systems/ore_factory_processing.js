@@ -654,7 +654,7 @@ ServerEvents.recipes((event) => {
 
     /* Final Product */
     // Controllers
-    event
+    event.recipes.gtceu
         .shaped(Item.of('gtceu:primitive_ore_factory'), ['HRS', 'PBR', 'FRS'], {
             H: '#forge:tools/hammers',
             R: 'gtceu:brass_rod',
@@ -663,9 +663,10 @@ ServerEvents.recipes((event) => {
             B: 'gtceu:firebricks',
             F: '#forge:tools/screwdrivers',
         })
-        .id('start:shaped/primitive_ore_factory');
+        .id('start:shaped/primitive_ore_factory')
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('gtceu:steam_ore_factory'), ['HRS', 'PBR', 'FRS'], {
             H: '#forge:tools/hammers',
             R: 'gtceu:invar_rod',
@@ -674,9 +675,10 @@ ServerEvents.recipes((event) => {
             B: 'kubejs:high_steam_machine_casing',
             F: '#forge:tools/screwdrivers',
         })
-        .id('start:shaped/steam_ore_factory');
+        .id('start:shaped/steam_ore_factory')
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('gtceu:electric_ore_factory'), ['GCG', 'PLP', 'WPW'], {
             G: 'gtceu:bronze_gear',
             C: '#gtceu:circuits/lv',
@@ -684,9 +686,10 @@ ServerEvents.recipes((event) => {
             L: 'gtceu:lv_machine_hull',
             W: 'gtceu:tin_single_cable',
         })
-        .id('start:shaped/electric_ore_factory');
+        .id('start:shaped/electric_ore_factory')
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('gtceu:ore_processing_plant'), ['GCG', 'PLP', 'WPW'], {
             G: 'gtceu:tungsten_carbide_gear',
             C: '#gtceu:circuits/iv',
@@ -694,7 +697,8 @@ ServerEvents.recipes((event) => {
             L: 'gtceu:iv_machine_hull',
             W: 'gtceu:platinum_single_cable',
         })
-        .id('start:shaped/ore_processing_plant');
+        .id('start:shaped/ore_processing_plant')
+        .addMaterialInfo();
 
     event.recipes.gtceu
         .assembly_line(id('bulk_processing_array'))
@@ -714,7 +718,8 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder.researchStack(Item.of('gtceu:ore_processing_plant')).EUt(GTValues.VHA[UHV]).CWUt(144)
         )
         .duration(3000)
-        .EUtVHA(UEV);
+        .EUtVHA(UEV)
+        .addMaterialInfo(true, true);
 
     // Iterate over each tier and processable item and register the recipes
     /** @type {(keyof typeof oreProcessableTiers)[]} */ (Object.keys(oreProcessableTiers)).forEach((tier) => {

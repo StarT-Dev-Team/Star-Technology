@@ -36,7 +36,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('kubejs:heart_of_the_flame')).EUt(GTValues.VA[UHV]).CWUt(192)
         )
-        .EUtVA(UEV);
+        .EUtVA(UEV)
+        .addMaterialInfo(true, true);
 
     // === Cryostate ===
 
@@ -58,7 +59,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:mega_vacuum_freezer')).EUt(GTValues.VA[UHV]).CWUt(192)
         )
-        .EUtVA(UEV);
+        .EUtVA(UEV)
+        .addMaterialInfo(true, true);
 
     // === HAM ===
 
@@ -87,7 +89,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:super_abs')).EUt(GTValues.VHA[UHV]).CWUt(160)
         )
-        .EUtVHA(UEV);
+        .EUtVHA(UEV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('super_compact_heat_chamber'))
@@ -111,7 +114,8 @@ ServerEvents.recipes((event) => {
                 .CWUt(160)
         )
         .duration(4000)
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('omega_pressure_heat_chamber'))
@@ -137,5 +141,6 @@ ServerEvents.recipes((event) => {
                 .CWUt(192)
         )
         .duration(4800)
-        .EUtVHA(UEV);
+        .EUtVHA(UEV)
+        .addMaterialInfo(true, true);
 });

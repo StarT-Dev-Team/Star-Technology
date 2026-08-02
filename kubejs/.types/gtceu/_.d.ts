@@ -113,7 +113,7 @@ declare namespace internal.kjs {
         'com.gregtechceu.gtceu.integration.kjs.recipe.components.ExtendedOutputItem':
             | OutputItem
             | TypeWrappers['dev.latvian.mods.kubejs.item.OutputItem'];
-        'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet': string;
+        'com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet': string & Record<never, never>;
         'com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack':
             | com.gregtechceu.gtceu.api.data.chemical.material.Material
             | string;

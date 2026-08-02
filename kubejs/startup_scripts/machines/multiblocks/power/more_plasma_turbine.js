@@ -6,8 +6,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             Text.translate('block.gtceu.supreme_plasma_turbine.top.0'),
             Text.translate('block.gtceu.supreme_plasma_turbine.top.1'),
             Text.translate('block.start_core.gap'),
-            Text.translate('block.gtceu.supreme_plasma_turbine.bottom'),
         ])
+        .tooltipBuilder((stack, components) => {
+            components.add(
+                Component.translatable('gtceu.machine.active_transformer.tooltip.2').append(
+                    $TooltipHelper.rainbowify(Component.translatable('gtceu.machine.active_transformer.tooltip.3'))
+                )
+            );
+        })
         .paginatedTooltips([
             [
                 Text.translate('block.gtceu.supreme_plasma_turbine.p1.1'),
@@ -67,8 +73,14 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             Text.translate('block.gtceu.supreme_plasma_turbine.top.0'),
             Text.translate('block.gtceu.supreme_plasma_turbine.top.1'),
             Text.translate('block.start_core.gap'),
-            Text.translate('block.gtceu.supreme_plasma_turbine.bottom'),
         ])
+        .tooltipBuilder((stack, components) => {
+            components.add(
+                Component.translatable('gtceu.machine.active_transformer.tooltip.2').append(
+                    $TooltipHelper.rainbowify(Component.translatable('gtceu.machine.active_transformer.tooltip.3'))
+                )
+            );
+        })
         .paginatedTooltips([
             [
                 Text.translate('block.gtceu.supreme_plasma_turbine.p1.1'),

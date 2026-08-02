@@ -16,7 +16,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_chemical_reactor')).EUt(GTValues.VHA[UV]).CWUt(64)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('advanced_synthesis_plant'))
@@ -52,7 +53,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:uv_chemical_reactor')).EUt(GTValues.VHA[UHV]).CWUt(96)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('cyclonic_sifter'))
@@ -72,7 +74,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_sifting_funnel')).EUt(GTValues.VHA[UV]).CWUt(24)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('manifold_centrifuge'))
@@ -94,7 +97,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_centrifuge')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('injection_mixer'))
@@ -114,7 +118,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_mixer')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('molten_destabiliser'))
@@ -134,7 +139,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_distillery')).EUt(GTValues.VHA[UV]).CWUt(24)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('titan_forge'))
@@ -154,7 +160,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_extruder')).EUt(GTValues.VA[ZPM]).CWUt(64)
         )
-        .EUtVHA(UV);
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('compact_assembly_line'))
@@ -178,7 +185,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:assembly_line')).EUt(GTValues.VHA[UV]).CWUt(128)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('component_nexus'))
@@ -205,7 +213,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:compact_assembly_line')).EUt(GTValues.VHA[UHV]).CWUt(144)
         )
-        .EUtVHA(UEV);
+        .EUtVHA(UEV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('super_heat_chamber'))
@@ -228,7 +237,8 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder.researchStack(Item.of('gtceu:heat_chamber')).EUt(GTValues.VHA[UV]).CWUt(128)
         )
         .duration(3200)
-        .EUtVHA(UV);
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('exotic_rock_crusher'))
@@ -248,5 +258,6 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:uv_rock_crusher')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
-        .EUtVHA(UV);
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 });
