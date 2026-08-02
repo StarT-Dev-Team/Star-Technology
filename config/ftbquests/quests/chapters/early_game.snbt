@@ -2271,13 +2271,11 @@
 				item: "kubejs:coin"
 				type: "item"
 			}]
-			tasks: [
-				{
-					id: "578C91901A1D4780"
-					item: "gtceu:casket"
-					type: "item"
-				}
-			]
+			tasks: [{
+				id: "578C91901A1D4780"
+				item: "gtceu:casket"
+				type: "item"
+			}]
 			x: 7.0d
 			y: -2.5d
 		}

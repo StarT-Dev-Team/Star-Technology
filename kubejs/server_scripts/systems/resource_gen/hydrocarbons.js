@@ -22,7 +22,7 @@ ServerEvents.recipes((event) => {
         const cropName = crop.name;
         const cropIDArr = cropName.split(':');
 
-        const blacklist = ['wheat', 'carrot', 'potato', 'beetroot', 'sugar_cane', 'cactus'];
+        const blacklist = ['wheat', 'carrot', 'potato', 'beetroot', 'sugar_cane', 'cactus', 'chorus_fruit'];
 
         if (blacklist.includes(cropIDArr[1])) return;
 

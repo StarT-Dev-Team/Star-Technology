@@ -187,6 +187,12 @@ export default [
             'no-console': 'off',
             'no-redeclare': ['error', { builtinGlobals: false }],
             quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+            'prettier/prettier': [
+                'error',
+                {
+                    endOfLine: 'auto',
+                },
+            ],
         },
     },
     {

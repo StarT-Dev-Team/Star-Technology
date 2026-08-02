@@ -86,16 +86,16 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .large_chemical_reactor(id('carbon_acid_fix'))
-        .itemInputs('3x gtceu:potassium_carbonate_dust')
-        .inputFluids('gtceu:hydrogen 1000')
-        .itemOutputs('3x gtceu:potassium_dust')
-        .outputFluids('gtceu:carbon_acid 500')
+        .itemInputs('6x gtceu:potassium_carbonate_dust')
+        .inputFluids('gtceu:hydrogen 2000')
+        .itemOutputs('2x gtceu:potassium_dust')
+        .outputFluids('gtceu:carbon_acid 1000')
         .duration(100)
         .EUtVHA(IV);
 
     // Styrene from Benzene fix
     event.recipes.gtceu
-        .chemical_reactor(id('styrene_from_benzene_fix')) //Autogens LCR var
+        .chemical_reactor(id('styrene_from_benzene_fix'))
         .inputFluids('gtceu:ethylene 1000', 'gtceu:benzene 1000')
         .outputFluids('gtceu:hydrogen 2000', 'gtceu:styrene 1000')
         .duration(120)
