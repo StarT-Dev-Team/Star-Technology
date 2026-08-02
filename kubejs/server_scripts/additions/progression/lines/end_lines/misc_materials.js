@@ -80,9 +80,10 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.V[UIV] * 0.3)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
+    // [FIX]: temp use dragon egg, custom dragon scale item?
     event.recipes.gtceu
         .forge_hammer(id('scale_recycling'))
-        .itemInputs('mysticalagradditions:dragon_scale')
+        .itemInputs('minecraft:dragon_egg')
         .itemOutputs('2x kubejs:draconic_scale_cells')
         .duration(200)
         .EUtVHA(UHV);

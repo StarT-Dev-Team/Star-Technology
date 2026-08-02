@@ -5,7 +5,7 @@
 	group: "28726466D987C725"
 	icon: "create:crafting_blueprint"
 	id: "67F6F5055518AC4F"
-	order_index: 3
+	order_index: 2
 	quest_links: [ ]
 	quests: [
 		{

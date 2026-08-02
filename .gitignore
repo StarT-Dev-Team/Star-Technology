@@ -29,7 +29,6 @@ config/*
 !config/gamestages/
 !config/jade/
 !config/jei/
-!config/mysticalcustomization/
 !config/skyblockbuilder/
 # Keep files
 !config/badmobs-common.toml
@@ -44,7 +43,6 @@ config/*
 !config/expatternprovider-common.toml
 !config/fluxnetworks-common.toml
 !config/gtceu.yaml
-!config/mysticalagriculture-common.toml
 !config/ProjectRed.cfg
 !config/sgjourney-common.toml
 !config/start_core.yaml

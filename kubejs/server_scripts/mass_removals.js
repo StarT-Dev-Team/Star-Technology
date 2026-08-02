@@ -234,9 +234,6 @@ ServerEvents.recipes((event) => {
 
     event.remove({ input: 'minecraft:fire_charge' });
     event.remove({ input: 'thermal:earth_charge' });
-    event.remove({ mod: 'mysticalagriculture' });
-    event.remove({ mod: 'mysticalagradditions' });
-    event.remove({ mod: 'mysticaladaptations' });
     event.remove({ mod: 'sgjourney' });
     event.remove({ mod: 'jetboots' });
 

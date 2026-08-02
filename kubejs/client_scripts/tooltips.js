@@ -49,20 +49,8 @@ ItemEvents.tooltip((event) => {
     });
 
     //Theta 2 removals
-    const theta2Removals = [
-        'essence_burner',
-        'mystical_greenhouse',
-        'essence_enchancer',
-        'essence_replicator',
-        'nuclear_reactor',
-    ];
+    const theta2Removals = ['nuclear_reactor'];
     theta2Removals.forEach((name) => {
-        if (name === 'essence_burner' || name === 'mystical_greenhouse') {
-            tiers.forEach((tier) => {
-                event.add(`gtceu:${tier}_${name}`, Text.translate('block.gtceu.theta2Removals.tooltip'));
-            });
-        } else {
-            event.add(`gtceu:${name}`, Text.translate('block.gtceu.theta2Removals.tooltip'));
-        }
+        event.add(`gtceu:${name}`, Text.translate('block.gtceu.theta2Removals.tooltip'));
     });
 });
