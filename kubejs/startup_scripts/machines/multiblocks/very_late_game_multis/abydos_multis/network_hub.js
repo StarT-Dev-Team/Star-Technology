@@ -8,6 +8,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .tooltips([
             Component.translatable('gtceu.machine.network_switch.tooltip.0'),
             Component.translatable('gtceu.machine.network_switch.tooltip.1'),
+            Component.translatable('gtceu.machine.network_hub.tooltip'),
             Component.translatable('gtceu.machine.network_switch.tooltip.2'),
             Component.translatable(
                 'gtceu.machine.network_switch.tooltip.3',
@@ -36,6 +37,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 })
                 .build()
         )
-        ['partSorter(java.util.function.Function)']((mc) => $AssemblyLineMulti.partSorter(mc))
         .workableCasingModel('gtceu:block/casings/hpca/high_power_casing', 'gtceu:block/multiblock/data_bank');
 });

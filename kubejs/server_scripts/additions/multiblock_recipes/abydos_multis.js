@@ -260,4 +260,52 @@ ServerEvents.recipes((event) => {
         )
         .EUtVHA(UV)
         .addMaterialInfo(true, true);
+
+    event.recipes.gtceu
+        .assembly_line(id('network_hub'))
+        .itemInputs(
+            'gtceu:network_switch',
+            '4x gtceu:uv_emitter',
+            '4x gtceu:uv_sensor',
+            '4x #gtceu:circuits/uhv',
+            '32x gtceu:ruthenium_trinium_americium_neutronate_double_wire',
+            '64x gtceu:tritan_steel_foil',
+            '64x gtceu:tritan_steel_foil',
+            '48x gtceu:normal_optical_pipe'
+        )
+        .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576', 'gtceu:polyimide 576')
+        .itemOutputs('gtceu:network_hub')
+        .duration(2400)
+        .stationResearch((researchBuilder) =>
+            researchBuilder.researchStack(Item.of('gtceu:network_switch')).EUt(GTValues.VHA[ZPM]).CWUt(32)
+        )
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
+
+    event.recipes.gtceu
+        .assembly_line(id('ihpca'))
+        .itemInputs(
+            'gtceu:high_performance_computation_array',
+            '#gtceu:circuits/uev',
+            'gtceu:uhv_field_generator',
+            'start_core:data_dna_disk',
+            '4x gtceu:neutronium_ultradense_plate',
+            '64x gtceu:ruthenium_trinium_americium_neutronate_double_wire',
+            '64x gtceu:normal_optical_pipe'
+        )
+        .inputFluids(
+            'gtceu:indium_tin_lead_cadmium_soldering_alloy 1152',
+            'gtceu:utopian_akreyrium 576',
+            'gtceu:pcb_coolant 4000'
+        )
+        .itemOutputs('start_core:improved_high_performance_computation_array')
+        .duration(2400)
+        .stationResearch((researchBuilder) =>
+            researchBuilder
+                .researchStack(Item.of('gtceu:high_performance_computation_array'))
+                .EUt(GTValues.VHA[ZPM])
+                .CWUt(128)
+        )
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 });
