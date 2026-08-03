@@ -8,12 +8,12 @@
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.1": "§7A reintegration device designed to recombine Akreyrium. By folding the distinct variants of Akreyrium through a precise stabilization matrix over a crystal, a highly refined and pure version of Akreyrium can be obtained.",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.2": "§8-----------------------------------",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.3": "§6Stabilisation Matrix Lens:",
-    "block.gtceu.folding_akreyrium_stabiliser.tooltip.4": "§7The folding stabiliser utilises a lens to focus the reintegration, The proper type should be chosen based on the Akreyrium variant, reinsertion is necessary after every use.",
+    "block.gtceu.folding_akreyrium_stabiliser.tooltip.4": "§7The folding stabiliser utilises a lens to focus the reintegration. The proper type should be chosen based on the Akreyrium variant, and reinsertion is necessary after every use.",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.5": "§8-----------------------------------",
 
     "block.gtceu.abyssal_akreyriadix_stabiliser": "Abyssal Akreyriadix Stabiliser [AAS]",
     "block.gtceu.abyssal_akreyriadix_stabiliser.tooltip.0": "§6§lBoosted Akreyrium Processor",
-    "block.gtceu.abyssal_akreyriadix_stabiliser.tooltip.1": "§7An evolved device designed to recombine Akreyriadic Materials. By folding the distinct variantions of Akreyrium through a precise stabilization matrixes, a highly refined and pure version of Akreyriadic Materials can be obtained.",
+    "block.gtceu.abyssal_akreyriadix_stabiliser.tooltip.1": "§7An evolved device designed to recombine Akreyriadic materials. By folding the distinct variants of Akreyrium through a precise stabilization matrix, a highly refined and pure version of Akreyriadic materials can be obtained.",
     "gtceu.abyssal_akreyriadix_stabiliser": "Abyssal Akreyriadix Stabilisation",
 
     "block.gtceu.gate_assembly.tooltip.0": "§7A forge powerful enough to fuse together the parts of a stargate into one.",
@@ -36,7 +36,7 @@
     "block.gtceu.exotic_gas_siphon.tooltip.1": "§7Utilising precision filtration and molecular isolation technologies, it efficiently separates exotic compounds from ambient environments, ensuring high-purity yields for any applications.",
     "block.gtceu.exotic_gas_siphon.tooltip.2": "§8-----------------------------------",
     "block.gtceu.exotic_gas_siphon.tooltip.3": "§6Exotic Gas Siphoning:",
-    "block.gtceu.exotic_gas_siphon.tooltip.4": "§7Siphons exotic gasses directly from the atmosphere through a complex filtration and refining process, directly condensing traditional collection and distillation methods.",
+    "block.gtceu.exotic_gas_siphon.tooltip.4": "§7Siphons exotic gases directly from the atmosphere through a complex filtration and refining process, directly condensing traditional collection and distillation methods.",
     "block.gtceu.exotic_gas_siphon.tooltip.5": "",
     "block.gtceu.exotic_gas_siphon.tooltip.6": "§6Gas Collector:",
     "block.gtceu.exotic_gas_siphon.tooltip.7": "§7This machine can collect the ambient air in the surrounding atmosphere, providing the same functionality as a basic §fGas Collector§7.",
@@ -48,11 +48,11 @@
     "block.gtceu.nuclear_reactor.tooltip.0": "§7A medium sized reactor that can use relatively simple nuclear reactions to make some extremely useful materials.",
     "block.gtceu.nuclear_reactor.tooltip.1": "Can use §3Parallel§r hatches",
 
-    "block.gtceu.primitive_ore_factory.tooltip.0": "§7Your first all in one ore processing machine.",
+    "block.gtceu.primitive_ore_factory.tooltip.0": "§7Your first all-in-one ore processing machine.",
 
-    "block.gtceu.steam_ore_factory.tooltip.0": "§7A slightly more advanced ore processor, that can accept inputs from buses and hatches, and because of that can be automated.",
+    "block.gtceu.steam_ore_factory.tooltip.0": "§7A slightly more advanced ore processor that can accept inputs from buses and hatches, and because of that can be automated.",
 
-    "block.gtceu.electric_ore_factory.tooltip.0": "§7The electric all in one ore processing machine.",
+    "block.gtceu.electric_ore_factory.tooltip.0": "§7The electric all-in-one ore processing machine.",
 
     "block.gtceu.ore_processing_plant.tooltip.0": "§7A new tier of ore processing machine that far exceeds the throughput capacity of the previous tier.",
 
@@ -75,7 +75,7 @@
 
     "block.gtceu.rock_filtrator.tooltip.0": "§7A multiblock that can sieve through gravel and sand more precisely than a basic sieve could ever achieve, uncovering the gems hidden inside.",
     "block.gtceu.rock_filtrator.tooltip.1": "",
-    "block.gtceu.rock_filtrator.tooltip.2": "§7You are gonna need multiple Output Buses",
+    "block.gtceu.rock_filtrator.tooltip.2": "§7You are going to need multiple output buses.",
 
     "block.gtceu.rock_sifter.tooltip.0": "§7A more powerful version of the Rock Filtrator, that can sieve materials at an astonishing speed.",
 
@@ -85,17 +85,17 @@
 
     "block.gtceu.void_excavator.tooltip.0": "§7A more powerful Void Extractor that can harvest the resources from the abyss with unparalleled speed.",
 
-    "block.gtceu.void_extractor.tooltip.0": "§7A machine that uses the ever present abyss under your feet to extract resources. Where they come from is unknown, but there is no time for those questions.",
+    "block.gtceu.void_extractor.tooltip.0": "§7A machine that uses the ever-present abyss under your feet to extract resources. Where they come from is unknown, but there is no time for those questions.",
     "block.gtceu.void_extractor.tooltip.1": "",
-    "block.gtceu.void_extractor.tooltip.2": "§7You are gonna need multiple Output Buses and Hatches",
+    "block.gtceu.void_extractor.tooltip.2": "§7You are going to need multiple output buses and hatches.",
 
     "block.gtceu.dimensional_destabiliser.tooltip.0": "§7A mysterious structure that can stimulate cracks in space to harvest heavy elements from it that have never been observed before.",
 
     "block.gtceu.greenhouse.tooltip.0": "§7An electrical machine that stimulates the growth of plants, flowers and saplings, allowing you to more easily farm them.",
 
-    "block.gtceu.latex_plantation.tooltip.0": "§7A multiblock that is way faster then the arboreal extractor for gathering latex",
+    "block.gtceu.latex_plantation.tooltip.0": "§7A multiblock that is way faster than the arboreal extractor for gathering latex.",
 
-    "block.gtceu.molten_destabiliser.tooltip.0": "§7A powerful machine that can split complex molten chemicals into smaller chunks for processing",
+    "block.gtceu.molten_destabiliser.tooltip.0": "§7A powerful machine that can split complex molten chemicals into smaller chunks for processing.",
 
     "block.gtceu.cyclonic_sifter.tooltip.0": "§7An advanced tier of sifter that is more precise and stronger than the basic tier, allowing it to run better recipes.",
 
