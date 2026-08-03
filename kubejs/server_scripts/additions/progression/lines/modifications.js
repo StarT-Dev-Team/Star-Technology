@@ -66,7 +66,7 @@ ServerEvents.recipes((event) => {
 
     // === Rare Earth Centrifuging Fix ===
     event.recipes.gtceu
-        .centrifuge(id('rare_earth_speraration_fix'))
+        .centrifuge(id('rare_earth_seraration_fix'))
         .itemInputs('1x gtceu:rare_earth_dust')
         .chancedOutput('1x gtceu:small_neodymium_dust', 2500, 200)
         .chancedOutput('1x gtceu:small_samarium_dust', 2500, 200)
