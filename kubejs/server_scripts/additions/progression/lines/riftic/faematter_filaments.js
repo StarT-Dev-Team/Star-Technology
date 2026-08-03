@@ -21,7 +21,7 @@ ServerEvents.recipes((event) => {
     //T1 Filament
     event.recipes.gtceu
         .mixer(id('stabilization_mixture_base'))
-        .itemInputs('5x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_dust')
+        .itemInputs('5x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_dust')
         .inputFluids('gtceu:utopian_akreyrium 10000', 'gtceu:runic_convergence_infusion 17000')
         .outputFluids('gtceu:stabilization_mixture_base 32000')
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)

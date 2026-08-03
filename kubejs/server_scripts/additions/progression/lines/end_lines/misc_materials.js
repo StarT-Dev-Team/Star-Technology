@@ -31,7 +31,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .heat_chamber(id('hot_diamane'))
         .itemInputs('3x gtceu:graphene_dust', '1x gtceu:diamond_dust')
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 36')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 36')
         .itemOutputs('1x gtceu:hot_diamane_ingot')
         .duration(140)
         .EUtVHA(UV);
