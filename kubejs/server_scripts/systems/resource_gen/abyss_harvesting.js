@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:indium_tin_lead_cadmium_soldering_alloy 57600',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 21600',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 21600',
             'gtceu:dragon_breath 500'
         )
         .itemOutputs('start_core:abyssal_harvester')

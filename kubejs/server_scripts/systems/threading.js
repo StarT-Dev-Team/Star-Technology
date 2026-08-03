@@ -45,7 +45,7 @@ ServerEvents.recipes((event) => {
             '32x kubejs:uipic_chip'
         )
         .inputFluids(
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 5472',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 5472',
             'gtceu:naquadated_soldering_alloy 4384',
             'gtceu:dragon_breath 2500'
         )
@@ -67,7 +67,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:lepton_resonant_thallium_antimonide_double_cable'
         )
         .inputFluids(
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 27360',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 27360',
             'gtceu:naquadated_soldering_alloy 21920',
             'gtceu:pure_dragon_breath 5000'
         )
@@ -154,7 +154,7 @@ ServerEvents.recipes((event) => {
         [
             'gtceu:nyanium 2400000',
             'gtceu:pure_dragon_breath 540000',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 540000',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 540000',
             'gtceu:naquadated_soldering_alloy 432432',
         ],
         36000,
@@ -178,7 +178,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_extractor',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -207,7 +207,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_laser_engraver',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -232,7 +232,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_assembler',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -257,7 +257,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_electrolyzer',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -286,7 +286,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:hydroponic_garden',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -315,7 +315,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_bender',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:tungsten_disulfide 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -340,7 +340,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_macerator',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:tungsten_disulfide 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -364,7 +364,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_mixer',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -388,7 +388,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_cutter',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:tungsten_disulfide 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -413,7 +413,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_centrifuge',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -437,7 +437,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:uiv_fermenter',
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 345168',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 345168',
             'gtceu:perfluoroelastomer_rubber 285964',
             'gtceu:naquadated_soldering_alloy 221184',
         ],
@@ -492,7 +492,7 @@ ServerEvents.recipes((event) => {
             'start_core:uhv_weaving_thread_helix',
             '2x kubejs:uev_high_strength_panel'
         )
-        .inputFluids('gtceu:isovol 13824', 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 4608')
+        .inputFluids('gtceu:isovol 13824', 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 4608')
         .itemOutputs('start_core:uev_supreme_thread_helix')
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:draconyallium_frame')).EUt(GTValues.VA[UEV]).CWUt(160)
@@ -523,7 +523,7 @@ ServerEvents.recipes((event) => {
                 `kubejs:uiv_${specializer}`,
                 '2x kubejs:uiv_high_strength_panel',
             ],
-            ['gtceu:calamatium 13824', 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 9216'],
+            ['gtceu:calamatium 13824', 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 9216'],
             [`start_core:uiv_${type}_thread_helix`],
             1800,
             500,

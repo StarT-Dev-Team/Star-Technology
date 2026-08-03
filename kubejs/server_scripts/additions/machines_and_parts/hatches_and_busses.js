@@ -39,7 +39,7 @@ ServerEvents.recipes((event) => {
             '2x gtceu:uev_robot_arm',
             '1x gtceu:uev_emitter',
             '3x #gtceu:circuits/uev',
-            '2x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_large_fluid_pipe',
+            '2x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_large_fluid_pipe',
             '1x gtceu:magmada_alloy_rotor',
             '4x gtceu:blacklight',
             '4x gtceu:cerium_tritelluride_single_cable'
