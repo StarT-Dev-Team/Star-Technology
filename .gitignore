@@ -9,6 +9,7 @@
 !scripts/
 !compile_data/
 !.github/
+!tools/
 
 # Add files in main directory
 !.gitattributes
