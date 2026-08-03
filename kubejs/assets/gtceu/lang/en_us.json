@@ -95,7 +95,7 @@
 
     "block.gtceu.latex_plantation.tooltip.0": "§7A multiblock that is way faster then the arboreal extractor for gathering latex",
 
-    "block.gtceu.molten_destabiliser.tooltip.0": "§7A powerful machine that can splice complex molten chemicals into smaller chunks for processing",
+    "block.gtceu.molten_destabiliser.tooltip.0": "§7A powerful machine that can split complex molten chemicals into smaller chunks for processing",
 
     "block.gtceu.cyclonic_sifter.tooltip.0": "§7An advanced tier of sifter that is more precise and stronger than the basic tier, allowing it to run better recipes.",
 
@@ -559,8 +559,8 @@
     "material.gtceu.astatium_bioselex_carbonite": "Astatium Bioselex Carbonite",
     "material.gtceu.brackish_water": "Brackish Water",
     "material.gtceu.nether_star_concentrate": "Nether Star Concentrate",
-    "material.gtceu.dissipated_helish_concentrate": "Dissipated Helish Concentrate",
-    "material.gtceu.helish_concentrate": "Helish Concentrate",
+    "material.gtceu.dissipated_hellish_concentrate": "Dissipated Hellish Concentrate",
+    "material.gtceu.hellish_concentrate": "Hellish Concentrate",
     "material.gtceu.hellfire_ash": "Hellfire Ash",
     "material.gtceu.bec_og": "Oganesson Stabilized Bose-Einstein Condensate",
     "material.gtceu.superstate_helium_3": "Superstate Helium 3",
@@ -658,7 +658,7 @@
     "material.gtceu.sorbitan": "Sorbitan",
     "material.gtceu.sorbitan_monoester": "Sorbitan Monoester",
     "material.gtceu.polysorbate_20": "Polysorbate-20",
-    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution": "[Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfate] Solution",
+    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution": "[Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfonate] Solution",
     "material.gtceu.maleic_anhydride": "Maleic Anhydride",
     "material.gtceu.dimethyl_maleate": "Dimethyl Maleate",
     "material.gtceu.dimethyl_succinate": "Dimethyl Succinate",
@@ -782,8 +782,8 @@
     "material.gtceu.maxwellium": "Maxwellium",
 
     "material.gtceu.draconic_hormone_residue": "Draconic Hormone Residue",
-    "material.gtceu.drac_endrocritic_medium": "Drac-Endrocritic Medium",
-    "material.gtceu.drac_aurouric_endrocrinal_medium": "Drac-Aurouric Endrocrinal Medium",
+    "material.gtceu.drac_endocritic_medium": "Drac-Endocritic Medium",
+    "material.gtceu.drac_aurouric_endocrinal_medium": "Drac-Aurouric Endocrinal Medium",
     "material.gtceu.precursor_serum": "Precursor Serum",
     "material.gtceu.abyssal_nutrient_blend": "Abyssal Nutrient Blend",
     "material.gtceu.condensed_abyssal_nutrient_blend": "Condensed Abyssal Nutrient Blend",
@@ -853,7 +853,7 @@
     "block.gtceu.supreme_plasma_turbine.top.0": "§3§lBoosted Large Plasma Turbine",
     "block.gtceu.supreme_plasma_turbine.top.1": "§7A massive turbine capable of being boosted consuming extreme quantities of fuel for extreme quantities of power.",
     "block.gtceu.supreme_plasma_turbine.p1.1": "§eBase Production: §f16384 EU/t",
-    "block.gtceu.supreme_plasma_turbine.p1.2": "§7Each Rotor Holder above §9IV§7 multiplies efficiency by 10% and multiplies EU/t by 2.",
+    "block.gtceu.supreme_plasma_turbine.p1.2": "§7Each Rotor Holder above §9IV§7 increases efficiency by 10% and multiplies EU/t by 2.",
     "block.gtceu.supreme_plasma_turbine.p1.3": "§c§uTurbine Parallels: §7Turbine can run up to §a6x§7 as many recipes as a standard Large Plasma Turbine.",
     "block.gtceu.supreme_plasma_turbine.p2.1": "§6Lubricant Boosting: §7Consumes 1000B of §fTungsten Disulfide§7 an Hour for an additional §a+25% §fEU/t §7output, failure to do so leads to a loss of §4-10% §fEU/t §7output.",
     "block.gtceu.supreme_plasma_turbine.p2.2": "§3Coolant Boosting: §7Consumes 2500B of §fSuperstate Helium 3§7 an Hour for an additional §a+75% §fEU/t §7output.",

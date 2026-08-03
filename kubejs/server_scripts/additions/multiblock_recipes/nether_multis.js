@@ -6,7 +6,7 @@ ServerEvents.recipes((event) => {
         .assembly_line(id('heart_of_the_flame'))
         .itemInputs(
             'kubejs:husk_brick',
-            '2x kubejs:helish_core',
+            '2x kubejs:decaying_core',
             '6x gtceu:dense_ancient_netherite_plate',
             '24x gtceu:pure_netherite_screw'
         )

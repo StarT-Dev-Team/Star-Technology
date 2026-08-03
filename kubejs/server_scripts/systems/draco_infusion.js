@@ -144,8 +144,8 @@ ServerEvents.recipes((event) => {
     };
 
     infusion(
-        'dragonic_eye',
-        'kubejs:dragonic_eye',
+        'draconic_eye',
+        'kubejs:draconic_eye',
         'gtceu:dragon_breath 12500',
         'gtceu:quantum_eye',
         'gtceu:zpm_sensor',
@@ -153,7 +153,7 @@ ServerEvents.recipes((event) => {
         '2x kubejs:draconic_scale_cells',
         '2x kubejs:draconic_stem_cells',
         '4x gtceu:draconyallium_foil',
-        '2x kubejs:helish_star',
+        '2x kubejs:decaying_star',
         400,
         GTValues.VHA[UIV]
     );

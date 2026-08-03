@@ -133,14 +133,14 @@ ServerEvents.recipes((event) => {
             'gtceu:polystyrene_sulfate 375',
             'minecraft:water 2000'
         )
-        .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution 1000')
+        .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution 1000')
         .duration(316)
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(LuV);
 
     event.recipes.gtceu
         .distillery(id('pedot_pss_purification'))
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution 1000')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution 1000')
         .outputFluids('gtceu:distilled_water 2000')
         .itemOutputs('1x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste_dust')
         .duration(180)
