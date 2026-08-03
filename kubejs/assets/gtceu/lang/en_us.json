@@ -1432,5 +1432,5 @@
     "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]",
 
     "block.gtceu.network_hub": "Network Hub [NH]",
-    "gtceu.machine.network_hub.tooltip": "Can extend in size to accommodate more computation hatches."
+    "gtceu.machine.network_hub.extension_tooltip": "Can extend in size to accommodate more computation hatches."
 }

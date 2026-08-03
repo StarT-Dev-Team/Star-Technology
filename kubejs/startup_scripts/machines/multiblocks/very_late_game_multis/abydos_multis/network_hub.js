@@ -8,7 +8,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .tooltips([
             Component.translatable('gtceu.machine.network_switch.tooltip.0'),
             Component.translatable('gtceu.machine.network_switch.tooltip.1'),
-            Component.translatable('gtceu.machine.network_hub.tooltip'),
+            Component.translatable('gtceu.machine.network_hub.extension_tooltip'),
             Component.translatable('gtceu.machine.network_switch.tooltip.2'),
             Component.translatable(
                 'gtceu.machine.network_switch.tooltip.3',
