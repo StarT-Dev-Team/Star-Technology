@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
             G: 'gtceu:fusion_glass',
             E: 'gtceu:quantum_eye',
             P: 'gtceu:double_void_plate',
-            C: 'kubejs:helish_star',
+            C: 'kubejs:decaying_star',
         })
         .id('start:shaped/end_crystal');
 

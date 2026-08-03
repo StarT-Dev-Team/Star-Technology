@@ -62,9 +62,9 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     MH.compLiquid('nether_star_concentrate', ['1x excited', '1x star', '1x excited'], 0xeeeeee, [noDecomp]);
 
-    MH.compLiquid('dissipated_helish_concentrate', ['1x mystery'], 0x8da589, [noDecomp]);
+    MH.compLiquid('dissipated_hellish_concentrate', ['1x mystery'], 0x8da589, [noDecomp]);
 
-    MH.compLiquid('helish_concentrate', ['1x mystery'], 0x66a574, [noDecomp]);
+    MH.compLiquid('hellish_concentrate', ['1x mystery'], 0x66a574, [noDecomp]);
 
     MH.elemLiquidSecColor('aurourium', 0x5d44de, 0xde44ce, ICONSETS.shiny, null, [noDecomp, fineWire, noSmelt]);
 

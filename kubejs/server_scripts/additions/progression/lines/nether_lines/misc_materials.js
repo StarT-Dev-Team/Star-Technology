@@ -2,7 +2,7 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     event.recipes.gtceu
-        .injection_mixer(id('dissipated_helish_concentrate'))
+        .injection_mixer(id('dissipated_hellish_concentrate'))
         .itemInputs(
             '2x gtceu:plutonium_dust',
             '173x gtceu:warped_dust',
@@ -17,24 +17,24 @@ ServerEvents.recipes((event) => {
             'gtceu:flerovium 288',
             'gtceu:liquid_nether_air 63000'
         )
-        .outputFluids('gtceu:dissipated_helish_concentrate 7450')
+        .outputFluids('gtceu:dissipated_hellish_concentrate 7450')
         .duration(720)
         .EUtVHA(UEV);
 
     event.recipes.gtceu
-        .pressure_heat_chamber(id('helish_concentrate'))
+        .pressure_heat_chamber(id('hellish_concentrate'))
         .itemInputs('3x kubejs:nether_tempered_shard')
-        .inputFluids('gtceu:dissipated_helish_concentrate 4625')
+        .inputFluids('gtceu:dissipated_hellish_concentrate 4625')
         .itemOutputs('7x gtceu:netherrack_dust')
-        .outputFluids('gtceu:helish_concentrate 504')
+        .outputFluids('gtceu:hellish_concentrate 504')
         .duration(560)
         .EUtVHA(UHV);
 
     event.recipes.gtceu
-        .hellforge(id('helish_star'))
-        .inputFluids('gtceu:helish_concentrate 432')
+        .hellforge(id('decaying_star'))
+        .inputFluids('gtceu:hellish_concentrate 432')
         .itemInputs('gtceu:gravi_star')
-        .itemOutputs('kubejs:helish_star')
+        .itemOutputs('kubejs:decaying_star')
         .outputFluids('start_core:infernal_tar 50')
         .blastFurnaceTemp(1000)
         .duration(240)

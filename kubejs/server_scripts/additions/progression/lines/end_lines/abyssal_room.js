@@ -10,22 +10,22 @@ ServerEvents.recipes((event) => {
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
     event.recipes.gtceu
-        .large_chemical_reactor(id('drac_endrocritic_medium'))
+        .large_chemical_reactor(id('drac_endocritic_medium'))
         .inputFluids(
             'gtceu:biostimulating_mixture 250',
             'gtceu:draconic_hormone_residue 450',
             'gtceu:raw_growth_medium 300'
         )
-        .outputFluids('gtceu:drac_endrocritic_medium 1000')
+        .outputFluids('gtceu:drac_endocritic_medium 1000')
         .duration(500)
         .EUtVHA(UHV)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
     event.recipes.gtceu
-        .chemical_bath(id('drac_aurouric_endrocrinal_medium'))
+        .chemical_bath(id('drac_aurouric_endocrinal_medium'))
         .itemInputs('gtceu:small_aurourium_dust')
-        .inputFluids('gtceu:drac_endrocritic_medium 600')
-        .outputFluids('gtceu:drac_aurouric_endrocrinal_medium 600')
+        .inputFluids('gtceu:drac_endocritic_medium 600')
+        .outputFluids('gtceu:drac_aurouric_endocrinal_medium 600')
         .duration(120)
         .EUtVHA(UEV)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
@@ -40,7 +40,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .large_chemical_reactor(id('abyssal_nutrient_blend'))
-        .inputFluids('gtceu:drac_aurouric_endrocrinal_medium 400', 'gtceu:precursor_serum 100')
+        .inputFluids('gtceu:drac_aurouric_endocrinal_medium 400', 'gtceu:precursor_serum 100')
         .outputFluids('gtceu:abyssal_nutrient_blend 500')
         .duration(640)
         .EUtVHA(UHV)

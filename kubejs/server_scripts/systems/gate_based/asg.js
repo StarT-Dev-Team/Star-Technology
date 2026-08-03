@@ -265,7 +265,7 @@ ServerEvents.recipes((event) => {
 
     researchBuilder(
         assline,
-        'helish_core',
+        'decaying_core',
         [
             'kubejs:quantum_core',
             '8x kubejs:inferno_fragment',
@@ -273,7 +273,7 @@ ServerEvents.recipes((event) => {
             '12x kubejs:uhv_high_strength_panel',
         ],
         ['gtceu:blaze 57600', 'gtceu:neutronium 2304'],
-        ['kubejs:helish_core'],
+        ['kubejs:decaying_core'],
         3000,
         192,
         192 * 1200,
@@ -283,7 +283,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .pressure_heat_chamber(id('draconic_core'))
-        .itemInputs('kubejs:voidic_core', 'kubejs:helish_core')
+        .itemInputs('kubejs:voidic_core', 'kubejs:decaying_core')
         .inputFluids('minecraft:lava 50000', 'gtceu:echo_r 7200')
         .itemOutputs('kubejs:draconic_core')
         .duration(3000)
