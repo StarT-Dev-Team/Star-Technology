@@ -37,8 +37,8 @@ config/*
 !config/chloride-client.json
 !config/colossalchests-common.toml
 !config/craftpresence.json
-!config/createlowheated-common.toml
 !config/create_new_age-common.toml
+!config/createlowheated-common.toml
 !config/emi.css
 !config/exnihilosequentia-common.toml
 !config/expatternprovider-common.toml
