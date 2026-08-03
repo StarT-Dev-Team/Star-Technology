@@ -47,10 +47,4 @@ ItemEvents.tooltip((event) => {
             Text.translate('item.colossalchests.colossal_chest.tooltip')
         );
     });
-
-    //Theta 2 removals
-    const theta2Removals = ['nuclear_reactor'];
-    theta2Removals.forEach((name) => {
-        event.add(`gtceu:${name}`, Text.translate('block.gtceu.theta2Removals.tooltip'));
-    });
 });
