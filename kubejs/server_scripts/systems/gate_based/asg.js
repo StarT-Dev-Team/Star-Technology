@@ -3,11 +3,6 @@ ServerEvents.recipes((event) => {
 
     const cpa = 'component_part_assembly';
     const assline = 'assembly_line';
-    const vcr = event.recipes.gtceu.vacuum_chemical_reaction_chamber;
-    const cut = event.recipes.gtceu.cutter;
-    const rotor = event.recipes.gtceu.large_rotor_machine;
-    const pressureHeat = event.recipes.gtceu.pressure_heat_chamber;
-    const stargateComponent = event.recipes.gtceu.stargate_component_assembly;
 
     // Classic Gate Components
     const researchBuilder = global.researchBuilder;
@@ -286,14 +281,16 @@ ServerEvents.recipes((event) => {
         'kubejs:inferno_fragment'
     );
 
-    pressureHeat(id('draconic_core'))
+    event.recipes.gtceu
+        .pressure_heat_chamber(id('draconic_core'))
         .itemInputs('kubejs:voidic_core', 'kubejs:helish_core')
         .inputFluids('minecraft:lava 50000', 'gtceu:echo_r 7200')
         .itemOutputs('kubejs:draconic_core')
         .duration(3000)
         .EUtVA(UEV);
 
-    vcr(id('asg_enscription_plate'))
+    event.recipes.gtceu
+        .vacuum_chemical_reaction_chamber(id('asg_enscription_plate'))
         .itemInputs('2x kubejs:csg_enscription_plate', '16x gtceu:void_foil', '#gtceu:circuits/uev')
         .inputFluids('gtceu:ancient_runicalium 720', 'gtceu:utopian_akreyrium 2250')
         .itemOutputs('kubejs:asg_enscription_plate')
@@ -301,7 +298,8 @@ ServerEvents.recipes((event) => {
         .EUtVHA(UHV)
         .vacuumLevel(90);
 
-    cut(id('asg_enscription_chip'))
+    event.recipes.gtceu
+        .cutter(id('asg_enscription_chip'))
         .itemInputs('kubejs:asg_enscription_plate')
         .inputFluids('gtceu:runic_convergence_infusion 5000')
         .itemOutputs('2x kubejs:asg_enscription_chip')
@@ -309,7 +307,8 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .EUtVHA(UHV);
 
-    rotor(id('asg_stargate_rod_base'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('asg_stargate_rod_base'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('kubejs:activated_stargate_rod', '2x gtceu:ancient_runicalium_ring')
@@ -327,7 +326,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UEV);
 
-    rotor(id('infernally_reforged_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('infernally_reforged_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('kubejs:asg_stargate_rod_base', 'kubejs:inferno_fragment')
@@ -357,7 +357,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UEV);
 
-    rotor(id('abyssally_reforged_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('abyssally_reforged_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('kubejs:asg_stargate_rod_base', 'kubejs:abyss_fragment')
@@ -387,21 +388,24 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UEV);
 
-    pressureHeat(id('awakened_inferno_stargate_rod'))
+    event.recipes.gtceu
+        .pressure_heat_chamber(id('awakened_inferno_stargate_rod'))
         .itemInputs('kubejs:infernally_reforged_stargate_rod')
         .inputFluids('gtceu:utopian_akreyrium 4250')
         .itemOutputs('kubejs:awakened_inferno_stargate_rod')
         .duration(800)
         .EUtVHA(UEV);
 
-    pressureHeat(id('awakened_abyss_stargate_rod'))
+    event.recipes.gtceu
+        .pressure_heat_chamber(id('awakened_abyss_stargate_rod'))
         .itemInputs('kubejs:abyssally_reforged_stargate_rod')
         .inputFluids('gtceu:utopian_akreyrium 4250')
         .itemOutputs('kubejs:awakened_abyss_stargate_rod')
         .duration(800)
         .EUtVHA(UEV);
 
-    stargateComponent('asg_ring')
+    event.recipes.gtceu
+        .stargate_component_assembly('asg_ring')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -439,7 +443,8 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UEV);
 
-    stargateComponent('asg_chevron')
+    event.recipes.gtceu
+        .stargate_component_assembly('asg_chevron')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -477,7 +482,8 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UEV);
 
-    stargateComponent('asg_base')
+    event.recipes.gtceu
+        .stargate_component_assembly('asg_base')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(

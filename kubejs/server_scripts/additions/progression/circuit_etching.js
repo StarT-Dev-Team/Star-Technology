@@ -1,18 +1,21 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    const CR = event.recipes.gtceu.chemical_reactor; //Autogens LCR
-
     //plastic boards
     [
-        { plastic: 'polyether_ether_ketone', abreviation: 'peek', quantity: 16 },
+        {
+            plastic: 'polyether_ether_ketone',
+            abreviation: 'peek',
+            quantity: 16,
+        },
         {
             plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate',
             abreviation: 'pedot_pss',
             quantity: 32,
         },
     ].forEach((type) => {
-        CR(id(`plastic_boards_${type.abreviation}`))
+        event.recipes.gtceu
+            .chemical_reactor(id(`plastic_boards_${type.abreviation}`))
             .itemInputs(`gtceu:${type.plastic}_plate`, '4x gtceu:copper_foil')
             .inputFluids('gtceu:sulfuric_acid 250')
             .itemOutputs(`${type.quantity}x gtceu:plastic_circuit_board`)
@@ -23,7 +26,7 @@ ServerEvents.recipes((event) => {
     // non-cleanroom etching with CuCl
     [
         {
-            clean: 0,
+            clean: false,
             board: 'phenolic',
             foil: 'silver',
             foilCount: 4,
@@ -32,7 +35,7 @@ ServerEvents.recipes((event) => {
             energy: 30,
         },
         {
-            clean: 0,
+            clean: false,
             board: 'plastic',
             foil: 'copper',
             foilCount: 6,
@@ -41,7 +44,7 @@ ServerEvents.recipes((event) => {
             energy: 30,
         },
         {
-            clean: 0,
+            clean: false,
             board: 'epoxy',
             foil: 'electrum',
             foilCount: 8,
@@ -50,7 +53,7 @@ ServerEvents.recipes((event) => {
             energy: 30,
         },
         {
-            clean: 1,
+            clean: true,
             board: 'fiber_reinforced',
             foil: 'annealed_copper',
             foilCount: 12,
@@ -59,7 +62,7 @@ ServerEvents.recipes((event) => {
             energy: 30,
         },
         {
-            clean: 1,
+            clean: true,
             board: 'multilayer_fiber_reinforced',
             foil: 'platinum',
             foilCount: 8,
@@ -68,7 +71,7 @@ ServerEvents.recipes((event) => {
             energy: 120,
         },
         {
-            clean: 1,
+            clean: true,
             board: 'wetware',
             foil: 'niobium_titanium',
             foilCount: 16,
@@ -77,27 +80,28 @@ ServerEvents.recipes((event) => {
             energy: 480,
         },
     ].forEach((type) => {
-        let cuclBoard = CR(id(`${type.board}_circuit_board_copper`))
-            .itemInputs(`gtceu:${type.board}_circuit_board`, `${type.foilCount}x gtceu:${type.foil}_foil`)
-            .inputFluids(`gtceu:cupric_chloride_solution ${type.amount}`)
-            .itemOutputs(`gtceu:${type.board}_printed_circuit_board`)
-            .duration(type.duration)
-            .EUt(type.energy);
-
-        if (type.clean) {
-            $(cuclBoard).cleanroom();
-        }
+        $(
+            event.recipes.gtceu
+                .chemical_reactor(id(`${type.board}_circuit_board_copper`))
+                .itemInputs(`gtceu:${type.board}_circuit_board`, `${type.foilCount}x gtceu:${type.foil}_foil`)
+                .inputFluids(`gtceu:cupric_chloride_solution ${type.amount}`)
+                .itemOutputs(`gtceu:${type.board}_printed_circuit_board`)
+                .duration(type.duration)
+                .EUt(type.energy)
+        ).if(type.clean, (recipe) => $(recipe).cleanroom());
     });
 
     event.remove({ output: 'gtceu:wetware_printed_circuit_board' });
-    CR(id('wetware_circuit_board_iron3'))
+    event.recipes.gtceu
+        .chemical_reactor(id('wetware_circuit_board_iron3'))
         .itemInputs('gtceu:wetware_circuit_board', '12x gtceu:niobium_titanium_foil')
         .inputFluids('gtceu:iron_iii_chloride 5000')
         .itemOutputs('gtceu:wetware_printed_circuit_board')
         .cleanroom(CleanroomType.CLEANROOM)
         .duration(1800)
         .EUt(480);
-    CR(id('wetware_circuit_board_persulfate'))
+    event.recipes.gtceu
+        .chemical_reactor(id('wetware_circuit_board_persulfate'))
         .itemInputs('gtceu:wetware_circuit_board', '12x gtceu:niobium_titanium_foil')
         .inputFluids('gtceu:sodium_persulfate 10000')
         .itemOutputs('gtceu:wetware_printed_circuit_board')
@@ -137,7 +141,8 @@ ServerEvents.recipes((event) => {
             { id: 'iron', name: 'iron_iii_chloride', multiplier: 2 },
             { id: 'sodium', name: 'sodium_persulfate', multiplier: 4 },
         ].forEach((fluid) => {
-            CR(id(`${type.board}_circuit_board_${fluid.id}`))
+            event.recipes.gtceu
+                .chemical_reactor(id(`${type.board}_circuit_board_${fluid.id}`))
                 .itemInputs(`kubejs:${type.board}_circuit_board`, `${type.foilCount}x gtceu:${type.foil}_foil`)
                 .inputFluids(`gtceu:${fluid.name} ${type.amount * fluid.multiplier}`)
                 .itemOutputs(`kubejs:${type.board}_printed_circuit_board`)
@@ -148,7 +153,8 @@ ServerEvents.recipes((event) => {
     });
 
     // etching fluid
-    CR(id('copper_chloride'))
+    event.recipes.gtceu
+        .chemical_reactor(id('copper_chloride'))
         .itemInputs('1x gtceu:copper_dust')
         .inputFluids('gtceu:chlorine 1000')
         .itemOutputs('2x gtceu:copper_chloride_dust')
