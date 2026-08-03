@@ -6,7 +6,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('2x gtceu:sodium_hydroxide_dust')
         .inputFluids('gtceu:bisphenol_a 1000')
         .itemOutputs('1x gtceu:sodium_diphenoxide_dust')
-        .outputFluids('mineevent.recipes.gtceu.chemical_reactoraft:water 2000')
+        .outputFluids('minecraft:water 2000')
         .duration(300)
         .circuit(2)
         .EUtVA(LuV);
