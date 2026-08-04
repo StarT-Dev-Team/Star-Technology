@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .create('super_gas_collector', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .tooltips([Text.translate('block.start_core.gap'), Text.translate('gtceu.multiblock.exact_hatch_1.tooltip')])
-        .recipeTypes('gas_collector', 'void_gas_collector')
+        .recipeTypes(['gas_collector', 'void_gas_collector'])
         .recipeModifiers([
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,

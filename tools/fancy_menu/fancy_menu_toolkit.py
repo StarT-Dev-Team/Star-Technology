@@ -63,16 +63,18 @@ def setUpDevLayout(layoutPath):
     newLayoutFile.close()
 
 def setUpTemplateLayout(layoutPath):
-    templateAdress = os.path.abspath(os.path.join(layoutPath, 'title_screen_layout_dev.txt'))
-    newLayoutAdress = os.path.abspath(os.path.join(currentDir, 'title_screen_layout_dev.txt'))
+    editedTemplateAdress = os.path.abspath(os.path.join(layoutPath, 'title_screen_layout_dev.txt'))
+    templateStorageAdress = os.path.abspath(os.path.join(currentDir, 'title_screen_layout_dev.txt'))
 
-    templateFile = open(templateAdress)
-    templateContent = templateFile.read()
-    templateFile.close()
+    editedLayout = open(editedTemplateAdress)
+    editedLayoutContent = editedLayout.read()
+    editedLayout.close()
 
-    newLayoutFile = open(newLayoutAdress, 'w')
-    newLayoutFile.write(templateContent)
-    newLayoutFile.close()
+    layoutStorage = open(templateStorageAdress, 'w')
+    layoutStorage.write(editedLayoutContent)
+    layoutStorage.close()
+
+    os.remove(editedTemplateAdress)
 
 def createLayouts(layoutPath, allPanoramaNames):
     templateAdress = os.path.abspath(os.path.join(currentDir, 'title_screen_layout_dev.txt'))
