@@ -14,7 +14,7 @@ ServerEvents.recipes((event) => {
                     C: `#gtceu:circuits/${voltage}`,
                     D: `gtceu:${voltage}_robot_arm`,
                     E: `gtceu:${voltage}_machine_hull`,
-                    F: `gtceu:${voltage}_electric_conveyor`,
+                    F: `gtceu:${voltage}_conveyor_module`,
                 })
                 .id(id(`shaped/${voltage}_gcrop_breeder`))
                 .addMaterialInfo();
@@ -27,7 +27,7 @@ ServerEvents.recipes((event) => {
                     D: `gtceu:${voltage}_electric_pump`,
                     E: `gtceu:${voltage}_electric_motor`,
                     F: `#gtceu:circuits/${voltage}`,
-                    G: `gtceu:${voltage}_electric_conveyor`,
+                    G: `gtceu:${voltage}_conveyor_module`,
                 })
                 .id(id(`shaped/${voltage}_gcrop_mutator`))
                 .addMaterialInfo();
@@ -38,7 +38,7 @@ ServerEvents.recipes((event) => {
                     B: `gtceu:${tierComponents.cable}_single_cable`,
                     C: `gtceu:${voltage}_robot_arm`,
                     D: `gtceu:${voltage}_machine_hull`,
-                    E: `gtceu:${voltage}_electric_conveyor`,
+                    E: `gtceu:${voltage}_conveyor_module`,
                 })
                 .id(id(`shaped/${voltage}_gcrop_harvester`))
                 .addMaterialInfo();
@@ -62,7 +62,7 @@ ServerEvents.recipes((event) => {
             A: 'gtceu:double_tungsten_steel_plate',
             B: 'gtceu:ev_sensor',
             C: 'gtceu:ev_conveyor_module',
-            D: 'start_core:ev_grcop_mutator',
+            D: 'start_core:ev_gcrop_mutator',
             E: 'gtceu:ev_electric_pump',
             F: '#gtceu:circuits/iv',
         })
@@ -77,6 +77,7 @@ ServerEvents.recipes((event) => {
             D: 'gtceu:ev_robot_arm',
             E: 'start_core:ev_gcrop_harvester',
             F: 'gtceu:aluminium_single_cable',
+            G: 'gtceu:double_titanium_tungsten_carbide_plate',
         })
         .id(id('shaped/gcrop_harvester'))
         .addMaterialInfo();
