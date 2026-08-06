@@ -54,7 +54,11 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                             ]),
                             K: P.anyOf([
                                 P.gtBlock(generator.casing),
-                                P.block(GTMachines.ENERGY_OUTPUT_HATCH[tier].block, { minLayer: 1, maxLayer: 1 }),
+                                P.block(GTMachines.ENERGY_OUTPUT_HATCH[tier].block, {
+                                    minLayer: 1,
+                                    maxLayer: 1,
+                                    view: slices,
+                                }),
                             ]),
                             F: P.frame(GTMaterials.get(generator.frame)),
                             M: P.ability(PA.muffler),
