@@ -103,6 +103,7 @@ export default [
                 $NetworkSwitchMachine: 'readonly',
                 GTMachines: 'readonly',
                 $TooltipHelper: 'readonly',
+                NBTPredicates: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
                 FillDirection: 'readonly',

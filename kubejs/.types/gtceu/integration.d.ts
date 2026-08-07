@@ -274,7 +274,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
     import Fluid = net.minecraft.world.level.material.Fluid;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
     import Tag = net.minecraft.nbt.Tag;
-    // import NBTPredicate = api.recipe.ingredient.nbtpredicate.NBTPredicate;
+    import NBTPredicate = api.recipe.ingredient.nbtpredicate.NBTPredicate;
 
     interface GTRecipeSchema$GTRecipeJS extends $object<
         'com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS',
@@ -287,7 +287,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         category(category: $wrapped<GTRecipeCategory>): this;
         itemInputs(...inputs: $wrapped<InputItem>[]): this;
         itemInputs(inputs: readonly $wrapped<InputItem>[]): this;
-        // inputItemNbtPredicate(itemStack: $wrapped<ItemStack>, predicate: NBTPredicate): this;
+        inputItemNbtPredicate(itemStack: $wrapped<ItemStack>, predicate: NBTPredicate): this;
         inputFluids(...inputs: $wrapped<GTRecipeComponents$FluidIngredientJS>[]): this;
         inputFluids(inputs: readonly $wrapped<GTRecipeComponents$FluidIngredientJS>[]): this;
         fluidInputs(...inputs: $wrapped<GTRecipeComponents$FluidIngredientJS>[]): this;
