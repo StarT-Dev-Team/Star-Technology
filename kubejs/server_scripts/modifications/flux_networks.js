@@ -11,3 +11,40 @@ ServerEvents.recipes((event) => {
         .EUt(1024)
         .circuit(1);
 });
+
+ServerEvents.recipes((event) => {
+    const fluxItems = [
+        'fluxnetworks:flux_plug',
+        'fluxnetworks:flux_point',
+        'fluxnetworks:basic_flux_storage',
+        'fluxnetworks:herculean_flux_storage',
+        'fluxnetworks:gargantuan_flux_storage',
+    ];
+
+    fluxItems.forEach((id) => {
+        event
+            .shapeless(Item.of(id), ['fluxnetworks:flux_configurator', id])
+            .modifyResult((grid, result) => {
+                let fluxConfigurator = grid.find(Item.of('fluxnetworks:flux_configurator'));
+
+                if (!fluxConfigurator || !fluxConfigurator.nbt || !fluxConfigurator.nbt.FluxConfig) {
+                    return Item.of(id);
+                }
+
+                let data = fluxConfigurator.nbt.FluxConfig;
+                let newData = {
+                    FluxData: {
+                        limit: data.limit,
+                        networkID: data.networkID,
+                        priority: data.priority,
+                        disableLimit: data.disableLimit,
+                        surgeMode: data.surgeMode,
+                    },
+                };
+                let existingItemData = grid.find(Item.of(id)).nbt;
+
+                return Item.of(id).withNBT(existingItemData).withNBT(newData);
+            })
+            .keepIngredient('fluxnetworks:flux_configurator');
+    });
+});
