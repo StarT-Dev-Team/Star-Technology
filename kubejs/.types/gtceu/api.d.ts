@@ -231,7 +231,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredic
         neqBool(key: string, value: boolean): NBTPredicate;
         neqByte(key: string, value: boolean): NBTPredicate;
         neqString(key: string, value: string): NBTPredicate;
-        neqTag(key: string, value: Tag): NBTPredicate;
+        neqTag(key: string, value: $wrapped<Tag>): NBTPredicate;
         lte(key: string, value: number): NBTPredicate;
         gte(key: string, value: number): NBTPredicate;
         gt(key: string, value: number): NBTPredicate;
@@ -239,8 +239,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredic
         gte(key: string, value: Tag): NBTPredicate;
         gt(key: string, value: Tag): NBTPredicate;
         any(...predicates: NBTPredicate[]): NBTPredicate;
+        any(predicates: NBTPredicate[]): NBTPredicate;
         all(...predicates: NBTPredicate[]): NBTPredicate;
-        not(...predicate: NBTPredicate[]): NBTPredicate;
+        all(predicates: NBTPredicate[]): NBTPredicate;
+        not(predicate: NBTPredicate): NBTPredicate;
     }
 }
 
