@@ -1,8 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    let beads = 'ion_exchange_resin_beads';
-
     event.recipes.gtceu
         .large_chemical_reactor(id('divinylbenzene'))
         .inputFluids('gtceu:benzene 1000', 'gtceu:ethylene 2000')
@@ -12,7 +10,7 @@ ServerEvents.recipes((event) => {
         .EUtVA(LuV);
 
     event.recipes.gtceu
-        .large_chemical_reactor(id(`dry_${beads}`))
+        .large_chemical_reactor(id('dry_ion_exchange_resin_beads'))
         .inputFluids('gtceu:styrene 10000', 'gtceu:oxygen 10000', 'gtceu:divinylbenzene 1000')
         .itemOutputs('40x kubejs:dry_ion_exchange_resin_beads')
         .duration(480)

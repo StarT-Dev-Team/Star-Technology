@@ -209,6 +209,43 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient {
     > {}
 }
 
+declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate {
+    import Tag = net.minecraft.nbt.Tag;
+
+    interface NBTPredicate extends $object<'com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicate'> {
+        getType(): string;
+        test(tag: $wrapped<Tag>): boolean;
+    }
+
+    const NBTPredicates: $class<'com.gregtecgceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicates'>  &{
+        eqInt(key: string, value: number): NBTPredicate;
+        eqFloat(key: string, value: number): NBTPredicate;
+        eqDouble(key: string, value: number): NBTPredicate;
+        eqBool(key: string, value: boolean): NBTPredicate;
+        eqByte(key: string, value: boolean): NBTPredicate;
+        eqString(key: string, value: string): NBTPredicate;
+        eqTag(key: string, value: Tag): NBTPredicate;
+        neqInt(key: string, value: number): NBTPredicate;
+        neqFloat(key: string, value: number): NBTPredicate;
+        neqDouble(key: string, value: number): NBTPredicate;
+        neqBool(key: string, value: boolean): NBTPredicate;
+        neqByte(key: string, value: boolean): NBTPredicate;
+        neqString(key: string, value: string): NBTPredicate;
+        neqTag(key: string, value: $wrapped<Tag>): NBTPredicate;
+        lte(key: string, value: number): NBTPredicate;
+        gte(key: string, value: number): NBTPredicate;
+        gt(key: string, value: number): NBTPredicate;
+        lte(key: string, value: Tag): NBTPredicate;
+        gte(key: string, value: Tag): NBTPredicate;
+        gt(key: string, value: Tag): NBTPredicate;
+        any(...predicates: NBTPredicate[]): NBTPredicate;
+        any(predicates: NBTPredicate[]): NBTPredicate;
+        all(...predicates: NBTPredicate[]): NBTPredicate;
+        all(predicates: NBTPredicate[]): NBTPredicate;
+        not(predicate: NBTPredicate): NBTPredicate;
+    }
+}
+
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
     import MetaMachine = machine.MetaMachine;
     import GTRecipe = recipe.GTRecipe;
