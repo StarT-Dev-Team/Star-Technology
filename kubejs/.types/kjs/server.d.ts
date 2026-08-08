@@ -1,6 +1,18 @@
 declare namespace internal.dev.latvian.mods.kubejs.server {
     import ReloadableServerResources = net.minecraft.server.ReloadableServerResources;
 
+    interface ServerEventJS extends $object<'dev.latvian.mods.kubejs.server.ServerEventJS'> {
+        getServer(): unknown;
+    }
+
+    import Commands = internal.net.minecraft.commands.Commands;
+
+    interface CommandEventJS extends $object<'dev.latvian.mods.kubejs.server.ServerEventsJS', ServerEventJS> {
+        register(dispatcher: unknown): void;
+        commands: Commands;
+        arguments: unknown;
+    }
+
     const KubeJSReloadListener: {
         resources: ReloadableServerResources;
     };

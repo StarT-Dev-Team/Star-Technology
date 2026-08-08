@@ -173,7 +173,10 @@ declare namespace internal.net.minecraft.world.entity.player {
 
 declare namespace internal.net.minecraft.world.level {
     import LevelKJS = dev.latvian.mods.kubejs.core.LevelKJS;
-    interface Level extends LevelKJS {}
+    import BlockKJS = dev.latvian.mods.kubejs.core.BlockKJS;
+    interface Level extends LevelKJS {
+        getBlock(x: number, y: number, z: number): BlockKJS;
+    }
 }
 
 declare namespace internal.net.minecraft.world.level.block {

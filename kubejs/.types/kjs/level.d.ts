@@ -16,6 +16,10 @@ declare namespace internal.dev.latvian.mods.kubejs.level {
         get id(): string;
         mergeEntityData(tag: $wrapped<CompoundTag> | null): void;
         popItemFromFace(item: $wrapped<ItemStack>, direction: $wrapped<Direction>): void;
+
+        x: number;
+        y: number;
+        z: number;
     }
 
     import EventJS = event.EventJS;

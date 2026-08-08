@@ -346,14 +346,17 @@ declare namespace internal.kjs.kubejs {
 
     import RecipesEventJS = dev.latvian.mods.kubejs.recipe.RecipesEventJS;
     import TagEventJS = dev.latvian.mods.kubejs.server.tag.TagEventJS;
+    import CommandEventJS = dev.latvian.mods.kubejs.server.CommandEventJS;
 
     interface ServerEvents {
         recipes(callback: (event: RecipesEventJS) => void): void;
         tags(key: 'item' | 'block' | 'fluid', callback: (event: TagEventJS) => void): void;
+        commandRegistry(callback: (event: CommandEventJS) => void): void;
     }
 
     import BlockModificationEventJS = dev.latvian.mods.kubejs.block.BlockModificationEventJS;
     import BlockPlacedEventJS = dev.latvian.mods.kubejs.block.BlockPlacedEventJS;
+    import BlockBrokenEventJS = dev.latvian.mods.kubejs.block.BlockBrokenEventJS;
     import BlockRightClickedEventJS = dev.latvian.mods.kubejs.block.BlockRightClickedEventJS;
 
     type ExtraSupportsBlock = null | Block | $wrapped<ResourceLocation>;
@@ -363,6 +366,7 @@ declare namespace internal.kjs.kubejs {
         modification(block: ExtraSupportsBlock, callback: (event: BlockModificationEventJS) => void): void;
         placed(callback: (event: BlockPlacedEventJS) => void): void;
         placed(block: ExtraSupportsBlock, callback: (event: BlockPlacedEventJS) => void): void;
+        broken(callback: (event: BlockBrokenEventJS) => void): void;
         rightClicked(callback: (event: BlockRightClickedEventJS) => void): void;
         rightClicked(block: ExtraSupportsBlock, callback: (event: BlockRightClickedEventJS) => void): void;
     }
@@ -408,6 +412,7 @@ declare const Fluid: typeof internal.dev.latvian.mods.kubejs.bindings.FluidWrapp
 
 declare const StartupEvents: internal.kjs.kubejs.StartupEvents;
 declare const ServerEvents: internal.kjs.kubejs.ServerEvents;
+declare const CommandEventJS: internal.dev.latvian.mods.kubejs.server.CommandEventJS;
 declare const ItemEvents: internal.kjs.kubejs.ItemEvents;
 declare const JEIEvents: internal.kjs.kubejs.JEIEvents;
 declare const BlockEvents: internal.kjs.kubejs.BlockEvents;

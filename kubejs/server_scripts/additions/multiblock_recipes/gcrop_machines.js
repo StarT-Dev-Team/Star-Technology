@@ -81,4 +81,38 @@ ServerEvents.recipes((event) => {
         })
         .id(id('shaped/gcrop_harvester'))
         .addMaterialInfo();
+
+    event.recipes.gtceu
+        .shaped('start_core:void_mesh', ['ABA', 'BCB', 'ABA'], {
+            A: 'gtceu:steel_plate',
+            B: 'exnihilosequentia:string_mesh',
+            C: '#gtceu:circuits/mv',
+        })
+        .id(id('shaped/void_mesh'))
+        .addMaterialInfo();
+
+    event.recipes.gtceu
+        .assembly_line(id('genome_operator'))
+        .itemInputs(
+            'gtceu:uhv_machine_hull',
+            '4x #gtceu:circuits/uev',
+            '16x kubejs:uhv_super_magnetic_core',
+            '4x gtceu:uhv_robot_arm',
+            '4x gtceu:uhv_field_generator',
+            '4x gtceu:uhv_sensor',
+            '8x gtceu:pure_netherite_foil_ream',
+            '4x gtceu:small_neutronium_gear'
+        )
+        .inputFluids(
+            'gtceu:indium_tin_lead_cadmium_soldering_alloy 4608',
+            'gtceu:polyether_ether_ketone 3456',
+            'gtceu:perfluoroelastomer_rubber 2304'
+        )
+        .itemOutputs('start_core:genome_operator')
+        .stationResearch((researchRecipeBuilder) =>
+            researchRecipeBuilder.researchStack(Item.of('start_core:gcrop_mutator')).EUt(GTValues.VHA[UHV]).CWUt(144)
+        )
+        .duration(2400)
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 });

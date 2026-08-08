@@ -597,10 +597,15 @@ declare namespace internal.net.minecraft.world.entity.ai.attributes {
 
 declare namespace internal.net.minecraft.world.entity.player {
     interface Inventory extends $object<'net.minecraft.world.entity.player.Inventory', java.lang.Object, Container> {}
+    interface Component extends $object<'net.minecraft.network.chat.Component', java.lang.Object, java.lang.Object> {
+        getString(): String;
+    }
 
     interface Player extends $object<'net.minecraft.world.entity.player.Player', LivingEntity> {
         getInventory(): Inventory;
+        sendSystemMessage(message: unknown): void;
         get inventory(): Inventory;
+        name: Component;
     }
 }
 
