@@ -4,10 +4,11 @@ declare namespace internal.com.mojang.brigadier {
 
 declare namespace internal.com.mojang.brigadier.builder {
     import Commands = internal.net.minecraft.commands.Commands;
+    import commandContext = internal.dev.latvian.mods.kubejs.server.commandContext;
 
     interface ArgumentBuilder<S, T> extends $object<'com.mojang.brigadier.builder.LiteralArgumentBuilder'> {
         then(dispatcher: unknown): ArgumentBuilder<S, S>;
-        executes(contextFunction: number): Commands;
+        executes(contextFunction: (context: commandContext) => number): Commands;
     }
 
     interface LiteralArgumentBuilder<S> extends $object<

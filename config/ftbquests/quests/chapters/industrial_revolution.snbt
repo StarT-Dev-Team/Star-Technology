@@ -379,8 +379,8 @@
 		}
 		{
 			dependencies: [
-				"5AA77BA8B764A2AA"
 				"02B8D64EAE39BA08"
+				"55672DE2A8DE2C42"
 			]
 			description: ["{ftbquests.industrial_revolution.cutter.description}"]
 			id: "4A4989A767F3825D"
@@ -396,46 +396,6 @@
 			}]
 			x: -5.0d
 			y: 0.5d
-		}
-		{
-			dependencies: ["5D3B5EF195A3093B"]
-			description: ["{ftbquests.industrial_revolution.cobalt_brass_buzz_saw.description}"]
-			id: "5AA77BA8B764A2AA"
-			rewards: [{
-				id: "4D56E3C5935202AB"
-				item: "kubejs:coin"
-				type: "item"
-			}]
-			tasks: [{
-				id: "45976A531138031F"
-				item: "gtceu:cobalt_brass_buzz_saw_blade"
-				type: "item"
-			}]
-			x: -5.0d
-			y: 2.5d
-		}
-		{
-			dependencies: [
-				"0E88CB5E68212006"
-				"7CA424E05FB05DFF"
-				"234CE57A62FB8D82"
-			]
-			dependency_requirement: "one_completed"
-			description: ["{ftbquests.industrial_revolution.cobalt_dust.description}"]
-			hide_dependency_lines: true
-			id: "5D3B5EF195A3093B"
-			rewards: [{
-				id: "6EEC913BD06C07C4"
-				item: "kubejs:coin"
-				type: "item"
-			}]
-			tasks: [{
-				id: "58AC287A9ADF2052"
-				item: "gtceu:cobalt_dust"
-				type: "item"
-			}]
-			x: -7.0d
-			y: 2.5d
 		}
 		{
 			dependencies: ["234CE57A62FB8D82"]
@@ -1893,6 +1853,17 @@
 			]
 			title: "{ftbquests.industrial_revolution.lubricant.title}"
 			x: -9.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["64F15C7160BF5CBB"]
+			id: "55672DE2A8DE2C42"
+			tasks: [{
+				id: "0F0668510DAF004E"
+				item: "gtceu:steel_buzz_saw_blade"
+				type: "item"
+			}]
+			x: -5.0d
 			y: 2.5d
 		}
 	]

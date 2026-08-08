@@ -13,6 +13,12 @@ declare namespace internal.dev.latvian.mods.kubejs.server {
         arguments: unknown;
     }
 
+    interface commandContext {
+        source: {
+            player: Player;
+        };
+    }
+
     const KubeJSReloadListener: {
         resources: ReloadableServerResources;
     };

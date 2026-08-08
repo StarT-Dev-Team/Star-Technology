@@ -3,6 +3,7 @@ ServerEvents.commandRegistry((event) => {
     /** @type {Commands} */
     const commands = event.commands;
 
+    /** @typedef {internal.dev.latvian.mods.kubejs.server.commandContext} commandContext */
     event.register(
         commands.literal('multiblock').then(
             commands
@@ -10,12 +11,14 @@ ServerEvents.commandRegistry((event) => {
                 .then(
                     commands
                         .literal('default')
-                        .executes((/** @type {unknown} */ ctx) => runPatternCommand(ctx.source.player, 'default'))
+                        .executes((/** @type {commandContext} */ ctx) =>
+                            runPatternCommand(ctx.source.player, 'default')
+                        )
                 )
                 .then(
                     commands
                         .literal('custom')
-                        .executes((/** @type {unknown} */ ctx) => runPatternCommand(ctx.source.player, 'custom'))
+                        .executes((/** @type {commandContext} */ ctx) => runPatternCommand(ctx.source.player, 'custom'))
                 )
         )
     );
