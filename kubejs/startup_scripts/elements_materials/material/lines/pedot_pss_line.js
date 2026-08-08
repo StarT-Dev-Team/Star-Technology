@@ -55,7 +55,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     );
 
     MH.compLiquid(
-        'poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution',
+        'poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution',
         ['1x poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste', '2x water'],
         0x6c7fb0,
         [noDecomp]

@@ -362,7 +362,7 @@ ServerEvents.recipes((event) => {
         .itemInputs(
             '3x megacells:256m_crafting_storage',
             '8x gtceu:double_netherite_certus_quartz_skystone_alloy_plate',
-            '8x kubejs:helish_star',
+            '8x kubejs:decaying_star',
             '8x gtceu:quantum_star',
             '8x gtceu:double_ancient_netherite_plate',
             '8x gtceu:double_netherite_gold_skystone_alloy_plate',

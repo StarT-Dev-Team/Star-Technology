@@ -115,7 +115,7 @@ ServerEvents.recipes((event) => {
 
         event.recipes.gtceu
             .riftion_injector(id(riftion[i] + '_singularity'))
-            .itemInputs('kubejs:dragonic_eye', `256x kubejs:neutral_${riftion[i]}_riftion`)
+            .itemInputs('kubejs:draconic_eye', `256x kubejs:neutral_${riftion[i]}_riftion`)
             .itemOutputs(`kubejs:${riftion[i]}_singularity`)
             .genericStartEU(250000000000) //consumes 250GEU to start the recipe
             .duration(800)

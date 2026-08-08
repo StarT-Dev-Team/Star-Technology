@@ -493,7 +493,7 @@ ServerEvents.recipes((event) => {
         'infernal',
         [
             'gtceu:magmada_alloy_frame',
-            '2x kubejs:helish_star',
+            '2x kubejs:decaying_star',
             '2x gtceu:long_ancient_netherite_rod',
             '1x #gtceu:circuits/uev',
             '32x gtceu:ruby_lens',
@@ -504,7 +504,7 @@ ServerEvents.recipes((event) => {
         'abyssal',
         [
             'gtceu:draconyallium_frame',
-            'kubejs:dragonic_eye',
+            'kubejs:draconic_eye',
             '2x gtceu:long_void_rod',
             '1x #gtceu:circuits/uiv',
             '32x gtceu:echo_shard_lens',

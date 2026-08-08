@@ -298,7 +298,7 @@ ServerEvents.recipes((event) => {
             '64x gtceu:draconyallium_foil',
             '1x gtceu:energy_cluster',
             `128x ${PEDOT_PSS}_foil`,
-            '1x kubejs:dragonic_eye',
+            '1x kubejs:draconic_eye',
             '16x gtceu:hvga_steel_foil',
             '48x gtceu:fine_lepton_resonant_thallium_antimonide_wire',
             '2x gtceu:draco_abyssal_plate',
