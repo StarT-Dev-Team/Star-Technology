@@ -217,7 +217,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredic
         test(tag: $wrapped<Tag>): boolean;
     }
 
-    const NBTPredicates: $class<'com.gregtecgceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicates'>  &{
+    const NBTPredicates: $class<'com.gregtecgceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicates'> & {
         eqInt(key: string, value: number): NBTPredicate;
         eqFloat(key: string, value: number): NBTPredicate;
         eqDouble(key: string, value: number): NBTPredicate;
@@ -243,7 +243,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredic
         all(...predicates: NBTPredicate[]): NBTPredicate;
         all(predicates: NBTPredicate[]): NBTPredicate;
         not(predicate: NBTPredicate): NBTPredicate;
-    }
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
