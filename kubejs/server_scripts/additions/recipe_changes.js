@@ -266,25 +266,6 @@ ServerEvents.recipes((event) => {
         .EUtVH(UIV)
         .circuit(7);
 
-    // event.recipes.gtceu
-    //     .alloy_blast_smelter(id('zalloy'))
-    //     .itemInputs('3x gtceu:zapolgium_dust', '4x gtceu:duranium_dust', '2x gtceu:europium_dust')
-    //     .outputFluids('gtceu:molten_zalloy 1296')
-    //     .duration(20250)
-    //     .blastFurnaceTemp(10799)
-    //     .EUtVHA(ZPM)
-    //     .circuit(3);
-
-    // event.recipes.gtceu
-    //     .alloy_blast_smelter(id('zalloy_gas'))
-    //     .itemInputs('3x gtceu:zapolgium_dust', '4x gtceu:duranium_dust', '2x gtceu:europium_dust')
-    //     .inputFluids('gtceu:krypton 90')
-    //     .outputFluids('gtceu:molten_zalloy 1296')
-    //     .duration(13567)
-    //     .blastFurnaceTemp(10799)
-    //     .EUtVHA(ZPM)
-    //     .circuit(13);
-
     event.remove({ output: 'gtceu:uv_voltage_coil' });
     event.recipes.gtceu
         .assembler(id('uv_voltage_coil'))
