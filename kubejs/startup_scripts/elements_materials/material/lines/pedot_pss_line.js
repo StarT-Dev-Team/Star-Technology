@@ -31,7 +31,9 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         noDecomp,
     ]);
 
-    MH.compLiquid('polystyrene_sulfate', ['8x carbon', '8x hydrogen', '3x oxygen', '1x sulfur'], 0xd8c6f0, [noDecomp]); // PSS
+    MH.compLiquid('polystyrene_sulfonate', ['8x carbon', '8x hydrogen', '3x oxygen', '1x sulfur'], 0xd8c6f0, [
+        noDecomp,
+    ]); // PSS
 
     MH.compDust('ferric_nitrate', ['1x iron', '3x nitrate'], 0xaf5f5f, [noDecomp]);
 
@@ -48,7 +50,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquid('polysorbate_20', ['1x sorbitan_monoester', '20x ethylene_glycol'], 0xa0d7dd, [noDecomp]);
 
     MH.compDust(
-        'poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste',
+        'poly_34_ethylenedioxythiophene_polystyrene_sulfonate_paste',
         ['9x carbon', '7x hydrogen', '1x sulfur', '3x oxygen'],
         0x5d5a85,
         [noDecomp]
@@ -56,13 +58,13 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     MH.compLiquid(
         'poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution',
-        ['1x poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste', '2x water'],
+        ['1x poly_34_ethylenedioxythiophene_polystyrene_sulfonate_paste', '2x water'],
         0x6c7fb0,
         [noDecomp]
     );
 
     MH.polymerFluidPipe(
-        'poly_34_ethylenedioxythiophene_polystyrene_sulfate',
+        'poly_34_ethylenedioxythiophene_polystyrene_sulfonate',
         ['8x carbon', '7x hydrogen', '1x sulfur', '3x oxygen'],
         0x26396d,
         [675, 800, true, true, true, false],

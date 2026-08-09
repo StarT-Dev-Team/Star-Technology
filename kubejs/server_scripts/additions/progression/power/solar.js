@@ -57,12 +57,11 @@ ServerEvents.recipes((event) => {
             .duration(600)
             .EUt(EU * 2);
 
-        /*
         event.recipes.gtceu
             .assembler(id(`${tier}_solar_cell_repair`))
             .inputItemNbtPredicate(`start_core:${tier}_solar_cell`, NBTPredicates.eqBool('BlockEntityTag.broken', true))
             .itemInputs(
-                Item.of(`start_core:${tier}_solar_cell`, 'TODO NBT'),
+                //Item.of(`start_core:${tier}_solar_cell`, 'TODO NBT'),
                 `gtceu:${tierMaterial}_plate`,
                 `gtceu:${cable}_double_cable`
             )
@@ -70,7 +69,6 @@ ServerEvents.recipes((event) => {
             .itemOutputs(`start_core:${tier}_solar_cell`)
             .duration(300)
             .EUt(EU * 2);
-        */
 
         //Photovoltaic Cells
         event.recipes.gtceu

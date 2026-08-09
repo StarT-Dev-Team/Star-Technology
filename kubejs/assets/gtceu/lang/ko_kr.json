@@ -74,7 +74,7 @@
     "block.gtceu.solid_blast_furnace.tooltip.0": "§7원시 용광로의 업그레이드 버전.",
 
     "block.gtceu.rock_filtrator.tooltip.0": "§7일반 체보다 더 정확히 자갈과 모래를 처리하는 멀티블록으로, 그 속에 숨어있는 정동석을 찾아냅니다.",
-    "block.gtceu.rock_filtrator.tooltip.1": "오직 §b하나§r의 전력 해치만 사용 가능합니다",
+    "block.gtceu.rock_filtrator.tooltip.1": "",
     "block.gtceu.rock_filtrator.tooltip.2": "§7여러 개의 출력 버스가 필요할지도 모릅니다….",
 
     "block.gtceu.rock_sifter.tooltip.0": "§7정동석 필터의 다음 등급으로, 엄청난 속도로 정동석을 생산할 수 있습니다.",
@@ -86,7 +86,7 @@
     "block.gtceu.void_excavator.tooltip.0": "§7공허 추출기의 다음 단계로 비병렬 처리로 자원을 채굴합니다.",
 
     "block.gtceu.void_extractor.tooltip.0": "§7당신 발밑의 공허에서 자원을 추출하는 멀티블록입니다. 어디에서 왔는진 모르지만, 이런 질문을 할 시간이 없습니다.",
-    "block.gtceu.void_extractor.tooltip.1": "오직 §b하나§r의 전력 해치만 사용 가능합니다",
+    "block.gtceu.void_extractor.tooltip.1": "",
     "block.gtceu.void_extractor.tooltip.2": "§7여러 개의 출력 버스와 해치가 필요할지도 모릅니다.",
 
     "block.gtceu.dimensional_destabiliser.tooltip.0": "§7우주 어딘가에 있는 틈에서 이제껏 보지 못한 무거운 원소들을 수집하는 신비한 구조물입니다",
@@ -246,7 +246,7 @@
     "material.gtceu.zapolgium_hydroxide": "수산화 자폴기움",
     "material.gtceu.lautarite": "로우타라이트",
     "material.gtceu.strontium_oxide": "산화 스트론튬",
-    "material.gtceu.titanium_oxide": "산화 티타늄",
+    "material.gtceu.titanium_oxide": "이산화 티타늄",
     "material.gtceu.strontium_titanium_oxide": "산화 스트론튬 티타늄",
     "material.gtceu.zalloy": "제트 합금",
     "material.gtceu.zircalloy_4": "지르칼로이 4",
@@ -645,14 +645,14 @@
     "material.gtceu.thiophene": "티오펜",
     "material.gtceu.benzoyl_peroxide": "과산화 벤조일",
     "material.gtceu.ferric_nitrate": "질산 제2철",
-    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste": "[폴리(3,4-에틸렌디옥시티오펜):폴리스티렌 설포네이트] 페이스트",
-    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfate": "폴리(3,4-에틸렌디옥시티오펜):폴리스티렌 설포네이트",
+    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfonate_paste": "[폴리(3,4-에틸렌디옥시티오펜):폴리스티렌 설포네이트] 페이스트",
+    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfonate": "폴리(3,4-에틸렌디옥시티오펜):폴리스티렌 설포네이트",
     "material.gtceu.12_dibromoethane": "1,2-디브로모에탄",
     "material.gtceu.dimethylformamide": "이메틸포름아미드",
     "material.gtceu.34_ethylenedioxythiophene": "3,4-에틸렌디옥시티오펜",
     "material.gtceu.hydrogen_chloride": "염화 수소",
     "material.gtceu.chlorosulfonic_acid": "클로로설폰산",
-    "material.gtceu.polystyrene_sulfate": "폴리스티렌 설페이트",
+    "material.gtceu.polystyrene_sulfonate": "폴리스티렌 설포네이트",
     "material.gtceu.poly_34_ethylenedioxythiophene": "폴리(3,4-에틸렌디옥시티오펜)",
     "material.gtceu.sorbitol": "솔비톨",
     "material.gtceu.sorbitan": "소리탄",
@@ -1040,7 +1040,7 @@
     "block.gtceu.uev_me_assembler": "§a에픽 ME 조립기 II",
     "block.gtceu.uiv_me_assembler": "§2에픽 ME 조립기 III",
 
-    "block.gtceu.large_me_assembler": "대형 ME 조립기",
+    "block.gtceu.large_me_assembler": "대형 ME 조립기 [LMEA]",
     "block.gtceu.large_me_assembler.tooltip.0": "당신이 필요한 것 그 이상의 크기의 ME 조립기입니다.",
 
     "material.gtceu.skystone": "천령석",
@@ -1278,6 +1278,13 @@
     "material.gtceu.einsteinium_253": "아인시타이늄 253",
     "material.gtceu.fermium": "페르뮴 257",
 
+    "material.gtceu.mox239_blend": "MOX-239 혼합물",
+    "material.gtceu.mox241_blend": "MOX-241 혼합물",
+    "material.gtceu.mox238_blend": "MOX-238 혼합물",
+    "material.gtceu.nqe_blend": "NQE 혼합물",
+    "material.gtceu.tpu_blend": "TPU 혼합물",
+    "material.gtceu.etu_blend": "ETU 혼합물",
+
     "material.gtceu.hafnastide_rich_sludge": "하프나타이드가 풍부한 슬러지",
     "material.gtceu.flerovium_rich_re_sludge": "플로로븀이 풍부한 슬러지",
     "material.gtceu.pologium_rich_sludge": "폴로지움이 풍부한 슬러지",
@@ -1291,6 +1298,10 @@
 
     "block.gtceu.super_gas_collector": "압축 가스 사이펀 [CGS]",
     "block.gtceu.super_gas_collector.tooltip.0": "§7공기 중의 기체를 더 빠르게 수집합니다.",
+
+    "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7기본 추출기보다 더 효율적으로 아이템을 추출합니다.",
+    "block.gtceu.distillery_column.tooltip.0": "§7기본 증류기보다 더 효율적으로 증류해냅니다.",
+    "block.gtceu.industrial_brewing_station.tooltip.0": "§7기본 발효조보다 처리량 부스팅을 통해 더 효율적으로 발효를 해냅니다.",
 
     "material.gtceu.akreyriadic_runixium": "아크레이륨 루닉시움",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§b멸균된§f 무기급 나콰다",
@@ -1400,11 +1411,26 @@
     "gtceu.supreme_chemistry": "슈프림 화학 합성",
 
     "block.gtceu.titan_forge": "티탄 용광로 [TF]",
-    "block.gtceu.titan_forge.tooltip.0": "wip tooltip",
+    "block.gtceu.titan_forge.tooltip.0": "§7재료를 매우 압축된 형태로 변환합니다.",
     "gtceu.titan_forge": "티탄 용광로",
 
     "block.gtceu.catto_shrine": "고양이 사원 [ᗢCS]",
-    "block.gtceu.catto_shrine.tooltip.0": "wip tooltip",
-    "block.gtceu.catto_shrine.tooltip.1": "고양이 제작...기?",
-    "gtceu.catto_shrine": "고양이 사원"
+    "block.gtceu.catto_shrine.tooltip.0": "§7§o5시간 동안 냥캣 듣기",
+    "block.gtceu.catto_shrine.tooltip.1": "§8§o고양이 제작...기?",
+    "gtceu.catto_shrine": "고양이 사원",
+
+    "material.gtceu.latex": "라텍스",
+
+    "block.gtceu.lv_compound_generator": "기본 복합 발전기 [BCG]",
+    "block.gtceu.mv_compound_generator": "§b고급 복합 발전기§r [ACG]",
+    "block.gtceu.hv_compound_generator": "§6고급 복합 발전기 II§r [ACG II]",
+    "block.gtceu.compound_generator.desc": "§7크기를 늘려 더 많은 전력을 만들 수 있습니다. 중간 슬라이스를 8칸까지 늘릴 수 있으며, 슬라이스마다 전력 출력 해치를 달아야 하며 각 해치는 2A의 전력을 내보냅니다.",
+    "block.gtceu.compound_generator.max_generation": "§7최대 생산 전력: §f%s EU/t",
+
+    "block.gtceu.industrial_extraction_chamber": "공업용 추출 챔버 [IEC]",
+    "block.gtceu.distillery_column": "증류 기둥 [DC]",
+    "block.gtceu.industrial_brewing_station": "공업용 발효 스테이션 [IBS]",
+
+    "block.gtceu.network_hub": "네트워크 허브 [NH]",
+    "gtceu.machine.network_hub.tooltip": "더 많은 연산 해치를 위한 공간을 제공합니다."
 }
