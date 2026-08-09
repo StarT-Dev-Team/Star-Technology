@@ -344,7 +344,8 @@
 		{
 			dependencies: [
 				"7DDFBCDFC3F09A6B"
-				"51F889E1432E4DAD"
+				"0055CE82469F239C"
+				"67ABB3BF6D0C183B"
 			]
 			description: ["{ftbquests.power.large_plasma_turbine.description}"]
 			id: "6622E66A2FA19BA1"

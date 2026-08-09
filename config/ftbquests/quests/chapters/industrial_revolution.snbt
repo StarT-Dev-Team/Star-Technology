@@ -175,10 +175,7 @@
 			y: -3.5d
 		}
 		{
-			dependencies: [
-				"1F5CCE8CFD02903A"
-				"397C622B06B1165A"
-			]
+			dependencies: ["1F5CCE8CFD02903A"]
 			description: ["{ftbquests.industrial_revolution.electric_ore_factory.description}"]
 			hide_dependent_lines: true
 			id: "0E88CB5E68212006"
