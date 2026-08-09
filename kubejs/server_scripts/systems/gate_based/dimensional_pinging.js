@@ -146,12 +146,10 @@ const dimensionGS = (gate, realm, stage) => {
         if (item.id !== `kubejs:${realm}_coordinate_crystal`) return;
 
         item.count--;
+        player.stages.add(`access_${realm}`);
+        server.runCommandSilent(`give ${player.username} kubejs:coordinate_crystal`);
         server.runCommandSilent(
-            `execute as ${event.player.username} run gamestage add ${event.player.username} ${stage}`
-        );
-        server.runCommandSilent(`give ${event.player.username} kubejs:coordinate_crystal`);
-        server.runCommandSilent(
-            `execute at ${event.player.username} run playsound bingus:recall player ${event.player.username} ~ ~ ~`
+            `execute at ${player.username} run playsound bingus:recall player ${player.username} ~ ~ ~`
         );
         player.swing();
     });

@@ -73,8 +73,11 @@ declare namespace internal.dev.latvian.mods.kubejs.bindings {
     interface UtilsWrapper extends $object<'dev.latvian.mods.kubejs.bindings.UtilsWrapper'> {}
 
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
+    import MinecraftServer = net.minecraft.server.MinecraftServer;
 
     const UtilsWrapper: $class<UtilsWrapper> & {
         getRegistryIds(id: $wrapped<ResourceLocation>): ResourceLocation[];
+        getServer(): MinecraftServer;
+        get server(): MinecraftServer;
     };
 }
