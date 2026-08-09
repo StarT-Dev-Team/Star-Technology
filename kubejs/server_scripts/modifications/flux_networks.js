@@ -10,9 +10,7 @@ ServerEvents.recipes((event) => {
         .duration(2400)
         .EUt(1024)
         .circuit(1);
-});
-
-ServerEvents.recipes((event) => {
+    
     const fluxItems = [
         'fluxnetworks:flux_plug',
         'fluxnetworks:flux_point',
