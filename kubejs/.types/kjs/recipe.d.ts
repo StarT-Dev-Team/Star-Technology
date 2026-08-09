@@ -4,7 +4,6 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
     import RecipeFunctions_minecraft = kjs.RecipeFunctions_minecraft;
     import RecipeFilter = dev.latvian.mods.kubejs.recipe.filter.RecipeFilter;
     import Consumer = java.util.function_.Consumer;
-
     interface RecipesEventJS extends $object<'dev.latvian.mods.kubejs.recipe.RecipesEventJS', EventJS> {
         getRecipes(): RecipeFunctions;
         get recipes(): RecipeFunctions;
@@ -74,10 +73,14 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe.ingredientaction {
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.schema.minecraft {
+    import ItemStack = net.minecraft.world.item.ItemStack;
+
     interface ShapedRecipeSchema$ShapedRecipeJS extends $object<
         'dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedRecipeSchema$ShapedRecipeJS',
         RecipeJS
-    > {}
+    > {
+        modifyResult(modFunction: (grid: any, result: any) => ItemStack): this;
+    }
 
     import InputItem = item.InputItem;
     import OutputItem = item.OutputItem;

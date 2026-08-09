@@ -151,7 +151,11 @@ declare namespace internal.net.minecraft.server {
 
 declare namespace internal.net.minecraft.world.item {
     import ItemStackKJS = dev.latvian.mods.kubejs.core.ItemStackKJS;
-    interface ItemStack extends ItemStackKJS {}
+    import CompoundTag = net.minecraft.nbt.CompoundTag;
+
+    interface ItemStack extends ItemStackKJS {
+        withNBT(nbt: $wrapped<CompoundTag>): ItemStack;
+    }
 }
 
 declare namespace internal.net.minecraft.world.entity {
