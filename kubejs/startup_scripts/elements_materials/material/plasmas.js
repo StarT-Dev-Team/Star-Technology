@@ -1,6 +1,6 @@
 // priority: 2000
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
-    const { noDecomp, plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noABSRecipe } = FLAGS;
+    const { noDecomp } = FLAGS;
 
     event
         .create('magmatic')
