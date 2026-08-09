@@ -7,6 +7,7 @@ ServerEvents.recipes((event) => {
         'create_hypertube:hypertube_entrance',
         'create_hypertube:hyper_accelerator_small_cogwheel',
         'create_hypertube:hyper_accelerator_large_cogwheel',
+        'create_hypertube:tube_scanner',
     ].forEach((recipeID) => {
         event.remove({ id: recipeID });
     });
@@ -28,6 +29,14 @@ ServerEvents.recipes((event) => {
         100,
         30,
         'hypertube'
+    );
+
+    assembler(
+        ['create_hypertube:redstone_detector_tube_attachment', '4x gtceu:brass_plate'],
+        'create_hypertube:tube_scanner_attachment',
+        100,
+        30,
+        'tube_scanner'
     );
     assembler(
         ['create:smart_chute', 'create_hypertube:hypertube', 'create:cogwheel'],
