@@ -18,8 +18,6 @@
 !panorama.dat
 !README.md
 
-# Specific exclusion - config folder
-config/*
 # Keep directories
 !config/ae2/
 !config/almostunified/

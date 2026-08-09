@@ -1,0 +1,467 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "hexagon"
+	filename: "gcrops"
+	group: "28726466D987C725"
+	icon: "start_core:malformed_gcrop"
+	id: "28E87E1776350065"
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: [
+				"465C3F9D685B7612"
+				"25583D0BF59E1BC8"
+			]
+			id: "04E09B604801840A"
+			tasks: [{
+				id: "17ED0C6FE040099B"
+				item: "start_core:genome_operator"
+				type: "item"
+			}]
+			x: -9.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"550DB81B8DC91730"
+				"257613F4575DA0E7"
+			]
+			id: "3B29DB73AA3B63CE"
+			tasks: [{
+				id: "7BD393883C174D10"
+				item: "start_core:lv_gcrop_mutator"
+				type: "item"
+			}]
+			x: -9.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3B29DB73AA3B63CE"
+				"2DB216B224F2E8EF"
+				"664E782C6A24D9F1"
+				"4BCC078B76C6CAE3"
+			]
+			id: "465C3F9D685B7612"
+			tasks: [{
+				id: "7B4D8FFEE68C2ECC"
+				item: "start_core:gcrop_mutator"
+				type: "item"
+			}]
+			x: -9.0d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"60412458761D6895"
+				"2DB216B224F2E8EF"
+				"664E782C6A24D9F1"
+			]
+			id: "7360AB5DAC721A11"
+			tasks: [{
+				id: "1EC552DD1D547219"
+				item: "start_core:gcrop_harvester"
+				type: "item"
+			}]
+			x: -7.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"436A7D2511096831"
+				"257613F4575DA0E7"
+			]
+			id: "60412458761D6895"
+			tasks: [{
+				id: "7956221F9A8AF233"
+				item: "start_core:lv_gcrop_harvester"
+				type: "item"
+			}]
+			x: -7.0d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"436A7D2511096831"
+				"257613F4575DA0E7"
+			]
+			id: "0CF5F6AB9902FFA9"
+			tasks: [{
+				id: "561B5437B0B4DA82"
+				item: "start_core:lv_gcrop_breeder"
+				type: "item"
+			}]
+			x: -5.0d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"0CF5F6AB9902FFA9"
+				"664E782C6A24D9F1"
+				"1E981BDF3F2C577D"
+			]
+			id: "5B00E7C090A2D24C"
+			tasks: [{
+				id: "48408CEB2551B6BB"
+				item: "start_core:gcrop_breeder"
+				type: "item"
+			}]
+			x: -5.0d
+			y: 4.0d
+		}
+		{
+			id: "130C50754840599F"
+			tasks: [{
+				id: "519AF871BF7C9253"
+				item: "minecraft:wheat_seeds"
+				type: "item"
+			}]
+			x: -9.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["7836F17B34B47B16"]
+			id: "0713CABE73E40C27"
+			tasks: [{
+				id: "57CE5EC3AB00152F"
+				item: "start_core:void_mesh"
+				type: "item"
+			}]
+			x: -11.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["0713CABE73E40C27"]
+			id: "23EECB5C1CC2B3A0"
+			tasks: [{
+				id: "7DF014468FF57FB0"
+				item: "start_core:mystical_essence_dust"
+				type: "item"
+			}]
+			x: -11.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["23EECB5C1CC2B3A0"]
+			id: "3807C9AB50E1EFDC"
+			tasks: [{
+				id: "7FE3E2B7F8408D5C"
+				item: "start_core:mystical_air_bucket"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"130C50754840599F"
+				"3B29DB73AA3B63CE"
+			]
+			id: "1C9968F71FC8A300"
+			tasks: [{
+				id: "025AA551825B8A4B"
+				item: "start_core:black_dye_gcrop"
+				type: "item"
+			}]
+			x: -9.0d
+			y: -2.0d
+		}
+		{
+			id: "257613F4575DA0E7"
+			tasks: [{
+				id: "4D575C22EC4EA412"
+				type: "checkmark"
+			}]
+			x: -7.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"1C9968F71FC8A300"
+				"68A07657DC7B1D36"
+			]
+			id: "618A9572026147A3"
+			tasks: [{
+				id: "2646538A8570AB86"
+				item: "start_core:iron_gcrop"
+				type: "item"
+			}]
+			x: -7.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"618A9572026147A3"
+				"798845CFB5750C45"
+				"623B37ECC0DBD9B3"
+			]
+			id: "3BCCB099EF3F0029"
+			tasks: [{
+				id: "42946AC6F6FBAFDF"
+				item: "start_core:gold_gcrop"
+				type: "item"
+			}]
+			x: -5.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"3BCCB099EF3F0029"
+				"54AED5CE7EFE5F24"
+				"2E27EC7CE9969300"
+			]
+			id: "7C7F579D08F6B1B8"
+			tasks: [{
+				id: "3A72EAD20EB06131"
+				item: "start_core:spessartine_gcrop"
+				type: "item"
+			}]
+			x: -3.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"7C7F579D08F6B1B8"
+				"2A69A8BFADF89297"
+				"46DD0EC1E112BC41"
+			]
+			id: "241F6AB75E0EF9DC"
+			tasks: [{
+				id: "0A568BD384BB7C88"
+				item: "start_core:zavaritskite_gcrop"
+				type: "item"
+			}]
+			x: -1.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"241F6AB75E0EF9DC"
+				"621C064FCB2F80DE"
+				"13DCE02A6446FECD"
+			]
+			id: "4D61AB84A8BB43FA"
+			tasks: [{
+				id: "33FAB2D3129B841A"
+				item: "start_core:tungstate_gcrop"
+				type: "item"
+			}]
+			x: 1.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"4D61AB84A8BB43FA"
+				"50AA17FCFB8C2DDB"
+				"41A0CD576AC156D2"
+			]
+			id: "6448BE04C2A31BC8"
+			tasks: [{
+				id: "65E6AE9B44ECCD26"
+				item: "start_core:naquadah_gcrop"
+				type: "item"
+			}]
+			x: 3.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"6448BE04C2A31BC8"
+				"281AD95999DF516D"
+				"232A1D3A8A358F30"
+			]
+			id: "71E36DF2EE34F932"
+			tasks: [{
+				id: "7B9B1E3E456F5ED6"
+				item: "start_core:titanite_gcrop"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["6C2BA96EF2A00BFF"]
+			disable_toast: true
+			id: "68A07657DC7B1D36"
+			tasks: [{
+				id: "768AA70DD6FB9D88"
+				item: "ae2:sky_dust"
+				type: "item"
+			}]
+			x: -7.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["581C773B90C29BEF"]
+			disable_toast: true
+			id: "623B37ECC0DBD9B3"
+			tasks: [{
+				id: "5CBB63B22A78830F"
+				item: "gtceu:thorium_dust"
+				type: "item"
+			}]
+			x: -5.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["5BF06BFED6E52523"]
+			disable_toast: true
+			id: "798845CFB5750C45"
+			tasks: [{
+				id: "6A4CA6F36A83359B"
+				item: "gtceu:arsenic_bucket"
+				type: "item"
+			}]
+			x: -5.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["1548DBF1CA41ECAC"]
+			disable_toast: true
+			id: "54AED5CE7EFE5F24"
+			tasks: [{
+				id: "150A8B4FBB9B5CE7"
+				item: "gtceu:caesium_dust"
+				type: "item"
+			}]
+			x: -3.0d
+			y: -3.5d
+		}
+		{
+			dependencies: [
+				"7BA4CC3B9414FCB4"
+				"7CDF942AD28BDEFA"
+				"31D4D7FCA9F61562"
+				"76A203245A0E1CC5"
+			]
+			dependency_requirement: "one_completed"
+			disable_toast: true
+			id: "2E27EC7CE9969300"
+			tasks: [{
+				id: "25A652510CFD2B23"
+				item: "gtceu:fluorine_bucket"
+				type: "item"
+			}]
+			x: -3.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["7F9519FFC3B4B747"]
+			disable_toast: true
+			id: "2A69A8BFADF89297"
+			tasks: [{
+				id: "14C04E5D6E5120EB"
+				item: "gtceu:tantalum_dust"
+				type: "item"
+			}]
+			x: -1.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["5E894DC47896785B"]
+			disable_toast: true
+			id: "621C064FCB2F80DE"
+			tasks: [{
+				id: "633AB014C3C74161"
+				item: "gtceu:uranium_235_dust"
+				type: "item"
+			}]
+			x: 1.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["074A6D7A3072E11F"]
+			disable_toast: true
+			id: "13DCE02A6446FECD"
+			tasks: [{
+				id: "1961557724AA0F29"
+				item: "gtceu:indium_gallium_phosphide_bucket"
+				type: "item"
+			}]
+			x: 1.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["3722C0427C9AF100"]
+			disable_toast: true
+			id: "41A0CD576AC156D2"
+			tasks: [{
+				id: "120E33A022A729E1"
+				item: "gtceu:purified_naquadah_dust"
+				type: "item"
+			}]
+			x: 3.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["21B816D2C178C2D5"]
+			disable_toast: true
+			id: "50AA17FCFB8C2DDB"
+			tasks: [{
+				id: "65C4D18323BA7A20"
+				item: "gtceu:naquadria_bucket"
+				type: "item"
+			}]
+			x: 3.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["70AA84848FB2A9BB"]
+			disable_toast: true
+			hide_details_until_startable: true
+			id: "281AD95999DF516D"
+			tasks: [{
+				id: "5B986FAA32BF223A"
+				item: "gtceu:americium_dust"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["2F87FC1D5BB43220"]
+			disable_toast: true
+			id: "232A1D3A8A358F30"
+			tasks: [{
+				id: "698DDE407C454389"
+				item: "gtceu:echo_r_bucket"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["2DB216B224F2E8EF"]
+			disable_toast: true
+			id: "46DD0EC1E112BC41"
+			tasks: [{
+				id: "34BE6F3C594021A5"
+				item: "gtceu:radon_bucket"
+				type: "item"
+			}]
+			x: -1.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["1C9968F71FC8A300"]
+			id: "12435494817BBE3A"
+			tasks: [{
+				id: "4D3C7F76140E370E"
+				item: "start_core:dna_strand"
+				type: "item"
+			}]
+			x: -8.0d
+			y: -1.0d
+		}
+	]
+	title: "gCrops"
+}
