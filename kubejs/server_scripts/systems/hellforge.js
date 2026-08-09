@@ -473,7 +473,7 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .assembler(id(`${type}_catalyst`))
             .itemInputs(inputs)
-            .inputFluids(`gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate ${512 + scaler * 64}`)
+            .inputFluids(`gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate ${512 + scaler * 64}`)
             .itemOutputs(`96x kubejs:${type}_catalyst`)
             .duration(600)
             .EUt(GTValues.VHA[UV] * Math.pow(4, scaler));

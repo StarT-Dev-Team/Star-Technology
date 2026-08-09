@@ -106,7 +106,7 @@ ServerEvents.recipes((event) => {
                 .inputFluids('gtceu:styrene 875', 'minecraft:water 500')
         )
         .itemOutputs('6x gtceu:sodium_bicarbonate_dust')
-        .outputFluids('gtceu:polystyrene_sulfate 1500', 'gtceu:hydrogen_chloride 500', 'gtceu:ethenone 500')
+        .outputFluids('gtceu:polystyrene_sulfonate 1500', 'gtceu:hydrogen_chloride 500', 'gtceu:ethenone 500')
         .duration(139)
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(ZPM);
@@ -130,7 +130,7 @@ ServerEvents.recipes((event) => {
         .large_chemical_reactor(id('pedot_doping'))
         .inputFluids(
             'gtceu:poly_34_ethylenedioxythiophene 1000',
-            'gtceu:polystyrene_sulfate 375',
+            'gtceu:polystyrene_sulfonate 375',
             'minecraft:water 2000'
         )
         .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution 1000')
@@ -142,16 +142,16 @@ ServerEvents.recipes((event) => {
         .distillery(id('pedot_pss_purification'))
         .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution 1000')
         .outputFluids('gtceu:distilled_water 2000')
-        .itemOutputs('1x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste_dust')
+        .itemOutputs('1x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_paste_dust')
         .duration(180)
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(IV);
 
     event.recipes.gtceu
         .chemical_bath(id('pedot_pss_finalization'))
-        .itemInputs('6x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste_dust')
+        .itemInputs('6x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_paste_dust')
         .inputFluids('gtceu:polysorbate_20 480')
-        .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 864')
+        .outputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 864')
         .duration(82)
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVA(UHV);
