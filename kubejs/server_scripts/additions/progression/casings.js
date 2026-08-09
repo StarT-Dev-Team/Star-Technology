@@ -390,7 +390,7 @@ ServerEvents.recipes((event) => {
     specialUltimateCasing(
         'draco_assembly_grating',
         ['gtceu:void_frame', '5x gtceu:aerorelient_steel_rotor', '2x gtceu:uev_electric_motor', '12x gtceu:void_foil'],
-        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 1008', 'gtceu:dragon_breath 1750'],
+        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 1008', 'gtceu:dragon_breath 1750'],
         'gtceu:assembly_line_grating'
     );
     specialUltimateCasing(
@@ -403,7 +403,7 @@ ServerEvents.recipes((event) => {
             '32x gtceu:fine_aurourium_wire',
             '32x gtceu:fine_magmada_alloy_wire',
         ],
-        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 1008', 'gtceu:dragon_breath 2250'],
+        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 1008', 'gtceu:dragon_breath 2250'],
         'gtceu:high_power_casing'
     );
     specialUltimateCasing(
@@ -414,7 +414,7 @@ ServerEvents.recipes((event) => {
             '1x gtceu:uhv_field_generator',
             '6x kubejs:borealic_neutron_reflector',
         ],
-        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 1008', 'gtceu:dragon_breath 1250'],
+        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 1008', 'gtceu:dragon_breath 1250'],
         'gtceu:fusion_glass'
     );
     specialUltimateCasing(
@@ -439,7 +439,7 @@ ServerEvents.recipes((event) => {
             '6x gtceu:draco_abyssal_screw',
             '6x gtceu:polonium_bismide_single_cable',
         ],
-        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 720', 'gtceu:borealic_concentrate 576'],
+        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 720', 'gtceu:borealic_concentrate 576'],
         'gtceu:blacklight'
     );
 
@@ -451,7 +451,7 @@ ServerEvents.recipes((event) => {
             '2x gtceu:uiv_electric_motor',
             '12x gtceu:draconyallium_foil',
         ],
-        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 3024', 'gtceu:pure_dragon_breath 875'],
+        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 3024', 'gtceu:pure_dragon_breath 875'],
         'kubejs:draco_assembly_grating'
     );
     specialUltimateCasing(
@@ -464,7 +464,7 @@ ServerEvents.recipes((event) => {
             '32x gtceu:fine_rhenate_w_wire',
             '32x gtceu:fine_draco_abyssal_wire',
         ],
-        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 3024', 'gtceu:dragon_breath 1000'],
+        ['gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 3024', 'gtceu:dragon_breath 1000'],
         'kubejs:draco_ware_casing'
     );
 
@@ -611,7 +611,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .assembler(id('cattomolymer_casing'))
         .itemInputs('kubejs:nyanium_machine_casing')
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 216')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 216')
         .circuit(6)
         .itemOutputs('kubejs:cattomolymer_casing')
         .EUtVHA(UHV)
@@ -627,7 +627,7 @@ ServerEvents.recipes((event) => {
             '32x gtceu:hafnide_ito_ceramic_ring',
             '64x gtceu:neutronium_silicon_carbide_foil'
         )
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 432')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 432')
         .itemOutputs('kubejs:rhenotax_coil')
         .EUtVHA(UIV)
         .duration(1200)

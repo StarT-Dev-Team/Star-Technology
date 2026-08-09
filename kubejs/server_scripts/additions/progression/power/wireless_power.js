@@ -92,7 +92,7 @@ ServerEvents.recipes((event) => {
             '64x kubejs:uepic_chip',
         ],
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 25600',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 25600',
             'gtceu:naquadated_soldering_alloy 14400',
             'gtceu:isovol 12800',
         ],

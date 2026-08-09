@@ -7,7 +7,7 @@ ServerEvents.recipes((event) => {
     [
         { plastic: 'polyether_ether_ketone', abreviation: 'peek', quantity: 16 },
         {
-            plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate',
+            plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfonate',
             abreviation: 'pedot_pss',
             quantity: 32,
         },

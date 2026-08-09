@@ -80,7 +80,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:indium_tin_lead_cadmium_soldering_alloy 13824',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 10368',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 10368',
             'gtceu:utopian_akreyrium 12000',
             'gtceu:perfluoroelastomer_rubber 8640'
         )

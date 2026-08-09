@@ -37,7 +37,7 @@ ServerEvents.recipes((event) => {
             '32x kubejs:uepic_chip'
         )
         .inputFluids(
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 4320',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 4320',
             'gtceu:calamatium 5000',
             'gtceu:tungsten_disulfide 2500'
         )
@@ -201,7 +201,7 @@ ServerEvents.recipes((event) => {
             'gtceu:uiv_field_generator',
             '16x gtceu:fine_xeproda_wire'
         )
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 432', 'gtceu:tungsten_disulfide 10000')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 432', 'gtceu:tungsten_disulfide 10000')
         .itemOutputs('gtceu:uiv_rotor_holder')
         .duration(400)
         .stationResearch((researchRecipeBuilder) =>
@@ -282,7 +282,7 @@ ServerEvents.recipes((event) => {
             '8x gtceu:draco_abyssal_turbine_blade',
             '16x gtceu:fine_rhenium_super_composite_alloy_wire'
         )
-        .inputFluids('gtceu:tungsten_disulfide 15000', 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 1080')
+        .inputFluids('gtceu:tungsten_disulfide 15000', 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 1080')
         .itemOutputs(Item.of('gtceu:turbine_rotor', '{GT.PartStats:{Material:"gtceu:draco_abyssal"}}'))
         .duration(600)
         .stationResearch((researchRecipeBuilder) =>

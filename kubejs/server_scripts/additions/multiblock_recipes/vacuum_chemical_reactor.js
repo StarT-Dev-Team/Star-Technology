@@ -80,7 +80,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:naquadated_soldering_alloy 9216',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 4320',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 4320',
             'gtceu:perfluoroelastomer_rubber 3168'
         )
         .itemOutputs('gtceu:auroric_vacuum_isolation_reactor')

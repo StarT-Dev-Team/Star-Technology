@@ -15,7 +15,7 @@ ServerEvents.recipes((event) => {
     const SGM = 'gtceu:sterilized_growth_medium';
     const DES = 'gtceu:draconic_enrichment_serum';
     const DB = 'gtceu:dragon_breath';
-    const PEDOT_PSS = 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate';
+    const PEDOT_PSS = 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate';
 
     // === Controller ===
 
