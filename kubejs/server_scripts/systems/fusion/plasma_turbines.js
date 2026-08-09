@@ -282,7 +282,10 @@ ServerEvents.recipes((event) => {
             '8x gtceu:draco_abyssal_turbine_blade',
             '16x gtceu:fine_rhenium_super_composite_alloy_wire'
         )
-        .inputFluids('gtceu:tungsten_disulfide 15000', 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 1080')
+        .inputFluids(
+            'gtceu:tungsten_disulfide 15000',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 1080'
+        )
         .itemOutputs(Item.of('gtceu:turbine_rotor', '{GT.PartStats:{Material:"gtceu:draco_abyssal"}}'))
         .duration(600)
         .stationResearch((researchRecipeBuilder) =>

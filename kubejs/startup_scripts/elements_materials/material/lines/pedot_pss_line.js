@@ -31,7 +31,9 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         noDecomp,
     ]);
 
-    MH.compLiquid('polystyrene_sulfonate', ['8x carbon', '8x hydrogen', '3x oxygen', '1x sulfur'], 0xd8c6f0, [noDecomp]); // PSS
+    MH.compLiquid('polystyrene_sulfonate', ['8x carbon', '8x hydrogen', '3x oxygen', '1x sulfur'], 0xd8c6f0, [
+        noDecomp,
+    ]); // PSS
 
     MH.compDust('ferric_nitrate', ['1x iron', '3x nitrate'], 0xaf5f5f, [noDecomp]);
 
