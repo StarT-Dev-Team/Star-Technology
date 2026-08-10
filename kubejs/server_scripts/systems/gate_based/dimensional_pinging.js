@@ -109,9 +109,8 @@ ServerEvents.recipes((event) => {
 /**
  * @param {string} realmId
  * @param {string} realm
- * @param {string} message
  */
-const crystalfeed = (realmId, realm, message) => {
+const crystalfeed = (realmId, realm) => {
     ItemEvents.rightClicked(`kubejs:${realm}_coordinate_crystal`, (event) => {
         if (event.player.isCrouching()) {
             event.server.runCommandSilent(
@@ -119,7 +118,11 @@ const crystalfeed = (realmId, realm, message) => {
             );
             // eslint-disable-next-line no-unused-vars
             event.server.scheduleInTicks(15, (ctx) => {
-                event.player.tell(Text.translate(message));
+                event.player.tell(
+                    Text.translate('effects.crystals.success').append(
+                        Text.translate(`effects.crystals.success.${realm}`)
+                    )
+                );
                 event.server.runCommand(
                     `execute as ${event.player.username} run sgjourney stargateNetwork address ${realmId}:${realmId === 'minecraft' ? `the_${realm}` : realm}`
                 );
@@ -128,18 +131,17 @@ const crystalfeed = (realmId, realm, message) => {
     });
 };
 
-crystalfeed('sgjourney', 'abydos', 'effects.crystals.success.abydos');
-crystalfeed('minecraft', 'nether', 'effects.crystals.success.nether');
-crystalfeed('minecraft', 'end', 'effects.crystals.success.end');
+crystalfeed('sgjourney', 'abydos');
+crystalfeed('minecraft', 'nether');
+crystalfeed('minecraft', 'end');
 
 //Dimensional Gamestages
 
 /**
  * @param {string} gate
  * @param {string} realm
- * @param {string} stage
  */
-const dimensionGS = (gate, realm, stage) => {
+const dimensionGS = (gate, realm) => {
     BlockEvents.rightClicked(`sgjourney:${gate}_stargate`, (event) => {
         const { player, item, server } = event;
 
@@ -155,6 +157,6 @@ const dimensionGS = (gate, realm, stage) => {
     });
 };
 
-dimensionGS('classic', 'abydos', 'one');
-dimensionGS('milky_way', 'nether', 'two');
-dimensionGS('milky_way', 'end', 'three');
+dimensionGS('classic', 'abydos');
+dimensionGS('milky_way', 'nether');
+dimensionGS('milky_way', 'end');

@@ -13,13 +13,23 @@
     "effects.sand_erosion.message": "§eThe sands of Abydos are eroding you...",
     "effects.uranium_fever.message": "§aUranium Fever §fhas done and got you down...",
 
-    "effects.crystals.success.abydos": "As you consume the echoes of the coordinate crystal, you hear voices whispering, and strange numbers appear before your eyes, along with visions of sandy dunes and a lost world buried beneath sand and dust.",
-    "effects.crystals.success.nether": "As you consume the echoes of the coordinate crystal, you hear voices whispering, and strange numbers appear before your eyes, along with visions of a hellish landscape of fire and destruction.",
-    "effects.crystals.success.end": "As you consume the echoes of the coordinate crystal, you hear voices whispering, and strange numbers appear before your eyes, along with visions of a looming abyss, darker than any night.",
+    "effects.crystals.success": "As you consume the echoes of the coordinate crystal, you hear voices whispering, and strange numbers appear before your eyes, ",
+    "effects.crystals.success.abydos": "along with visions of sandy dunes and a lost world buried beneath sand and dust.",
+    "effects.crystals.success.nether": "along with visions of a hellish landscape of fire and destruction.",
+    "effects.crystals.success.end": "along with visions of a looming abyss, darker than any night.",
     "effects.crystals.failure.start": "§kMaker of Gates§r is not yet pleased with you... patience.",
     "effects.crystals.failure.nether": "The §4Infernal Hells§r are not ready for you.",
     "effects.crystals.failure.end": "The §5Echoing Abyss§r is not ready for you.",
     "effects.crystals.failure.punish": "Your mind clouds with confusion.",
+
+    "effects.dimensions.title.abydos": "You lack comprehension of the Ancient Sands.",
+    "effects.dimensions.subtitle.abydos": "Consume an Abydos Coordinate Crystal to enter this area.",
+    "effects.dimensions.title.nether": "You lack comprehension of the Burning Hells.",
+    "effects.dimensions.subtitle.nether": "Consume a Nether Coordinate Crystal to enter this plane.",
+    "effects.dimensions.title.end": "You lack comprehension of the Draconic Void.",
+    "effects.dimensions.subtitle.end": "Consume an End Coordinate Crystal to enter this plane.",
+    "effects.dimensions.title.inaccesible": "Content not available.",
+    "effects.dimensions.subtitle.inaccesible": "How did you even try this?",
 
     "effect.kubejs.reach": "Reach",
 
