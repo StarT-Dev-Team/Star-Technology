@@ -112,7 +112,7 @@ global.componentMaterials = /** @type {const} */ ({
             capacitor: 'gtceu:smd_capacitor',
             transistor: 'gtceu:smd_transistor',
             diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            resistor: 'gtceu:smd_resistor',
         },
     },
     iv: {
@@ -139,7 +139,7 @@ global.componentMaterials = /** @type {const} */ ({
             capacitor: 'gtceu:smd_capacitor',
             transistor: 'gtceu:smd_transistor',
             diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            resistor: 'gtceu:smd_resistor',
         },
     },
     luv: {
@@ -185,10 +185,10 @@ global.componentMaterials = /** @type {const} */ ({
             special: { ifSRS: false, cwuS: 0, duraS: 60, EUTS: GTValues.VA[IV] },
         },
         electronicComponents: {
-            capacitor: 'gtceu:smd_capacitor',
-            transistor: 'gtceu:smd_transistor',
-            diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            capacitor: 'gtceu:advanced_smd_capacitor',
+            transistor: 'gtceu:advanced_smd_transistor',
+            diode: 'gtceu:advanced_smd_diode',
+            resistor: 'gtceu:advanced_smd_resistor',
         },
     },
 
@@ -234,10 +234,10 @@ global.componentMaterials = /** @type {const} */ ({
             special: { ifSRS: true, cwuS: 4, duraS: 90, EUTS: GTValues.VA[LuV] },
         },
         electronicComponents: {
-            capacitor: 'gtceu:smd_capacitor',
-            transistor: 'gtceu:smd_transistor',
-            diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            capacitor: 'gtceu:advanced_smd_capacitor',
+            transistor: 'gtceu:advanced_smd_transistor',
+            diode: 'gtceu:advanced_smd_diode',
+            resistor: 'gtceu:advanced_smd_resistor',
         },
     },
 
@@ -284,10 +284,10 @@ global.componentMaterials = /** @type {const} */ ({
             special: { ifSRS: true, cwuS: 48, duraS: 180, EUTS: GTValues.VA[UV] },
         },
         electronicComponents: {
-            capacitor: 'gtceu:smd_capacitor',
-            transistor: 'gtceu:smd_transistor',
-            diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            capacitor: 'kubejs:living_smd_capacitor',
+            transistor: 'kubejs:living_smd_transistor',
+            diode: 'kubejs:living_smd_diode',
+            resistor: 'kubejs:living_smd_resistor',
         },
     },
 
@@ -335,10 +335,10 @@ global.componentMaterials = /** @type {const} */ ({
             special: { ifSRS: true, cwuS: 144, duraS: 180, EUTS: GTValues.VA[UV] },
         },
         electronicComponents: {
-            capacitor: 'gtceu:smd_capacitor',
-            transistor: 'gtceu:smd_transistor',
-            diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            capacitor: 'kubejs:living_smd_capacitor',
+            transistor: 'kubejs:living_smd_transistor',
+            diode: 'kubejs:living_smd_diode',
+            resistor: 'kubejs:living_smd_resistor',
         },
     },
 
@@ -385,10 +385,10 @@ global.componentMaterials = /** @type {const} */ ({
             special: { ifSRS: true, cwuS: 176, duraS: 180, EUTS: GTValues.VA[UHV] },
         },
         electronicComponents: {
-            capacitor: 'gtceu:smd_capacitor',
-            transistor: 'gtceu:smd_transistor',
-            diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            capacitor: 'kubejs:draconic_smd_capacitor',
+            transistor: 'kubejs:draconic_smd_transistor',
+            diode: 'kubejs:draconic_smd_diode',
+            resistor: 'kubejs:draconic_smd_resistor',
         },
     },
 
@@ -435,10 +435,10 @@ global.componentMaterials = /** @type {const} */ ({
             special: { ifSRS: true, cwuS: 208, duraS: 180, EUTS: GTValues.VA[UEV] },
         },
         electronicComponents: {
-            capacitor: 'gtceu:smd_capacitor',
-            transistor: 'gtceu:smd_transistor',
-            diode: 'gtceu:smd_diode',
-            resistor: '#gtceu:resistors',
+            capacitor: 'kubejs:draconic_smd_capacitor',
+            transistor: 'kubejs:draconic_smd_transistor',
+            diode: 'kubejs:draconic_smd_diode',
+            resistor: 'kubejs:draconic_smd_resistor',
         },
     },
 });
