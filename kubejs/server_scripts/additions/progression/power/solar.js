@@ -18,6 +18,82 @@ ServerEvents.recipes((event) => {
     });
 
     const COMPONENTS = global.componentMaterials;
+    /** @type {Record<'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv', string>} */
+    const PANEL_PLASTICS = {
+        ev: 'polytetraethylene',
+        iv: 'epoxy',
+        luv: 'polyvinyl_butyral',
+        zpm: 'polybenzimidazole',
+        uv: 'polyether_ether_ketone',
+        uhv: 'poly_34_ethylenedioxythiophene_polystyrene_sulfonate',
+    };
+
+    /** @typedef {'capacitor' | 'resistor'} ComponentType */
+    /** @typedef {{id: string, recycleMaterials: string[]}} ComponentMap */
+    /** @typedef {Record<ComponentType, ComponentMap>} CapacitorResistorMap*/
+    /** @type {Record<'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv', CapacitorResistorMap>} */
+    const COMPONENT_MAP = {
+        ev: {
+            capacitor: {
+                id: 'gtceu:capacitor',
+                recycleMaterials: [''],
+            },
+            resistor: {
+                id: 'gtceu:resistor',
+                recycleMaterials: [''],
+            },
+        },
+        iv: {
+            capacitor: {
+                id: 'gtceu:capacitor',
+                recycleMaterials: [''],
+            },
+            resistor: {
+                id: 'gtceu:resistor',
+                recycleMaterials: [''],
+            },
+        },
+        luv: {
+            capacitor: {
+                id: 'gtceu:capacitor',
+                recycleMaterials: [''],
+            },
+            resistor: {
+                id: 'gtceu:resistor',
+                recycleMaterials: [''],
+            },
+        },
+        zpm: {
+            capacitor: {
+                id: 'gtceu:capacitor',
+                recycleMaterials: [''],
+            },
+            resistor: {
+                id: 'gtceu:resistor',
+                recycleMaterials: [''],
+            },
+        },
+        uv: {
+            capacitor: {
+                id: 'gtceu:capacitor',
+                recycleMaterials: [''],
+            },
+            resistor: {
+                id: 'gtceu:resistor',
+                recycleMaterials: [''],
+            },
+        },
+        uhv: {
+            capacitor: {
+                id: 'gtceu:capacitor',
+                recycleMaterials: [''],
+            },
+            resistor: {
+                id: 'gtceu:resistor',
+                recycleMaterials: [''],
+            },
+        },
+    };
 
     /**
      * @param {'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv'} tierKey
@@ -31,8 +107,11 @@ ServerEvents.recipes((event) => {
             tiers: { tier, tier1 },
             materials: { wireMechanical, tierMaterial, solder, lubricant, cable, battery },
             scaling: dataScaling,
+            electronicComponents: components,
         } = data;
         const { scaler, EU } = dataScaling || { EU: 0, scaler: 0 };
+        const { capacitor, resistor } = components || { capacitor: '', resistor: '' };
+        const plastic = PANEL_PLASTICS[tierKey];
 
         if (tier !== 'ev') {
             //Other Cores
@@ -48,11 +127,13 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .assembler(id(`${tier}_solar_cell`))
             .itemInputs(
+                `2x kubejs:${tier}_energy_core`,
                 `2x kubejs:${tier}_photovoltaic_cell`,
+                `2x #gtceu:circuits/${tier}`,
                 `gtceu:${tierMaterial}_frame`,
                 `2x gtceu:${cable}_double_cable`
             )
-            .inputFluids(`gtceu:epoxy ${scaler * 144}`)
+            .inputFluids(`gtceu:${solder} 144`)
             .itemOutputs(`2x start_core:${tier}_solar_cell`)
             .duration(600)
             .EUt(EU * 2);
@@ -60,24 +141,35 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .assembler(id(`${tier}_solar_cell_repair`))
             .inputItemNbtPredicate(`start_core:${tier}_solar_cell`, NBTPredicates.eqBool('BlockEntityTag.broken', true))
-            .itemInputs(
-                //Item.of(`start_core:${tier}_solar_cell`, 'TODO NBT'),
-                `gtceu:${tierMaterial}_plate`,
-                `gtceu:${cable}_double_cable`
-            )
+            .itemInputs(`kubejs:${tier}_photovoltaic_cell`)
             .inputFluids(`gtceu:${solder} 288`)
-            .itemOutputs(`start_core:${tier}_solar_cell`)
+            .itemOutputs(`start_core:${tier}_solar_cell`, `kubejs:damaged_${tier}_photovoltaic_cell`)
             .duration(300)
             .EUt(EU * 2);
 
         //Photovoltaic Cells
         event.recipes.gtceu
             .assembler(id(`${tier}_photovoltaic_cell`))
-            .itemInputs(`gtceu:double_${tierMaterial}_plate`, `kubejs:${tier}_energy_core`, `#gtceu:circuits/${tier}`)
-            .inputFluids(`gtceu:${solder} 576`)
+            .itemInputs(`gtceu:double_${tierMaterial}_plate`, `4x ${capacitor}`, `2x ${resistor}`)
+            .inputFluids(`gtceu:${plastic} 144`)
             .itemOutputs(`kubejs:${tier}_photovoltaic_cell`)
             .duration(400)
             .EUt(EU * 4);
+
+        let photovoltaicCellRecycledOutputs = [`3x gtceu:${tierMaterial}_dust`, `3x gtceu:small_${plastic}_dust`];
+        /*.concat(
+            global.zipItemArrays(
+                COMPONENT_MAP[tierKey].capacitor.recycleMaterials,
+                COMPONENT_MAP[tierKey].resistor.recycleMaterials
+            )
+        );*/
+
+        event.recipes.gtceu
+            .macerator(id(`recycle_${tier}_photovoltaic_cell`))
+            .itemInputs(`kubejs:damaged_${tier}_photovoltaic_cell`)
+            .itemOutputs(photovoltaicCellRecycledOutputs)
+            .duration(100)
+            .EUt(EU * 2);
 
         if (panelType === 'panel') {
             event.recipes.gtceu

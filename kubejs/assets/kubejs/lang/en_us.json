@@ -350,6 +350,13 @@
     "item.kubejs.zpm_photovoltaic_cell": "Photovoltaic Cell IV",
     "item.kubejs.uv_photovoltaic_cell": "Photovoltaic Cell V",
     "item.kubejs.uhv_photovoltaic_cell": "Photovoltaic Cell VI",
+    "item.kubejs.damaged_ev_photovoltaic_cell": "Photovoltaic Cell I (Damaged)",
+    "item.kubejs.damaged_iv_photovoltaic_cell": "Photovoltaic Cell II (Damaged)",
+    "item.kubejs.damaged_luv_photovoltaic_cell": "Photovoltaic Cell III (Damaged)",
+    "item.kubejs.damaged_zpm_photovoltaic_cell": "Photovoltaic Cell IV (Damaged)",
+    "item.kubejs.damaged_uv_photovoltaic_cell": "Photovoltaic Cell V (Damaged)",
+    "item.kubejs.damaged_uhv_photovoltaic_cell": "Photovoltaic Cell VI (Damaged)",
+    "item.kubejs.damaged_photovoltaic_cell.tooltip": "§4Damaged! Recycle to get some of the materials back.",
 
     "item.kubejs.field_stabiliser.tooltip": "§7Ensuring the gravitational well doesn't collapse inward.",
     "item.kubejs.energy_modulator.tooltip": "§7Ensuring the gate doesn't §3KABOOM§r.",
