@@ -606,6 +606,13 @@ declare namespace internal.net.minecraft.world.entity.player {
         sendSystemMessage(message: unknown): void;
         get inventory(): Inventory;
         name: Component;
+        stages: KubeStages;
+    }
+
+    interface KubeStages {
+        has(stage: String): boolean;
+        add(stage: String): void;
+        remove(stage: String): void;
     }
 }
 
