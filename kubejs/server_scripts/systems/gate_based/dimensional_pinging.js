@@ -109,39 +109,35 @@ ServerEvents.recipes((event) => {
 /**
  * @param {string} realmId
  * @param {string} realm
+ * @param {string} gate
  */
-const crystalfeed = (realmId, realm) => {
+const dimensionGS = (realmId, realm, gate) => {
+    // Coordinate crystal consumption
     ItemEvents.rightClicked(`kubejs:${realm}_coordinate_crystal`, (event) => {
-        if (event.player.isCrouching()) {
-            event.server.runCommandSilent(
-                `execute at ${event.player.username} run playsound minecraft:block.enchantment_table.use player ${event.player.username} ~ ~ ~`
+        const { player, server } = event;
+
+        if (player.isCrouching()) {
+            server.runCommandSilent(
+                `execute at ${player.username} run playsound minecraft:block.enchantment_table.use player ${player.username} ~ ~ ~`
+            );
+            Utils.server.runCommandSilent(
+                `title ${player.username} title {"text":"You are being watched","color":"dark_gray","obfuscated":"true"}`
             );
             // eslint-disable-next-line no-unused-vars
-            event.server.scheduleInTicks(15, (ctx) => {
-                event.player.tell(
+            server.scheduleInTicks(15, (ctx) => {
+                player.sendSystemMessage(
                     Text.translate('effects.crystals.success').append(
                         Text.translate(`effects.crystals.success.${realm}`)
                     )
                 );
-                event.server.runCommand(
-                    `execute as ${event.player.username} run sgjourney stargateNetwork address ${realmId}:${realmId === 'minecraft' ? `the_${realm}` : realm}`
+                server.runCommand(
+                    `execute as ${player.username} run sgjourney stargateNetwork address ${realmId}:${realmId === 'minecraft' ? `the_${realm}` : realm}`
                 );
             });
         }
     });
-};
 
-crystalfeed('sgjourney', 'abydos');
-crystalfeed('minecraft', 'nether');
-crystalfeed('minecraft', 'end');
-
-//Dimensional Gamestages
-
-/**
- * @param {string} gate
- * @param {string} realm
- */
-const dimensionGS = (gate, realm) => {
+    //Dimensional Gamestages
     BlockEvents.rightClicked(`sgjourney:${gate}_stargate`, (event) => {
         const { player, item, server } = event;
 
@@ -154,9 +150,10 @@ const dimensionGS = (gate, realm) => {
             `execute at ${player.username} run playsound bingus:recall player ${player.username} ~ ~ ~`
         );
         player.swing();
+        player.sendSystemMessage(Text.translate(`effects.crystals.gate.${realm}`));
     });
 };
 
-dimensionGS('classic', 'abydos');
-dimensionGS('milky_way', 'nether');
-dimensionGS('milky_way', 'end');
+dimensionGS('sgjourney', 'abydos', 'classic');
+dimensionGS('minecraft', 'nether', 'milky_way');
+dimensionGS('minecraft', 'end', 'milky_way');

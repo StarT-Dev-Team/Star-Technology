@@ -56,7 +56,7 @@
         {
             dimensionNamespace: 'minecraft',
             dimensionId: 'nether',
-            color: 'red',
+            color: 'dark_red',
             lang: 'nether',
         },
         {
