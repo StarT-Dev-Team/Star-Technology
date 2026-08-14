@@ -1,6 +1,7 @@
 // priority: 10000
 
 // T - test namespace
+// eslint-disable-next-line no-unused-vars
 const T = {
     /** @type {(items: string[]) => string[]} */
     testItems: function (items) {
