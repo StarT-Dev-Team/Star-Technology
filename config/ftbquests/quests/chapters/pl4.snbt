@@ -2137,7 +2137,7 @@
 			size: 1.5d
 			tasks: [{
 				id: "7F8D144334941F9D"
-				item: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_bucket"
+				item: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_bucket"
 				type: "item"
 			}]
 			title: "{ftbquests.pl.pedot_pss.title}"
@@ -2171,7 +2171,7 @@
 			id: "7ADE549CFFB6AB36"
 			tasks: [{
 				id: "79694F358CC5F0B2"
-				item: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste_dust"
+				item: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_paste_dust"
 				type: "item"
 			}]
 			x: 12.0d
@@ -2300,12 +2300,12 @@
 				"46FA26DD7A09CDCE"
 				"4185711C0E24AA7F"
 			]
-			icon: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution_bucket"
+			icon: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution_bucket"
 			id: "688977CED4B771BA"
 			tasks: [
 				{
 					id: "7EC47BD39248A0A5"
-					item: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution_bucket"
+					item: "gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution_bucket"
 					optional_task: true
 					type: "item"
 				}
@@ -2323,12 +2323,12 @@
 				"6821C560DCA10BFC"
 				"426B2F275979A8EC"
 			]
-			icon: "gtceu:polystyrene_sulfate_bucket"
+			icon: "gtceu:polystyrene_sulfonate_bucket"
 			id: "46FA26DD7A09CDCE"
 			tasks: [
 				{
 					id: "59E2A3F599CC538C"
-					item: "gtceu:polystyrene_sulfate_bucket"
+					item: "gtceu:polystyrene_sulfonate_bucket"
 					optional_task: true
 					type: "item"
 				}
