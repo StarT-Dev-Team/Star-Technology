@@ -4,7 +4,7 @@ client:
   komaruRenderer: true
 
 solar:
-  # Heat gained per 6 second cycle on EV–LuV solar panels while producing power.
+  # Heat gained per 6 second cycle on EVâ€“LuV solar panels while producing power.
   # Default: 0.2
   panelHeatGain: 0.2
 
