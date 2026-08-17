@@ -6,10 +6,11 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .shaped('8x laserio:logic_chip_raw', ['BFB', 'DQD', 'BFB'], {
             B: 'gtceu:gold_bolt',
-            F: 'gtceu:red_alloy_fine_wire',
+            F: 'gtceu:fine_red_alloy_wire',
             D: 'gtceu:clay_dust_block',
             Q: 'minecraft:quartz_block',
         })
+        .addMaterialInfo()
         .id(id('logic_chip_raw'));
 
     event.smelting('laserio:logic_chip_raw', 'laserio:logic_chip', 100).xp(1).id(id('logic_chip'));
@@ -21,6 +22,7 @@ ServerEvents.recipes((event) => {
             C: 'laserio:logic_chip',
             I: 'gtceu:iron_plate',
         })
+        .addMaterialInfo()
         .id(id('laser_connector'));
 
     event.recipes.gtceu
@@ -31,6 +33,7 @@ ServerEvents.recipes((event) => {
             C: 'laserio:laser_connector',
             g: 'gtceu:gold_plate',
         })
+        .addMaterialInfo()
         .id(id('laser_connector_advanced'));
 
     event.recipes.gtceu
@@ -39,13 +42,14 @@ ServerEvents.recipes((event) => {
             G: 'forge:glass_panes',
             C: 'laserio:laser_connector',
         })
+        .addMaterialInfo()
         .id(id('laser_node'));
 
     [
         { card: 'card_item', outer: 'minecraft:emerald', inner: 'gtceu:brass_plate' },
-        { card: 'card_fluid', outer: 'minecraft:lapis', inner: 'minecraft:bucket' },
+        { card: 'card_fluid', outer: 'minecraft:lapis_lazuli', inner: 'minecraft:bucket' },
         { card: 'card_energy', outer: 'minecraft:glowstone_dust', inner: 'gtceu:soul_infused_plate' },
-        { card: 'card_redstone', outer: 'minecraft:redstone_dust', inner: 'gtceu:red_alloy_plate' },
+        { card: 'card_redstone', outer: 'minecraft:redstone', inner: 'gtceu:red_alloy_plate' },
     ].forEach((card) => {
         event.recipes.gtceu
             .shaped(`laserio:${card.card}`, ['OIO', 'FCF', 'BfB'], {
@@ -54,8 +58,9 @@ ServerEvents.recipes((event) => {
                 F: 'gtceu:zinc_foil',
                 C: 'laserio:laser_connector',
                 B: 'gtceu:brass_bolt',
-                f: 'gtceu:red_alloy_fine_wire',
+                f: 'gtceu:fine_red_alloy_wire',
             })
+            .addMaterialInfo()
             .id(id(card.card));
     });
 
@@ -65,6 +70,7 @@ ServerEvents.recipes((event) => {
             G: '#forge:glass_panes',
             Q: 'laserio:logic_chip',
         })
+        .addMaterialInfo()
         .id(id('filter_basic'));
 
     event.recipes.gtceu
@@ -72,6 +78,7 @@ ServerEvents.recipes((event) => {
             F: 'laserio:filter_basic',
             P: 'minecraft:paper',
         })
+        .addMaterialInfo()
         .id(id('filter_tag'));
 
     event.recipes.gtceu
@@ -79,6 +86,7 @@ ServerEvents.recipes((event) => {
             F: 'laserio:filter_basic',
             B: 'minecraft:book',
         })
+        .addMaterialInfo()
         .id(id('filter_mod'));
 
     event.recipes.gtceu
@@ -86,6 +94,7 @@ ServerEvents.recipes((event) => {
             F: 'laserio:filter_basic',
             O: 'minecraft:observer',
         })
+        .addMaterialInfo()
         .id(id('filter_count'));
 
     event.recipes.gtceu
@@ -93,6 +102,7 @@ ServerEvents.recipes((event) => {
             F: 'laserio:filter_basic',
             W: 'minecraft:white_wool',
         })
+        .addMaterialInfo()
         .id(id('filter_nbt'));
 
     event.recipes.gtceu
@@ -105,6 +115,7 @@ ServerEvents.recipes((event) => {
             C: 'minecraft:chest',
             B: 'laserio:logic_chip',
         })
+        .addMaterialInfo()
         .id(id('card_holder'));
 
     event.recipes.gtceu
@@ -113,23 +124,26 @@ ServerEvents.recipes((event) => {
             C: 'minecraft:paper',
             B: 'laserio:logic_chip',
         })
+        .addMaterialInfo()
         .id(id('card_cloner'));
 
     event.recipes.gtceu
         .shaped('laserio:overclocker_node', [' G ', 'RPR', 'GCG'], {
             G: 'gtceu:electrum_plate',
             P: 'laserio:logic_chip',
-            R: 'minecraft:redstone_dust',
+            R: 'minecraft:redstone',
             C: 'gtceu:tin_cable',
         })
+        .addMaterialInfo()
         .id(id('overclocker_node'));
 
     event.recipes.gtceu
         .shaped('laserio:overclocker_card', [' G ', 'RPR', 'GCG'], {
             G: 'gtceu:electrum_plate',
             P: 'laserio:logic_chip',
-            R: 'minecraft:redstone_dust',
+            R: 'minecraft:redstone',
             C: 'gtceu:tin_cable',
         })
+        .addMaterialInfo()
         .id(id('overclocker_card'));
 });
