@@ -159,6 +159,7 @@ export default [
                 UXV: 'readonly',
                 OpV: 'readonly',
                 MAX: 'readonly',
+                T: 'writable',
             },
         },
         rules: {
