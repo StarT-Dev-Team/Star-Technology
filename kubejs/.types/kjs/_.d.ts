@@ -396,6 +396,18 @@ declare namespace internal.kjs.rhino {
     }
 }
 
+declare namespace internal.kjs.jsonio {
+
+    interface JsonIO extends $object<'internal.kjs.jsonio.JsonIO'> {}
+
+    const JsonIO: $class<JsonIO> & {
+        read(path: string): string;
+        write(path: string, data: string): void;
+        readJson(path: string): string;
+        writeJson(path: string, data: string): void;
+    };
+}
+
 // TODO: move to JavaWrapper
 declare const Java: {
     loadClass: { <K extends keyof internal.kjs.LoadableClasses>(name: K): internal.kjs.LoadableClasses[K] };
@@ -422,3 +434,5 @@ declare const BlockProperties: typeof internal.net.minecraft.world.level.block.s
 declare const Direction: typeof internal.net.minecraft.core.Direction;
 
 declare const JavaAdapter: internal.kjs.rhino.JavaAdapter;
+
+declare const JsonIO: typeof internal.kjs.jsonio.JsonIO;

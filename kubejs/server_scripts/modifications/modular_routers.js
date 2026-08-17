@@ -23,7 +23,7 @@ ServerEvents.recipes((event) => {
         .id(id('modular_router'));
 
     event.recipes.gtceu
-        .shaped('8x modularrouters:augment_core', ['WFB ', 'FLB', 'SFB'], {
+        .shaped('8x modularrouters:augment_core', ['WFB', 'FLB', 'SFB'], {
             B: 'gtceu:gold_bolt',
             F: 'gtceu:iron_foil',
             L: 'minecraft:lapis_lazuli',
@@ -34,7 +34,7 @@ ServerEvents.recipes((event) => {
         .id(id('augment_core'));
 
     event.recipes.gtceu
-        .shaped('8x modularrouters:blank_upgrade', ['BFB ', 'WGS', 'BFB'], {
+        .shaped('8x modularrouters:blank_upgrade', ['BFB', 'WGS', 'BFB'], {
             B: 'gtceu:gold_bolt',
             F: 'gtceu:iron_foil',
             G: 'minecraft:glowstone_dust',
@@ -45,7 +45,7 @@ ServerEvents.recipes((event) => {
         .id(id('blank_upgrade'));
 
     event.recipes.gtceu
-        .shaped('8x modularrouters:blank_module', ['WFS ', 'FRF', 'BBB'], {
+        .shaped('8x modularrouters:blank_module', ['WFS', 'FRF', 'BBB'], {
             B: 'gtceu:gold_bolt',
             F: 'gtceu:iron_foil',
             R: 'minecraft:redstone',
