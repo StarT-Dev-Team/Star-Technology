@@ -56,10 +56,4 @@ export interface ComponentMaterial {
             EUTS: number;
         };
     };
-    electronicComponents?: {
-        capacitor?: string;
-        transistor?: string;
-        diode?: string;
-        resistor?: string;
-    };
 }
