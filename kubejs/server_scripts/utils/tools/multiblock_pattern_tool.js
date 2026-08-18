@@ -1,24 +1,25 @@
 ServerEvents.commandRegistry((event) => {
-    /** @typedef {internal.net.minecraft.commands.Commands} Commands */
-    /** @type {Commands} */
     const commands = event.commands;
 
-    /** @typedef {internal.dev.latvian.mods.kubejs.server.commandContext} commandContext */
     event.register(
         commands.literal('multiblock').then(
             commands
                 .literal('get_pattern')
                 .then(
-                    commands
-                        .literal('default')
-                        .executes((/** @type {commandContext} */ ctx) =>
-                            runPatternCommand(ctx.source.player, 'default')
-                        )
+                    commands.literal('default').executes((ctx) => {
+                        if (ctx.source.player) {
+                            return runPatternCommand(ctx.source.player, 'default');
+                        }
+                        return 0;
+                    })
                 )
                 .then(
-                    commands
-                        .literal('custom')
-                        .executes((/** @type {commandContext} */ ctx) => runPatternCommand(ctx.source.player, 'custom'))
+                    commands.literal('custom').executes((ctx) => {
+                        if (ctx.source.player) {
+                            return runPatternCommand(ctx.source.player, 'custom');
+                        }
+                        return 0;
+                    })
                 )
         )
     );
@@ -49,15 +50,13 @@ BlockEvents.broken((event) => {
     event.cancel(true);
 });
 
-/** @typedef {internal.net.minecraft.world.entity.player.Player} Player */
-
 /**
- * @param {Player} player
- * @param {String} mode
+ * @param {internal.net.minecraft.world.entity.player.Player} player
+ * @param {string} mode
  * @returns {number}
  */
 const runPatternCommand = (player, mode) => {
-    const playerName = String(player.name.getString());
+    const playerName = player.name.getString();
 
     if (!positionData[playerName]) {
         player.sendSystemMessage('§4Failed to run pattern command: player position data not found');
@@ -92,18 +91,20 @@ const runPatternCommand = (player, mode) => {
     let symbolIndex = 0;
     const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
-    /** @type {Record<String, String>} */
+    /** @type {Record<string, string>} */
     let blockLegend = {
         'minecraft:air': ' ',
         'minecraft:oak_log': '@',
     };
 
-    const blockPattern = new Array();
-
+    /** @type {string[][][]} */
+    const blockPattern = [];
     for (let z = 0; z <= difZ; z++) {
-        let yArr = new Array();
+        /** @type {string[][]} */
+        let yArr = [];
         for (let y = 0; y <= difY; y++) {
-            let xArr = new Array();
+            /** @type {string[]} */
+            let xArr = [];
             for (let x = 0; x <= difX; x++) {
                 blockid = player.level.getBlock(pos1.x + x, pos1.y + y, pos1.z + z).id;
 
@@ -117,26 +118,26 @@ const runPatternCommand = (player, mode) => {
                 }
 
                 let key = blockLegend[blockid];
-                xArr[x] = key;
+                xArr.push(key);
             }
-            yArr[y] = xArr;
+            yArr.push(xArr);
         }
-        blockPattern[z] = yArr;
+        blockPattern.push(yArr);
     }
 
     let patternDef = '';
 
     let innerPattern = '';
-    /** @type {Array<String>} */
+    /** @type {string[]} */
     let aisles = [];
     let aisleString = '';
-    /** @type {Array<String>} */
+    /** @type {string[]} */
     let layers = [];
     let layerString = '';
 
     let keyDefinitions = '';
     let key = '';
-    /** @type {Array<String>} */
+    /** @type {string[]} */
     let blockResourceLocation = [];
     let appendAny = false;
 
@@ -147,7 +148,7 @@ const runPatternCommand = (player, mode) => {
         aisles = [];
         blockPattern.forEach((aisle) => {
             layers = [];
-            aisle.forEach((/** @type {Array<String>} */ layer) => {
+            aisle.forEach((layer) => {
                 layerString = layer.join('');
                 layers.push(layerString);
             });
@@ -192,7 +193,7 @@ const runPatternCommand = (player, mode) => {
         aisles = [];
         blockPattern.forEach((aisle) => {
             layers = [];
-            aisle.forEach((/** @type {Array<String>} */ layer) => {
+            aisle.forEach((layer) => {
                 layerString = layer.join('');
                 layers.push(`"${layerString}"`);
             });

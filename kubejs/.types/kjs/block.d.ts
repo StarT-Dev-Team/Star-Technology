@@ -104,17 +104,12 @@ declare namespace internal.dev.latvian.mods.kubejs.block {
         get block(): BlockContainerJS;
     }
 
-    import Player = net.minecraft.world.entity.player.Player;
-
-    interface BlockBrokenEventJS extends $object<'dev.latvian.mods.kubejs.player.PlayerEventJS '> {
-        getEntity(): Entity;
-        get entity(): Entity;
+    interface BlockBrokenEventJS extends $object<'dev.latvian.mods.kubejs.player.BlockBrokenEventJS', PlayerEventJS> {
         getBlock(): BlockContainerJS;
         get block(): BlockContainerJS;
         getXp(): number;
+        get xp(): number;
         setXp(xp: number): void;
-        cancel(cancel: boolean): void;
-        player: Player;
     }
 
     import ItemStack = net.minecraft.world.item.ItemStack;

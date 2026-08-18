@@ -48,6 +48,7 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
         replaceIngredient(filter: $wrapped<IngredientActionFilter>, item: $wrapped<ItemStack>): this;
         keepIngredient(filter: $wrapped<IngredientActionFilter>): this;
         consumeIngredient(filter: $wrapped<IngredientActionFilter>): this;
+        modifyResult(callback: $wrapped<ModifyRecipeResultCallback>): this;
     }
 
     interface ReplacementMatch extends $object<'dev.latvian.mods.kubejs.recipe.ReplacementMatch'> {}
@@ -55,6 +56,23 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
     interface InputReplacement extends $object<'dev.latvian.mods.kubejs.recipe.InputReplacement'> {}
 
     interface OutputReplacement extends $object<'dev.latvian.mods.kubejs.recipe.OutputReplacement'> {}
+
+    import Ingredient = net.minecraft.world.item.crafting.Ingredient;
+
+    interface ModifyRecipeCraftingGrid extends $object<'dev.latvian.mods.kubejs.recipe.ModifyRecipeCraftingGrid'> {
+        get(index: number): ItemStack;
+        findAll(ingredient: $wrapped<Ingredient>): ItemStack[];
+        findAll(): ItemStack[];
+        find(ingredient: $wrapped<Ingredient>, skip: number): ItemStack;
+        find(ingredient: $wrapped<Ingredient>): ItemStack;
+    }
+
+    interface ModifyRecipeResultCallback extends $object<{
+        name: 'dev.latvian.mods.kubejs.recipe.ModifyRecipeResultCallback';
+        functionalInterface: 'modify';
+    }> {
+        modify(grid: ModifyRecipeCraftingGrid, result: ItemStack): ItemStack;
+    }
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.component {
@@ -73,14 +91,10 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe.ingredientaction {
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.schema.minecraft {
-    import ItemStack = net.minecraft.world.item.ItemStack;
-
     interface ShapedRecipeSchema$ShapedRecipeJS extends $object<
         'dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedRecipeSchema$ShapedRecipeJS',
         RecipeJS
-    > {
-        modifyResult(modFunction: (grid: any, result: any) => ItemStack): this;
-    }
+    > {}
 
     import InputItem = item.InputItem;
     import OutputItem = item.OutputItem;

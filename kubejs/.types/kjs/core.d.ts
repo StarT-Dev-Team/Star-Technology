@@ -28,6 +28,7 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
         getId(): string;
         get id(): string;
         hasTag(tag: $wrapped<ResourceLocation>): boolean;
+        withNBT(nbt: $wrapped<CompoundTag>): ItemStack;
     }
 
     import Component = net.minecraft.network.chat.Component;
@@ -91,8 +92,8 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
         set speedFactor(v: number);
         setJumpFactor(v: number): void;
         set jumpFactor(v: number);
-        setNameKey(key: String): void;
-        set nameKey(key: String);
+        setNameKey(key: string): void;
+        set nameKey(key: string);
         setDestroySpeed(v: number): void;
         set destroySpeed(v: number);
         setLightEmission(v: number): void;
@@ -121,8 +122,12 @@ declare namespace internal.dev.latvian.mods.kubejs.core {
         count(): number;
     }
 
+    import Stages = stages.Stages;
+
     interface PlayerKJS {
         give(item: $wrapped<ItemStack>): void;
+        getStages(): Stages;
+        get stages(): Stages;
     }
 
     interface LevelKJS {
@@ -154,7 +159,9 @@ declare namespace internal.net.minecraft.world.item {
     import CompoundTag = net.minecraft.nbt.CompoundTag;
 
     interface ItemStack extends ItemStackKJS {
-        withNBT(nbt: $wrapped<CompoundTag>): ItemStack;
+        getNbt(): $reverseWrapped<CompoundTag>;
+        get nbt(): $reverseWrapped<CompoundTag>;
+        setNbt(tag: $wrapped<CompoundTag>): void;
     }
 }
 
@@ -177,9 +184,10 @@ declare namespace internal.net.minecraft.world.entity.player {
 
 declare namespace internal.net.minecraft.world.level {
     import LevelKJS = dev.latvian.mods.kubejs.core.LevelKJS;
-    import BlockKJS = dev.latvian.mods.kubejs.core.BlockKJS;
+    import BlockContainerJS = dev.latvian.mods.kubejs.level.BlockContainerJS;
+
     interface Level extends LevelKJS {
-        getBlock(x: number, y: number, z: number): BlockKJS;
+        getBlock(x: number, y: number, z: number): BlockContainerJS;
     }
 }
 

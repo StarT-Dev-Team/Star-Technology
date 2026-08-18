@@ -158,14 +158,14 @@ const implosionHelper = (id, input, output, tier, durationMultiplier, event) => 
 
 global.implosion = implosionHelper;
 
-/** @typedef {{item: string, amount: number}} Ingredient */
+/** @typedef {{item: string, amount: number}} RecipeHelperIngredient */
 
 /**
  * @param {string[]} items
- * @returns {Ingredient[]}
+ * @returns {RecipeHelperIngredient[]}
  */
 const itemArrayToIngredientArray = (items) => {
-    /** @type {Ingredient[]} */
+    /** @type {RecipeHelperIngredient[]} */
     let ingredients = [];
     items.forEach((item) => {
         if (!item.includes('x ')) {
@@ -179,7 +179,7 @@ const itemArrayToIngredientArray = (items) => {
 };
 
 /**
- * @param {Ingredient[]} ingredients
+ * @param {RecipeHelperIngredient[]} ingredients
  * @returns {string[]}
  */
 const ingredientArrayToItemArray = (ingredients) => {
@@ -187,7 +187,7 @@ const ingredientArrayToItemArray = (ingredients) => {
 };
 
 /**
- * @param {Ingredient[]} ingredients
+ * @param {RecipeHelperIngredient[]} ingredients
  * @param {string} item
  * @returns {boolean}
  */
@@ -196,12 +196,12 @@ const ingredientArrayContainsItem = (ingredients, item) => {
 };
 
 /**
- * @param {Ingredient[]} arr1
- * @param {Ingredient[]} arr2
- * @returns {Ingredient[]}
+ * @param {RecipeHelperIngredient[]} arr1
+ * @param {RecipeHelperIngredient[]} arr2
+ * @returns {RecipeHelperIngredient[]}
  */
 const zipIngredientArrays = (arr1, arr2) => {
-    /** @type {Ingredient[]} */
+    /** @type {RecipeHelperIngredient[]} */
     let zipped = [];
     arr1.forEach((ingredient) => {
         if (ingredientArrayContainsItem(arr1, ingredient.item)) {

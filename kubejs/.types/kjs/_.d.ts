@@ -346,12 +346,12 @@ declare namespace internal.kjs.kubejs {
 
     import RecipesEventJS = dev.latvian.mods.kubejs.recipe.RecipesEventJS;
     import TagEventJS = dev.latvian.mods.kubejs.server.tag.TagEventJS;
-    import CommandEventJS = dev.latvian.mods.kubejs.server.CommandEventJS;
+    import CommandRegistryEventJS = dev.latvian.mods.kubejs.command.CommandRegistryEventJS;
 
     interface ServerEvents {
         recipes(callback: (event: RecipesEventJS) => void): void;
         tags(key: 'item' | 'block' | 'fluid', callback: (event: TagEventJS) => void): void;
-        commandRegistry(callback: (event: CommandEventJS) => void): void;
+        commandRegistry(callback: (event: CommandRegistryEventJS) => void): void;
     }
 
     import BlockModificationEventJS = dev.latvian.mods.kubejs.block.BlockModificationEventJS;
@@ -367,6 +367,7 @@ declare namespace internal.kjs.kubejs {
         placed(callback: (event: BlockPlacedEventJS) => void): void;
         placed(block: ExtraSupportsBlock, callback: (event: BlockPlacedEventJS) => void): void;
         broken(callback: (event: BlockBrokenEventJS) => void): void;
+        broken(block: ExtraSupportsBlock, callback: (event: BlockBrokenEventJS) => void): void;
         rightClicked(callback: (event: BlockRightClickedEventJS) => void): void;
         rightClicked(block: ExtraSupportsBlock, callback: (event: BlockRightClickedEventJS) => void): void;
     }
@@ -397,7 +398,6 @@ declare namespace internal.kjs.rhino {
 }
 
 declare namespace internal.kjs.jsonio {
-
     interface JsonIO extends $object<'internal.kjs.jsonio.JsonIO'> {}
 
     const JsonIO: $class<JsonIO> & {
@@ -424,7 +424,6 @@ declare const Fluid: typeof internal.dev.latvian.mods.kubejs.bindings.FluidWrapp
 
 declare const StartupEvents: internal.kjs.kubejs.StartupEvents;
 declare const ServerEvents: internal.kjs.kubejs.ServerEvents;
-declare const CommandEventJS: internal.dev.latvian.mods.kubejs.server.CommandEventJS;
 declare const ItemEvents: internal.kjs.kubejs.ItemEvents;
 declare const JEIEvents: internal.kjs.kubejs.JEIEvents;
 declare const BlockEvents: internal.kjs.kubejs.BlockEvents;

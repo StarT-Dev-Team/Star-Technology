@@ -151,7 +151,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
     interface GTRecipeType extends $object<'com.gregtechceu.gtceu.api.recipe.GTRecipeType'> {
         recipeBuilder(id: string): GTRecipeBuilder;
         setMaxIOSize(maxInputs: number, maxOutputs: number, maxFluidInputs: number, maxFluidOutputs: number): this;
-        addDataInfo(dataInfo: $wrapped<Function<CompoundTag, String>>): this;
+        addDataInfo(dataInfo: $wrapped<Function<CompoundTag, string>>): this;
         addCustomRecipeLogic(recipeLogic: GTRecipeType$ICustomRecipeLogic): this;
         addToMainCategory(recipe: GTRecipe): void;
     }
@@ -217,7 +217,9 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredic
         test(tag: $wrapped<Tag>): boolean;
     }
 
-    const NBTPredicates: $class<'com.gregtecgceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicates'> & {
+    interface NBTPredicates extends $object<'com.gregtecgceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicates'> {}
+
+    const NBTPredicates: $class<NBTPredicates> & {
         eqInt(key: string, value: number): NBTPredicate;
         eqFloat(key: string, value: number): NBTPredicate;
         eqDouble(key: string, value: number): NBTPredicate;

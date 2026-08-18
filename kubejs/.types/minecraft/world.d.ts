@@ -596,23 +596,16 @@ declare namespace internal.net.minecraft.world.entity.ai.attributes {
 }
 
 declare namespace internal.net.minecraft.world.entity.player {
-    interface Inventory extends $object<'net.minecraft.world.entity.player.Inventory', java.lang.Object, Container> {}
-    interface Component extends $object<'net.minecraft.network.chat.Component', java.lang.Object, java.lang.Object> {
-        getString(): String;
-    }
+    interface Inventory extends $object<'net.minecraft.world.entity.player.Inventory', Container> {}
+
+    import Component = net.minecraft.network.chat.Component;
 
     interface Player extends $object<'net.minecraft.world.entity.player.Player', LivingEntity> {
         getInventory(): Inventory;
-        sendSystemMessage(message: unknown): void;
         get inventory(): Inventory;
-        name: Component;
-        stages: KubeStages;
-    }
-
-    interface KubeStages {
-        has(stage: String): boolean;
-        add(stage: String): void;
-        remove(stage: String): void;
+        sendSystemMessage(message: unknown): void;
+        getName(): Component;
+        get name(): Component;
     }
 }
 
