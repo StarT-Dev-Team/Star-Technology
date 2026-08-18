@@ -18,7 +18,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .shaped('laserio:laser_connector', [' P ', 'GCG', 'III'], {
             P: 'minecraft:ender_pearl',
-            G: 'forge:glass_panes',
+            G: '#forge:glass_panes',
             C: 'laserio:logic_chip',
             I: 'gtceu:iron_plate',
         })
@@ -29,7 +29,7 @@ ServerEvents.recipes((event) => {
         .shaped('laserio:laser_connector_advanced', ['DPD', 'GCG', 'ggg'], {
             P: 'minecraft:ender_pearl',
             D: 'minecraft:diamond',
-            G: 'forge:glass_panes',
+            G: '#forge:glass_panes',
             C: 'laserio:laser_connector',
             g: 'gtceu:gold_plate',
         })
@@ -39,7 +39,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .shaped('laserio:laser_node', ['PGP', 'GCG', 'PGP'], {
             P: 'gtceu:iron_plate',
-            G: 'forge:glass_panes',
+            G: '#forge:glass_panes',
             C: 'laserio:laser_connector',
         })
         .addMaterialInfo()
@@ -132,7 +132,7 @@ ServerEvents.recipes((event) => {
             G: 'gtceu:electrum_plate',
             P: 'laserio:logic_chip',
             R: 'minecraft:redstone',
-            C: 'gtceu:tin_cable',
+            C: 'gtceu:tin_single_cable',
         })
         .addMaterialInfo()
         .id(id('overclocker_node'));
@@ -142,7 +142,7 @@ ServerEvents.recipes((event) => {
             G: 'gtceu:electrum_plate',
             P: 'laserio:logic_chip',
             R: 'minecraft:redstone',
-            C: 'gtceu:tin_cable',
+            C: 'gtceu:tin_single_cable',
         })
         .addMaterialInfo()
         .id(id('overclocker_card'));
