@@ -6,20 +6,22 @@ declare namespace internal.dev.latvian.mods.kubejs.level {
     import Direction = net.minecraft.core.Direction;
 
     interface BlockContainerJS extends $object<'dev.latvian.mods.kubejs.level.BlockContainerJS'> {
+        getMinecraftLevel(): Level;
         get minecraftLevel(): Level;
-
         getLevel(): Level;
         get level(): Level;
         getPos(): BlockPos;
         get pos(): BlockPos;
         getId(): string;
         get id(): string;
+        getX(): number;
+        get x(): number;
+        getY(): number;
+        get y(): number;
+        getZ(): number;
+        get z(): number;
         mergeEntityData(tag: $wrapped<CompoundTag> | null): void;
         popItemFromFace(item: $wrapped<ItemStack>, direction: $wrapped<Direction>): void;
-
-        x: number;
-        y: number;
-        z: number;
     }
 
     import EventJS = event.EventJS;

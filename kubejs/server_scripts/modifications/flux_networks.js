@@ -29,7 +29,7 @@ ServerEvents.recipes((event) => {
                     return Item.of(id);
                 }
 
-                let data = fluxConfigurator.nbt.FluxConfig;
+                let data = /** @type {any} */ (fluxConfigurator.nbt.FluxConfig);
                 let newData = {
                     // eslint-disable-next-line id-match
                     FluxData: {

@@ -57,6 +57,7 @@ export default [
                 $SectionPos: 'readonly',
                 GuiTextureGroup: 'readonly',
                 JavaAdapter: 'readonly',
+                JsonIO: 'readonly',
                 // GTm Globals
                 $MultiblockMachineDefinition: 'readonly',
                 GTRegistries: 'readonly',
@@ -159,6 +160,7 @@ export default [
                 UXV: 'readonly',
                 OpV: 'readonly',
                 MAX: 'readonly',
+                T: 'writable',
             },
         },
         rules: {
