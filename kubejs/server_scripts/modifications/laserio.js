@@ -52,13 +52,13 @@ ServerEvents.recipes((event) => {
         { card: 'card_redstone', outer: 'minecraft:redstone', inner: 'gtceu:red_alloy_plate' },
     ].forEach((card) => {
         event.recipes.gtceu
-            .shaped(`laserio:${card.card}`, ['OIO', 'FCF', 'BfB'], {
+            .shaped(`laserio:${card.card}`, ['OIO', 'FCF', 'BRB'], {
                 O: card.outer,
                 I: card.inner,
                 F: 'gtceu:zinc_foil',
                 C: 'laserio:laser_connector',
                 B: 'gtceu:brass_bolt',
-                f: 'gtceu:fine_red_alloy_wire',
+                R: 'gtceu:fine_red_alloy_wire',
             })
             .addMaterialInfo()
             .id(id(card.card));

@@ -14,12 +14,10 @@ ServerEvents.tags('item', (event) => {
 
     if (blacklistConfig) {
         blacklistConfig.items.forEach((/** @type {string} */ itemId) => {
-            itemId.replace('"', '');
             event.add('c:hidden_from_recipe_viewers', itemId);
         });
 
         blacklistConfig.fluids.forEach((/** @type {string} */ fluidId) => {
-            fluidId.replace('"', '');
             event.add('c:hidden_from_recipe_viewers', `${fluidId}_bucket`);
         });
     }
@@ -28,7 +26,6 @@ ServerEvents.tags('item', (event) => {
 ServerEvents.tags('fluid', (event) => {
     if (blacklistConfig) {
         blacklistConfig.fluids.forEach((/** @type {string} */ fluidId) => {
-            fluidId.replace('"', '');
             event.add('c:hidden_from_recipe_viewers', fluidId);
         });
     }
