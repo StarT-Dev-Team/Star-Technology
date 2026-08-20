@@ -204,22 +204,18 @@ const zipIngredientArrays = (arr1, arr2) => {
     /** @type {RecipeHelperIngredient[]} */
     let zipped = [];
     arr1.forEach((ingredient) => {
-        if (ingredientArrayContainsItem(arr1, ingredient.item)) {
+        if (ingredientArrayContainsItem(zipped, ingredient.item)) {
             let index = zipped.findIndex((zippedIngredient) => zippedIngredient.item === ingredient.item);
-            if (index === -1) {
-                zipped[index].amount += ingredient.amount;
-            }
+            zipped[index].amount += ingredient.amount;
         } else {
             zipped.push(ingredient);
         }
     });
 
     arr2.forEach((ingredient) => {
-        if (ingredientArrayContainsItem(arr2, ingredient.item)) {
+        if (ingredientArrayContainsItem(zipped, ingredient.item)) {
             let index = zipped.findIndex((zippedIngredient) => zippedIngredient.item === ingredient.item);
-            if (index === -1) {
-                zipped[index].amount += ingredient.amount;
-            }
+            zipped[index].amount += ingredient.amount;
         } else {
             zipped.push(ingredient);
         }
@@ -238,7 +234,6 @@ const zipItemArrays = (arr1, arr2) => {
     );
 };
 
-global.zipIngredientArrays = zipIngredientArrays;
 global.ingredientArrayToItemArray = ingredientArrayToItemArray;
 global.itemArrayToIngredientArray = itemArrayToIngredientArray;
 global.zipIngredientArrays = zipIngredientArrays;

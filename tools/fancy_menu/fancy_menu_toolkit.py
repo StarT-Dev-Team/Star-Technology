@@ -22,7 +22,7 @@ def getPanoramaNames(folder):
 def allowFancyMenuEditing(bool):
     optionsDir = os.path.abspath(os.path.join(fancyMenuFolder, 'options.txt'))
 
-    optionsFileRead = open(optionsDir, )
+    optionsFileRead = open(optionsDir)
     optionsContent = optionsFileRead.read()
     optionsFileRead.close()
 
