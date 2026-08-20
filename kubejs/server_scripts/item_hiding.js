@@ -1,3 +1,9 @@
+/** @type {{items: string[], fluids: string[]}} */
+let blacklistConfig = JSON.parse(JsonIO.readJson('kubejs/config/item_hiding.json'));
+if (!blacklistConfig) {
+    console.warn("Config file doesn't exist or is empty");
+}
+
 ServerEvents.tags('item', (event) => {
     Ingredient.of('@vintage').stacks.forEach((item) => {
         const materialRegex = /(.*_(spring|rod|wire|sheet|nugget|ingot|block|sulfate))|sulfur.*/;
@@ -6,14 +12,24 @@ ServerEvents.tags('item', (event) => {
         }
     });
 
-    /** @type {string[]} */
-    let hiddenItems = JSON.parse(JsonIO.readJson('kubejs/config/item_hiding.json'));
-    if (!hiddenItems) {
-        console.warn("Config file doesn't exist or is empty");
-    } else {
-        hiddenItems.forEach((/** @type {string} */ itemId) => {
+    if (blacklistConfig) {
+        blacklistConfig.items.forEach((/** @type {string} */ itemId) => {
             itemId.replace('"', '');
             event.add('c:hidden_from_recipe_viewers', itemId);
+        });
+
+        blacklistConfig.fluids.forEach((/** @type {string} */ fluidId) => {
+            fluidId.replace('"', '');
+            event.add('c:hidden_from_recipe_viewers', `${fluidId}_bucket`);
+        });
+    }
+});
+
+ServerEvents.tags('fluid', (event) => {
+    if (blacklistConfig) {
+        blacklistConfig.fluids.forEach((/** @type {string} */ fluidId) => {
+            fluidId.replace('"', '');
+            event.add('c:hidden_from_recipe_viewers', fluidId);
         });
     }
 });
