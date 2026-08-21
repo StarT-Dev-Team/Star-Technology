@@ -124,27 +124,33 @@ ServerEvents.recipes((event) => {
         'kubejs:abyssal_processor_mainframe'
     );
 
-    researchBuilder(
-        riftAss,
-        'dsg_dhd',
-        [
-            'sgjourney:milky_way_dhd',
-            'kubejs:dsg_stellar_dialer',
-            '6x ' + uRune,
-            '6x ' + sRune,
-            '6x ' + gRune,
-            '6x ' + vRune,
-            '6x ' + iRune,
-            '6x ' + tRune,
-        ],
-        ['gtceu:neutrindium_soldering_alloy 9216', 'gtceu:faematter 7500', 'gtceu:draconic_stabilization_mixture 6250'],
-        ['sgjourney:pegasus_dhd'],
-        6000,
-        500,
-        500 * 1200,
-        GTValues.VHA[UIV],
-        'sgjourney:milky_way_dhd'
-    );
+    global.withModsLoaded('sgjourney', () => {
+        researchBuilder(
+            riftAss,
+            'dsg_dhd',
+            [
+                'sgjourney:milky_way_dhd',
+                'kubejs:dsg_stellar_dialer',
+                '6x ' + uRune,
+                '6x ' + sRune,
+                '6x ' + gRune,
+                '6x ' + vRune,
+                '6x ' + iRune,
+                '6x ' + tRune,
+            ],
+            [
+                'gtceu:neutrindium_soldering_alloy 9216',
+                'gtceu:faematter 7500',
+                'gtceu:draconic_stabilization_mixture 6250',
+            ],
+            ['sgjourney:pegasus_dhd'],
+            6000,
+            500,
+            500 * 1200,
+            GTValues.VHA[UIV],
+            'sgjourney:milky_way_dhd'
+        );
+    });
 
     researchBuilder(
         riftAss,
@@ -756,25 +762,27 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UIV);
 
-    event.recipes.create
-        .mechanical_crafting(
-            'sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
-            [
-                /* prettier-ignore-start */
-                ' CRCRC ',
-                'RR   RR',
-                'C     C',
-                'R     R',
-                'R     R',
-                'CR   RC',
-                ' RCBCR ',
-                /* prettier-ignore-end*/
-            ],
-            {
-                R: 'kubejs:draconic_stargate_ring_block',
-                C: 'kubejs:draconic_stargate_chevron_block',
-                B: 'kubejs:draconic_stargate_base_block',
-            }
-        )
-        .id('start:shaped/dsg');
+    global.withModsLoaded(['sgjourney', 'create'], () => {
+        event.recipes.create
+            .mechanical_crafting(
+                'sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
+                [
+                    /* prettier-ignore-start */
+                    ' CRCRC ',
+                    'RR   RR',
+                    'C     C',
+                    'R     R',
+                    'R     R',
+                    'CR   RC',
+                    ' RCBCR ',
+                    /* prettier-ignore-end*/
+                ],
+                {
+                    R: 'kubejs:draconic_stargate_ring_block',
+                    C: 'kubejs:draconic_stargate_chevron_block',
+                    B: 'kubejs:draconic_stargate_base_block',
+                }
+            )
+            .id('start:shaped/dsg');
+    });
 });

@@ -1,25 +1,28 @@
+// requires: thermal
 ServerEvents.recipes((event) => {
     const id = global.id;
 
     //Early Rubbers
-    event.custom({
-        type: 'farmersdelight:cooking',
-        /* eslint-disable */
-        recipe_book_tab: 'misc',
-        /* eslint-enable */
-        ingredients: [
-            {
-                item: 'thermal:rubber',
+    global.withModsLoaded('farmersdelight', () => {
+        event.custom({
+            type: 'farmersdelight:cooking',
+            /* eslint-disable */
+            recipe_book_tab: 'misc',
+            /* eslint-enable */
+            ingredients: [
+                {
+                    item: 'thermal:rubber',
+                },
+                {
+                    item: 'gtceu:small_sulfur_dust',
+                },
+            ],
+            result: {
+                item: 'thermal:cured_rubber',
+                count: 1,
             },
-            {
-                item: 'gtceu:small_sulfur_dust',
-            },
-        ],
-        result: {
-            item: 'thermal:cured_rubber',
-            count: 1,
-        },
-        cookingtime: 200,
+            cookingtime: 200,
+        });
     });
 
     event.recipes.create

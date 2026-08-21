@@ -45,12 +45,14 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
-    event
-        .shaped(Item.of('kubejs:meshblock'), ['SMS', 'MMM', 'SMS'], {
-            M: 'exnihilosequentia:string_mesh',
-            S: 'gtceu:treated_wood_rod',
-        })
-        .id('start:shaped/mesh_block');
+    global.withModsLoaded('exnihilosequentia', () => {
+        event
+            .shaped(Item.of('kubejs:meshblock'), ['SMS', 'MMM', 'SMS'], {
+                M: 'exnihilosequentia:string_mesh',
+                S: 'gtceu:treated_wood_rod',
+            })
+            .id('start:shaped/mesh_block');
+    });
 
     event.recipes.gtceu
         .assembler(id('meshblock'))
