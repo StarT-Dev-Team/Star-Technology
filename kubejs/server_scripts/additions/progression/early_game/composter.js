@@ -139,7 +139,12 @@ ServerEvents.recipes((event) => {
 
         compost50.push('farmersdelight:kelp_roll_slice', 'farmersdelight:pumpkin_slice', 'farmersdelight:cabbage_leaf');
 
-        compost65.push('#farmersdelight:wild_crops', 'farmersdelight:cabbage', 'farmersdelight:pie_crust', '#forge:vegetables');
+        compost65.push(
+            '#farmersdelight:wild_crops',
+            'farmersdelight:cabbage',
+            'farmersdelight:pie_crust',
+            '#forge:vegetables'
+        );
 
         compost85.push(
             'farmersdelight:rice_bale',
@@ -198,23 +203,13 @@ ServerEvents.recipes((event) => {
         )
     );
 
-    compost30.forEach((organic) => {
-        composting(3000, organic);
-    });
+    compost30.forEach((organic) => composting(3000, organic));
 
-    compost50.forEach((organic) => {
-        composting(5000, organic);
-    });
+    compost50.forEach((organic) => composting(5000, organic));
 
-    compost65.forEach((organic) => {
-        composting(6500, organic);
-    });
+    compost65.forEach((organic) => composting(6500, organic));
 
-    compost85.forEach((organic) => {
-        composting(8500, organic);
-    });
+    compost85.forEach((organic) => composting(8500, organic));
 
-    compost100.forEach((organic) => {
-        composting(10000, organic);
-    });
+    compost100.forEach((organic) => composting(10000, organic));
 });
