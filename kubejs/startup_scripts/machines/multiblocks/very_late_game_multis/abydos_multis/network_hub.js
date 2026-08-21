@@ -30,9 +30,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     X: P.anyOf([
-                        P.gtBlock('computer_casing', { minLayer: 4 }),
                         P.ability(PA.compIn, { minLayer: 1, view: 1 }),
                         P.ability(PA.compOut, { view: 1 }),
+                        P.gtBlock('computer_casing', { minLayer: 4 }),
                     ]),
                 })
                 .build()
