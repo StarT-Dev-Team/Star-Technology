@@ -12,6 +12,6 @@ ServerEvents.recipes((event) => {
     });
 
     if (!foundRecipes) {
-        console.info(`No recipes found that matche ${matcher}`);
+        console.log('No recipes found that match ', matcher);
     }
 });

@@ -65,7 +65,16 @@ ServerEvents.recipes((event) => {
         assemblerFluid(id1, output, inputit, inputfl, eu, circuit);
     };
 
-    //Replaced Inputs
+    /**
+     * @param {string} output
+     * @param {[string, string, string] | [string, string]} pattern
+     * @param {Record<string, string>} key
+     */
+    const shapedRecipeRem = (output, pattern, key) => {
+        event.remove({ output: `${output}` });
+        event.shaped(`${output}`, pattern, key).id(`start:shaped/ae/${output.split(':')[1]}`);
+    };
+
     /**
      * @param {string} recId
      * @param {string} target
@@ -573,16 +582,6 @@ ServerEvents.recipes((event) => {
         .itemOutputs('4x ae2:fluix_glass_cable')
         .duration(40)
         .EUt(16);
-
-    /**
-     * @param {string} output
-     * @param {[string, string, string] | [string, string]} pattern
-     * @param {Record<string, string>} key
-     */
-    const shapedRecipeRem = (output, pattern, key) => {
-        event.remove({ output: `${output}` });
-        event.shaped(`${output}`, pattern, key).id(`start:shaped/ae/${output.split(':')[1]}`);
-    };
 
     shapedRecipeRem('ae2:energy_cell', ['ABA', 'BCB', 'ABA'], {
         A: 'gtceu:silicon_plate',
