@@ -31,10 +31,15 @@ def createDebugFiles(folder, trace, index):
         if (os.path.isdir(filePath)):
             modifiedDirectories += createDebugFiles(filePath, f'{trace}/{script}', index + 1)
 
-    debugFileAdress = os.path.abspath(os.path.join(folder, 'x_debug.js'))
-    debugFile = open(debugFileAdress, 'w')
-    debugFile.write(f'''ServerEvents.recipes((event) => {{\n    console.log(\'Succesfully handled folder "{trace}"\');\n}});\n''')
-    debugFile.close()
+    frontDebugFileAdress = os.path.abspath(os.path.join(folder, '0_debug.js'))
+    frontDebugFile = open(frontDebugFileAdress, 'w')
+    frontDebugFile.write(f'''ServerEvents.recipes((event) => {{\n    console.log(\'Entering folder "{trace}"\');\n}});\n''')
+    frontDebugFile.close()
+
+    backDebugFileAdress = os.path.abspath(os.path.join(folder, 'x_debug.js'))
+    backDebugFile = open(backDebugFileAdress, 'w')
+    backDebugFile.write(f'''ServerEvents.recipes((event) => {{\n    console.log(\'Succesfully handled folder "{trace}"\');\n}});\n''')
+    backDebugFile.close()
 
     modifiedDirectories += 1
 
@@ -57,14 +62,24 @@ def deleteDebugFiles(folder, index):
         if (os.path.isdir(filePath)):
             modifiedDirectories += deleteDebugFiles(filePath, index + 1)
 
-    debugFileAdress = os.path.abspath(os.path.join(folder, 'x_debug.js'))
+    modified = False
 
-    if (not os.path.isfile(debugFileAdress)):
-        print(f'[ERROR]: Could not find debug file at adress: \'{debugFileAdress}\'')
-        return 0
-    
-    os.remove(debugFileAdress)
-    modifiedDirectories += 1
+    frontDebugFileAdress = os.path.abspath(os.path.join(folder, '0_debug.js'))
+    backDebugFileAdress = os.path.abspath(os.path.join(folder, 'x_debug.js'))
+
+    if (not os.path.isfile(frontDebugFileAdress)):
+        print(f'[WARN]: Could not find debug file at adress: \'{frontDebugFileAdress}\'')
+    else:
+        os.remove(frontDebugFileAdress)
+        modified = True
+
+    if (not os.path.isfile(backDebugFileAdress)):
+        print(f'[WARN]: Could not find debug file at adress: \'{backDebugFileAdress}\'')
+    else:
+        os.remove(backDebugFileAdress)
+        modified = True
+
+    if (modified): modifiedDirectories += 1
 
     if (index == 0): print(f'Removed debug files to {modifiedDirectories} directories')
     else: return modifiedDirectories

@@ -112,109 +112,126 @@ ServerEvents.recipes((event) => {
         event.recipes.thermal.lapidary_fuel('minecraft:diamond', 300000);
     });
 
-    event.remove({ mod: 'systeams' });
+    isModLoaded('systeams', () => {
+        event.remove({ mod: 'systeams' });
 
-    event.custom({
-        // So prior worlds dont crash
-        type: 'systeams:steam',
-        ingredient: {
-            fluid: 'systeams:steamietest',
-            amount: 1000,
-        },
-        energy: 1000,
-    });
-
-    event.custom({
-        type: 'systeams:steam',
-        ingredient: {
-            // eslint-disable-next-line id-match, camelcase
-            fluid_tag: 'forge:steam',
-            amount: 1000,
-        },
-        energy: 1000,
-    });
-
-    event.custom({
-        type: 'systeams:boiling',
-        ingredient: {
-            fluid: 'minecraft:water',
-            amount: 100,
-        },
-        result: {
-            fluid: 'systeams:steam',
-            amount: 400,
-        },
-    });
-
-    event.custom({
-        type: 'systeams:boiling',
-        ingredient: {
-            // eslint-disable-next-line id-match, camelcase
-            fluid_tag: 'forge:steam',
-            amount: 50,
-        },
-        result: {
-            fluid: 'systeams:steamier',
-            amount: 100,
-        },
-    });
-
-    let steamToIer = new JSONObject();
-    steamToIer.add('amount', 500);
-    steamToIer.add('value', { tag: 'forge:steam' });
-
-    event.recipes.gtceu
-        .fluid_heater(id('steam_tag'))
-        .inputFluids(FluidIngredientJS.of(steamToIer))
-        .outputFluids('systeams:steamier 1000')
-        .duration(20)
-        .EUt(30);
-
-    /**
-     * @param {string} type
-     * @param {string} prior
-     * @param {number} scale
-     */
-    const systeamSteams = (type, prior, scale) => {
-        event.recipes.gtceu
-            .steam_turbine(id(`${type}`))
-            .inputFluids(`systeams:${type} 640`)
-            .outputFluids(`gtceu:distilled_water ${4 - scale}`)
-            .duration(10 + 2 * scale)
-            .EUt(-32);
+        event.custom({
+            // So prior worlds dont crash
+            type: 'systeams:steam',
+            ingredient: {
+                fluid: 'systeams:steamietest',
+                amount: 1000,
+            },
+            energy: 1000,
+        });
 
         event.custom({
             type: 'systeams:steam',
             ingredient: {
-                fluid: `systeams:${type}`,
+                // eslint-disable-next-line id-match, camelcase
+                fluid_tag: 'forge:steam',
                 amount: 1000,
             },
-            energy: 1000 + 200 * scale,
+            energy: 1000,
         });
 
-        if (type !== 'steamier') {
-            event.custom({
-                type: 'systeams:boiling',
-                ingredient: {
-                    fluid: `systeams:${prior}`,
-                    amount: 50,
-                },
-                result: {
-                    fluid: `systeams:${type}`,
-                    amount: 100,
-                },
-            });
+        event.custom({
+            type: 'systeams:boiling',
+            ingredient: {
+                fluid: 'minecraft:water',
+                amount: 100,
+            },
+            result: {
+                fluid: 'systeams:steam',
+                amount: 400,
+            },
+        });
+
+        event.custom({
+            type: 'systeams:boiling',
+            ingredient: {
+                // eslint-disable-next-line id-match, camelcase
+                fluid_tag: 'forge:steam',
+                amount: 50,
+            },
+            result: {
+                fluid: 'systeams:steamier',
+                amount: 100,
+            },
+        });
+
+        let steamToIer = new JSONObject();
+        steamToIer.add('amount', 500);
+        steamToIer.add('value', { tag: 'forge:steam' });
+
+        event.recipes.gtceu
+            .fluid_heater(id('steam_tag'))
+            .inputFluids(FluidIngredientJS.of(steamToIer))
+            .outputFluids('systeams:steamier 1000')
+            .duration(20)
+            .EUt(30);
+
+        /**
+         * @param {string} type
+         * @param {string} prior
+         * @param {number} scale
+         */
+        const systeamSteams = (type, prior, scale) => {
             event.recipes.gtceu
-                .fluid_heater(id(`${type}`))
-                .inputFluids(`systeams:${prior} 500`)
-                .outputFluids(`systeams:${type} 1000`)
-                .duration(20)
-                .EUt(30);
-        }
-    };
-    systeamSteams('steamier', 'steam', 1);
-    systeamSteams('steamiest', 'steamier', 2);
-    systeamSteams('steamiester', 'steamiest', 3);
+                .steam_turbine(id(`${type}`))
+                .inputFluids(`systeams:${type} 640`)
+                .outputFluids(`gtceu:distilled_water ${4 - scale}`)
+                .duration(10 + 2 * scale)
+                .EUt(-32);
+
+            event.custom({
+                type: 'systeams:steam',
+                ingredient: {
+                    fluid: `systeams:${type}`,
+                    amount: 1000,
+                },
+                energy: 1000 + 200 * scale,
+            });
+
+            if (type !== 'steamier') {
+                event.custom({
+                    type: 'systeams:boiling',
+                    ingredient: {
+                        fluid: `systeams:${prior}`,
+                        amount: 50,
+                    },
+                    result: {
+                        fluid: `systeams:${type}`,
+                        amount: 100,
+                    },
+                });
+                event.recipes.gtceu
+                    .fluid_heater(id(`${type}`))
+                    .inputFluids(`systeams:${prior} 500`)
+                    .outputFluids(`systeams:${type} 1000`)
+                    .duration(20)
+                    .EUt(30);
+            }
+        };
+
+        systeamSteams('steamier', 'steam', 1);
+        systeamSteams('steamiest', 'steamier', 2);
+        systeamSteams('steamiester', 'steamiest', 3);
+
+        event.recipes.gtceu
+            .assembler(id('boiler_pipe'))
+            .itemInputs('gtceu:tempered_glass', '3x gtceu:bronze_ring')
+            .itemOutputs('systeams:boiler_pipe')
+            .duration(120)
+            .EUt(112);
+
+        event.recipes.gtceu
+            .assembler(id('steam_dynamo'))
+            .itemInputs('gtceu:lv_machine_hull', 'systeams:boiler_pipe', 'gtceu:black_steel_gear', 'gtceu:lead_rotor')
+            .itemOutputs('systeams:steam_dynamo')
+            .duration(320)
+            .EUt(112);
+    });
 
     event.recipes.gtceu
         .mixer(id('diatron_dust'))
@@ -396,20 +413,4 @@ ServerEvents.recipes((event) => {
         .itemOutputs('thermal:energy_cell')
         .duration(80)
         .EUt(28);
-
-    isModLoaded('systeams', () => {
-        event.recipes.gtceu
-            .assembler(id('boiler_pipe'))
-            .itemInputs('gtceu:tempered_glass', '3x gtceu:bronze_ring')
-            .itemOutputs('systeams:boiler_pipe')
-            .duration(120)
-            .EUt(112);
-
-        event.recipes.gtceu
-            .assembler(id('steam_dynamo'))
-            .itemInputs('gtceu:lv_machine_hull', 'systeams:boiler_pipe', 'gtceu:black_steel_gear', 'gtceu:lead_rotor')
-            .itemOutputs('systeams:steam_dynamo')
-            .duration(320)
-            .EUt(112);
-    });
 });

@@ -74,10 +74,7 @@ ServerEvents.recipes((event) => {
     ];
 
     const compost65 = [
-        '#forge:vegetables',
         '#forge:mushrooms',
-        '#forge:crops/onion',
-        '#forge:crops/tomato',
         'minecraft:melon',
         'minecraft:shroomlight',
         'minecraft:lilac',
@@ -142,7 +139,7 @@ ServerEvents.recipes((event) => {
 
         compost50.push('farmersdelight:kelp_roll_slice', 'farmersdelight:pumpkin_slice', 'farmersdelight:cabbage_leaf');
 
-        compost65.push('#farmersdelight:wild_crops', 'farmersdelight:cabbage', 'farmersdelight:pie_crust');
+        compost65.push('#farmersdelight:wild_crops', 'farmersdelight:cabbage', 'farmersdelight:pie_crust', '#forge:vegetables');
 
         compost85.push(
             'farmersdelight:rice_bale',
@@ -186,7 +183,9 @@ ServerEvents.recipes((event) => {
             'thermal:radish',
             'thermal:bell_pepper',
             'thermal:tea',
-            'thermal:strawberry'
+            'thermal:strawberry',
+            '#forge:crops/onion',
+            '#forge:crops/tomato'
         );
     });
 
