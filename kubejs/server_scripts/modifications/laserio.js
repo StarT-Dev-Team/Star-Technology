@@ -13,7 +13,7 @@ ServerEvents.recipes((event) => {
         .addMaterialInfo()
         .id(id('logic_chip_raw'));
 
-    event.smelting('laserio:logic_chip_raw', 'laserio:logic_chip', 100).xp(1).id(id('logic_chip'));
+    event.smelting('laserio:logic_chip', 'laserio:logic_chip_raw', 100).xp(1).id(id('logic_chip'));
 
     event.recipes.gtceu
         .shaped('laserio:laser_connector', [' P ', 'GCG', 'III'], {
