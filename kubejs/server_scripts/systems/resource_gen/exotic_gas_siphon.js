@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .assembly_line(id('exotic_gas_siphon'))
@@ -41,7 +42,7 @@ ServerEvents.recipes((event) => {
         .duration(1000)
         .EUtVA(ZPM);
 
-    global.withModsLoaded('sgjourney', () => {
+    isModLoaded('sgjourney', () => {
         event.recipes.gtceu
             .exotic_gas_siphon(id('abydos'))
             .circuit(2)

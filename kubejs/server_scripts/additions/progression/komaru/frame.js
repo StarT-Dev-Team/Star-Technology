@@ -1,7 +1,8 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
-    global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('kubejs_create', () => {
         event.recipes.create
             .mechanical_crafting(
                 'start_core:komaru',

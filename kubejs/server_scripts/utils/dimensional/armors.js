@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     [
         { plastic: 'polyethylene', chance: 500, amount: 9216 },
@@ -86,7 +87,7 @@ ServerEvents.recipes((event) => {
             .EUtVHA(UIV);
     });
 
-    global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('kubejs_create', () => {
         event.recipes.create
             .mechanical_crafting(
                 'kubejs:nether_talisman',

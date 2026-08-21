@@ -1,6 +1,7 @@
 // requires: ae2
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.remove({ output: 'ae2:cell_component_1k' });
     event.recipes.gtceu
@@ -34,7 +35,7 @@ ServerEvents.recipes((event) => {
     storageBase('ae2:cell_component_64k', 'ae2:cell_component_16k', 'hv', 'gold', 4);
     storageBase('ae2:cell_component_256k', 'ae2:cell_component_64k', 'ev', 'aluminium', 8);
 
-    global.withModsLoaded('megacells', () => {
+    isModLoaded('megacells', () => {
         storageBase('megacells:cell_component_1m', 'ae2:cell_component_256k', 'iv', 'platinum', 16);
         storageBase('megacells:cell_component_4m', 'megacells:cell_component_1m', 'luv', 'niobium_titanium', 32);
         storageBase('megacells:cell_component_16m', 'megacells:cell_component_4m', 'zpm', 'vanadium_gallium', 64);

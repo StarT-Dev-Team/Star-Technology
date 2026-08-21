@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .wild_garden(id('flowers'))
@@ -45,7 +46,7 @@ ServerEvents.recipes((event) => {
         .EUt(global.vha['lv'])
         .circuit(2);
 
-    global.withModsLoaded('farmersdelight', () => {
+    isModLoaded('farmersdelight', () => {
         event.recipes.gtceu
             .wild_garden(id('wild_crops'))
             .itemInputs('minecraft:bone_meal')
@@ -60,7 +61,7 @@ ServerEvents.recipes((event) => {
             .circuit(3);
     });
 
-    global.withModsLoaded('thermal', () => {
+    isModLoaded('thermal', () => {
         event.recipes.gtceu
             .wild_garden(id('thermal_crops_1'))
             .itemInputs('minecraft:bone_meal')

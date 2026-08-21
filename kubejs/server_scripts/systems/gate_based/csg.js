@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     const cpa = 'component_part_assembly';
     const assline = 'assembly_line';
@@ -262,7 +263,7 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UV);
 
-    global.withModsLoaded('sgjourney', () => {
+    isModLoaded('sgjourney', () => {
         researchBuilder(
             assline,
             'crystal_interface',
@@ -382,7 +383,7 @@ ServerEvents.recipes((event) => {
             .duration(1200)
             .EUtVHA(UV);
 
-        global.withModsLoaded(['sgjourney', 'kubejs_create'], () => {
+        isModLoaded(['sgjourney', 'kubejs_create'], () => {
             event.recipes.create
                 .mechanical_crafting(
                     'sgjourney:classic_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',

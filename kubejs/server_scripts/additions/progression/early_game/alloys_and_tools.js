@@ -1,5 +1,7 @@
 ServerEvents.recipes((event) => {
-    global.withModsLoaded('exnihilosequentia', () => {
+    const isModLoaded = global.withModsLoaded;
+
+    isModLoaded('exnihilosequentia', () => {
         const hammers = {
             wooden: '#minecraft:planks',
             stone: '#forge:cobblestone',
@@ -48,7 +50,7 @@ ServerEvents.recipes((event) => {
         },
     ];
 
-    global.withModsLoaded('thermal_extra', () =>
+    isModLoaded('thermal_extra', () =>
         alloyBlends.push({
             result: 'soul_infused',
             amount: 1,
@@ -74,7 +76,7 @@ ServerEvents.recipes((event) => {
             );
         });
 
-        global.withModsLoaded('kubejs_create', () => {
+        isModLoaded('kubejs_create', () => {
             event.recipes.create
                 .mixing(`${resultStack}_ingot`, ingotIngredients)
                 .heatRequirement('lowheated')

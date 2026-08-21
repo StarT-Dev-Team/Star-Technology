@@ -1,9 +1,10 @@
 // requires: thermal
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     //Early Rubbers
-    global.withModsLoaded('farmersdelight', () => {
+    isModLoaded('farmersdelight', () => {
         event.custom({
             type: 'farmersdelight:cooking',
             /* eslint-disable */
@@ -25,8 +26,8 @@ ServerEvents.recipes((event) => {
         });
     });
 
-    global.withModsLoaded('thermal', () => {
-        global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('thermal', () => {
+        isModLoaded('kubejs_create', () => {
             event.recipes.create
                 .mixing('3x thermal:cured_rubber', ['3x thermal:rubber', '#forge:dusts/sulfur'])
                 .heatRequirement('lowheated')

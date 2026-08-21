@@ -1,6 +1,7 @@
 // requires: ae2
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     // Credit for the idea of uncrafting Crafting Storage and Storage Cells in packers goes to AncientSkies
 
@@ -55,7 +56,7 @@ ServerEvents.recipes((event) => {
             .duration(100)
             .EUt(7);
 
-        global.withModsLoaded('megacells', () => {
+        isModLoaded('megacells', () => {
             event.remove({ output: `megacells:${type}_storage_cell_${tier}m` });
             event.recipes.gtceu
                 .assembler(id(`${type}_storage_cell_${tier}m`))
@@ -88,7 +89,7 @@ ServerEvents.recipes((event) => {
     };
 
     // Duals
-    global.withModsLoaded('expandedae', () => {
+    isModLoaded('expandedae', () => {
         ['dual_cell_housing', 'mega_dual_cell_housing'].forEach((type) => {
             event.remove({ output: `expandedae:${type}` });
             const tierCons = type === 'dual_cell_housing' ? 'MV' : 'IV';
@@ -178,7 +179,7 @@ ServerEvents.recipes((event) => {
         [1, 4, 16, 64, 256].forEach((tier) => expandedAccelerator(tier));
     });
 
-    global.withModsLoaded('megacells', () => {
+    isModLoaded('megacells', () => {
         event.remove({ id: 'megacells:cells/standard/bulk_item_cell' });
         event.recipes.gtceu
             .assembler(id('bulk_item_cell'))
@@ -237,7 +238,7 @@ ServerEvents.recipes((event) => {
             .circuit(1)
             .EUt(1920);
 
-        global.withModsLoaded('expandedae', () => {
+        isModLoaded('expandedae', () => {
             event.recipes.gtceu
                 .draco_infusion(id('singularity_crafting_storage'))
                 .itemInputs(
@@ -278,7 +279,7 @@ ServerEvents.recipes((event) => {
             .duration(100)
             .EUt(7);
 
-        global.withModsLoaded('megacells', () => {
+        isModLoaded('megacells', () => {
             event.remove({ output: `megacells:${tier}m_crafting_storage` });
             event.recipes.gtceu
                 .canner(id(`${tier}m_crafting_storage`))
@@ -326,7 +327,7 @@ ServerEvents.recipes((event) => {
             .duration(100)
             .EUt(7);
 
-        global.withModsLoaded('megacells', () => {
+        isModLoaded('megacells', () => {
             if (Mega) {
                 event.remove({ output: `megacells:mega_crafting_${output}` });
                 event.recipes.gtceu

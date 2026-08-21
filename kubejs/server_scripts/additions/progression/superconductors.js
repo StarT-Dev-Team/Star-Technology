@@ -1,7 +1,8 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
-    global.withModsLoaded('thermal_extra', () => {
+    isModLoaded('thermal_extra', () => {
         event.recipes.gtceu
             .macerator(id('soul_sand_dust'))
             .itemInputs('minecraft:soul_sand')

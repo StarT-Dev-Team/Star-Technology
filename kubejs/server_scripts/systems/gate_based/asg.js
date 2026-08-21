@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     const cpa = 'component_part_assembly';
     const assline = 'assembly_line';
@@ -95,7 +96,7 @@ ServerEvents.recipes((event) => {
         'kubejs:runic_processor_mainframe'
     );
 
-    global.withModsLoaded('sgjourney', () => {
+    isModLoaded('sgjourney', () => {
         researchBuilder(
             cpa,
             'asg_dhd',
@@ -523,7 +524,7 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UEV);
 
-    global.withModsLoaded(['sgjourney', 'kubejs_create'], () => {
+    isModLoaded(['sgjourney', 'kubejs_create'], () => {
         event.recipes.create
             .mechanical_crafting(
                 'sgjourney:milky_way_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',

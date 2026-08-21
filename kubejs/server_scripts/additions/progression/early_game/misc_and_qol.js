@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event
         .shaped(Item.of('16x minecraft:stick'), ['L', 'L'], {
@@ -13,7 +14,7 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/bulk_chest');
 
-    global.withModsLoaded('thermal', () => {
+    isModLoaded('thermal', () => {
         event
             .shaped(Item.of('gtceu:rubber_plate'), ['H', 'R', 'R'], {
                 H: '#forge:tools/hammers',
@@ -51,8 +52,8 @@ ServerEvents.recipes((event) => {
         .keepIngredient('gtceu:brick_wooden_form')
         .id('start:shaped/compressed_fireclay');
 
-    global.withModsLoaded('kubejs_create', () => {
-        global.withModsLoaded('thermal', () =>
+    isModLoaded('kubejs_create', () => {
+        isModLoaded('thermal', () =>
             event.recipes.create
                 .pressing('gtceu:rubber_plate', 'thermal:cured_rubber')
                 .id('start:pressing/rubber_plate')
@@ -77,7 +78,7 @@ ServerEvents.recipes((event) => {
         .keepIngredient('gtceu:brick_wooden_form')
         .id('start:shaped/compressed_clay');
 
-    global.withModsLoaded('thermal', () => {
+    isModLoaded('thermal', () => {
         event
             .shaped(Item.of('thermal:redstone_servo', 1), ['RPR', ' I ', 'RPR'], {
                 R: 'minecraft:redstone',
@@ -117,7 +118,7 @@ ServerEvents.recipes((event) => {
         .id('minecraft:moss_block');
 
     //pebble compressor recipes
-    global.withModsLoaded('exnihilosequentia', () =>
+    isModLoaded('exnihilosequentia', () =>
         [
             'diorite',
             'blackstone',

@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     const assline = 'assembly_line';
     const riftAss = 'riftic_infusion_assembly';
@@ -124,7 +125,7 @@ ServerEvents.recipes((event) => {
         'kubejs:abyssal_processor_mainframe'
     );
 
-    global.withModsLoaded('sgjourney', () => {
+    isModLoaded('sgjourney', () => {
         researchBuilder(
             riftAss,
             'dsg_dhd',
@@ -762,7 +763,7 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UIV);
 
-    global.withModsLoaded(['sgjourney', 'kubejs_create'], () => {
+    isModLoaded(['sgjourney', 'kubejs_create'], () => {
         event.recipes.create
             .mechanical_crafting(
                 'sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',

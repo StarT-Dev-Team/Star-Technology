@@ -1,6 +1,7 @@
 // requires: ae2
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     /** @typedef {internal.$wrapped<internal.dev.latvian.mods.kubejs.item.InputItem>} ItemInput */
 
@@ -89,7 +90,7 @@ ServerEvents.recipes((event) => {
     /**@type {{upgrade: string, main: string, addition: string}[]} */
     const ppuUpgradesArray = [];
 
-    global.withModsLoaded('megacells', () => {
+    isModLoaded('megacells', () => {
         assemblerFluidRem(
             'mega_energy_cell',
             'megacells:mega_energy_cell',
@@ -124,7 +125,7 @@ ServerEvents.recipes((event) => {
             GTValues.VA[HV]
         );
 
-        global.withModsLoaded('expandedae', () => {
+        isModLoaded('expandedae', () => {
             assemblerFluidRem(
                 'expanded_energy_cell',
                 'expandedae:exp_energy_cell',
@@ -183,7 +184,7 @@ ServerEvents.recipes((event) => {
             );
         });
 
-        global.withModsLoaded('expatternprovider', () => {
+        isModLoaded('expatternprovider', () => {
             assemblerFluid(
                 'ex_interface',
                 'expatternprovider:ex_interface',
@@ -227,7 +228,7 @@ ServerEvents.recipes((event) => {
         );
     });
 
-    global.withModsLoaded('expatternprovider', () => {
+    isModLoaded('expatternprovider', () => {
         assemblerFluid(
             'oversize_interface',
             'expatternprovider:oversize_interface',
@@ -236,7 +237,7 @@ ServerEvents.recipes((event) => {
             GTValues.VA[EV]
         );
 
-        global.withModsLoaded('expandedae', () => {
+        isModLoaded('expandedae', () => {
             assemblerFluid(
                 'expanded_pattern_provider',
                 'expandedae:exp_pattern_provider',
@@ -501,7 +502,7 @@ ServerEvents.recipes((event) => {
         assemblerSpecEx('precise', 'gtceu:mv_robot_arm');
     });
 
-    global.withModsLoaded('expandedae', () => {
+    isModLoaded('expandedae', () => {
         assemblerFluid(
             'giga_pattern_provider',
             'expandedae:giga_pattern_provider',
@@ -693,7 +694,7 @@ ServerEvents.recipes((event) => {
         D: 'minecraft:redstone',
     });
 
-    global.withModsLoaded('ae2wtlib', () => {
+    isModLoaded('ae2wtlib', () => {
         shapedRecipeRem('ae2wtlib:magnet_card', ['ABA', 'ACA', 'EDE'], {
             A: 'gtceu:certus_quartz_skystone_alloy_plate',
             B: 'gtceu:lv_field_generator',
@@ -709,7 +710,7 @@ ServerEvents.recipes((event) => {
         });
     });
 
-    global.withModsLoaded('merequester', () => {
+    isModLoaded('merequester', () => {
         shapedRecipeRem('merequester:requester', ['ABA', 'CDC', 'EFE'], {
             A: 'gtceu:certus_quartz_skystone_alloy_plate',
             B: '#ae2:interface',
@@ -766,7 +767,7 @@ ServerEvents.recipes((event) => {
         GTValues.VA[EV]
     );
 
-    global.withModsLoaded('expandedgt', () => {
+    isModLoaded('expandedgt', () => {
         // ME Hatches
 
         /** @type {const} */ (['luv', 'zpm']).forEach((tier) => {
@@ -909,7 +910,7 @@ ServerEvents.recipes((event) => {
     repIn('expatternprovider:water_cell', 'minecraft:diamond', 'gtceu:double_diamond_skystone_alloy_plate');
     repIn('expatternprovider:cobblestone_cell', 'minecraft:diamond', 'gtceu:double_diamond_skystone_alloy_plate');
 
-    global.withModsLoaded('aeinfinitybooster', () => {
+    isModLoaded('aeinfinitybooster', () => {
         repIn(
             'aeinfinitybooster:infinity_card',
             'minecraft:netherite_ingot',

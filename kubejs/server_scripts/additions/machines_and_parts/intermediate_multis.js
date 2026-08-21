@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .assembler(id('multiblock_upgrade_kit'))
@@ -35,7 +36,7 @@ ServerEvents.recipes((event) => {
     ].forEach((machine) => {
         let controllerId = `gtceu:${machine !== 'rock_crusher' ? 't_' : ''}large_${machine}`;
 
-        global.withModsLoaded('kubejs_create', () => {
+        isModLoaded('kubejs_create', () => {
             event.recipes.create
                 .item_application(controllerId, [`gtceu:hv_${machine}`, 'kubejs:multiblock_upgrade_kit'])
                 .id(`start:item_application/large_${machine}`);

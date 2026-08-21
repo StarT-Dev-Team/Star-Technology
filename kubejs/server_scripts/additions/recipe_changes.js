@@ -2,6 +2,7 @@
 
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.replaceInput(
         { id: 'gtceu:macerator/macerate_nether_star_lens' },
@@ -9,7 +10,7 @@ ServerEvents.recipes((event) => {
         'gtceu:nether_star_lens'
     );
 
-    global.withModsLoaded('ae2', () => {
+    isModLoaded('ae2', () => {
         event.replaceOutput({ type: 'gtceu:cutter' }, 'ae2:certus_quartz_crystal', '2x ae2:certus_quartz_crystal');
 
         //certus fixes
@@ -29,7 +30,7 @@ ServerEvents.recipes((event) => {
         });
     });
 
-    global.withModsLoaded('thermal', () => {
+    isModLoaded('thermal', () => {
         event.recipes.gtceu
             .alloy_smelter(id('rubber_sheet_from_thermal'))
             .itemInputs('2x thermal:cured_rubber')
@@ -55,7 +56,7 @@ ServerEvents.recipes((event) => {
     });
 
     const stones = ['calcite', 'tuff', 'dripstone_block'];
-    global.withModsLoaded('exnihilosequentia', () => stones.push('blackstone'));
+    isModLoaded('exnihilosequentia', () => stones.push('blackstone'));
 
     stones.forEach((stone) => {
         event.recipes.gtceu
@@ -109,7 +110,7 @@ ServerEvents.recipes((event) => {
     });
 
     // Mycelium Leather
-    global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('kubejs_create', () => {
         event.recipes.create
             .pressing('kubejs:compressed_mycelium', 'kubejs:mycelium_growth')
             .id('start:pressing/compressed_mycelium');
@@ -248,7 +249,7 @@ ServerEvents.recipes((event) => {
         .duration(98)
         .EUt(2);
 
-    global.withModsLoaded('kubejs_create', () =>
+    isModLoaded('kubejs_create', () =>
         event.recipes.create
             .filling('gtceu:treated_wood_planks', [Fluid.of('gtceu:creosote', 125), '#minecraft:planks'])
             .id('start:filling/treated_wood_planks')

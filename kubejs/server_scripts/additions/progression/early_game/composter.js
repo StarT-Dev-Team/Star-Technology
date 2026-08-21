@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .shaped('gtceu:advanced_composter', ['PRP', 'PGP', 'ISI'], {
@@ -131,7 +132,7 @@ ServerEvents.recipes((event) => {
 
     const compost100 = ['minecraft:cake', 'minecraft:pumpkin_pie'];
 
-    global.withModsLoaded('farmersdelight', () => {
+    isModLoaded('farmersdelight', () => {
         compost30.push(
             'farmersdelight:straw',
             'farmersdelight:sandy_shrub',
@@ -167,7 +168,7 @@ ServerEvents.recipes((event) => {
         );
     });
 
-    global.withModsLoaded('thermal', () => {
+    isModLoaded('thermal', () => {
         compost50.push('thermal:frost_melon_slice');
 
         compost65.push(
@@ -189,7 +190,7 @@ ServerEvents.recipes((event) => {
         );
     });
 
-    global.withModsLoaded('exnihilosequentia', () =>
+    isModLoaded('exnihilosequentia', () =>
         compost100.push(
             'exnihilosequentia:cooked_silkworm',
             'exnihilosequentia:grass_seeds',

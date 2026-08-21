@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event
         .shaped('gtceu:barrel', ['ADA', 'ACA', 'ADA'], {
@@ -57,7 +58,7 @@ ServerEvents.recipes((event) => {
             .duration(15);
     };
 
-    global.withModsLoaded('exnihilosequentia', () => {
+    isModLoaded('exnihilosequentia', () => {
         sbarrel('blackstone', 'exnihilosequentia:witch_water', 'minecraft:lava', 0);
 
         barrel('minecraft:clay', 'exnihilosequentia:dust', 'minecraft:water');
@@ -78,6 +79,11 @@ ServerEvents.recipes((event) => {
     barrel('minecraft:mud', 'minecraft:dirt', 'minecraft:water');
 
     const compost = [
+        '#forge:seeds',
+        '#forge:crops',
+        '#minecraft:flowers',
+        '#minecraft:saplings',
+        '#minecraft:leaves',
         'minecraft:hanging_roots',
         'minecraft:pumpkin_pie',
         'minecraft:string',
@@ -99,11 +105,6 @@ ServerEvents.recipes((event) => {
         'minecraft:bread',
         'minecraft:glow_berries',
         'minecraft:cactus',
-        '#minecraft:flowers',
-        '#forge:seeds',
-        '#forge:crops',
-        '#minecraft:saplings',
-        '#minecraft:leaves',
     ];
 
     /**
@@ -119,7 +120,7 @@ ServerEvents.recipes((event) => {
             .duration(400);
     };
 
-    global.withModsLoaded('exnihilosequentia', () => {
+    isModLoaded('exnihilosequentia', () => {
         compost.push(
             'exnihilosequentia:grass_seeds',
             'exnihilosequentia:mycelium_spores',

@@ -1,6 +1,8 @@
 // priority: 1
 
 ServerEvents.tags('item', (event) => {
+    const isModLoaded = global.withModsLoaded;
+
     event.add('gtceu:circuits/uv', 'kubejs:runic_processor_assembly');
     event.add('gtceu:circuits/zpm', 'kubejs:runic_processor');
     event.add('gtceu:circuits/uhv', 'kubejs:runic_processor_computer');
@@ -20,14 +22,14 @@ ServerEvents.tags('item', (event) => {
     event.add('start_core:komaru/filaments/tier_1', 'kubejs:komaru_filament_t1');
     event.add('start_core:komaru/filaments/tier_2', 'kubejs:komaru_filament_t2');
 
-    global.withModsLoaded('farmersdelight', () => {
+    isModLoaded('farmersdelight', () => {
         const knifeTagRemove = ['netherite', 'flint', 'iron', 'diamond', 'golden'];
         knifeTagRemove.forEach((item) => {
             event.remove('forge:tools/knives', `farmersdelight:${item}_knife`);
         });
     });
 
-    global.withModsLoaded('exnihilosequentia', () => {
+    isModLoaded('exnihilosequentia', () => {
         event.add('exnihilosequentia:mesh', 'exnihilosequentia:string_mesh');
         event.add('exnihilosequentia:mesh', 'exnihilosequentia:flint_mesh');
         event.add('exnihilosequentia:mesh', 'exnihilosequentia:iron_mesh');
@@ -60,13 +62,13 @@ ServerEvents.tags('item', (event) => {
     event.add('gtceu:coal_blocks', 'minecraft:coal_block');
     event.add('gtceu:coal_blocks', 'gtceu:charcoal_block');
 
-    global.withModsLoaded('curios', () => {
+    isModLoaded('curios', () => {
         event.add('curios:charm', 'kubejs:abydos_talisman');
         event.add('curios:head', 'kubejs:nether_talisman');
         event.add('curios:back', 'kubejs:end_talisman');
     });
 
-    global.withModsLoaded('functionalstorage', () => {
+    isModLoaded('functionalstorage', () => {
         ['oak', 'spruce', 'birch', 'jungle', 'acacia', 'dark_oak', 'crimson', 'warped', 'mangrove', 'cherry'].forEach(
             (type) => {
                 event.add('functionalstorage:drawer_size_1', `functionalstorage:${type}_1`);
@@ -76,7 +78,7 @@ ServerEvents.tags('item', (event) => {
         );
     });
 
-    global.withModsLoaded('vintage', () => {
+    isModLoaded('vintage', () => {
         ['vanadium', 'sulfur'].forEach((type) => {
             const nuggetSuffix = type === 'sulfur' ? 'chunk' : 'nugget';
             event.remove(`forge:storage_blocks/${type}`, `vintage:${type}_block`);
@@ -98,7 +100,9 @@ ServerEvents.tags('item', (event) => {
 });
 
 ServerEvents.tags('item', (event) => {
-    global.withModsLoaded('thermal', () => {
+    const isModLoaded = global.withModsLoaded;
+
+    isModLoaded('thermal', () => {
         const thermal = [
             /thermal:signalum.*/,
             /thermal:lumium.*/,
@@ -129,7 +133,7 @@ ServerEvents.tags('item', (event) => {
         });
     });
 
-    global.withModsLoaded('thermal_extra', () => {
+    isModLoaded('thermal_extra', () => {
         const thermalExtra = [
             'thermal_extra:obsidian_dust',
             'thermal_extra:amethyst_dust',
@@ -152,14 +156,14 @@ ServerEvents.tags('item', (event) => {
         });
     });
 
-    global.withModsLoaded('exnihilosequentia', () => {
+    isModLoaded('exnihilosequentia', () => {
         const exnihilo = [/exnihilosequentia:.*_ingot/, /exnihilosequentia:.*_nugget/];
         exnihilo.forEach((item) => {
             event.removeAllTagsFrom(`${item}`);
         });
     });
 
-    global.withModsLoaded('create', () => {
+    isModLoaded('create', () => {
         const create = [
             /create:zinc_.*/,
             /create:copper.*/,
@@ -173,14 +177,14 @@ ServerEvents.tags('item', (event) => {
         });
     });
 
-    global.withModsLoaded('megacells', () => {
+    isModLoaded('megacells', () => {
         const megacells = [/megacells:sky_steel.*/];
         megacells.forEach((item) => {
             event.removeAllTagsFrom(`${item}`);
         });
     });
 
-    global.withModsLoaded('vintage', () => {
+    isModLoaded('vintage', () => {
         const vintage = [/vintage:.*_sheet/, /vintage:.*_rod/, /vintage:.*_wire/];
         vintage.forEach((item) => {
             event.removeAllTagsFrom(`${item}`);
@@ -189,24 +193,26 @@ ServerEvents.tags('item', (event) => {
 });
 
 ServerEvents.tags('block', (event) => {
+    const isModLoaded = global.withModsLoaded;
+
     event.add('minecraft:mineable/pickaxe', /xtonesreworked:glaxx_block_.*/);
 
-    global.withModsLoaded('laserio', () => event.add('forge:mineable/wrench', /^laserio:.*/));
-    global.withModsLoaded('create', () => event.add('forge:mineable/wrench', /^create:.*/));
-    global.withModsLoaded('pipez', () => event.add('forge:mineable/wrench', /^pipez:.*/));
-    global.withModsLoaded('kubejs', () => event.add('forge:mineable/wrench', /^kubejs:.*/));
-    global.withModsLoaded('thermal', () => event.add('forge:mineable/wrench', /^thermal:.*/));
-    global.withModsLoaded('fluxnetworks', () => event.add('forge:mineable/wrench', /^fluxnetworks:.*/));
-    global.withModsLoaded('modularrouters', () => event.add('forge:mineable/wrench', /^modularrouters:.*/));
-    global.withModsLoaded('trashcans', () => event.add('forge:mineable/wrench', /^trashcans:.*/));
+    isModLoaded('laserio', () => event.add('forge:mineable/wrench', /^laserio:.*/));
+    isModLoaded('create', () => event.add('forge:mineable/wrench', /^create:.*/));
+    isModLoaded('pipez', () => event.add('forge:mineable/wrench', /^pipez:.*/));
+    isModLoaded('kubejs', () => event.add('forge:mineable/wrench', /^kubejs:.*/));
+    isModLoaded('thermal', () => event.add('forge:mineable/wrench', /^thermal:.*/));
+    isModLoaded('fluxnetworks', () => event.add('forge:mineable/wrench', /^fluxnetworks:.*/));
+    isModLoaded('modularrouters', () => event.add('forge:mineable/wrench', /^modularrouters:.*/));
+    isModLoaded('trashcans', () => event.add('forge:mineable/wrench', /^trashcans:.*/));
 
     event.remove('mineable/pickaxe', ['gtceu:barrel']);
 
     event.add('mineable/axe', ['gtceu:barrel']);
 
-    global.withModsLoaded('travelanchors', () => event.add('mineable/pickaxe', ['travelanchors:travel_anchor']));
+    isModLoaded('travelanchors', () => event.add('mineable/pickaxe', ['travelanchors:travel_anchor']));
 
-    global.withModsLoaded('vintage', () => {
+    isModLoaded('vintage', () => {
         ['vanadium', 'sulfur'].forEach((type) => {
             event.remove(`forge:storage_blocks/${type}`, `vintage:${type}_block`);
         });
@@ -215,11 +221,13 @@ ServerEvents.tags('block', (event) => {
 });
 
 ServerEvents.tags('fluid', (event) => {
-    global.withModsLoaded('create', () => {
+    const isModLoaded = global.withModsLoaded;
+
+    isModLoaded('create', () => {
         event.remove('create:bottomless/allow', 'minecraft:lava');
     });
 
-    global.withModsLoaded('thermal_extra', () => {
+    isModLoaded('thermal_extra', () => {
         ['shellite', 'twinite', 'dragonsteel'].forEach((thermalExtraSC) => {
             event.remove(`forge:molten_${thermalExtraSC}`, `thermal_extra:${thermalExtraSC}`);
         });
@@ -227,7 +235,7 @@ ServerEvents.tags('fluid', (event) => {
         event.removeAllTagsFrom(/^thermal_extra:(?!.*_oil$).*/);
     });
 
-    global.withModsLoaded('vintage', () => {
+    isModLoaded('vintage', () => {
         event.remove('forge:sulfuric_acid', 'vintage:sulfuric_acid');
     });
 

@@ -1,5 +1,8 @@
+// requires: lootjs
 LootJS.modifiers((event) => {
-    global.withModsLoaded('sgjourney', () => {
+    const isModLoaded = global.withModsLoaded;
+
+    isModLoaded('sgjourney', () => {
         const abydosTempleTomb = [
             { loot: 'minecraft:gold_block', chance: 0.1 },
             { loot: 'minecraft:enchanted_golden_apple', chance: 0.05 },

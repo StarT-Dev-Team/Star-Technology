@@ -40,6 +40,7 @@ const dimensionEffect = (dimension, armorType, talismanList, effectList) => {
         }
     });
 };
+
 global.withModsLoaded('sgjourney', () => {
     dimensionEffect('sgjourney:abydos', 'gtceu:quarktech', ['kubejs:abydos_talisman'], ['kubejs:sand_erosion']);
 });

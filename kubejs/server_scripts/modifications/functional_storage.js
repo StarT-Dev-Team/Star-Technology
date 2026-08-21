@@ -1,6 +1,7 @@
 //requires: functionalstorage
 ServerEvents.recipes((event) => {
     // const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.remove({ output: /functionalstorage:.*grade/ });
     event.remove({ output: /functionalstorage:fluid.*/ });
@@ -72,7 +73,7 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/ender_drawer');
 
-    global.withModsLoaded(
+    isModLoaded(
         'framedblocks',
         () => {
             ['1', '2', '4'].forEach((size) => {

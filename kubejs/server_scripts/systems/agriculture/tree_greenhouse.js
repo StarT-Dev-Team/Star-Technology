@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     let woodTypes = [
         { name: 'oak', sapling: 'oak_sapling', namespace: 'minecraft' },
@@ -12,7 +13,7 @@ ServerEvents.recipes((event) => {
         { name: 'mangrove', sapling: 'mangrove_propagule', namespace: 'minecraft' },
     ];
 
-    global.withModsLoaded('architects_palette', () => {
+    isModLoaded('architects_palette', () => {
         woodTypes.push({
             name: 'twisted',
             sapling: 'twisted_sapling',

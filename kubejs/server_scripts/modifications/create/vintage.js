@@ -1,6 +1,7 @@
 //requires: vintage
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     const vintage = event.recipes.vintage;
     const create = event.recipes.create;
@@ -18,7 +19,7 @@ ServerEvents.recipes((event) => {
     event.remove({ id: 'vintage:sequenced_assembly/redstone_module' });
     event.remove({ id: 'vintage:sequenced_assembly/recipe_card' });
 
-    global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('kubejs_create', () => {
         create
             .deploying('vintage:redstone_module', ['create:precision_mechanism', 'minecraft:redstone_block'])
             .id(id('deploying/redstone_module'));
@@ -268,14 +269,14 @@ ServerEvents.recipes((event) => {
         .minimalRPM(64)
         .id(id('centrifugation/sticky_resin'));
 
-    global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('kubejs_create', () => {
         create
             .mixing(Fluid.of('gtceu:rubber', 720), ['9x gtceu:raw_rubber_dust', 'gtceu:sulfur_dust'])
             .heatRequirement('lowheated')
             .id('start:create_mixing/rubber');
     });
 
-    global.withModsLoaded('thermal', () => {
+    isModLoaded('thermal', () => {
         vintage
             .pressurizing('thermal:cured_rubber', Fluid.of('gtceu:rubber', 144))
             .heatRequirement('lowheated')
@@ -310,7 +311,7 @@ ServerEvents.recipes((event) => {
             .minimalRPM(128)
             .id(id(`centrifugation/impure_${mainOre}`));
 
-        global.withModsLoaded('kubejs_create', () => {
+        isModLoaded('kubejs_create', () => {
             create
                 .splashing(
                     [`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.02)],

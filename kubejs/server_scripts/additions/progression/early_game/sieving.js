@@ -1,5 +1,7 @@
 // requires: exnihilosequentia
 ServerEvents.recipes((event) => {
+    const isModLoaded = global.withModsLoaded;
+
     // Common sieve inputs
     const csi = {
         dirt: 'minecraft:dirt',
@@ -186,7 +188,7 @@ ServerEvents.recipes((event) => {
         .add('minecraft:mangrove_propagule', 0.15)
         .add('exnihilosequentia:mycelium_spores', 0.2);
 
-    global.withModsLoaded('thermal', () => SIEVING_RECIPE_HANDLER.add('thermal:slime_mushroom_spores', 0.25));
+    isModLoaded('thermal', () => SIEVING_RECIPE_HANDLER.add('thermal:slime_mushroom_spores', 0.25));
 
     // Rooted Dirt Sieving
     SIEVING_RECIPE_HANDLER.input(csi.rootedDirt)
@@ -200,8 +202,8 @@ ServerEvents.recipes((event) => {
         .add('minecraft:melon_seeds', 0.1)
         .add('kubejs:moss_ball', 0.05);
 
-    global.withModsLoaded('thermal', () => SIEVING_RECIPE_HANDLER.add('thermal:flax_seeds', 0.15));
-    global.withModsLoaded('farmersdelight', () => SIEVING_RECIPE_HANDLER.add('farmersdelight:rice_panicle', 0.05));
+    isModLoaded('thermal', () => SIEVING_RECIPE_HANDLER.add('thermal:flax_seeds', 0.15));
+    isModLoaded('farmersdelight', () => SIEVING_RECIPE_HANDLER.add('farmersdelight:rice_panicle', 0.05));
 
     // Waterlogged Sand Sieving
     SIEVING_RECIPE_HANDLER.input(csi.sand)
@@ -270,7 +272,7 @@ ServerEvents.recipes((event) => {
         .add('exnihilosequentia:stone_pebble', 0.05)
         .add('exnihilosequentia:tuff_pebble', 0.05);
 
-    global.withModsLoaded('xycraft_world', () => {
+    isModLoaded('xycraft_world', () => {
         // Waterlogged Dust Sieving
         SIEVING_RECIPE_HANDLER.input(csi.dust)
             .waterlogged(true)

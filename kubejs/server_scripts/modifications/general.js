@@ -1,4 +1,6 @@
 ServerEvents.recipes((event) => {
+    const isModLoaded = global.withModsLoaded;
+
     /**
      * @param {string} mod
      */
@@ -11,13 +13,13 @@ ServerEvents.recipes((event) => {
         event.replaceInput({ input: `${mod}:brass_nugget` }, `${mod}:brass_nugget`, 'gtceu:brass_nugget');
     };
 
-    global.withModsLoaded('farmersdelight', () => {
+    isModLoaded('farmersdelight', () => {
         event.replaceInput({ input: 'farmersdelight:onion' }, 'farmersdelight:onion', '#forge:crops/onion');
 
         event.replaceInput({ input: 'farmersdelight:onion' }, 'farmersdelight:onion', '#forge:crops/onion');
     });
 
-    global.withModsLoaded('create', () => {
+    isModLoaded('create', () => {
         ['tiled', 'framed', 'horizontal_framed', 'vertical_framed'].forEach((type) => {
             event.remove({ id: `create:smelting/glass_pane_from_${type}_glass_pane` });
         });
@@ -25,22 +27,22 @@ ServerEvents.recipes((event) => {
         nuggetFixMod('create');
     });
 
-    global.withModsLoaded('thermal', () => nuggetFixMod('thermal'));
-    global.withModsLoaded('create', () => nuggetFixMod('exnihilosequentia'));
+    isModLoaded('thermal', () => nuggetFixMod('thermal'));
+    isModLoaded('create', () => nuggetFixMod('exnihilosequentia'));
 
-    global.withModsLoaded('functionalstorage', () => {
+    isModLoaded('functionalstorage', () => {
         [1, 2, 4].forEach((size) => {
             event.remove({ id: `functionalstorage:oak_drawer_alternate_x${size}` });
         });
     });
 
-    global.withModsLoaded('enderchests', () =>
+    isModLoaded('enderchests', () =>
         event.replaceInput({ id: 'enderchests:ender_pouch' }, 'minecraft:leather', 'gtceu:carbon_fiber_plate')
     );
 
-    global.withModsLoaded('architects_palette', () => {
+    isModLoaded('architects_palette', () => {
         event.remove({ type: 'architects_palette:warping' });
-        global.withModsLoaded('kubejs_create', () => {
+        isModLoaded('kubejs_create', () => {
             [
                 { input: 'architects_palette:abyssaline_lamp', output: 'architects_palette:hadaline_lamp' },
                 {
@@ -84,11 +86,11 @@ ServerEvents.recipes((event) => {
         });
     });
 
-    global.withModsLoaded('chipped', () =>
+    isModLoaded('chipped', () =>
         event.replaceInput({ id: 'chipped:benches/mechanist_workbench' }, 'minecraft:tnt', 'minecraft:red_concrete')
     );
 
-    global.withModsLoaded('toms_storage', () =>
+    isModLoaded('toms_storage', () =>
         event
             .shaped('toms_storage:ts.adv_wireless_terminal', [' P ', 'PTP', ' P '], {
                 P: 'gtceu:steel_plate',
@@ -98,7 +100,7 @@ ServerEvents.recipes((event) => {
     );
 
     // Effortless Building Upgrade Accessibility
-    global.withModsLoaded('effortlessbuilding', () => {
+    isModLoaded('effortlessbuilding', () => {
         /**
          * @param {string} type
          * @param {string} mat
@@ -121,7 +123,7 @@ ServerEvents.recipes((event) => {
         reachUpgrade('3', 'minecraft:amethyst_shard', 'minecraft:purple_dye', 'effortlessbuilding:reach_upgrade2');
     });
 
-    global.withModsLoaded('bingus', () =>
+    isModLoaded('bingus', () =>
         event
             .shaped('bingus:floppa_orb', ['ABA', 'BCB', 'ABA'], {
                 A: '#minecraft:fishes',
@@ -132,7 +134,7 @@ ServerEvents.recipes((event) => {
     );
 
     // Vanilla
-    global.withModsLoaded('kubejs_create', () =>
+    isModLoaded('kubejs_create', () =>
         event.recipes.create
             .item_application('minecraft:mycelium', ['minecraft:grass_block', 'exnihilosequentia:mycelium_spores'])
             .id('start:item_application/mycelium')
@@ -144,7 +146,7 @@ ServerEvents.recipes((event) => {
         M: 'minecraft:string',
     });
 
-    global.withModsLoaded('woodenbucket', () =>
+    isModLoaded('woodenbucket', () =>
         event.replaceInput(
             { output: 'woodenbucket:wooden_bucket' },
             '#minecraft:logs',

@@ -1,6 +1,7 @@
 //requires: thermal
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.remove({ id: /thermal:parts.*gear/ });
     event.remove({ id: /thermal_extra:parts.*gear/ });
@@ -61,7 +62,7 @@ ServerEvents.recipes((event) => {
     event.remove({ type: 'thermal:compression_fuel', input: 'thermal:tree_oil' });
     event.remove({ type: 'thermal:compression_fuel', input: 'thermal:refined_fuel' });
 
-    global.withModsLoaded('kubejs_thermal', () => {
+    isModLoaded('kubejs_thermal', () => {
         event.recipes.thermal.compression_fuel('gtceu:bio_diesel', 512000);
         event.recipes.thermal.compression_fuel('gtceu:diesel', 960000);
         event.recipes.thermal.compression_fuel('gtceu:cetane_boosted_diesel', 1280000);
@@ -104,7 +105,7 @@ ServerEvents.recipes((event) => {
 
     event.remove({ type: 'thermal:lapidary_fuel', input: 'minecraft:diamond' });
 
-    global.withModsLoaded('kubejs_thermal', () => {
+    isModLoaded('kubejs_thermal', () => {
         event.recipes.thermal.lapidary_fuel('gtceu:diatron_gem', 750000);
         event.recipes.thermal.lapidary_fuel('gtceu:flawless_diatron_gem', 750000 * 2.5);
         event.recipes.thermal.lapidary_fuel('gtceu:exquisite_diatron_gem', 750000 * 6.25);
@@ -315,7 +316,7 @@ ServerEvents.recipes((event) => {
         },
     ];
 
-    global.withModsLoaded('thermal_extra', () => {
+    isModLoaded('thermal_extra', () => {
         thermalGlasses.push(
             {
                 id: 'soul_infused',
@@ -372,7 +373,7 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/machine_frame');
 
-    global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('kubejs_create', () => {
         event.recipes.create
             .item_application('thermal:fluid_cell', ['thermal:fluid_cell_frame', 'create:fluid_tank'])
             .id('start:item_application/fluid_cell');
@@ -396,7 +397,7 @@ ServerEvents.recipes((event) => {
         .duration(80)
         .EUt(28);
 
-    global.withModsLoaded('systeams', () => {
+    isModLoaded('systeams', () => {
         event.recipes.gtceu
             .assembler(id('boiler_pipe'))
             .itemInputs('gtceu:tempered_glass', '3x gtceu:bronze_ring')

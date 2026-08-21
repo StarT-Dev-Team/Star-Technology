@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     //Controllers
     event
@@ -45,7 +46,7 @@ ServerEvents.recipes((event) => {
         .duration(50)
         .EUt(16);
 
-    global.withModsLoaded('exnihilosequentia', () => {
+    isModLoaded('exnihilosequentia', () => {
         event
             .shaped(Item.of('kubejs:meshblock'), ['SMS', 'MMM', 'SMS'], {
                 M: 'exnihilosequentia:string_mesh',

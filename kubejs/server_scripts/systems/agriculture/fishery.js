@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event
         .shaped('gtceu:industrial_fishery', ['ABF', 'AEG', 'BGF'], {
@@ -11,7 +12,7 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/industrial_fisher');
 
-    global.withModsLoaded('exnihilosequentia', () => {
+    isModLoaded('exnihilosequentia', () => {
         event.recipes.gtceu
             .industrial_fishery(id('fishing_silkworm'))
             .itemInputs('2x minecraft:string', '4x exnihilosequentia:silkworm')
@@ -70,7 +71,7 @@ ServerEvents.recipes((event) => {
         .duration(100)
         .EUt(global.vha['ulv']);
 
-    global.withModsLoaded('exnihilosequentia', () => {
+    isModLoaded('exnihilosequentia', () => {
         event.recipes.gtceu
             .centrifuge(id('silkworm'))
             .itemInputs('rooted_dirt')

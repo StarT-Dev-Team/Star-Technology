@@ -1,9 +1,10 @@
 // requires: create
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     //plates
-    global.withModsLoaded('kubejs_create', () => {
+    isModLoaded('kubejs_create', () => {
         [
             {
                 mod: 'gtceu',
