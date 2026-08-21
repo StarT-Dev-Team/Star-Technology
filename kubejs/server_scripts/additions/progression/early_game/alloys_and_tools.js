@@ -1,24 +1,26 @@
 ServerEvents.recipes((event) => {
-    const hammers = {
-        wooden: '#minecraft:planks',
-        stone: '#forge:cobblestone',
-        iron: 'minecraft:iron_ingot',
-        diamond: 'minecraft:diamond',
-        andesite: 'minecraft:andesite',
-        diorite: 'minecraft:diorite',
-        granite: 'minecraft:granite',
-    };
+    global.withModsLoaded('exnihilosequentia', () => {
+        const hammers = {
+            wooden: '#minecraft:planks',
+            stone: '#forge:cobblestone',
+            iron: 'minecraft:iron_ingot',
+            diamond: 'minecraft:diamond',
+            andesite: 'minecraft:andesite',
+            diorite: 'minecraft:diorite',
+            granite: 'minecraft:granite',
+        };
 
-    Object.entries(hammers).forEach(([type, input]) => {
-        event
-            .shaped(Item.of(`exnihilosequentia:${type}_hammer`, '{Damage:0}'), [' I ', ' SI', 'S  '], {
-                I: input,
-                S: 'minecraft:stick',
-            })
-            .id(`start:shaped/${type}_hammer`);
+        Object.entries(hammers).forEach(([type, input]) => {
+            event
+                .shaped(Item.of(`exnihilosequentia:${type}_hammer`, '{Damage:0}'), [' I ', ' SI', 'S  '], {
+                    I: input,
+                    S: 'minecraft:stick',
+                })
+                .id(`start:shaped/${type}_hammer`);
+        });
     });
 
-    [
+    const alloyBlends = [
         {
             result: 'bronze',
             amount: 3,
@@ -40,16 +42,21 @@ ServerEvents.recipes((event) => {
             ingredients: ['2x gtceu:iron', 'gtceu:nickel'],
         },
         {
-            result: 'soul_infused',
-            amount: 1,
-            ingredients: ['2x thermal_extra:soul_sand', 'gtceu:invar'],
-        },
-        {
             result: 'tin_alloy',
             amount: 1,
             ingredients: ['gtceu:tin', 'gtceu:iron'],
         },
-    ].forEach((alloy) => {
+    ];
+
+    global.withModsLoaded('thermal_extra', () =>
+        alloyBlends.push({
+            result: 'soul_infused',
+            amount: 1,
+            ingredients: ['2x thermal_extra:soul_sand', 'gtceu:invar'],
+        })
+    );
+
+    alloyBlends.forEach((alloy) => {
         const { result, amount, ingredients } = alloy;
 
         let resultStack = `${amount !== 1 ? `${amount}x ` : ''}gtceu:${result}`;

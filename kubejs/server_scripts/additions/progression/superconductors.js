@@ -1,37 +1,39 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    event.recipes.gtceu
-        .macerator(id('soul_sand_dust'))
-        .itemInputs('minecraft:soul_sand')
-        .itemOutputs('thermal_extra:soul_sand_dust')
-        .duration(20)
-        .EUt(8);
+    global.withModsLoaded('thermal_extra', () => {
+        event.recipes.gtceu
+            .macerator(id('soul_sand_dust'))
+            .itemInputs('minecraft:soul_sand')
+            .itemOutputs('thermal_extra:soul_sand_dust')
+            .duration(20)
+            .EUt(8);
 
-    event
-        .shapeless(Item.of('thermal_extra:soul_sand_dust', 1), ['minecraft:soul_sand', '#forge:tools/mortars'])
-        .id('start:shapeless/soul_sand_dust');
+        event
+            .shapeless(Item.of('thermal_extra:soul_sand_dust', 1), ['minecraft:soul_sand', '#forge:tools/mortars'])
+            .id('start:shapeless/soul_sand_dust');
 
-    event.recipes.gtceu
-        .mixer(id('soul_infused_dust'))
-        .itemInputs('gtceu:invar_dust', '2x thermal_extra:soul_sand_dust')
-        .itemOutputs('3x gtceu:soul_infused_dust')
-        .duration(200)
-        .EUt(8);
+        event.recipes.gtceu
+            .mixer(id('soul_infused_dust'))
+            .itemInputs('gtceu:invar_dust', '2x thermal_extra:soul_sand_dust')
+            .itemOutputs('3x gtceu:soul_infused_dust')
+            .duration(200)
+            .EUt(8);
 
-    event.recipes.gtceu
-        .alloy_smelter(id('soul_infused_from_dust'))
-        .itemInputs('gtceu:invar_dust', '2x thermal_extra:soul_sand_dust')
-        .itemOutputs('3x gtceu:soul_infused_ingot')
-        .duration(200)
-        .EUt(8);
+        event.recipes.gtceu
+            .alloy_smelter(id('soul_infused_from_dust'))
+            .itemInputs('gtceu:invar_dust', '2x thermal_extra:soul_sand_dust')
+            .itemOutputs('3x gtceu:soul_infused_ingot')
+            .duration(200)
+            .EUt(8);
 
-    event.recipes.gtceu
-        .alloy_smelter(id('soul_infused_from_ingot'))
-        .itemInputs('gtceu:invar_ingot', '2x thermal_extra:soul_sand_dust')
-        .itemOutputs('3x gtceu:soul_infused_ingot')
-        .duration(200)
-        .EUt(8);
+        event.recipes.gtceu
+            .alloy_smelter(id('soul_infused_from_ingot'))
+            .itemInputs('gtceu:invar_ingot', '2x thermal_extra:soul_sand_dust')
+            .itemOutputs('3x gtceu:soul_infused_ingot')
+            .duration(200)
+            .EUt(8);
+    });
 
     event.recipes.gtceu
         .mixer(id('signalum_dust'))
