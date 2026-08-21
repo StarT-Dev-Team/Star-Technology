@@ -1,6 +1,4 @@
 {
-    "block.gtceu.theta2Removals.tooltip": "§4§lDeprecated. Will be removed in Theta 2",
-
     "block.gtceu.dimensional_finder.tooltip.0": "§7Get Dimensionally Pinged",
     "block.gtceu.dimensional_finder.tooltip.1": "§7This machine can send pulses into deep space, recording the echoes on crystals, and can sometimes triangulate a region's location based on that data.",
 
@@ -1432,5 +1430,5 @@
     "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]",
 
     "block.gtceu.network_hub": "Network Hub [NH]",
-    "gtceu.machine.network_hub.tooltip": "Can extend in size to accommodate more computation hatches."
+    "gtceu.machine.network_hub.extension_tooltip": "Can extend in size to accommodate more computation hatches."
 }

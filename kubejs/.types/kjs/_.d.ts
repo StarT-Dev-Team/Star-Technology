@@ -346,14 +346,17 @@ declare namespace internal.kjs.kubejs {
 
     import RecipesEventJS = dev.latvian.mods.kubejs.recipe.RecipesEventJS;
     import TagEventJS = dev.latvian.mods.kubejs.server.tag.TagEventJS;
+    import CommandRegistryEventJS = dev.latvian.mods.kubejs.command.CommandRegistryEventJS;
 
     interface ServerEvents {
         recipes(callback: (event: RecipesEventJS) => void): void;
         tags(key: 'item' | 'block' | 'fluid', callback: (event: TagEventJS) => void): void;
+        commandRegistry(callback: (event: CommandRegistryEventJS) => void): void;
     }
 
     import BlockModificationEventJS = dev.latvian.mods.kubejs.block.BlockModificationEventJS;
     import BlockPlacedEventJS = dev.latvian.mods.kubejs.block.BlockPlacedEventJS;
+    import BlockBrokenEventJS = dev.latvian.mods.kubejs.block.BlockBrokenEventJS;
     import BlockRightClickedEventJS = dev.latvian.mods.kubejs.block.BlockRightClickedEventJS;
 
     type ExtraSupportsBlock = null | Block | $wrapped<ResourceLocation>;
@@ -363,6 +366,8 @@ declare namespace internal.kjs.kubejs {
         modification(block: ExtraSupportsBlock, callback: (event: BlockModificationEventJS) => void): void;
         placed(callback: (event: BlockPlacedEventJS) => void): void;
         placed(block: ExtraSupportsBlock, callback: (event: BlockPlacedEventJS) => void): void;
+        broken(callback: (event: BlockBrokenEventJS) => void): void;
+        broken(block: ExtraSupportsBlock, callback: (event: BlockBrokenEventJS) => void): void;
         rightClicked(callback: (event: BlockRightClickedEventJS) => void): void;
         rightClicked(block: ExtraSupportsBlock, callback: (event: BlockRightClickedEventJS) => void): void;
     }
@@ -392,6 +397,17 @@ declare namespace internal.kjs.rhino {
     }
 }
 
+declare namespace internal.kjs.jsonio {
+    interface JsonIO extends $object<'internal.kjs.jsonio.JsonIO'> {}
+
+    const JsonIO: $class<JsonIO> & {
+        read(path: string): string;
+        write(path: string, data: string): void;
+        readJson(path: string): string;
+        writeJson(path: string, data: string): void;
+    };
+}
+
 // TODO: move to JavaWrapper
 declare const Java: {
     loadClass: { <K extends keyof internal.kjs.LoadableClasses>(name: K): internal.kjs.LoadableClasses[K] };
@@ -417,3 +433,5 @@ declare const BlockProperties: typeof internal.net.minecraft.world.level.block.s
 declare const Direction: typeof internal.net.minecraft.core.Direction;
 
 declare const JavaAdapter: internal.kjs.rhino.JavaAdapter;
+
+declare const JsonIO: typeof internal.kjs.jsonio.JsonIO;

@@ -57,6 +57,7 @@ export default [
                 $SectionPos: 'readonly',
                 GuiTextureGroup: 'readonly',
                 JavaAdapter: 'readonly',
+                JsonIO: 'readonly',
                 // GTm Globals
                 $MultiblockMachineDefinition: 'readonly',
                 GTRegistries: 'readonly',
@@ -103,6 +104,7 @@ export default [
                 $NetworkSwitchMachine: 'readonly',
                 GTMachines: 'readonly',
                 $TooltipHelper: 'readonly',
+                NBTPredicates: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
                 FillDirection: 'readonly',
@@ -158,6 +160,7 @@ export default [
                 UXV: 'readonly',
                 OpV: 'readonly',
                 MAX: 'readonly',
+                T: 'writable',
             },
         },
         rules: {
@@ -187,6 +190,12 @@ export default [
             'no-console': 'off',
             'no-redeclare': ['error', { builtinGlobals: false }],
             quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+            'prettier/prettier': [
+                'error',
+                {
+                    endOfLine: 'auto',
+                },
+            ],
         },
     },
     {

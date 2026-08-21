@@ -1,7 +1,9 @@
+// priority: 1201
+
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
-    const { bright, dull, opal, shiny, gemVertical } = ICONSETS;
+    const { bright, dull, shiny, gemVertical } = ICONSETS;
     const {
         plates,
         rod,
@@ -34,15 +36,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [plates, frame, rod, boltAndScrew, round, longRod, gear, smallGear, ring, foil, densePlate]
     );
 
-    MH.compIngotLiquid(
-        'trinaquadalloy',
-        ['5x trinium', '3x naquadah', '2x carbon'],
-        0x281832,
-        bright,
-        [8750, 'higher', GTValues.VA[ZPM], 1000],
-        [plates, rod, frame, fineWire, foil, densePlate]
-    );
-
     MH.compIngot(
         'neutronium_silicon_carbide',
         ['2x neutronium', '7x silicon_carbide', '3x niobium_nitride', '3x graphene'],
@@ -52,14 +45,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [foil, noDecomp, noABSRecipe]
     );
 
-    MH.compGem(
-        'akreyriadic_runixium',
-        ['7x runic_laser_source_base', '4x ancient_runicalium', '2x strontium_titanium_oxide', '5x akreyrium'],
-        0xffba75,
-        opal,
-        []
-    );
-
     MH.compLiquid('nether_star_concentrate', ['1x excited', '1x star', '1x excited'], 0xeeeeee, [noDecomp]);
 
     MH.compLiquid('dissipated_hellish_concentrate', ['1x mystery'], 0x8da589, [noDecomp]);
@@ -67,6 +52,25 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquid('hellish_concentrate', ['1x mystery'], 0x66a574, [noDecomp]);
 
     MH.elemLiquidSecColor('aurourium', 0x5d44de, 0xde44ce, ICONSETS.shiny, null, [noDecomp, fineWire, noSmelt]);
+
+    MH.compLiquidStill('borealic_concentrate', ['1x aurourium', '15x stellarium'], [noDecomp]);
+
+    MH.compIngotPlasmaSecColor(
+        'borealic_steel',
+        [
+            '2x prismalium',
+            '4x rose_gold',
+            '8x aurourium',
+            '2x tritan_steel',
+            '1x ancient_netherite',
+            '3x borealic_concentrate',
+        ],
+        0x8f7090,
+        0x70907c,
+        shiny,
+        [18880, 'highest', GTValues.VA[UXV], 600],
+        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
 
     MH.conductor(
         'cerium_tritelluride',
@@ -81,30 +85,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquidTemp('bec_og', 0.0001, ['1x oganesson'], 0xbfacff, [noDecomp]);
 
     MH.compLiquidTemp('superstate_helium_3', 2, ['1x helium_3'], 0xedfaf5, [noDecomp]);
-
-    MH.conductorPlasma(
-        'magmada_alloy',
-        ['4x adamantine', '1x neutronium', '3x rtm_alloy'],
-        0xda8607,
-        shiny,
-        [17890, 'highest', GTValues.VA[UEV], 600],
-        [GTValues.V[UHV], 1, 3, false],
-        [
-            plates,
-            frame,
-            rod,
-            boltAndScrew,
-            round,
-            longRod,
-            gear,
-            smallGear,
-            ring,
-            noDecomp,
-            rotor,
-            fineWire,
-            noABSRecipe,
-        ]
-    );
 
     event
         .create('mythrolic_alloy')
@@ -176,8 +156,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [spring, noDecomp]
     );
 
-    MH.compLiquidStill('borealic_concentrate', ['1x aurourium', '15x stellarium'], [noDecomp]);
-
     MH.conductor(
         'polonium_bismide',
         ['1x polonium', '1x bismuth'],
@@ -206,15 +184,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquidStill('dragon_breath', ['1x dragon'], [noDecomp]);
 
     MH.compLiquidStill('pure_dragon_breath', ['1x excited', '1x dragon', '1x excited'], [noDecomp]);
-
-    MH.compIngotLiquid(
-        'hafnide_ceramic_base',
-        ['4x hafnium', '5x tantalum_carbide'],
-        0x4f4f4f,
-        dull,
-        [12900, 'highest', GTValues.VA[UV], 970],
-        [noDecomp]
-    );
 
     MH.compDust('indium_tin_oxide', ['2x indium', '2x tin', '3x oxygen'], 0xa1c1e0, [noDecomp]);
 
@@ -305,19 +274,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .iconSet(shiny)
         .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noDecomp, noABSRecipe);
 
-    event
-        .create('draco_abyssal') //Shadowyrm
-        .components('1x dragon', '1x voidic', '1x dragon')
-        .ingot()
-        .fluid()
-        .plasma()
-        .color(0x401e6d)
-        .secondaryColor(0x340e4d)
-        .blastTemp(18880, 'highest', GTValues.VA[UXV], 600)
-        .iconSet(shiny)
-        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, fineWire, noDecomp, noABSRecipe)
-        .rotorStats(12800, 400, 50, 45000);
-
     MH.compDustLiquid('netherite_triselex_oxide', ['4x netherite', '3x selenium', '8x oxygen'], 0xcfd9a3, [noDecomp]);
 
     MH.compIngotLiquid(
@@ -353,7 +309,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     event
         .create('raging_rimulatia') //Shadowyrm
-        .components('1x rifitc', '1x draco_abyssal', '1x riftic')
+        .components('1x draco_abyssal', '1x riftic')
         .ingot()
         .fluid()
         .color(0xe357f2)
@@ -381,4 +337,17 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         gemVertical,
         [noDecomp]
     );
+
+    event
+        .create('nyanium')
+        .components('7x aurourium', '4x uranium_rhodium_dinaquadide', '1x magnesium_nitride', '2x pure_netherite')
+        .ingot()
+        .fluid()
+        .plasma()
+        .color(0xe4c6eb)
+        .secondaryColor(0xa45ef5)
+        .blastTemp(17290, 'highest', GTValues.VA[UEV], 600)
+        .iconSet(ICONSETS.shiny) // Will Have Own in Theta? but that is a LOT of work
+        .fluidPipeProperties(78500, 2500, true, true, true, true)
+        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, noDecomp, noABSRecipe);
 });

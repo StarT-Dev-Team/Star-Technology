@@ -13,7 +13,7 @@
 		x: 0.0d
 		y: -4.5d
 	}]
-	order_index: 3
+	order_index: 4
 	quest_links: [ ]
 	quests: [
 		{
@@ -1474,7 +1474,11 @@
 		{
 			can_repeat: true
 			dependencies: ["638C207D39C50109"]
-			icon: "mysticalagriculture:water_seeds"
+			icon: {
+				Count: 1
+				id: "thermal:watering_can"
+				tag: { }
+			}
 			id: "2E5C1B69CE290654"
 			optional: true
 			rewards: [{
@@ -1533,7 +1537,11 @@
 			y: 2.0d
 		}
 		{
-			icon: "mysticalagriculture:water_seeds"
+			icon: {
+				Count: 1
+				id: "thermal:watering_can"
+				tag: { }
+			}
 			id: "638C207D39C50109"
 			shape: "octagon"
 			tasks: [{
@@ -1550,7 +1558,11 @@
 		{
 			can_repeat: true
 			dependencies: ["638C207D39C50109"]
-			icon: "mysticalagriculture:water_seeds"
+			icon: {
+				Count: 1
+				id: "thermal:watering_can"
+				tag: { }
+			}
 			id: "3D6BDCDF49DAC8B2"
 			optional: true
 			rewards: [{

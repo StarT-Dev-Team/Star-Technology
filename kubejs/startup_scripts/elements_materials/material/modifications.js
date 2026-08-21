@@ -62,7 +62,7 @@ GTCEuStartupEvents.materialModification((_event) => {
     setFormula('paradox', '☯');
     setFormula('draco_abyssal', '🜍∅🜍');
     setFormula('silver_sulfate', 'Ag2(SO4)');
-    setFormula('chromium_sulfate', 'Cr2(SO4)3');
+    // setFormula('chromium_sulfate', 'Cr2(SO4)3');
     setFormula('sparse_electron_akreyrium', 'Ak(?e?)?');
     setFormula('dense_electron_akreyrium', 'Ak(e)?');
     setFormula('sparse_muon_akreyrium', 'Ak(?μ?)?');

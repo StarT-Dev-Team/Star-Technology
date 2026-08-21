@@ -1,6 +1,7 @@
 // priority: 1000
 
 /* eslint-disable no-unused-vars */
+// @ts-ignore
 /** @global */ const ULV = 0;
 /** @global */ const LV = 1;
 /** @global */ const MV = 2;
@@ -45,6 +46,10 @@ global.componentMaterials = /** @type {const} */ ({
             rotorMaterial: 'tin',
             grind: 'minecraft:diamond',
         },
+        electronicComponents: {
+            capacitor: 'gtceu:capacitor',
+            resistor: 'gtceu:resistor',
+        },
     },
     mv: {
         tiers: { tier: 'mv' },
@@ -58,6 +63,11 @@ global.componentMaterials = /** @type {const} */ ({
             rotorMaterial: 'bronze',
             grind: 'minecraft:diamond',
         },
+        electronicComponents: {
+            capacitor: 'gtceu:capacitor',
+            transistor: 'gtceu:transistor',
+            diode: 'gtceu:diode',
+        },
     },
     hv: {
         tiers: { tier: 'hv' },
@@ -70,6 +80,12 @@ global.componentMaterials = /** @type {const} */ ({
             chip: 'gtceu:lpic',
             rotorMaterial: 'steel',
             grind: 'gtceu:diamond_grinding_head',
+        },
+        electronicComponents: {
+            capacitor: '#gtceu:capacitors',
+            transistor: '#gtceu:transistors',
+            diode: '#gtceu:diodes',
+            resistor: 'gtceu:resistor',
         },
     },
     ev: {
@@ -92,6 +108,12 @@ global.componentMaterials = /** @type {const} */ ({
             scaler: 1,
             EU: GTValues.VA[HV],
         },
+        electronicComponents: {
+            capacitor: 'gtceu:smd_capacitor',
+            transistor: 'gtceu:smd_transistor',
+            diode: 'gtceu:smd_diode',
+            resistor: 'gtceu:smd_resistor',
+        },
     },
     iv: {
         tiers: { tier: 'iv', tier0: 'luv', tier1: 'ev', tier2: 'hv' },
@@ -112,6 +134,12 @@ global.componentMaterials = /** @type {const} */ ({
         scaling: {
             scaler: 1,
             EU: GTValues.VA[EV],
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:smd_capacitor',
+            transistor: 'gtceu:smd_transistor',
+            diode: 'gtceu:smd_diode',
+            resistor: 'gtceu:smd_resistor',
         },
     },
     luv: {
@@ -156,6 +184,12 @@ global.componentMaterials = /** @type {const} */ ({
             default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[EV] },
             special: { ifSRS: false, cwuS: 0, duraS: 60, EUTS: GTValues.VA[IV] },
         },
+        electronicComponents: {
+            capacitor: 'gtceu:advanced_smd_capacitor',
+            transistor: 'gtceu:advanced_smd_transistor',
+            diode: 'gtceu:advanced_smd_diode',
+            resistor: 'gtceu:advanced_smd_resistor',
+        },
     },
 
     zpm: {
@@ -198,6 +232,12 @@ global.componentMaterials = /** @type {const} */ ({
         researchData: {
             default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[IV] },
             special: { ifSRS: true, cwuS: 4, duraS: 90, EUTS: GTValues.VA[LuV] },
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:advanced_smd_capacitor',
+            transistor: 'gtceu:advanced_smd_transistor',
+            diode: 'gtceu:advanced_smd_diode',
+            resistor: 'gtceu:advanced_smd_resistor',
         },
     },
 
@@ -242,6 +282,12 @@ global.componentMaterials = /** @type {const} */ ({
         researchData: {
             default: { ifDRS: true, cwuD: 32, duraD: 180, EUTD: GTValues.VA[ZPM] },
             special: { ifSRS: true, cwuS: 48, duraS: 180, EUTS: GTValues.VA[UV] },
+        },
+        electronicComponents: {
+            capacitor: 'kubejs:living_smd_capacitor',
+            transistor: 'kubejs:living_smd_transistor',
+            diode: 'kubejs:living_smd_diode',
+            resistor: 'kubejs:living_smd_resistor',
         },
     },
 
@@ -288,6 +334,12 @@ global.componentMaterials = /** @type {const} */ ({
             default: { ifDRS: true, cwuD: 128, duraD: 180, EUTD: GTValues.VA[UV] },
             special: { ifSRS: true, cwuS: 144, duraS: 180, EUTS: GTValues.VA[UV] },
         },
+        electronicComponents: {
+            capacitor: 'kubejs:living_smd_capacitor',
+            transistor: 'kubejs:living_smd_transistor',
+            diode: 'kubejs:living_smd_diode',
+            resistor: 'kubejs:living_smd_resistor',
+        },
     },
 
     uev: {
@@ -332,6 +384,12 @@ global.componentMaterials = /** @type {const} */ ({
             default: { ifDRS: true, cwuD: 160, duraD: 180, EUTD: GTValues.VA[UHV] },
             special: { ifSRS: true, cwuS: 176, duraS: 180, EUTS: GTValues.VA[UHV] },
         },
+        electronicComponents: {
+            capacitor: 'kubejs:draconic_smd_capacitor',
+            transistor: 'kubejs:draconic_smd_transistor',
+            diode: 'kubejs:draconic_smd_diode',
+            resistor: 'kubejs:draconic_smd_resistor',
+        },
     },
 
     uiv: {
@@ -375,6 +433,12 @@ global.componentMaterials = /** @type {const} */ ({
         researchData: {
             default: { ifDRS: true, cwuD: 192, duraD: 180, EUTD: GTValues.VA[UEV] },
             special: { ifSRS: true, cwuS: 208, duraS: 180, EUTS: GTValues.VA[UEV] },
+        },
+        electronicComponents: {
+            capacitor: 'kubejs:draconic_smd_capacitor',
+            transistor: 'kubejs:draconic_smd_transistor',
+            diode: 'kubejs:draconic_smd_diode',
+            resistor: 'kubejs:draconic_smd_resistor',
         },
     },
 });

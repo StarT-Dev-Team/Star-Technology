@@ -2225,7 +2225,7 @@
 			}]
 			tasks: [{
 				id: "102068348306ABB6"
-				item: "kubejs:dragonic_reflector_casing"
+				item: "kubejs:draconic_reflector_casing"
 				type: "item"
 			}]
 			x: -2.5d

@@ -4,7 +4,6 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
     import RecipeFunctions_minecraft = kjs.RecipeFunctions_minecraft;
     import RecipeFilter = dev.latvian.mods.kubejs.recipe.filter.RecipeFilter;
     import Consumer = java.util.function_.Consumer;
-
     interface RecipesEventJS extends $object<'dev.latvian.mods.kubejs.recipe.RecipesEventJS', EventJS> {
         getRecipes(): RecipeFunctions;
         get recipes(): RecipeFunctions;
@@ -49,6 +48,7 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
         replaceIngredient(filter: $wrapped<IngredientActionFilter>, item: $wrapped<ItemStack>): this;
         keepIngredient(filter: $wrapped<IngredientActionFilter>): this;
         consumeIngredient(filter: $wrapped<IngredientActionFilter>): this;
+        modifyResult(callback: $wrapped<ModifyRecipeResultCallback>): this;
     }
 
     interface ReplacementMatch extends $object<'dev.latvian.mods.kubejs.recipe.ReplacementMatch'> {}
@@ -56,6 +56,23 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
     interface InputReplacement extends $object<'dev.latvian.mods.kubejs.recipe.InputReplacement'> {}
 
     interface OutputReplacement extends $object<'dev.latvian.mods.kubejs.recipe.OutputReplacement'> {}
+
+    import Ingredient = net.minecraft.world.item.crafting.Ingredient;
+
+    interface ModifyRecipeCraftingGrid extends $object<'dev.latvian.mods.kubejs.recipe.ModifyRecipeCraftingGrid'> {
+        get(index: number): ItemStack;
+        findAll(ingredient: $wrapped<Ingredient>): ItemStack[];
+        findAll(): ItemStack[];
+        find(ingredient: $wrapped<Ingredient>, skip: number): ItemStack;
+        find(ingredient: $wrapped<Ingredient>): ItemStack;
+    }
+
+    interface ModifyRecipeResultCallback extends $object<{
+        name: 'dev.latvian.mods.kubejs.recipe.ModifyRecipeResultCallback';
+        functionalInterface: 'modify';
+    }> {
+        modify(grid: ModifyRecipeCraftingGrid, result: ItemStack): ItemStack;
+    }
 }
 
 declare namespace internal.dev.latvian.mods.kubejs.recipe.component {

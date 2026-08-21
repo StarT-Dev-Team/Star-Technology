@@ -10,7 +10,7 @@ ServerEvents.recipes((event) => {
         .duration(2400)
         .EUt(1024)
         .circuit(1);
-    
+
     const fluxItems = [
         'fluxnetworks:flux_plug',
         'fluxnetworks:flux_point',
@@ -22,15 +22,16 @@ ServerEvents.recipes((event) => {
     fluxItems.forEach((id) => {
         event
             .shapeless(Item.of(id), ['fluxnetworks:flux_configurator', id])
-            .modifyResult((grid, result) => {
+            .modifyResult((grid, _result) => {
                 let fluxConfigurator = grid.find(Item.of('fluxnetworks:flux_configurator'));
 
                 if (!fluxConfigurator || !fluxConfigurator.nbt || !fluxConfigurator.nbt.FluxConfig) {
                     return Item.of(id);
                 }
 
-                let data = fluxConfigurator.nbt.FluxConfig;
+                let data = /** @type {any} */ (fluxConfigurator.nbt.FluxConfig);
                 let newData = {
+                    // eslint-disable-next-line id-match
                     FluxData: {
                         limit: data.limit,
                         networkID: data.networkID,

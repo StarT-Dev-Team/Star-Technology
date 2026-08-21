@@ -1,3 +1,4 @@
+// priority: 5000
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 

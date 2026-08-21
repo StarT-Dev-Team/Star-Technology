@@ -157,3 +157,76 @@ const implosionHelper = (id, input, output, tier, durationMultiplier, event) => 
 };
 
 global.implosion = implosionHelper;
+
+/** @typedef {{item: string, amount: number}} RecipeHelperIngredient */
+
+/**
+ * @param {string[]} items
+ * @returns {RecipeHelperIngredient[]}
+ */
+const itemArrayToIngredientArray = (items) => {
+    /** @type {RecipeHelperIngredient[]} */
+    let ingredients = [];
+    items.forEach((item) => {
+        if (!item.includes('x ')) {
+            item = `1x ${item}`;
+        }
+        let [amount, itemName] = item.split(' ');
+        let count = parseInt(amount.replace('x', ''));
+        ingredients.push({ item: itemName, amount: count });
+    });
+    return ingredients;
+};
+
+/**
+ * @param {RecipeHelperIngredient[]} ingredients
+ * @returns {string[]}
+ */
+const ingredientArrayToItemArray = (ingredients) => {
+    return ingredients.map((ingredient) => `${ingredient.amount}x ${ingredient.item}`);
+};
+
+/**
+ * @param {RecipeHelperIngredient[]} ingredients
+ * @param {string} item
+ * @returns {boolean}
+ */
+const ingredientArrayContainsItem = (ingredients, item) => {
+    return ingredients.some((ingredient) => ingredient.item === item);
+};
+
+/**
+ * @param {RecipeHelperIngredient[]} arr1
+ * @param {RecipeHelperIngredient[]} arr2
+ * @returns {RecipeHelperIngredient[]}
+ */
+const zipIngredientArrays = (arr1, arr2) => {
+    /** @type {RecipeHelperIngredient[]} */
+    let zipped = arr1;
+
+    arr2.forEach((ingredient) => {
+        let index = zipped.findIndex((zippedIngredient) => zippedIngredient.item === ingredient.item);
+        if (index >= -1) {
+            zipped[index].amount += ingredient.amount;
+        } else {
+            zipped.push(ingredient);
+        }
+    });
+    return zipped;
+};
+
+/**
+ * @param {string[]} arr1
+ * @param {string[]} arr2
+ * @returns {string[]}
+ */
+const zipItemArrays = (arr1, arr2) => {
+    return ingredientArrayToItemArray(
+        zipIngredientArrays(itemArrayToIngredientArray(arr1), itemArrayToIngredientArray(arr2))
+    );
+};
+
+global.ingredientArrayToItemArray = ingredientArrayToItemArray;
+global.itemArrayToIngredientArray = itemArrayToIngredientArray;
+global.zipIngredientArrays = zipIngredientArrays;
+global.zipItemArrays = zipItemArrays;

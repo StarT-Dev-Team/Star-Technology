@@ -2,10 +2,6 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     const assline = 'assembly_line';
-    const cut = event.recipes.gtceu.cutter;
-    const rotor = event.recipes.gtceu.large_rotor_machine;
-    const stargateComponent = event.recipes.gtceu.stargate_component_assembly;
-    const riftEnh = event.recipes.gtceu.riftic_enhancement;
     const riftAss = 'riftic_infusion_assembly';
     const dracoCirc = 'draco_circuit_assembler';
 
@@ -409,7 +405,8 @@ ServerEvents.recipes((event) => {
         .duration(4000)
         .EUtVHA(UIV);
 
-    cut(id('dsg_enscription_chip'))
+    event.recipes.gtceu
+        .cutter(id('dsg_enscription_chip'))
         .itemInputs('kubejs:dsg_enscription_plate')
         .inputFluids('gtceu:draconic_stabilization_mixture 3850')
         .itemOutputs('2x kubejs:dsg_enscription_chip')
@@ -417,7 +414,8 @@ ServerEvents.recipes((event) => {
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
         .EUtVHA(UIV);
 
-    rotor(id('dsg_stargate_rod_base'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('dsg_stargate_rod_base'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -459,7 +457,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UIV);
 
-    rotor(id('primordicly_infused_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('primordicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -496,7 +495,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UIV);
 
-    rotor(id('kaleidoscopicly_infused_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('kaleidoscopicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('kubejs:dsg_stargate_rod_base', 'kubejs:riftic_fragment', '2x gtceu:raging_rimulatia_plate')
@@ -529,7 +529,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UIV);
 
-    rotor(id('prismaticly_infused_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('prismaticly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -566,7 +567,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UIV);
 
-    riftEnh(id('faetic_stargate_rod'))
+    event.recipes.gtceu
+        .riftic_enhancement(id('faetic_stargate_rod'))
         .itemInputs('kubejs:prismaticly_infused_stargate_rod')
         .inputFluids('gtceu:faematter 25000')
         .itemOutputs('kubejs:faetic_stargate_rod')
@@ -574,7 +576,8 @@ ServerEvents.recipes((event) => {
         .totalCWU(888 * 20 * 40)
         .EUtVHA(UIV);
 
-    riftEnh(id('riftic_stargate_rod'))
+    event.recipes.gtceu
+        .riftic_enhancement(id('riftic_stargate_rod'))
         .itemInputs('kubejs:kaleidoscopicly_infused_stargate_rod')
         .inputFluids('gtceu:faematter 25000')
         .itemOutputs('kubejs:riftic_stargate_rod')
@@ -582,7 +585,8 @@ ServerEvents.recipes((event) => {
         .totalCWU(888 * 20 * 40)
         .EUtVHA(UIV);
 
-    riftEnh(id('temporic_stargate_rod'))
+    event.recipes.gtceu
+        .riftic_enhancement(id('temporic_stargate_rod'))
         .itemInputs('kubejs:primordicly_infused_stargate_rod')
         .inputFluids('gtceu:faematter 25000')
         .itemOutputs('kubejs:temporic_stargate_rod')
@@ -590,7 +594,8 @@ ServerEvents.recipes((event) => {
         .totalCWU(888 * 20 * 40)
         .EUtVHA(UIV);
 
-    stargateComponent('dsg_ring')
+    event.recipes.gtceu
+        .stargate_component_assembly('dsg_ring')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -623,7 +628,8 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UIV);
 
-    stargateComponent('dsg_chevron')
+    event.recipes.gtceu
+        .stargate_component_assembly('dsg_chevron')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -686,7 +692,8 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UIV);
 
-    stargateComponent('dsg_base')
+    event.recipes.gtceu
+        .stargate_component_assembly('dsg_base')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(

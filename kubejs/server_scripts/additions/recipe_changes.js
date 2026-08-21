@@ -168,6 +168,17 @@ ServerEvents.recipes((event) => {
         .duration(33.6 * 20)
         .EUt(60);
 
+    event.remove({ id: 'gtceu:mixer/raw_growth_medium' });
+    event.recipes.gtceu
+        .mixer(id('raw_growth_medium'))
+        .itemInputs('4x gtceu:meat_dust', '4x gtceu:salt_dust', '4x gtceu:calcium_dust', '4x gtceu:agar_dust')
+        .inputFluids('gtceu:mutagen 4000')
+        .outputFluids('gtceu:raw_growth_medium 4000')
+        .cleanroom(CleanroomType.STERILE_CLEANROOM)
+        .duration(1200)
+        .circuit(1)
+        .EUtVA(IV);
+
     // Mushroom Decomp
 
     event

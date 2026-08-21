@@ -9,6 +9,7 @@
 !scripts/
 !compile_data/
 !.github/
+!tools/
 
 # Add files in main directory
 !.gitattributes
@@ -17,15 +18,13 @@
 !panorama.dat
 !README.md
 
-# Specific exclusion - config folder
-config/*
 # Keep directories
 !config/ae2/
 !config/almostunified/
 !config/crash_asistant/
 !config/defaultworldtype/
-!config/fancymenu/
-!config/ftbquests/
+!config/fancymenu/**
+!config/ftbquests/**
 !config/gamestages/
 !config/jade/
 !config/jei/
@@ -37,6 +36,7 @@ config/*
 !config/chloride-client.json
 !config/colossalchests-common.toml
 !config/craftpresence.json
+!config/create_new_age-common.toml
 !config/createlowheated-common.toml
 !config/emi.css
 !config/exnihilosequentia-common.toml

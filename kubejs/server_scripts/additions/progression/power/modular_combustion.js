@@ -2,10 +2,10 @@ ServerEvents.recipes((event) => {
     const id = global.id;
     const componentMaterials = global.componentMaterials;
     const getRecipeTier = global.getRecipeTier;
-    const assline = event.recipes.gtceu.assembly_line;
 
     $(
-        assline(id('modular_combustion_frame'))
+        event.recipes.gtceu
+            .assembly_line(id('modular_combustion_frame'))
             .itemInputs(
                 'gtceu:luv_machine_hull',
                 '2x #gtceu:circuits/luv',
@@ -44,7 +44,8 @@ ServerEvents.recipes((event) => {
             componentMaterials[machine.tier].materials;
 
         $(
-            assline(id(`${machine.tier}_combustion_module`))
+            event.recipes.gtceu
+                .assembly_line(id(`${machine.tier}_combustion_module`))
                 .itemInputs(
                     `gtceu:${machine.tier}_machine_hull`,
                     `${circuitCount}x #gtceu:circuits/${machine.tier}`,

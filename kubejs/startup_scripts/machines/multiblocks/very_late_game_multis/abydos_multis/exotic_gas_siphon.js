@@ -19,7 +19,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             GTRecipeModifiers.BATCH_MODE,
         ])
-        .recipeTypes([GTRecipeTypes.get('exotic_gas_siphon'), GTRecipeTypes.get('gas_collector')])
+        .recipeTypes(['exotic_gas_siphon', 'gas_collector', 'void_gas_collector'])
         .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
         .pattern((definition) =>
             newFactoryBlockPattern([

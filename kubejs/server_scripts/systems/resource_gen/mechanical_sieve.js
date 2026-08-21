@@ -88,7 +88,7 @@ ServerEvents.recipes((event) => {
         '16x gtceu:crushed_sphalerite_ore',
         '16x gtceu:crushed_magnetite_ore',
     ]);
-    mechanicalSieving('#forge:sand', [
+    mechanicalSieving('minecraft:sand', [
         '16x minecraft:quartz',
         '16x minecraft:diamond',
         '16x minecraft:lapis_lazuli',

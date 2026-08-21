@@ -3,13 +3,6 @@ ServerEvents.recipes((event) => {
 
     const cpa = 'component_part_assembly';
     const assline = 'assembly_line';
-    const lcr = event.recipes.gtceu.large_chemical_reactor;
-    const cut = event.recipes.gtceu.cutter;
-    const assembler = event.recipes.gtceu.assembler;
-    const circAss = event.recipes.gtceu.circuit_assembler;
-    const rotor = event.recipes.gtceu.large_rotor_machine;
-    const heat = event.recipes.gtceu.heat_chamber;
-    const stargateComponent = event.recipes.gtceu.stargate_component_assembly;
 
     // Classic Gate Components
     const researchBuilder = global.researchBuilder;
@@ -200,7 +193,8 @@ ServerEvents.recipes((event) => {
         'gtceu:crystal_processor_mainframe'
     );
 
-    lcr(id('csg_enscription_plate'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('csg_enscription_plate'))
         .itemInputs('gtceu:naquadah_wafer', '48x gtceu:aerogel_foil', '1x #gtceu:circuits/uv')
         .inputFluids('gtceu:europium 1152', 'gtceu:naquadria 432')
         .itemOutputs('kubejs:csg_enscription_plate')
@@ -208,7 +202,8 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(ZPM);
 
-    cut(id('csg_enscription_chip'))
+    event.recipes.gtceu
+        .cutter(id('csg_enscription_chip'))
         .itemInputs('kubejs:csg_enscription_plate')
         .inputFluids('gtceu:nether_star_concentrate 432')
         .itemOutputs('2x kubejs:csg_enscription_chip')
@@ -216,7 +211,8 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(ZPM);
 
-    assembler(id('classic_dhd'))
+    event.recipes.gtceu
+        .assembler(id('classic_dhd'))
         .itemInputs(
             'gtceu:atomic_casing',
             'kubejs:csg_stellar_dialer',
@@ -230,7 +226,8 @@ ServerEvents.recipes((event) => {
         .duration(6000)
         .EUtVHA(ZPM);
 
-    circAss(id('csg_computational_matrix'))
+    event.recipes.gtceu
+        .circuit_assembler(id('csg_computational_matrix'))
         .itemInputs(
             'gtceu:multilayer_fiber_reinforced_printed_circuit_board',
             '16x gtceu:fine_trinaquadalloy_wire',
@@ -245,7 +242,8 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(ZPM);
 
-    rotor(id('csg_stargate_rod_base'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('csg_stargate_rod_base'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('2x gtceu:prismalium_ring')
@@ -261,7 +259,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UV);
 
-    rotor(id('raw_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('raw_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('kubejs:csg_stargate_rod_base', '2x gtceu:quantum_star')
@@ -291,14 +290,16 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UV);
 
-    heat(id('activated_stargate_rod'))
+    event.recipes.gtceu
+        .heat_chamber(id('activated_stargate_rod'))
         .itemInputs('kubejs:raw_stargate_rod')
         .inputFluids('gtceu:nether_star_concentrate 720')
         .itemOutputs('kubejs:activated_stargate_rod')
         .duration(800)
         .EUtVHA(UV);
 
-    stargateComponent('csg_ring')
+    event.recipes.gtceu
+        .stargate_component_assembly('csg_ring')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('gtceu:prismalium_frame', '16x kubejs:activated_stargate_rod')
@@ -314,7 +315,8 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UV);
 
-    stargateComponent('csg_chevron')
+    event.recipes.gtceu
+        .stargate_component_assembly('csg_chevron')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -342,7 +344,8 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UV);
 
-    stargateComponent('csg_base')
+    event.recipes.gtceu
+        .stargate_component_assembly('csg_base')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(

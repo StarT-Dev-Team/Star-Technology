@@ -145,6 +145,7 @@ ServerEvents.recipes((event) => {
             .addMaterialInfo();
     };
 
+    firebox('stainless_steel', 'stainless_steel', 'stainless_steel', 'kubejs');
     firebox('pallaridium', 'palladium', 'iridium', 'kubejs');
     firebox('enriched_naquadah', 'enriched_naquadah', 'enriched_naquadah', 'kubejs');
     firebox('nyanium', 'nyanium', 'nyanium', 'kubejs');

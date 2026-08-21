@@ -216,13 +216,6 @@ minecraft:warped_forest_vegetation_bonemeal
 minecraft:warped_fungus
 minecraft:warped_fungus_planted
 minecraft:weeping_vines
-mysticalagradditions:end_inferium_ore
-mysticalagradditions:end_prosperity_ore
-mysticalagradditions:nether_inferium_ore
-mysticalagradditions:nether_prosperity_ore
-mysticalagriculture:inferium_ore
-mysticalagriculture:prosperity_ore
-mysticalagriculture:soulstone
 sgjourney:blackstone_naquadah_spire
 sgjourney:lake_water
 sgjourney:ore_naquadah_large

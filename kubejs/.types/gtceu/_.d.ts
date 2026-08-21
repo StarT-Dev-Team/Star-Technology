@@ -257,6 +257,7 @@ declare const GuiTextures: typeof internal.com.gregtechceu.gtceu.api.gui.GuiText
 declare const ChemicalHelper: typeof internal.com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 declare const PropertyKey: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 declare const ToolProperty: typeof internal.com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
+declare const NBTPredicates: typeof internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicates;
 declare const GTToolType: typeof internal.com.gregtechceu.gtceu.api.item.tool.GTToolType;
 declare const GTFluidBuilder: typeof internal.com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 declare const GTFluidState: typeof internal.com.gregtechceu.gtceu.api.fluids.FluidState;

@@ -50,7 +50,7 @@ declare namespace internal.net.createmod.ponder.api.scene {
         // special(): SpecialInstructions;
         getScene(): PonderScene;
         get scene(): PonderScene;
-        title(sceneId: String, title: String): void;
+        title(sceneId: string, title: string): void;
         configureBasePlate(xOffset: number, zOffset: number, basePlateSize: number): void;
         scaleSceneView(factor: number): void;
         removeShadow(): void;

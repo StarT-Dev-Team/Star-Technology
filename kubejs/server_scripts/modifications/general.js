@@ -86,10 +86,6 @@ ServerEvents.recipes((event) => {
 
     event.replaceInput({ id: 'chipped:benches/mechanist_workbench' }, 'minecraft:tnt', 'minecraft:red_concrete');
 
-    //Modular Router
-    event.replaceInput({ id: 'modularrouters:speed_upgrade' }, 'minecraft:gold_ingot', 'gtceu:electrum_plate');
-    event.replaceInput({ id: 'modularrouters:speed_upgrade' }, 'minecraft:blaze_rod', 'minecraft:sugar');
-
     //Tom's
     event
         .shaped('toms_storage:ts.adv_wireless_terminal', [' P ', 'PTP', ' P '], {

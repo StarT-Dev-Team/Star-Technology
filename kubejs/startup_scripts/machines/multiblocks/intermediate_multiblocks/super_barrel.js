@@ -6,6 +6,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeTypes(['industrial_barrel_aqueous', 'industrial_barrel_magmatic'])
         .recipeModifiers([
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            GTRecipeModifiers.PARALLEL_HATCH,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
             GTRecipeModifiers.BATCH_MODE,
         ])
@@ -34,6 +35,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.euIn, { max: 1, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     C: P.gtBlock('rhodium_plated_palladium_frame'),
                     D: P.kjsBlock('pallaridium_engine_intake_casing'),
