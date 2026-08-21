@@ -49,13 +49,17 @@ ServerEvents.recipes((event) => {
         .keepIngredient('gtceu:brick_wooden_form')
         .id('start:shaped/compressed_fireclay');
 
-    event.recipes.create.pressing('gtceu:rubber_plate', 'thermal:cured_rubber').id('start:pressing/rubber_plate');
+    global.withModsLoaded('kubejs_create', () => {
+        event.recipes.create.pressing('gtceu:rubber_plate', 'thermal:cured_rubber').id('start:pressing/rubber_plate');
 
-    event.recipes.create
-        .pressing('gtceu:compressed_fireclay', 'gtceu:fireclay_dust')
-        .id('start:pressing/compressed_fireclay');
+        event.recipes.create
+            .pressing('gtceu:compressed_fireclay', 'gtceu:fireclay_dust')
+            .id('start:pressing/compressed_fireclay');
 
-    event.recipes.create.pressing('gtceu:compressed_clay', 'minecraft:clay_ball').id('start:pressing/compressed_clay');
+        event.recipes.create
+            .pressing('gtceu:compressed_clay', 'minecraft:clay_ball')
+            .id('start:pressing/compressed_clay');
+    });
 
     event.shapeless('4x minecraft:clay_ball', ['minecraft:clay']).id('start:shapeless/clay_decomp');
 

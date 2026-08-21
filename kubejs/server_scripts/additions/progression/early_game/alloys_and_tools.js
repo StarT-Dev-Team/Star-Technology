@@ -67,15 +67,17 @@ ServerEvents.recipes((event) => {
             );
         });
 
-        event.recipes.create
-            .mixing(`${resultStack}_ingot`, ingotIngredients)
-            .heatRequirement('lowheated')
-            .id(`start:create_mixing/${result}`);
+        global.withModsLoaded('kubejs_create', () => {
+            event.recipes.create
+                .mixing(`${resultStack}_ingot`, ingotIngredients)
+                .heatRequirement('lowheated')
+                .id(`start:create_mixing/${result}`);
 
-        event.recipes.create
-            .mixing(`${resultStack}_ingot`, dustIngredients)
-            .heatRequirement('lowheated')
-            .id(`start:create_mixing/${result}_with_dust`);
+            event.recipes.create
+                .mixing(`${resultStack}_ingot`, dustIngredients)
+                .heatRequirement('lowheated')
+                .id(`start:create_mixing/${result}_with_dust`);
+        });
 
         event.shapeless(`${resultStack}_dust`, dustIngredients).id(`start:shapeless/${result}_dust`);
     });

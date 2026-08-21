@@ -42,9 +42,11 @@ ServerEvents.recipes((event) => {
     const potionRecipes = (fermentationMixture, potionID) => {
         fermenting(fermentationMixture, null, `kubejs:${potionID} 100`, 100, potionID);
 
-        event.recipes.create
-            .filling(`kubejs:${potionID}`, [Fluid.of(`kubejs:${potionID}`, 250), 'minecraft:glass_bottle'])
-            .id(`start:filling/${potionID}`);
+        global.withModsLoaded('kubejs_create', () => {
+            event.recipes.create
+                .filling(`kubejs:${potionID}`, [Fluid.of(`kubejs:${potionID}`, 250), 'minecraft:glass_bottle'])
+                .id(`start:filling/${potionID}`);
+        });
 
         event.recipes.gtceu
             .fermenter(id(potionID))

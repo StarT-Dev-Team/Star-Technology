@@ -16,14 +16,17 @@ ServerEvents.recipes((event) => {
     event.remove({ output: 'vintage:laser' });
 
     event.remove({ id: 'vintage:sequenced_assembly/redstone_module' });
-    create
-        .deploying('vintage:redstone_module', ['create:precision_mechanism', 'minecraft:redstone_block'])
-        .id(id('deploying/redstone_module'));
-
     event.remove({ id: 'vintage:sequenced_assembly/recipe_card' });
-    create
-        .deploying('vintage:recipe_card', ['gtceu:brass_plate', 'create:empty_schematic'])
-        .id(id('deploying/recipe_card'));
+
+    global.withModsLoaded('kubejs_create', () => {
+        create
+            .deploying('vintage:redstone_module', ['create:precision_mechanism', 'minecraft:redstone_block'])
+            .id(id('deploying/redstone_module'));
+
+        create
+            .deploying('vintage:recipe_card', ['gtceu:brass_plate', 'create:empty_schematic'])
+            .id(id('deploying/recipe_card'));
+    });
 
     // Material Processing
     event.remove({ type: 'create:pressing', mod: 'vintage' });
@@ -264,14 +267,20 @@ ServerEvents.recipes((event) => {
         .centrifugation('3x gtceu:raw_rubber_dust', 'gtceu:sticky_resin')
         .minimalRPM(64)
         .id(id('centrifugation/sticky_resin'));
-    create
-        .mixing(Fluid.of('gtceu:rubber', 720), ['9x gtceu:raw_rubber_dust', 'gtceu:sulfur_dust'])
-        .heatRequirement('lowheated')
-        .id('start:create_mixing/rubber');
-    vintage
-        .pressurizing('thermal:cured_rubber', Fluid.of('gtceu:rubber', 144))
-        .heatRequirement('lowheated')
-        .id(id('centrifugation/cured_rubber'));
+
+    global.withModsLoaded('kubejs_create', () => {
+        create
+            .mixing(Fluid.of('gtceu:rubber', 720), ['9x gtceu:raw_rubber_dust', 'gtceu:sulfur_dust'])
+            .heatRequirement('lowheated')
+            .id('start:create_mixing/rubber');
+    });
+
+    global.withModsLoaded('thermal', () => {
+        vintage
+            .pressurizing('thermal:cured_rubber', Fluid.of('gtceu:rubber', 144))
+            .heatRequirement('lowheated')
+            .id(id('centrifugation/cured_rubber'));
+    });
 
     // Create Ore Proc
     [
@@ -292,6 +301,7 @@ ServerEvents.recipes((event) => {
                 `gtceu:crushed_${mainOre}_ore`
             )
             .id(id(`vibrating/crushed_${mainOre}`));
+
         vintage
             .centrifugation(
                 [`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.02)],
@@ -299,25 +309,37 @@ ServerEvents.recipes((event) => {
             )
             .minimalRPM(128)
             .id(id(`centrifugation/impure_${mainOre}`));
-        create
-            .splashing(
-                [`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.02)],
-                `gtceu:impure_${mainOre}_dust`
-            )
-            .id(id(`splashing/impure_${mainOre}`));
 
-        create
-            .splashing(
-                [`gtceu:purified_${mainOre}_ore`, Item.of(`gtceu:${secOre}_dust`).withChance(0.07)],
-                `gtceu:crushed_${mainOre}_ore`
-            )
-            .id(id(`splashing/crushed_${mainOre}`));
+        global.withModsLoaded('kubejs_create', () => {
+            create
+                .splashing(
+                    [`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.02)],
+                    `gtceu:impure_${mainOre}_dust`
+                )
+                .id(id(`splashing/impure_${mainOre}`));
+
+            create
+                .splashing(
+                    [`gtceu:purified_${mainOre}_ore`, Item.of(`gtceu:${secOre}_dust`).withChance(0.07)],
+                    `gtceu:crushed_${mainOre}_ore`
+                )
+                .id(id(`splashing/crushed_${mainOre}`));
+
+            create
+                .splashing(
+                    [`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.02)],
+                    `gtceu:pure_${mainOre}_dust`
+                )
+                .id(id(`splashing/pure_${mainOre}`));
+        });
+
         vintage
             .vibrating(
                 [`gtceu:pure_${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.04)],
                 `gtceu:purified_${mainOre}_ore`
             )
             .id(id(`vibrating/purified_${mainOre}`));
+
         vintage
             .centrifugation(
                 [`gtceu:${mainOre}_dust`, Item.of(`gtceu:${secOre}_dust`).withChance(0.02)],
@@ -325,11 +347,5 @@ ServerEvents.recipes((event) => {
             )
             .minimalRPM(128)
             .id(id(`centrifugation/pure_${mainOre}`));
-        create
-            .splashing(
-                [`gtceu:${mainOre}_dust`, Item.of(`gtceu:${terOre}_dust`).withChance(0.02)],
-                `gtceu:pure_${mainOre}_dust`
-            )
-            .id(id(`splashing/pure_${mainOre}`));
     });
 });

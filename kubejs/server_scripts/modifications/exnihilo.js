@@ -32,7 +32,9 @@ ServerEvents.recipes((event) => {
         .duration(10)
         .EUt(16);
 
-    event.recipes.create
-        .crushing('exnihilosequentia:crushed_blackstone', 'minecraft:blackstone')
-        .id(id('crushing/blackstone'));
+    global.withModsLoaded('kubejs_create', () => {
+        event.recipes.create
+            .crushing('exnihilosequentia:crushed_blackstone', 'minecraft:blackstone')
+            .id(id('crushing/blackstone'));
+    });
 });

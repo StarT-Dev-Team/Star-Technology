@@ -382,7 +382,7 @@ ServerEvents.recipes((event) => {
             .duration(1200)
             .EUtVHA(UV);
 
-        global.withModsLoaded(['sgjourney', 'create'], () => {
+        global.withModsLoaded(['sgjourney', 'kubejs_create'], () => {
             event.recipes.create
                 .mechanical_crafting(
                     'sgjourney:classic_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',

@@ -86,7 +86,7 @@ ServerEvents.recipes((event) => {
             .EUtVHA(UIV);
     });
 
-    global.withModsLoaded('create', () => {
+    global.withModsLoaded('kubejs_create', () => {
         event.recipes.create
             .mechanical_crafting(
                 'kubejs:nether_talisman',

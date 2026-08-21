@@ -3,32 +3,34 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     //plates
-    [
-        {
-            mod: 'gtceu',
-            metals: [
-                'lead',
-                'silver',
-                'tin',
-                'zinc',
-                'brass',
-                'bronze',
-                'red_alloy',
-                'nickel',
-                'invar',
-                'soul_infused',
-                'cobalt_brass',
-                'wrought_iron',
-                'potin',
-                'tin_alloy',
-            ],
-        },
-        { mod: 'minecraft', metals: ['iron', 'gold', 'copper'] },
-    ].forEach((type) => {
-        type.metals.forEach((foo) => {
-            event.recipes.create
-                .pressing(`gtceu:${foo}_plate`, `${type.mod}:${foo}_ingot`)
-                .id(`start:pressing/${foo}_plate`);
+    global.withModsLoaded('kubejs_create', () => {
+        [
+            {
+                mod: 'gtceu',
+                metals: [
+                    'lead',
+                    'silver',
+                    'tin',
+                    'zinc',
+                    'brass',
+                    'bronze',
+                    'red_alloy',
+                    'nickel',
+                    'invar',
+                    'soul_infused',
+                    'cobalt_brass',
+                    'wrought_iron',
+                    'potin',
+                    'tin_alloy',
+                ],
+            },
+            { mod: 'minecraft', metals: ['iron', 'gold', 'copper'] },
+        ].forEach((type) => {
+            type.metals.forEach((foo) => {
+                event.recipes.create
+                    .pressing(`gtceu:${foo}_plate`, `${type.mod}:${foo}_ingot`)
+                    .id(`start:pressing/${foo}_plate`);
+            });
         });
     });
 

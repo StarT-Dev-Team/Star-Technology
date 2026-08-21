@@ -762,7 +762,7 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UIV);
 
-    global.withModsLoaded(['sgjourney', 'create'], () => {
+    global.withModsLoaded(['sgjourney', 'kubejs_create'], () => {
         event.recipes.create
             .mechanical_crafting(
                 'sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
