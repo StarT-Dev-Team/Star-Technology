@@ -8,10 +8,6 @@ ServerEvents.recipes((event) => {
         event.remove({ id: `create:smelting/glass_pane_from_${type}_glass_pane` });
     });
 
-    event.replaceInput({ id: 'create:crafting/kinetics/goggles' }, '#forge:plates/gold', 'gtceu:copper_plate');
-
-    event.remove({ id: 'create:splashing/stained_glass' });
-
     /**
      * @param {string} mod
      */
@@ -27,11 +23,6 @@ ServerEvents.recipes((event) => {
     nuggetFixMod('create');
     nuggetFixMod('thermal');
     nuggetFixMod('exnihilosequentia');
-
-    // Create
-    event
-        .shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block'])
-        .id('start:shapeless/andesite_alloy_block_decomp');
 
     // Drawers
     [1, 2, 4].forEach((size) => {
@@ -95,7 +86,7 @@ ServerEvents.recipes((event) => {
         .id('start:shaped/advanced_wireless_terminal');
 
     // Effortless Building Upgrade Accessibility
-    global.withEffortlessBuilding(() => {
+    global.withModsLoaded('effortlessbuilding', () => {
         /**
          * @param {string} type
          * @param {string} mat

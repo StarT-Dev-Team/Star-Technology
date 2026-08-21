@@ -102,33 +102,50 @@ ServerEvents.recipes((event) => {
     };
 });
 
-const modRequirements = {
-    architectsPalette: 'architects_palette',
-    xycraftWorld: 'xycraft_world',
-    chipped: 'chipped',
-    framedBlocks: 'framedblocks',
-    effortlessBuilding: 'effortlessbuilding',
-};
+// const modRequirements = {
+//     architectsPalette: 'architects_palette',
+//     xycraftWorld: 'xycraft_world',
+//     chipped: 'chipped',
+//     framedBlocks: 'framedblocks',
+//     effortlessBuilding: 'effortlessbuilding',
+// };
 
-// Auto-generate all the wrapper functions
-Object.entries(modRequirements).forEach(([name, mod]) => {
-    const mods = Array.isArray(mod) ? mod : [mod];
-    /**
-     * @param {() => void} ifTrue Function to execute if current mod is loaded'.
-     * @param {() => void} ifFalse Function to execute if current mod is NOT loaded'.
-     */
-    const fn = (ifTrue, ifFalse) => {
-        if (mods.every((m) => Platform.isLoaded(m))) {
-            if (ifTrue && typeof ifTrue === 'function') {
-                ifTrue();
-            }
-        } else if (ifFalse && typeof ifFalse === 'function') {
-            ifFalse();
+// // Auto-generate all the wrapper functions
+// Object.entries(modRequirements).forEach(([name, mod]) => {
+//     const mods = Array.isArray(mod) ? mod : [mod];
+//     /**
+//      * @param {() => void} ifTrue Function to execute if current mod is loaded'.
+//      * @param {() => void} ifFalse Function to execute if current mod is NOT loaded'.
+//      */
+//     const fn = (ifTrue, ifFalse) => {
+//         if (mods.every((m) => Platform.isLoaded(m))) {
+//             if (ifTrue && typeof ifTrue === 'function') {
+//                 ifTrue();
+//             }
+//         } else if (ifFalse && typeof ifFalse === 'function') {
+//             ifFalse();
+//         }
+//     };
+
+//     /** @type {any} */ (global)[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = fn;
+// });
+
+/**
+ * @param {string | string[]} mods The required mod/mods for this function to run
+ * @param {() => void} ifTrue Function to execute if current mod is loaded'.
+ * @param {() => void} [ifFalse] Function to execute if current mod is NOT loaded'.
+ */
+global.withModsLoaded = (mods, ifTrue, ifFalse) => {
+    mods = Array.isArray(mods) ? mods : [mods];
+
+    if (mods.every((m) => Platform.isLoaded(m))) {
+        if (ifTrue && typeof ifTrue === 'function') {
+            ifTrue();
         }
-    };
-
-    /** @type {any} */ (global)[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = fn;
-});
+    } else if (ifFalse && typeof ifFalse === 'function') {
+        ifFalse();
+    }
+};
 
 /**
  * Implosion Compressor recipe helper

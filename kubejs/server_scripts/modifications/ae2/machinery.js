@@ -1,3 +1,4 @@
+// requires: ae2
 ServerEvents.recipes((event) => {
     const id = global.id;
 
@@ -64,274 +65,268 @@ ServerEvents.recipes((event) => {
         assemblerFluid(id1, output, inputit, inputfl, eu, circuit);
     };
 
+    //Replaced Inputs
     /**
-     * @param {string} item
-     * @param {string} input
+     * @param {string} recId
+     * @param {string} target
+     * @param {string} replace
      */
-    const extended = (item, input) => {
-        assemblerFluidRem(
-            `extended_${item}`,
-            `expatternprovider:ex_${item}`,
-            [
-                `ae2:${input}`,
-                '4x ae2:calculation_processor',
-                '#gtceu:circuits/ev',
-                '8x gtceu:diamond_skystone_alloy_plate',
-            ],
-            'sky_steel 576',
-            GTValues.VA[EV]
-        );
+    const repIn = (recId, target, replace) => {
+        event.replaceInput({ id: recId }, target, replace);
     };
-
-    /**
-     * @param {string} item
-     * @param {string} input
-     */
-    const assemblerspecex = (item, input) => {
-        assemblerFluidRem(
-            `${item}_storage_bus`,
-            `expatternprovider:${item}_storage_bus`,
-            ['2x ae2:storage_bus', `${input}`],
-            'soldering_alloy 144',
-            GTValues.VA[EV]
-        );
-        assemblerFluidRem(
-            `${item}_export_bus`,
-            `expatternprovider:${item}_export_bus`,
-            ['2x ae2:export_bus', `${input}`],
-            'soldering_alloy 144',
-            GTValues.VA[EV]
-        );
-    };
-
-    //Energy Cells
-    assemblerFluidRem(
-        'mega_energy_cell',
-        'megacells:mega_energy_cell',
-        ['gtceu:netherite_gold_skystone_alloy_frame', '8x ae2:dense_energy_cell', 'gtceu:lapotronic_energy_orb'],
-        'fluix_steel 576',
-        GTValues.VA[IV]
-    );
-
-    assemblerFluidRem(
-        'expanded_energy_cell',
-        'expandedae:exp_energy_cell',
-        ['gtceu:void_frame', '8x megacells:mega_energy_cell', 'gtceu:max_battery'],
-        'netherite_gold_skystone_alloy 1152',
-        GTValues.VHA[UHV]
-    );
-
-    //Interfaces
-    assemblerFluid(
-        'mega_interface',
-        'megacells:mega_interface',
-        [
-            'ae2:interface',
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/hv',
-            '8x gtceu:diamond_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[HV]
-    );
-
-    assemblerFluid(
-        'ex_interface',
-        'expatternprovider:ex_interface',
-        [
-            'megacells:mega_interface',
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            '4x gtceu:double_certus_quartz_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[EV]
-    );
-
-    assemblerFluid(
-        'oversize_interface',
-        'expatternprovider:oversize_interface',
-        ['expatternprovider:ex_interface', '4x ae2:capacity_card', '4x gtceu:gold_skystone_alloy_plate'],
-        'sky_steel 576',
-        GTValues.VA[EV]
-    );
-
-    //Pattern Providers
-    assemblerFluid(
-        'mega_pattern_provider',
-        'megacells:mega_pattern_provider',
-        [
-            'ae2:pattern_provider',
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/hv',
-            '8x gtceu:diamond_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[HV]
-    );
-
-    assemblerFluid(
-        'ex_pattern_provider',
-        'expatternprovider:ex_pattern_provider',
-        [
-            'megacells:mega_pattern_provider',
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            '4x gtceu:double_gold_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[EV]
-    );
-
-    assemblerFluid(
-        'expanded_pattern_provider',
-        'expandedae:exp_pattern_provider',
-        [
-            'expatternprovider:ex_pattern_provider',
-            '4x ae2:engineering_processor',
-            '#gtceu:circuits/iv',
-            '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-        ],
-        'fluix_steel 576',
-        GTValues.VA[IV]
-    );
-
-    assemblerFluid(
-        'giga_pattern_provider',
-        'expandedae:giga_pattern_provider',
-        [
-            'expandedae:exp_pattern_provider',
-            '16x ae2:engineering_processor',
-            '#gtceu:circuits/uhv',
-            '8x gtceu:double_netherite_gold_skystone_alloy_plate',
-        ],
-        'fluix_steel 2304',
-        GTValues.VA[UHV]
-    );
-
-    //Upgrade Kits
-    assemblerFluidRem(
-        'pattern_terminal_upgrade',
-        'expatternprovider:pattern_terminal_upgrade',
-        ['4x gtceu:double_certus_quartz_skystone_alloy_plate', '4x ae2:engineering_processor', '#gtceu:circuits/ev'],
-        'sky_steel 576',
-        GTValues.VA[EV],
-        1
-    );
-
-    assemblerFluidRem(
-        'io_bus_upgrade',
-        'expatternprovider:io_bus_upgrade',
-        [
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            '4x gtceu:certus_quartz_skystone_alloy_plate',
-            '4x gtceu:gold_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[EV],
-        1
-    );
-
-    assemblerFluidRem(
-        'drive_upgrade',
-        'expatternprovider:drive_upgrade',
-        [
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            '8x gtceu:diamond_skystone_alloy_plate',
-            '4x gtceu:certus_quartz_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[EV],
-        1
-    );
-
-    assemblerFluidRem(
-        'interface_upgrade',
-        'expatternprovider:interface_upgrade',
-        [
-            '8x ae2:calculation_processor',
-            '#gtceu:circuits/hv',
-            '#gtceu:circuits/ev',
-            '8x gtceu:diamond_skystone_alloy_plate',
-            '4x gtceu:double_certus_quartz_skystone_alloy_plate',
-        ],
-        'sky_steel 1152',
-        GTValues.VA[EV],
-        1
-    );
 
     const ppu = 'pattern_provider_upgrade';
 
-    assemblerFluidRem(
-        ppu,
-        `expatternprovider:${ppu}`,
-        [
-            '8x ae2:calculation_processor',
-            '#gtceu:circuits/hv',
-            '#gtceu:circuits/ev',
-            '8x gtceu:diamond_skystone_alloy_plate',
-            '4x gtceu:double_gold_skystone_alloy_plate',
-        ],
-        'sky_steel 1152',
-        GTValues.VA[EV],
-        1
-    );
+    /**@type {{upgrade: string, main: string, addition: string}[]} */
+    const ppuUpgradesArray = [];
 
-    assemblerFluidRem(
-        `ext_${ppu}`,
-        `expandedae:ext_${ppu}`,
-        ['4x ae2:engineering_processor', '#gtceu:circuits/iv', '8x gtceu:netherite_certus_quartz_skystone_alloy_plate'],
-        'fluix_steel 576',
-        GTValues.VA[IV],
-        1
-    );
+    global.withModsLoaded('megacells', () => {
+        assemblerFluidRem(
+            'mega_energy_cell',
+            'megacells:mega_energy_cell',
+            ['gtceu:netherite_gold_skystone_alloy_frame', '8x ae2:dense_energy_cell', 'gtceu:lapotronic_energy_orb'],
+            'fluix_steel 576',
+            GTValues.VA[IV]
+        );
 
-    assemblerFluid(
-        `exp2g_${ppu}`,
-        `expandedae:exp2g_${ppu}`,
-        ['16x ae2:engineering_processor', '#gtceu:circuits/uhv', '8x gtceu:double_netherite_gold_skystone_alloy_plate'],
-        'fluix_steel 2304',
-        GTValues.VA[UHV],
-        1
-    );
+        assemblerFluid(
+            'mega_interface',
+            'megacells:mega_interface',
+            [
+                'ae2:interface',
+                '4x ae2:calculation_processor',
+                '#gtceu:circuits/hv',
+                '8x gtceu:diamond_skystone_alloy_plate',
+            ],
+            'sky_steel 576',
+            GTValues.VA[HV]
+        );
 
-    // Compounded PPU's
-    event.remove({ id: 'expandedae:crafting/exp_pattern_provider_upgrade' });
+        assemblerFluid(
+            'mega_pattern_provider',
+            'megacells:mega_pattern_provider',
+            [
+                'ae2:pattern_provider',
+                '4x ae2:calculation_processor',
+                '#gtceu:circuits/hv',
+                '8x gtceu:diamond_skystone_alloy_plate',
+            ],
+            'sky_steel 576',
+            GTValues.VA[HV]
+        );
 
-    assemblerFluidRem(
-        `mega_${ppu}`,
-        `expandedae:mega_${ppu}`,
-        [
-            `expandedae:ext_${ppu}`,
-            '4x ae2:calculation_processor',
-            '#gtceu:circuits/ev',
-            'gtceu:double_gold_skystone_alloy_plate',
-        ],
-        'sky_steel 576',
-        GTValues.VA[HV],
-        1
-    );
+        global.withModsLoaded('expandedae', () => {
+            assemblerFluidRem(
+                'expanded_energy_cell',
+                'expandedae:exp_energy_cell',
+                ['gtceu:void_frame', '8x megacells:mega_energy_cell', 'gtceu:max_battery'],
+                'netherite_gold_skystone_alloy 1152',
+                GTValues.VHA[UHV]
+            );
 
-    [
-        { upgrade: `exp_${ppu}`, main: `expandedae:ext_${ppu}`, addition: `expatternprovider:${ppu}` },
-        { upgrade: `p2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:exp_${ppu}` },
-        { upgrade: `m2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:mega_${ppu}` },
-        { upgrade: `ext2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:ext_${ppu}` },
-    ].forEach((set) => {
-        const { upgrade, main, addition } = set;
-        event.recipes.gtceu
-            .canner(id(upgrade))
-            .itemInputs(main, addition)
-            .itemOutputs(`expandedae:${upgrade}`)
-            .duration(40)
-            .EUt(256);
+            const researchBuilder = global.researchBuilder;
+            const riftAss = 'riftic_infusion_assembly';
+
+            researchBuilder(
+                riftAss,
+                'artificial_universe_fluid_cell',
+                [
+                    '1x gtceu:hvga_steel_frame',
+                    '3x #gtceu:circuits/uiv',
+                    '6x megacells:cell_component_256m',
+                    '8x gtceu:lepton_resonant_thallium_antimonide_single_cable',
+                ],
+                [
+                    'gtceu:neutrindium_soldering_alloy 5184',
+                    'gtceu:borealic_concentrate 5400',
+                    'gtceu:pure_dragon_breath 11500',
+                    'gtceu:prismatic_hypergurmalium 6250',
+                ],
+                ['expandedae:artificial_universe_fluid_cell'],
+                1800,
+                256,
+                256 * 1200,
+                GTValues.VA[UIV],
+                'megacells:fluid_storage_cell_256m'
+            );
+
+            researchBuilder(
+                riftAss,
+                'artificial_universe_item_cell',
+                [
+                    '1x gtceu:draco_abyssal_frame',
+                    '3x #gtceu:circuits/uiv',
+                    '6x megacells:cell_component_256m',
+                    '8x gtceu:lepton_resonant_thallium_antimonide_single_cable',
+                ],
+                [
+                    'gtceu:neutrindium_soldering_alloy 5184',
+                    'gtceu:borealic_concentrate 5400',
+                    'gtceu:pure_dragon_breath 11500',
+                    'gtceu:prismatic_hypergurmalium 6250',
+                ],
+                ['expandedae:artificial_universe_item_cell'],
+                1800,
+                256,
+                256 * 1200,
+                GTValues.VA[UIV],
+                'megacells:item_storage_cell_256m'
+            );
+        });
+
+        global.withModsLoaded('expatternprovider', () => {
+            assemblerFluid(
+                'ex_interface',
+                'expatternprovider:ex_interface',
+                [
+                    'megacells:mega_interface',
+                    '4x ae2:calculation_processor',
+                    '#gtceu:circuits/ev',
+                    '4x gtceu:double_certus_quartz_skystone_alloy_plate',
+                ],
+                'sky_steel 576',
+                GTValues.VA[EV]
+            );
+
+            assemblerFluid(
+                'ex_pattern_provider',
+                'expatternprovider:ex_pattern_provider',
+                [
+                    'megacells:mega_pattern_provider',
+                    '4x ae2:calculation_processor',
+                    '#gtceu:circuits/ev',
+                    '4x gtceu:double_gold_skystone_alloy_plate',
+                ],
+                'sky_steel 576',
+                GTValues.VA[EV]
+            );
+        });
+
+        shapedRecipeRem('megacells:cell_dock', ['DGD', 'PWP'], {
+            D: 'gtceu:diamond_skystone_alloy_plate',
+            G: 'gtceu:gold_skystone_alloy_plate',
+            P: 'ae2:engineering_processor',
+            W: '#ae2:glass_cable',
+        });
+
+        assemblerFluidRem(
+            'mega_crafting_unit',
+            'megacells:mega_crafting_unit',
+            ['gtceu:netherite_certus_quartz_skystone_alloy_frame', '8x ae2:crafting_unit', '#gtceu:circuits/iv'],
+            'fluix_steel 576',
+            GTValues.VA[IV]
+        );
     });
 
-    //Infinity Cells
-    ['minecraft:sand', 'minecraft:gravel', 'exnihilosequentia:dust', 'exnihilosequentia:crushed_blackstone'].forEach(
-        (Sediment) => {
+    global.withModsLoaded('expatternprovider', () => {
+        assemblerFluid(
+            'oversize_interface',
+            'expatternprovider:oversize_interface',
+            ['expatternprovider:ex_interface', '4x ae2:capacity_card', '4x gtceu:gold_skystone_alloy_plate'],
+            'sky_steel 576',
+            GTValues.VA[EV]
+        );
+
+        global.withModsLoaded('expandedae', () => {
+            assemblerFluid(
+                'expanded_pattern_provider',
+                'expandedae:exp_pattern_provider',
+                [
+                    'expatternprovider:ex_pattern_provider',
+                    '4x ae2:engineering_processor',
+                    '#gtceu:circuits/iv',
+                    '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
+                ],
+                'fluix_steel 576',
+                GTValues.VA[IV]
+            );
+
+            ppuUpgradesArray.push({
+                upgrade: `exp_${ppu}`,
+                main: `expandedae:ext_${ppu}`,
+                addition: `expatternprovider:${ppu}`,
+            });
+        });
+
+        //Upgrade Kits
+        assemblerFluidRem(
+            'pattern_terminal_upgrade',
+            'expatternprovider:pattern_terminal_upgrade',
+            [
+                '4x gtceu:double_certus_quartz_skystone_alloy_plate',
+                '4x ae2:engineering_processor',
+                '#gtceu:circuits/ev',
+            ],
+            'sky_steel 576',
+            GTValues.VA[EV],
+            1
+        );
+
+        assemblerFluidRem(
+            'io_bus_upgrade',
+            'expatternprovider:io_bus_upgrade',
+            [
+                '4x ae2:calculation_processor',
+                '#gtceu:circuits/ev',
+                '4x gtceu:certus_quartz_skystone_alloy_plate',
+                '4x gtceu:gold_skystone_alloy_plate',
+            ],
+            'sky_steel 576',
+            GTValues.VA[EV],
+            1
+        );
+
+        assemblerFluidRem(
+            'drive_upgrade',
+            'expatternprovider:drive_upgrade',
+            [
+                '4x ae2:calculation_processor',
+                '#gtceu:circuits/ev',
+                '8x gtceu:diamond_skystone_alloy_plate',
+                '4x gtceu:certus_quartz_skystone_alloy_plate',
+            ],
+            'sky_steel 576',
+            GTValues.VA[EV],
+            1
+        );
+
+        assemblerFluidRem(
+            'interface_upgrade',
+            'expatternprovider:interface_upgrade',
+            [
+                '8x ae2:calculation_processor',
+                '#gtceu:circuits/hv',
+                '#gtceu:circuits/ev',
+                '8x gtceu:diamond_skystone_alloy_plate',
+                '4x gtceu:double_certus_quartz_skystone_alloy_plate',
+            ],
+            'sky_steel 1152',
+            GTValues.VA[EV],
+            1
+        );
+
+        assemblerFluidRem(
+            ppu,
+            `expatternprovider:${ppu}`,
+            [
+                '8x ae2:calculation_processor',
+                '#gtceu:circuits/hv',
+                '#gtceu:circuits/ev',
+                '8x gtceu:diamond_skystone_alloy_plate',
+                '4x gtceu:double_gold_skystone_alloy_plate',
+            ],
+            'sky_steel 1152',
+            GTValues.VA[EV],
+            1
+        );
+
+        //Infinity Cells
+        [
+            'minecraft:sand',
+            'minecraft:gravel',
+            'exnihilosequentia:dust',
+            'exnihilosequentia:crushed_blackstone',
+        ].forEach((Sediment) => {
             event.shaped(
                 Item.of('expatternprovider:infinity_cell', `{record:{"#c":"ae2:i",id:"${Sediment}"}}`),
                 ['BAB', 'CDC', 'FEF'],
@@ -347,8 +342,229 @@ ServerEvents.recipes((event) => {
                     F: 'gtceu:pure_netherite_gear',
                 }
             );
-        }
-    );
+        });
+
+        shapedRecipeRem('expatternprovider:wireless_connect', ['ABA', 'CDC', 'AEA'], {
+            A: 'ae2:sky_dust',
+            B: 'gtceu:mv_sensor',
+            C: '#ae2:smart_cable',
+            D: 'ae2:engineering_processor',
+            E: 'gtceu:mv_emitter',
+        });
+
+        //Assembler Matrix
+        assemblerFluidRem(
+            'assembler_matrix_frame',
+            'expatternprovider:assembler_matrix_frame',
+            ['gtceu:plascrete', '2x ae2:fluix_smart_dense_cable', '4x gtceu:ruthenium_plate'],
+            'fluix_steel 576',
+            GTValues.VA[EV]
+        );
+
+        assemblerFluidRem(
+            'assembler_matrix_wall',
+            'expatternprovider:assembler_matrix_wall',
+            ['gtceu:plascrete', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
+            'fluix_steel 576',
+            GTValues.VA[EV]
+        );
+
+        assemblerFluidRem(
+            'assembler_matrix_glass',
+            'expatternprovider:assembler_matrix_glass',
+            ['gtceu:cleanroom_glass', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
+            'fluix_steel 576',
+            GTValues.VA[EV]
+        );
+
+        assemblerFluidRem(
+            'assembler_matrix_pattern',
+            'expatternprovider:assembler_matrix_pattern',
+            ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_pattern_provider'],
+            'netherite_certus_quartz_skystone_alloy 576',
+            GTValues.VA[EV]
+        );
+
+        assemblerFluidRem(
+            'assembler_matrix_crafter',
+            'expatternprovider:assembler_matrix_crafter',
+            ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_molecular_assembler'],
+            'netherite_certus_quartz_skystone_alloy 576',
+            GTValues.VA[EV]
+        );
+
+        assemblerFluidRem(
+            'assembler_matrix_speed',
+            'expatternprovider:assembler_matrix_speed',
+            ['expatternprovider:assembler_matrix_wall', '2x ae2:speed_card'],
+            'netherite_certus_quartz_skystone_alloy 576',
+            GTValues.VA[EV]
+        );
+
+        /**
+         * @param {string} item
+         * @param {string} input
+         */
+        const extended = (item, input) => {
+            assemblerFluidRem(
+                `extended_${item}`,
+                `expatternprovider:ex_${item}`,
+                [
+                    `ae2:${input}`,
+                    '4x ae2:calculation_processor',
+                    '#gtceu:circuits/ev',
+                    '8x gtceu:diamond_skystone_alloy_plate',
+                ],
+                'sky_steel 576',
+                GTValues.VA[EV]
+            );
+        };
+
+        ['molecular_assembler', 'drive', 'io_port'].forEach((type) => {
+            extended(`${type}`, `${type}`);
+        });
+
+        assemblerFluidRem(
+            'ex_pattern_access_part',
+            'expatternprovider:ex_pattern_access_part',
+            [
+                'ae2:pattern_access_terminal',
+                '4x gtceu:certus_quartz_skystone_alloy_plate',
+                '4x ae2:engineering_processor',
+                '#gtceu:circuits/hv',
+            ],
+            'fluix_steel 576',
+            GTValues.VA[MV]
+        );
+
+        assemblerFluidRem(
+            'expanded_io_port',
+            'expandedae:exp_io_port',
+            [
+                'expatternprovider:ex_io_port',
+                '4x ae2:engineering_processor',
+                '#gtceu:circuits/iv',
+                '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
+            ],
+            'fluix_steel 576',
+            GTValues.VA[IV]
+        );
+
+        ['import_bus', 'export_bus'].forEach((type) => {
+            assemblerFluidRem(
+                `extended_${type}_part`,
+                `expatternprovider:ex_${type}_part`,
+                [
+                    `ae2:${type}`,
+                    '4x ae2:calculation_processor',
+                    '#gtceu:circuits/ev',
+                    '4x gtceu:certus_quartz_skystone_alloy_plate',
+                    '4x gtceu:gold_skystone_alloy_plate',
+                ],
+                'sky_steel 576',
+                GTValues.VA[EV]
+            );
+        });
+
+        /**
+         * @param {string} item
+         * @param {string} input
+         */
+        const assemblerSpecEx = (item, input) => {
+            assemblerFluidRem(
+                `${item}_storage_bus`,
+                `expatternprovider:${item}_storage_bus`,
+                ['2x ae2:storage_bus', `${input}`],
+                'soldering_alloy 144',
+                GTValues.VA[EV]
+            );
+            assemblerFluidRem(
+                `${item}_export_bus`,
+                `expatternprovider:${item}_export_bus`,
+                ['2x ae2:export_bus', `${input}`],
+                'soldering_alloy 144',
+                GTValues.VA[EV]
+            );
+        };
+
+        assemblerSpecEx('tag', 'gtceu:item_tag_filter');
+        assemblerSpecEx('mod', 'gtceu:item_filter');
+        assemblerSpecEx('precise', 'gtceu:mv_robot_arm');
+    });
+
+    global.withModsLoaded('expandedae', () => {
+        assemblerFluid(
+            'giga_pattern_provider',
+            'expandedae:giga_pattern_provider',
+            [
+                'expandedae:exp_pattern_provider',
+                '16x ae2:engineering_processor',
+                '#gtceu:circuits/uhv',
+                '8x gtceu:double_netherite_gold_skystone_alloy_plate',
+            ],
+            'fluix_steel 2304',
+            GTValues.VA[UHV]
+        );
+
+        // Upgrade Kits
+        assemblerFluidRem(
+            `ext_${ppu}`,
+            `expandedae:ext_${ppu}`,
+            [
+                '4x ae2:engineering_processor',
+                '#gtceu:circuits/iv',
+                '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
+            ],
+            'fluix_steel 576',
+            GTValues.VA[IV],
+            1
+        );
+
+        assemblerFluid(
+            `exp2g_${ppu}`,
+            `expandedae:exp2g_${ppu}`,
+            [
+                '16x ae2:engineering_processor',
+                '#gtceu:circuits/uhv',
+                '8x gtceu:double_netherite_gold_skystone_alloy_plate',
+            ],
+            'fluix_steel 2304',
+            GTValues.VA[UHV],
+            1
+        );
+
+        event.remove({ id: 'expandedae:crafting/exp_pattern_provider_upgrade' });
+
+        assemblerFluidRem(
+            `mega_${ppu}`,
+            `expandedae:mega_${ppu}`,
+            [
+                `expandedae:ext_${ppu}`,
+                '4x ae2:calculation_processor',
+                '#gtceu:circuits/ev',
+                'gtceu:double_gold_skystone_alloy_plate',
+            ],
+            'sky_steel 576',
+            GTValues.VA[HV],
+            1
+        );
+
+        ppuUpgradesArray.push(
+            { upgrade: `p2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:exp_${ppu}` },
+            { upgrade: `m2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:mega_${ppu}` },
+            { upgrade: `ext2g_${ppu}`, main: `expandedae:exp2g_${ppu}`, addition: `expandedae:ext_${ppu}` }
+        );
+    });
+
+    ppuUpgradesArray.forEach((set) => {
+        const { upgrade, main, addition } = set;
+        event.recipes.gtceu
+            .canner(id(upgrade))
+            .itemInputs(main, addition)
+            .itemOutputs(`expandedae:${upgrade}`)
+            .duration(40)
+            .EUt(256);
+    });
 
     //General AE
     event.recipes.gtceu
@@ -478,27 +694,37 @@ ServerEvents.recipes((event) => {
         D: 'minecraft:redstone',
     });
 
-    shapedRecipeRem('ae2wtlib:magnet_card', ['ABA', 'ACA', 'EDE'], {
-        A: 'gtceu:certus_quartz_skystone_alloy_plate',
-        B: 'gtceu:lv_field_generator',
-        C: 'ae2:advanced_card',
-        D: 'gtceu:lv_item_magnet',
-        E: 'gtceu:diamond_skystone_alloy_plate',
+    global.withModsLoaded('ae2wtlib', () => {
+        shapedRecipeRem('ae2wtlib:magnet_card', ['ABA', 'ACA', 'EDE'], {
+            A: 'gtceu:certus_quartz_skystone_alloy_plate',
+            B: 'gtceu:lv_field_generator',
+            C: 'ae2:advanced_card',
+            D: 'gtceu:lv_item_magnet',
+            E: 'gtceu:diamond_skystone_alloy_plate',
+        });
+
+        shapedRecipeRem('ae2wtlib:quantum_bridge_card', ['   ', 'ABA', ' C '], {
+            A: 'ae2:fluix_pearl',
+            B: 'ae2:quantum_link',
+            C: 'ae2:wireless_receiver',
+        });
     });
 
-    shapedRecipeRem('ae2wtlib:quantum_bridge_card', ['   ', 'ABA', ' C '], {
-        A: 'ae2:fluix_pearl',
-        B: 'ae2:quantum_link',
-        C: 'ae2:wireless_receiver',
-    });
+    global.withModsLoaded('merequester', () => {
+        shapedRecipeRem('merequester:requester', ['ABA', 'CDC', 'EFE'], {
+            A: 'gtceu:certus_quartz_skystone_alloy_plate',
+            B: '#ae2:interface',
+            C: 'ae2:crafting_accelerator',
+            D: 'ae2:engineering_processor',
+            E: 'gtceu:gold_skystone_alloy_ingot',
+            F: 'gtceu:flawless_certus_quartz_gem',
+        });
 
-    shapedRecipeRem('merequester:requester', ['ABA', 'CDC', 'EFE'], {
-        A: 'gtceu:certus_quartz_skystone_alloy_plate',
-        B: '#ae2:interface',
-        C: 'ae2:crafting_accelerator',
-        D: 'ae2:engineering_processor',
-        E: 'gtceu:gold_skystone_alloy_ingot',
-        F: 'gtceu:flawless_certus_quartz_gem',
+        shapedRecipeRem('merequester:requester_terminal', ['AB', 'C '], {
+            A: 'gtceu:computer_monitor_cover',
+            B: 'ae2:logic_processor',
+            C: 'merequester:requester',
+        });
     });
 
     shapedRecipeRem('ae2:pattern_access_terminal', ['AB', 'C '], {
@@ -512,27 +738,6 @@ ServerEvents.recipes((event) => {
         B: 'gtceu:computer_monitor_cover',
         C: 'ae2:logic_processor',
         D: 'ae2:annihilation_core',
-    });
-
-    shapedRecipeRem('merequester:requester_terminal', ['AB', 'C '], {
-        A: 'gtceu:computer_monitor_cover',
-        B: 'ae2:logic_processor',
-        C: 'merequester:requester',
-    });
-
-    shapedRecipeRem('megacells:cell_dock', ['DGD', 'PWP'], {
-        D: 'gtceu:diamond_skystone_alloy_plate',
-        G: 'gtceu:gold_skystone_alloy_plate',
-        P: 'ae2:engineering_processor',
-        W: '#ae2:glass_cable',
-    });
-
-    shapedRecipeRem('expatternprovider:wireless_connect', ['ABA', 'CDC', 'AEA'], {
-        A: 'ae2:sky_dust',
-        B: 'gtceu:mv_sensor',
-        C: '#ae2:smart_cable',
-        D: 'ae2:engineering_processor',
-        E: 'gtceu:mv_emitter',
     });
 
     assemblerFluidRem(
@@ -562,229 +767,112 @@ ServerEvents.recipes((event) => {
         GTValues.VA[EV]
     );
 
-    //Assembler Matrix
-    assemblerFluidRem(
-        'assembler_matrix_frame',
-        'expatternprovider:assembler_matrix_frame',
-        ['gtceu:plascrete', '2x ae2:fluix_smart_dense_cable', '4x gtceu:ruthenium_plate'],
-        'fluix_steel 576',
-        GTValues.VA[EV]
-    );
+    global.withModsLoaded('expandedgt', () => {
+        // ME Hatches
 
-    assemblerFluidRem(
-        'assembler_matrix_wall',
-        'expatternprovider:assembler_matrix_wall',
-        ['gtceu:plascrete', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
-        'fluix_steel 576',
-        GTValues.VA[EV]
-    );
+        /** @type {const} */ (['luv', 'zpm']).forEach((tier) => {
+            const casingMaterial = global.casingMaterials[tier];
+            const consTier = tier === 'luv' ? 'ZPM' : 'UV';
+            const input = tier === 'luv' ? 'input' : 'stocking_input';
 
-    assemblerFluidRem(
-        'assembler_matrix_glass',
-        'expatternprovider:assembler_matrix_glass',
-        ['gtceu:cleanroom_glass', '4x ae2:fluix_smart_cable', '2x gtceu:ruthenium_plate'],
-        'fluix_steel 576',
-        GTValues.VA[EV]
-    );
+            ['bus', 'hatch'].forEach((type) => {
+                assembler(
+                    `expanded_me_${input}_${type}`,
+                    `expandedgt:expanded_me_${input}_${type}`,
+                    [
+                        `gtceu:me_${input}_${type}`,
+                        `4x ${casingMaterial}_plate`,
+                        '2x ae2:capacity_card',
+                        `3x #gtceu:circuits/${tier}`,
+                    ],
+                    GTValues.VA[GTValues[consTier]]
+                );
+            });
+        });
 
-    assemblerFluidRem(
-        'assembler_matrix_pattern',
-        'expatternprovider:assembler_matrix_pattern',
-        ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_pattern_provider'],
-        'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[EV]
-    );
+        /** @type {const} */ (['luv']).forEach((tier) => {
+            //to allow for dual stockings to be thrown into this when done
+            const casingMaterial = global.casingMaterials[tier];
+            const pipeMaterial = tier === 'luv' ? 'gtceu:niobium_titanium' : 'gtceu:polybenzimidazole';
+            const fluidMulti = tier === 'luv' ? 7 : 8;
+            const consTier = tier === 'luv' ? 'ZPM' : 'UV';
 
-    assemblerFluidRem(
-        'assembler_matrix_crafter',
-        'expatternprovider:assembler_matrix_crafter',
-        ['expatternprovider:assembler_matrix_wall', '2x expatternprovider:ex_molecular_assembler'],
-        'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[EV]
-    );
+            /** @type {const} */ (['input', 'output']).forEach((io) => {
+                const recId =
+                    io === 'input' && tier === 'luv'
+                        ? 'input'
+                        : io === 'input' && tier === 'luv'
+                          ? 'stocking_input'
+                          : 'output';
+                const input = tier === 'luv' ? 'input' : 'stocking_input';
+                const circuit = io === 'input' ? 1 : 2;
 
-    assemblerFluidRem(
-        'assembler_matrix_speed',
-        'expatternprovider:assembler_matrix_speed',
-        ['expatternprovider:assembler_matrix_wall', '2x ae2:speed_card'],
-        'netherite_certus_quartz_skystone_alloy 576',
-        GTValues.VA[EV]
-    );
+                assemblerFluid(
+                    `dual_me_${recId}_hatch`,
+                    `expandedgt:dual_me_${recId}_hatch`,
+                    [
+                        `expandedgt:expanded_me_${input}_hatch`,
+                        `expandedgt:expanded_me_${input}_bus`,
+                        `${pipeMaterial}_nonuple_fluid_pipe`,
+                        `3x ${casingMaterial}_frame`,
+                    ],
+                    `polybenzimidazole ${144 * fluidMulti}`,
+                    GTValues.VA[GTValues[consTier]],
+                    circuit
+                );
+            });
+        });
 
-    // ME Hatches
-
-    /** @type {const} */ (['luv', 'zpm']).forEach((tier) => {
-        const casingMaterial = global.casingMaterials[tier];
-        const consTier = tier === 'luv' ? 'ZPM' : 'UV';
-        const input = tier === 'luv' ? 'input' : 'stocking_input';
+        ['in', 'out'].forEach((ioIn) => {
+            let ioOut = ioIn === 'in' ? 'out' : 'in';
+            event.recipes
+                .shapeless(`expandedgt:dual_me_${ioIn}put_hatch`, [`expandedgt:dual_me_${ioOut}put_hatch`])
+                .id(`start:shapeless/dual_me_${ioIn}_to_${ioOut}_hatch`);
+        });
 
         ['bus', 'hatch'].forEach((type) => {
             assembler(
-                `expanded_me_${input}_${type}`,
-                `expandedgt:expanded_me_${input}_${type}`,
+                `me_tag_filter_stocking_${type}`,
+                `expandedgt:me_tag_filter_stocking_${type}`,
                 [
-                    `gtceu:me_${input}_${type}`,
-                    `4x ${casingMaterial}_plate`,
-                    '2x ae2:capacity_card',
-                    `3x #gtceu:circuits/${tier}`,
+                    `gtceu:me_stocking_input_${type}`,
+                    Item.of('gtceu:item_tag_filter'),
+                    '4x gtceu:naquadah_alloy_plate',
+                    'gtceu:zpm_sensor',
+                    'gtceu:zpm_emitter',
                 ],
-                GTValues.VA[GTValues[consTier]]
+                GTValues.VHA[ZPM]
             );
         });
-    });
 
-    /** @type {const} */ (['luv']).forEach((tier) => {
-        //to allow for dual stockings to be thrown into this when done
-        const casingMaterial = global.casingMaterials[tier];
-        const pipeMaterial = tier === 'luv' ? 'gtceu:niobium_titanium' : 'gtceu:polybenzimidazole';
-        const fluidMulti = tier === 'luv' ? 7 : 8;
-        const consTier = tier === 'luv' ? 'ZPM' : 'UV';
-
-        /** @type {const} */ (['input', 'output']).forEach((io) => {
-            const recId =
-                io === 'input' && tier === 'luv'
-                    ? 'input'
-                    : io === 'input' && tier === 'luv'
-                      ? 'stocking_input'
-                      : 'output';
-            const input = tier === 'luv' ? 'input' : 'stocking_input';
-            const circuit = io === 'input' ? 1 : 2;
-
-            assemblerFluid(
-                `dual_me_${recId}_hatch`,
-                `expandedgt:dual_me_${recId}_hatch`,
-                [
-                    `expandedgt:expanded_me_${input}_hatch`,
-                    `expandedgt:expanded_me_${input}_bus`,
-                    `${pipeMaterial}_nonuple_fluid_pipe`,
-                    `3x ${casingMaterial}_frame`,
-                ],
-                `polybenzimidazole ${144 * fluidMulti}`,
-                GTValues.VA[GTValues[consTier]],
-                circuit
-            );
-        });
-    });
-
-    ['in', 'out'].forEach((ioIn) => {
-        let ioOut = ioIn === 'in' ? 'out' : 'in';
-        event.recipes
-            .shapeless(`expandedgt:dual_me_${ioIn}put_hatch`, [`expandedgt:dual_me_${ioOut}put_hatch`])
-            .id(`start:shapeless/dual_me_${ioIn}_to_${ioOut}_hatch`);
-    });
-
-    ['bus', 'hatch'].forEach((type) => {
-        assembler(
-            `me_tag_filter_stocking_${type}`,
-            `expandedgt:me_tag_filter_stocking_${type}`,
+        assemblerFluid(
+            'dual_me_stocking_input_hatch',
+            'expandedgt:dual_me_stocking_input_hatch',
             [
-                `gtceu:me_stocking_input_${type}`,
-                Item.of('gtceu:item_tag_filter'),
-                '4x gtceu:naquadah_alloy_plate',
-                'gtceu:zpm_sensor',
+                'expandedgt:expanded_me_stocking_input_hatch',
+                'expandedgt:expanded_me_stocking_input_bus',
+                '2x #gtceu:circuits/uv',
                 'gtceu:zpm_emitter',
+                'gtceu:zpm_sensor',
             ],
-            GTValues.VHA[ZPM]
+            'indium_tin_lead_cadmium_soldering_alloy 576',
+            GTValues.VA[ZPM]
         );
-    });
 
-    assemblerFluid(
-        'dual_me_stocking_input_hatch',
-        'expandedgt:dual_me_stocking_input_hatch',
-        [
-            'expandedgt:expanded_me_stocking_input_hatch',
-            'expandedgt:expanded_me_stocking_input_bus',
-            '2x #gtceu:circuits/uv',
-            'gtceu:zpm_emitter',
-            'gtceu:zpm_sensor',
-        ],
-        'indium_tin_lead_cadmium_soldering_alloy 576',
-        GTValues.VA[ZPM]
-    );
-
-    //Misc
-    assemblerFluid(
-        'linked_terminal',
-        'expandedgt:linked_terminal',
-        [
-            'gtceu:terminal',
-            'gtceu:titanium_plate',
-            '2x gtceu:aluminium_double_wire',
-            'gtceu:ev_sensor',
-            'gtceu:ev_emitter',
-        ],
-        'soldering_alloy 576',
-        GTValues.VHA[EV]
-    );
-
-    ['molecular_assembler', 'drive', 'io_port'].forEach((type) => {
-        extended(`${type}`, `${type}`);
-    });
-
-    assemblerFluidRem(
-        'mega_crafting_unit',
-        'megacells:mega_crafting_unit',
-        ['gtceu:netherite_certus_quartz_skystone_alloy_frame', '8x ae2:crafting_unit', '#gtceu:circuits/iv'],
-        'fluix_steel 576',
-        GTValues.VA[IV]
-    );
-
-    assemblerFluidRem(
-        'ex_pattern_access_part',
-        'expatternprovider:ex_pattern_access_part',
-        [
-            'ae2:pattern_access_terminal',
-            '4x gtceu:certus_quartz_skystone_alloy_plate',
-            '4x ae2:engineering_processor',
-            '#gtceu:circuits/hv',
-        ],
-        'fluix_steel 576',
-        GTValues.VA[MV]
-    );
-
-    assemblerFluidRem(
-        'expanded_io_port',
-        'expandedae:exp_io_port',
-        [
-            'expatternprovider:ex_io_port',
-            '4x ae2:engineering_processor',
-            '#gtceu:circuits/iv',
-            '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-        ],
-        'fluix_steel 576',
-        GTValues.VA[IV]
-    );
-
-    ['import_bus', 'export_bus'].forEach((type) => {
-        assemblerFluidRem(
-            `extended_${type}_part`,
-            `expatternprovider:ex_${type}_part`,
+        assemblerFluid(
+            'linked_terminal',
+            'expandedgt:linked_terminal',
             [
-                `ae2:${type}`,
-                '4x ae2:calculation_processor',
-                '#gtceu:circuits/ev',
-                '4x gtceu:certus_quartz_skystone_alloy_plate',
-                '4x gtceu:gold_skystone_alloy_plate',
+                'gtceu:terminal',
+                'gtceu:titanium_plate',
+                '2x gtceu:aluminium_double_wire',
+                'gtceu:ev_sensor',
+                'gtceu:ev_emitter',
             ],
-            'sky_steel 576',
-            GTValues.VA[EV]
+            'soldering_alloy 576',
+            GTValues.VHA[EV]
         );
     });
-
-    assemblerspecex('tag', 'gtceu:item_tag_filter');
-    assemblerspecex('mod', 'gtceu:item_filter');
-    assemblerspecex('precise', 'gtceu:mv_robot_arm');
-
-    //Replaced Inputs
-
-    /**
-     * @param {string} recId
-     * @param {string} target
-     * @param {string} replace
-     */
-    const repIn = (recId, target, replace) => {
-        event.replaceInput({ id: recId }, target, replace);
-    };
 
     [
         'ae2:network/parts/tunnels_me',
@@ -816,66 +904,19 @@ ServerEvents.recipes((event) => {
     repIn('ae2:materials/basiccard', 'minecraft:gold_ingot', 'gtceu:gold_skystone_alloy_plate');
     repIn('ae2:materials/advancedcard', 'minecraft:diamond', 'gtceu:diamond_skystone_alloy_plate');
     repIn('ae2netanalyser:analyser', 'minecraft:copper_ingot', 'gtceu:gold_skystone_alloy_plate');
-    repIn('megacells:crafting/decompression_module', 'megacells:accumulation_processor', '#gtceu:circuits/hv');
     repIn('ae2:network/blocks/spatial_io_pylon', 'ae2:fluix_crystal', 'gtceu:fluix_steel_frame');
+    repIn('megacells:crafting/decompression_module', 'megacells:accumulation_processor', '#gtceu:circuits/hv');
     repIn('expatternprovider:wireless_tool', 'ae2:calculation_processor', 'gtceu:machine_memory_card');
     repIn('expatternprovider:water_cell', 'minecraft:diamond', 'gtceu:double_diamond_skystone_alloy_plate');
     repIn('expatternprovider:cobblestone_cell', 'minecraft:diamond', 'gtceu:double_diamond_skystone_alloy_plate');
-    repIn(
-        'aeinfinitybooster:infinity_card',
-        'minecraft:netherite_ingot',
-        'gtceu:netherite_certus_quartz_skystone_alloy_plate'
-    );
-    repIn('aeinfinitybooster:dimension_card', 'minecraft:ender_eye', 'gtceu:exquisite_echo_shard_gem');
-    repIn('aeinfinitybooster:dimension_card', 'minecraft:nether_star', 'gtceu:quantum_star');
 
-    const researchBuilder = global.researchBuilder;
-    // global.researchBuilder = (machineType, recId, inputsI, inputsF, outputsI, duration, cwuT, totalCWU, euT, researched)
-    const riftAss = 'riftic_infusion_assembly';
-
-    researchBuilder(
-        riftAss,
-        'artificial_universe_fluid_cell',
-        [
-            '1x gtceu:hvga_steel_frame',
-            '3x #gtceu:circuits/uiv',
-            '6x megacells:cell_component_256m',
-            '8x gtceu:lepton_resonant_thallium_antimonide_single_cable',
-        ],
-        [
-            'gtceu:neutrindium_soldering_alloy 5184',
-            'gtceu:borealic_concentrate 5400',
-            'gtceu:pure_dragon_breath 11500',
-            'gtceu:prismatic_hypergurmalium 6250',
-        ],
-        ['expandedae:artificial_universe_fluid_cell'],
-        1800,
-        256,
-        256 * 1200,
-        GTValues.VA[UIV],
-        'megacells:fluid_storage_cell_256m'
-    );
-
-    researchBuilder(
-        riftAss,
-        'artificial_universe_item_cell',
-        [
-            '1x gtceu:draco_abyssal_frame',
-            '3x #gtceu:circuits/uiv',
-            '6x megacells:cell_component_256m',
-            '8x gtceu:lepton_resonant_thallium_antimonide_single_cable',
-        ],
-        [
-            'gtceu:neutrindium_soldering_alloy 5184',
-            'gtceu:borealic_concentrate 5400',
-            'gtceu:pure_dragon_breath 11500',
-            'gtceu:prismatic_hypergurmalium 6250',
-        ],
-        ['expandedae:artificial_universe_item_cell'],
-        1800,
-        256,
-        256 * 1200,
-        GTValues.VA[UIV],
-        'megacells:item_storage_cell_256m'
-    );
+    global.withModsLoaded('aeinfinitybooster', () => {
+        repIn(
+            'aeinfinitybooster:infinity_card',
+            'minecraft:netherite_ingot',
+            'gtceu:netherite_certus_quartz_skystone_alloy_plate'
+        );
+        repIn('aeinfinitybooster:dimension_card', 'minecraft:ender_eye', 'gtceu:exquisite_echo_shard_gem');
+        repIn('aeinfinitybooster:dimension_card', 'minecraft:nether_star', 'gtceu:quantum_star');
+    });
 });

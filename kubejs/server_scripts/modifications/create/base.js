@@ -1,3 +1,4 @@
+// requires: create
 ServerEvents.recipes((event) => {
     const id = global.id;
 
@@ -52,4 +53,12 @@ ServerEvents.recipes((event) => {
             R: 'gtceu:rubber_plate',
         })
         .id('start:shaped/belt_connector');
+
+    event
+        .shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block'])
+        .id('start:shapeless/andesite_alloy_block_decomp');
+
+    event.replaceInput({ id: 'create:crafting/kinetics/goggles' }, '#forge:plates/gold', 'gtceu:copper_plate');
+
+    event.remove({ id: 'create:splashing/stained_glass' });
 });

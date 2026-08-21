@@ -1,3 +1,4 @@
+// requires: ae2
 ServerEvents.recipes((event) => {
     const id = global.id;
 
@@ -28,39 +29,48 @@ ServerEvents.recipes((event) => {
             .EUt(global.v[`${voltage}`]);
     };
 
-    event.replaceInput(
-        { id: 'megacells:crafting/bulk_cell_component' },
-        'megacells:accumulation_processor',
-        '#gtceu:circuits/iv'
-    );
-    event.replaceInput(
-        { id: 'megacells:crafting/bulk_cell_component' },
-        'ae2:quartz_vibrant_glass',
-        'gtceu:laminated_glass'
-    );
-
     storageBase('ae2:cell_component_4k', 'ae2:cell_component_1k', 'lv', 'tin', 1);
     storageBase('ae2:cell_component_16k', 'ae2:cell_component_4k', 'mv', 'copper', 2);
     storageBase('ae2:cell_component_64k', 'ae2:cell_component_16k', 'hv', 'gold', 4);
     storageBase('ae2:cell_component_256k', 'ae2:cell_component_64k', 'ev', 'aluminium', 8);
-    storageBase('megacells:cell_component_1m', 'ae2:cell_component_256k', 'iv', 'platinum', 16);
-    storageBase('megacells:cell_component_4m', 'megacells:cell_component_1m', 'luv', 'niobium_titanium', 32);
-    storageBase('megacells:cell_component_16m', 'megacells:cell_component_4m', 'zpm', 'vanadium_gallium', 64);
-    storageBase('megacells:cell_component_64m', 'megacells:cell_component_16m', 'uv', 'yttrium_barium_cuprate', 128);
-    storageBase('megacells:cell_component_256m', 'megacells:cell_component_64m', 'uhv', 'europium', 256);
 
-    event.recipes.gtceu
-        .me_assembler(id('cell_component_1m_skip'))
-        .itemInputs(
-            '512x ae2:logic_processor',
-            '#gtceu:circuits/luv',
-            '4x kubejs:ae2_soc_chip',
-            '48x gtceu:fine_niobium_titanium_wire'
-        )
-        .inputFluids('gtceu:fluix_steel 576')
-        .itemOutputs('megacells:cell_component_1m')
-        .duration(400)
-        .EUt(global.v['luv']);
+    global.withModsLoaded('megacells', () => {
+        storageBase('megacells:cell_component_1m', 'ae2:cell_component_256k', 'iv', 'platinum', 16);
+        storageBase('megacells:cell_component_4m', 'megacells:cell_component_1m', 'luv', 'niobium_titanium', 32);
+        storageBase('megacells:cell_component_16m', 'megacells:cell_component_4m', 'zpm', 'vanadium_gallium', 64);
+        storageBase(
+            'megacells:cell_component_64m',
+            'megacells:cell_component_16m',
+            'uv',
+            'yttrium_barium_cuprate',
+            128
+        );
+        storageBase('megacells:cell_component_256m', 'megacells:cell_component_64m', 'uhv', 'europium', 256);
+
+        event.replaceInput(
+            { id: 'megacells:crafting/bulk_cell_component' },
+            'megacells:accumulation_processor',
+            '#gtceu:circuits/iv'
+        );
+        event.replaceInput(
+            { id: 'megacells:crafting/bulk_cell_component' },
+            'ae2:quartz_vibrant_glass',
+            'gtceu:laminated_glass'
+        );
+
+        event.recipes.gtceu
+            .me_assembler(id('cell_component_1m_skip'))
+            .itemInputs(
+                '512x ae2:logic_processor',
+                '#gtceu:circuits/luv',
+                '4x kubejs:ae2_soc_chip',
+                '48x gtceu:fine_niobium_titanium_wire'
+            )
+            .inputFluids('gtceu:fluix_steel 576')
+            .itemOutputs('megacells:cell_component_1m')
+            .duration(400)
+            .EUt(global.v['luv']);
+    });
 
     /**
      * @param {string} tier

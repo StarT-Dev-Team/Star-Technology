@@ -265,7 +265,7 @@ ServerEvents.recipes((event) => {
         .add('exnihilosequentia:stone_pebble', 0.05)
         .add('exnihilosequentia:tuff_pebble', 0.05);
 
-    global.withXycraftWorld(() => {
+    global.withModsLoaded('xycraft_world', () => {
         // Waterlogged Dust Sieving
         SIEVING_RECIPE_HANDLER.input(csi.dust)
             .waterlogged(true)

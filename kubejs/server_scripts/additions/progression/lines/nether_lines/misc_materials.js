@@ -53,7 +53,8 @@ ServerEvents.recipes((event) => {
             .duration(100 * size)
             .EUtVA(LuV);
     };
-    global.withChipped(
+    global.withModsLoaded(
+        'chipped',
         () => {
             warpedMaceration('#chipped:warped_roots', 1);
             warpedMaceration('#chipped:warped_fungus', 1);
