@@ -1,3 +1,4 @@
+// requires: kubejs_thermal
 ServerEvents.recipes((event) => {
     const id = global.id;
 

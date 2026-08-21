@@ -1,4 +1,7 @@
+// requires: exnihilosequentia
 ServerEvents.recipes((event) => {
+    const isModLoaded = global.withModsLoaded;
+
     // Common sieve inputs
     const csi = {
         dirt: 'minecraft:dirt',
@@ -182,24 +185,28 @@ ServerEvents.recipes((event) => {
         // Mud Sieving
         .input(csi.mud)
         .add('minecraft:sugar_cane', 0.1)
-        .add('thermal:slime_mushroom_spores', 0.25)
         .add('minecraft:mangrove_propagule', 0.15)
-        .add('exnihilosequentia:mycelium_spores', 0.2)
-        // Rooted Dirt Sieving
-        .input(csi.rootedDirt)
-        .add('thermal:flax_seeds', 0.15)
+        .add('exnihilosequentia:mycelium_spores', 0.2);
+
+    isModLoaded('thermal', () => SIEVING_RECIPE_HANDLER.add('thermal:slime_mushroom_spores', 0.25));
+
+    // Rooted Dirt Sieving
+    SIEVING_RECIPE_HANDLER.input(csi.rootedDirt)
         .add('minecraft:potato', 0.15)
         .add('minecraft:carrot', 0.15)
         .add('minecraft:beetroot_seeds', 0.15)
         .add('exnihilosequentia:grass_seeds', 0.15)
         .add('minecraft:bamboo', 0.15)
         .add('minecraft:wheat_seeds', 0.15)
-        .add('farmersdelight:rice_panicle', 0.05)
         .add('minecraft:pumpkin_seeds', 0.1)
         .add('minecraft:melon_seeds', 0.1)
-        .add('kubejs:moss_ball', 0.05)
-        // Waterlogged Sand Sieving
-        .input(csi.sand)
+        .add('kubejs:moss_ball', 0.05);
+
+    isModLoaded('thermal', () => SIEVING_RECIPE_HANDLER.add('thermal:flax_seeds', 0.15));
+    isModLoaded('farmersdelight', () => SIEVING_RECIPE_HANDLER.add('farmersdelight:rice_panicle', 0.05));
+
+    // Waterlogged Sand Sieving
+    SIEVING_RECIPE_HANDLER.input(csi.sand)
         .waterlogged(true)
         .add('exnihilosequentia:brain_coral_larva', 0.05)
         .add('exnihilosequentia:tube_coral_larva', 0.05)
@@ -207,7 +214,7 @@ ServerEvents.recipes((event) => {
         .add('exnihilosequentia:horn_coral_larva', 0.05)
         .add('exnihilosequentia:fire_coral_larva', 0.05)
         .add('minecraft:sea_pickle', 0.05)
-        .add('kelp', 0.15)
+        .add('minecraft:kelp', 0.15)
         .add('minecraft:seagrass', 0.15)
         // Gravel Sieving
         .input(csi.gravel)
@@ -265,7 +272,7 @@ ServerEvents.recipes((event) => {
         .add('exnihilosequentia:stone_pebble', 0.05)
         .add('exnihilosequentia:tuff_pebble', 0.05);
 
-    global.withXycraftWorld(() => {
+    isModLoaded('xycraft_world', () => {
         // Waterlogged Dust Sieving
         SIEVING_RECIPE_HANDLER.input(csi.dust)
             .waterlogged(true)

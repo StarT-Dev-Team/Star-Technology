@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .shaped('gtceu:advanced_composter', ['PRP', 'PGP', 'ISI'], {
@@ -42,11 +43,11 @@ ServerEvents.recipes((event) => {
             .EUt(7);
     };
 
-    // 30%
-    [
+    const compost30 = [
+        '#forge:seeds',
+        '#minecraft:saplings',
+        '#minecraft:leaves',
         '#minecraft:fox_food',
-        'farmersdelight:straw',
-        'farmersdelight:sandy_shrub',
         'minecraft:seagrass',
         'minecraft:pink_petals',
         'minecraft:dried_kelp',
@@ -56,88 +57,52 @@ ServerEvents.recipes((event) => {
         'minecraft:grass',
         'minecraft:kelp',
         'minecraft:small_dripleaf',
-        'farmersdelight:tree_bark',
-        'farmersdelight:rice_panicle',
         'minecraft:moss_carpet',
         'minecraft:torchflower_seeds',
-        '#minecraft:saplings',
-        '#minecraft:leaves',
-        '#forge:seeds',
-    ].forEach((organic) => {
-        composting(3000, organic);
-    });
+    ];
 
-    // 50%
-    [
+    const compost50 = [
         'minecraft:tall_grass',
         'minecraft:vine',
         'minecraft:cactus',
-        'farmersdelight:kelp_roll_slice',
         'minecraft:nether_sprouts',
         'minecraft:sugar_cane',
         'minecraft:twisting_vines',
-        'farmersdelight:pumpkin_slice',
         'minecraft:glow_lichen',
-        'farmersdelight:cabbage_leaf',
         'minecraft:weeping_vines',
-        'thermal:frost_melon_slice',
         'minecraft:melon_slice',
-    ].forEach((organic) => {
-        composting(5000, organic);
-    });
+    ];
 
-    // 65%
-    [
-        '#farmersdelight:wild_crops',
-        '#forge:vegetables',
+    const compost65 = [
         '#forge:mushrooms',
-        '#forge:crops/onion',
-        '#forge:crops/tomato',
         'minecraft:melon',
         'minecraft:shroomlight',
         'minecraft:lilac',
-        'thermal:amaranth',
         'minecraft:dandelion',
-        'thermal:green_bean',
-        'farmersdelight:cabbage',
-        'thermal:sadiroot',
         'minecraft:sunflower',
         'minecraft:pumpkin',
-        'thermal:flax',
         'minecraft:apple',
         'minecraft:crimson_roots',
         'minecraft:orange_tulip',
-        'thermal:spinach',
         'minecraft:fern',
-        'thermal:eggplant',
-        'thermal:barley',
         'minecraft:pink_tulip',
-        'thermal:peanut',
         'minecraft:carved_pumpkin',
         'minecraft:moss_block',
-        'thermal:corn',
         'minecraft:lily_of_the_valley',
         'minecraft:cocoa_beans',
-        'thermal:frost_melon',
         'minecraft:blue_orchid',
         'minecraft:rose_bush',
         'minecraft:lily_pad',
         'minecraft:azure_bluet',
         'minecraft:sea_pickle',
         'minecraft:crimson_fungus',
-        'thermal:rice',
-        'thermal:radish',
-        'thermal:bell_pepper',
         'minecraft:warped_roots',
-        'thermal:tea',
         'minecraft:spore_blossom',
         'minecraft:big_dripleaf',
-        'thermal:strawberry',
         'minecraft:wheat',
         'minecraft:peony',
         'minecraft:nether_wart',
         'minecraft:large_fern',
-        'farmersdelight:pie_crust',
         'minecraft:cornflower',
         'minecraft:red_tulip',
         'minecraft:poppy',
@@ -147,52 +112,104 @@ ServerEvents.recipes((event) => {
         'minecraft:allium',
         'minecraft:oxeye_daisy',
         'minecraft:white_tulip',
-    ].forEach((organic) => {
-        composting(6500, organic);
-    });
+    ];
 
-    // 85%
-    [
-        'farmersdelight:rice_bale',
-        'farmersdelight:cake_slice',
-        'farmersdelight:sweet_berry_cookie',
+    const compost85 = [
         'minecraft:hay_block',
         'minecraft:pitcher_plant',
         'minecraft:brown_mushroom_block',
         'minecraft:nether_wart_block',
         'minecraft:baked_potato',
         'minecraft:warped_wart_block',
-        'farmersdelight:rotten_tomato',
-        'farmersdelight:honey_cookie',
         'minecraft:red_mushroom_block',
-        'farmersdelight:kelp_roll',
         'minecraft:bread',
         'minecraft:torchflower',
-        'farmersdelight:apple_pie_slice',
-        'farmersdelight:chocolate_pie_slice',
-        'farmersdelight:sweet_berry_cheesecake_slice',
-        'farmersdelight:raw_pasta',
         'minecraft:cookie',
-    ].forEach((organic) => {
-        composting(8500, organic);
+    ];
+
+    const compost100 = ['minecraft:cake', 'minecraft:pumpkin_pie'];
+
+    isModLoaded('farmersdelight', () => {
+        compost30.push(
+            'farmersdelight:straw',
+            'farmersdelight:sandy_shrub',
+            'farmersdelight:tree_bark',
+            'farmersdelight:rice_panicle'
+        );
+
+        compost50.push('farmersdelight:kelp_roll_slice', 'farmersdelight:pumpkin_slice', 'farmersdelight:cabbage_leaf');
+
+        compost65.push(
+            '#farmersdelight:wild_crops',
+            'farmersdelight:cabbage',
+            'farmersdelight:pie_crust',
+            '#forge:vegetables'
+        );
+
+        compost85.push(
+            'farmersdelight:rice_bale',
+            'farmersdelight:cake_slice',
+            'farmersdelight:sweet_berry_cookie',
+            'farmersdelight:rotten_tomato',
+            'farmersdelight:honey_cookie',
+            'farmersdelight:kelp_roll',
+            'farmersdelight:apple_pie_slice',
+            'farmersdelight:chocolate_pie_slice',
+            'farmersdelight:sweet_berry_cheesecake_slice',
+            'farmersdelight:raw_pasta'
+        );
+
+        compost100.push(
+            'farmersdelight:stuffed_pumpkin_block',
+            'farmersdelight:brown_mushroom_colony',
+            'farmersdelight:apple_pie',
+            'farmersdelight:dumplings',
+            'farmersdelight:red_mushroom_colony',
+            'farmersdelight:chocolate_pie',
+            'farmersdelight:sweet_berry_cheesecake'
+        );
     });
 
-    // 100%
-    [
-        'farmersdelight:stuffed_pumpkin_block',
-        'exnihilosequentia:cooked_silkworm',
-        'exnihilosequentia:grass_seeds',
-        'minecraft:cake',
-        'exnihilosequentia:mycelium_spores',
-        'farmersdelight:brown_mushroom_colony',
-        'farmersdelight:apple_pie',
-        'exnihilosequentia:silkworm',
-        'farmersdelight:dumplings',
-        'farmersdelight:red_mushroom_colony',
-        'farmersdelight:chocolate_pie',
-        'farmersdelight:sweet_berry_cheesecake',
-        'minecraft:pumpkin_pie',
-    ].forEach((organic) => {
-        composting(10000, organic);
+    isModLoaded('thermal', () => {
+        compost50.push('thermal:frost_melon_slice');
+
+        compost65.push(
+            'thermal:amaranth',
+            'thermal:green_bean',
+            'thermal:sadiroot',
+            'thermal:flax',
+            'thermal:spinach',
+            'thermal:eggplant',
+            'thermal:barley',
+            'thermal:peanut',
+            'thermal:corn',
+            'thermal:frost_melon',
+            'thermal:rice',
+            'thermal:radish',
+            'thermal:bell_pepper',
+            'thermal:tea',
+            'thermal:strawberry',
+            '#forge:crops/onion',
+            '#forge:crops/tomato'
+        );
     });
+
+    isModLoaded('exnihilosequentia', () =>
+        compost100.push(
+            'exnihilosequentia:cooked_silkworm',
+            'exnihilosequentia:grass_seeds',
+            'exnihilosequentia:mycelium_spores',
+            'exnihilosequentia:silkworm'
+        )
+    );
+
+    compost30.forEach((organic) => composting(3000, organic));
+
+    compost50.forEach((organic) => composting(5000, organic));
+
+    compost65.forEach((organic) => composting(6500, organic));
+
+    compost85.forEach((organic) => composting(8500, organic));
+
+    compost100.forEach((organic) => composting(10000, organic));
 });

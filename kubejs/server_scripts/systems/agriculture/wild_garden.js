@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .wild_garden(id('flowers'))
@@ -35,58 +36,62 @@ ServerEvents.recipes((event) => {
         .circuit(1);
 
     event.recipes.gtceu
-        .wild_garden(id('wild_crops'))
-        .itemInputs('minecraft:bone_meal')
-        .chancedOutput('minecraft:glow_berries', 500, 200)
-        .chancedOutput('farmersdelight:wild_cabbages', 800, 200)
-        .chancedOutput('farmersdelight:wild_onions', 800, 200)
-        .chancedOutput('farmersdelight:wild_tomatoes', 800, 200)
-        .chancedOutput('farmersdelight:wild_rice', 800, 200)
-        .duration(100)
-        .EUt(global.vha['lv'])
-        .circuit(2);
-
-    event.recipes.gtceu
-        .wild_garden(id('thermal_crops_1'))
-        .itemInputs('minecraft:bone_meal')
-        .chancedOutput('thermal:barley_seeds', 800, 200)
-        .chancedOutput('thermal:corn_seeds', 800, 200)
-        .chancedOutput('thermal:onion_seeds', 800, 200)
-        .chancedOutput('thermal:radish_seeds', 800, 200)
-        .chancedOutput('thermal:rice_seeds', 800, 200)
-        .chancedOutput('thermal:spinach_seeds', 800, 200)
-        .chancedOutput('thermal:bell_pepper_seeds', 800, 200)
-        .chancedOutput('thermal:eggplant_seeds', 800, 200)
-        .chancedOutput('thermal:green_bean_seeds', 800, 200)
-        .chancedOutput('thermal:strawberry_seeds', 800, 200)
-        .chancedOutput('thermal:tomato_seeds', 800, 200)
-        .duration(100)
-        .EUt(global.vha['lv'])
-        .circuit(3);
-
-    event.recipes.gtceu
-        .wild_garden(id('thermal_crops_2'))
-        .itemInputs('minecraft:bone_meal')
-        .chancedOutput('thermal:amaranth_seeds', 800, 200)
-        .chancedOutput('thermal:sadiroot_seeds', 800, 200)
-        .chancedOutput('thermal:peanut_seeds', 800, 200)
-        .chancedOutput('thermal:coffee_seeds', 800, 200)
-        .chancedOutput('thermal:hops_seeds', 800, 200)
-        .chancedOutput('thermal:tea_seeds', 800, 200)
-        .chancedOutput('thermal:frost_melon_seeds', 200, 200)
-        .duration(100)
-        .EUt(global.vha['lv'])
-        .circuit(4);
-
-    event.recipes.gtceu
         .wild_garden(id('sea_crops'))
         .itemInputs('minecraft:bone_meal')
-        .chancedOutput('farmersdelight:wild_beetroots', 800, 200)
         .chancedOutput('minecraft:seagrass', 800, 200)
         .chancedOutput('minecraft:kelp', 800, 200)
         .chancedOutput('minecraft:sea_pickle', 800, 200)
         .chancedOutput('minecraft:lily_pad', 800, 200)
         .duration(100)
         .EUt(global.vha['lv'])
-        .circuit(5);
+        .circuit(2);
+
+    isModLoaded('farmersdelight', () => {
+        event.recipes.gtceu
+            .wild_garden(id('wild_crops'))
+            .itemInputs('minecraft:bone_meal')
+            .chancedOutput('minecraft:glow_berries', 500, 200)
+            .chancedOutput('farmersdelight:wild_beetroots', 800, 200)
+            .chancedOutput('farmersdelight:wild_cabbages', 800, 200)
+            .chancedOutput('farmersdelight:wild_tomatoes', 800, 200)
+            .chancedOutput('farmersdelight:wild_onions', 800, 200)
+            .chancedOutput('farmersdelight:wild_rice', 800, 200)
+            .duration(100)
+            .EUt(global.vha['lv'])
+            .circuit(3);
+    });
+
+    isModLoaded('thermal', () => {
+        event.recipes.gtceu
+            .wild_garden(id('thermal_crops_1'))
+            .itemInputs('minecraft:bone_meal')
+            .chancedOutput('thermal:barley_seeds', 800, 200)
+            .chancedOutput('thermal:corn_seeds', 800, 200)
+            .chancedOutput('thermal:onion_seeds', 800, 200)
+            .chancedOutput('thermal:radish_seeds', 800, 200)
+            .chancedOutput('thermal:rice_seeds', 800, 200)
+            .chancedOutput('thermal:spinach_seeds', 800, 200)
+            .chancedOutput('thermal:bell_pepper_seeds', 800, 200)
+            .chancedOutput('thermal:eggplant_seeds', 800, 200)
+            .chancedOutput('thermal:green_bean_seeds', 800, 200)
+            .chancedOutput('thermal:strawberry_seeds', 800, 200)
+            .chancedOutput('thermal:tomato_seeds', 800, 200)
+            .duration(100)
+            .EUt(global.vha['lv'])
+            .circuit(4);
+
+        event.recipes.gtceu
+            .wild_garden(id('thermal_crops_2'))
+            .itemInputs('minecraft:bone_meal')
+            .chancedOutput('thermal:amaranth_seeds', 800, 200)
+            .chancedOutput('thermal:sadiroot_seeds', 800, 200)
+            .chancedOutput('thermal:peanut_seeds', 800, 200)
+            .chancedOutput('thermal:coffee_seeds', 800, 200)
+            .chancedOutput('thermal:hops_seeds', 800, 200)
+            .chancedOutput('thermal:tea_seeds', 800, 200)
+            .chancedOutput('thermal:frost_melon_seeds', 200, 200)
+            .duration(100)
+            .EUt(global.vha['lv'])
+            .circuit(5);
+    });
 });
