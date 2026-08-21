@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     const cpa = 'component_part_assembly';
     const assline = 'assembly_line';
@@ -95,25 +96,27 @@ ServerEvents.recipes((event) => {
         'kubejs:runic_processor_mainframe'
     );
 
-    researchBuilder(
-        cpa,
-        'asg_dhd',
-        [
-            'sgjourney:classic_dhd',
-            'kubejs:asg_stellar_dialer',
-            '2x kubejs:runic_reinforced_plating',
-            '3x kubejs:runic_stabilization_casing',
-            '4x kubejs:runic_pathway_casing',
-            '3x kubejs:runic_transportation_casing',
-        ],
-        ['gtceu:naquadated_soldering_alloy 3888', 'gtceu:runic_convergence_infusion 2500'],
-        ['sgjourney:milky_way_dhd'],
-        6000,
-        144,
-        144 * 1200,
-        GTValues.VHA[UHV],
-        'sgjourney:classic_dhd'
-    );
+    isModLoaded('sgjourney', () => {
+        researchBuilder(
+            cpa,
+            'asg_dhd',
+            [
+                'sgjourney:classic_dhd',
+                'kubejs:asg_stellar_dialer',
+                '2x kubejs:runic_reinforced_plating',
+                '3x kubejs:runic_stabilization_casing',
+                '4x kubejs:runic_pathway_casing',
+                '3x kubejs:runic_transportation_casing',
+            ],
+            ['gtceu:naquadated_soldering_alloy 3888', 'gtceu:runic_convergence_infusion 2500'],
+            ['sgjourney:milky_way_dhd'],
+            6000,
+            144,
+            144 * 1200,
+            GTValues.VHA[UHV],
+            'sgjourney:classic_dhd'
+        );
+    });
 
     researchBuilder(
         assline,
@@ -521,15 +524,17 @@ ServerEvents.recipes((event) => {
         .duration(1200)
         .EUtVHA(UEV);
 
-    event.recipes.create
-        .mechanical_crafting(
-            'sgjourney:milky_way_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
-            [' CRCRC ', 'RR   RR', 'C     C', 'R     R', 'R     R', 'CR   RC', ' RCBCR '],
-            {
-                R: 'kubejs:ancient_stargate_ring_block',
-                C: 'kubejs:ancient_stargate_chevron_block',
-                B: 'kubejs:ancient_stargate_base_block',
-            }
-        )
-        .id('start:shaped/asg');
+    isModLoaded(['sgjourney', 'kubejs_create'], () => {
+        event.recipes.create
+            .mechanical_crafting(
+                'sgjourney:milky_way_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
+                [' CRCRC ', 'RR   RR', 'C     C', 'R     R', 'R     R', 'CR   RC', ' RCBCR '],
+                {
+                    R: 'kubejs:ancient_stargate_ring_block',
+                    C: 'kubejs:ancient_stargate_chevron_block',
+                    B: 'kubejs:ancient_stargate_base_block',
+                }
+            )
+            .id('start:shaped/asg');
+    });
 });
