@@ -202,11 +202,20 @@ const ingredientArrayContainsItem = (ingredients, item) => {
  */
 const zipIngredientArrays = (arr1, arr2) => {
     /** @type {RecipeHelperIngredient[]} */
-    let zipped = arr1;
+    let zipped = [];
+
+    arr1.forEach((ingredient) => {
+        let index = zipped.findIndex((zippedIngredient) => zippedIngredient.item === ingredient.item);
+        if (index > -1) {
+            zipped[index].amount += ingredient.amount;
+        } else {
+            zipped.push(ingredient);
+        }
+    });
 
     arr2.forEach((ingredient) => {
         let index = zipped.findIndex((zippedIngredient) => zippedIngredient.item === ingredient.item);
-        if (index >= -1) {
+        if (index > -1) {
             zipped[index].amount += ingredient.amount;
         } else {
             zipped.push(ingredient);
