@@ -129,7 +129,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .shaped('laserio:overclocker_node', [' G ', 'RPR', 'GCG'], {
-            G: 'gtceu:electrum_plate',
+            G: 'gtceu:cobalt_brass_plate',
             P: 'laserio:logic_chip',
             R: 'minecraft:redstone',
             C: 'gtceu:tin_single_cable',
