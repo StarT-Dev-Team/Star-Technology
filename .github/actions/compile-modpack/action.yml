@@ -25,7 +25,6 @@ runs:
         cp -r config compile_output/overrides/
         cp -r defaultconfigs compile_output/overrides/
         cp -r kubejs compile_output/overrides/
-        cp -r scripts compile_output/overrides/
 
         # Copy specified files to overrides
         cp LICENSE compile_output/overrides/
