@@ -40,12 +40,15 @@ const dimensionEffect = (dimension, armorType, talismanList, effectList) => {
         }
     });
 };
+global.withModsLoaded('sgjourney', () => {
+    dimensionEffect('sgjourney:abydos', 'gtceu:quarktech', ['kubejs:abydos_talisman'], ['kubejs:sand_erosion']);
+});
 
-dimensionEffect('sgjourney:abydos', 'gtceu:quarktech', ['kubejs:abydos_talisman'], ['kubejs:sand_erosion']);
 dimensionEffect(
     'minecraft:the_nether',
     'kubejs:nether',
     ['kubejs:nether_talisman'],
     ['kubejs:radiation_poisoning', 'kubejs:toxic_atmosphere']
 );
+
 dimensionEffect('minecraft:the_end', 'kubejs:end', ['kubejs:end_talisman'], ['kubejs:abyssal_drain']);
