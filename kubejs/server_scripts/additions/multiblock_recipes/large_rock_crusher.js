@@ -1,10 +1,10 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
-    [
+    const stones = [
         { stone: 'andesite', energy: 60 },
         { stone: 'basalt', energy: 240 },
-        { stone: 'blackstone', energy: 7 },
         { stone: 'calcite', energy: 7 },
         { stone: 'cobblestone', energy: 60 },
         { stone: 'deepslate', energy: 960 },
@@ -14,7 +14,11 @@ ServerEvents.recipes((event) => {
         { stone: 'obsidian', energy: 240 },
         { stone: 'stone', energy: 60 },
         { stone: 'tuff', energy: 7 },
-    ].forEach((type) => {
+    ];
+
+    isModLoaded('exnihilosequentia', () => stones.push({ stone: 'blackstone', energy: 7 }));
+
+    stones.forEach((type) => {
         event.recipes.gtceu
             .large_rock_crusher(id(type.stone))
             .notConsumable(`minecraft:${type.stone}`)

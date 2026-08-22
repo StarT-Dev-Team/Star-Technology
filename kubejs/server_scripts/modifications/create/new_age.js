@@ -1,5 +1,4 @@
 //requires: create_new_age
-
 ServerEvents.recipes((event) => {
     const id = global.id;
 

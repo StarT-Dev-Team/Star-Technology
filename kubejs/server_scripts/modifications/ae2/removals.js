@@ -1,3 +1,4 @@
+// requires: ae2
 ServerEvents.recipes((event) => {
     [
         'ae2:inscriber',

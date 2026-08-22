@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .injection_mixer(id('dissipated_hellish_concentrate'))
@@ -53,7 +54,8 @@ ServerEvents.recipes((event) => {
             .duration(100 * size)
             .EUtVA(LuV);
     };
-    global.withChipped(
+    isModLoaded(
+        'chipped',
         () => {
             warpedMaceration('#chipped:warped_roots', 1);
             warpedMaceration('#chipped:warped_fungus', 1);

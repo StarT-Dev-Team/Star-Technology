@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event
         .shaped(Item.of('16x minecraft:stick'), ['L', 'L'], {
@@ -13,14 +14,16 @@ ServerEvents.recipes((event) => {
         })
         .id('start:shaped/bulk_chest');
 
-    event
-        .shaped(Item.of('gtceu:rubber_plate'), ['H', 'R', 'R'], {
-            H: '#forge:tools/hammers',
-            R: 'thermal:cured_rubber',
-        })
-        .id('start:shaped/rubber_plate');
+    isModLoaded('thermal', () => {
+        event
+            .shaped(Item.of('gtceu:rubber_plate'), ['H', 'R', 'R'], {
+                H: '#forge:tools/hammers',
+                R: 'thermal:cured_rubber',
+            })
+            .id('start:shaped/rubber_plate');
 
-    event.replaceInput({ id: 'thermal:tools/satchel' }, '#thermal:rockwool', '#minecraft:wool');
+        event.replaceInput({ id: 'thermal:tools/satchel' }, '#thermal:rockwool', '#minecraft:wool');
+    });
 
     event
         .shaped(Item.of('gtceu:wood_plate'), ['SSS'], {
@@ -49,13 +52,21 @@ ServerEvents.recipes((event) => {
         .keepIngredient('gtceu:brick_wooden_form')
         .id('start:shaped/compressed_fireclay');
 
-    event.recipes.create.pressing('gtceu:rubber_plate', 'thermal:cured_rubber').id('start:pressing/rubber_plate');
+    isModLoaded('kubejs_create', () => {
+        isModLoaded('thermal', () =>
+            event.recipes.create
+                .pressing('gtceu:rubber_plate', 'thermal:cured_rubber')
+                .id('start:pressing/rubber_plate')
+        );
 
-    event.recipes.create
-        .pressing('gtceu:compressed_fireclay', 'gtceu:fireclay_dust')
-        .id('start:pressing/compressed_fireclay');
+        event.recipes.create
+            .pressing('gtceu:compressed_fireclay', 'gtceu:fireclay_dust')
+            .id('start:pressing/compressed_fireclay');
 
-    event.recipes.create.pressing('gtceu:compressed_clay', 'minecraft:clay_ball').id('start:pressing/compressed_clay');
+        event.recipes.create
+            .pressing('gtceu:compressed_clay', 'minecraft:clay_ball')
+            .id('start:pressing/compressed_clay');
+    });
 
     event.shapeless('4x minecraft:clay_ball', ['minecraft:clay']).id('start:shapeless/clay_decomp');
 
@@ -67,23 +78,25 @@ ServerEvents.recipes((event) => {
         .keepIngredient('gtceu:brick_wooden_form')
         .id('start:shaped/compressed_clay');
 
-    event
-        .shaped(Item.of('thermal:redstone_servo', 1), ['RPR', ' I ', 'RPR'], {
-            R: 'minecraft:redstone',
-            P: 'gtceu:iron_plate',
-            I: 'minecraft:iron_ingot',
-        })
-        .id('start:shaped/redstone_servo');
+    isModLoaded('thermal', () => {
+        event
+            .shaped(Item.of('thermal:redstone_servo', 1), ['RPR', ' I ', 'RPR'], {
+                R: 'minecraft:redstone',
+                P: 'gtceu:iron_plate',
+                I: 'minecraft:iron_ingot',
+            })
+            .id('start:shaped/redstone_servo');
 
-    event
-        .shaped(Item.of('thermal:fluid_cell_frame'), ['BTB', 'TGT', 'BTB'], {
-            B: 'gtceu:bronze_plate',
-            T: 'gtceu:tin_plate',
-            G: '#forge:glass',
-        })
-        .id('start:shaped/fluid_cell_frame');
+        event
+            .shaped(Item.of('thermal:fluid_cell_frame'), ['BTB', 'TGT', 'BTB'], {
+                B: 'gtceu:bronze_plate',
+                T: 'gtceu:tin_plate',
+                G: '#forge:glass',
+            })
+            .id('start:shaped/fluid_cell_frame');
 
-    event.smelting('minecraft:slime_ball', 'thermal:slime_mushroom_spores').id('start:smelting/slitake');
+        event.smelting('minecraft:slime_ball', 'thermal:slime_mushroom_spores').id('start:smelting/slitake');
+    });
 
     event.remove({ id: 'minecraft:brick' });
     event.smelting('minecraft:brick', 'gtceu:compressed_clay').id('start:smelting/brick');
@@ -105,24 +118,26 @@ ServerEvents.recipes((event) => {
         .id('minecraft:moss_block');
 
     //pebble compressor recipes
-    [
-        'diorite',
-        'blackstone',
-        'basalt',
-        'tuff',
-        'deepslate',
-        'dripstone',
-        'granite',
-        'calcite',
-        'andesite',
-        'stone',
-    ].forEach((stone) => {
-        let output = stone === 'dripstone' ? 'dripstone_block' : stone === 'stone' ? 'cobblestone' : stone;
-        event.recipes.gtceu
-            .compressor(id(`compress_${stone}_pebble`))
-            .itemInputs(`4x exnihilosequentia:${stone}_pebble`)
-            .itemOutputs(`minecraft:${output}`)
-            .duration(50)
-            .EUt(2);
-    });
+    isModLoaded('exnihilosequentia', () =>
+        [
+            'diorite',
+            'blackstone',
+            'basalt',
+            'tuff',
+            'deepslate',
+            'dripstone',
+            'granite',
+            'calcite',
+            'andesite',
+            'stone',
+        ].forEach((stone) => {
+            let output = stone === 'dripstone' ? 'dripstone_block' : stone === 'stone' ? 'cobblestone' : stone;
+            event.recipes.gtceu
+                .compressor(id(`compress_${stone}_pebble`))
+                .itemInputs(`4x exnihilosequentia:${stone}_pebble`)
+                .itemOutputs(`minecraft:${output}`)
+                .duration(50)
+                .EUt(2);
+        })
+    );
 });
