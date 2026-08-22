@@ -50,7 +50,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["16D74E923B76E266"]
+			dependencies: [
+				"16D74E923B76E266"
+				"3B81632EF4586280"
+			]
 			id: "3594628E8316824E"
 			rewards: [{
 				id: "0E6905C17E2205B3"
@@ -67,7 +70,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["3594628E8316824E"]
+			dependencies: [
+				"3594628E8316824E"
+				"20A12F3B992762F0"
+			]
 			id: "307B93E1431087D0"
 			rewards: [{
 				id: "30D9DA5A1CB6B91B"
@@ -84,7 +90,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["307B93E1431087D0"]
+			dependencies: [
+				"307B93E1431087D0"
+				"7836F17B34B47B16"
+			]
 			id: "6672296A6740F5B8"
 			rewards: [{
 				id: "6838DD02224B7569"
@@ -101,7 +110,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["6672296A6740F5B8"]
+			dependencies: [
+				"6672296A6740F5B8"
+				"73931EAA3EC5C9A9"
+			]
 			id: "479A121A74E2DE4F"
 			rewards: [{
 				id: "17C83592774092B4"
@@ -118,7 +130,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["479A121A74E2DE4F"]
+			dependencies: [
+				"479A121A74E2DE4F"
+				"52FE319F5E176C37"
+			]
 			id: "69768541E12842D1"
 			rewards: [{
 				id: "7C50552FD13201ED"
@@ -679,7 +694,10 @@
 			y: -9.0d
 		}
 		{
-			dependencies: ["69768541E12842D1"]
+			dependencies: [
+				"69768541E12842D1"
+				"62BA581B2918BB7B"
+			]
 			id: "15609A10132FC49C"
 			rewards: [{
 				id: "6DE8270C130CB496"
@@ -696,7 +714,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["15609A10132FC49C"]
+			dependencies: [
+				"15609A10132FC49C"
+				"53A9F3758C218CDC"
+			]
 			id: "29FCED9F85FB2882"
 			rewards: [{
 				id: "7EC2D5198CA5EF06"
@@ -713,7 +734,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["29FCED9F85FB2882"]
+			dependencies: [
+				"29FCED9F85FB2882"
+				"79428BAEAA7856E1"
+			]
 			id: "3CFA9E13D95178D6"
 			rewards: [{
 				id: "6D2F5E524680D1E2"
@@ -730,7 +754,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["3CFA9E13D95178D6"]
+			dependencies: [
+				"3CFA9E13D95178D6"
+				"3FC351F05F2AC743"
+			]
 			id: "07CB8E78FF4461BB"
 			rewards: [{
 				id: "7388A988A9D3FD0D"
@@ -842,7 +869,10 @@
 			y: -5.0d
 		}
 		{
-			dependencies: ["07CB8E78FF4461BB"]
+			dependencies: [
+				"07CB8E78FF4461BB"
+				"707C2E9BA62A60C5"
+			]
 			id: "4E5B71A2D89CAC2B"
 			rewards: [{
 				id: "545675DCEE3B5661"
@@ -1293,7 +1323,10 @@
 			y: -7.0d
 		}
 		{
-			dependencies: ["15609A10132FC49C"]
+			dependencies: [
+				"15609A10132FC49C"
+				"5EFD28E67B3D1425"
+			]
 			id: "31E2D720FFC159EB"
 			rewards: [{
 				id: "507BB256D4FF1231"
@@ -1796,6 +1829,7 @@
 		}
 		{
 			dependencies: ["452B14D8B90757AA"]
+			hide_dependent_lines: true
 			id: "5EFD28E67B3D1425"
 			rewards: [{
 				id: "4963363E4F90B972"
@@ -2319,7 +2353,10 @@
 			y: -9.0d
 		}
 		{
-			dependencies: ["29FCED9F85FB2882"]
+			dependencies: [
+				"29FCED9F85FB2882"
+				"1BF95852C7E1741E"
+			]
 			description: ["{ftbquests.ae2.mega_component_skip.description}"]
 			id: "334AE7B73C221920"
 			rewards: [{
@@ -2548,6 +2585,58 @@
 			}]
 			x: 3.0d
 			y: 1.0d
+		}
+		{
+			dependencies: [
+				"4E5B71A2D89CAC2B"
+				"7C9719417055D0A0"
+				"4B7A774ADE857893"
+			]
+			id: "00F29C2208DD3B43"
+			tasks: [{
+				id: "4D54D46B3DE7B474"
+				item: {
+					Count: 1
+					id: "expandedae:artificial_universe_item_cell"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -11.5d
+			y: -6.5d
+		}
+		{
+			dependencies: [
+				"4E5B71A2D89CAC2B"
+				"7C9719417055D0A0"
+				"4B7A774ADE857893"
+			]
+			id: "1AE7238612626009"
+			tasks: [{
+				id: "62204E4253645CD1"
+				item: {
+					Count: 1
+					id: "expandedae:artificial_universe_fluid_cell"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -11.5d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"2280548034E41819"
+				"395C32B51E768458"
+			]
+			id: "6323B62DAE11236D"
+			tasks: [{
+				id: "69E29C6907564815"
+				item: "expandedae:singularity_crafting_storage"
+				type: "item"
+			}]
+			x: -11.5d
+			y: -5.0d
 		}
 	]
 	title: "{ftbquests.ae2.title}"

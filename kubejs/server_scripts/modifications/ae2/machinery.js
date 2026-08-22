@@ -133,55 +133,6 @@ ServerEvents.recipes((event) => {
                 'netherite_gold_skystone_alloy 1152',
                 GTValues.VHA[UHV]
             );
-
-            const researchBuilder = global.researchBuilder;
-            const riftAss = 'riftic_infusion_assembly';
-
-            researchBuilder(
-                riftAss,
-                'artificial_universe_fluid_cell',
-                [
-                    '1x gtceu:hvga_steel_frame',
-                    '3x #gtceu:circuits/uiv',
-                    '6x megacells:cell_component_256m',
-                    '8x gtceu:lepton_resonant_thallium_antimonide_single_cable',
-                ],
-                [
-                    'gtceu:neutrindium_soldering_alloy 5184',
-                    'gtceu:borealic_concentrate 5400',
-                    'gtceu:pure_dragon_breath 11500',
-                    'gtceu:prismatic_hypergurmalium 6250',
-                ],
-                ['expandedae:artificial_universe_fluid_cell'],
-                1800,
-                256,
-                256 * 1200,
-                GTValues.VA[UIV],
-                'megacells:fluid_storage_cell_256m'
-            );
-
-            researchBuilder(
-                riftAss,
-                'artificial_universe_item_cell',
-                [
-                    '1x gtceu:draco_abyssal_frame',
-                    '3x #gtceu:circuits/uiv',
-                    '6x megacells:cell_component_256m',
-                    '8x gtceu:lepton_resonant_thallium_antimonide_single_cable',
-                ],
-                [
-                    'gtceu:neutrindium_soldering_alloy 5184',
-                    'gtceu:borealic_concentrate 5400',
-                    'gtceu:pure_dragon_breath 11500',
-                    'gtceu:prismatic_hypergurmalium 6250',
-                ],
-                ['expandedae:artificial_universe_item_cell'],
-                1800,
-                256,
-                256 * 1200,
-                GTValues.VA[UIV],
-                'megacells:item_storage_cell_256m'
-            );
         });
 
         isModLoaded('expatternprovider', () => {

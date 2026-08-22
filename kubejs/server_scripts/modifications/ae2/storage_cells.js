@@ -177,6 +177,27 @@ ServerEvents.recipes((event) => {
         };
 
         [1, 4, 16, 64, 256].forEach((tier) => expandedAccelerator(tier));
+
+        isModLoaded('megacells', () => {
+            [
+                { type: 'item', mat: 'certus_quartz' },
+                { type: 'fluid', mat: 'gold' },
+            ].forEach((cell) => {
+                const { type, mat } = cell;
+                event.recipes.gtceu
+                    .me_assembler(id(`artificial_universe_${type}_cell`))
+                    .itemInputs(
+                        '4x gtceu:void_frame',
+                        '8x megacells:cell_component_256m',
+                        '#gtceu:circuits/uev',
+                        `16x gtceu:double_netherite_${mat}_skystone_alloy_plate`
+                    )
+                    .inputFluids('gtceu:utopian_akreyrium 9216')
+                    .itemOutputs(`expandedae:artificial_universe_${type}_cell`)
+                    .duration(800)
+                    .EUtVHA(UEV);
+            });
+        });
     });
 
     isModLoaded('megacells', () => {
