@@ -1,6 +1,4 @@
 {
-    "block.gtceu.theta2Removals.tooltip": "§4§l다음 업데이트인 Theta-2에서 삭제 예정입니다.",
-
     "block.gtceu.dimensional_finder.tooltip.0": "§7차원 단위로 멘션을 받아보세요!",
     "block.gtceu.dimensional_finder.tooltip.1": "§7이 장치는 펄스를 깊은 우주로 송신하여 크리스털에 반향을 기록하고, 이를 기반으로 해당 위치를 산출합니다",
 
@@ -1432,5 +1430,5 @@
     "block.gtceu.industrial_brewing_station": "공업용 발효 스테이션 [IBS]",
 
     "block.gtceu.network_hub": "네트워크 허브 [NH]",
-    "gtceu.machine.network_hub.tooltip": "더 많은 연산 해치를 위한 공간을 제공합니다."
+    "gtceu.machine.network_hub.extension_tooltip": "더 많은 연산 해치를 위한 공간을 제공합니다."
 }
