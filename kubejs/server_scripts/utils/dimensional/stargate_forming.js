@@ -16,12 +16,12 @@
 
 /** @type {(x: number, y: number) => RingDefinition} */
 const ringBlock = (x, y) => {
-    return { dxz: 0, dy: 0, type: 'ring' };
+    return { dxz: x, dy: y, type: 'ring' };
 };
 
 /** @type {(x: number, y: number) => RingDefinition} */
 const chevronBlock = (x, y) => {
-    return { dxz: 0, dy: 1, type: 'chevron' };
+    return { dxz: x, dy: y, type: 'chevron' };
 };
 
 /** @type {{gates: StargateDefinition[], ring: RingDefinition[], resultNbt: string}} */
