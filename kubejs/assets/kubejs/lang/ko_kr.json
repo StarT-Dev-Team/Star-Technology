@@ -13,7 +13,7 @@
     "effects.sand_erosion.message": "§e아비도스의 모래가 당신을 침식합니다...",
     "effects.uranium_fever.message": "§a방사능 중독§f이 당신을 고통스럽게 만듭니다...",
 
-    "effects.crystals.success": "§8좌표의 수정§7에서 나오는 메아리를 사용하자마자 어떤 목소리가 속삭이면서 당신의 눈 뒤에서 수상한 숫자들이 보입니다.",
+    "effects.crystals.success": "§8좌표의 수정§7에서 나오는 메아리를 사용하자마자 어떤 목소리가 속삭이면서 당신의 눈 뒤에서 수상한 숫자들이 보입니다, ",
     "effects.crystals.success.abydos": "§7또한 당신의 눈 앞에 §es모래로 덮힌 유적과 먼지로 잃어버린 세계§7가 펼쳐집니다...",
     "effects.crystals.success.nether": "§7또한 당신의 눈 앞에 §4불과 파멸, 그리고 지옥의 환경§7이 펼쳐집니다... ",
     "effects.crystals.success.end": "§7또한 당신의 눈 앞에 §5희미한 심연과 어느 밤보다 어두운 어둠§7이 펼쳐집니다...",
