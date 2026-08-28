@@ -84,10 +84,11 @@ BlockEvents.rightClicked((event) => {
     let zNeighbourBlock = level.getBlock(pos.x, pos.y, pos.z + 1);
 
     let axis = null;
+    let chevronBlock = STARGATES.gates[stargateDefinitionIndex].chevron;
 
-    if (xNeighbourBlock.id === 'minecraft.air' && zNeighbourBlock.id !== 'minecraft.air') {
+    if (xNeighbourBlock.id === chevronBlock && zNeighbourBlock.id !== chevronBlock) {
         axis = 'x';
-    } else if (xNeighbourBlock.id === 'minecraft.air' && xNeighbourBlock.id !== 'minecraft.air') {
+    } else if (xNeighbourBlock.id !== chevronBlock && zNeighbourBlock.id === chevronBlock) {
         axis = 'z';
     } else {
         return;
@@ -104,8 +105,15 @@ BlockEvents.rightClicked((event) => {
 
     if (missing.length > 0) return;
 
-    structureBlocks.forEach((block) => level.setBlock(block.pos, 'minecraft:air', 3));
+    structureBlocks.forEach((block) => {
+        let placedBlock = level.setBlock(block.pos, 'minecraft:air', 3);
+        console.info(
+            (placedBlock ? 'Successfully placed ' : 'Failed to place ') +
+                block.block +
+                ` at ${block.pos.x} ${block.pos.y} ${block.pos.z}`
+        );
+    });
 
-    const command = `setblock ${pos.x} ${pos.y} ${pos.z} ${STARGATES.gates[stargateDefinitionIndex].gate}${STARGATES.resultNbt}`;
+    const command = `execute in ${level.dimension} run setblock ${pos.x} ${pos.y} ${pos.z} ${STARGATES.gates[stargateDefinitionIndex].gate}${STARGATES.resultNbt}`;
     server.runCommandSilent(command);
 });
