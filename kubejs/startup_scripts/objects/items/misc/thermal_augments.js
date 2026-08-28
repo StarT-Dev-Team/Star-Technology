@@ -1,3 +1,4 @@
+// requires: kubejs_thermal
 StartupEvents.registry('item', (event) => {
     /*
     definitions:

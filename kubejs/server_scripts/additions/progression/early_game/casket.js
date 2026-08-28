@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .shaped('gtceu:casket', ['RPR', 'SMS', 'TTT'], {
@@ -13,16 +14,16 @@ ServerEvents.recipes((event) => {
         .addMaterialInfo();
 
     /**
-     * @param {string[]} input
+     * @param {string[]} inputs
      * @param {string | null} outputItem
      * @param {string} outputFluid
      * @param {number} duration
      * @param {string} recipeID
      * @param {number=} circuit
      */
-    const fermenting = (input, outputItem, outputFluid, duration, recipeID, circuit) => {
+    const fermenting = (inputs, outputItem, outputFluid, duration, recipeID, circuit) => {
         const recipe = event.recipes.gtceu.fermenting(id(recipeID));
-        recipe.itemInputs(input);
+        recipe.itemInputs(inputs);
         if (outputItem) {
             recipe.itemOutputs(outputItem);
         }
@@ -42,9 +43,11 @@ ServerEvents.recipes((event) => {
     const potionRecipes = (fermentationMixture, potionID) => {
         fermenting(fermentationMixture, null, `kubejs:${potionID} 100`, 100, potionID);
 
-        event.recipes.create
-            .filling(`kubejs:${potionID}`, [Fluid.of(`kubejs:${potionID}`, 250), 'minecraft:glass_bottle'])
-            .id(`start:filling/${potionID}`);
+        isModLoaded('kubejs_create', () => {
+            event.recipes.create
+                .filling(`kubejs:${potionID}`, [Fluid.of(`kubejs:${potionID}`, 250), 'minecraft:glass_bottle'])
+                .id(`start:filling/${potionID}`);
+        });
 
         event.recipes.gtceu
             .fermenter(id(potionID))
@@ -54,10 +57,14 @@ ServerEvents.recipes((event) => {
             .EUtVHA(LV);
     };
 
-    potionRecipes(['3x thermal:corn', '3x minecraft:wheat', '2x minecraft:sugar'], 'sweetcorn_beer'); // Haste
+    isModLoaded('thermal', () => {
+        potionRecipes(['3x thermal:corn', '3x minecraft:wheat', '2x minecraft:sugar'], 'sweetcorn_beer'); // Haste
+    });
     potionRecipes(['6x minecraft:apple', '2x minecraft:sugar'], 'apple_cider'); // Slow Falling
     potionRecipes(['4x minecraft:carrot', '2x minecraft:wheat', '2x minecraft:sugar'], 'carrot_ale'); // Night Vision
-    potionRecipes(['6x #forge:berries', '2x minecraft:sugar'], 'berry_wine'); // Speed
+    isModLoaded('farmersdelight', () => {
+        potionRecipes(['6x #forge:berries', '2x minecraft:sugar'], 'berry_wine'); // Speed
+    });
     potionRecipes(['7x minecraft:bread', 'minecraft:sugar'], 'wheat_kvass'); // Jump Boost
     potionRecipes(['#forge:crops/rice', 'minecraft:sugar'], 'sake'); // Reach, [custom effect?, Komaru related?]
 

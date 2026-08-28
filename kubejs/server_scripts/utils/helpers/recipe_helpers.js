@@ -102,33 +102,29 @@ ServerEvents.recipes((event) => {
     };
 });
 
-const modRequirements = {
-    architectsPalette: 'architects_palette',
-    xycraftWorld: 'xycraft_world',
-    chipped: 'chipped',
-    framedBlocks: 'framedblocks',
-    effortlessBuilding: 'effortlessbuilding',
+/** @typedef {'minecraft' | 'gtceu' | 'rechiseled' | 'thermal' | 'architects_palette' | 'chipped' | 'create' | 'kubejs' | 'kubejs_create' | 'kubejs_thermal' | 'xycraft_world' | 'chisel_chipped_integration' | 'start_core' | 'framedblocks' | 'ae2' | 'farmersdelight' | 'exnihilosequentia' | 'expatternprovider' | 'vintage' | 'fantasyfurniture' | 'projectred_illumination' | 'projectred_transmission' | 'copycats' | 'xtonesreworked' | 'functionalstorage' | 'megacells' | 'thermal_extra' | 'dustrial_decor' | 'expandedae' | 'rtsbuilding' | 'placeablemaxwell' | 'sgjourney' | 'rechiseledcreate' | 'jetboots' | 'buildinggadgets2' | 'toms_storage' | 'simplylight' | 'modularrouters' | 'projectred_core' | 'projectred_integration' | 'createdieselgenerators' | 'aeinfinitybooster' | 'simplybackpacks' | 'betterp2p' | 'expandedgt' | 'effortlessbuilding' | 'bingus' | 'create_new_age' | 'ftbquests' | 'itemfilters' | 'create_hypertube' | 'colossalchests' | 'merequester' | 'laserio' | 'fluxnetworks' | 'itemcollectors' | 'ae2wtlib' | 'patchouli' | 'trashcans' | 'cb_microblock' | 'systeams' | 'pipez' | 'createlowheated' | 'skyblockbuilder' | 'pccard' | 'guideme' | 'endertanks' | 'komarumod' | 'gravestone' | 'travelanchors' | 'enderchests' | 'ae2netanalyser' | 'woodenbucket'} StarTMod */
+
+/**
+ * @param {StarTMod | StarTMod[]} mods The required mod/mods for this function to run
+ * @param {() => void} [ifTrue] Function to execute if current mod is loaded'.
+ * @param {() => void} [ifFalse] Function to execute if current mod is NOT loaded'.
+ * @returns {void}
+ */
+global.withModsLoaded = (mods, ifTrue, ifFalse) => {
+    mods = Array.isArray(mods) ? mods : [mods];
+
+    if (mods.every((m) => Platform.isLoaded(m))) {
+        if (typeof ifTrue === 'function') {
+            ifTrue();
+        } else
+            console.error(
+                `Succeeded mod loading requirements for mods: [${mods.join(', ')}]; Failed: Parsed function is not a function`
+            );
+    } else if (typeof ifFalse === 'function') {
+        ifFalse();
+        console.log(`Failed mod loading requirements for mods: [${mods.join(', ')}]; Loading negative case code`);
+    } else console.log(`Failed mod loading requirements for mods: [${mods.join(', ')}]; Skipping code`);
 };
-
-// Auto-generate all the wrapper functions
-Object.entries(modRequirements).forEach(([name, mod]) => {
-    const mods = Array.isArray(mod) ? mod : [mod];
-    /**
-     * @param {() => void} ifTrue Function to execute if current mod is loaded'.
-     * @param {() => void} ifFalse Function to execute if current mod is NOT loaded'.
-     */
-    const fn = (ifTrue, ifFalse) => {
-        if (mods.every((m) => Platform.isLoaded(m))) {
-            if (ifTrue && typeof ifTrue === 'function') {
-                ifTrue();
-            }
-        } else if (ifFalse && typeof ifFalse === 'function') {
-            ifFalse();
-        }
-    };
-
-    /** @type {any} */ (global)[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = fn;
-});
 
 /**
  * Implosion Compressor recipe helper
@@ -202,16 +198,19 @@ const ingredientArrayContainsItem = (ingredients, item) => {
  */
 const zipIngredientArrays = (arr1, arr2) => {
     /** @type {RecipeHelperIngredient[]} */
-    let zipped = arr1;
+    let zipped = [];
 
-    arr2.forEach((ingredient) => {
-        let index = zipped.findIndex((zippedIngredient) => zippedIngredient.item === ingredient.item);
-        if (index >= -1) {
-            zipped[index].amount += ingredient.amount;
-        } else {
-            zipped.push(ingredient);
+    const addIngredient = (/** @type {RecipeHelperIngredient}*/ ingredient) => {
+        let entry = zipped.find((i) => i.item === ingredient.item);
+        if (entry) {
+            entry.amount += ingredient.amount;
+            return;
         }
-    });
+        zipped.push(ingredient);
+    };
+
+    arr1.forEach(addIngredient);
+    arr2.forEach(addIngredient);
     return zipped;
 };
 
