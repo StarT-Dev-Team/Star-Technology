@@ -105,6 +105,13 @@ ServerEvents.recipes((event) => {
 
     event.remove({ type: 'thermal:lapidary_fuel', input: 'minecraft:diamond' });
 
+    isModLoaded('kubejs_thermal', () => {
+        event.recipes.thermal.lapidary_fuel('gtceu:diatron_gem', 750000);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_diatron_gem', 750000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_diatron_gem', 750000 * 6.25);
+        event.recipes.thermal.lapidary_fuel('minecraft:diamond', 300000);
+    });
+
     isModLoaded('systeams', () => {
         event.remove({ mod: 'systeams' });
 
@@ -203,13 +210,6 @@ ServerEvents.recipes((event) => {
             .itemOutputs('systeams:steam_dynamo')
             .duration(320)
             .EUt(112);
-    });
-
-    isModLoaded('kubejs_thermal', () => {
-        event.recipes.thermal.lapidary_fuel('gtceu:diatron_gem', 750000);
-        event.recipes.thermal.lapidary_fuel('gtceu:flawless_diatron_gem', 750000 * 2.5);
-        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_diatron_gem', 750000 * 6.25);
-        event.recipes.thermal.lapidary_fuel('minecraft:diamond', 300000);
     });
 
     event.recipes.gtceu
