@@ -230,14 +230,3 @@ global.ingredientArrayToItemArray = ingredientArrayToItemArray;
 global.itemArrayToIngredientArray = itemArrayToIngredientArray;
 global.zipIngredientArrays = zipIngredientArrays;
 global.zipItemArrays = zipItemArrays;
-
-/** @type {(tag: string, amount: number) => internal.com.gregtechceu.gtceu.integration.kjs.recipe.components.GTRecipeComponents$FluidIngredientJS} */
-const fluidTag = (tag, amount) => {
-    let ingredient = new JSONObject();
-    ingredient.add('amount', amount);
-    ingredient.add('value', { tag: tag });
-
-    return FluidIngredientJS.of(ingredient);
-};
-
-global.fluidTag = fluidTag;

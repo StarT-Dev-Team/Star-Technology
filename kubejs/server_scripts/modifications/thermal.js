@@ -151,32 +151,38 @@ ServerEvents.recipes((event) => {
     steamDynamo('forge:steam', 1000);
     steamBoiler('minecraft:water', 100, 'gtceu:steam', 400);
 
+    /** @type {string[]}*/
+    let addedSteamTurbineRecipes = [];
+
     /**
      * @param {string} type
      * @param {string} prior
      * @param {number} scale
      */
     const systeamSteams = (type, prior, scale) => {
-        event.recipes.gtceu
-            .steam_turbine(id(`${type}`))
-            .inputFluids(type.startsWith('forge') ? fluidTag(type, 640) : `${type} 640`)
-            .outputFluids(`gtceu:distilled_water ${4 - scale}`)
-            .duration(10 + 2 * scale)
-            .EUt(-32);
+        if (!addedSteamTurbineRecipes.includes(type)) {
+            event.recipes.gtceu
+                .steam_turbine(id(`${type.split(':')[1]}`))
+                .inputFluids(`${type} 640`)
+                .outputFluids(`gtceu:distilled_water ${4 - scale}`)
+                .duration(10 + 2 * scale)
+                .EUt(-32);
+            addedSteamTurbineRecipes.push(type);
+        }
 
         steamDynamo(type, 1000 + 200 * scale);
 
         if (type !== 'steamier') {
             steamBoiler(prior, 50, type, 100);
             event.recipes.gtceu
-                .fluid_heater(id(type))
-                .inputFluids(type.startsWith('forge') ? fluidTag(type, 500) : `${prior} 500`)
+                .fluid_heater(id(`${prior.split(':')[1]}_to_${type.split(':')[1]}_boiling`))
+                .inputFluids(`${prior} 500`)
                 .outputFluids(`${type} 1000`)
                 .duration(20)
                 .EUt(30);
         }
     };
-    systeamSteams('start_core:warm_steam', 'forge:steam', 1);
+    systeamSteams('start_core:warm_steam', '#forge:steam', 1);
     systeamSteams('start_core:hot_steam', 'systeams:steamier', 2);
     systeamSteams('start_core:hot_steam', 'start_core:warm_steam', 2);
     systeamSteams('start_core:extremely_hot_steam', 'systeams:steamiest', 3);
