@@ -161,7 +161,6 @@ export default [
                 OpV: 'readonly',
                 MAX: 'readonly',
                 T: 'writable',
-                fluidTag: 'writable',
             },
         },
         rules: {
