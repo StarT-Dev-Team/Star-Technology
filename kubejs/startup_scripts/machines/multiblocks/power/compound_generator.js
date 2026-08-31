@@ -78,19 +78,19 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
 
                     /** @type ShapeInfoBuilder */
                     let builder = MultiblockShapeInfo.builder()
-                        .aisle('CCC', 'CMC', ' C ')
+                        .aisle('CCC', 'C@C', ' C ')
                         .where('@', definition, Direction.NORTH)
-                        .where('F', Block.getBlock(generator.frame))
-                        .where('C', Block.getBlock(generator.casing))
+                        .where('F', Block.getBlock(`gtceu:${generator.frame}_frame`))
+                        .where('C', Block.getBlock(`gtceu:${generator.casing}`))
                         .where('M', GTMachines.MUFFLER_HATCH[LV], Direction.SOUTH)
                         .where('K', GTMachines.ENERGY_OUTPUT_HATCH[tier], Direction.UP)
-                        .where('P', Block.getBlock(generator.pipe))
-                        .where('I', GTMachines.FLUID_IMPORT_HATCH[tier], Direction.NORTH)
-                        .where('O', GTMachines.FLUID_EXPORT_HATCH[tier], Direction.NORTH);
+                        .where('P', Block.getBlock(`gtceu:${generator.pipe}`))
+                        .where('I', GTMachines.FLUID_IMPORT_HATCH[tier], Direction.SOUTH)
+                        .where('O', GTMachines.FLUID_EXPORT_HATCH[tier], Direction.SOUTH);
 
                     for (let i = 0; i < SLICES_COUNT; i++) {
                         builder.aisle('FCF', 'CPC', 'FKF');
-                        shapeInfo.push(builder.shallowCopy().aisle('ICO', 'C@C', ' C ').build());
+                        shapeInfo.push(builder.shallowCopy().aisle('ICO', 'CMC', ' C ').build());
                     }
 
                     return shapeInfo;
