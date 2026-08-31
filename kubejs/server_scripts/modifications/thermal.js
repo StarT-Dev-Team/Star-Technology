@@ -62,14 +62,14 @@ ServerEvents.recipes((event) => {
     event.remove({ type: 'thermal:compression_fuel', input: 'thermal:tree_oil' });
     event.remove({ type: 'thermal:compression_fuel', input: 'thermal:refined_fuel' });
 
-    isModLoaded('kubejs_thermal', () => {
-        event.recipes.thermal.compression_fuel('gtceu:bio_diesel', 512000);
-        event.recipes.thermal.compression_fuel('gtceu:diesel', 960000);
-        event.recipes.thermal.compression_fuel('gtceu:cetane_boosted_diesel', 1280000);
-        event.recipes.thermal.compression_fuel('gtceu:gasoline', 3200000);
-        event.recipes.thermal.compression_fuel('gtceu:high_octane_gasoline', 6400000);
-        event.recipes.thermal.compression_fuel('gtceu:naphtha', 480000);
-    });
+    //isModLoaded('kubejs_thermal', () => {
+    event.recipes.thermal.compression_fuel('gtceu:bio_diesel', 512000);
+    event.recipes.thermal.compression_fuel('gtceu:diesel', 960000);
+    event.recipes.thermal.compression_fuel('gtceu:cetane_boosted_diesel', 1280000);
+    event.recipes.thermal.compression_fuel('gtceu:gasoline', 3200000);
+    event.recipes.thermal.compression_fuel('gtceu:high_octane_gasoline', 6400000);
+    event.recipes.thermal.compression_fuel('gtceu:naphtha', 480000);
+    //});
 
     event.remove({ id: 'gtceu:combustion_generator/naphtha' });
     event.recipes.gtceu.combustion_generator(id('naphtha')).inputFluids('gtceu:naphtha 4').duration(30).EUt(-32);
@@ -156,7 +156,7 @@ ServerEvents.recipes((event) => {
         };
 
         // backwards compatibility
-        steamDynamo('systeams:steamietest', 1000);
+        steamDynamo('systeams:steamiester', 1000);
         steamDynamo('forge:steam', 1000);
         steamBoiler('minecraft:water', 100, 'gtceu:steam', 400);
 
@@ -176,10 +176,11 @@ ServerEvents.recipes((event) => {
                     .outputFluids(`gtceu:distilled_water ${4 - scale}`)
                     .duration(10 + 2 * scale)
                     .EUt(-32);
+
+                steamDynamo(type, 1000 + 200 * scale);
+
                 addedSteamTurbineRecipes.push(type);
             }
-
-            steamDynamo(type, 1000 + 200 * scale);
 
             if (type !== 'steamier') {
                 steamBoiler(prior, 50, type, 100);
