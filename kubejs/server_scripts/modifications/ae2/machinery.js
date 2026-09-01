@@ -755,15 +755,15 @@ ServerEvents.recipes((event) => {
                         : io === 'input' && tier === 'luv'
                           ? 'stocking_input'
                           : 'output';
-                const input = tier === 'luv' ? 'input' : 'stocking_input';
+                const type = tier === 'luv' ? recId : `stocking_${recId}`;
                 const circuit = io === 'input' ? 1 : 2;
 
                 assemblerFluid(
                     `dual_me_${recId}_hatch`,
                     `expandedgt:dual_me_${recId}_hatch`,
                     [
-                        `expandedgt:expanded_me_${input}_hatch`,
-                        `expandedgt:expanded_me_${input}_bus`,
+                        `expandedgt:expanded_me_${type}_hatch`,
+                        `expandedgt:expanded_me_${type}_bus`,
                         `${pipeMaterial}_nonuple_fluid_pipe`,
                         `3x ${casingMaterial}_frame`,
                     ],
