@@ -1,19 +1,13 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
-    event
-        .create('electric_ore_processing')
-        .category('ore_processing')
-        .setEUIO('in')
-        .setMaxIOSize(1, 5, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
-        .setSound(GTSoundEntries.FURNACE);
-});
-
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('electric_ore_factory', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .recipeType('electric_ore_processing')
-        .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT, GTRecipeModifiers.BATCH_MODE])
+        .recipeType('ore_factory')
+        .recipeModifiers([
+            GTRecipeModifiers.OC_NON_PERFECT,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
+
         .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
         .pattern((definition) =>
             newFactoryBlockPattern([
