@@ -15,11 +15,11 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .centrifuge(id('netherack_centrifuging'))
         .itemInputs('gtceu:netherrack_dust')
-        .chancedOutput('gtceu:redstone_dust', 6250, 95)
+        .chancedOutput('minecraft:redstone', 6250, 95)
         .chancedOutput('gtceu:gold_dust', 70, 15)
         .chancedOutput('gtceu:sulfur_dust', 2475, 25)
         .chancedOutput('gtceu:coal_dust', 625, 95)
-        .chancedOutput('gtceu:small_debris_dust', 0, 50)
+        .chancedOutput('gtceu:small_debris_dust', 50, 50)
         .EUt(20)
         .duration(160);
 
