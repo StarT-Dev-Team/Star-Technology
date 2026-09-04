@@ -77,6 +77,6 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:ethanol 50', 'minecraft:water 500')
         .itemOutputs('gtceu:aerogel_ingot')
         .duration(240)
-        .EUtVHA(ZPM)
+        .EUtVHA(LuV)
         .vacuumLevel(80);
 });
