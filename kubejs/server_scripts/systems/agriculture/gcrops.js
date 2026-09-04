@@ -19,7 +19,7 @@ ServerEvents.recipes((event) => {
                 'gtceu:iv_field_generator',
                 '8x gtceu:niobium_titanium_single_cable',
                 '6x gtceu:uranium_triplatinum_plate',
-                catalyst
+                `8x ${catalyst}`
             )
             .inputFluids('gtceu:soldering_alloy 1152')
             .itemOutputs(`start_core:${itemId}`)
