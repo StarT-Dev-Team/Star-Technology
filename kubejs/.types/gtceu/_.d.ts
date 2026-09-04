@@ -262,3 +262,4 @@ declare const GTToolType: typeof internal.com.gregtechceu.gtceu.api.item.tool.GT
 declare const GTFluidBuilder: typeof internal.com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 declare const GTFluidState: typeof internal.com.gregtechceu.gtceu.api.fluids.FluidState;
 declare const GTFluidStorageKeys: typeof internal.com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+declare const MultiblockShapeInfo: typeof internal.com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;

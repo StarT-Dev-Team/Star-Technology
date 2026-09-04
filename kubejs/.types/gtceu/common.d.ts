@@ -1164,6 +1164,8 @@ declare namespace internal.com.gregtechceu.gtceu.common.data {
         QUANTUM_TANK: MachineDefinition[];
         ITEM_IMPORT_BUS: MachineDefinition[];
         ITEM_EXPORT_BUS: MachineDefinition[];
+        FLUID_IMPORT_HATCH: MachineDefinition[];
+        FLUID_EXPORT_HATCH: MachineDefinition[];
         ENERGY_INPUT_HATCH: MachineDefinition[];
         ENERGY_OUTPUT_HATCH: MachineDefinition[];
         ENERGY_INPUT_HATCH_4A: MachineDefinition[];
