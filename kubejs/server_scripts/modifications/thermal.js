@@ -127,11 +127,27 @@ ServerEvents.recipes((event) => {
 
         /** @typedef {FluidBasicIngredient | FluidTagBasicIngredient} FluidOrTagIngredient */
 
-        /** @type {(fluid: string, amount: number) => FluidOrTagIngredient} */
+        /**
+         * Returns a fluid ingredient that allows for either a fluid or a fluid tag.
+         * If the fluid starts with 'forge:' or '#', it is treated as a fluid tag.
+         * @param {string} fluid A string representing a fluid or fluid tag
+         * @param {number} amount The amount of the fluid
+         * @returns {FluidOrTagIngredient}
+         * */
         const fluidIngredient = (fluid, amount) => {
+            let isFluidTag = false;
+            let tagIngredient = '';
+            if (fluid.startsWith('forge')) {
+                isFluidTag = true;
+                tagIngredient = fluid;
+            }
+            if (fluid.startsWith('#')) {
+                isFluidTag = true;
+                tagIngredient = fluid.substring(1);
+            }
             /* eslint-disable id-match, camelcase */
-            let ingredient = fluid.startsWith('forge')
-                ? { fluid_tag: fluid, amount: amount }
+            let ingredient = isFluidTag
+                ? { fluid_tag: tagIngredient, amount: amount }
                 : { fluid: fluid, amount: amount };
             /* eslint-enable id-match, camelcase */
             return ingredient;
@@ -157,7 +173,7 @@ ServerEvents.recipes((event) => {
 
         // backwards compatibility
         steamDynamo('systeams:steamiester', 1000);
-        steamDynamo('forge:steam', 1000);
+        steamDynamo('#forge:steam', 1000);
         steamBoiler('minecraft:water', 100, 'gtceu:steam', 400);
 
         /** @type {string[]}*/
