@@ -13,13 +13,14 @@
 				"465C3F9D685B7612"
 				"25583D0BF59E1BC8"
 			]
+			description: ["{ftbquests.gcrops.genome_operator.description}"]
 			id: "04E09B604801840A"
 			tasks: [{
 				id: "17ED0C6FE040099B"
 				item: "start_core:genome_operator"
 				type: "item"
 			}]
-			x: -9.0d
+			x: -13.0d
 			y: 4.0d
 		}
 		{
@@ -27,13 +28,75 @@
 				"550DB81B8DC91730"
 				"257613F4575DA0E7"
 			]
+			description: ["{ftbquests.gcrops.mutators.description}"]
 			id: "3B29DB73AA3B63CE"
 			tasks: [{
 				id: "7BD393883C174D10"
-				item: "start_core:lv_gcrop_mutator"
+				item: {
+					Count: 1
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "start_core:lv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:mv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:hv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:ev_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:iv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:luv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:zpm_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:uv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:uhv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:uev_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:uiv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:uxv_gcrop_mutator"
+							}
+							{
+								Count: 1b
+								id: "start_core:opv_gcrop_mutator"
+							}
+						]
+					}
+				}
+				title: "{ftbquests.gcrops.mutators.subtitle}"
 				type: "item"
 			}]
-			x: -9.0d
+			title: "{ftbquests.gcrops.mutators.title}"
+			x: -11.0d
 			y: 0.0d
 		}
 		{
@@ -43,13 +106,14 @@
 				"664E782C6A24D9F1"
 				"4BCC078B76C6CAE3"
 			]
+			description: ["{ftbquests.gcrops.mutator.description}"]
 			id: "465C3F9D685B7612"
 			tasks: [{
 				id: "7B4D8FFEE68C2ECC"
 				item: "start_core:gcrop_mutator"
 				type: "item"
 			}]
-			x: -9.0d
+			x: -13.0d
 			y: 2.0d
 		}
 		{
@@ -58,27 +122,14 @@
 				"2DB216B224F2E8EF"
 				"664E782C6A24D9F1"
 			]
+			description: ["{ftbquests.gcrops.harvester.description}"]
 			id: "7360AB5DAC721A11"
 			tasks: [{
 				id: "1EC552DD1D547219"
 				item: "start_core:gcrop_harvester"
 				type: "item"
 			}]
-			x: -7.0d
-			y: 4.0d
-		}
-		{
-			dependencies: [
-				"436A7D2511096831"
-				"257613F4575DA0E7"
-			]
-			id: "60412458761D6895"
-			tasks: [{
-				id: "7956221F9A8AF233"
-				item: "start_core:lv_gcrop_harvester"
-				type: "item"
-			}]
-			x: -7.0d
+			x: -5.0d
 			y: 2.0d
 		}
 		{
@@ -86,13 +137,151 @@
 				"436A7D2511096831"
 				"257613F4575DA0E7"
 			]
+			description: ["{ftbquests.gcrops.harvesters.description}"]
+			id: "60412458761D6895"
+			tasks: [{
+				id: "7956221F9A8AF233"
+				item: {
+					Count: 1
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "start_core:lv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:mv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:hv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:ev_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:iv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:luv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:zpm_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:uv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:uhv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:uev_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:uiv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:uxv_gcrop_harvester"
+							}
+							{
+								Count: 1b
+								id: "start_core:opv_gcrop_harvester"
+							}
+						]
+					}
+				}
+				title: "{ftbquests.gcrops.harvesters.subtitle}"
+				type: "item"
+			}]
+			title: "{ftbquests.gcrops.harvesters.title}"
+			x: -7.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"436A7D2511096831"
+				"257613F4575DA0E7"
+			]
+			description: ["{ftbquests.gcrops.breeders.description}"]
 			id: "0CF5F6AB9902FFA9"
 			tasks: [{
 				id: "561B5437B0B4DA82"
-				item: "start_core:lv_gcrop_breeder"
+				item: {
+					Count: 1
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "start_core:lv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:mv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:hv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:ev_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:iv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:luv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:zpm_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:uv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:uhv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:uev_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:uiv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:uxv_gcrop_breeder"
+							}
+							{
+								Count: 1b
+								id: "start_core:opv_gcrop_breeder"
+							}
+						]
+					}
+				}
+				title: "{ftbquests.gcrops.breeders.subtitle}"
 				type: "item"
 			}]
-			x: -5.0d
+			title: "{ftbquests.gcrops.breeders.title}"
+			x: -7.0d
 			y: 2.0d
 		}
 		{
@@ -101,6 +290,7 @@
 				"664E782C6A24D9F1"
 				"1E981BDF3F2C577D"
 			]
+			description: ["{ftbquests.gcrops.breeder.description}"]
 			id: "5B00E7C090A2D24C"
 			tasks: [{
 				id: "48408CEB2551B6BB"
@@ -111,39 +301,32 @@
 			y: 4.0d
 		}
 		{
-			id: "130C50754840599F"
-			tasks: [{
-				id: "519AF871BF7C9253"
-				item: "minecraft:wheat_seeds"
-				type: "item"
-			}]
-			x: -9.0d
-			y: -3.5d
-		}
-		{
 			dependencies: ["7836F17B34B47B16"]
+			description: ["{ftbquests.gcrops.void_mesh.description}"]
 			id: "0713CABE73E40C27"
 			tasks: [{
 				id: "57CE5EC3AB00152F"
 				item: "start_core:void_mesh"
 				type: "item"
 			}]
-			x: -11.0d
-			y: 2.0d
+			x: -13.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["0713CABE73E40C27"]
+			description: ["{ftbquests.gcrops.mystical_essence.description}"]
 			id: "23EECB5C1CC2B3A0"
 			tasks: [{
 				id: "7DF014468FF57FB0"
 				item: "start_core:mystical_essence_dust"
 				type: "item"
 			}]
-			x: -11.0d
-			y: 0.0d
+			x: -13.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["23EECB5C1CC2B3A0"]
+			description: ["{ftbquests.gcrops.mystical_air.description}"]
 			id: "3807C9AB50E1EFDC"
 			tasks: [{
 				id: "7FE3E2B7F8408D5C"
@@ -156,8 +339,8 @@
 		{
 			dependencies: [
 				"3807C9AB50E1EFDC"
-				"130C50754840599F"
 				"3B29DB73AA3B63CE"
+				"257613F4575DA0E7"
 			]
 			id: "1C9968F71FC8A300"
 			tasks: [{
@@ -169,12 +352,21 @@
 			y: -2.0d
 		}
 		{
+			description: ["{ftbquests.gcrops.crops.description}"]
 			id: "257613F4575DA0E7"
 			tasks: [{
-				id: "4D575C22EC4EA412"
-				type: "checkmark"
+				id: "12FE374DA0526B7F"
+				item: {
+					Count: 1
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:seeds"
+					}
+				}
+				title: "{ftbquests.gcrops.crops.title}"
+				type: "item"
 			}]
-			x: -7.0d
+			x: -9.0d
 			y: 0.0d
 		}
 		{
@@ -294,7 +486,7 @@
 			id: "68A07657DC7B1D36"
 			tasks: [{
 				id: "768AA70DD6FB9D88"
-				item: "ae2:sky_dust"
+				item: "gtceu:ender_pearl_dust"
 				type: "item"
 			}]
 			x: -7.0d
@@ -421,7 +613,7 @@
 			id: "281AD95999DF516D"
 			tasks: [{
 				id: "5B986FAA32BF223A"
-				item: "gtceu:americium_dust"
+				item: "gtceu:fermium_dust"
 				type: "item"
 			}]
 			x: 5.0d
@@ -453,14 +645,200 @@
 		}
 		{
 			dependencies: ["1C9968F71FC8A300"]
+			description: ["{ftbquests.gcrops.dna_strand.description}"]
 			id: "12435494817BBE3A"
-			tasks: [{
-				id: "4D3C7F76140E370E"
-				item: "start_core:dna_strand"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "388BDD5ECDBAE322"
+					type: "checkmark"
+				}
+				{
+					id: "5386F1446F5B2935"
+					item: {
+						Count: 1
+						id: "itemfilters:tag"
+						tag: {
+							value: "gtceu:dna_strand"
+						}
+					}
+					optional_task: true
+					title: "{ftbquests.gcrops.dna_strand.title}"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.gcrops.dna_strand.title}"
 			x: -8.0d
 			y: -1.0d
+		}
+		{
+			dependencies: ["257613F4575DA0E7"]
+			description: [
+				"{ftbquests.gcrops.traits.description.1}"
+				"{@pagebreak}"
+				"{ftbquests.gcrops.traits.description.2}"
+			]
+			icon: "start_core:malformed_gcrop"
+			id: "22A1D234516D4C25"
+			tasks: [{
+				id: "212C485F5AC4DBFE"
+				type: "checkmark"
+			}]
+			title: "{ftbquests.gcrops.traits.title}"
+			x: -9.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["22A1D234516D4C25"]
+			description: ["{ftbquests.gcrops.resource_traits.description}"]
+			icon: "start_core:illuminating_dna_strand"
+			id: "6F3CD99FFD2E0F4B"
+			tasks: [
+				{
+					id: "569447D15354B18C"
+					type: "checkmark"
+				}
+				{
+					id: "59837961D2957E72"
+					item: {
+						Count: 1
+						id: "itemfilters:tag"
+						tag: {
+							value: "gtceu:dna_strand/resource"
+						}
+					}
+					title: "{ftbquests.gcrops.resource_traits.title}"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.gcrops.resource_traits.title}"
+			x: -11.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["22A1D234516D4C25"]
+			description: ["{ftbquests.gcrops.production_traits.description}"]
+			icon: "start_core:sprawling_dna_strand"
+			id: "48E2C431EAF22893"
+			tasks: [
+				{
+					id: "289891EC84FCDB65"
+					type: "checkmark"
+				}
+				{
+					id: "0CD6B22B42B1D5A0"
+					item: {
+						Count: 1
+						id: "itemfilters:tag"
+						tag: {
+							value: "gtceu:dna_strand/production"
+						}
+					}
+					optional_task: true
+					title: "{ftbquests.gcrops.production_traits.title}"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.gcrops.production_traits.title}"
+			x: -11.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["22A1D234516D4C25"]
+			description: ["{ftbquests.gcrops.auxiliary_traits.description}"]
+			icon: "start_core:nocturnal_dna_strand"
+			id: "5FD16194FE56A108"
+			tasks: [
+				{
+					id: "61C6566D877171E1"
+					type: "checkmark"
+				}
+				{
+					id: "75EC384FA008E299"
+					item: {
+						Count: 1
+						id: "itemfilters:tag"
+						tag: {
+							value: "gtceu:dna_strand/auxiliary"
+						}
+					}
+					title: "{ftbquests.gcrops.auxiliary_traits.title}"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.gcrops.auxiliary_traits.title}"
+			x: -9.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["22A1D234516D4C25"]
+			description: ["{ftbquests.gcrops.climate_traits.description}"]
+			icon: "start_core:damp_dna_strand"
+			id: "22F4DA9E6E12270C"
+			tasks: [
+				{
+					id: "5B476F8BF06E425D"
+					type: "checkmark"
+				}
+				{
+					id: "44E48E6903294F09"
+					item: {
+						Count: 1
+						id: "itemfilters:tag"
+						tag: {
+							value: "gtceu:dna_strand/climate"
+						}
+					}
+					title: "{ftbquests.gcrops.climate_traits.title}"
+					type: "item"
+				}
+			]
+			title: "{ftbquests.gcrops.climate_traits.title}"
+			x: -7.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7360AB5DAC721A11"]
+			description: [
+				"{ftbquests.gcrops.climate_hatch.description}"
+				""
+				"[ \"===> [\", { \"text\": \"X\", \"underlined\": \"true\", \"clickEvent\": { \"action\": \"change_page\", \"value\": \"22F4DA9E6E12270C\" } }, \"] <===\" ]"
+			]
+			id: "4A3FA44E8FD06995"
+			tasks: [{
+				id: "3D2C8B7A9FDB132A"
+				item: {
+					Count: 1
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "start_core:frosty_climate_hatch"
+							}
+							{
+								Count: 1b
+								id: "start_core:scorching_climate_hatch"
+							}
+							{
+								Count: 1b
+								id: "start_core:tropical_climate_hatch"
+							}
+							{
+								Count: 1b
+								id: "start_core:desertic_climate_hatch"
+							}
+							{
+								Count: 1b
+								id: "start_core:damp_climate_hatch"
+							}
+						]
+					}
+				}
+				title: "{ftbquests.gcrops.climate_hatch.title}"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 2.0d
 		}
 	]
 	title: "gCrops"
