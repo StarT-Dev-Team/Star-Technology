@@ -13,7 +13,7 @@ ServerEvents.recipes((event) => {
     event.remove({ id: 'gtceu:centrifuge/netherrack_separation' });
 
     event.recipes.gtceu
-        .centrifuge(id('netherack_centrifuging'))
+        .centrifuge(id('netherrack_centrifuging'))
         .itemInputs('gtceu:netherrack_dust')
         .chancedOutput('minecraft:redstone', 6250, 95)
         .chancedOutput('gtceu:gold_dust', 70, 15)
