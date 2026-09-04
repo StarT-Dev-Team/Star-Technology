@@ -1393,6 +1393,24 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
         frames(...frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
         frames(frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
     };
+
+    interface MultiblockShapeInfo extends $object<'com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo'> {}
+
+    const MultiblockShapeInfo: $class<MultiblockShapeInfo> & {
+        builder(): MultiblockShapeInfo$ShapeInfoBuilder;
+    };
+
+    import Direction = net.minecraft.core.Direction;
+    import MultiblockMachineDefinition = machine.MultiblockMachineDefinition;
+
+    interface MultiblockShapeInfo$ShapeInfoBuilder extends $object<'com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo$ShapeInfoBuilder'> {
+        aisle(...aisle: string[]): this;
+        where(symbol: string, block: $wrapped<Block>): this;
+        where(symbol: string, machine: MultiblockMachineDefinition, direction: Direction): this;
+        where(symbol: string, machine: MachineDefinition, direction: Direction): this;
+        build(): MultiblockShapeInfo;
+        shallowCopy(): MultiblockShapeInfo$ShapeInfoBuilder;
+    }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
@@ -1547,6 +1565,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     import BiConsumer = java.util.function_.BiConsumer;
     import IMultiController = machine.feature.multiblock.IMultiController;
     import IMultiPart = machine.feature.multiblock.IMultiPart;
+    import MultiblockShapeInfo = pattern.MultiblockShapeInfo;
 
     interface MultiblockMachineBuilder extends $object<
         'com.gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder',
@@ -1557,6 +1576,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         'partSorter(java.util.function.Function)': (
             fn: $wrapped<Function<MultiblockControllerMachine, Comparator<IMultiPart>>>
         ) => this;
+        shapeInfos(shapes: (definition: MultiblockMachineDefinition) => MultiblockShapeInfo[]): this;
         additionalDisplay(additionalDisplay: $wrapped<BiConsumer<IMultiController, List<Component>>>): this;
     }
 }

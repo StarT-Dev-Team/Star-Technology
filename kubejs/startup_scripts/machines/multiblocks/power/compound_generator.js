@@ -20,13 +20,15 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         },
     ];
 
+    const SLICES_COUNT = 8;
+
     event
         .create('compound_generator', 'tiered_multiblock')
         .tiers(LV, MV, HV)
         .machine((holder, tier) => new $CompoundGeneratorMachine(holder, tier))
         .definition((tier, definition) => {
             let generator = versions[tier - 1];
-            let slices = 8;
+            let slices = SLICES_COUNT;
 
             definition
                 .rotationState(RotationState.ALL)
@@ -68,6 +70,31 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         })
                         .build()
                 )
+                .shapeInfos((definition) => {
+                    let generator = versions[tier - 1];
+                    let shapeInfo = [];
+
+                    /** @typedef {internal.com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo$ShapeInfoBuilder} ShapeInfoBuilder */
+
+                    /** @type ShapeInfoBuilder */
+                    let builder = MultiblockShapeInfo.builder()
+                        .aisle('CCC', 'C@C', ' C ')
+                        .where('@', definition, Direction.NORTH)
+                        .where('F', Block.getBlock(`gtceu:${generator.frame}_frame`))
+                        .where('C', Block.getBlock(`gtceu:${generator.casing}`))
+                        .where('M', GTMachines.MUFFLER_HATCH[LV], Direction.SOUTH)
+                        .where('K', GTMachines.ENERGY_OUTPUT_HATCH[tier], Direction.UP)
+                        .where('P', Block.getBlock(`gtceu:${generator.pipe}`))
+                        .where('I', GTMachines.FLUID_IMPORT_HATCH[tier], Direction.SOUTH)
+                        .where('O', GTMachines.FLUID_EXPORT_HATCH[tier], Direction.SOUTH);
+
+                    for (let i = 0; i < SLICES_COUNT; i++) {
+                        builder.aisle('FCF', 'CPC', 'FKF');
+                        shapeInfo.push(builder.shallowCopy().aisle('ICO', 'CMC', ' C ').build());
+                    }
+
+                    return shapeInfo;
+                })
                 .workableCasingModel(
                     `gtceu:block/casings/solid/${generator.base}`,
                     'gtceu:block/machines/alloy_smelter'

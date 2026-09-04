@@ -105,6 +105,7 @@ export default [
                 GTMachines: 'readonly',
                 $TooltipHelper: 'readonly',
                 NBTPredicates: 'readonly',
+                MultiblockShapeInfo: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
                 FillDirection: 'readonly',
