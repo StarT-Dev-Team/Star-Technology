@@ -755,18 +755,16 @@ ServerEvents.recipes((event) => {
                         : io === 'input' && tier === 'luv'
                           ? 'stocking_input'
                           : 'output';
-                const input = tier === 'luv' ? 'input' : 'stocking_input';
+                const type = tier === 'luv' ? recId : `stocking_${recId}`;
                 const circuit = io === 'input' ? 1 : 2;
+
+                let hatch = `${type !== 'output' ? 'expandedgt:expanded_' : 'gtceu:'}me_${type}_hatch`;
+                let bus = `${type !== 'output' ? 'expandedgt:expanded_' : 'gtceu:'}me_${type}_bus`;
 
                 assemblerFluid(
                     `dual_me_${recId}_hatch`,
                     `expandedgt:dual_me_${recId}_hatch`,
-                    [
-                        `expandedgt:expanded_me_${input}_hatch`,
-                        `expandedgt:expanded_me_${input}_bus`,
-                        `${pipeMaterial}_nonuple_fluid_pipe`,
-                        `3x ${casingMaterial}_frame`,
-                    ],
+                    [hatch, bus, `${pipeMaterial}_nonuple_fluid_pipe`, `3x ${casingMaterial}_frame`],
                     `polybenzimidazole ${144 * fluidMulti}`,
                     GTValues.VA[GTValues[consTier]],
                     circuit

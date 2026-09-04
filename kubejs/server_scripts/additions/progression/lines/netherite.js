@@ -10,13 +10,18 @@ ServerEvents.recipes((event) => {
         .duration(6000)
         .EUt(1890);
 
+    event.remove({ id: 'gtceu:centrifuge/netherrack_separation' });
+
     event.recipes.gtceu
-        .centrifuge(id('debris_dust'))
+        .centrifuge(id('netherrack_centrifuging'))
         .itemInputs('gtceu:netherrack_dust')
-        .chancedOutput('gtceu:tiny_debris_dust', 200, 500)
-        .duration(20)
-        .EUt(6500)
-        .circuit(1);
+        .chancedOutput('minecraft:redstone', 6250, 95)
+        .chancedOutput('gtceu:gold_dust', 70, 15)
+        .chancedOutput('gtceu:sulfur_dust', 2475, 25)
+        .chancedOutput('gtceu:coal_dust', 625, 95)
+        .chancedOutput('gtceu:small_debris_dust', 50, 50)
+        .EUt(20)
+        .duration(160);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('purified_debris_dust'))
