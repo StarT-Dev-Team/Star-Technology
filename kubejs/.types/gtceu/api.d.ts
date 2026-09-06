@@ -1553,6 +1553,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         appearanceBlock(block: $wrapped<Supplier<Block>>): TSelf;
         regressWhenWaiting(regressWhenWaiting: boolean): TSelf;
         workableCasingModel(baseCasing: $wrapped<ResourceLocation>, workableModel: $wrapped<ResourceLocation>): TSelf;
+        sidedWorkableCasingModel(
+            baseCasing: $wrapped<ResourceLocation>,
+            workableModel: $wrapped<ResourceLocation>
+        ): TSelf;
         workableTieredHullModel(workableModel: $wrapped<ResourceLocation>): TSelf;
         editableUI(ui: EditableMachineUI): TSelf;
         modelPropertyBool(property: Property<Boolean>, defaultValue: boolean): TSelf;

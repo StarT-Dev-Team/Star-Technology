@@ -1,9 +1,11 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
+    const HUB_SLICES_COUNT = 8;
+
     event
         .create('network_hub', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .machine((holder) => new $NetworkSwitchMachine(holder))
-        .appearanceBlock(GTBlocks.COMPUTER_CASING)
+        .appearanceBlock(() => Block.getBlock('start_core:runic_computer_casing'))
         .recipeType('dummy')
         .tooltips([
             Component.translatable('gtceu.machine.network_switch.tooltip.0'),
@@ -20,22 +22,35 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 $RelativeDirection.LEFT,
                 $RelativeDirection.UP,
                 $RelativeDirection.BACK
-            )(['CCC|CSC|CCC', 'XXX|XAX|XXX', blockPatternRepeatable(1, 8), 'CCC|CCC|CCC'])
+            )([
+                ' CRC |C   C|R   R|C   C| CRC ',
+                'CFRFC|FRRRF|RR@RR|FRRRF|CFRFC',
+                'F   F| GXG | XPX | GXG |F   F',
+                blockPatternRepeatable(1, HUB_SLICES_COUNT),
+                'CFRFC|FRRRF|RRCRR|FRRRF|CFRFC',
+                ' CRC |C   C|R   R|C   C| CRC ',
+            ])
                 .whereDict({
-                    S: P.controller(definition),
-                    A: P.gtBlock('advanced_computer_casing'),
-                    C: P.anyOf([
-                        P.gtBlock('computer_casing'),
+                    '@': P.controller(definition),
+                    C: P.gtBlock('computer_casing'),
+                    P: P.coreBlock('runic_high_power_casing'),
+                    F: P.frame(GTMaterials.SterlingSilver),
+                    G: P.gtBlock('fusion_glass'),
+                    R: P.anyOf([
+                        P.coreBlock('runic_computer_casing'),
                         P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     X: P.anyOf([
-                        P.ability(PA.compIn, { minLayer: 1, view: 1 }),
+                        P.ability(PA.compIn, { view: 1 }),
                         P.ability(PA.compOut, { view: 1 }),
-                        P.gtBlock('computer_casing', { minLayer: 4 }),
+                        P.coreBlock('runic_computer_casing'),
                     ]),
                 })
                 .build()
         )
-        .workableCasingModel('gtceu:block/casings/hpca/high_power_casing', 'gtceu:block/multiblock/data_bank');
+        .sidedWorkableCasingModel(
+            'start_core:block/casings/hpca/runic_computer_casing',
+            'gtceu:block/multiblock/data_bank'
+        );
 });

@@ -74,9 +74,6 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     let generator = versions[tier - 1];
                     let shapeInfo = [];
 
-                    /** @typedef {internal.com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo$ShapeInfoBuilder} ShapeInfoBuilder */
-
-                    /** @type ShapeInfoBuilder */
                     let builder = MultiblockShapeInfo.builder()
                         .aisle('CCC', 'C@C', ' C ')
                         .where('@', definition, Direction.NORTH)
