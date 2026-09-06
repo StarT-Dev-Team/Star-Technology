@@ -21,7 +21,8 @@
 # Keep directories
 !config/ae2/
 !config/almostunified/
-!config/crash_asistant/
+!config/crash_asistant/config.toml
+!config/crash_asistant/modlist.json
 !config/defaultworldtype/
 !config/fancymenu/**
 !config/ftbquests/**
