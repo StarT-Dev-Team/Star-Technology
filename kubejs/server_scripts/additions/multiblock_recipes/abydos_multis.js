@@ -262,6 +262,40 @@ ServerEvents.recipes((event) => {
         .addMaterialInfo(true, true);
 
     event.recipes.gtceu
+        .assembler(id('runic_computer_casing'))
+        .itemInputs(
+            'gtceu:advanced_computer_casing',
+            'kubejs:proto_energized_rune',
+            '#gtceu:circuits/uv',
+            '64x gtceu:fine_tritanium_wire',
+            '64x gtceu:fine_europium_wire',
+            '4x gtceu:enriched_naquadah_trinium_europium_duranide_single_wire'
+        )
+        .inputFluids('gtceu:utopian_akreyrium 185')
+        .itemOutputs('start_core:runic_computer_casing')
+        .duration(190)
+        .addMaterialInfo(true)
+        .EUtVHA(UV);
+
+    event.recipes.gtceu
+        .assembler(id('runic_high_power_casing'))
+        .itemInputs(
+            '2x gtceu:high_power_casing',
+            'kubejs:proto_solarus_rune',
+            'kubejs:proto_lunarus_rune',
+            '4x gtceu:double_enriched_naquadah_plate',
+            '2x #gtceu:circuits/uv',
+            '64x gtceu:fine_tritanium_wire',
+            '64x gtceu:fine_europium_wire',
+            '6x gtceu:zalloy_single_wire'
+        )
+        .inputFluids('gtceu:utopian_akreyrium 245')
+        .itemOutputs('2x start_core:runic_high_power_casing')
+        .duration(310)
+        .addMaterialInfo(true)
+        .EUtVHA(UV);
+
+    event.recipes.gtceu
         .assembly_line(id('network_hub'))
         .itemInputs(
             'gtceu:network_switch',
