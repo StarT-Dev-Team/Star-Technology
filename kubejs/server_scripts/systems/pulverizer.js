@@ -1,6 +1,8 @@
 // priority -1000
 
 const blacklist = ['aluminum'];
+
+/** @type {Record<string, string>} */
 const edgeCases = {
     'gtceu:certus_quartz_gem': 'ae2:certus_quartz_crystal',
 };
@@ -9,12 +11,12 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     event.forEachRecipe({ type: 'gtceu:macerator' }, (macParse) => {
-        const macData = JSON.parse(macParse.json);
+        const macData = JSON.parse(/** @type {any} */ (macParse.json));
 
         if (macData.category === 'gtceu:ore_crushing') {
             const macInputs = macData.inputs;
 
-            if (!macInputs?.item?.length === 1) return;
+            if (macInputs?.item?.length !== 1) return;
 
             const itemInput = macInputs.item[0].content;
 
@@ -31,13 +33,13 @@ ServerEvents.recipes((event) => {
                     .itemOutputs(`${itemOutput.count}x ${itemOutput.ingredient.item}`)
                     .circuit(0)
                     .duration(300)
-                    .EUt(GTValues.VA[GTValues.LV]);
+                    .EUtVA(LV);
             }
         }
     });
 
     event.forEachRecipe({ type: 'minecraft:blasting' }, (furnParse) => {
-        const furnData = JSON.parse(furnParse.json);
+        const furnData = JSON.parse(/** @type {any} */ (furnParse.json));
         const furnInput = furnData.ingredient;
 
         if (!furnInput.tag) return;
@@ -60,7 +62,7 @@ ServerEvents.recipes((event) => {
                 .circuit(1)
                 .duration(300)
                 .category('pulverizer_heated')
-                .EUt(GTValues.VA[GTValues.LV]);
+                .EUtVA(LV);
 
             event.recipes.gtceu
                 .pulverizer(id(`raw_heated_${oreName}`))
@@ -69,7 +71,7 @@ ServerEvents.recipes((event) => {
                 .circuit(1)
                 .duration(300)
                 .category('pulverizer_heated')
-                .EUt(GTValues.VA[GTValues.LV]);
+                .EUtVA(LV);
         }
     });
 });

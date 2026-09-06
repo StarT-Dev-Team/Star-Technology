@@ -22,7 +22,7 @@ ServerEvents.recipes((event) => {
             .inputFluids('gtceu:naquadria 1440')
             .itemOutputs(`2x kubejs:ruined_${type}`)
             .duration(1200)
-            .EUt(GTValues.VA[GTValues.UHV]);
+            .EUtVA(UHV);
     });
 
     // === Component Parts ===
@@ -31,9 +31,15 @@ ServerEvents.recipes((event) => {
 
     const COMPONENTS = global.componentMaterials;
 
+    /**
+     * @param {'uhv' | 'uev'| 'uiv'} tierKey
+     */
     const componentMaterials = (tierKey) => {
         const data = COMPONENTS[tierKey];
-        if (!data) return;
+        if (!data) {
+            console.error(`Could not find tier data for ${tierKey}`);
+            return;
+        }
 
         const {
             tiers: { tier, tier1, tier2 },
@@ -59,202 +65,104 @@ ServerEvents.recipes((event) => {
                 glass,
                 superconductor,
             },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { cwuD, duraD, EUTD },
-                special: { cwuS, duraS, EUTS },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = data;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { cwuD, duraD, EUTD },
+            special: { cwuS, duraS, EUTS },
+        } = tierResearchData || { default: { cwuD: 0, duraD: 0, EUTD: 0 }, special: { cwuS: 0, duraS: 0, EUTS: 0 } };
 
+        /** @param {number} base */
         const b2exponentialMultiplier = (base) => base * Math.pow(2, scaler);
+        /** @param {number} base */
         const scaled = (base) => base * scaler;
+
         const getDataItem = global.getDataItem;
 
-        const componentPart = (type, inputs, fluids, duration, researched) => {
-            let typeSpecial = ['computational_matrix', 'catalyst_core'].includes(type);
+        /**
+         * @typedef ItemIngredientObj
+         * @property {number} count
+         * @property {string} itemId
+         */
+
+        /**
+         * @typedef FluidIngredientObj
+         * @property {number} amount
+         * @property {string} fluidId
+         */
+
+        /**
+         * @param {string} type
+         * @param {ItemIngredientObj[]} items
+         * @param {FluidIngredientObj[]} fluids
+         * @param {number} duration
+         * @param {string} researched
+         */
+        const componentPart = (type, items, fluids, duration, researched) => {
+            const typeSpecial = ['computational_matrix', 'catalyst_core'].includes(type);
+
+            const cpaItems = items.map((itemObj) => {
+                return `${itemObj.count}x ${itemObj.itemId}`;
+            });
+
+            const cpaFluids = fluids.map((fluidObj) => {
+                return `${fluidObj.fluidId} ${fluidObj.amount}`;
+            });
 
             let cpaRecipe = event.recipes.gtceu
                 .component_part_assembly(id(`${tier}_${type}`))
-                .itemInputs(inputs)
-                .inputFluids(fluids)
+                .itemInputs(cpaItems)
+                .inputFluids(cpaFluids)
                 .itemOutputs(`kubejs:${tier}_${type}`)
                 .duration(duration)
                 .EUt(EU * 4);
 
-            if (typeSpecial) {
-                let dataItem = getDataItem(cwuS);
+            let dataItem = getDataItem(typeSpecial ? cwuS : cwuD);
 
-                cpaRecipe = cpaRecipe.stationResearch((researchRecipeBuilder) =>
-                    researchRecipeBuilder.researchStack(Item.of(researched)).EUt(EUTS).CWUt(cwuS)
-                );
+            cpaRecipe.stationResearch((researchRecipeBuilder) =>
+                researchRecipeBuilder
+                    .researchStack(Item.of(researched))
+                    .EUt(typeSpecial ? EUTS : EUTD)
+                    .CWUt(typeSpecial ? cwuS : cwuD)
+            );
 
-                event.recipes.gtceu
-                    .research_station(`1_x_${researched.replace(':', '_')}_cpa`)
-                    .itemInputs(dataItem)
-                    .itemInputs(researched)
-                    .itemOutputs(
-                        Item.of(
-                            `${dataItem}`,
-                            `{assembly_line_research:{research_id:"1x_${researched.replace(':', '_')}",research_type:"gtceu:component_part_assembly"}}`
-                        )
+            event.recipes.gtceu
+                .research_station(`1_x_${researched.replace(':', '_')}_cpa`)
+                .itemInputs(dataItem)
+                .itemInputs(researched)
+                .itemOutputs(
+                    Item.of(
+                        `${dataItem}`,
+                        `{assembly_line_research:{research_id:"1x_${researched.replace(':', '_')}",research_type:"gtceu:component_part_assembly"}}`
                     )
-                    .CWUt(cwuS)
-                    .totalCWU(cwuS * duraS * 20)
-                    .EUt(EUTD);
-            } else {
-                let dataItem = getDataItem(cwuD);
+                )
+                .CWUt(typeSpecial ? cwuS : cwuD)
+                .totalCWU(typeSpecial ? cwuS : cwuD * (typeSpecial ? duraS : duraD * 20))
+                .EUt(typeSpecial ? EUTS : EUTD);
 
-                cpaRecipe.stationResearch((researchRecipeBuilder) =>
-                    researchRecipeBuilder.researchStack(Item.of(researched)).EUt(EUTD).CWUt(cwuD)
-                );
+            const mtscfItems = items.map((itemObj) => {
+                const { count, itemId } = itemObj;
+                const multiplier = count * scalerMCSF * 0.75;
 
-                event.recipes.gtceu
-                    .research_station(`1_x_${researched.replace(':', '_')}_cpa`)
-                    .itemInputs(dataItem)
-                    .itemInputs(researched)
-                    .itemOutputs(
-                        Item.of(
-                            `${dataItem}`,
-                            `{assembly_line_research:{research_id:"1x_${researched.replace(':', '_')}",research_type:"gtceu:component_part_assembly"}}`
-                        )
-                    )
-                    .CWUt(cwuD)
-                    .totalCWU(cwuD * duraD * 20)
-                    .EUt(EUTD);
-            }
-        };
+                const spoolCheck = itemId.match(/gtceu:fine_(.*)_wire/);
+                if (spoolCheck) return `${multiplier / 64}x gtceu:${spoolCheck[1]}_wire_spool`;
 
-        let coilMod = tier === 'uhv' ? 'gtceu' : 'kubejs';
+                const foilCheck = itemId.match(/gtceu:(.*)_foil/);
+                if (foilCheck) return `${multiplier / 64}x gtceu:${foilCheck[1]}_foil_ream`;
 
-        componentPart(
-            'voltage_coil',
-            [
-                `gtceu:${pipeCoil}_tiny_fluid_pipe`,
-                `gtceu:long_magnetic_${primMagnet}_rod`,
-                `32x gtceu:fine_${wireCoil}_wire`,
-            ],
-            [`gtceu:${coolant} ${scaled(250)}`],
-            200,
-            `${coilMod}:${tier1}_voltage_coil`
-        );
+                return `${multiplier}x ${itemId}`;
+            });
 
-        let priorTier = tier === 'uhv' ? 'ruined' : tier1;
+            const mtscfFluids = fluids.map((fluidObj) => {
+                return `${fluidObj.fluidId} ${fluidObj.amount * scalerMCSF * 0.75}`;
+            });
 
-        componentPart(
-            'computational_matrix',
-            [
-                `gtceu:${primMaterial}_frame`,
-                `1x #gtceu:circuits/${tier}`,
-                `2x #gtceu:circuits/${tier1}`,
-                `3x #gtceu:circuits/${tier2}`,
-                `4x gtceu:${cable}_single_cable`,
-                `4x gtceu:${primMaterial}_bolt`,
-            ],
-            [`gtceu:${solder} ${b2exponentialMultiplier(144)}`],
-            400,
-            `kubejs:${priorTier}_computational_matrix`
-        );
-
-        componentPart(
-            'transmission_assembly',
-            [
-                `gtceu:${tierMaterial}_frame`,
-                `gtceu:${tier1}_electric_motor`,
-                `2x gtceu:${primMaterial}_rod`,
-                `2x gtceu:${primMaterial}_ring`,
-                `4x gtceu:${primMaterial}_round`,
-                `16x gtceu:fine_${wireMechanical}_wire`,
-            ],
-            [`gtceu:${lubricant} ${b2exponentialMultiplier(125)}`],
-            320,
-            `kubejs:${priorTier}_transmission_assembly`
-        );
-
-        componentPart(
-            'precision_drive_mechanism',
-            [
-                `gtceu:${primMaterial}_frame`,
-                `gtceu:${tier1}_electric_motor`,
-                `#gtceu:circuits/${tier1}`,
-                `gtceu:${supMaterial}_gear`,
-                `gtceu:small_${primMaterial}_gear`,
-                `8x gtceu:${primMaterial}_round`,
-            ],
-            [`gtceu:${lubricant} ${b2exponentialMultiplier(125)}`, `gtceu:${primRubber} ${scaled(576)}`],
-            480,
-            `kubejs:${priorTier}_precision_drive_mechanism`
-        );
-
-        componentPart(
-            'microfluidic_flow_valve',
-            [
-                `gtceu:${tier1}_fluid_regulator`,
-                `gtceu:${pipeMaterial}_small_fluid_pipe`,
-                `2x gtceu:${primMaterial}_plate`,
-                `4x gtceu:${primMaterial}_round`,
-                `4x gtceu:${supRubber}_ring`,
-                `2x gtceu:${primMaterial}_ring`,
-            ],
-            [`gtceu:${plastic} ${scaled(144)}`],
-            320,
-            `kubejs:${priorTier}_microfluidic_flow_valve`
-        );
-
-        componentPart(
-            'super_magnetic_core',
-            [
-                `gtceu:long_magnetic_${primMagnet}_rod`,
-                `2x gtceu:magnetic_${supMagnet}_rod`,
-                `3x gtceu:${primMaterial}_rod`,
-                `16x gtceu:fine_${wireMechanical}_wire`,
-                `2x gtceu:${pipeMaterial}_tiny_fluid_pipe`,
-            ],
-            [`gtceu:${coolant} ${scaled(500)}`],
-            300,
-            `kubejs:${priorTier}_super_magnetic_core`
-        );
-
-        componentPart(
-            'catalyst_core',
-            [
-                `4x gtceu:${primMaterial}_rod`,
-                glass,
-                catalyst,
-                `32x gtceu:fine_${superconductor}_wire`,
-                `gtceu:${tier1}_emitter`,
-                `4x gtceu:${supMaterial}_ring`,
-            ],
-            [`gtceu:${tierFluid} ${b2exponentialMultiplier(36)}`],
-            480,
-            `kubejs:${priorTier}_catalyst_core`
-        );
-
-        componentPart(
-            'high_strength_panel',
-            [`gtceu:dense_${primMaterial}_plate`, `#gtceu:circuits/${tier2}`, `4x gtceu:${supMaterial}_screw`],
-            [`gtceu:${tierMaterial} 288`, `gtceu:${plastic} ${scaled(144)}`],
-            200,
-            `kubejs:${priorTier}_high_strength_panel`
-        );
-
-        componentPart(
-            'micropower_router',
-            [
-                `4x gtceu:${cable}_double_cable`,
-                `2x gtceu:${primMaterial}_plate`,
-                `1x #gtceu:circuits/${tier1}`,
-                `4x gtceu:${primMaterial}_bolt`,
-            ],
-            [`gtceu:${primRubber} ${scaled(144)}`],
-            240,
-            `kubejs:${priorTier}_micropower_router`
-        );
-
-        const mtscfComponentPart = (type, inputs, fluids, duration) => {
             event.recipes.gtceu
                 .component_part_synthesis_forge(id(`${tier}_${type}`))
-                .itemInputs(inputs)
-                .inputFluids(fluids)
+                .itemInputs(mtscfItems)
+                .inputFluids(mtscfFluids)
                 .itemOutputs(`${scalerMCSF}x kubejs:${tier}_${type}`)
                 .duration(duration * scalerMCSF)
                 .stationResearch((researchRecipeBuilder) =>
@@ -264,7 +172,8 @@ ServerEvents.recipes((event) => {
                         .CWUt(320)
                 )
                 .EUt(EU)
-                .cleanroom(CleanroomType.getByName('stabilized'));
+                .cleanroom(CleanroomType.getByName('stabilized'))
+                .addMaterialInfo(true, true);
 
             event.recipes.gtceu
                 .research_station(`1_x_kubejs_${tier}_${type}_mcsf`)
@@ -272,7 +181,7 @@ ServerEvents.recipes((event) => {
                 .itemInputs(`kubejs:${tier}_${type}`)
                 .itemOutputs(
                     Item.of(
-                        `start_core:component_data_core`,
+                        'start_core:component_data_core',
                         `{assembly_line_research:{research_id:"1x_kubejs_${tier}_${type}",research_type:"gtceu:component_part_synthesis_forge"}}`
                     )
                 )
@@ -281,124 +190,141 @@ ServerEvents.recipes((event) => {
                 .EUt(EU);
         };
 
-        mtscfComponentPart(
+        componentPart(
             'voltage_coil',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${pipeCoil}_tiny_fluid_pipe`,
-                `${1 * scalerMCSF * 0.75}x gtceu:long_magnetic_${primMagnet}_rod`,
-                `${0.5 * scalerMCSF * 0.75}x gtceu:${wireCoil}_wire_spool`,
+                { count: 1, itemId: `gtceu:${pipeCoil}_tiny_fluid_pipe` },
+                { count: 1, itemId: `gtceu:long_magnetic_${primMagnet}_rod` },
+                { count: 32, itemId: `gtceu:fine_${wireCoil}_wire` },
             ],
-            [`gtceu:${coolant} ${scalerMCSF * 0.75 * scaled(250)}`],
-            200
+            [{ amount: scaled(250), fluidId: `gtceu:${coolant}` }],
+            200,
+            `${tier === 'uhv' ? 'gtceu' : 'kubejs'}:${tier1}_voltage_coil`
         );
 
-        mtscfComponentPart(
+        let priorTier = tier === 'uhv' ? 'ruined' : tier1;
+
+        componentPart(
             'computational_matrix',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${1 * scalerMCSF * 0.75}x #gtceu:circuits/${tier}`,
-                `${2 * scalerMCSF * 0.75}x #gtceu:circuits/${tier1}`,
-                `${3 * scalerMCSF * 0.75}x #gtceu:circuits/${tier2}`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${cable}_single_cable`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_bolt`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 1, itemId: `#gtceu:circuits/${tier}` },
+                { count: 2, itemId: `#gtceu:circuits/${tier1}` },
+                { count: 3, itemId: `#gtceu:circuits/${tier2}` },
+                { count: 4, itemId: `gtceu:${cable}_single_cable` },
+                { count: 4, itemId: `gtceu:${primMaterial}_bolt` },
             ],
-            [`gtceu:${solder} ${scalerMCSF * 0.75 * b2exponentialMultiplier(144)}`],
-            400
+            [{ amount: b2exponentialMultiplier(144), fluidId: `gtceu:${solder}` }],
+            400,
+            `kubejs:${priorTier}_computational_matrix`
         );
 
-        mtscfComponentPart(
+        componentPart(
             'transmission_assembly',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${tierMaterial}_frame`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier1}_electric_motor`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${primMaterial}_rod`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${primMaterial}_ring`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_round`,
-                `${0.25 * scalerMCSF * 0.75}x gtceu:${wireMechanical}_wire_spool`,
+                { count: 1, itemId: `gtceu:${tierMaterial}_frame` },
+                { count: 1, itemId: `gtceu:${tier1}_electric_motor` },
+                { count: 2, itemId: `gtceu:${primMaterial}_rod` },
+                { count: 2, itemId: `gtceu:${primMaterial}_ring` },
+                { count: 4, itemId: `gtceu:${primMaterial}_round` },
+                { count: 16, itemId: `gtceu:fine_${wireMechanical}_wire` },
             ],
-            [`gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`],
-            320
+            [{ amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` }],
+            320,
+            `kubejs:${priorTier}_transmission_assembly`
         );
 
-        mtscfComponentPart(
+        componentPart(
             'precision_drive_mechanism',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${primMaterial}_frame`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier1}_electric_motor`,
-                `${1 * scalerMCSF * 0.75}x #gtceu:circuits/${tier1}`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${supMaterial}_gear`,
-                `${1 * scalerMCSF * 0.75}x gtceu:small_${primMaterial}_gear`,
-                `${8 * scalerMCSF * 0.75}x gtceu:${primMaterial}_round`,
+                { count: 1, itemId: `gtceu:${primMaterial}_frame` },
+                { count: 1, itemId: `gtceu:${tier1}_electric_motor` },
+                { count: 1, itemId: `#gtceu:circuits/${tier1}` },
+                { count: 1, itemId: `gtceu:${supMaterial}_gear` },
+                { count: 1, itemId: `gtceu:small_${primMaterial}_gear` },
+                { count: 8, itemId: `gtceu:${primMaterial}_round` },
             ],
             [
-                `gtceu:${lubricant} ${scalerMCSF * 0.75 * b2exponentialMultiplier(125)}`,
-                `gtceu:${primRubber} ${scalerMCSF * 0.75 * scaled(576)}`,
+                { amount: b2exponentialMultiplier(125), fluidId: `gtceu:${lubricant}` },
+                { amount: scaled(576), fluidId: `gtceu:${primRubber}` },
             ],
-            480
+            480,
+            `kubejs:${priorTier}_precision_drive_mechanism`
         );
 
-        mtscfComponentPart(
+        componentPart(
             'microfluidic_flow_valve',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier1}_fluid_regulator`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${pipeMaterial}_small_fluid_pipe`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_round`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${supRubber}_ring`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${primMaterial}_ring`,
+                { count: 1, itemId: `gtceu:${tier1}_fluid_regulator` },
+                { count: 1, itemId: `gtceu:${pipeMaterial}_small_fluid_pipe` },
+                { count: 2, itemId: `gtceu:${primMaterial}_plate` },
+                { count: 4, itemId: `gtceu:${primMaterial}_round` },
+                { count: 4, itemId: `gtceu:${supRubber}_ring` },
+                { count: 2, itemId: `gtceu:${primMaterial}_ring` },
             ],
-            [`gtceu:${plastic} ${scalerMCSF * 0.75 * scaled(144)}`],
-            320
+            [{ amount: scaled(144), fluidId: `gtceu:${plastic}` }],
+            320,
+            `kubejs:${priorTier}_microfluidic_flow_valve`
         );
 
-        mtscfComponentPart(
+        componentPart(
             'super_magnetic_core',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:long_magnetic_${primMagnet}_rod`,
-                `${2 * scalerMCSF * 0.75}x gtceu:magnetic_${supMagnet}_rod`,
-                `${3 * scalerMCSF * 0.75}x gtceu:${primMaterial}_rod`,
-                `${0.25 * scalerMCSF * 0.75}x gtceu:${wireMechanical}_wire_spool`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${pipeMaterial}_tiny_fluid_pipe`,
+                { count: 1, itemId: `gtceu:long_magnetic_${primMagnet}_rod` },
+                { count: 2, itemId: `gtceu:magnetic_${supMagnet}_rod` },
+                { count: 3, itemId: `gtceu:${primMaterial}_rod` },
+                { count: 16, itemId: `gtceu:fine_${wireMechanical}_wire` },
+                { count: 2, itemId: `gtceu:${pipeMaterial}_tiny_fluid_pipe` },
             ],
-            [`gtceu:${coolant} ${scalerMCSF * 0.75 * scaled(500)}`],
-            300
+            [{ amount: scaled(500), fluidId: `gtceu:${coolant}` }],
+            300,
+            `kubejs:${priorTier}_super_magnetic_core`
         );
 
-        mtscfComponentPart(
+        componentPart(
             'catalyst_core',
             [
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_rod`,
-                `${scalerMCSF * 0.75}x ${glass}`,
-                `${scalerMCSF * 0.75}x ${catalyst.split(' ')[1]}`,
-                `${0.5 * scalerMCSF * 0.75}x gtceu:${superconductor}_wire_spool`,
-                `${1 * scalerMCSF * 0.75}x gtceu:${tier1}_emitter`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${supMaterial}_ring`,
+                { count: 4, itemId: `gtceu:${primMaterial}_rod` },
+                { count: 1, itemId: /** @type {string} */ (glass) },
+                {
+                    count: tier === 'uhv' || tier === 'uev' ? 2 : 1,
+                    itemId: /** @type {string} */ (catalyst).split(' ')[1],
+                },
+                { count: 32, itemId: `gtceu:fine_${superconductor}_wire` },
+                { count: 1, itemId: `gtceu:${tier1}_emitter` },
+                { count: 4, itemId: `gtceu:${supMaterial}_ring` },
             ],
-            [`gtceu:${tierFluid} ${scalerMCSF * 0.75 * b2exponentialMultiplier(36)}`],
-            480
+            [{ amount: b2exponentialMultiplier(36), fluidId: `gtceu:${tierFluid}` }],
+            480,
+            `kubejs:${priorTier}_catalyst_core`
         );
 
-        mtscfComponentPart(
+        componentPart(
             'high_strength_panel',
             [
-                `${1 * scalerMCSF * 0.75}x gtceu:dense_${primMaterial}_plate`,
-                `${1 * scalerMCSF * 0.75}x #gtceu:circuits/${tier2}`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${supMaterial}_screw`,
+                { count: 1, itemId: `gtceu:dense_${primMaterial}_plate` },
+                { count: 1, itemId: `#gtceu:circuits/${tier2}` },
+                { count: 4, itemId: `gtceu:${supMaterial}_screw` },
             ],
-            [`gtceu:${tierMaterial} ${scalerMCSF * 0.75 * 288}`, `gtceu:${plastic} ${scalerMCSF * 0.75 * scaled(144)}`],
-            200
+            [
+                { amount: 288, fluidId: `gtceu:${tierMaterial} 288` },
+                { amount: scaled(144), fluidId: `gtceu:${plastic}` },
+            ],
+            200,
+            `kubejs:${priorTier}_high_strength_panel`
         );
 
-        mtscfComponentPart(
+        componentPart(
             'micropower_router',
             [
-                `${4 * scalerMCSF * 0.75}x gtceu:${cable}_double_cable`,
-                `${2 * scalerMCSF * 0.75}x gtceu:${primMaterial}_plate`,
-                `${1 * scalerMCSF * 0.75}x #gtceu:circuits/${tier1}`,
-                `${4 * scalerMCSF * 0.75}x gtceu:${primMaterial}_bolt`,
+                { count: 4, itemId: `gtceu:${cable}_double_cable` },
+                { count: 2, itemId: `gtceu:${primMaterial}_plate` },
+                { count: 1, itemId: `#gtceu:circuits/${tier1}` },
+                { count: 4, itemId: `gtceu:${primMaterial}_bolt` },
             ],
-            [`gtceu:${primRubber} ${scalerMCSF * 0.75 * scaled(144)}`],
-            240
+            [{ amount: scaled(144), fluidId: `gtceu:${primRubber}` }],
+            240,
+            `kubejs:${priorTier}_micropower_router`
         );
     };
 

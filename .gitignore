@@ -9,6 +9,7 @@
 !scripts/
 !compile_data/
 !.github/
+!tools/
 
 # Add files in main directory
 !.gitattributes
@@ -17,19 +18,17 @@
 !panorama.dat
 !README.md
 
-# Specific exclusion - config folder
-config/*
 # Keep directories
 !config/ae2/
 !config/almostunified/
-!config/crash_asistant/
+!config/crash_asistant/config.toml
+!config/crash_asistant/modlist.json
 !config/defaultworldtype/
-!config/fancymenu/
-!config/ftbquests/
+!config/fancymenu/**
+!config/ftbquests/**
 !config/gamestages/
 !config/jade/
 !config/jei/
-!config/mysticalcustomization/
 !config/skyblockbuilder/
 # Keep files
 !config/badmobs-common.toml
@@ -38,18 +37,21 @@ config/*
 !config/chloride-client.json
 !config/colossalchests-common.toml
 !config/craftpresence.json
+!config/create_new_age-common.toml
 !config/createlowheated-common.toml
 !config/emi.css
 !config/exnihilosequentia-common.toml
 !config/expatternprovider-common.toml
 !config/fluxnetworks-common.toml
 !config/gtceu.yaml
-!config/mysticalagriculture-common.toml
 !config/ProjectRed.cfg
 !config/sgjourney-common.toml
 !config/start_core.yaml
 !config/thermal-common.toml
 !config/toms_storage-common.toml
+
+# Misc
+.DS_Store
 
 # Linting stuff
 !package.json
@@ -57,8 +59,15 @@ config/*
 !eslint.config.mjs
 !.prettierignore
 !.prettierrc
+!jsconfig.json
+
 # wth is this jank
 !.vscode/
-.vscode/* 
+.vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# AI docs
+!AGENTS.md
+!CLAUDE.md
+!.gemini/

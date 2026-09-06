@@ -1,3 +1,4 @@
+// requires: exnihilosequentia
 ServerEvents.recipes((event) => {
     const id = global.id;
 
@@ -7,7 +8,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:salt_water 1000')
         .itemOutputs('gtceu:crushed_saltpeter_ore', 'gtceu:crushed_rock_salt_ore')
         .duration(50)
-        .EUt(GTValues.VHA[GTValues.LV]);
+        .EUtVHA(LV);
 
     //large barrel
     event.recipes.gtceu

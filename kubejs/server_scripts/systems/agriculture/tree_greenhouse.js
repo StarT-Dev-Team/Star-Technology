@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     let woodTypes = [
         { name: 'oak', sapling: 'oak_sapling', namespace: 'minecraft' },
@@ -11,13 +12,15 @@ ServerEvents.recipes((event) => {
         { name: 'cherry', sapling: 'cherry_sapling', namespace: 'minecraft' },
         { name: 'mangrove', sapling: 'mangrove_propagule', namespace: 'minecraft' },
     ];
-    global.withArchitectsPalette(() => {
+
+    isModLoaded('architects_palette', () => {
         woodTypes.push({
             name: 'twisted',
             sapling: 'twisted_sapling',
             namespace: 'architects_palette',
         });
     });
+
     woodTypes.forEach((type) => {
         event.recipes.gtceu
             .tree_greenhouse(id(`${type.name}_growing`))
@@ -50,15 +53,15 @@ ServerEvents.recipes((event) => {
     });
 
     event
-        .shaped(`gtceu:greenhouse`, [`FAF`, `MHM`, `PCP`], {
-            F: `gtceu:fertilizer`,
-            A: `gtceu:iron_axe`,
-            M: `gtceu:lv_electric_motor`,
-            H: `gtceu:lv_machine_hull`,
-            P: `gtceu:steel_plate`,
-            C: `#gtceu:circuits/mv`,
+        .shaped('gtceu:greenhouse', ['FAF', 'MHM', 'PCP'], {
+            F: 'gtceu:fertilizer',
+            A: 'gtceu:iron_axe',
+            M: 'gtceu:lv_electric_motor',
+            H: 'gtceu:lv_machine_hull',
+            P: 'gtceu:steel_plate',
+            C: '#gtceu:circuits/mv',
         })
-        .id(`gtceu:greenhouse`);
+        .id('gtceu:greenhouse');
 
     event
         .shaped(Item.of('gtceu:tree_synthesizer'), ['ABC', 'ADE', 'FGE'], {

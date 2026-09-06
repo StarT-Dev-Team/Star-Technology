@@ -1,63 +1,75 @@
 // priority: 10
-ServerEvents.recipes((event) => {
-    const id = global.id;
+// ==================== CROP DEFINITIONS ====================
+// To add a new crop, simply add an entry to this array with the following properties:
+// - name: (required) The crop item ID
+// - seed: (optional) The seed item ID (defaults to crop name if not specified)
+// - fluid: (optional) Custom fluid requirement (defaults to 'minecraft:water' with amounts based on machine)
+// - dimension: (optional) Required dimension for growing
+// - voltage: (optional) Required voltage tier (defaults to 'lv')
+// - skipLargeFarm: (optional) Set to true to skip Large Farm recipes
 
-    global.notHardmode(() => {
-        event
-            .shaped(Item.of('gtceu:large_farm'), ['SPS', 'PBP', 'SPS'], {
-                S: 'gtceu:treated_wood_rod',
-                P: 'gtceu:treated_wood_planks',
-                B: 'minecraft:bone_meal',
-            })
-            .id('start:shaped/large_farm');
-    });
+/** @type { {name: string, seed?: string, fluid?: string, dimension?: string, voltage?: GTTier, skipLargeFarm?: boolean }[] } */
+const farmCropList = [
+    // Vanilla crops with seeds
+    { name: 'minecraft:wheat', seed: 'minecraft:wheat_seeds' },
+    { name: 'minecraft:pumpkin', seed: 'minecraft:pumpkin_seeds' },
+    { name: 'minecraft:melon', seed: 'minecraft:melon_seeds' },
+    { name: 'minecraft:beetroot', seed: 'minecraft:beetroot_seeds' },
+    { name: 'minecraft:torchflower', seed: 'minecraft:torchflower_seeds' },
+    { name: 'minecraft:pitcher_plant', seed: 'minecraft:pitcher_pod' },
 
-    event
-        .shaped(Item.of('gtceu:hydroponic_garden'), ['ABB', 'CDA', 'CEF'], {
-            A: 'gtceu:tungsten_single_cable',
-            B: '#gtceu:circuits/iv',
-            C: 'gtceu:iv_electric_pump',
-            D: 'gtceu:greenhouse',
-            E: 'gtceu:iv_field_generator',
-            F: 'gtceu:iv_robot_arm',
-        })
-        .id('start:shaped/hydroponic_garden');
+    // Vanilla crops without separate seeds
+    { name: 'minecraft:nether_wart' },
+    { name: 'minecraft:carrot' },
+    { name: 'minecraft:potato' },
+    { name: 'minecraft:cocoa_beans' },
+    { name: 'minecraft:glow_berries' },
+    { name: 'minecraft:sweet_berries' },
+    { name: 'minecraft:bamboo' },
+    { name: 'minecraft:kelp' },
 
-    // ==================== CROP DEFINITIONS ====================
-    // To add a new crop, simply add an entry to this array with the following properties:
-    // - name: (required) The crop item ID
-    // - seed: (optional) The seed item ID (defaults to crop name if not specified)
-    // - fluid: (optional) Custom fluid requirement (defaults to 'minecraft:water' with amounts based on machine)
-    // - dimension: (optional) Required dimension for growing
-    // - voltage: (optional) Required voltage tier (defaults to 'lv')
-    // - skipLargeFarm: (optional) Set to true to skip Large Farm recipes
+    // Vanilla flowers (small)
+    { name: 'minecraft:dandelion' },
+    { name: 'minecraft:poppy' },
+    { name: 'minecraft:blue_orchid' },
+    { name: 'minecraft:allium' },
+    { name: 'minecraft:azure_bluet' },
+    { name: 'minecraft:red_tulip' },
+    { name: 'minecraft:orange_tulip' },
+    { name: 'minecraft:white_tulip' },
+    { name: 'minecraft:pink_tulip' },
+    { name: 'minecraft:oxeye_daisy' },
+    { name: 'minecraft:cornflower' },
+    { name: 'minecraft:lily_of_the_valley' },
+    { name: 'minecraft:wither_rose' },
+    { name: 'minecraft:pink_petals' },
 
-    global.farmCropList = [
-        // Vanilla crops with seeds
-        { name: 'minecraft:wheat', seed: 'minecraft:wheat_seeds' },
-        { name: 'minecraft:pumpkin', seed: 'minecraft:pumpkin_seeds' },
-        { name: 'minecraft:melon', seed: 'minecraft:melon_seeds' },
-        { name: 'minecraft:beetroot', seed: 'minecraft:beetroot_seeds' },
-        { name: 'minecraft:torchflower', seed: 'minecraft:torchflower_seeds' },
-        { name: 'minecraft:pitcher_plant', seed: 'minecraft:pitcher_pod' },
+    // Vanilla flowers (tall)
+    { name: 'minecraft:sunflower' },
+    { name: 'minecraft:lilac' },
+    { name: 'minecraft:rose_bush' },
+    { name: 'minecraft:peony' },
 
-        // Vanilla crops without separate seeds
-        { name: 'minecraft:nether_wart' },
-        { name: 'minecraft:carrot' },
-        { name: 'minecraft:potato' },
-        { name: 'minecraft:cocoa_beans' },
-        { name: 'minecraft:glow_berries' },
-        { name: 'minecraft:sweet_berries' },
-        { name: 'minecraft:bamboo' },
-        { name: 'minecraft:kelp' },
+    // Vanilla special crops
+    { name: 'minecraft:sugar_cane' },
+    { name: 'minecraft:cactus' },
+    { name: 'minecraft:seagrass' },
+    { name: 'minecraft:sea_pickle' },
+    { name: 'minecraft:lily_pad' },
 
-        // Farmer's Delight crops
-        { name: 'farmersdelight:onion' },
-        { name: 'farmersdelight:tomato', seed: 'farmersdelight:tomato_seeds' },
-        { name: 'farmersdelight:cabbage', seed: 'farmersdelight:cabbage_seeds' },
-        { name: 'farmersdelight:rice_panicle', seed: 'farmersdelight:rice' },
+    // Special crops with custom requirements
+    {
+        name: 'minecraft:chorus_fruit',
+        seed: 'minecraft:chorus_flower',
+        fluid: 'gtceu:ender_air 250',
+        dimension: 'minecraft:the_end',
+        voltage: 'hv',
+        skipLargeFarm: true,
+    },
+];
 
-        // Thermal crops
+global.withModsLoaded('thermal', () => {
+    farmCropList.push(
         { name: 'thermal:amaranth', seed: 'thermal:amaranth_seeds' },
         { name: 'thermal:barley', seed: 'thermal:barley_seeds' },
         { name: 'thermal:corn', seed: 'thermal:corn_seeds' },
@@ -76,52 +88,51 @@ ServerEvents.recipes((event) => {
         { name: 'thermal:coffee', seed: 'thermal:coffee_seeds' },
         { name: 'thermal:hops', seed: 'thermal:hops_seeds' },
         { name: 'thermal:tea', seed: 'thermal:tea_seeds' },
-        { name: 'thermal:frost_melon', seed: 'thermal:frost_melon_seeds' },
+        { name: 'thermal:frost_melon', seed: 'thermal:frost_melon_seeds' }
+    );
+});
 
-        // Vanilla flowers (small)
-        { name: 'minecraft:dandelion' },
-        { name: 'minecraft:poppy' },
-        { name: 'minecraft:blue_orchid' },
-        { name: 'minecraft:allium' },
-        { name: 'minecraft:azure_bluet' },
-        { name: 'minecraft:red_tulip' },
-        { name: 'minecraft:orange_tulip' },
-        { name: 'minecraft:white_tulip' },
-        { name: 'minecraft:pink_tulip' },
-        { name: 'minecraft:oxeye_daisy' },
-        { name: 'minecraft:cornflower' },
-        { name: 'minecraft:lily_of_the_valley' },
-        { name: 'minecraft:wither_rose' },
-        { name: 'minecraft:pink_petals' },
+global.withModsLoaded('farmersdelight', () => {
+    farmCropList.push(
+        { name: 'farmersdelight:onion' },
+        { name: 'farmersdelight:tomato', seed: 'farmersdelight:tomato_seeds' },
+        { name: 'farmersdelight:cabbage', seed: 'farmersdelight:cabbage_seeds' },
+        { name: 'farmersdelight:rice_panicle', seed: 'farmersdelight:rice' }
+    );
+});
 
-        // Vanilla flowers (tall)
-        { name: 'minecraft:sunflower' },
-        { name: 'minecraft:lilac' },
-        { name: 'minecraft:rose_bush' },
-        { name: 'minecraft:peony' },
+global.farmCropList = farmCropList;
 
-        // Vanilla special crops
-        { name: 'minecraft:sugar_cane' },
-        { name: 'minecraft:cactus' },
-        { name: 'minecraft:seagrass' },
-        { name: 'minecraft:sea_pickle' },
-        { name: 'minecraft:lily_pad' },
+ServerEvents.recipes((event) => {
+    const id = global.id;
 
-        // Special crops with custom requirements
-        {
-            name: 'minecraft:chorus_fruit',
-            seed: 'minecraft:chorus_flower',
-            fluid: 'gtceu:ender_air 250',
-            dimension: 'minecraft:the_end',
-            voltage: 'hv',
-            skipLargeFarm: true,
-        },
-    ];
+    event
+        .shaped(Item.of('gtceu:large_farm'), ['SPS', 'PBP', 'SPS'], {
+            S: 'gtceu:treated_wood_rod',
+            P: 'gtceu:treated_wood_planks',
+            B: 'minecraft:bone_meal',
+        })
+        .id('start:shaped/large_farm');
+
+    event
+        .shaped(Item.of('gtceu:hydroponic_garden'), ['ABB', 'CDA', 'CEF'], {
+            A: 'gtceu:tungsten_single_cable',
+            B: '#gtceu:circuits/iv',
+            C: 'gtceu:iv_electric_pump',
+            D: 'gtceu:greenhouse',
+            E: 'gtceu:iv_field_generator',
+            F: 'gtceu:iv_robot_arm',
+        })
+        .id('start:shaped/hydroponic_garden');
 
     // ==================== HELPER FUNCTIONS ====================
 
+    /** @typedef {(typeof global.farmCropList)[number]} Crop */
+    /** @typedef {internal.com.gregtechceu.gtceu.integration.kjs.recipe.GTRecipeSchema$GTRecipeJS} GTRecipe */
+
     /**
      * Get the seed item for a crop (defaults to crop name if no seed specified)
+     * @param {Crop} crop
      */
     function getCropSeed(crop) {
         return crop.seed || crop.name;
@@ -129,6 +140,7 @@ ServerEvents.recipes((event) => {
 
     /**
      * Get the voltage tier for a crop (defaults to 'lv')
+     * @param {Crop} crop
      */
     function getCropVoltage(crop) {
         return crop.voltage || 'lv';
@@ -136,6 +148,8 @@ ServerEvents.recipes((event) => {
 
     /**
      * Generate a recipe ID from crop name and suffix
+     * @param {string} cropName
+     * @param {string} suffix
      */
     function generateRecipeId(cropName, suffix) {
         const parts = cropName.split(':');
@@ -147,6 +161,8 @@ ServerEvents.recipes((event) => {
 
     /**
      * Apply dimension requirement to a recipe if specified in crop config
+     * @param {GTRecipe} recipe
+     * @param {Crop} crop
      */
     function applyDimension(recipe, crop) {
         if (crop.dimension) {
@@ -157,6 +173,8 @@ ServerEvents.recipes((event) => {
     /**
      * Get fluid requirement for crop (with default amount)
      * For greenhouse, use the crop fluid or default
+     * @param {Crop} crop
+     * @param {string} defaultFluid
      */
     function getCropFluid(crop, defaultFluid) {
         return crop.fluid || defaultFluid;
@@ -165,6 +183,7 @@ ServerEvents.recipes((event) => {
     /**
      * Get fluid requirement for hydroponic garden
      * Doubles the amount if crop has custom fluid
+     * @param {Crop} crop
      */
     function getHydroponicFluid(crop) {
         if (crop.fluid) {

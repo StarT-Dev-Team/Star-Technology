@@ -1,3 +1,4 @@
+// requires: ae2
 ServerEvents.recipes((event) => {
     const id = global.id;
 
@@ -10,8 +11,8 @@ ServerEvents.recipes((event) => {
             .EUt(56);
     });
 
-    event.remove({ id: `gtceu:alloy_blast_smelter/sky_steel` });
-    event.remove({ id: `gtceu:alloy_blast_smelter/sky_steel_gas` });
+    event.remove({ id: 'gtceu:alloy_blast_smelter/sky_steel' });
+    event.remove({ id: 'gtceu:alloy_blast_smelter/sky_steel_gas' });
     [
         { metal: 'sky', gas: 'nitrogen 1000', temper: 1600, molten: false },
         { metal: 'fluix', gas: 'helium 300', temper: 1900, molten: true },
@@ -58,19 +59,19 @@ ServerEvents.recipes((event) => {
         .EUt(128);
 
     event.recipes.gtceu
-        .rock_breaker(id(`sky_stone`))
-        .notConsumable(`ae2:sky_dust`)
-        .itemOutputs(`ae2:sky_stone_block`)
+        .rock_breaker(id('sky_stone'))
+        .notConsumable('ae2:sky_dust')
+        .itemOutputs('ae2:sky_stone_block')
         .adjacentFluids('minecraft:lava', 'thermal:ender')
-        .duration(48)
+        .duration(64)
         .EUt(84);
 
     event.recipes.gtceu
-        .large_rock_crusher(id(`sky_stone_block`))
-        .notConsumable(`ae2:sky_dust`)
+        .large_rock_crusher(id('sky_stone_block'))
+        .notConsumable('ae2:sky_dust')
         .notConsumableFluid('thermal:ender 1000')
         .notConsumableFluid('minecraft:lava 1000')
-        .itemOutputs(`ae2:sky_stone_block`)
+        .itemOutputs('ae2:sky_stone_block')
         .duration(48)
         .EUt(84);
 
@@ -87,13 +88,13 @@ ServerEvents.recipes((event) => {
         .duration(360)
         .EUt(112);
 
-    [
+    /** @type {const} */ ([
         { chip: 'silicon', voltage: 'mv', n: 1, dura: 200 },
         { chip: 'phosphorus', voltage: 'hv', n: 4, dura: 160 },
         { chip: 'naquadah', voltage: 'ev', n: 8, dura: 120 },
         { chip: 'neutronium', voltage: 'iv', n: 16, dura: 80 },
         { chip: 'draco', voltage: 'uv', n: 64, dura: 60 },
-    ].forEach((tier) => {
+    ]).forEach((tier) => {
         let modID = tier.chip !== 'draco' ? 'gtceu' : 'kubejs';
         event.recipes.gtceu
             .cutter(id(`${tier.chip}_chip`))
@@ -106,7 +107,7 @@ ServerEvents.recipes((event) => {
     ['logic', 'engineering', 'calculation'].forEach((type) => {
         event.recipes.gtceu
             .me_assembler(id(`${type}_processor`))
-            .itemInputs(`kubejs:acu_chip`, `ae2:printed_${type}_processor`, 'ae2:printed_silicon')
+            .itemInputs('kubejs:acu_chip', `ae2:printed_${type}_processor`, 'ae2:printed_silicon')
             .inputFluids('gtceu:soldering_alloy 144')
             .itemOutputs(`2x ae2:${type}_processor`)
             .duration(360)
@@ -191,12 +192,12 @@ ServerEvents.recipes((event) => {
             .EUt(128);
     });
 
-    [
+    /** @type {const} */ ([
         // free lenses: white, l_gray, lime, magenta
         { type: 'naquadah', n: 1, time: 900, voltage: 'ev' },
         { type: 'neutronium', n: 2, time: 500, voltage: 'iv' },
         { type: 'draco', n: 8, time: 200, voltage: 'luv' },
-    ].forEach((wafer) => {
+    ]).forEach((wafer) => {
         const { type, n, time, voltage } = wafer;
         event.recipes.gtceu
             .laser_engraver(id(`engrave_ae2_soc_${type}`))
@@ -208,13 +209,13 @@ ServerEvents.recipes((event) => {
             .cleanroom(CleanroomType.CLEANROOM);
     });
 
-    [
+    /** @type {const} */ ([
         { type: 'silicon', n: 1, time: 900, voltage: 'mv' },
         { type: 'phosphorus', n: 4, time: 500, voltage: 'hv' },
         { type: 'naquadah', n: 8, time: 200, voltage: 'ev' },
         { type: 'neutronium', n: 16, time: 50, voltage: 'iv' },
         { type: 'draco', n: 64, time: 20, voltage: 'luv' },
-    ].forEach((wafer) => {
+    ]).forEach((wafer) => {
         const { type, n, time, voltage } = wafer;
         event.recipes.gtceu
             .laser_engraver(id(`engrave_acu_wafer_${type}`))

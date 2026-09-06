@@ -1,0 +1,458 @@
+// priority: 1000
+
+/* eslint-disable no-unused-vars */
+// @ts-ignore
+/** @global */ const ULV = 0;
+/** @global */ const LV = 1;
+/** @global */ const MV = 2;
+/** @global */ const HV = 3;
+/** @global */ const EV = 4;
+/** @global */ const IV = 5;
+// eslint-disable-next-line id-match
+/** @global */ const LuV = 6;
+/** @global */ const ZPM = 7;
+/** @global */ const UV = 8;
+/** @global */ const UHV = 9;
+/** @global */ const UEV = 10;
+/** @global */ const UIV = 11;
+/** @global */ const UXV = 12;
+// eslint-disable-next-line id-match
+/** @global */ const OpV = 13;
+/** @global */ const MAX = 14;
+/* eslint-enable no-unused-vars */
+
+/**
+ * @type {Record<Exclude<GTTier, 'uxv' | 'opv' | 'max'>, import("../additions/progression/components/component_materials_type").ComponentMaterial>}
+ */
+global.componentMaterials = /** @type {const} */ ({
+    ulv: {
+        tiers: { tier: 'ulv' },
+        materials: {
+            tierMaterial: 'wrought_iron',
+            cable: 'red_alloy',
+            cable1: 'tin',
+            chip: '',
+        },
+    },
+    lv: {
+        tiers: { tier: 'lv' },
+        materials: {
+            tierMaterial: 'steel',
+            wire: 'copper',
+            cable: 'tin',
+            cable1: 'copper',
+            glass: '#forge:glass',
+            chip: '',
+            rotorMaterial: 'tin',
+            grind: 'minecraft:diamond',
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:capacitor',
+            resistor: 'gtceu:resistor',
+        },
+    },
+    mv: {
+        tiers: { tier: 'mv' },
+        materials: {
+            tierMaterial: 'aluminium',
+            wire: 'cupronickel',
+            cable: 'copper',
+            cable1: 'gold',
+            glass: '#forge:glass',
+            chip: 'gtceu:ulpic',
+            rotorMaterial: 'bronze',
+            grind: 'minecraft:diamond',
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:capacitor',
+            transistor: 'gtceu:transistor',
+            diode: 'gtceu:diode',
+        },
+    },
+    hv: {
+        tiers: { tier: 'hv' },
+        materials: {
+            tierMaterial: 'stainless_steel',
+            wire: 'kanthal',
+            cable: 'gold',
+            cable1: 'aluminium',
+            glass: 'gtceu:tempered_glass',
+            chip: 'gtceu:lpic',
+            rotorMaterial: 'steel',
+            grind: 'gtceu:diamond_grinding_head',
+        },
+        electronicComponents: {
+            capacitor: '#gtceu:capacitors',
+            transistor: '#gtceu:transistors',
+            diode: '#gtceu:diodes',
+            resistor: 'gtceu:resistor',
+        },
+    },
+    ev: {
+        tiers: { tier: 'ev', tier0: 'iv', tier1: 'hv', tier2: 'mv' },
+        materials: {
+            tierMaterial: 'titanium',
+            wire: 'nichrome',
+            solder: 'soldering_alloy',
+            lubricant: 'lubricant',
+            cable: 'aluminium',
+            cable1: 'platinum',
+            glass: 'gtceu:tempered_glass',
+            superconductor: 'uranium_triplatinum',
+            chip: 'gtceu:mpic',
+            battery: 'lapotron_crystal',
+            rotorMaterial: 'stainless_steel',
+            grind: 'gtceu:diamond_grinding_head',
+        },
+        scaling: {
+            scaler: 1,
+            EU: GTValues.VA[HV],
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:smd_capacitor',
+            transistor: 'gtceu:smd_transistor',
+            diode: 'gtceu:smd_diode',
+            resistor: 'gtceu:smd_resistor',
+        },
+    },
+    iv: {
+        tiers: { tier: 'iv', tier0: 'luv', tier1: 'ev', tier2: 'hv' },
+        materials: {
+            tierMaterial: 'tungsten_steel',
+            wire: 'rtm_alloy',
+            solder: 'soldering_alloy',
+            lubricant: 'lubricant',
+            cable: 'platinum',
+            cable1: 'niobium_titanium',
+            glass: 'gtceu:laminated_glass',
+            superconductor: 'samarium_iron_arsenic_oxide',
+            chip: 'gtceu:hpic',
+            battery: 'lapotronic_energy_orb',
+            rotorMaterial: 'tungsten_steel',
+            grind: 'gtceu:tungsten_grinding_head',
+        },
+        scaling: {
+            scaler: 1,
+            EU: GTValues.VA[EV],
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:smd_capacitor',
+            transistor: 'gtceu:smd_transistor',
+            diode: 'gtceu:smd_diode',
+            resistor: 'gtceu:smd_resistor',
+        },
+    },
+    luv: {
+        tiers: { tier: 'luv', tier0: 'zpm', tier1: 'iv', tier2: 'ev' },
+        materials: {
+            tierMaterial: 'rhodium_plated_palladium',
+            primMaterial: 'hsss',
+            supMaterial: 'ruridit',
+            wire: 'hssg',
+            wireMechanical: 'palladium',
+            wireCoil: 'osmiridium',
+            elctrlyzWire: 'osmium',
+            tierFluid: '', //none exist
+            coolant: '', //none exist
+            solder: 'soldering_alloy',
+            lubricant: 'lubricant',
+            primRubber: 'styrene_butadiene_rubber',
+            supRubber: 'silicone_rubber',
+            plastic: 'polybenzimidazole',
+            cable: 'niobium_titanium',
+            cable1: 'vanadium_gallium',
+            catalyst: '1x gtceu:quantum_star',
+            primMagnet: 'samarium',
+            supMagnet: '', //none exist
+            pipeMaterial: 'niobium_titanium',
+            miscMaterial: 'rhodium',
+            glass: 'gtceu:laminated_glass',
+            superconductor: 'indium_tin_barium_titanium_cuprate',
+            buzz: 'niobium_titanium',
+            chip: 'gtceu:hpic',
+            fluidStorage: 'gtceu:titanium_drum',
+            itemStorage: 'gtceu:titanium_crate',
+            battery: 'lapotronic_energy_orb_cluster',
+            rotorMaterial: 'rhodium_plated_palladium',
+            grind: 'gtceu:tungsten_grinding_head',
+        },
+        scaling: {
+            scaler: 1,
+            EU: GTValues.VA[IV],
+        },
+        researchData: {
+            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[EV] },
+            special: { ifSRS: false, cwuS: 0, duraS: 60, EUTS: GTValues.VA[IV] },
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:advanced_smd_capacitor',
+            transistor: 'gtceu:advanced_smd_transistor',
+            diode: 'gtceu:advanced_smd_diode',
+            resistor: 'gtceu:advanced_smd_resistor',
+        },
+    },
+
+    zpm: {
+        tiers: { tier: 'zpm', tier0: 'uv', tier1: 'luv', tier2: 'iv' },
+        materials: {
+            tierMaterial: 'naquadah_alloy',
+            primMaterial: 'osthendah',
+            supMaterial: 'osmiridium',
+            wire: 'naquadah',
+            wireMechanical: 'europium',
+            wireCoil: 'europium',
+            elctrlyzWire: 'osmium',
+            tierFluid: '', //none exist
+            coolant: '', //none exist
+            solder: 'soldering_alloy',
+            lubricant: 'lubricant',
+            primRubber: 'styrene_butadiene_rubber',
+            supRubber: 'silicone_rubber',
+            plastic: 'polybenzimidazole',
+            cable: 'vanadium_gallium',
+            cable1: 'yttrium_barium_cuprate',
+            catalyst: '2x gtceu:quantum_star',
+            primMagnet: 'samarium',
+            supMagnet: '', //none exist
+            pipeMaterial: 'polybenzimidazole',
+            miscMaterial: 'trinium',
+            glass: 'gtceu:fusion_glass',
+            superconductor: 'uranium_rhodium_dinaquadide',
+            buzz: 'naquadah_alloy',
+            chip: 'gtceu:uhpic',
+            fluidStorage: 'gtceu:tungsten_steel_drum',
+            itemStorage: 'gtceu:tungsten_steel_crate',
+            rotorMaterial: 'naquadah_alloy',
+            grind: 'gtceu:tungsten_grinding_head',
+        },
+        scaling: {
+            scaler: 2,
+            EU: GTValues.VA[LuV],
+        },
+        researchData: {
+            default: { ifDRS: false, cwuD: 0, duraD: 90, EUTD: GTValues.VA[IV] },
+            special: { ifSRS: true, cwuS: 4, duraS: 90, EUTS: GTValues.VA[LuV] },
+        },
+        electronicComponents: {
+            capacitor: 'gtceu:advanced_smd_capacitor',
+            transistor: 'gtceu:advanced_smd_transistor',
+            diode: 'gtceu:advanced_smd_diode',
+            resistor: 'gtceu:advanced_smd_resistor',
+        },
+    },
+
+    uv: {
+        tiers: { tier: 'uv', tier0: 'uhv', tier1: 'zpm', tier2: 'luv' },
+        materials: {
+            tierMaterial: 'darmstadtium',
+            primMaterial: 'tritan_steel',
+            supMaterial: 'pure_netherite',
+            wire: 'naquadah_alloy',
+            wireMechanical: 'americium',
+            wireCoil: 'tritanium',
+            elctrlyzWire: 'trinium',
+            tierFluid: 'naquadria',
+            coolant: '', //none exist
+            solder: 'indium_tin_lead_cadmium_soldering_alloy',
+            lubricant: 'lubricant',
+            primRubber: 'styrene_butadiene_rubber',
+            supRubber: 'styrene_butadiene_rubber',
+            plastic: 'polyether_ether_ketone',
+            cable: 'yttrium_barium_cuprate',
+            cable1: 'europium',
+            catalyst: '1x gtceu:gravi_star',
+            primMagnet: 'dysprosium',
+            supMagnet: '',
+            pipeMaterial: 'naquadah',
+            miscMaterial: 'naquadria',
+            glass: 'gtceu:fusion_glass',
+            superconductor: 'enriched_naquadah_trinium_europium_duranide',
+            buzz: 'duranium',
+            chip: 'gtceu:uhpic',
+            fluidStorage: 'start_core:enriched_naquadah_drum',
+            itemStorage: 'start_core:enriched_naquadah_crate',
+            battery: 'energy_cluster',
+            rotorMaterial: 'darmstadtium',
+            grind: 'gtceu:tungsten_grinding_head',
+        },
+        scaling: {
+            scaler: 3,
+            EU: GTValues.VA[ZPM],
+        },
+        researchData: {
+            default: { ifDRS: true, cwuD: 32, duraD: 180, EUTD: GTValues.VA[ZPM] },
+            special: { ifSRS: true, cwuS: 48, duraS: 180, EUTS: GTValues.VA[UV] },
+        },
+        electronicComponents: {
+            capacitor: 'kubejs:living_smd_capacitor',
+            transistor: 'kubejs:living_smd_transistor',
+            diode: 'kubejs:living_smd_diode',
+            resistor: 'kubejs:living_smd_resistor',
+        },
+    },
+
+    uhv: {
+        tiers: { tier: 'uhv', tier0: 'uev', tier1: 'uv', tier2: 'zpm' },
+        materials: {
+            tierMaterial: 'neutronium',
+            primMaterial: 'zalloy',
+            supMaterial: 'zircalloy_4',
+            wire: 'zirconium_selenide_diiodide',
+            wireMechanical: 'zirconium',
+            wireCoil: 'thorium_plut_duranide_241',
+            pipeCoil: 'neutronium',
+            elctrlyzWire: 'trinium',
+            tierFluid: 'naquadria',
+            coolant: 'liquid_helium',
+            solder: 'indium_tin_lead_cadmium_soldering_alloy',
+            lubricant: 'tungsten_disulfide',
+            primRubber: 'perfluoroelastomer_rubber',
+            supRubber: 'styrene_butadiene_rubber',
+            plastic: 'polyether_ether_ketone',
+            cable: 'europium',
+            cable1: 'cerium_tritelluride',
+            catalyst: '2x gtceu:gravi_star',
+            primMagnet: 'dysprosium',
+            supMagnet: 'samarium',
+            pipeMaterial: 'zapolgium',
+            miscMaterial: 'neutronium',
+            glass: 'kubejs:reinforced_fusion_glass',
+            superconductor: 'ruthenium_trinium_americium_neutronate',
+            buzz: 'neutronium',
+            chip: 'gtceu:uhpic',
+            fluidStorage: 'start_core:neutronium_drum',
+            itemStorage: 'start_core:neutronium_crate',
+            battery: 'max_battery',
+            rotorMaterial: 'neutronium',
+            grind: 'gtceu:tungsten_grinding_head',
+        },
+        scaling: {
+            scaler: 4,
+            EU: GTValues.VA[UV],
+        },
+        researchData: {
+            default: { ifDRS: true, cwuD: 128, duraD: 180, EUTD: GTValues.VA[UV] },
+            special: { ifSRS: true, cwuS: 144, duraS: 180, EUTS: GTValues.VA[UV] },
+        },
+        electronicComponents: {
+            capacitor: 'kubejs:living_smd_capacitor',
+            transistor: 'kubejs:living_smd_transistor',
+            diode: 'kubejs:living_smd_diode',
+            resistor: 'kubejs:living_smd_resistor',
+        },
+    },
+
+    uev: {
+        tiers: { tier: 'uev', tier0: 'uiv', tier1: 'uhv', tier2: 'uv' },
+        materials: {
+            tierMaterial: 'mythrolic_alloy',
+            primMaterial: 'starium_alloy',
+            supMaterial: 'magmada_alloy',
+            wire: 'astatium_bioselex_carbonite',
+            wireMechanical: 'adamantine',
+            wireCoil: 'aurourium',
+            pipeCoil: 'mythrolic_alloy',
+            elctrlyzWire: 'tritanium',
+            tierFluid: 'isovol',
+            coolant: 'superstate_helium_3',
+            solder: 'naquadated_soldering_alloy',
+            lubricant: 'tungsten_disulfide',
+            primRubber: 'perfluoroelastomer_rubber',
+            supRubber: 'styrene_butadiene_rubber',
+            plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfonate',
+            cable: 'cerium_tritelluride',
+            cable1: 'polonium_bismide',
+            catalyst: '2x kubejs:decaying_star',
+            primMagnet: 'zapolgium',
+            supMagnet: 'dysprosium',
+            pipeMaterial: 'mythrolic_alloy',
+            miscMaterial: 'mythrolic_alloy',
+            glass: 'kubejs:reinforced_fusion_glass',
+            superconductor: 'enriched_pallarovium_alloy',
+            buzz: 'neutronium',
+            chip: 'kubejs:uepic',
+            fluidStorage: '', //none exist
+            itemStorage: '', //none exist
+            rotorMaterial: 'mythrolic_alloy',
+            grind: 'gtceu:tungsten_grinding_head',
+        },
+        scaling: {
+            scaler: 5,
+            EU: GTValues.VA[UHV],
+        },
+        researchData: {
+            default: { ifDRS: true, cwuD: 160, duraD: 180, EUTD: GTValues.VA[UHV] },
+            special: { ifSRS: true, cwuS: 176, duraS: 180, EUTS: GTValues.VA[UHV] },
+        },
+        electronicComponents: {
+            capacitor: 'kubejs:draconic_smd_capacitor',
+            transistor: 'kubejs:draconic_smd_transistor',
+            diode: 'kubejs:draconic_smd_diode',
+            resistor: 'kubejs:draconic_smd_resistor',
+        },
+    },
+
+    uiv: {
+        tiers: { tier: 'uiv', tier0: 'uxv', tier1: 'uev', tier2: 'uhv' },
+        materials: {
+            tierMaterial: 'chaotixic_alloy',
+            primMaterial: 'ohmderblux_alloy',
+            supMaterial: 'abyssal_alloy',
+            wire: 'hafnide_ito_ceramic',
+            wireMechanical: 'xeproda',
+            wireCoil: 'rhenate_w',
+            pipeCoil: 'nyanium',
+            elctrlyzWire: 'tritanium',
+            tierFluid: 'calamatium',
+            coolant: 'superstate_helium_3',
+            solder: 'naquadated_soldering_alloy',
+            lubricant: 'tungsten_disulfide',
+            primRubber: 'perfluoroelastomer_rubber',
+            supRubber: 'perfluoroelastomer_rubber',
+            plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfonate',
+            cable: 'polonium_bismide',
+            cable1: 'lepton_resonant_thallium_antimonide',
+            catalyst: '1x kubejs:draconic_eye',
+            primMagnet: 'zapolgium',
+            supMagnet: 'dysprosium',
+            pipeMaterial: 'nyanium',
+            miscMaterial: 'chaotixic_alloy',
+            glass: 'kubejs:draco_resilient_fusion_glass',
+            superconductor: 'rhenium_super_composite_alloy',
+            buzz: 'neutronium',
+            chip: 'kubejs:uepic',
+            fluidStorage: '', //none exist
+            itemStorage: '', //none exist
+            rotorMaterial: 'chaotixic_alloy',
+            grind: 'gtceu:tungsten_grinding_head',
+        },
+        scaling: {
+            scaler: 6,
+            EU: GTValues.VA[UEV],
+        },
+        researchData: {
+            default: { ifDRS: true, cwuD: 192, duraD: 180, EUTD: GTValues.VA[UEV] },
+            special: { ifSRS: true, cwuS: 208, duraS: 180, EUTS: GTValues.VA[UEV] },
+        },
+        electronicComponents: {
+            capacitor: 'kubejs:draconic_smd_capacitor',
+            transistor: 'kubejs:draconic_smd_transistor',
+            diode: 'kubejs:draconic_smd_diode',
+            resistor: 'kubejs:draconic_smd_resistor',
+        },
+    },
+});
+
+global.casingMaterials = {
+    lv: `gtceu:${global.componentMaterials.lv.materials.tierMaterial}`,
+    mv: `gtceu:${global.componentMaterials.mv.materials.tierMaterial}`,
+    hv: `gtceu:${global.componentMaterials.hv.materials.tierMaterial}`,
+    ev: `gtceu:${global.componentMaterials.ev.materials.tierMaterial}`,
+    iv: `gtceu:${global.componentMaterials.iv.materials.tierMaterial}`,
+    luv: `gtceu:${global.componentMaterials.luv.materials.tierMaterial}`,
+    zpm: `gtceu:${global.componentMaterials.zpm.materials.tierMaterial}`,
+    uv: `gtceu:${global.componentMaterials.uv.materials.tierMaterial}`,
+    uhv: `gtceu:${global.componentMaterials.uhv.materials.tierMaterial}`,
+    uev: `gtceu:${global.componentMaterials.uev.materials.tierMaterial}`,
+    uiv: `gtceu:${global.componentMaterials.uiv.materials.tierMaterial}`,
+};

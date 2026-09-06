@@ -2,6 +2,7 @@
 
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.replaceInput(
         { id: 'gtceu:macerator/macerate_nether_star_lens' },
@@ -9,32 +10,55 @@ ServerEvents.recipes((event) => {
         'gtceu:nether_star_lens'
     );
 
-    event.replaceOutput({ type: 'gtceu:cutter' }, 'ae2:certus_quartz_crystal', '2x ae2:certus_quartz_crystal');
+    isModLoaded('ae2', () => {
+        event.replaceOutput({ type: 'gtceu:cutter' }, 'ae2:certus_quartz_crystal', '2x ae2:certus_quartz_crystal');
 
-    event.recipes.gtceu
-        .alloy_smelter(id('rubber_sheet_from_thermal'))
-        .itemInputs('2x thermal:cured_rubber')
-        .notConsumable('gtceu:plate_casting_mold')
-        .itemOutputs('gtceu:rubber_plate')
-        .duration(10)
-        .EUt(7);
+        //certus fixes
+        [
+            { name: 'exquisite_certus_quartz_gem', dustCount: 4 },
+            { name: 'flawless_certus_quartz_gem', dustCount: 2 },
+        ].forEach((item) => {
+            event.remove({ input: `gtceu:${item.name}`, type: 'gtceu:macerator' });
 
-    event.recipes.gtceu
-        .extruder(id('rubber_sheet_from_thermal_extruder'))
-        .itemInputs('thermal:cured_rubber')
-        .notConsumable('gtceu:plate_extruder_mold')
-        .itemOutputs('gtceu:rubber_plate')
-        .duration(5)
-        .EUt(56);
+            event.recipes.gtceu
+                .macerator(id(`macerate_${item.name}`))
+                .itemInputs(`gtceu:${item.name}`)
+                .itemOutputs(`${item.dustCount}x gtceu:certus_quartz_dust`)
+                .duration(item.dustCount * 20)
+                .EUt(2)
+                .category(GTRecipeCategories.MACERATOR_RECYCLING);
+        });
+    });
 
-    event.recipes.gtceu
-        .extractor(id('rubber_fluid_from_thermal'))
-        .itemInputs('thermal:cured_rubber')
-        .outputFluids('gtceu:rubber 144')
-        .duration(5)
-        .EUt(30);
+    isModLoaded('thermal', () => {
+        event.recipes.gtceu
+            .alloy_smelter(id('rubber_sheet_from_thermal'))
+            .itemInputs('2x thermal:cured_rubber')
+            .notConsumable('gtceu:plate_casting_mold')
+            .itemOutputs('gtceu:rubber_plate')
+            .duration(10)
+            .EUt(7);
 
-    ['blackstone', 'calcite', 'tuff', 'dripstone_block'].forEach((stone) => {
+        event.recipes.gtceu
+            .extruder(id('rubber_sheet_from_thermal_extruder'))
+            .itemInputs('thermal:cured_rubber')
+            .notConsumable('gtceu:plate_extruder_mold')
+            .itemOutputs('gtceu:rubber_plate')
+            .duration(5)
+            .EUt(56);
+
+        event.recipes.gtceu
+            .extractor(id('rubber_fluid_from_thermal'))
+            .itemInputs('thermal:cured_rubber')
+            .outputFluids('gtceu:rubber 144')
+            .duration(5)
+            .EUt(30);
+    });
+
+    const stones = ['calcite', 'tuff', 'dripstone_block'];
+    isModLoaded('exnihilosequentia', () => stones.push('blackstone'));
+
+    stones.forEach((stone) => {
         event.recipes.gtceu
             .rock_breaker(id(`${stone}`))
             .notConsumable(`minecraft:${stone}`)
@@ -65,7 +89,7 @@ ServerEvents.recipes((event) => {
                 W: '#forge:tools/wire_cutters',
                 F: '#forge:tools/files',
                 P: `gtceu:${material}_plate`,
-                S: `#forge:rods`,
+                S: '#forge:rods',
             })
             .id(`start:shaped/${material}_plunger`);
     });
@@ -86,11 +110,16 @@ ServerEvents.recipes((event) => {
     });
 
     // Mycelium Leather
-    event.recipes.create
-        .pressing('kubejs:compressed_mycelium', 'kubejs:mycelium_growth')
-        .id('start:pressing/compressed_mycelium');
+    isModLoaded('kubejs_create', () => {
+        event.recipes.create
+            .pressing('kubejs:compressed_mycelium', 'kubejs:mycelium_growth')
+            .id('start:pressing/compressed_mycelium');
+
+        event.recipes.create
+            .pressing('minecraft:leather', 'kubejs:smoked_mycelium')
+            .id('start:pressing/mycelium_leather');
+    });
     event.smoking('kubejs:smoked_mycelium', 'kubejs:compressed_mycelium').id('start:smoking/smoked_mycelium');
-    event.recipes.create.pressing('minecraft:leather', 'kubejs:smoked_mycelium').id('start:pressing/mycelium_leather');
 
     event.remove({ id: 'gtceu:electrolyzer/decomposition_electrolyzing_sodalite' }); //Moves to LV but at same total EU cost
     event.recipes.gtceu
@@ -123,7 +152,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:data_dna_disk')
         .duration(400)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.V[GTValues.UHV]);
+        .EUtV(UHV);
 
     event.recipes.gtceu
         .circuit_assembler(id('component_data_core'))
@@ -139,7 +168,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:component_data_core')
         .duration(400)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.V[GTValues.UIV]);
+        .EUtV(UIV);
 
     // StarT Core Cell* Emptying
     ['drum', 'fluid_cell'].forEach((container) => {
@@ -168,11 +197,22 @@ ServerEvents.recipes((event) => {
         .duration(33.6 * 20)
         .EUt(60);
 
-    // Mushroom Decomp
+    event.remove({ id: 'gtceu:mixer/raw_growth_medium' });
+    event.recipes.gtceu
+        .mixer(id('raw_growth_medium'))
+        .itemInputs('4x gtceu:meat_dust', '4x gtceu:salt_dust', '4x gtceu:calcium_dust', '4x gtceu:agar_dust')
+        .inputFluids('gtceu:mutagen 4000')
+        .outputFluids('gtceu:raw_growth_medium 4000')
+        .cleanroom(CleanroomType.STERILE_CLEANROOM)
+        .duration(1200)
+        .circuit(1)
+        .EUtVA(IV);
 
+    // Mushroom Decomp
     event
         .shapeless(Item.of('3x minecraft:brown_mushroom'), ['minecraft:brown_mushroom_block', '#forge:tools/mortars'])
         .id('start:shapeless/brown_mushroom');
+
     event.recipes.gtceu
         .macerator(id('brown_mushrooms'))
         .itemInputs('minecraft:brown_mushroom_block')
@@ -200,6 +240,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('5x gtceu:treated_wood_dust', '8x gtceu:wood_dust')
         .duration(1274)
         .EUt(2);
+
     event.remove({ id: 'gtceu:macerator/macerate_treated_wood_planks' });
     event.recipes.gtceu
         .macerator(id('treated_wood_planks'))
@@ -207,9 +248,12 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:treated_wood_dust')
         .duration(98)
         .EUt(2);
-    event.recipes.create
-        .filling('gtceu:treated_wood_planks', [Fluid.of('gtceu:creosote', 125), '#minecraft:planks'])
-        .id('start:filling/treated_wood_planks');
+
+    isModLoaded('kubejs_create', () =>
+        event.recipes.create
+            .filling('gtceu:treated_wood_planks', [Fluid.of('gtceu:creosote', 125), '#minecraft:planks'])
+            .id('start:filling/treated_wood_planks')
+    );
 
     event.recipes.gtceu
         .alloy_blast_smelter(id('indium_tin_lead_cadmium_soldering_alloy'))
@@ -217,7 +261,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 2880')
         .duration(280)
         .blastFurnaceTemp(3000)
-        .EUt(GTValues.VH[GTValues.ZPM])
+        .EUtVH(ZPM)
         .circuit(14);
 
     event.recipes.gtceu
@@ -235,7 +279,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:naquadated_soldering_alloy 5760')
         .duration(2250)
         .blastFurnaceTemp(8980)
-        .EUt(GTValues.VH[GTValues.UHV])
+        .EUtVH(UHV)
         .circuit(8);
 
     event.recipes.gtceu
@@ -252,7 +296,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:neutrindium_soldering_alloy 10656')
         .duration(4810)
         .blastFurnaceTemp(14895)
-        .EUt(GTValues.VH[GTValues.UIV])
+        .EUtVH(UIV)
         .circuit(7);
 
     event.remove({ output: 'gtceu:uv_voltage_coil' });
@@ -262,23 +306,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:uv_voltage_coil')
         .circuit(1)
         .duration(200)
-        .EUt(GTValues.VA[GTValues.UV]);
-
-    //certus fixes
-    [
-        { name: `exquisite_certus_quartz_gem`, dustCount: 4 },
-        { name: `flawless_certus_quartz_gem`, dustCount: 2 },
-    ].forEach((item) => {
-        event.remove({ input: `gtceu:${item.name}`, type: `gtceu:macerator` });
-
-        event.recipes.gtceu
-            .macerator(id(`macerate_${item.name}`))
-            .itemInputs(`gtceu:${item.name}`)
-            .itemOutputs(`${item.dustCount}x gtceu:certus_quartz_dust`)
-            .duration(item.dustCount * 20)
-            .EUt(2)
-            .category(GTRecipeCategories.MACERATOR_RECYCLING);
-    });
+        .EUtVA(UV);
 
     event.recipes.gtceu
         .chemical_bath(id('echo_shard_dust'))
@@ -286,7 +314,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:echo_r 144')
         .itemOutputs('gtceu:echo_shard_dust')
         .duration(160)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     event.recipes.gtceu
         .heat_chamber(id('tiny_purified_naquadah'))
@@ -298,13 +326,7 @@ ServerEvents.recipes((event) => {
 
     //echo changes
     event.remove({ id: /gtceu:implosion_compressor\/implode_dust_echo_shard_.*/ });
-    event.recipes.gtceu
-        .implosion_compressor(id('echo_shard'))
-        .itemInputs('gtceu:echo_shard_dust', '16x gtceu:industrial_tnt')
-        .itemOutputs('minecraft:echo_shard')
-        .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
-        .duration(1000)
-        .EUt(GTValues.VA[GTValues.LuV]);
+    global.implosion('echo_shard', 'gtceu:echo_shard_dust', 'minecraft:echo_shard', GTValues.LuV, 1, event);
 
     //naquadah changes
     event.remove({ id: 'gtceu:centrifuge/impure_naquadria_solution_separation' });
@@ -320,7 +342,7 @@ ServerEvents.recipes((event) => {
         )
         .outputFluids('gtceu:naquadria_solution 3000')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.IV]);
+        .EUtVA(IV);
 
     event.recipes.gtceu
         .centrifuge(id('impure_enriched_naquadah_solution_separation'))
@@ -328,5 +350,21 @@ ServerEvents.recipes((event) => {
         .itemOutputs('3x gtceu:trinium_sulfide_dust', '4x gtceu:antimony_trifluoride_dust')
         .outputFluids('gtceu:enriched_naquadah_solution 3000')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
+
+    event.remove({ id: /gtceu:.*\/hypochlorous_acid/ });
+    event.recipes.gtceu
+        .chemical_reactor(id('hypochlorous_acid'))
+        .inputFluids('minecraft:water 1000', 'gtceu:chlorine 2000')
+        .outputFluids('gtceu:hypochlorous_acid 1000', 'gtceu:hydrochloric_acid 1000')
+        .duration(120)
+        .EUt(30)
+        .circuit(1);
+
+    // TODO: combe back to this decision in theta 3 to see if there is a better fit
+    event.replaceInput(
+        { id: 'gtceu:shaped/lv_cutter' },
+        'gtceu:cobalt_brass_buzz_saw_blade',
+        'gtceu:steel_buzz_saw_blade'
+    );
 });

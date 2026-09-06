@@ -2,8 +2,9 @@
 *
 !kubejs/
 !kubejs/**
-*.md
-eslint.config.mjs
+!jsconfig.json
+!eslint.config.mjs
+!*.md
 
 !.vscode/
 .vscode/*

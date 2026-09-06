@@ -4,6 +4,18 @@ ServerEvents.recipes((event) => {
     // Fusion
     event.remove({ type: 'gtceu:fusion_reactor' });
 
+    /**
+     * @param {number} reflectorTier
+     * @param {string} type
+     * @param {number} outputQuant
+     * @param {string} input1
+     * @param {number} input1Quant
+     * @param {string} input2
+     * @param {number} input2Quant
+     * @param {number} EUt
+     * @param {number} DurationSeconds
+     * @param {number} StartMEU
+     */
     const fusion = (
         reflectorTier,
         type,
@@ -22,7 +34,7 @@ ServerEvents.recipes((event) => {
             .outputFluids(`gtceu:${type} ${outputQuant}`)
             .duration(DurationSeconds * 20)
             .fusionStartEU(StartMEU * 1000000)
-            .addData('reflector_tier', reflectorTier)
+            .reflectorTier(reflectorTier)
             .EUt(EUt);
     };
 

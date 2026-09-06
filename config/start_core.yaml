@@ -1,5 +1,99 @@
 client:
-  # Whether or not to enable the render for the Komau Frame.
+  # Whether or not to enable the render for the Komaru Frame.
   # Default: true
   komaruRenderer: true
+
+solar:
+  # Heat gained per 6 second cycle on EV–LuV solar panels while producing power.
+  # Default: 0.2
+  panelHeatGain: 0.2
+
+  # Heat gained per 6 second cycle on UV/UHV solar arrays while producing power and not cooled.
+  # Default: 0.3
+  arrayHeatGain: 0.3
+
+  # Heat gained per 6 second cycle on UV/UHV solar arrays while producing power and actively cooled.
+  # Default: 0.18
+  arrayCooledHeatGain: 0.18
+
+  # Heat lost per 6 second cycle when a solar cell is inactive or it is night.
+  # Default: 0.1
+  heatLoss: 0.1
+
+  # Whether solar cells lose durability each production cycle based on overheat %.
+  # Set to false to disable durability degradation entirely.
+  # Default: true
+  enableDurabilityLoss: true
+
+  # EV solar cell durability.
+  # Default: 1024
+  evSolarCellDurability: 2048
+
+  # EV solar cell max temperature.
+  # Default: 350
+  evSolarCellMaxTemperature: 350
+
+  # EV solar cell temperature scale.
+  # Default: 1
+  evSolarCellTemperatureScale: 1.0
+
+  # IV solar cell durability.
+  # Default: 1024
+  ivSolarCellDurability: 3072
+
+  # IV solar cell max temperature.
+  # Default: 370
+  ivSolarCellMaxTemperature: 370
+
+  # IV solar cell temperature scale.
+  # Default: 0.95
+  ivSolarCellTemperatureScale: 0.95
+
+  # LuV solar cell durability.
+  # Default: 1024
+  luvSolarCellDurability: 4096
+
+  # LuV solar cell max temperature.
+  # Default: 390
+  luvSolarCellMaxTemperature: 390
+
+  # LuV solar cell temperature scale.
+  # Default: 0.9
+  luvSolarCellTemperatureScale: 0.9
+
+  # ZPM solar cell durability.
+  # Default: 1024
+  zpmSolarCellDurability: 6144
+
+  # ZPM solar cell max temperature.
+  # Default: 410
+  zpmSolarCellMaxTemperature: 410
+
+  # ZPM solar cell temperature scale.
+  # Default: 0.85
+  zpmSolarCellTemperatureScale: 0.85
+
+  # UV solar cell durability.
+  # Default: 1024
+  uvSolarCellDurability: 8192
+
+  # UV solar cell max temperature.
+  # Default: 430
+  uvSolarCellMaxTemperature: 430
+
+  # UV solar cell temperature scale.
+  # Default: 0.8
+  uvSolarCellTemperatureScale: 0.8
+
+  # UHV solar cell durability.
+  # Default: 1024
+  uhvSolarCellDurability: 12288
+
+  # UHV solar cell max temperature.
+  # Default: 450
+  uhvSolarCellMaxTemperature: 450
+
+  # UHV solar cell temperature scale.
+  # Default: 0.75
+  uhvSolarCellTemperatureScale: 0.75
 

@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
             G: 'gtceu:fusion_glass',
             E: 'gtceu:quantum_eye',
             P: 'gtceu:double_void_plate',
-            C: 'kubejs:helish_star',
+            C: 'kubejs:decaying_star',
         })
         .id('start:shaped/end_crystal');
 
@@ -17,7 +17,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('14x gtceu:hafnide_ceramic_base_dust', '7x gtceu:indium_tin_oxide_dust')
         .itemOutputs('21x gtceu:hafnide_ito_ceramic_dust')
         .duration(856)
-        .EUt(GTValues.VHA[GTValues.UEV]);
+        .EUtVHA(UEV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('indium_tin_oxide'))
@@ -25,16 +25,16 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:oxygen 3000')
         .itemOutputs('7x gtceu:indium_tin_oxide_dust')
         .duration(462)
-        .EUt(GTValues.VA[GTValues.UHV]);
+        .EUtVA(UHV);
 
     event.remove({ output: 'gtceu:hot_diamane_ingot' });
     event.recipes.gtceu
         .heat_chamber(id('hot_diamane'))
         .itemInputs('3x gtceu:graphene_dust', '1x gtceu:diamond_dust')
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 36')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 36')
         .itemOutputs('1x gtceu:hot_diamane_ingot')
         .duration(140)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('iridium_iv_oxide'))
@@ -42,7 +42,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:oxygen 2000')
         .itemOutputs('3x gtceu:iridium_iv_oxide_dust')
         .duration(228)
-        .EUt(GTValues.VA[GTValues.LuV]);
+        .EUtVA(LuV);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('bismuth_iii_oxide'))
@@ -51,14 +51,14 @@ ServerEvents.recipes((event) => {
         .itemOutputs('5x gtceu:bismuth_iii_oxide_dust')
         .outputFluids('gtceu:nitric_acid 6000')
         .duration(328)
-        .EUt(GTValues.VHA[GTValues.LuV]);
+        .EUtVHA(LuV);
 
     event.recipes.gtceu
         .mixer(id('bismuth_iridate'))
         .itemInputs('5x gtceu:bismuth_iii_oxide_dust', '6x gtceu:iridium_iv_oxide_dust')
         .itemOutputs('11x gtceu:bismuth_iridate_dust')
         .duration(412)
-        .EUt(GTValues.VA[GTValues.ZPM]);
+        .EUtVA(ZPM);
 
     // Draconic
     event.recipes.gtceu
@@ -69,7 +69,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('3x gtceu:tiny_void_dust')
         .duration(2400)
         .cleanroom(CleanroomType.STERILE_CLEANROOM)
-        .EUt(GTValues.VA[GTValues.UIV] / 3);
+        .EUt(GTValues.VA[UIV] / 3);
 
     event.recipes.gtceu
         .injection_mixer(id('dragon_breath'))
@@ -77,15 +77,16 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:radon 124000', 'gtceu:breath_hormone_complex 1000')
         .outputFluids('gtceu:dragon_breath 5000')
         .duration(1575)
-        .EUt(GTValues.V[GTValues.UIV] * 0.3)
+        .EUt(GTValues.V[UIV] * 0.3)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
+    // [FIX]: temp use dragon egg, custom dragon scale item?
     event.recipes.gtceu
         .forge_hammer(id('scale_recycling'))
-        .itemInputs('mysticalagradditions:dragon_scale')
+        .itemInputs('minecraft:dragon_egg')
         .itemOutputs('2x kubejs:draconic_scale_cells')
         .duration(200)
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV);
 
     event.recipes.gtceu
         .cutter(id('egg_separation'))
@@ -94,7 +95,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('kubejs:draconic_embryo', '8x kubejs:dragon_egg_shard')
         .duration(1000)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .macerator(id('shard_decomp'))
@@ -106,7 +107,7 @@ ServerEvents.recipes((event) => {
         )
         .duration(400)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VA[GTValues.UHV]);
+        .EUtVA(UHV);
 
     event.recipes.gtceu
         .autoclave(id('embryo_decomp'))
@@ -115,5 +116,5 @@ ServerEvents.recipes((event) => {
         .itemOutputs('12x kubejs:secreting_draconic_cells', '8x kubejs:draconic_stem_cells')
         .duration(600)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 });

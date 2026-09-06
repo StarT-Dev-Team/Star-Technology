@@ -1,4 +1,8 @@
 StartupEvents.registry('block', (event) => {
+    /**
+     * @param {string} id
+     * @param {string} texture
+     */
     function nyanCasing(id, texture) {
         event
             .create(id)

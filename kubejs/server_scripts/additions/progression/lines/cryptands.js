@@ -66,7 +66,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('3x gtceu:potassium_hydroxide_dust')
         .outputFluids('gtceu:hydrogen 1000')
         .duration(800)
-        .EUt(GTValues.VA[GTValues.MV]);
+        .EUtVA(MV);
 
     // event.recipes.gtceu.chemical_reactor(id('sodium_hydroxide'))
     //     .itemInputs('gtceu:sodium_dust')
@@ -196,7 +196,7 @@ ServerEvents.recipes((event) => {
         .itemOutputs('3x gtceu:potassium_hydroxide_dust')
         .outputFluids('gtceu:hydrogen 1000')
         .duration(800)
-        .EUt(GTValues.VA[GTValues.MV]);
+        .EUtVA(MV);
 
     // event.recipes.gtceu.large_chemical_reactor(id('sodium_hydroxide'))
     //     .itemInputs('gtceu:sodium_dust')

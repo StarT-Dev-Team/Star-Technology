@@ -1,11 +1,8 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     const assline = 'assembly_line';
-    const cut = event.recipes.gtceu.cutter;
-    const rotor = event.recipes.gtceu.large_rotor_machine;
-    const stargateComponent = event.recipes.gtceu.stargate_component_assembly;
-    const riftEnh = event.recipes.gtceu.riftic_enhancement;
     const riftAss = 'riftic_infusion_assembly';
     const dracoCirc = 'draco_circuit_assembler';
 
@@ -42,7 +39,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_field_stabiliser'
     );
 
@@ -63,7 +60,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_stellar_dialer'
     );
 
@@ -84,14 +81,14 @@ ServerEvents.recipes((event) => {
         ],
         [
             'gtceu:neutrindium_soldering_alloy 9216',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 2304',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 2304',
             'gtceu:draconic_enrichment_serum 7500',
         ],
         ['kubejs:dsg_computational_matrix'],
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_computational_matrix'
     );
 
@@ -111,12 +108,12 @@ ServerEvents.recipes((event) => {
             '16x gtceu:nyanium_nonuple_fluid_pipe',
             '24x gtceu:uiv_fluid_regulator',
             '48x gtceu:aerorelient_steel_ring',
-            '24x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_quadruple_fluid_pipe',
+            '24x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_quadruple_fluid_pipe',
             '576x gtceu:abyssal_alloy_round',
         ],
         [
             'gtceu:neutrindium_soldering_alloy 62208',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 9216',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 9216',
             'gtceu:faematter 12500',
             'gtceu:draconic_stabilization_mixture 10000',
         ],
@@ -124,31 +121,37 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:abyssal_processor_mainframe'
     );
 
-    researchBuilder(
-        riftAss,
-        'dsg_dhd',
-        [
-            'sgjourney:milky_way_dhd',
-            'kubejs:dsg_stellar_dialer',
-            '6x ' + uRune,
-            '6x ' + sRune,
-            '6x ' + gRune,
-            '6x ' + vRune,
-            '6x ' + iRune,
-            '6x ' + tRune,
-        ],
-        ['gtceu:neutrindium_soldering_alloy 9216', 'gtceu:faematter 7500', 'gtceu:draconic_stabilization_mixture 6250'],
-        ['sgjourney:pegasus_dhd'],
-        6000,
-        500,
-        500 * 1200,
-        GTValues.VHA[GTValues.UIV],
-        'sgjourney:milky_way_dhd'
-    );
+    isModLoaded('sgjourney', () => {
+        researchBuilder(
+            riftAss,
+            'dsg_dhd',
+            [
+                'sgjourney:milky_way_dhd',
+                'kubejs:dsg_stellar_dialer',
+                '6x ' + uRune,
+                '6x ' + sRune,
+                '6x ' + gRune,
+                '6x ' + vRune,
+                '6x ' + iRune,
+                '6x ' + tRune,
+            ],
+            [
+                'gtceu:neutrindium_soldering_alloy 9216',
+                'gtceu:faematter 7500',
+                'gtceu:draconic_stabilization_mixture 6250',
+            ],
+            ['sgjourney:pegasus_dhd'],
+            6000,
+            500,
+            500 * 1200,
+            GTValues.VHA[UIV],
+            'sgjourney:milky_way_dhd'
+        );
+    });
 
     researchBuilder(
         riftAss,
@@ -170,7 +173,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_energy_modulator'
     );
 
@@ -191,14 +194,14 @@ ServerEvents.recipes((event) => {
         ],
         [
             'gtceu:neutrindium_soldering_alloy 36864',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 6912',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 6912',
             'gtceu:faematter 17500',
         ],
         ['kubejs:dsg_chevron'],
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_chevron'
     );
 
@@ -224,7 +227,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_reinforced_plating'
     );
 
@@ -236,7 +239,7 @@ ServerEvents.recipes((event) => {
             '4x kubejs:dsg_computational_matrix',
             '6x gtceu:uiv_sensor',
             '3x gtceu:rhenium_super_composite_alloy_quadruple_wire',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_foil_ream',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_foil_ream',
             'gtceu:astatium_bioselex_carbonite_foil_ream',
             'gtceu:hafnide_ito_ceramic_foil_ream',
             'gtceu:rhenate_w_foil_ream',
@@ -245,14 +248,14 @@ ServerEvents.recipes((event) => {
         ],
         [
             'gtceu:neutrindium_soldering_alloy 6912',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 2304',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 2304',
             'gtceu:faematter 2500',
         ],
         ['kubejs:dsg_stellar_access_point'],
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:asg_stellar_access_point'
     );
 
@@ -263,7 +266,7 @@ ServerEvents.recipes((event) => {
             'gtceu:draconyallium_frame',
             'kubejs:illustris_singularity',
             'kubejs:vulcanus_singularity',
-            '48x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_foil',
+            '48x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_foil',
             '72x gtceu:nyanium_tiny_fluid_pipe',
             'kubejs:prismalic_helix_core',
             '2x gtceu:raging_rimulatia_rod',
@@ -273,7 +276,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'gtceu:prismatic_hypergurmalium_bucket'
     );
 
@@ -284,7 +287,7 @@ ServerEvents.recipes((event) => {
             'gtceu:draconyallium_frame',
             'kubejs:undina_singularity',
             'kubejs:sylvestris_singularity',
-            '48x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_foil',
+            '48x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_foil',
             '72x gtceu:nyanium_tiny_fluid_pipe',
             'kubejs:prismalic_helix_core',
             '2x gtceu:raging_rimulatia_rod',
@@ -294,7 +297,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'gtceu:riftic_concentrate_bucket'
     );
 
@@ -305,7 +308,7 @@ ServerEvents.recipes((event) => {
             'gtceu:draconyallium_frame',
             'kubejs:tenebrosus_singularity',
             'kubejs:gnomus_singularity',
-            '48x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_foil',
+            '48x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_foil',
             '72x gtceu:nyanium_tiny_fluid_pipe',
             'kubejs:prismalic_helix_core',
             '2x gtceu:raging_rimulatia_rod',
@@ -315,7 +318,7 @@ ServerEvents.recipes((event) => {
         6000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'gtceu:primordial_residue_bucket'
     );
 
@@ -334,7 +337,7 @@ ServerEvents.recipes((event) => {
         3000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:prismalic_fragment'
     );
 
@@ -353,7 +356,7 @@ ServerEvents.recipes((event) => {
         3000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:riftic_fragment'
     );
 
@@ -372,7 +375,7 @@ ServerEvents.recipes((event) => {
         3000,
         500,
         500 * 1200,
-        GTValues.VHA[GTValues.UIV],
+        GTValues.VHA[UIV],
         'kubejs:primordial_fragment'
     );
 
@@ -390,7 +393,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:raging_rimulatia 41472')
         .itemOutputs('kubejs:ascension_core')
         .duration(6000)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
     event.recipes.gtceu
         .supreme_chemistry(id('dsg_enscription_plate'))
@@ -407,17 +410,19 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:dsg_enscription_plate')
         .duration(4000)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
-    cut(id('dsg_enscription_chip'))
+    event.recipes.gtceu
+        .cutter(id('dsg_enscription_chip'))
         .itemInputs('kubejs:dsg_enscription_plate')
         .inputFluids('gtceu:draconic_stabilization_mixture 3850')
         .itemOutputs('2x kubejs:dsg_enscription_chip')
         .duration(3000)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM)
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV);
 
-    rotor(id('dsg_stargate_rod_base'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('dsg_stargate_rod_base'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -457,9 +462,10 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:dsg_stargate_rod_base')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    rotor(id('primordicly_infused_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('primordicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -494,9 +500,10 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:primordicly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    rotor(id('kaleidoscopicly_infused_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('kaleidoscopicly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('kubejs:dsg_stargate_rod_base', 'kubejs:riftic_fragment', '2x gtceu:raging_rimulatia_plate')
@@ -527,9 +534,10 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:kaleidoscopicly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    rotor(id('prismaticly_infused_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('prismaticly_infused_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -564,33 +572,37 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:prismaticly_infused_stargate_rod')
         .duration(800)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    riftEnh(id('faetic_stargate_rod'))
+    event.recipes.gtceu
+        .riftic_enhancement(id('faetic_stargate_rod'))
         .itemInputs('kubejs:prismaticly_infused_stargate_rod')
         .inputFluids('gtceu:faematter 25000')
         .itemOutputs('kubejs:faetic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    riftEnh(id('riftic_stargate_rod'))
+    event.recipes.gtceu
+        .riftic_enhancement(id('riftic_stargate_rod'))
         .itemInputs('kubejs:kaleidoscopicly_infused_stargate_rod')
         .inputFluids('gtceu:faematter 25000')
         .itemOutputs('kubejs:riftic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    riftEnh(id('temporic_stargate_rod'))
+    event.recipes.gtceu
+        .riftic_enhancement(id('temporic_stargate_rod'))
         .itemInputs('kubejs:primordicly_infused_stargate_rod')
         .inputFluids('gtceu:faematter 25000')
         .itemOutputs('kubejs:temporic_stargate_rod')
         .CWUt(888)
         .totalCWU(888 * 20 * 40)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    stargateComponent('dsg_ring')
+    event.recipes.gtceu
+        .stargate_component_assembly('dsg_ring')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -621,9 +633,10 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_ring_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    stargateComponent('dsg_chevron')
+    event.recipes.gtceu
+        .stargate_component_assembly('dsg_chevron')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -684,9 +697,10 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_chevron_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    stargateComponent('dsg_base')
+    event.recipes.gtceu
+        .stargate_component_assembly('dsg_base')
         .layeredRecipe((layers) =>
             layers
                 .itemInputs(
@@ -747,27 +761,29 @@ ServerEvents.recipes((event) => {
         )
         .itemOutputs('kubejs:draconic_stargate_base_block')
         .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UXV]);
+        .EUtVHA(UIV);
 
-    event.recipes.create
-        .mechanical_crafting(
-            `sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}`,
-            [
-                /* prettier-ignore-start */
-                ' CRCRC ',
-                'RR   RR',
-                'C     C',
-                'R     R',
-                'R     R',
-                'CR   RC',
-                ' RCBCR ',
-                /* prettier-ignore-end*/
-            ],
-            {
-                R: 'kubejs:draconic_stargate_ring_block',
-                C: 'kubejs:draconic_stargate_chevron_block',
-                B: 'kubejs:draconic_stargate_base_block',
-            }
-        )
-        .id('start:shaped/dsg');
+    isModLoaded(['sgjourney', 'kubejs_create'], () => {
+        event.recipes.create
+            .mechanical_crafting(
+                'sgjourney:pegasus_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
+                [
+                    /* prettier-ignore-start */
+                    ' CRCRC ',
+                    'RR   RR',
+                    'C     C',
+                    'R     R',
+                    'R     R',
+                    'CR   RC',
+                    ' RCBCR ',
+                    /* prettier-ignore-end*/
+                ],
+                {
+                    R: 'kubejs:draconic_stargate_ring_block',
+                    C: 'kubejs:draconic_stargate_chevron_block',
+                    B: 'kubejs:draconic_stargate_base_block',
+                }
+            )
+            .id('start:shaped/dsg');
+    });
 });

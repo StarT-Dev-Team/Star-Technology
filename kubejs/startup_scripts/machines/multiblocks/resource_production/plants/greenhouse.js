@@ -32,35 +32,36 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT, GTRecipeModifiers.BATCH_MODE])
         .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('HHHHHHH', ' FGGGF ', ' FGGGF ', ' FGGGF ', '  FFF  ')
-                .aisle('HDgggDH', 'FB###BF', 'FB###BF', 'FB###BF', ' F###F ')
-                .aisle('HgggggH', 'G#####G', 'G#####G', 'G##L##G', 'F#####F')
-                .aisle('HggDggH', 'G##O##G', 'G##O##G', 'G#LOL#G', 'F##L##F')
-                .aisle('HgggggH', 'G#####G', 'G#####G', 'G##L##G', 'F#####F')
-                .aisle('HDgggDH', 'FB###BF', 'FB###BF', 'FB###BF', ' F###F ')
-                .aisle('HHHCHHH', ' FGGGF ', ' FGGGF ', ' FGGGF ', '  FFF  ')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'H',
-                    Predicates.blocks(GTBlocks.CASING_STEEL_SOLID.get())
-                        .setMinGlobalLimited(14)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('B', Predicates.blocks('gtceu:soul_infused_block'))
-                .where('O', Predicates.blocks('minecraft:oak_log'))
-                .where('L', Predicates.blocks('minecraft:oak_leaves'))
-                .where('D', Predicates.blocks('minecraft:dirt'))
-                .where('F', Predicates.blocks('gtceu:steel_frame'))
-                .where('G', Predicates.blocks('thermal:obsidian_glass'))
-                .where('g', Predicates.blocks('minecraft:grass_block'))
-                .where('#', Predicates.air())
-                .where(' ', Predicates.any())
+            newFactoryBlockPattern([
+                'HHHHHHH| FGGGF | FGGGF | FGGGF |  FFF  ',
+                'HDgggDH|FB###BF|FB###BF|FB###BF| F###F ',
+                'HgggggH|G#####G|G#####G|G##L##G|F#####F',
+                'HggDggH|G##O##G|G##O##G|G#LOL#G|F##L##F',
+                'HgggggH|G#####G|G#####G|G##L##G|F#####F',
+                'HDgggDH|FB###BF|FB###BF|FB###BF| F###F ',
+                'HHHCHHH| FGGGF | FGGGF | FGGGF |  FFF  ',
+            ])
+                .whereDict({
+                    C: P.controller(definition),
+                    H: P.anyOf([
+                        P.block(GTBlocks.CASING_STEEL_SOLID.get(), { min: 14 }),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 2, view: 1 }),
+                        P.ability(PA.fluidOut, { max: 2, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    B: P.gtBlock('soul_infused_block'),
+                    O: P.block('minecraft:oak_log'),
+                    L: P.block('minecraft:oak_leaves'),
+                    D: P.block('minecraft:dirt'),
+                    F: P.gtBlock('steel_frame'),
+                    G: P.block('thermal:obsidian_glass'),
+                    g: P.block('minecraft:grass_block'),
+                    '#': P.air(),
+                    ' ': P.any(),
+                })
                 .build()
         )
         .workableCasingModel(

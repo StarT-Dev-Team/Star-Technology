@@ -1,5 +1,7 @@
+// requires: ae2
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     // Credit for the idea of uncrafting Crafting Storage and Storage Cells in packers goes to AncientSkies
 
@@ -18,6 +20,11 @@ ServerEvents.recipes((event) => {
 
     //storage cells
 
+    /**
+     * @param {number} tier
+     * @param {string} type
+     * @param {string} mat
+     */
     const packaging = (tier, type, mat) => {
         //Base
         event.remove({ output: `ae2:${type}_storage_cell_${tier}k` });
@@ -49,105 +56,232 @@ ServerEvents.recipes((event) => {
             .duration(100)
             .EUt(7);
 
-        //MEGA
-        event.remove({ output: `megacells:${type}_storage_cell_${tier}m` });
+        isModLoaded('megacells', () => {
+            event.remove({ output: `megacells:${type}_storage_cell_${tier}m` });
+            event.recipes.gtceu
+                .assembler(id(`${type}_storage_cell_${tier}m`))
+                .itemInputs(
+                    `6x gtceu:netherite_${mat}_skystone_alloy_plate`,
+                    `megacells:cell_component_${tier}m`,
+                    'gtceu:laminated_glass',
+                    '4x #gtceu:circuits/ev'
+                )
+                .inputFluids('gtceu:fluix_steel 576')
+                .itemOutputs(`megacells:${type}_storage_cell_${tier}m`)
+                .duration(400)
+                .EUt(7680);
+
+            event.recipes.gtceu
+                .canner(id(`${type}_storage_cell_${tier}m`))
+                .itemInputs(`megacells:mega_${type}_cell_housing`, `megacells:cell_component_${tier}m`)
+                .itemOutputs(`megacells:${type}_storage_cell_${tier}m`)
+                .duration(400)
+                .EUt(7680);
+
+            event.recipes.gtceu
+                .packer(id(`${type}_cell_${tier}m_uncrafting`))
+                .itemInputs(`megacells:${type}_storage_cell_${tier}m`)
+                .itemOutputs(`megacells:mega_${type}_cell_housing`, `megacells:cell_component_${tier}m`)
+                .circuit(2)
+                .duration(100)
+                .EUt(7);
+        });
+    };
+
+    // Duals
+    isModLoaded('expandedae', () => {
+        ['dual_cell_housing', 'mega_dual_cell_housing'].forEach((type) => {
+            event.remove({ output: `expandedae:${type}` });
+            const tierCons = type === 'dual_cell_housing' ? 'MV' : 'IV';
+            const cellType = type === 'dual_cell_housing' ? 'ae2:' : 'megacells:mega_';
+
+            event.recipes.gtceu
+                .canner(id(`${type}`))
+                .itemInputs(`${cellType}item_cell_housing`, `${cellType}fluid_cell_housing`)
+                .itemOutputs(`expandedae:${type}`)
+                .duration(400)
+                .EUt(GTValues.VA[GTValues[tierCons]]);
+        });
+
+        ['1', '4', '16', '64', '256'].forEach((type) => {
+            event.remove({ output: `expandedae:dual_storage_cell_${type}k` });
+            event.remove({ output: `expandedae:dual_storage_cell_${type}m` });
+
+            event.recipes.gtceu
+                .canner(id(`dual_storage_cell_${type}k`))
+                .itemInputs('expandedae:dual_cell_housing', `ae2:cell_component_${type}k`)
+                .itemOutputs(`expandedae:dual_storage_cell_${type}k`)
+                .duration(400)
+                .EUtVA(MV);
+
+            event.recipes.gtceu
+                .canner(id(`dual_storage_cell_${type}m`))
+                .itemInputs('expandedae:mega_dual_cell_housing', `megacells:cell_component_${type}m`)
+                .itemOutputs(`expandedae:dual_storage_cell_${type}m`)
+                .duration(400)
+                .EUtVA(IV);
+        });
+
+        const transformerDict = /** @type {const} */ ({
+            4: ['ulv', 1, 'wrought_iron'],
+            16: ['lv', 2, 'steel'],
+            64: ['mv', 4, 'aluminium'],
+            256: ['hv', 8, 'stainless_steel'],
+            '1k': ['ev', 16, 'titanium'],
+            '4k': ['iv', 32, 'tungsten_steel'],
+            '16k': ['luv', 64, 'rhodium_plated_palladium'],
+            '64k': ['zpm', 128, 'naquadah_alloy'],
+            '256k': ['uv', 256, 'darmstadtium'],
+            '1m': ['uhv', 512, 'neutronium'],
+        });
+
+        /**
+         * @param {number} tier
+         */
+        const expandedAccelerator = (tier) => {
+            const suffixList = ['', 'k', 'm'];
+            [0, 1].forEach((suffixPos) => {
+                const previous = `${tier === 1 ? 256 : tier / 4}${suffixList[suffixPos]}`;
+                const lower = `${tier === 1 ? 512 : tier / 2}${suffixList[suffixPos]}`;
+                const current = /** @type {keyof typeof transformerDict} */ (
+                    `${tier}${tier === 1 ? suffixList[suffixPos + 1] : suffixList[suffixPos]}`
+                );
+
+                const voltage = transformerDict[current][0];
+                const previousAcceleratorCraft =
+                    suffixPos === 0 && tier === 4
+                        ? 'ae2:crafting_accelerator'
+                        : `expandedae:exp_crafting_accelerator_${previous}`;
+                const lowerAccelerator = `expandedae:exp_crafting_accelerator_${lower}`;
+                const currentAccelerator = `expandedae:exp_crafting_accelerator_${current}`;
+
+                event.remove({ output: lowerAccelerator });
+
+                event
+                    .shapeless(`2x ${lowerAccelerator}`, currentAccelerator)
+                    .id(`start:shapeless/exp_crafting_accelerator_${current}_uncompressing`);
+
+                event.recipes.gtceu
+                    .me_assembler(id(`exp_crafting_accelerator_${current}`))
+                    .itemInputs(
+                        `gtceu:${transformerDict[current][2]}_frame`,
+                        `3x ${previousAcceleratorCraft}`,
+                        `2x #gtceu:circuits/${voltage}`,
+                        `6x gtceu:${suffixPos === 1 ? 'netherite_' : ''}certus_quartz_skystone_alloy_plate`
+                    )
+                    .inputFluids(`gtceu:fluix_steel ${18 * transformerDict[current][1]}`)
+                    .itemOutputs(currentAccelerator)
+                    .duration(200)
+                    .EUt(global.vha[voltage]);
+            });
+        };
+
+        [1, 4, 16, 64, 256].forEach((tier) => expandedAccelerator(tier));
+
+        isModLoaded('megacells', () => {
+            [
+                { type: 'item', mat: 'certus_quartz' },
+                { type: 'fluid', mat: 'gold' },
+            ].forEach((cell) => {
+                const { type, mat } = cell;
+                event.recipes.gtceu
+                    .me_assembler(id(`artificial_universe_${type}_cell`))
+                    .itemInputs(
+                        '4x gtceu:void_frame',
+                        '8x megacells:cell_component_256m',
+                        '#gtceu:circuits/uev',
+                        `16x gtceu:double_netherite_${mat}_skystone_alloy_plate`
+                    )
+                    .inputFluids('gtceu:utopian_akreyrium 9216')
+                    .itemOutputs(`expandedae:artificial_universe_${type}_cell`)
+                    .duration(800)
+                    .EUtVHA(UEV);
+            });
+        });
+    });
+
+    isModLoaded('megacells', () => {
+        event.remove({ id: 'megacells:cells/standard/bulk_item_cell' });
         event.recipes.gtceu
-            .assembler(id(`${type}_storage_cell_${tier}m`))
+            .assembler(id('bulk_item_cell'))
             .itemInputs(
-                `6x gtceu:netherite_${mat}_skystone_alloy_plate`,
-                `megacells:cell_component_${tier}m`,
+                '6x gtceu:netherite_certus_quartz_skystone_alloy_plate',
+                'megacells:bulk_cell_component',
                 'gtceu:laminated_glass',
                 '4x #gtceu:circuits/ev'
             )
             .inputFluids('gtceu:fluix_steel 576')
-            .itemOutputs(`megacells:${type}_storage_cell_${tier}m`)
+            .itemOutputs('megacells:bulk_item_cell')
+            .circuit(1)
             .duration(400)
-            .EUt(7680);
+            .EUt(8192);
 
         event.recipes.gtceu
-            .canner(id(`${type}_storage_cell_${tier}m`))
-            .itemInputs(`megacells:mega_${type}_cell_housing`, `megacells:cell_component_${tier}m`)
-            .itemOutputs(`megacells:${type}_storage_cell_${tier}m`)
+            .canner(id('bulk_item_cell'))
+            .itemInputs('megacells:mega_item_cell_housing', 'megacells:bulk_cell_component')
+            .itemOutputs('megacells:bulk_item_cell')
             .duration(400)
-            .EUt(7680);
+            .EUt(8192);
 
         event.recipes.gtceu
-            .packer(id(`${type}_cell_${tier}m_uncrafting`))
-            .itemInputs(`megacells:${type}_storage_cell_${tier}m`)
-            .itemOutputs(`megacells:mega_${type}_cell_housing`, `megacells:cell_component_${tier}m`)
+            .packer(id('bulk_item_cell_uncrafting'))
+            .itemInputs('megacells:bulk_item_cell')
+            .itemOutputs('megacells:mega_item_cell_housing', 'megacells:bulk_cell_component')
             .circuit(2)
             .duration(100)
             .EUt(7);
-    };
 
-    //Duals
-    let tierCons;
-    let cellType;
-
-    ['dual_cell_housing', 'mega_dual_cell_housing'].forEach((type) => {
-        event.remove({ output: `expandedae:${type}` });
-        tierCons = type === 'dual_cell_housing' ? 'MV' : 'IV';
-        cellType = type === 'dual_cell_housing' ? 'ae2:' : 'megacells:mega_';
-
+        event.remove({ id: 'megacells:cells/mega_item_cell_housing' });
         event.recipes.gtceu
-            .canner(id(`${type}`))
-            .itemInputs(`${cellType}item_cell_housing`, `${cellType}fluid_cell_housing`)
-            .itemOutputs(`expandedae:${type}`)
+            .assembler(id('mega_item_cell_housing'))
+            .itemInputs([
+                '6x gtceu:netherite_certus_quartz_skystone_alloy_plate',
+                'gtceu:laminated_glass',
+                '4x #gtceu:circuits/ev',
+            ])
+            .inputFluids('gtceu:fluix_steel 576')
+            .itemOutputs('megacells:mega_item_cell_housing')
             .duration(400)
-            .EUt(GTValues.VA[GTValues[tierCons]]);
+            .circuit(2)
+            .EUt(1920);
+
+        event.remove({ id: 'megacells:cells/mega_fluid_cell_housing' });
+        event.recipes.gtceu
+            .assembler(id('mega_fluid_cell_housing'))
+            .itemInputs([
+                '6x gtceu:netherite_gold_skystone_alloy_plate',
+                'gtceu:laminated_glass',
+                '4x #gtceu:circuits/ev',
+            ])
+            .inputFluids('gtceu:fluix_steel 576')
+            .itemOutputs('megacells:mega_fluid_cell_housing')
+            .duration(400)
+            .circuit(1)
+            .EUt(1920);
+
+        isModLoaded('expandedae', () => {
+            event.recipes.gtceu
+                .draco_infusion(id('singularity_crafting_storage'))
+                .itemInputs(
+                    '3x megacells:256m_crafting_storage',
+                    '8x gtceu:double_netherite_certus_quartz_skystone_alloy_plate',
+                    '8x kubejs:decaying_star',
+                    '8x gtceu:quantum_star',
+                    '8x gtceu:double_ancient_netherite_plate',
+                    '8x gtceu:double_netherite_gold_skystone_alloy_plate',
+                    '8x gtceu:gravi_star'
+                )
+                .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576')
+                .itemOutputs('expandedae:singularity_crafting_storage')
+                .duration(1200)
+                .EUtVHA(UIV);
+        });
     });
-
-    ['1', '4', '16', '64', '256'].forEach((type) => {
-        event.remove({ output: `expandedae:dual_storage_cell_${type}k` });
-        event.remove({ output: `expandedae:dual_storage_cell_${type}m` });
-
-        event.recipes.gtceu
-            .canner(id(`dual_storage_cell_${type}k`))
-            .itemInputs('expandedae:dual_cell_housing', `ae2:cell_component_${type}k`)
-            .itemOutputs(`expandedae:dual_storage_cell_${type}k`)
-            .duration(400)
-            .EUt(GTValues.VA[GTValues.MV]);
-
-        event.recipes.gtceu
-            .canner(id(`dual_storage_cell_${type}m`))
-            .itemInputs('expandedae:mega_dual_cell_housing', `megacells:cell_component_${type}m`)
-            .itemOutputs(`expandedae:dual_storage_cell_${type}m`)
-            .duration(400)
-            .EUt(GTValues.VA[GTValues.IV]);
-    });
-
-    event.remove({ id: 'megacells:cells/standard/bulk_item_cell' });
-    event.recipes.gtceu
-        .assembler(id('bulk_item_cell'))
-        .itemInputs(
-            `6x gtceu:netherite_certus_quartz_skystone_alloy_plate`,
-            'megacells:bulk_cell_component',
-            'gtceu:laminated_glass',
-            '4x #gtceu:circuits/ev'
-        )
-        .inputFluids('gtceu:fluix_steel 576')
-        .itemOutputs('megacells:bulk_item_cell')
-        .circuit(1)
-        .duration(400)
-        .EUt(8192);
-
-    event.recipes.gtceu
-        .canner(id('bulk_item_cell'))
-        .itemInputs('megacells:mega_item_cell_housing', 'megacells:bulk_cell_component')
-        .itemOutputs('megacells:bulk_item_cell')
-        .duration(400)
-        .EUt(8192);
-
-    event.recipes.gtceu
-        .packer(id('bulk_item_cell_uncrafting'))
-        .itemInputs('megacells:bulk_item_cell')
-        .itemOutputs('megacells:mega_item_cell_housing', 'megacells:bulk_cell_component')
-        .circuit(2)
-        .duration(100)
-        .EUt(7);
 
     //crafting storage
-
+    /**
+     * @param {number} tier
+     */
     const craftingStorage = (tier) => {
         //Base
         event.remove({ output: `ae2:${tier}k_crafting_storage` });
@@ -166,86 +300,37 @@ ServerEvents.recipes((event) => {
             .duration(100)
             .EUt(7);
 
-        //MEGA
-        event.remove({ output: `megacells:${tier}m_crafting_storage` });
-        event.recipes.gtceu
-            .canner(id(`${tier}m_crafting_storage`))
-            .itemInputs('megacells:mega_crafting_unit', `megacells:cell_component_${tier}m`)
-            .itemOutputs(`megacells:${tier}m_crafting_storage`)
-            .duration(200)
-            .EUt(120);
-
-        event.recipes.gtceu
-            .packer(id(`crafting_storage_${tier}m_uncrafting`))
-            .itemInputs(`megacells:${tier}m_crafting_storage`)
-            .itemOutputs('megacells:mega_crafting_unit', `megacells:cell_component_${tier}m`)
-            .circuit(2)
-            .duration(100)
-            .EUt(7);
-    };
-
-    const transformerDict = {
-        4: ['ulv', 1, 'wrought_iron'],
-        16: ['lv', 2, 'steel'],
-        64: ['mv', 4, 'aluminium'],
-        256: ['hv', 8, 'stainless_steel'],
-        '1k': ['ev', 16, 'titanium'],
-        '4k': ['iv', 32, 'tungsten_steel'],
-        '16k': ['luv', 64, 'rhodium_plated_palladium'],
-        '64k': ['zpm', 128, 'naquadah_alloy'],
-        '256k': ['uv', 256, 'darmstadtium'],
-        '1m': ['uhv', 512, 'neutronium'],
-    };
-
-    const expandedAccelerator = (tier) => {
-        const suffixList = ['', 'k', 'm'];
-        [0, 1].forEach((suffixPos) => {
-            const previous = `${tier === 1 ? 256 : tier / 4}${suffixList[suffixPos]}`;
-            const lower = `${tier === 1 ? 512 : tier / 2}${suffixList[suffixPos]}`;
-            const current = `${tier}${tier === 1 ? suffixList[suffixPos + 1] : suffixList[suffixPos]}`;
-
-            const voltage = transformerDict[current][0];
-            const previousAcceleratorCraft =
-                suffixPos === 0 && tier === 4
-                    ? 'ae2:crafting_accelerator'
-                    : `expandedae:exp_crafting_accelerator_${previous}`;
-            const lowerAccelerator = `expandedae:exp_crafting_accelerator_${lower}`;
-            const currentAccelerator = `expandedae:exp_crafting_accelerator_${current}`;
-
-            event.remove({ output: lowerAccelerator });
-
-            event
-                .shapeless(`2x ${lowerAccelerator}`, currentAccelerator)
-                .id(`start:shapeless/exp_crafting_accelerator_${current}_uncompressing`);
+        isModLoaded('megacells', () => {
+            event.remove({ output: `megacells:${tier}m_crafting_storage` });
+            event.recipes.gtceu
+                .canner(id(`${tier}m_crafting_storage`))
+                .itemInputs('megacells:mega_crafting_unit', `megacells:cell_component_${tier}m`)
+                .itemOutputs(`megacells:${tier}m_crafting_storage`)
+                .duration(200)
+                .EUt(120);
 
             event.recipes.gtceu
-                .me_assembler(id(`exp_crafting_accelerator_${current}`))
-                .itemInputs(
-                    `gtceu:${transformerDict[current][2]}_frame`,
-                    `3x ${previousAcceleratorCraft}`,
-                    `2x #gtceu:circuits/${voltage}`,
-                    `6x gtceu:${suffixPos === 1 ? 'netherite_' : ''}certus_quartz_skystone_alloy_plate`
-                )
-                .inputFluids(`gtceu:fluix_steel ${18 * transformerDict[current][1]}`)
-                .itemOutputs(currentAccelerator)
-                .duration(200)
-                .EUt(global.vha[voltage]);
+                .packer(id(`crafting_storage_${tier}m_uncrafting`))
+                .itemInputs(`megacells:${tier}m_crafting_storage`)
+                .itemOutputs('megacells:mega_crafting_unit', `megacells:cell_component_${tier}m`)
+                .circuit(2)
+                .duration(100)
+                .EUt(7);
         });
     };
-
-    event
-        .shapeless('expandedae:exp_crafting_accelerator_4', 'megacells:mega_crafting_accelerator')
-        .id('start:shapeless/mega_crafting_accelerator_deprecation');
 
     [1, 4, 16, 64, 256].forEach((tier) => {
         packaging(tier, 'item', 'certus_quartz');
         packaging(tier, 'fluid', 'gold');
 
         craftingStorage(tier);
-
-        expandedAccelerator(tier);
     });
 
+    /**
+     * @param {string} output
+     * @param {string} catalyst
+     * @param {boolean} Mega
+     */
     const canner = (output, catalyst, Mega) => {
         event.remove({ output: `ae2:crafting_${output}` });
         event.recipes.gtceu
@@ -263,23 +348,25 @@ ServerEvents.recipes((event) => {
             .duration(100)
             .EUt(7);
 
-        event.remove({ output: `megacells:mega_crafting_${output}` });
-        if (Mega) {
-            event.recipes.gtceu
-                .canner(id(`mega_crafting_${output}`))
-                .itemInputs('megacells:mega_crafting_unit', `ae2:${catalyst}`)
-                .itemOutputs(`megacells:mega_crafting_${output}`)
-                .duration(200)
-                .EUt(120);
+        isModLoaded('megacells', () => {
+            if (Mega) {
+                event.remove({ output: `megacells:mega_crafting_${output}` });
+                event.recipes.gtceu
+                    .canner(id(`mega_crafting_${output}`))
+                    .itemInputs('megacells:mega_crafting_unit', `ae2:${catalyst}`)
+                    .itemOutputs(`megacells:mega_crafting_${output}`)
+                    .duration(200)
+                    .EUt(120);
 
-            event.recipes.gtceu
-                .packer(id(`mega_crafting_${output}_uncrafting`))
-                .itemInputs(`megacells:mega_crafting_${output}`)
-                .itemOutputs('megacells:mega_crafting_unit', `ae2:${catalyst}`)
-                .circuit(2)
-                .duration(100)
-                .EUt(7);
-        }
+                event.recipes.gtceu
+                    .packer(id(`mega_crafting_${output}_uncrafting`))
+                    .itemInputs(`megacells:mega_crafting_${output}`)
+                    .itemOutputs('megacells:mega_crafting_unit', `ae2:${catalyst}`)
+                    .circuit(2)
+                    .duration(100)
+                    .EUt(7);
+            }
+        });
     };
 
     canner('accelerator', 'engineering_processor', false);
@@ -293,7 +380,7 @@ ServerEvents.recipes((event) => {
                 'gtceu:sky_steel_frame',
                 `ae2:spatial_cell_component_${tier}`,
                 '8x gtceu:ram_chip',
-                `4x gtceu:certus_quartz_skystone_alloy_plate`
+                '4x gtceu:certus_quartz_skystone_alloy_plate'
             )
             .inputFluids('gtceu:soldering_alloy 144')
             .itemOutputs(`ae2:spatial_storage_cell_${tier}`)
@@ -315,45 +402,4 @@ ServerEvents.recipes((event) => {
             .duration(100)
             .EUt(7);
     });
-
-    event.remove({ id: 'megacells:cells/mega_item_cell_housing' });
-    event.recipes.gtceu
-        .assembler(id('mega_item_cell_housing'))
-        .itemInputs([
-            '6x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-            'gtceu:laminated_glass',
-            '4x #gtceu:circuits/ev',
-        ])
-        .inputFluids('gtceu:fluix_steel 576')
-        .itemOutputs('megacells:mega_item_cell_housing')
-        .duration(400)
-        .circuit(2)
-        .EUt(1920);
-
-    event.remove({ id: 'megacells:cells/mega_fluid_cell_housing' });
-    event.recipes.gtceu
-        .assembler(id('mega_fluid_cell_housing'))
-        .itemInputs(['6x gtceu:netherite_gold_skystone_alloy_plate', 'gtceu:laminated_glass', '4x #gtceu:circuits/ev'])
-        .inputFluids('gtceu:fluix_steel 576')
-        .itemOutputs('megacells:mega_fluid_cell_housing')
-        .duration(400)
-        .circuit(1)
-        .EUt(1920);
-
-    //Singularity
-    event.recipes.gtceu
-        .draco_infusion(id(`singularity_crafting_storage`))
-        .itemInputs(
-            '3x megacells:256m_crafting_storage',
-            '8x gtceu:double_netherite_certus_quartz_skystone_alloy_plate',
-            '8x kubejs:helish_star',
-            '8x gtceu:quantum_star',
-            '8x gtceu:double_ancient_netherite_plate',
-            '8x gtceu:double_netherite_gold_skystone_alloy_plate',
-            '8x gtceu:gravi_star'
-        )
-        .inputFluids(`gtceu:indium_tin_lead_cadmium_soldering_alloy 576`)
-        .itemOutputs(`expandedae:singularity_crafting_storage`)
-        .duration(1200)
-        .EUt(GTValues.VHA[GTValues.UIV]);
 });

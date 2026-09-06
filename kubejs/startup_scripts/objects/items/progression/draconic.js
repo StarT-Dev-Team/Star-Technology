@@ -1,13 +1,13 @@
 StartupEvents.registry('item', (event) => {
     // === UEV/UIV Component Catalyst ===
     event
-        .create('helish_star')
-        .tooltip(Text.translate('item.kubejs.helish_star.tooltip'))
-        .texture('kubejs:item/progression/draconic/helish_star');
+        .create('decaying_star')
+        .tooltip(Text.translate('item.kubejs.decaying_star.tooltip'))
+        .texture('kubejs:item/progression/draconic/decaying_star');
 
-    event.create('dragonic_eye').tooltip(Text.translate('item.kubejs.dragonic_eye.tooltip')).textureJson({
-        layer0: `kubejs:item/progression/draconic/dragonic_eye`,
-        layer1: `kubejs:item/progression/draconic/dragonic_eye_overlay`,
+    event.create('draconic_eye').tooltip(Text.translate('item.kubejs.draconic_eye.tooltip')).textureJson({
+        layer0: 'kubejs:item/progression/draconic/draconic_eye',
+        layer1: 'kubejs:item/progression/draconic/draconic_eye_overlay',
     });
 
     // === Hellforge Catalyst ===

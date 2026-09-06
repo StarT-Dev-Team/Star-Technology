@@ -1,15 +1,4 @@
 {
-    "block.gtceu.lv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.mv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.hv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.ev_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.iv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.luv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.zpm_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-    "block.gtceu.uv_mystical_greenhouse.tooltip": "§7Sieving is boring. How about some agriculture?",
-
-    "block.gtceu.theta2Removals.tooltip": "§4§lDeprecated. Will be removed in Theta 2",
-
     "block.gtceu.dimensional_finder.tooltip.0": "§7Get Dimensionally Pinged",
     "block.gtceu.dimensional_finder.tooltip.1": "§7This machine can send pulses into deep space, recording the echoes on crystals, and can sometimes triangulate a region's location based on that data.",
 
@@ -17,12 +6,12 @@
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.1": "§7A reintegration device designed to recombine Akreyrium. By folding the distinct variants of Akreyrium through a precise stabilization matrix over a crystal, a highly refined and pure version of Akreyrium can be obtained.",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.2": "§8-----------------------------------",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.3": "§6Stabilisation Matrix Lens:",
-    "block.gtceu.folding_akreyrium_stabiliser.tooltip.4": "§7The folding stabiliser utilises a lens to focus the reintegration, The proper type should be chosen based on the Akreyrium variant, reinsertion is necessary after every use.",
+    "block.gtceu.folding_akreyrium_stabiliser.tooltip.4": "§7The folding stabiliser utilises a lens to focus the reintegration. The proper type should be chosen based on the Akreyrium variant, and reinsertion is necessary after every use.",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.5": "§8-----------------------------------",
 
     "block.gtceu.abyssal_akreyriadix_stabiliser": "Abyssal Akreyriadix Stabiliser [AAS]",
     "block.gtceu.abyssal_akreyriadix_stabiliser.tooltip.0": "§6§lBoosted Akreyrium Processor",
-    "block.gtceu.abyssal_akreyriadix_stabiliser.tooltip.1": "§7An evolved device designed to recombine Akreyriadic Materials. By folding the distinct variantions of Akreyrium through a precise stabilization matrixes, a highly refined and pure version of Akreyriadic Materials can be obtained.",
+    "block.gtceu.abyssal_akreyriadix_stabiliser.tooltip.1": "§7An evolved device designed to recombine Akreyriadic materials. By folding the distinct variants of Akreyrium through a precise stabilization matrix, a highly refined and pure version of Akreyriadic materials can be obtained.",
     "gtceu.abyssal_akreyriadix_stabiliser": "Abyssal Akreyriadix Stabilisation",
 
     "block.gtceu.gate_assembly.tooltip.0": "§7A forge powerful enough to fuse together the parts of a stargate into one.",
@@ -45,7 +34,7 @@
     "block.gtceu.exotic_gas_siphon.tooltip.1": "§7Utilising precision filtration and molecular isolation technologies, it efficiently separates exotic compounds from ambient environments, ensuring high-purity yields for any applications.",
     "block.gtceu.exotic_gas_siphon.tooltip.2": "§8-----------------------------------",
     "block.gtceu.exotic_gas_siphon.tooltip.3": "§6Exotic Gas Siphoning:",
-    "block.gtceu.exotic_gas_siphon.tooltip.4": "§7Siphons exotic gasses directly from the atmosphere through a complex filtration and refining process, directly condensing traditional collection and distillation methods.",
+    "block.gtceu.exotic_gas_siphon.tooltip.4": "§7Siphons exotic gases directly from the atmosphere through a complex filtration and refining process, directly condensing traditional collection and distillation methods.",
     "block.gtceu.exotic_gas_siphon.tooltip.5": "",
     "block.gtceu.exotic_gas_siphon.tooltip.6": "§6Gas Collector:",
     "block.gtceu.exotic_gas_siphon.tooltip.7": "§7This machine can collect the ambient air in the surrounding atmosphere, providing the same functionality as a basic §fGas Collector§7.",
@@ -57,11 +46,11 @@
     "block.gtceu.nuclear_reactor.tooltip.0": "§7A medium sized reactor that can use relatively simple nuclear reactions to make some extremely useful materials.",
     "block.gtceu.nuclear_reactor.tooltip.1": "Can use §3Parallel§r hatches",
 
-    "block.gtceu.primitive_ore_factory.tooltip.0": "§7Your first all in one ore processing machine.",
+    "block.gtceu.primitive_ore_factory.tooltip.0": "§7Your first all-in-one ore processing machine.",
 
-    "block.gtceu.steam_ore_factory.tooltip.0": "§7A slightly more advanced ore processor, that can accept inputs from buses and hatches, and because of that can be automated.",
+    "block.gtceu.steam_ore_factory.tooltip.0": "§7A slightly more advanced ore processor that can accept inputs from buses and hatches, and because of that can be automated.",
 
-    "block.gtceu.electric_ore_factory.tooltip.0": "§7The electric all in one ore processing machine.",
+    "block.gtceu.electric_ore_factory.tooltip.0": "§7The electric all-in-one ore processing machine.",
 
     "block.gtceu.ore_processing_plant.tooltip.0": "§7A new tier of ore processing machine that far exceeds the throughput capacity of the previous tier.",
 
@@ -84,7 +73,7 @@
 
     "block.gtceu.rock_filtrator.tooltip.0": "§7A multiblock that can sieve through gravel and sand more precisely than a basic sieve could ever achieve, uncovering the gems hidden inside.",
     "block.gtceu.rock_filtrator.tooltip.1": "",
-    "block.gtceu.rock_filtrator.tooltip.2": "§7You are gonna need multiple Output Buses",
+    "block.gtceu.rock_filtrator.tooltip.2": "§7You are going to need multiple output buses.",
 
     "block.gtceu.rock_sifter.tooltip.0": "§7A more powerful version of the Rock Filtrator, that can sieve materials at an astonishing speed.",
 
@@ -94,21 +83,17 @@
 
     "block.gtceu.void_excavator.tooltip.0": "§7A more powerful Void Extractor that can harvest the resources from the abyss with unparalleled speed.",
 
-    "block.gtceu.void_extractor.tooltip.0": "§7A machine that uses the ever present abyss under your feet to extract resources. Where they come from is unknown, but there is no time for those questions.",
+    "block.gtceu.void_extractor.tooltip.0": "§7A machine that uses the ever-present abyss under your feet to extract resources. Where they come from is unknown, but there is no time for those questions.",
     "block.gtceu.void_extractor.tooltip.1": "",
-    "block.gtceu.void_extractor.tooltip.2": "§7You are gonna need multiple Output Buses and Hatches",
-
-    "block.gtceu.essence_enchancer.tooltip.0": "§7A convoluted machine, that can infuse mystical essences with large amounts of electricity to trigger a change in their composition, making them more useful.",
-
-    "block.gtceu.essence_replicator.tooltip.0": "§7A machine that can duplicate essences indefinitely, although for the more advanced ones, it requires special fluids to function properly.",
+    "block.gtceu.void_extractor.tooltip.2": "§7You are going to need multiple output buses and hatches.",
 
     "block.gtceu.dimensional_destabiliser.tooltip.0": "§7A mysterious structure that can stimulate cracks in space to harvest heavy elements from it that have never been observed before.",
 
     "block.gtceu.greenhouse.tooltip.0": "§7An electrical machine that stimulates the growth of plants, flowers and saplings, allowing you to more easily farm them.",
 
-    "block.gtceu.latex_plantation.tooltip.0": "§7A multiblock that is way faster then the arboreal extractor for gathering latex",
+    "block.gtceu.latex_plantation.tooltip.0": "§7A multiblock that is way faster than the arboreal extractor for gathering latex.",
 
-    "block.gtceu.molten_destabiliser.tooltip.0": "§7A powerful machine that can splice complex molten chemicals into smaller chunks for processing",
+    "block.gtceu.molten_destabiliser.tooltip.0": "§7A powerful machine that can split complex molten chemicals into smaller chunks for processing.",
 
     "block.gtceu.cyclonic_sifter.tooltip.0": "§7An advanced tier of sifter that is more precise and stronger than the basic tier, allowing it to run better recipes.",
 
@@ -198,15 +183,10 @@
     "material.gtceu.debris": "Debris",
     "material.gtceu.purified_debris": "Purified Debris",
     "material.gtceu.netherite": "Netherite",
-    "block.gtceu.essence_replicator": "Essence Replicator [ER]",
-    "block.gtceu.essence_enchancer": "Essence Enhancer [EE]",
     "block.gtceu.greenhouse": "Greenhouse",
     "gtceu.tree_greenhouse": "Tree Greenhouse",
     "gtceu.crop_greenhouse": "Crop Greenhouse",
     "gtceu.wild_garden": "Wild Garden",
-    "gtceu.essence_burning": "Essence Burning",
-    "gtceu.essence_enchancing": "Essence Enchancing",
-    "gtceu.essence_replication": "Essence Replication",
     "gtceu.greenhouse_growing": "Mystical Greenhouse Growing",
     "block.gtceu.primitive_ore_factory": "Primitive Ore Factory [POF]",
     "gtceu.primitive_ore_processing": "Primitive Ore Processing",
@@ -498,9 +478,9 @@
     "gtceu.barrel": "Barrel Soaking",
     "gtceu.barrel_composting": "Barrel Composting",
     "gtceu.barrel_transformation": "Barrel Transformation",
-    "block.gtceu.ulv_barrel": "Wooden Barrel [WB]",
+    "block.gtceu.barrel": "Wooden Barrel [WB]",
     "gtceu.stone_barrel": "Barrel Formation",
-    "block.gtceu.ulv_stone_barrel": "Stone Barrel [SB]",
+    "block.gtceu.stone_barrel": "Stone Barrel [SB]",
     "gtceu.gate_assembly": "Stargate Assembly",
     "block.gtceu.gate_assembly": "Runic Stargate Assembler [RSA]",
     "material.gtceu.thorium_plut_duranide_241": "Thorium Plut-Duranide 241",
@@ -577,17 +557,17 @@
     "material.gtceu.astatium_bioselex_carbonite": "Astatium Bioselex Carbonite",
     "material.gtceu.brackish_water": "Brackish Water",
     "material.gtceu.nether_star_concentrate": "Nether Star Concentrate",
-    "material.gtceu.dissipated_helish_concentrate": "Dissipated Helish Concentrate",
-    "material.gtceu.helish_concentrate": "Helish Concentrate",
+    "material.gtceu.dissipated_hellish_concentrate": "Dissipated Hellish Concentrate",
+    "material.gtceu.hellish_concentrate": "Hellish Concentrate",
     "material.gtceu.hellfire_ash": "Hellfire Ash",
     "material.gtceu.bec_og": "Oganesson Stabilized Bose-Einstein Condensate",
     "material.gtceu.superstate_helium_3": "Superstate Helium 3",
     "material.gtceu.astatine_bis_tritelluride_cobo_selenium": "Astatine Bis-Tritelluride Cobo-Selenium",
     "material.gtceu.iron_titanium_oxide": "Iron Titanium Oxide",
 
-    "block.gtceu.ulv_advanced_composter": "Advanced Composter [AC]",
+    "block.gtceu.advanced_composter": "Advanced Composter [AC]",
     "gtceu.composting": "Composting",
-    "block.gtceu.ulv_casket": "Fermenting Casket [FC]",
+    "block.gtceu.casket": "Fermenting Casket [FC]",
     "gtceu.fermenting": "Fermenting",
 
     "material.gtceu.warped": "Warped",
@@ -663,20 +643,20 @@
     "material.gtceu.thiophene": "Thiophene",
     "material.gtceu.benzoyl_peroxide": "Benzoyl Peroxide",
     "material.gtceu.ferric_nitrate": "Ferric Nitrate",
-    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfate_paste": "[Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfate] Paste",
-    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfate": "Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfate",
+    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfonate_paste": "[Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfonate] Paste",
+    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfonate": "Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfonate",
     "material.gtceu.12_dibromoethane": "1,2-Dibromoethane",
     "material.gtceu.dimethylformamide": "Dimethylformamide",
     "material.gtceu.34_ethylenedioxythiophene": "3,4-Ethylenedioxythiophene",
     "material.gtceu.hydrogen_chloride": "Hydrogen Chloride",
     "material.gtceu.chlorosulfonic_acid": "Chlorosulfonic Acid",
-    "material.gtceu.polystyrene_sulfate": "Polystyrene Sulfate",
+    "material.gtceu.polystyrene_sulfonate": "Polystyrene Sulfonate",
     "material.gtceu.poly_34_ethylenedioxythiophene": "Poly(3,4-Ethylenedioxythiophene)",
     "material.gtceu.sorbitol": "Sorbitol",
     "material.gtceu.sorbitan": "Sorbitan",
     "material.gtceu.sorbitan_monoester": "Sorbitan Monoester",
     "material.gtceu.polysorbate_20": "Polysorbate-20",
-    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfate_solution": "[Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfate] Solution",
+    "material.gtceu.poly_34_ethylenedioxythiophene_polystyrene_sulfonate_solution": "[Poly(3,4-Ethylenedioxythiophene):Polystyrene Sulfonate] Solution",
     "material.gtceu.maleic_anhydride": "Maleic Anhydride",
     "material.gtceu.dimethyl_maleate": "Dimethyl Maleate",
     "material.gtceu.dimethyl_succinate": "Dimethyl Succinate",
@@ -800,8 +780,8 @@
     "material.gtceu.maxwellium": "Maxwellium",
 
     "material.gtceu.draconic_hormone_residue": "Draconic Hormone Residue",
-    "material.gtceu.drac_endrocritic_medium": "Drac-Endrocritic Medium",
-    "material.gtceu.drac_aurouric_endrocrinal_medium": "Drac-Aurouric Endrocrinal Medium",
+    "material.gtceu.drac_endocritic_medium": "Drac-Endocritic Medium",
+    "material.gtceu.drac_aurouric_endocrinal_medium": "Drac-Aurouric Endocrinal Medium",
     "material.gtceu.precursor_serum": "Precursor Serum",
     "material.gtceu.abyssal_nutrient_blend": "Abyssal Nutrient Blend",
     "material.gtceu.condensed_abyssal_nutrient_blend": "Condensed Abyssal Nutrient Blend",
@@ -871,7 +851,7 @@
     "block.gtceu.supreme_plasma_turbine.top.0": "§3§lBoosted Large Plasma Turbine",
     "block.gtceu.supreme_plasma_turbine.top.1": "§7A massive turbine capable of being boosted consuming extreme quantities of fuel for extreme quantities of power.",
     "block.gtceu.supreme_plasma_turbine.p1.1": "§eBase Production: §f16384 EU/t",
-    "block.gtceu.supreme_plasma_turbine.p1.2": "§7Each Rotor Holder above §9IV§7 multiplies efficiency by 10% and multiplies EU/t by 2.",
+    "block.gtceu.supreme_plasma_turbine.p1.2": "§7Each Rotor Holder above §9IV§7 increases efficiency by 10% and multiplies EU/t by 2.",
     "block.gtceu.supreme_plasma_turbine.p1.3": "§c§uTurbine Parallels: §7Turbine can run up to §a6x§7 as many recipes as a standard Large Plasma Turbine.",
     "block.gtceu.supreme_plasma_turbine.p2.1": "§6Lubricant Boosting: §7Consumes 1000B of §fTungsten Disulfide§7 an Hour for an additional §a+25% §fEU/t §7output, failure to do so leads to a loss of §4-10% §fEU/t §7output.",
     "block.gtceu.supreme_plasma_turbine.p2.2": "§3Coolant Boosting: §7Consumes 2500B of §fSuperstate Helium 3§7 an Hour for an additional §a+75% §fEU/t §7output.",
@@ -1296,6 +1276,13 @@
     "material.gtceu.einsteinium_253": "Einsteinium 253",
     "material.gtceu.fermium": "Fermium 257",
 
+    "material.gtceu.mox239_blend": "MOX-239 Blend",
+    "material.gtceu.mox241_blend": "MOX-241 Blend",
+    "material.gtceu.mox238_blend": "MOX-238 Blend",
+    "material.gtceu.nqe_blend": "NQE Blend",
+    "material.gtceu.tpu_blend": "TPU Blend",
+    "material.gtceu.etu_blend": "ETU Blend",
+
     "material.gtceu.hafnastide_rich_sludge": "Hafnastide-Rich Sludge",
     "material.gtceu.flerovium_rich_re_sludge": "Flerovium-Rich Re Sludge",
     "material.gtceu.pologium_rich_sludge": "Pologium-Rich Sludge",
@@ -1309,6 +1296,10 @@
 
     "block.gtceu.super_gas_collector": "Compression Gas Siphon [CGS]",
     "block.gtceu.super_gas_collector.tooltip.0": "§7Collects gas just a bit faster.",
+
+    "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
+    "block.gtceu.distillery_column.tooltip.0": "§7A large distillery with higher efficiency to replace your singleblocks.",
+    "block.gtceu.industrial_brewing_station.tooltip.0": "§7A large brewery with throughput boosting to replace your singleblocks.",
 
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§bStellarized§f Weapon Grade Naquadah",
@@ -1424,5 +1415,20 @@
     "block.gtceu.catto_shrine": "Catto Shrine [ᗢSh]",
     "block.gtceu.catto_shrine.tooltip.0": "§7§o5 Hours Nyan Cat",
     "block.gtceu.catto_shrine.tooltip.1": "§8§oMake your offerings known....",
-    "gtceu.catto_shrine": "Catto Shrine"
+    "gtceu.catto_shrine": "Catto Shrine",
+
+    "material.gtceu.latex": "Latex",
+
+    "block.gtceu.lv_compound_generator": "Basic Compound Generator [BCG]",
+    "block.gtceu.mv_compound_generator": "§bAdvanced Compound Generator§r [ACG]",
+    "block.gtceu.hv_compound_generator": "§6Advanced Compound Generator II§r [ACG II]",
+    "block.gtceu.compound_generator.desc": "§7A machine that can extend in size to generate more power. Can extend up to 8 slices, where each slice has 1 dynamo hatch and generates 2A of power.",
+    "block.gtceu.compound_generator.max_generation": "§7Maximum Generation: §f%s EU/t",
+
+    "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber [IEC]",
+    "block.gtceu.distillery_column": "Distillery Column [DC]",
+    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]",
+
+    "block.gtceu.network_hub": "Network Hub [NH]",
+    "gtceu.machine.network_hub.extension_tooltip": "Can extend in size to accommodate more computation hatches."
 }

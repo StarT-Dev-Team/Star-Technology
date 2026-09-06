@@ -1,4 +1,11 @@
 StartupEvents.registry('item', (event) => {
+    /**
+     * @param {string} type
+     * @param {GTTier} tier
+     * @param {string} composition
+     * @param {string} depeletedComposition
+     * @param {boolean} boolsumption
+     */
     const nuclearRod = (type, tier, composition, depeletedComposition, boolsumption) => {
         let activeRod = event
             .create(`${type}_fuel_rod`)
@@ -6,7 +13,7 @@ StartupEvents.registry('item', (event) => {
             .tooltip(composition)
             .textureJson({
                 layer0: `kubejs:item/resource_gen/nuclear_rods/${type}`,
-                layer1: `kubejs:item/resource_gen/nuclear_rods/enriched`,
+                layer1: 'kubejs:item/resource_gen/nuclear_rods/enriched',
             });
 
         if (boolsumption) {
@@ -23,7 +30,7 @@ StartupEvents.registry('item', (event) => {
             .tooltip('§k' + depeletedComposition)
             .textureJson({
                 layer0: `kubejs:item/resource_gen/nuclear_rods/dep_${type}`,
-                layer1: `kubejs:item/resource_gen/nuclear_rods/depleted`,
+                layer1: 'kubejs:item/resource_gen/nuclear_rods/depleted',
             });
     };
 

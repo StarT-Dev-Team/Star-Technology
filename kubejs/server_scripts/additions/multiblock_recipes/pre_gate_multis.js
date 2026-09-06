@@ -16,9 +16,10 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:component_part_assembly')
         .duration(1800)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_assembler')).EUt(GTValues.VHA[GTValues.ZPM]).CWUt(16)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_assembler')).EUt(GTValues.VHA[ZPM]).CWUt(16)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('heat_chamber'))
@@ -35,11 +36,9 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:hsss 6912', 'gtceu:niobium_nitride 1728')
         .itemOutputs('gtceu:heat_chamber')
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:zpm_electric_furnace'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(16)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_electric_furnace')).EUt(GTValues.VHA[ZPM]).CWUt(16)
         )
         .duration(2400)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 });

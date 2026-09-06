@@ -2,6 +2,15 @@ ServerEvents.recipes((event) => {
     const id = global.id;
 
     // === Controllers ===
+
+    /**
+     * @param {string} type
+     * @param {string[]} inputs
+     * @param {string[]} fluids
+     * @param {string} research
+     * @param {number} cwu
+     * @param {number} eu
+     */
     const wirelessControllers = (type, inputs, fluids, research, cwu, eu) => {
         event.recipes.gtceu
             .assembly_line(id(type))
@@ -39,7 +48,7 @@ ServerEvents.recipes((event) => {
         ],
         'gtceu:active_transformer',
         128,
-        GTValues.VHA[GTValues.UHV]
+        GTValues.VHA[UHV]
     );
 
     wirelessControllers(
@@ -63,7 +72,7 @@ ServerEvents.recipes((event) => {
         ],
         'start_core:dream_link_node',
         160,
-        GTValues.VHA[GTValues.UEV]
+        GTValues.VHA[UEV]
     );
 
     wirelessControllers(
@@ -83,19 +92,23 @@ ServerEvents.recipes((event) => {
             '64x kubejs:uepic_chip',
         ],
         [
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 25600',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 25600',
             'gtceu:naquadated_soldering_alloy 14400',
             'gtceu:isovol 12800',
         ],
         'start_core:oneiric_relay',
         192,
-        GTValues.VHA[GTValues.UIV]
+        GTValues.VHA[UIV]
     );
 
     // === Hatches & Covers ===
 
     const components = global.componentMaterials;
 
+    /**
+     * @param {keyof typeof global.componentMaterials} tierKey
+     * @param {string} specialFluid
+     */
     function wirelessPower(tierKey, specialFluid) {
         const tierData = components[tierKey];
 
@@ -104,11 +117,15 @@ ServerEvents.recipes((event) => {
         const {
             tiers: { tier },
             materials: { tierMaterial, cable, solder, chip, tierFluid },
-            scaling: { scaler, EU },
-            researchData: {
-                default: { cwuD },
-            },
+            scaling: tierScalingData,
+            researchData: tierResearchData,
         } = tierData;
+        const { EU, scaler } = tierScalingData || { EU: 1, scaler: 1 };
+        const {
+            default: { cwuD },
+        } = tierResearchData || {
+            default: { cwuD: 0 },
+        };
 
         let coilID = tier === 'uv' ? 'gtceu' : 'kubejs';
 
@@ -142,7 +159,7 @@ ServerEvents.recipes((event) => {
                 amperage === 2
                     ? '2a_dream_link_cover_item'
                     : amperage === 4
-                      ? `2a_dream_link_energy_hatch`
+                      ? '2a_dream_link_energy_hatch'
                       : `${amperage / 4}a_dream_link_energy_hatch`;
 
             let inputHatch =
@@ -204,6 +221,6 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576')
         .itemOutputs('start_core:lucinducer')
         .duration(600)
-        .EUt(GTValues.VA[GTValues.UV])
+        .EUtVA(UV)
         .cleanroom(CleanroomType.STERILE_CLEANROOM);
 });

@@ -136,6 +136,8 @@ ServerEvents.recipes((event) => {
         'create_new_age:shaped/basic_motor_extension',
         'create_new_age:advanced_motor_extension',
         'create_new_age:shaped/redstone_magnet',
+        'create_new_age:shaped/layered_magnet',
+        'create_new_age:shaped/fluxuated_magnetite',
         'createdieselgenerators:basin_fermenting/magma_cream',
         'gtceu:research_station/1_x_gtceu_uv_energy_input_hatch',
         'gtceu:research_station/1_x_gtceu_uv_energy_output_hatch',
@@ -167,7 +169,7 @@ ServerEvents.recipes((event) => {
         'gtceu:pyrolyse_oven/bio_chaff_to_fermented_biomass',
         'gtceu:fermenter/fermented_biomass',
         'gtceu:pyrolyse_oven/bio_chaff_to_biomass',
-        'gtceu:large_chemical_reactor/bacterial_sludge',
+        /gtceu:.*chemical_reactor\/bacterial_sludge/,
         'gtceu:brewery/bacteria',
         'gtceu:pyrolyse_oven/log_to_heavy_oil',
         'expandedae:crafting/giga_pattern_provider',
@@ -234,9 +236,6 @@ ServerEvents.recipes((event) => {
 
     event.remove({ input: 'minecraft:fire_charge' });
     event.remove({ input: 'thermal:earth_charge' });
-    event.remove({ mod: 'mysticalagriculture' });
-    event.remove({ mod: 'mysticalagradditions' });
-    event.remove({ mod: 'mysticaladaptations' });
     event.remove({ mod: 'sgjourney' });
     event.remove({ mod: 'jetboots' });
 

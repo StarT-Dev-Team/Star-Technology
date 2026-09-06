@@ -12,32 +12,30 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:superdense_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start($RelativeDirection.BACK, $RelativeDirection.UP, $RelativeDirection.RIGHT)
-                .aisle('SSISS', '@SDSS', 'SSSSS')
-                .aisle('TSIST', 'GRDRG', 'TSCST')
-                .setRepeatable(3, 15)
-                .aisle('SSOSS', 'SSDSS', 'SSSSS')
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'S',
-                    Predicates.blocks('kubejs:superdense_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(4).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.OPTICAL_DATA_RECEPTION).setExactLimit(1))
-                )
-                .where('G', Predicates.blocks('gtceu:fusion_glass'))
-                .where('D', Predicates.blocks('kubejs:superdense_assembly_machine_casing'))
-                .where('R', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-                .where('C', Predicates.blocks('gtceu:superconducting_coil'))
-                .where('I', Predicates.abilities(PartAbility.IMPORT_ITEMS))
-                .where(
-                    'O',
-                    Predicates.abilities(PartAbility.EXPORT_ITEMS).addTooltips(
+            newFactoryBlockPatternWithDirections(
+                $RelativeDirection.BACK,
+                $RelativeDirection.UP,
+                $RelativeDirection.RIGHT
+            )(['SSISS|@SDSS|SSSSS', 'TSIST|GRDRG|TSCST', blockPatternRepeatable(3, 15), 'SSOSS|SSDSS|SSSSS'])
+                .whereDict({
+                    '@': P.controller(definition),
+                    S: P.anyOf([
+                        P.kjsBlock('superdense_machine_casing'),
+                        P.ability(PA.fluidIn, { max: 4, view: 1 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.optIn, { exact: 1 }),
+                    ]),
+                    G: P.gtBlock('fusion_glass'),
+                    D: P.kjsBlock('superdense_assembly_machine_casing'),
+                    R: P.kjsBlock('superdense_assembly_control_casing'),
+                    C: P.gtBlock('superconducting_coil'),
+                    I: P.ability(PA.itemIn),
+                    O: P.ability(PA.itemOut).addTooltips(
                         Component.translatable('gtceu.multiblock.pattern.location_end')
-                    )
-                )
-                .where('T', Predicates.blocks('gtceu:assembly_line_grating'))
-                .where(' ', Predicates.any())
+                    ),
+                    T: P.gtBlock('assembly_line_grating'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         ['partSorter(java.util.function.Function)']((mc) => $AssemblyLineMulti.partSorter(mc))

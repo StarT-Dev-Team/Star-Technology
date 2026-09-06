@@ -20,29 +20,31 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.BATCH_MODE,
         ])
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle('A BBB A', 'A BBB A', 'A BBB A', 'A BBB A', 'A BBB A', 'AABBBAA')
-                .aisle(' BBBBB ', ' BCCCB ', ' BCCCB ', ' BCCCB ', ' BCCCB ', 'ABDDDBA')
-                .aisle('BBBBBBB', 'BCCCCCB', 'BCCCCCB', 'BCCCCCB', 'BCCCCCB', 'BDDDDDB')
-                .aisle('BBBBBBB', 'BCCCCCB', 'BCCCCCB', 'BCCCCCB', 'BCCCCCB', 'BDDDDDB')
-                .aisle('BBBBBBB', 'BCCCCCB', 'BCCCCCB', 'BCCCCCB', 'BCCCCCB', 'BDDDDDB')
-                .aisle(' BBBBB ', ' BCCCB ', ' BCCCB ', ' BCCCB ', ' BCCCB ', 'ABDDDBA')
-                .aisle('A BBB A', 'A B@B A', 'A BBB A', 'A BBB A', 'A BBB A', 'AABBBAA')
-                .where('A', Predicates.blocks('gtceu:blue_steel_frame'))
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('gtceu:clean_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(5).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(5).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('C', Predicates.blocks('minecraft:water'))
-                .where('D', Predicates.blocks('gtceu:laminated_glass'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                'A BBB A|A BBB A|A BBB A|A BBB A|A BBB A|AABBBAA',
+                ' BBBBB | BCCCB | BCCCB | BCCCB | BCCCB |ABDDDBA',
+                'BBBBBBB|BCCCCCB|BCCCCCB|BCCCCCB|BCCCCCB|BDDDDDB',
+                'BBBBBBB|BCCCCCB|BCCCCCB|BCCCCCB|BCCCCCB|BDDDDDB',
+                'BBBBBBB|BCCCCCB|BCCCCCB|BCCCCCB|BCCCCCB|BDDDDDB',
+                ' BBBBB | BCCCB | BCCCB | BCCCB | BCCCB |ABDDDBA',
+                'A BBB A|A B@B A|A BBB A|A BBB A|A BBB A|AABBBAA',
+            ])
+                .whereDict({
+                    A: P.gtBlock('blue_steel_frame'),
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.gtBlock('clean_machine_casing'),
+                        P.ability(PA.itemIn, { max: 5, view: 1 }),
+                        P.ability(PA.itemOut, { max: 2, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 5, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    C: P.block('minecraft:water'),
+                    D: P.gtBlock('laminated_glass'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

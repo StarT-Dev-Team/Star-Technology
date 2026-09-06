@@ -4,7 +4,7 @@ ServerEvents.recipes((event) => {
 
     const researchBuilder = global.researchBuilder;
     // global.researchBuilder = (machineType, recId, inputsI, inputsF, outputsI, duration, cwuT, totalCWU, euT, researched)
-    const riftAss = 'riftic_infusion_assembly';
+    const riftAss = /** @type {const} */ ('riftic_infusion_assembly');
     // const assLine = 'assembly_line';
 
     researchBuilder(
@@ -31,7 +31,7 @@ ServerEvents.recipes((event) => {
         1800,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'start_core:hellforge'
     );
 
@@ -61,7 +61,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:mega_abs'
     );
 
@@ -79,7 +79,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:neutronium_block'
     );
 
@@ -97,7 +97,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:titan_forge'
     );
 
@@ -115,7 +115,7 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:injection_mixer'
     );
 
@@ -133,14 +133,14 @@ ServerEvents.recipes((event) => {
         1200,
         500,
         500 * 1200,
-        GTValues.VA[GTValues.UIV],
+        GTValues.VA[UIV],
         'gtceu:cyclonic_sifter'
     );
 
     // event.recipes.gtceu.assembly_line(id('particle_rod_holder'))
     //     .itemInputs('gtceu:draco_abyssal_frame', '4x #gtceu:circuits/uxv', '4x gtceu:hvga_steel_ultradense_plate','2x kubejs:runic_wave_generator',
     //         '96x kubejs:uipic_chip','16x gtceu:uiv_field_generator')
-    //     .inputFluids('gtceu:neutrindium_soldering_alloy 122688','gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 81792')
+    //     .inputFluids('gtceu:neutrindium_soldering_alloy 122688','gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 81792')
     //     .itemOutputs('kubejs:particle_rod_holder')
     //     .stationResearch(
     //         researchRecipeBuilder => researchRecipeBuilder
@@ -153,7 +153,7 @@ ServerEvents.recipes((event) => {
 
     // event.recipes.gtceu.assembly_line(id('riftion_injection_core'))
     //     .itemInputs('gtceu:hvga_steel_frame', '24x #gtceu:circuits/uiv','4x kubejs:runic_wave_generator','4x gtceu:uiv_field_generator')
-    //     .inputFluids('gtceu:neutrindium_soldering_alloy 70848','gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 47232')
+    //     .inputFluids('gtceu:neutrindium_soldering_alloy 70848','gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 47232')
     //     .itemOutputs('kubejs:riftion_injection_core')
     //     .stationResearch(
     //         researchRecipeBuilder => researchRecipeBuilder

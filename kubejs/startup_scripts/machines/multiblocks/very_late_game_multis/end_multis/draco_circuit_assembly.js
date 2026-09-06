@@ -32,33 +32,37 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(() => Block.getBlock('kubejs:enriched_naquadah_machine_casing'))
         .pattern((definition) =>
-            FactoryBlockPattern.start($RelativeDirection.BACK, $RelativeDirection.UP, $RelativeDirection.RIGHT)
-                .aisle('SSISS', 'SSDSS', '@SSSS', ' SSS ')
-                .aisle('SSISS', 'GCDCG', 'RACAR', ' SGS ')
-                .setRepeatable(3, 15)
-                .aisle('SSOSS', 'SSDSS', 'SSSSS', ' SSS ')
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'S',
-                    Predicates.blocks('kubejs:enriched_naquadah_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(3).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.OPTICAL_DATA_RECEPTION).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                )
-                .where('G', Predicates.blocks('kubejs:draco_resilient_fusion_glass'))
-                .where('A', Predicates.blocks('kubejs:superdense_assembly_machine_casing'))
-                .where('C', Predicates.blocks('kubejs:superdense_assembly_control_casing'))
-                .where('D', Predicates.blocks('kubejs:draco_ware_casing'))
-                .where('I', Predicates.abilities(PartAbility.IMPORT_ITEMS))
-                .where(
-                    'O',
-                    Predicates.abilities(PartAbility.EXPORT_ITEMS).addTooltips(
+            newFactoryBlockPatternWithDirections(
+                $RelativeDirection.BACK,
+                $RelativeDirection.UP,
+                $RelativeDirection.RIGHT
+            )([
+                'SSISS|SSDSS|@SSSS| SSS ',
+                'SSISS|GCDCG|RACAR| SGS ',
+                blockPatternRepeatable(3, 15),
+                'SSOSS|SSDSS|SSSSS| SSS ',
+            ])
+                .whereDict({
+                    '@': P.controller(definition),
+                    S: P.anyOf([
+                        P.kjsBlock('enriched_naquadah_machine_casing'),
+                        P.ability(PA.fluidIn, { max: 3, view: 1 }),
+                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.optIn, { exact: 1 }),
+                        P.ability(PA.parallelHatch, { max: 1 }),
+                    ]),
+                    G: P.kjsBlock('draco_resilient_fusion_glass'),
+                    A: P.kjsBlock('superdense_assembly_machine_casing'),
+                    C: P.kjsBlock('superdense_assembly_control_casing'),
+                    D: P.kjsBlock('draco_ware_casing'),
+                    I: P.ability(PA.itemIn),
+
+                    O: P.ability(PA.itemOut).addTooltips(
                         Component.translatable('gtceu.multiblock.pattern.location_end')
-                    )
-                )
-                .where('R', Predicates.blocks('kubejs:draco_assembly_grating'))
-                .where(' ', Predicates.any())
+                    ),
+                    R: P.kjsBlock('draco_assembly_grating'),
+                    ' ': P.any(),
+                })
                 .build()
         )
         ['partSorter(java.util.function.Function)']((mc) => $AssemblyLineMulti.partSorter(mc))

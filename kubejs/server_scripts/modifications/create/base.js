@@ -1,8 +1,10 @@
-global.notHardmode(() => {
-    ServerEvents.recipes((event) => {
-        const id = global.id;
+// requires: create
+ServerEvents.recipes((event) => {
+    const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
-        //plates
+    //plates
+    isModLoaded('kubejs_create', () => {
         [
             {
                 mod: 'gtceu',
@@ -31,27 +33,35 @@ global.notHardmode(() => {
                     .id(`start:pressing/${foo}_plate`);
             });
         });
-
-        event
-            .shapeless('2x create:andesite_alloy', ['2x minecraft:iron_nugget', '2x exnihilosequentia:andesite_pebble'])
-            .id(id('shapeless/andesite_alloy_pebble'));
-        event
-            .shapeless('16x create:andesite_alloy', ['4x minecraft:andesite', '5x minecraft:iron_nugget'])
-            .id(id('shapeless/andesite_alloy_block'));
-
-        event
-            .shaped('create:precision_mechanism', ['NBN', 'SPS', 'NBN'], {
-                N: 'minecraft:iron_nugget',
-                B: 'create:large_cogwheel',
-                S: 'create:cogwheel',
-                P: 'gtceu:gold_plate',
-            })
-            .id(id('shaped/precision_mechanism'));
-
-        event
-            .shaped(Item.of('3x create:belt_connector'), ['RRR'], {
-                R: 'gtceu:rubber_plate',
-            })
-            .id('start:shaped/belt_connector');
     });
+
+    event
+        .shapeless('2x create:andesite_alloy', ['2x minecraft:iron_nugget', '2x exnihilosequentia:andesite_pebble'])
+        .id(id('shapeless/andesite_alloy_pebble'));
+    event
+        .shapeless('16x create:andesite_alloy', ['4x minecraft:andesite', '5x minecraft:iron_nugget'])
+        .id(id('shapeless/andesite_alloy_block'));
+
+    event
+        .shaped('create:precision_mechanism', ['NBN', 'SPS', 'NBN'], {
+            N: 'minecraft:iron_nugget',
+            B: 'create:large_cogwheel',
+            S: 'create:cogwheel',
+            P: 'gtceu:gold_plate',
+        })
+        .id(id('shaped/precision_mechanism'));
+
+    event
+        .shaped(Item.of('3x create:belt_connector'), ['RRR'], {
+            R: 'gtceu:rubber_plate',
+        })
+        .id('start:shaped/belt_connector');
+
+    event
+        .shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block'])
+        .id('start:shapeless/andesite_alloy_block_decomp');
+
+    event.replaceInput({ id: 'create:crafting/kinetics/goggles' }, '#forge:plates/gold', 'gtceu:copper_plate');
+
+    event.remove({ id: 'create:splashing/stained_glass' });
 });

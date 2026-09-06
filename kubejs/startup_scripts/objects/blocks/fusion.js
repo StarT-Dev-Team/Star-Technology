@@ -1,5 +1,5 @@
 StartupEvents.registry('block', (event) => {
-    ['basic', 'advanced', 'complex', 'reinforced', 'borealic', 'dragonic', 'prismalic'].forEach((reflector, i) => {
+    ['basic', 'advanced', 'complex', 'reinforced', 'borealic', 'draconic', 'prismalic'].forEach((reflector, i) => {
         event
             .create(`${reflector}_reflector_casing`, 'gtceu:fusion_reflector')
             .tier(i + 1)

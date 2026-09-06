@@ -9,10 +9,10 @@ ServerEvents.recipes((event) => {
         .assembly_line(id('dimensional_finder'))
         .itemInputs(
             'gtceu:zpm_scanner',
-            '16x gtceu:zpm_sensor',
-            '16x gtceu:zpm_emitter',
-            '16x gtceu:zpm_field_generator',
-            '16x gtceu:zpm_voltage_coil',
+            '12x gtceu:zpm_sensor',
+            '12x gtceu:zpm_emitter',
+            '12x gtceu:zpm_field_generator',
+            '12x gtceu:zpm_voltage_coil',
             '64x gtceu:fine_trinaquadalloy_wire',
             '64x gtceu:fine_trinaquadalloy_wire',
             '8x #gtceu:circuits/uv'
@@ -21,12 +21,9 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:dimensional_finder')
         .duration(3600)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('kubejs:coordinate_crystal'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('kubejs:coordinate_crystal')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     //Coordinate Crystals
 
@@ -34,30 +31,30 @@ ServerEvents.recipes((event) => {
         .dimensional_finder(id('abydos_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', '64x minecraft:sand', '16x gtceu:zpm_sensor')
         .inputFluids('gtceu:naquadria 7200')
-        .itemOutputs('kubejs:abydos_coordinate_crystal')
+        .chancedOutput('kubejs:abydos_coordinate_crystal', 500, 0)
         .CWUt(48)
-        .totalCWU(576000)
-        .EUt(GTValues.VHA[GTValues.UV])
+        .totalCWU(230400)
+        .EUtVHA(UV)
         .dimension('minecraft:overworld');
 
     event.recipes.gtceu
         .dimensional_finder(id('nether_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', '64x minecraft:netherrack', '16x gtceu:uv_sensor')
         .inputFluids('minecraft:lava 50000')
-        .itemOutputs('kubejs:nether_coordinate_crystal')
+        .chancedOutput('kubejs:nether_coordinate_crystal', 500, 0)
         .CWUt(192)
-        .totalCWU(2304000)
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .totalCWU(921600)
+        .EUtVHA(UEV)
         .dimension('sgjourney:abydos');
 
     event.recipes.gtceu
         .dimensional_finder(id('end_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', '64x minecraft:end_stone', '16x gtceu:uhv_sensor')
         .inputFluids('gtceu:echo_r 7200')
-        .itemOutputs('kubejs:end_coordinate_crystal')
+        .chancedOutput('kubejs:end_coordinate_crystal', 500, 0)
         .CWUt(384)
-        .totalCWU(4608000)
-        .EUt(GTValues.VA[GTValues.UIV])
+        .totalCWU(1843200)
+        .EUtVA(UIV)
         .dimension('minecraft:the_nether');
 
     /*event.recipes.gtceu.dimensional_finder(id('lantea_coordinate_crystal'))
@@ -65,7 +62,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:lantea_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(GTValues.VHA[GTValues.UEV])
+        .EUtVHA(UEV)
         .dimension('minecraft:the_nether');
 
     event.recipes.gtceu.dimensional_finder(id('cavum_coordinate_crystal'))
@@ -73,15 +70,15 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:cavum_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(GTValues.VHA[GTValues.UIV])
+        .EUtVHA(UIV)
         .dimension('minecraft:the_end');
-        
+
     event.recipes.gtceu.dimensional_finder(id('sea_coordinate_crystal'))
         .itemInputs('kubejs:coordinate_crystal', 'minecraft:water_bucket', 'gtceu:uxv_sensor')
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:sea_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(GTValues.VHA[GTValues.UXV])
+        .EUtVHA(UXV)
         .dimension('minecraft:lantea');
 
     event.recipes.gtceu.dimensional_finder(id('void_coordinate_crystal'))
@@ -89,62 +86,74 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:rhexis 9072') //its just a fluid you cant make
         .chancedOutput('kubejs:void_coordinate_crystal', 250, 50)
         .duration(12000)
-        .EUt(4*GTValues.VHA[GTValues.UXV])
+        .EUt(4*GTValues.VHA[UXV])
         .dimension('minecraft:cavum_tenebrae');*/
 
+    /**
+     * @param {string} type
+     * @param {number} EUTScale
+     */
     const crystalDuping = (type, EUTScale) => {
         event.recipes.gtceu
             .scanner(id(`${type}_crystal_duping`))
             .itemInputs('kubejs:coordinate_crystal', `kubejs:${type}_coordinate_crystal`)
             .itemOutputs(`2x kubejs:${type}_coordinate_crystal`)
             .duration(3000)
-            .EUt(GTValues.VHA[GTValues.ZPM] * Math.pow(4, EUTScale));
+            .EUt(GTValues.VHA[ZPM] * Math.pow(4, EUTScale));
     };
     crystalDuping('abydos', 0);
     crystalDuping('nether', 1);
     crystalDuping('end', 2);
 });
 
-const crystalfeed = (realmId, realm, message) => {
+/**
+ * @param {string} realmId
+ * @param {string} realm
+ * @param {string} gate
+ */
+const dimensionGS = (realmId, realm, gate) => {
+    // Coordinate crystal consumption
     ItemEvents.rightClicked(`kubejs:${realm}_coordinate_crystal`, (event) => {
-        if (event.player.isCrouching()) {
-            event.server.runCommandSilent(
-                `execute at ${event.player.username} run playsound minecraft:block.enchantment_table.use player ${event.player.username} ~ ~ ~`
+        const { player, server } = event;
+
+        if (player.isCrouching()) {
+            server.runCommandSilent(
+                `execute at ${player.username} run playsound minecraft:block.enchantment_table.use player ${player.username} ~ ~ ~`
+            );
+            Utils.server.runCommandSilent(
+                `title ${player.username} title {"text":"You are being watched","color":"dark_gray","obfuscated":"true"}`
             );
             // eslint-disable-next-line no-unused-vars
-            event.server.scheduleInTicks(15, (ctx) => {
-                event.player.tell(Text.translate(message));
-                event.server.runCommand(
-                    `execute as ${event.player.username} run sgjourney stargateNetwork address ${realmId}:${realmId === 'minecraft' ? `the_${realm}` : realm}`
+            server.scheduleInTicks(15, (ctx) => {
+                player.sendSystemMessage(
+                    Text.translate('effects.crystals.success').append(
+                        Text.translate(`effects.crystals.success.${realm}`)
+                    )
+                );
+                server.runCommand(
+                    `execute as ${player.username} run sgjourney stargateNetwork address ${realmId}:${realmId === 'minecraft' ? `the_${realm}` : realm}`
                 );
             });
         }
     });
-};
 
-crystalfeed('sgjourney', 'abydos', 'effects.crystals.success.abydos');
-crystalfeed('minecraft', 'nether', 'effects.crystals.success.nether');
-crystalfeed('minecraft', 'end', 'effects.crystals.success.end');
-
-//Dimensional Gamestages
-const dimensionGS = (gate, realm, stage) => {
+    //Dimensional Gamestages
     BlockEvents.rightClicked(`sgjourney:${gate}_stargate`, (event) => {
         const { player, item, server } = event;
 
         if (item.id !== `kubejs:${realm}_coordinate_crystal`) return;
 
         item.count--;
+        player.stages.add(`access_${realm}`);
+        server.runCommandSilent(`give ${player.username} kubejs:coordinate_crystal`);
         server.runCommandSilent(
-            `execute as ${event.player.username} run gamestage add ${event.player.username} ${stage}`
-        );
-        server.runCommandSilent(`give ${event.player.username} kubejs:coordinate_crystal`);
-        server.runCommandSilent(
-            `execute at ${event.player.username} run playsound bingus:recall player ${event.player.username} ~ ~ ~`
+            `execute at ${player.username} run playsound bingus:recall player ${player.username} ~ ~ ~`
         );
         player.swing();
+        player.sendSystemMessage(Text.translate(`effects.crystals.gate.${realm}`));
     });
 };
 
-dimensionGS('classic', 'abydos', 'one');
-dimensionGS('milky_way', 'nether', 'two');
-dimensionGS('milky_way', 'end', 'three');
+dimensionGS('sgjourney', 'abydos', 'classic');
+dimensionGS('minecraft', 'nether', 'milky_way');
+dimensionGS('minecraft', 'end', 'milky_way');

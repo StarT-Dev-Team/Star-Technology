@@ -9,51 +9,53 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
-    // prettier-ignore
     event
         .create('runic_inscribe_manipulate', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('runic_inscribe_manipulate')
         .recipeModifier(GTRecipeModifiers.OC_PERFECT)
         .appearanceBlock(() => Block.getBlock('kubejs:stellarium_casing'))
-        .pattern(definition => FactoryBlockPattern.start()
-            .aisle('    BBBBBBB    ', '     B   B     ', '     B   B     ', '     B   B     ', '     C   C     ', '               ', '               ', '               ', '               ', '               ', '     C   C     ', '     B   B     ', '     B   B     ', '     B   B     ', '     B   B     ')
-            .aisle(' BBBBDDBDDBBBB ', '     DEDED     ', '               ', '     DEDED     ', '     CCCCC     ', '               ', '               ', '               ', '               ', '               ', '     CCCCC     ', '     DEDED     ', '               ', '     DEDED     ', '     B   B     ')
-            .aisle(' BDDDDDBDDDDDB ', '  BDEDFDFDEDB  ', '  B  FGFGF  B  ', '  BDEDFDFDEDB  ', '  C C     C C  ', '               ', '      BBB      ', '     BBHBB     ', '      BBB      ', '               ', '  C C     C C  ', '  BDEDFDFDEDB  ', '  B  FGFGF  B  ', '  BDEDFDFDEDB  ', '  B  BBBBB  B  ')
-            .aisle(' BDDDDBBBDDDDB ', '  DDFIIIIIFDD  ', '   FG     GF   ', '  DDF     FDD  ', '   C       C   ', '               ', '               ', '   BB     BB   ', '               ', '               ', '   C       C   ', '  DDF     FDD  ', '   FG     GF   ', '  DDFIIIIIFDD  ', '   BBDDFDDBB   ')
-            .aisle('BBDDDDDBDDDDDBB', '  EFIIIIIIIFE  ', '   G       G   ', '  EF       FE  ', '  C         C  ', '               ', '               ', '   B       B   ', '               ', '               ', '  C         C  ', '  EF       FE  ', '   G       G   ', '  EFIIIIIIIFE  ', '   BDDDGDDDB   ')
-            .aisle('BDDDDBDDDBDDDDB', 'BDDIIIDFDIIIDDB', 'B F    E    F B', 'BDD   DFD   DDB', 'CC           CC', '               ', '               ', '  B         B  ', '               ', '               ', 'CC           CC', 'BDD   DFD   DDB', 'B F    E    F B', 'BDDIIIDFDIIIDDB', 'BBBDDGFEFGDDBBB')
-            .aisle('BDDBDDDBDDDBDDB', ' EFIIDDDDDIIFE ', '  G   HJH   G  ', ' EF  DDHDD  FE ', ' C           C ', '               ', '  B         B  ', '  B         B  ', '  B         B  ', '               ', ' C           C ', ' EF  DDHDD  FE ', '  G   HJH   G  ', ' EFIIDDDDDIIFE ', '  BDDFDGDFDDB  ')
-            .aisle('BBBBBDBBBDBBBBB', ' DDIIFDDDFIIDD ', '  F  EJJJE  F  ', ' DD  FHHHF  DD ', ' C           C ', '       K       ', '  B         B  ', '  H    L    H  ', '  B         B  ', '       K       ', ' C           C ', ' DD  FHHHF  DD ', '  F  EJJJE  F  ', ' DDIIFDFDFIIDD ', '  BFGEGFGEGFB  ')
-            .aisle('BDDBDDDBDDDBDDB', ' EFIIDDDDDIIFE ', '  G   HJH   G  ', ' EF  DDHDD  FE ', ' C           C ', '               ', '  B         B  ', '  B         B  ', '  B         B  ', '               ', ' C           C ', ' EF  DDHDD  FE ', '  G   HJH   G  ', ' EFIIDDDDDIIFE ', '  BDDFDGDFDDB  ')
-            .aisle('BDDDDBDDDBDDDDB', 'BDDIIIDFDIIIDDB', 'B F    E    F B', 'BDD   DFD   DDB', 'CC           CC', '               ', '               ', '  B         B  ', '               ', '               ', 'CC           CC', 'BDD   DFD   DDB', 'B F    E    F B', 'BDDIIIDFDIIIDDB', 'BBBDDGFEFGDDBBB')
-            .aisle('BBDDDDDBDDDDDBB', '  EFIIIIIIIFE  ', '   G       G   ', '  EF       FE  ', '  C         C  ', '               ', '               ', '   B       B   ', '               ', '               ', '  C         C  ', '  EF       FE  ', '   G       G   ', '  EFIIIIIIIFE  ', '   BDDDGDDDB   ')
-            .aisle(' BDDDDBBBDDDDB ', '  DDFIIIIIFDD  ', '   FG     GF   ', '  DDF     FDD  ', '   C       C   ', '               ', '               ', '   BB     BB   ', '               ', '               ', '   C       C   ', '  DDF     FDD  ', '   FG     GF   ', '  DDFIIIIIFDD  ', '   BBDDFDDBB   ')
-            .aisle(' BDDDDDBDDDDDB ', '  BDEDFDFDEDB  ', '  B  FGFGF  B  ', '  BDEDFDFDEDB  ', '  C C     C C  ', '               ', '      BBB      ', '     BBHBB     ', '      BBB      ', '               ', '  C C     C C  ', '  BDEDFDFDEDB  ', '  B  FGFGF  B  ', '  BDEDFDFDEDB  ', '  B  BBBBB  B  ')
-            .aisle(' BBBBDDBDDBBBB ', '     DEDED     ', '               ', '     DEDED     ', '     CCCCC     ', '               ', '               ', '               ', '               ', '               ', '     CCCCC     ', '     DEDED     ', '               ', '     DEDED     ', '     B   B     ')
-            .aisle('    BBB@BBB    ', '     B   B     ', '     B   B     ', '     B   B     ', '     C   C     ', '               ', '               ', '               ', '               ', '               ', '     C   C     ', '     B   B     ', '     B   B     ', '     B   B     ', '     B   B     ')
-                .where('A', Predicates.blocks('minecraft:stone'))
-                .where(' ', Predicates.any())
-                .where(
-                    'B',
-                    Predicates.blocks('kubejs:stellarium_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(0))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(2))
-                )
-                .where('C', Predicates.blocks('gtceu:void_frame'))
-                .where('D', Predicates.blocks('kubejs:enriched_naquadah_machine_casing'))
-                .where('E', Predicates.blocks('kubejs:enriched_naquadah_engine_intake_casing'))
-                .where('F', Predicates.blocks('kubejs:enriched_naquadah_pipe_casing'))
-                .where('G', Predicates.blocks('kubejs:enriched_naquadah_heat_escape_casing'))
-                .where('H', Predicates.blocks('kubejs:reinforced_fusion_glass'))
-                .where('I', Predicates.blocks('kubejs:ancient_runicalium_casing'))
-                .where('J', Predicates.blocks('gtceu:fusion_coil'))
-                .where('K', Predicates.blocks('thermal_extra:dragonsteel_glass'))
-                .where('L', Predicates.blocks('kubejs:inscribe_casing'))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+        .pattern((definition) =>
+            newFactoryBlockPattern([
+                '    BBBBBBB    |     B   B     |     B   B     |     B   B     |     C   C     |               |               |               |               |               |     C   C     |     B   B     |     B   B     |     B   B     |     B   B     ',
+                ' BBBBDDBDDBBBB |     DEDED     |               |     DEDED     |     CCCCC     |               |               |               |               |               |     CCCCC     |     DEDED     |               |     DEDED     |     B   B     ',
+                ' BDDDDDBDDDDDB |  BDEDFDFDEDB  |  B  FGFGF  B  |  BDEDFDFDEDB  |  C C     C C  |               |      BBB      |     BBHBB     |      BBB      |               |  C C     C C  |  BDEDFDFDEDB  |  B  FGFGF  B  |  BDEDFDFDEDB  |  B  BBBBB  B  ',
+                ' BDDDDBBBDDDDB |  DDFIIIIIFDD  |   FG     GF   |  DDF     FDD  |   C       C   |               |               |   BB     BB   |               |               |   C       C   |  DDF     FDD  |   FG     GF   |  DDFIIIIIFDD  |   BBDDFDDBB   ',
+                'BBDDDDDBDDDDDBB|  EFIIIIIIIFE  |   G       G   |  EF       FE  |  C         C  |               |               |   B       B   |               |               |  C         C  |  EF       FE  |   G       G   |  EFIIIIIIIFE  |   BDDDGDDDB   ',
+                'BDDDDBDDDBDDDDB|BDDIIIDFDIIIDDB|B F    E    F B|BDD   DFD   DDB|CC           CC|               |               |  B         B  |               |               |CC           CC|BDD   DFD   DDB|B F    E    F B|BDDIIIDFDIIIDDB|BBBDDGFEFGDDBBB',
+                'BDDBDDDBDDDBDDB| EFIIDDDDDIIFE |  G   HJH   G  | EF  DDHDD  FE | C           C |               |  B         B  |  B         B  |  B         B  |               | C           C | EF  DDHDD  FE |  G   HJH   G  | EFIIDDDDDIIFE |  BDDFDGDFDDB  ',
+                'BBBBBDBBBDBBBBB| DDIIFDDDFIIDD |  F  EJJJE  F  | DD  FHHHF  DD | C           C |       K       |  B         B  |  H    L    H  |  B         B  |       K       | C           C | DD  FHHHF  DD |  F  EJJJE  F  | DDIIFDFDFIIDD |  BFGEGFGEGFB  ',
+                'BDDBDDDBDDDBDDB| EFIIDDDDDIIFE |  G   HJH   G  | EF  DDHDD  FE | C           C |               |  B         B  |  B         B  |  B         B  |               | C           C | EF  DDHDD  FE |  G   HJH   G  | EFIIDDDDDIIFE |  BDDFDGDFDDB  ',
+                'BDDDDBDDDBDDDDB|BDDIIIDFDIIIDDB|B F    E    F B|BDD   DFD   DDB|CC           CC|               |               |  B         B  |               |               |CC           CC|BDD   DFD   DDB|B F    E    F B|BDDIIIDFDIIIDDB|BBBDDGFEFGDDBBB',
+                'BBDDDDDBDDDDDBB|  EFIIIIIIIFE  |   G       G   |  EF       FE  |  C         C  |               |               |   B       B   |               |               |  C         C  |  EF       FE  |   G       G   |  EFIIIIIIIFE  |   BDDDGDDDB   ',
+                ' BDDDDBBBDDDDB |  DDFIIIIIFDD  |   FG     GF   |  DDF     FDD  |   C       C   |               |               |   BB     BB   |               |               |   C       C   |  DDF     FDD  |   FG     GF   |  DDFIIIIIFDD  |   BBDDFDDBB   ',
+                ' BDDDDDBDDDDDB |  BDEDFDFDEDB  |  B  FGFGF  B  |  BDEDFDFDEDB  |  C C     C C  |               |      BBB      |     BBHBB     |      BBB      |               |  C C     C C  |  BDEDFDFDEDB  |  B  FGFGF  B  |  BDEDFDFDEDB  |  B  BBBBB  B  ',
+                ' BBBBDDBDDBBBB |     DEDED     |               |     DEDED     |     CCCCC     |               |               |               |               |               |     CCCCC     |     DEDED     |               |     DEDED     |     B   B     ',
+                '    BBB@BBB    |     B   B     |     B   B     |     B   B     |     C   C     |               |               |               |               |               |     C   C     |     B   B     |     B   B     |     B   B     |     B   B     ',
+            ])
+                .whereDict({
+                    A: P.block('minecraft:stone'),
+                    ' ': P.any(),
+                    B: P.anyOf([
+                        P.kjsBlock('stellarium_casing'),
+                        P.ability(PA.itemIn, { max: 2, view: 1 }),
+                        P.ability(PA.itemOut, { max: 1, view: 1 }),
+                        P.ability(PA.fluidIn, { max: 1, view: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                        P.ability(PA.euIn, { max: 2 }),
+                    ]),
+                    C: P.gtBlock('void_frame'),
+                    D: P.kjsBlock('enriched_naquadah_machine_casing'),
+                    E: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
+                    F: P.kjsBlock('enriched_naquadah_pipe_casing'),
+                    G: P.kjsBlock('enriched_naquadah_heat_escape_casing'),
+                    H: P.kjsBlock('reinforced_fusion_glass'),
+                    I: P.kjsBlock('ancient_runicalium_casing'),
+                    J: P.gtBlock('fusion_coil'),
+                    K: P.block('thermal_extra:dragonsteel_glass'),
+                    L: P.kjsBlock('inscribe_casing'),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

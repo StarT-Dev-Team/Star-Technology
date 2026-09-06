@@ -66,7 +66,7 @@ ServerEvents.recipes((event) => {
 
     // === Rare Earth Centrifuging Fix ===
     event.recipes.gtceu
-        .centrifuge(id('rare_earth_speraration_fix'))
+        .centrifuge(id('rare_earth_separation_fix'))
         .itemInputs('1x gtceu:rare_earth_dust')
         .chancedOutput('1x gtceu:small_neodymium_dust', 2500, 200)
         .chancedOutput('1x gtceu:small_samarium_dust', 2500, 200)
@@ -86,21 +86,21 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .large_chemical_reactor(id('carbon_acid_fix'))
-        .itemInputs('3x gtceu:potassium_carbonate_dust')
-        .inputFluids('gtceu:hydrogen 1000')
-        .itemOutputs('3x gtceu:potassium_dust')
-        .outputFluids('gtceu:carbon_acid 500')
+        .itemInputs('6x gtceu:potassium_carbonate_dust')
+        .inputFluids('gtceu:hydrogen 2000')
+        .itemOutputs('2x gtceu:potassium_dust')
+        .outputFluids('gtceu:carbon_acid 1000')
         .duration(100)
-        .EUt(GTValues.VHA[GTValues.IV]);
+        .EUtVHA(IV);
 
     // Styrene from Benzene fix
     event.recipes.gtceu
-        .chemical_reactor(id('styrene_from_benzene_fix')) //Autogens LCR var
+        .chemical_reactor(id('styrene_from_benzene_fix'))
         .inputFluids('gtceu:ethylene 1000', 'gtceu:benzene 1000')
         .outputFluids('gtceu:hydrogen 2000', 'gtceu:styrene 1000')
         .duration(120)
         .circuit(3)
-        .EUt(GTValues.VA[GTValues.LV]);
+        .EUtVA(LV);
 
     // Maint Decomp
     event.recipes.gtceu

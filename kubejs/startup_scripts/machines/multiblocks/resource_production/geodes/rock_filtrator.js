@@ -19,19 +19,20 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 .aisle('SFS', 'SGS', 'SGS', 'SFS')
                 .aisle('FBF', 'GMG', 'GMG', 'FIF')
                 .aisle('SCS', 'SGS', 'SGS', 'SFS')
-                .where('C', Predicates.controller(Predicates.blocks(definition.get())))
-                .where(
-                    'S',
-                    Predicates.blocks('gtceu:solid_machine_casing')
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(3).setPreviewCount(2))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1).setPreviewCount(1))
-                )
-                .where('F', Predicates.blocks('gtceu:steel_firebox_casing'))
-                .where('B', Predicates.blocks('gtceu:cupronickel_coil_block'))
-                .where('G', Predicates.blocks('gtceu:tempered_glass'))
-                .where('M', Predicates.blocks('kubejs:mesh_block'))
-                .where('I', Predicates.abilities(PartAbility.IMPORT_ITEMS))
+                .whereDict({
+                    C: P.controller(definition),
+                    S: P.anyOf([
+                        P.gtBlock('solid_machine_casing'),
+                        P.ability(PA.fluidIn, { max: 1, view: 1 }),
+                        P.ability(PA.itemOut, { max: 3, view: 2 }),
+                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                    ]),
+                    F: P.gtBlock('steel_firebox_casing'),
+                    B: P.gtBlock('cupronickel_coil_block'),
+                    G: P.gtBlock('tempered_glass'),
+                    M: P.kjsBlock('mesh_block'),
+                    I: P.ability(PA.itemIn),
+                })
                 .build()
         )
         .workableCasingModel(

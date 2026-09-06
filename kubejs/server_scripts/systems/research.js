@@ -7,7 +7,7 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:utopian_akreyrium 2000', 'gtceu:pcb_coolant 5000')
         .outputFluids('gtceu:akreyrium_pcb_graphite_nanoparticle_coolant 4000')
         .duration(250)
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM);
 
     event.recipes.gtceu
         .assembly_line(id('nanofluidic_heat_sink'))
@@ -25,10 +25,10 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:hpca_heat_sink_component'))
-                .EUt(GTValues.VHA[GTValues.UV])
+                .EUt(GTValues.VHA[UV])
                 .CWUt(128)
         )
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .assembly_line(id('hpca_optimized_computation_component'))
@@ -46,8 +46,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:hpca_advanced_computation_component'))
-                .EUt(GTValues.VHA[GTValues.UV])
+                .EUt(GTValues.VHA[UV])
                 .CWUt(128)
         )
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 });

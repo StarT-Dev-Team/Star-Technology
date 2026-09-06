@@ -1,15 +1,21 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
+    /**
+     * @param {GTTier} tier
+     * @param {string} rotor
+     * @param {string} casing
+     */
     const pumpBlockTiers = (tier, rotor, casing) => {
-        event
+        event.recipes.gtceu
             .shaped(`start_core:${tier}_vacuum_pump`, ['ABA', 'CDC', 'ABA'], {
                 A: `gtceu:double_${casing}_plate`,
                 B: `gtceu:${rotor}_rotor`,
                 C: `gtceu:${tier}_electric_pump`,
                 D: `gtceu:${tier}_rotor_holder`,
             })
-            .id(`gtceu:${tier}_vacuum_pump_block`);
+            .id(`gtceu:${tier}_vacuum_pump_block`)
+            .addMaterialInfo();
     };
 
     pumpBlockTiers('zpm', 'dragonsteel', 'enriched_naquadah');
@@ -33,12 +39,10 @@ ServerEvents.recipes((event) => {
         .itemOutputs('gtceu:vacuum_chemical_reaction_chamber')
         .duration(2000)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:zpm_gas_collector'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(24)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_gas_collector')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('dual_chambered_vacuum_complex_controller'))
@@ -57,10 +61,11 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:vacuum_chemical_reaction_chamber'))
-                .EUt(GTValues.VHA[GTValues.UHV])
+                .EUt(GTValues.VHA[UHV])
                 .CWUt(96)
         )
-        .EUt(GTValues.VHA[GTValues.UHV]);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('auroric_vacuum_isolation_reactor_controller'))
@@ -75,7 +80,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:naquadated_soldering_alloy 9216',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 4320',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 4320',
             'gtceu:perfluoroelastomer_rubber 3168'
         )
         .itemOutputs('gtceu:auroric_vacuum_isolation_reactor')
@@ -83,8 +88,9 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder
                 .researchStack(Item.of('gtceu:dual_chambered_vacuum_complex'))
-                .EUt(GTValues.VHA[GTValues.UEV])
+                .EUt(GTValues.VHA[UEV])
                 .CWUt(200)
         )
-        .EUt(GTValues.VHA[GTValues.UIV]);
+        .EUtVHA(UIV)
+        .addMaterialInfo(true, true);
 });

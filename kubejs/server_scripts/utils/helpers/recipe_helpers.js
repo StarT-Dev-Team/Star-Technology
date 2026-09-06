@@ -1,265 +1,18 @@
 // priority: 1000
 
 /**
- * https://github.com/primchCEu/GregTech-Modern/blob/v1.6.4-1.20.1/src/main/java/com/gregtechceu/gtceu/data/recipe/misc/RecyclingRecipes.javatotalCounts.valueCount += componentRecycleCounts.value.primCount;
- * totalCounts.valueCount cableCount componentRecycleCounts.value.cableCount;
- * totalCounts.valueCount += wireounts.value.wireCount;
- * totalCounts.valueCount += foilnentRecycleCounts.value.foilCountL424
- * @param {string[]} itemOutputs
- * @returns {number}
+ *
+ * @param {GTTier} tier
+ * @returns {'ULV' | 'LV' | 'MV' | 'HV' | 'EV' | 'IV' | 'LuV' | 'ZPM' | 'UV' | 'UHV' | 'UEV' | 'UIV' | 'UXV' | 'OpV' | 'MAX'}
  */
-global.calculateRecyclingDuration = (itemOutputs) => {
-    return (
-        itemOutputs.reduce((duration, item) => {
-            const is = Item.of(item);
-            const ms = global.getGtMaterial(is);
-            if (!ms) return duration;
-            const matDuration = ms.amount() * ms.material().getMass() * is.getCount();
-            return duration + matDuration;
-        }, 0) / GTValues.M
-    );
+global.getRecipeTier = (tier) => {
+    const recipeTier = tier === 'luv' ? 'LuV' : tier === 'opv' ? 'OpV' : tier.toUpperCase();
+    return /** @type {any} */ (recipeTier);
 };
 
 /**
- * https://github.com/primchCEu/GregTech-Modern/blob/v1.6.4-1.20.1/src/main/java/com/gregtechceu/gtceu/data/recipe/misc/RecyclingRecipes.javatotalCounts.valueCount += componentRecycleCounts.value.primCount;
- * totalCounts.valueCount cableCount componentRecycleCounts.value.cableCount;
- * totalCounts.valueCount += wireounts.value.wireCount;
- * totalCounts.valueCount += foilnentRecycleCounts.value.foilCountL389
- * @param {string[]} itemOutputs
- * @returns {number}
+ * @param {number} cwu
  */
-global.calculateRecyclingVoltageMultiplier = (itemOutputs) => {
-    const highestTemp = itemOutputs.reduce((temp, item) => {
-        const ms = global.getGtMaterial(item);
-        if (!ms) return temp;
-
-        let material = ms.material();
-
-        if (material.hasFlag(GTMaterialFlags.IS_MAGNETIC) && material.hasProperty(PropertyKey.INGOT)) {
-            material = material.getProperty(PropertyKey.INGOT).getSmeltingInto();
-        }
-
-        if (!material.hasProperty(PropertyKey.BLAST)) return temp;
-
-        return Math.max(temp, material.getProperty(PropertyKey.BLAST).getBlastTemperature());
-    }, 0);
-
-    if (highestTemp === 0) return 1;
-    if (highestTemp < 2000) return 4;
-    return 16;
-};
-
-// breaks components down into their base materials
-global.getComponentTotal = (components, tierBracket) => {
-    const componentRecycleCounts =
-        tierBracket === 'UHVPLUS'
-            ? global.UHV_PLUS_COMPONENT_RECYCLE_COUNTS
-            : global.LUV_TO_UV_COMPONENT_RECYCLING_COUNTS;
-    const totalCountsTypes =
-        tierBracket === 'UHVPLUS'
-            ? ['primCount', 'cableCount', 'secCount', 'tertCount']
-            : ['primCount', 'cableCount', 'wireCount', 'foilCount'];
-    let totalCounts = {};
-
-    totalCountsTypes.forEach((type) => {
-        totalCounts[type] = 0;
-    });
-
-    components.forEach((component) => {
-        totalCountsTypes.forEach((type) => {
-            totalCounts[type] += componentRecycleCounts[component][type];
-        });
-    });
-
-    totalCountsTypes.forEach((type) => {
-        totalCounts[type] = Math.floor(totalCounts[type]);
-    });
-
-    return totalCounts;
-};
-
-function compareNumbers(a, b) {
-    return b - a;
-}
-// checks if input value is too big for one output slot, then breaks down into block form
-global.checkRecyclingCount = (tempTotals, blockType, auxCoilBool, casingBool, fusionCasingBool) => {
-    let finalOutput = {
-        blockBools: {},
-        totals: {},
-        outputOrder: [],
-    };
-    let finalOutputTypes = [];
-    let toBeSorted = [];
-
-    if (blockType === 'singleblock_UHVPLUS' || blockType === 'parallel_hatch_UHVPLUS') {
-        finalOutputTypes = casingBool ? ['casing', 'prim', 'cable', 'sec', 'tert'] : ['prim', 'cable', 'sec', 'tert'];
-    } else if (blockType === 'singleblock_LUVToUV' || blockType === 'parallel_hatch_LUVToUV') {
-        finalOutputTypes = casingBool ? ['casing', 'prim', 'cable', 'wire', 'foil'] : ['prim', 'cable', 'wire', 'foil'];
-    } else if (blockType === 'coil') {
-        finalOutputTypes = ['frame', 'wire', 'foil'];
-    } else if (blockType === 'fusion_casing_UHVPLUS') {
-        finalOutputTypes = ['casing', 'prim', 'cable', 'hullCable', 'sec'];
-    } else if (blockType === 'fusion_casing_LUVToUV') {
-        finalOutputTypes = ['casing', 'prim', 'cable', 'hullCable', 'wire'];
-    } else if (blockType === 'fusion_coil_UHVPLUS') {
-        finalOutputTypes = ['plate', 'prim', 'cable', 'sec', 'tert'];
-    } else if (blockType === 'fusion_coil_LUVToUV') {
-        finalOutputTypes = ['plate', 'prim', 'cable', 'wire', 'foil'];
-    }
-
-    let position = 0;
-    finalOutputTypes.forEach((type) => {
-        toBeSorted[position] = tempTotals[type + 'Count'];
-        finalOutput.blockBools[type + 'Block'] = false;
-        finalOutput.totals[type + 'Count'] = 0;
-        position++;
-    });
-
-    for (let x = 0; x < finalOutputTypes.length - 1; x++) {
-        finalOutput.outputOrder[x] = '';
-    }
-
-    // orders outputs by size
-    let knownPositions = [];
-    let material;
-    let found;
-    let n;
-
-    let sorted = Array.from(toBeSorted);
-    sorted.sort(compareNumbers);
-
-    let iMax = casingBool ? 5 : 4;
-    for (let i = 0; i < iMax; i++) {
-        // gets what material is in said position
-        material = finalOutputTypes[i];
-
-        // finds which location the material is in
-        found = false;
-        n = 0;
-        while (!found) {
-            if (toBeSorted[i] === sorted[n]) {
-                if (knownPositions.includes(n)) {
-                    // counters duplicate output nums
-                    n++;
-                } else {
-                    knownPositions.push(n);
-                    finalOutput.outputOrder[n] = material;
-                    found = true;
-                }
-            } else {
-                n++;
-            }
-        }
-    }
-
-    // sets final values
-    finalOutputTypes.forEach((type) => {
-        // reduces fusion coil/casing outputs to the actual value
-        if (type === 'casing') {
-            finalOutput.totals[type + 'Count'] = tempTotals[type + 'Count'];
-        } else {
-            if (auxCoilBool) {
-                tempTotals[type + 'Count'] = Math.floor(tempTotals[type + 'Count'] / 3);
-            }
-            if (fusionCasingBool) {
-                tempTotals[type + 'Count'] = Math.floor(tempTotals[type + 'Count'] / 2);
-            }
-
-            // checks if item should be changed to block form
-            if (tempTotals[type + 'Count'] > 64) {
-                finalOutput.blockBools[type + 'Block'] = true;
-                finalOutput.totals[type + 'Count'] = Math.floor(tempTotals[type + 'Count'] / 9);
-            } else {
-                finalOutput.totals[type + 'Count'] = tempTotals[type + 'Count'];
-            }
-        }
-    });
-    return finalOutput;
-};
-
-//gives ending parameters to the outputs dependent on whether the output is a block or not
-global.getFinalRecycleOutputs = (outputs, blockType, macBool, specialBool) => {
-    let finalOutputs = [];
-    let blockBools;
-    let blockBoolStartPos;
-    let len = outputs.length - 1;
-
-    //gets the booleans out of the end of the outputs array
-    if (
-        blockType === 'singleblock' ||
-        blockType === 'fusion_casing' ||
-        blockType === 'fusion_coil' ||
-        blockType === 'parallel_hatch'
-    ) {
-        blockBoolStartPos = len - 3;
-        blockBools = [outputs[len - 3], outputs[len - 2], outputs[len - 1], outputs[len]];
-    } else if (blockType === 'coil') {
-        blockBoolStartPos = len - 2;
-        blockBools = [outputs[len - 2], outputs[len - 1], outputs[len]];
-    }
-
-    //macerator
-    if (macBool) {
-        if (specialBool) {
-            for (let x = 0; x < 5; x++) {
-                if (outputs[x] === 'gtceu:graphite_dust') {
-                    finalOutputs[x] = outputs[x];
-                } else if (outputs[x] !== ' ') {
-                    finalOutputs[x] = `${outputs[x]}_dust`;
-                }
-            }
-        } else {
-            //adds end sig to every output
-            for (let x = 0; x < blockBoolStartPos; x++) {
-                //if item is a block
-                if (blockBools[x]) {
-                    finalOutputs[x] = `${outputs[x]}_dust_block`;
-                }
-                //if not
-                else {
-                    finalOutputs[x] = `${outputs[x]}_dust`;
-                }
-            }
-        }
-    }
-    //arc furnace
-    else {
-        if (specialBool) {
-            //adds end sig to every output
-            for (let x = 0; x < 5; x++) {
-                //if single = arc furnace leave as is
-                if (outputs[x] === 'gtceu:graphite_dust' || outputs[x] === '7x gtceu:tiny_ash_dust') {
-                    finalOutputs[x] = outputs[x];
-                }
-                //if not empty
-                else if (outputs[x] !== ' ') {
-                    finalOutputs[x] = `${outputs[x]}_ingot`;
-                }
-            }
-        } else {
-            //adds end sig to every output
-            for (let x = 0; x < blockBoolStartPos; x++) {
-                //if item is a block
-                if (blockBools[x]) {
-                    finalOutputs[x] = `${outputs[x]}_block`;
-                }
-                //if not
-                else {
-                    finalOutputs[x] = `${outputs[x]}_ingot`;
-                }
-            }
-        }
-    }
-
-    return finalOutputs;
-};
-
-global.getRecipeTier = (tier) => {
-    const recipeTier = tier === 'luv' ? 'LuV' : tier === 'opv' ? 'OpV' : tier.toUpperCase();
-
-    return recipeTier;
-};
-
 global.getDataItem = (cwu) =>
     cwu >= 320
         ? 'start_core:component_data_core'
@@ -268,6 +21,34 @@ global.getDataItem = (cwu) =>
           : cwu >= 32
             ? 'gtceu:data_module'
             : 'gtceu:data_orb';
+
+/**
+ *
+ * @param {Exclude<keyof internal.kjs.RecipeFunctions_gtceu, "shaped">} machineType
+ * @param {string} recId
+ * @param {string[]} inputsI
+ * @param {string[]} inputsF
+ * @param {string[]} outputsI
+ * @param {number} duration
+ * @param {number} cwuT
+ * @param {number} totalCWU
+ * @param {number} euT
+ * @param {string} researched
+ */
+
+global.researchBuilder = (
+    /* eslint-disable no-unused-vars */
+    machineType,
+    recId,
+    inputsI,
+    inputsF,
+    outputsI,
+    duration,
+    cwuT,
+    totalCWU,
+    euT,
+    researched
+) => {};
 
 ServerEvents.recipes((event) => {
     global.researchBuilder = (
@@ -302,7 +83,8 @@ ServerEvents.recipes((event) => {
             .stationResearch((researchRecipeBuilder) =>
                 researchRecipeBuilder.researchStack(Item.of(researched)).CWUt(cwuT).EUt(euT)
             )
-            .EUt(euT);
+            .EUt(euT)
+            .addMaterialInfo(true, true);
 
         event.recipes.gtceu
             .research_station(`1_x_${researched.replace(':', '_')}`)
@@ -320,28 +102,130 @@ ServerEvents.recipes((event) => {
     };
 });
 
-const modRequirements = {
-    architectsPalette: 'architects_palette',
-    xycraftWorld: 'xycraft_world',
-    chipped: 'chipped',
-    framedBlocks: 'framedblocks',
-    effortlessBuilding: 'effortlessbuilding',
+/** @typedef {'minecraft' | 'gtceu' | 'rechiseled' | 'thermal' | 'architects_palette' | 'chipped' | 'create' | 'kubejs' | 'kubejs_create' | 'kubejs_thermal' | 'xycraft_world' | 'chisel_chipped_integration' | 'start_core' | 'framedblocks' | 'ae2' | 'farmersdelight' | 'exnihilosequentia' | 'expatternprovider' | 'vintage' | 'fantasyfurniture' | 'projectred_illumination' | 'projectred_transmission' | 'copycats' | 'xtonesreworked' | 'functionalstorage' | 'megacells' | 'thermal_extra' | 'dustrial_decor' | 'expandedae' | 'rtsbuilding' | 'placeablemaxwell' | 'sgjourney' | 'rechiseledcreate' | 'jetboots' | 'buildinggadgets2' | 'toms_storage' | 'simplylight' | 'modularrouters' | 'projectred_core' | 'projectred_integration' | 'createdieselgenerators' | 'aeinfinitybooster' | 'simplybackpacks' | 'betterp2p' | 'expandedgt' | 'effortlessbuilding' | 'bingus' | 'create_new_age' | 'ftbquests' | 'itemfilters' | 'create_hypertube' | 'colossalchests' | 'merequester' | 'laserio' | 'fluxnetworks' | 'itemcollectors' | 'ae2wtlib' | 'patchouli' | 'trashcans' | 'cb_microblock' | 'systeams' | 'pipez' | 'createlowheated' | 'skyblockbuilder' | 'pccard' | 'guideme' | 'endertanks' | 'komarumod' | 'gravestone' | 'travelanchors' | 'enderchests' | 'ae2netanalyser' | 'woodenbucket' | 'curios'} StarTMod */
+
+/**
+ * @param {StarTMod | StarTMod[]} mods The required mod/mods for this function to run
+ * @param {() => void} [ifTrue] Function to execute if current mod is loaded'.
+ * @param {() => void} [ifFalse] Function to execute if current mod is NOT loaded'.
+ * @returns {void}
+ */
+global.withModsLoaded = (mods, ifTrue, ifFalse) => {
+    mods = Array.isArray(mods) ? mods : [mods];
+
+    if (mods.every((m) => Platform.isLoaded(m))) {
+        if (typeof ifTrue === 'function') {
+            ifTrue();
+        } else
+            console.error(
+                `Succeeded mod loading requirements for mods: [${mods.join(', ')}]; Failed: Parsed function is not a function`
+            );
+    } else if (typeof ifFalse === 'function') {
+        ifFalse();
+        console.log(`Failed mod loading requirements for mods: [${mods.join(', ')}]; Loading negative case code`);
+    } else console.log(`Failed mod loading requirements for mods: [${mods.join(', ')}]; Skipping code`);
 };
 
-// Auto-generate all the wrapper functions
-Object.entries(modRequirements).forEach(([name, mod]) => {
-    const mods = Array.isArray(mod) ? mod : [mod];
-    /**
-     * @param {function} ifTrue - Function to execute if current mod is loaded'.
-     * @param {function} ifFalse - Function to execute if current mod is NOT loaded'.
-     */
-    global[`with${name.substring(0, 1).toLocaleUpperCase() + name.substring(1)}`] = (ifTrue, ifFalse) => {
-        if (mods.every((m) => Platform.isLoaded(m))) {
-            if (ifTrue && typeof ifTrue === 'function') {
-                ifTrue();
-            }
-        } else if (ifFalse && typeof ifFalse === 'function') {
-            ifFalse();
+/**
+ * Implosion Compressor recipe helper
+ * @param {string} id recipe id
+ * @param {string} input item input
+ * @param {string} output item output
+ * @param {number} tier voltage tier
+ * @param {number | undefined} durationMultiplier duration multiplier (default 1)
+ * @param {internal.dev.latvian.mods.kubejs.recipe.RecipesEventJS} event
+ */
+const implosionHelper = (id, input, output, tier, durationMultiplier, event) => {
+    [
+        { name: 'tnt', explosive: '4x minecraft:tnt' },
+        { name: 'dynamite', explosive: '2x gtceu:dynamite' },
+        { name: 'itnt', explosive: 'gtceu:industrial_tnt' },
+        { name: 'powderbarrel', explosive: '8x gtceu:powderbarrel' },
+    ].forEach((explosive) => {
+        event.recipes.gtceu
+            .implosion_compressor(global.id(`${id}_${explosive.name}`))
+            .itemInputs(input, explosive.explosive)
+            .itemOutputs(output)
+            .chancedOutput('gtceu:dark_ash_dust', 2500, 0)
+            .duration(20 * (durationMultiplier !== undefined ? durationMultiplier : 1))
+            .EUt(GTValues.VHA[tier]);
+    });
+};
+
+global.implosion = implosionHelper;
+
+/** @typedef {{item: string, amount: number}} RecipeHelperIngredient */
+
+/**
+ * @param {string[]} items
+ * @returns {RecipeHelperIngredient[]}
+ */
+const itemArrayToIngredientArray = (items) => {
+    /** @type {RecipeHelperIngredient[]} */
+    let ingredients = [];
+    items.forEach((item) => {
+        if (!item.includes('x ')) {
+            item = `1x ${item}`;
         }
+        let [amount, itemName] = item.split(' ');
+        let count = parseInt(amount.replace('x', ''));
+        ingredients.push({ item: itemName, amount: count });
+    });
+    return ingredients;
+};
+
+/**
+ * @param {RecipeHelperIngredient[]} ingredients
+ * @returns {string[]}
+ */
+const ingredientArrayToItemArray = (ingredients) => {
+    return ingredients.map((ingredient) => `${ingredient.amount}x ${ingredient.item}`);
+};
+
+/**
+ * @param {RecipeHelperIngredient[]} ingredients
+ * @param {string} item
+ * @returns {boolean}
+ */
+const ingredientArrayContainsItem = (ingredients, item) => {
+    return ingredients.some((ingredient) => ingredient.item === item);
+};
+
+/**
+ * @param {RecipeHelperIngredient[]} arr1
+ * @param {RecipeHelperIngredient[]} arr2
+ * @returns {RecipeHelperIngredient[]}
+ */
+const zipIngredientArrays = (arr1, arr2) => {
+    /** @type {RecipeHelperIngredient[]} */
+    let zipped = [];
+
+    const addIngredient = (/** @type {RecipeHelperIngredient}*/ ingredient) => {
+        let entry = zipped.find((i) => i.item === ingredient.item);
+        if (entry) {
+            entry.amount += ingredient.amount;
+            return;
+        }
+        zipped.push(ingredient);
     };
-});
+
+    arr1.forEach(addIngredient);
+    arr2.forEach(addIngredient);
+    return zipped;
+};
+
+/**
+ * @param {string[]} arr1
+ * @param {string[]} arr2
+ * @returns {string[]}
+ */
+const zipItemArrays = (arr1, arr2) => {
+    return ingredientArrayToItemArray(
+        zipIngredientArrays(itemArrayToIngredientArray(arr1), itemArrayToIngredientArray(arr2))
+    );
+};
+
+global.ingredientArrayToItemArray = ingredientArrayToItemArray;
+global.itemArrayToIngredientArray = itemArrayToIngredientArray;
+global.zipIngredientArrays = zipIngredientArrays;
+global.zipItemArrays = zipItemArrays;

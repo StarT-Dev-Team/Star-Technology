@@ -14,9 +14,10 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:bacterial_runic_mutator')
         .duration(1200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_fermenter')).EUt(GTValues.VHA[GTValues.ZPM]).CWUt(32)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_fermenter')).EUt(GTValues.VHA[ZPM]).CWUt(32)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('bacterial_breeding_vat'))
@@ -31,9 +32,10 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:bacterial_breeding_vat')
         .duration(1200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_brewery')).EUt(GTValues.VHA[GTValues.ZPM]).CWUt(32)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_brewery')).EUt(GTValues.VHA[ZPM]).CWUt(32)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('bacterial_hydrocarbon_harvester'))
@@ -48,10 +50,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:bacterial_hydrocarbon_harvester')
         .duration(1200)
         .stationResearch((researchRecipeBuilder) =>
-            researchRecipeBuilder
-                .researchStack(Item.of('gtceu:zpm_distillery'))
-                .EUt(GTValues.VHA[GTValues.ZPM])
-                .CWUt(32)
+            researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_distillery')).EUt(GTValues.VHA[ZPM]).CWUt(32)
         )
-        .EUt(GTValues.VHA[GTValues.ZPM]);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 });

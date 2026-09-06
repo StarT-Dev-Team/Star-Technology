@@ -11,30 +11,31 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
         .pattern((definition) =>
-            FactoryBlockPattern.start()
-                .aisle(' BBB ', ' AAA ', ' AAA ', '  A  ', '     ', '     ', '     ')
-                .aisle('BAAAB', 'AC#CA', 'A###A', ' A#A ', ' AAA ', '  A  ', '  D  ')
-                .aisle('BAAAB', 'A#E#A', 'A#E#A', 'A#E#A', ' AEA ', ' AMA ', ' D D ')
-                .aisle('BAAAB', 'AC#CA', 'A###A', ' A#A ', ' AAA ', '  A  ', '  D  ')
-                .aisle(' BBB ', ' A@A ', ' AAA ', '  A  ', '     ', '     ', '     ')
-                .where(
-                    'A',
-                    Predicates.blocks('gtceu:clean_machine_casing')
-                        .setMinGlobalLimited(5)
-                        .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setPreviewCount(1))
-                        .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMaxGlobalLimited(1))
-                        .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                )
-                .where('B', Predicates.blocks('gtceu:steel_firebox_casing'))
-                .where(' ', Predicates.any())
-                .where('#', Predicates.air())
-                .where('C', Predicates.blocks('gtceu:stainless_steel_gearbox'))
-                .where('D', Predicates.blocks('gtceu:steel_machine_casing'))
-                .where('E', Predicates.blocks('gtceu:steel_pipe_casing'))
-                .where('M', Predicates.abilities(PartAbility.MUFFLER))
-                .where('@', Predicates.controller(Predicates.blocks(definition.get())))
+            newFactoryBlockPattern([
+                ' BBB | AAA | AAA |  A  |     |     |     ',
+                'BAAAB|AC#CA|A###A| A#A | AAA |  A  |  D  ',
+                'BAAAB|A#E#A|A#E#A|A#E#A| AEA | AMA | D D ',
+                'BAAAB|AC#CA|A###A| A#A | AAA |  A  |  D  ',
+                ' BBB | A@A | AAA |  A  |     |     |     ',
+            ])
+                .whereDict({
+                    A: P.anyOf([
+                        P.gtBlock('clean_machine_casing', { min: 5 }),
+                        P.ability(PA.itemIn, { view: 1 }),
+                        P.ability(PA.itemOut, { view: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
+                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
+                    ]),
+                    B: P.gtBlock('steel_firebox_casing'),
+                    ' ': P.any(),
+                    '#': P.air(),
+                    C: P.gtBlock('stainless_steel_gearbox'),
+                    D: P.gtBlock('steel_machine_casing'),
+                    E: P.gtBlock('steel_pipe_casing'),
+                    M: P.ability(PA.muffler),
+                    '@': P.controller(definition),
+                })
                 .build()
         )
         .workableCasingModel(

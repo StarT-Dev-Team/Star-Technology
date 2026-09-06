@@ -9,7 +9,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:refractory_dense_residue 16000')
         .itemOutputs('1x gtceu:abydos_magma_slag_dust')
         .duration(240)
-        .EUt(GTValues.VHA[GTValues.ZPM] * 0.8);
+        .EUt(GTValues.VHA[ZPM] * 0.8);
 
     event.recipes.gtceu
         .cyclonic_sifter(id('abydos_reactive_dense_magma'))
@@ -18,7 +18,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:reactive_dense_residue 16000')
         .itemOutputs('1x gtceu:abydos_magma_slag_dust')
         .duration(240)
-        .EUt(GTValues.VHA[GTValues.ZPM] * 0.8);
+        .EUt(GTValues.VHA[ZPM] * 0.8);
 
     event.recipes.gtceu
         .cyclonic_sifter(id('abydos_naquadite_dense_magma'))
@@ -27,7 +27,7 @@ ServerEvents.recipes((event) => {
         .outputFluids('gtceu:naquadite_dense_residue 16000')
         .itemOutputs('1x gtceu:abydos_magma_slag_dust')
         .duration(240)
-        .EUt(GTValues.VHA[GTValues.ZPM] * 0.8);
+        .EUt(GTValues.VHA[ZPM] * 0.8);
 
     // === Residue Breakdown ===
     event.recipes.gtceu
@@ -41,7 +41,7 @@ ServerEvents.recipes((event) => {
             '1x gtceu:raw_scheelite'
         )
         .duration(1080)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .molten_destabilizing(id('abydos_reactive_dense_magma'))
@@ -54,7 +54,7 @@ ServerEvents.recipes((event) => {
             '1x gtceu:raw_lautarite'
         )
         .duration(1080)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .molten_destabilizing(id('abydos_naquadite_dense_magma'))
@@ -67,7 +67,7 @@ ServerEvents.recipes((event) => {
             '1x gtceu:raw_magnetite'
         )
         .duration(1080)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .molten_destabilizing(id('refractory_dense_residue'))
@@ -80,7 +80,7 @@ ServerEvents.recipes((event) => {
             '3x gtceu:raw_scheelite'
         )
         .duration(840)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .molten_destabilizing(id('reactive_dense_residue'))
@@ -93,7 +93,7 @@ ServerEvents.recipes((event) => {
             '3x gtceu:raw_lautarite'
         )
         .duration(840)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     event.recipes.gtceu
         .molten_destabilizing(id('naquadite_dense_residue'))
@@ -106,7 +106,7 @@ ServerEvents.recipes((event) => {
             '3x gtceu:raw_magnetite'
         )
         .duration(840)
-        .EUt(GTValues.VHA[GTValues.UV]);
+        .EUtVHA(UV);
 
     // === Slag Breakdown ===
     event.recipes.gtceu
@@ -119,5 +119,5 @@ ServerEvents.recipes((event) => {
             '1x gtceu:gypsum_dust'
         )
         .duration(342)
-        .EUt(GTValues.VHA[GTValues.EV]);
+        .EUtVHA(EV);
 });
