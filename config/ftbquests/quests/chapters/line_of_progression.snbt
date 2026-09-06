@@ -644,6 +644,19 @@
 				"123F0103224A8C43"
 			]
 			id: "6C6BD459EC785524"
+			rewards: [{
+				id: "65C3BB39B9048C4D"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:iv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "02B80B4707C41992"
 				item: "kubejs:iv_universal_circuit"
@@ -655,6 +668,19 @@
 		{
 			dependencies: ["52FE319F5E176C37"]
 			id: "2C1F52216F0003E6"
+			rewards: [{
+				id: "7CD6B2D2FEF42F56"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:ev_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "7CD0CAE01546EEB9"
 				item: "kubejs:ev_universal_circuit"
@@ -666,6 +692,19 @@
 		{
 			dependencies: ["73931EAA3EC5C9A9"]
 			id: "4CDBB14A234A17CC"
+			rewards: [{
+				id: "7B445731B487633A"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:hv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "62DFADAAB182EEAF"
 				item: "kubejs:hv_universal_circuit"
@@ -677,6 +716,19 @@
 		{
 			dependencies: ["7836F17B34B47B16"]
 			id: "5E106516E1301149"
+			rewards: [{
+				id: "5A48F28B6B562946"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:mv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "60BB405CE6E39232"
 				item: "kubejs:mv_universal_circuit"
@@ -691,6 +743,19 @@
 				"4E1271A47BFEE3B9"
 			]
 			id: "088E1B8DCADB8E5F"
+			rewards: [{
+				id: "327BBC6255BC0A3F"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:lv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "0663B9E066B17558"
 				item: "kubejs:lv_universal_circuit"
@@ -702,6 +767,19 @@
 		{
 			dependencies: ["3B81632EF4586280"]
 			id: "725838B2E5E0F1ED"
+			rewards: [{
+				id: "1F22C26BB206A1D7"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:ulv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "03CF650CB7C72095"
 				item: "kubejs:ulv_universal_circuit"
@@ -713,6 +791,19 @@
 		{
 			dependencies: ["53A9F3758C218CDC"]
 			id: "780DE9C5FAC1A07B"
+			rewards: [{
+				id: "121231EE3D2307A5"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:luv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "60F21FFB33D8FCB2"
 				item: "kubejs:luv_universal_circuit"
@@ -727,6 +818,19 @@
 				"26250BA1D20AE2DC"
 			]
 			id: "68F9735CB776A7A5"
+			rewards: [{
+				id: "05B657CE5E24F59F"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:zpm_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "5A0D53C0B8BFACF3"
 				item: "kubejs:zpm_universal_circuit"
@@ -738,6 +842,19 @@
 		{
 			dependencies: ["3FC351F05F2AC743"]
 			id: "0D4D54F0410EB78A"
+			rewards: [{
+				id: "2E0A2F9BF5C77E11"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:uv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "753E7D945E8041B9"
 				item: "kubejs:uv_universal_circuit"
@@ -749,6 +866,19 @@
 		{
 			dependencies: ["707C2E9BA62A60C5"]
 			id: "435A9E0547D1D700"
+			rewards: [{
+				id: "32CC5BF89B894303"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:uhv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "52E18B22878011BB"
 				item: "kubejs:uhv_universal_circuit"
@@ -761,6 +891,19 @@
 			dependencies: ["25583D0BF59E1BC8"]
 			id: "5584A2F87AC8631E"
 			optional: true
+			rewards: [{
+				id: "635D24D7195743F3"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:uev_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "58B4EB491E26C14B"
 				item: {
@@ -777,6 +920,19 @@
 			dependencies: ["5944C4DE27F98FF3"]
 			id: "73B54F4D395FB5EC"
 			optional: true
+			rewards: [{
+				id: "02CC64D999FE1B57"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:uiv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "1581178AE7A9FA51"
 				item: {
@@ -922,6 +1078,19 @@
 		{
 			dependencies: ["3B1453C435E3950B"]
 			id: "0B105880E4EC0BD1"
+			rewards: [{
+				id: "739AFCCB817A30F7"
+				item: {
+					Count: 1
+					id: "trofers:large_pillar"
+					tag: {
+						BlockEntityTag: {
+							Trophy: "kubejs:uxv_trophy"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "6086AB2EA119E261"
 				item: "kubejs:uxv_universal_circuit"
