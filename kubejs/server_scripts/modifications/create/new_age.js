@@ -10,7 +10,13 @@ ServerEvents.recipes((event) => {
      * @param {string} recipeID
      */
     const polarizer = (input, output, duration, eu, recipeID) => {
-        event.recipes.gtceu.polarizer(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
+        event.recipes.gtceu
+            .polarizer(id(recipeID))
+            .itemInputs(input)
+            .itemOutputs(output)
+            .duration(duration)
+            .EUt(eu)
+            .addMaterialInfo(true);
     };
 
     polarizer('minecraft:gold_ingot', 'create_new_age:overcharged_gold', 32, 16, 'energized_gold');
@@ -25,7 +31,13 @@ ServerEvents.recipes((event) => {
      * @param {string} recipeID
      */
     const bender = (input, output, duration, eu, recipeID) => {
-        event.recipes.gtceu.bender(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
+        event.recipes.gtceu
+            .bender(id(recipeID))
+            .itemInputs(input)
+            .itemOutputs(output)
+            .duration(duration)
+            .EUt(eu)
+            .addMaterialInfo(true);
     };
 
     bender(
@@ -51,7 +63,13 @@ ServerEvents.recipes((event) => {
      * @param {string} recipeID
      */
     const wiremill = (input, output, duration, eu, recipeID) => {
-        event.recipes.gtceu.wiremill(id(recipeID)).itemInputs(input).itemOutputs(output).duration(duration).EUt(eu);
+        event.recipes.gtceu
+            .wiremill(id(recipeID))
+            .itemInputs(input)
+            .itemOutputs(output)
+            .duration(duration)
+            .EUt(eu)
+            .addMaterialInfo(true);
     };
 
     wiremill('gtceu:copper_plate', '4x create_new_age:copper_wire', 189, 7, 'copper_wire');
@@ -71,35 +89,58 @@ ServerEvents.recipes((event) => {
         'diamond_wire'
     );
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('create_new_age:carbon_brushes'), ['SCS', 'KsK', 'SSS'], {
             S: 'gtceu:steel_plate',
             C: '#gtceu:circuits/lv',
             K: 'minecraft:charcoal',
             s: 'create:shaft',
         })
+        .addMaterialInfo()
         .id('start:shaped/carbon_brushes');
 
-    event
+    event.recipes.gtceu
         .shaped(Item.of('create_new_age:magnetite_block'), ['SMS', 'MSM', 'SMS'], {
             S: 'minecraft:stone',
             M: 'gtceu:magnetite_dust',
         })
+        .addMaterialInfo()
         .id('start:shaped/magnetite_block');
 
-    event
-        .shaped(Item.of('3x create_new_age:redstone_magnet'), ['MRM', 'RBR', 'MRM'], {
+    event.recipes.gtceu
+        .shaped(Item.of('create_new_age:redstone_magnet'), ['MRM', 'RBR', 'MRM'], {
             B: 'create_new_age:magnetite_block',
-            R: 'minecraft:redstone',
+            R: 'gtceu:red_alloy_ingot',
             M: 'gtceu:magnetite_dust',
         })
+        .addMaterialInfo()
         .id('start:shaped/redstone_magnet');
 
-    event
-        .shaped(Item.of('4x create_new_age:netherite_magnet'), ['MNM', 'NEN', 'MNM'], {
+    event.recipes.gtceu
+        .shaped(Item.of('create_new_age:layered_magnet'), ['MRM', 'RBR', 'MRM'], {
+            B: 'create_new_age:redstone_magnet',
+            R: 'create_new_age:overcharged_golden_sheet',
+            M: 'create_new_age:overcharged_iron_sheet',
+        })
+        .addMaterialInfo()
+        .id('start:shaped/layered_magnet');
+
+    event.recipes.gtceu
+        .shaped(Item.of('2x create_new_age:fluxuated_magnetite'), ['RMR', 'DBD', 'RMR'], {
+            B: 'create_new_age:layered_magnet',
+            R: 'create_new_age:overcharged_golden_sheet',
+            M: 'create_new_age:magnetite_block',
+            D: 'create_new_age:overcharged_diamond',
+        })
+        .addMaterialInfo()
+        .id('start:shaped/fluxated_magnetite_magnet');
+
+    event.recipes.gtceu
+        .shaped(Item.of('2x create_new_age:netherite_magnet'), ['MNM', 'NEN', 'MNM'], {
             M: 'create_new_age:fluxuated_magnetite',
             N: 'gtceu:neodymium_ingot',
             E: 'gtceu:energium_dust',
         })
+        .addMaterialInfo()
         .id('start:shaped/neodymium_magnet');
 });

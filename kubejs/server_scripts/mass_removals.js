@@ -136,6 +136,8 @@ ServerEvents.recipes((event) => {
         'create_new_age:shaped/basic_motor_extension',
         'create_new_age:advanced_motor_extension',
         'create_new_age:shaped/redstone_magnet',
+        'create_new_age:shaped/layered_magnet',
+        'create_new_age:shaped/fluxuated_magnetite',
         'createdieselgenerators:basin_fermenting/magma_cream',
         'gtceu:research_station/1_x_gtceu_uv_energy_input_hatch',
         'gtceu:research_station/1_x_gtceu_uv_energy_output_hatch',
