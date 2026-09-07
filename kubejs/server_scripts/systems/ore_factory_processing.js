@@ -435,6 +435,13 @@ ServerEvents.recipes((event) => {
     const dust = (mat, amount) => {
         return `${amount}x gtceu:${mat}_dust`;
     };
+        /**
+     * @param {string} mat
+     * @param {number} amount
+     */
+    const oreResidue = (mat, amount) => {
+        return `kubejs:${mat}_residue ${amount}`;
+    };
 
     const fluids = {
         water: 'minecraft:water 100',
@@ -651,6 +658,57 @@ ServerEvents.recipes((event) => {
             .duration(300)
             .EUtVA(LV);
     };
+    /**
+     * @param {OreProcMaterial} materialObj
+     */
+    const centrifugePrimitive = (materialObj) => {
+        event.recipes.gtceu
+            .centrifuge(id(`${materialObj.material}`))
+            .inputFluids(oreResidue(materialObj.material, 10000))
+            .itemOutputs(dust(materialObj.material, 10))
+            .itemOutputs(dust(materialObj.material, 10))
+            .itemOutputs(dust(materialObj.secondary, 7))
+            .itemOutputs(dust(materialObj.tertiary, 5))
+            .duration(2400)
+            .EUtVHA(LV);
+    };
+    /**
+     * @param {Required<OreProcMaterial>} materialObj
+     * @param {'lv' | 'mv' | 'hv' | 'ev'} tier
+     */
+    const centrifugeElectric = (materialObj, tier) => {
+        const voltages = {
+            lv: GTValues.VHA[LV],
+            mv: GTValues.VHA[MV],
+            hv: GTValues.VHA[HV],
+            ev: GTValues.VHA[EV],
+        };
+        event.recipes.gtceu
+            .centrifuge(id(`${materialObj.material}`))
+            .inputFluids(oreResidue(materialObj.material, 10000))
+            .itemOutputs(dust(materialObj.material, 10))
+            .itemOutputs(dust(materialObj.material, 9))
+            .itemOutputs(dust(materialObj.secondary, 7))
+            .itemOutputs(dust(materialObj.tertiary, 4))
+            .itemOutputs(dust(materialObj.quaternary, 3))
+            .duration(240)
+            .EUt(voltages[tier]);
+    };
+    /**
+     * @param {Required<OreProcMaterial>} materialObj
+     */
+    const centrifugeIV = (materialObj) => {
+        event.recipes.gtceu
+            .centrifuge(id(`${materialObj.material}`))
+            .inputFluids(oreResidue(materialObj.material, 10000))
+            .itemOutputs(dust(materialObj.material, 10))
+            .itemOutputs(dust(materialObj.material, 9))
+            .itemOutputs(dust(materialObj.material, 9))
+            .itemOutputs(dust(materialObj.secondary, 7))
+            .itemOutputs(dust(materialObj.secondary, 7))
+            .duration(240)
+            .EUt(GTValues.VHA[IV]);
+    };
 
     /* Final Product */
     // Controllers
@@ -730,11 +788,14 @@ ServerEvents.recipes((event) => {
                 primitiveProcessing(item);
                 electricPrimitiveProcessing(item);
                 plantPrimitiveProcessing(item);
+                centrifugePrimitive(item);
             } else if (tier === 'iv') {
                 plantOreProcessing(/** @type {any} */ (item));
+                centrifugeIV(/** @type {any} */ (item));
             } else {
                 electricProcessing(/** @type {any} */ (item), tier);
                 plantElectricProcessing(/** @type {any} */ (item), tier);
+                centrifugeElectric(/** @type {any} */ (item), tier);
             }
         });
     });
