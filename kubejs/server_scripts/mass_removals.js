@@ -141,7 +141,6 @@ ServerEvents.recipes((event) => {
         'createdieselgenerators:basin_fermenting/magma_cream',
         'gtceu:research_station/1_x_gtceu_uv_energy_input_hatch',
         'gtceu:research_station/1_x_gtceu_uv_energy_output_hatch',
-        'toms_storage:adv_wireless_terminal',
         'megacells:mega_crafting_unit',
         'gtceu:shaped/resistor_wire',
         'gtceu:shaped/resistor_wire_fine',

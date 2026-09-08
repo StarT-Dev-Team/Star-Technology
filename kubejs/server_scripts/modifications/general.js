@@ -90,15 +90,6 @@ ServerEvents.recipes((event) => {
         event.replaceInput({ id: 'chipped:benches/mechanist_workbench' }, 'minecraft:tnt', 'minecraft:red_concrete')
     );
 
-    isModLoaded('toms_storage', () =>
-        event
-            .shaped('toms_storage:ts.adv_wireless_terminal', [' P ', 'PTP', ' P '], {
-                P: 'gtceu:steel_plate',
-                T: 'toms_storage:ts.wireless_terminal',
-            })
-            .id('start:shaped/advanced_wireless_terminal')
-    );
-
     // Effortless Building Upgrade Accessibility
     isModLoaded('effortlessbuilding', () => {
         /**
