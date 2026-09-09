@@ -69,9 +69,9 @@ ServerEvents.recipes((event) => {
         .id(rid('inventory_cable_framed'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('inventory_cable_connector')), [' qP', 'CcE', ' WP'], {
+        .shaped(Item.of(tom('inventory_cable_connector')), [' qP', 'CXE', ' WP'], {
             P: 'gtceu:wood_plate',
-            c: '#forge:chests/wooden',
+            X: '#forge:chests/wooden',
             W: 'gtceu:wrought_iron_plate',
             C: tom('inventory_cable'),
             E: 'minecraft:ender_pearl',
@@ -81,17 +81,17 @@ ServerEvents.recipes((event) => {
         .id(rid('inventory_cable_connector'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('inventory_cable_connector_filtered')), [' q ', 'pcp', ' q '], {
+        .shaped(Item.of(tom('inventory_cable_connector_filtered')), [' q ', 'pXp', ' q '], {
             q: 'minecraft:quartz',
             p: 'minecraft:paper',
-            c: tom('inventory_cable_connector'),
+            X: tom('inventory_cable_connector'),
         })
         .addMaterialInfo()
         .id(rid('inventory_cable_connector_filtered'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('inventory_cable_connector_framed')), ['S S', ' C ', 'S S'], {
-            C: tom('inventory_cable_connector'),
+        .shaped(Item.of(tom('inventory_cable_connector_framed')), ['S S', ' X ', 'S S'], {
+            X: tom('inventory_cable_connector'),
             S: 'minecraft:stick',
         })
         .addMaterialInfo()
@@ -107,27 +107,27 @@ ServerEvents.recipes((event) => {
         .id(rid('inventory_proxy'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('crafting_terminal')), ['cdc', 'dtd', 'cdc'], {
-            d: 'gtceu:brass_plate',
-            c: 'minecraft:crafting_table',
+        .shaped(Item.of(tom('crafting_terminal')), ['CXC', 'XtX', 'CXC'], {
+            X: 'gtceu:brass_plate',
+            C: 'minecraft:crafting_table',
             t: tom('storage_terminal'),
         })
         .addMaterialInfo()
         .id(rid('crafting_terminal'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('inventory_hopper_basic')), ['PcP', ' H '], {
+        .shaped(Item.of(tom('inventory_hopper_basic')), ['PXP', ' H '], {
             P: 'gtceu:wood_plate',
-            c: tom('inventory_cable'),
+            X: tom('inventory_cable'),
             H: 'minecraft:hopper',
         })
         .addMaterialInfo()
         .id(rid('inventory_hopper_basic'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('level_emitter')), [' t ', 'PcP', ' H '], {
+        .shaped(Item.of(tom('level_emitter')), [' t ', 'PXP', ' H '], {
             P: 'gtceu:wood_plate',
-            c: tom('inventory_cable'),
+            X: tom('inventory_cable'),
             H: 'minecraft:comparator',
             t: 'minecraft:redstone_torch',
         })
@@ -149,10 +149,10 @@ ServerEvents.recipes((event) => {
         .id(rid('paint_kit'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('wireless_terminal')), ['PCP', 'aGg', 'PEP'], {
+        .shaped(Item.of(tom('wireless_terminal')), ['PXP', 'aGg', 'PEP'], {
             P: 'gtceu:wood_plate',
             a: 'gtceu:gold_plate',
-            C: 'minecraft:comparator',
+            X: 'minecraft:comparator',
             E: 'minecraft:ender_pearl',
             G: 'minecraft:glowstone',
             g: '#forge:glass',

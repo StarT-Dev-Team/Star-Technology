@@ -90,11 +90,11 @@ ServerEvents.recipes((event) => {
     );
 
     event.recipes.gtceu
-        .shaped(Item.of('create_new_age:carbon_brushes'), ['SCS', 'KsK', 'SSS'], {
+        .shaped(Item.of('create_new_age:carbon_brushes'), ['SCS', 'KXK', 'SSS'], {
             S: 'gtceu:steel_plate',
             C: '#gtceu:circuits/lv',
             K: 'minecraft:charcoal',
-            s: 'create:shaft',
+            X: 'create:shaft',
         })
         .addMaterialInfo()
         .id('start:shaped/carbon_brushes');
