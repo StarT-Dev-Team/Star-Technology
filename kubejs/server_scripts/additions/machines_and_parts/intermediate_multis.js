@@ -209,4 +209,24 @@ ServerEvents.recipes((event) => {
         G: 'gtceu:titanium_plate',
         A: '#gtceu:circuits/iv',
     });
+
+    $(
+        event.recipes.gtceu
+            .assembly_line(id('ultra_barrel'))
+            .itemInputs(
+                '8x gtceu:uv_robot_arm',
+                '16x gtceu:uv_electric_pump',
+                '4x #gtceu:circuits/uhv',
+                '16x #gtceu:circuits/uv',
+                '16x gtceu:tritanium_gear',
+                '64x gtceu:enriched_naquadah_trinium_europium_duranide_single_wire'
+            )
+            .inputFluids('gtceu:polyether_ether_ketone 2304', 'gtceu:soldering_alloy 1152', 'gtceu:lubricant 576')
+            .itemOutputs('gtceu:ultra_barrel')
+            .duration(2000)
+            .EUtVHA(UHV)
+            .stationResearch((researchRecipeBuilder) =>
+                researchRecipeBuilder.researchStack(Item.of('gtceu:super_barrel')).EUt(GTValues.VHA[ZPM]).CWUt(64)
+            )
+    );
 });

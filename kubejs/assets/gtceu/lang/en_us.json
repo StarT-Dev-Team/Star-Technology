@@ -1320,6 +1320,7 @@
     "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7A large extractor with higher efficiency to replace your singleblocks.",
     "block.gtceu.distillery_column.tooltip.0": "§7A large distillery with higher efficiency to replace your singleblocks.",
     "block.gtceu.industrial_brewing_station.tooltip.0": "§7A large brewery with throughput boosting to replace your singleblocks.",
+    "block.gtceu.ultra_barrel.tooltip.0": "§7The ultimate barrel, for any elite barreling needs.",
 
     "material.gtceu.akreyriadic_runixium": "Akreyriadic-Runixium",
     "material.gtceu.stellarized_weapon_grade_naquadah": "§bStellarized§f Weapon Grade Naquadah",
@@ -1447,5 +1448,6 @@
 
     "block.gtceu.industrial_extraction_chamber": "Industrial Extraction Chamber [IEC]",
     "block.gtceu.distillery_column": "Distillery Column [DC]",
-    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]"
+    "block.gtceu.industrial_brewing_station": "Industrial Brewing Station [IBS]",
+    "block.gtceu.ultra_barrel": "Ultra Barrel [UB]"
 }
