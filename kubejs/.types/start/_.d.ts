@@ -39,9 +39,6 @@ declare namespace internal.kjs {
         // Multiblocks -> Resource Production -> Miners
         aqueous_void_excavation(id: $wrapped<ResourceLocation>): GTRecipeJS;
         void_excavation(id: $wrapped<ResourceLocation>): GTRecipeJS;
-        // Multiblocks -> Resource Production -> Mystical Agriculture
-        essence_enchancing(id: $wrapped<ResourceLocation>): GTRecipeJS;
-        essence_replication(id: $wrapped<ResourceLocation>): GTRecipeJS;
         // Multiblocks -> Resource Production -> Plants
         composting_factory(id: $wrapped<ResourceLocation>): GTRecipeJS;
         tree_greenhouse(id: $wrapped<ResourceLocation>): GTRecipeJS;
@@ -97,8 +94,6 @@ declare namespace internal.kjs {
         composting(id: $wrapped<ResourceLocation>): GTRecipeJS;
         me_assembler(id: $wrapped<ResourceLocation>): GTRecipeJS;
         fermenting(id: $wrapped<ResourceLocation>): GTRecipeJS;
-        greenhouse_growing(id: $wrapped<ResourceLocation>): GTRecipeJS;
-        essence_burning(id: $wrapped<ResourceLocation>): GTRecipeJS;
         pulverizer(id: $wrapped<ResourceLocation>): GTRecipeJS;
     }
 }

@@ -1,33 +1,37 @@
+// requires: create
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     //plates
-    [
-        {
-            mod: 'gtceu',
-            metals: [
-                'lead',
-                'silver',
-                'tin',
-                'zinc',
-                'brass',
-                'bronze',
-                'red_alloy',
-                'nickel',
-                'invar',
-                'soul_infused',
-                'cobalt_brass',
-                'wrought_iron',
-                'potin',
-                'tin_alloy',
-            ],
-        },
-        { mod: 'minecraft', metals: ['iron', 'gold', 'copper'] },
-    ].forEach((type) => {
-        type.metals.forEach((foo) => {
-            event.recipes.create
-                .pressing(`gtceu:${foo}_plate`, `${type.mod}:${foo}_ingot`)
-                .id(`start:pressing/${foo}_plate`);
+    isModLoaded('kubejs_create', () => {
+        [
+            {
+                mod: 'gtceu',
+                metals: [
+                    'lead',
+                    'silver',
+                    'tin',
+                    'zinc',
+                    'brass',
+                    'bronze',
+                    'red_alloy',
+                    'nickel',
+                    'invar',
+                    'soul_infused',
+                    'cobalt_brass',
+                    'wrought_iron',
+                    'potin',
+                    'tin_alloy',
+                ],
+            },
+            { mod: 'minecraft', metals: ['iron', 'gold', 'copper'] },
+        ].forEach((type) => {
+            type.metals.forEach((foo) => {
+                event.recipes.create
+                    .pressing(`gtceu:${foo}_plate`, `${type.mod}:${foo}_ingot`)
+                    .id(`start:pressing/${foo}_plate`);
+            });
         });
     });
 
@@ -52,4 +56,12 @@ ServerEvents.recipes((event) => {
             R: 'gtceu:rubber_plate',
         })
         .id('start:shaped/belt_connector');
+
+    event
+        .shapeless('9x create:andesite_alloy', ['create:andesite_alloy_block'])
+        .id('start:shapeless/andesite_alloy_block_decomp');
+
+    event.replaceInput({ id: 'create:crafting/kinetics/goggles' }, '#forge:plates/gold', 'gtceu:copper_plate');
+
+    event.remove({ id: 'create:splashing/stained_glass' });
 });

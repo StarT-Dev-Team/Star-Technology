@@ -1,3 +1,4 @@
+// priority: 1600
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
@@ -118,6 +119,15 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [plates, rod, frame, smallGear, gear, round, ring, boltAndScrew, longRod, foil, densePlate]
     );
 
+    MH.compIngotLiquid(
+        'hafnide_ceramic_base',
+        ['4x hafnium', '5x tantalum_carbide'],
+        0x4f4f4f,
+        dull,
+        [12900, 'highest', GTValues.VA[UV], 970],
+        [noDecomp]
+    );
+
     MH.compIngotPlasmaSecColor(
         'expetidalloy_d_17',
         ['2x hafnide_ceramic_base', '11x hastelloy_c_276', '3x dragonsteel', '1x rhodium_plated_palladium'],
@@ -138,22 +148,18 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         [noDecomp, noABSRecipe, fineWire]
     );
 
-    MH.compIngotPlasmaSecColor(
-        'borealic_steel',
-        [
-            '2x prismalium',
-            '4x rose_gold',
-            '8x aurourium',
-            '2x tritan_steel',
-            '1x ancient_netherite',
-            '3x borealic_concentrate',
-        ],
-        0x8f7090,
-        0x70907c,
-        shiny,
-        [18880, 'highest', GTValues.VA[UXV], 600],
-        [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
-    );
+    event
+        .create('draco_abyssal') //Shadowyrm
+        .components('1x dragon', '1x voidic', '1x dragon')
+        .ingot()
+        .fluid()
+        .plasma()
+        .color(0x401e6d)
+        .secondaryColor(0x340e4d)
+        .blastTemp(18880, 'highest', GTValues.VA[UXV], 600)
+        .iconSet(shiny)
+        .flags(plates, frame, rod, densePlate, longRod, gear, foil, smallGear, rotor, fineWire, noDecomp, noABSRecipe)
+        .rotorStats(12800, 400, 50, 45000);
 
     MH.compIngotPlasmaSecColor(
         'hvga_steel',
@@ -229,6 +235,30 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         shiny,
         [18880, 'highest', GTValues.VA[UXV], 600],
         [plates, frame, rod, boltAndScrew, densePlate, longRod, gear, smallGear, noDecomp, noABSRecipe]
+    );
+
+    MH.conductorPlasma(
+        'magmada_alloy',
+        ['4x adamantine', '1x neutronium', '3x rtm_alloy'],
+        0xda8607,
+        shiny,
+        [17890, 'highest', GTValues.VA[UEV], 600],
+        [GTValues.V[UHV], 1, 3, false],
+        [
+            plates,
+            frame,
+            rod,
+            boltAndScrew,
+            round,
+            longRod,
+            gear,
+            smallGear,
+            ring,
+            noDecomp,
+            rotor,
+            fineWire,
+            noABSRecipe,
+        ]
     );
 
     MH.compIngotPlasmaSecColor(

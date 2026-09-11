@@ -1,23 +1,24 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    const LCR = event.recipes.gtceu.large_chemical_reactor;
-
-    LCR(id('netherite_trisulfate_complex'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('netherite_trisulfate_complex'))
         .itemInputs('gtceu:pure_netherite_dust')
         .inputFluids('gtceu:sulfuric_acid 3000', 'minecraft:water 2000')
         .outputFluids('gtceu:netherite_trisulfate_complex 1000', 'gtceu:hydrogen 8000')
         .duration(160)
         .EUtVHA(ZPM);
 
-    LCR(id('netherite_hexammine_sulfate'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('netherite_hexammine_sulfate'))
         .inputFluids('gtceu:netherite_trisulfate_complex 1000', 'gtceu:ammonia 6000', 'gtceu:hydrogen 6000')
         .itemOutputs('30x gtceu:netherite_hexammine_sulfate_dust')
         .outputFluids('gtceu:sulfuric_acid 2000', 'minecraft:water 2000')
         .duration(220)
         .EUtVHA(ZPM);
 
-    LCR(id('voidic_nitride'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('voidic_nitride'))
         .itemInputs('30x gtceu:netherite_hexammine_sulfate_dust')
         .inputFluids('gtceu:nitrobenzene 8000', 'gtceu:hydrogen 16000')
         .outputFluids(
@@ -29,7 +30,8 @@ ServerEvents.recipes((event) => {
         .duration(480)
         .EUtVHA(UV);
 
-    LCR(id('netherite_tetrahydroxide'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('netherite_tetrahydroxide'))
         .itemInputs('15x gtceu:calcium_hydroxide_dust')
         .inputFluids('gtceu:netherite_trisulfate_complex 1000', 'gtceu:hydrogen 4000')
         .itemOutputs('9x gtceu:netherite_tetrahydroxide_dust', '18x gtceu:calcium_sulfate_dust') // * 6
@@ -37,7 +39,8 @@ ServerEvents.recipes((event) => {
         .duration(120)
         .EUtVHA(UV);
 
-    LCR(id('astral_fluorosilicate'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('astral_fluorosilicate'))
         .itemInputs('9x gtceu:netherite_tetrahydroxide_dust', '2x gtceu:silicon_dioxide_dust')
         .inputFluids('gtceu:hydrofluoric_acid 4000')
         .outputFluids('gtceu:astral_fluorosilicate 1000', 'minecraft:water 4000', 'gtceu:hydrofluoric_acid 3000')
@@ -51,7 +54,8 @@ ServerEvents.recipes((event) => {
         .duration(80)
         .EUtVHA(UHV);
 
-    LCR(id('magnesium_nitride'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('magnesium_nitride'))
         .itemInputs('3x gtceu:magnesium_dust')
         .inputFluids('gtceu:nitrogen 2000')
         .outputFluids('gtceu:magnesium_nitride 1000')

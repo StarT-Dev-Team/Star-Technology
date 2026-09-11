@@ -1,3 +1,5 @@
+// priority: 5000
+
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
@@ -64,4 +66,6 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compDustLiquid('tungsten_disulfide', ['1x tungsten', '2x sulfur'], 0x928897, [noDecomp]);
 
     MH.compDust('iron_titanium_oxide', ['3x iron', '2x titanium', '7x oxygen'], 0x82229b, [noDecomp]);
+
+    MH.compLiquid('magnesium_nitride', ['3x magnesium', '2x nitrogen'], 0xcc66ff, []);
 });

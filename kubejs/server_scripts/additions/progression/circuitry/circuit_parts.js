@@ -170,7 +170,7 @@ ServerEvents.recipes((event) => {
             { count: 1, itemId: 'gtceu:iron_titanium_oxide_dust' },
         ],
         [
-            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate' },
             { amount: 324, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
@@ -183,7 +183,7 @@ ServerEvents.recipes((event) => {
             { count: 1, itemId: 'gtceu:aurourium_foil' },
         ],
         [
-            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate' },
             { amount: 324, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
@@ -191,12 +191,12 @@ ServerEvents.recipes((event) => {
     dracoQMD(
         'capacitor',
         [
-            { count: 2, itemId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_foil' },
+            { count: 2, itemId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_foil' },
             { count: 3, itemId: 'gtceu:zalloy_foil' },
             { count: 1, itemId: 'gtceu:mythrolic_alloy_foil' },
         ],
         [
-            { amount: 144, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 144, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate' },
             { amount: 216, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
@@ -209,7 +209,7 @@ ServerEvents.recipes((event) => {
             { count: 4, itemId: 'gtceu:bismuth_iridate_foil' },
         ],
         [
-            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 216, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate' },
             { amount: 324, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );
@@ -222,7 +222,7 @@ ServerEvents.recipes((event) => {
             { count: 8, itemId: 'gtceu:fine_stellarium_wire' },
         ],
         [
-            { amount: 432, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate' },
+            { amount: 432, fluidId: 'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate' },
             { amount: 648, fluidId: 'gtceu:naquadated_soldering_alloy' },
         ]
     );

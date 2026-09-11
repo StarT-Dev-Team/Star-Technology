@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
             G: 'gtceu:fusion_glass',
             E: 'gtceu:quantum_eye',
             P: 'gtceu:double_void_plate',
-            C: 'kubejs:helish_star',
+            C: 'kubejs:decaying_star',
         })
         .id('start:shaped/end_crystal');
 
@@ -31,7 +31,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .heat_chamber(id('hot_diamane'))
         .itemInputs('3x gtceu:graphene_dust', '1x gtceu:diamond_dust')
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 36')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 36')
         .itemOutputs('1x gtceu:hot_diamane_ingot')
         .duration(140)
         .EUtVHA(UV);
@@ -80,9 +80,10 @@ ServerEvents.recipes((event) => {
         .EUt(GTValues.V[UIV] * 0.3)
         .cleanroom($StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM);
 
+    // [FIX]: temp use dragon egg, custom dragon scale item?
     event.recipes.gtceu
         .forge_hammer(id('scale_recycling'))
-        .itemInputs('mysticalagradditions:dragon_scale')
+        .itemInputs('minecraft:dragon_egg')
         .itemOutputs('2x kubejs:draconic_scale_cells')
         .duration(200)
         .EUtVHA(UHV);

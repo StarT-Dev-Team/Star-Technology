@@ -11,10 +11,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('exotic_tectonic_formation_apparatus', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .recipeType('exotic_rock_crushing')
+        .recipeTypes(['exotic_rock_crushing', 'large_rock_crusher'])
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
-            GTRecipeModifiers.OC_NON_PERFECT,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             GTRecipeModifiers.BATCH_MODE,
         ])
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)

@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event
         .shaped('start_core:mechanical_memory_card', ['WPW', 'SBS', 'WPW'], {
@@ -79,87 +80,91 @@ ServerEvents.recipes((event) => {
         .duration(3072000)
         .EUtVHA(LV);
 
-    event.remove({ mod: 'placeablemaxwell' });
+    isModLoaded('placeablemaxwell', () => {
+        event.remove({ mod: 'placeablemaxwell' });
 
-    /**
-     * @param {string} name
-     * @param {GTTier} tier
-     * @param {string} dye
-     * @param {string} dye2
-     * @param {string} wire
-     * @param {number} scaler
-     */
-    const cat = (name, tier, dye, dye2, wire, scaler) => {
+        /**
+         * @param {string} name
+         * @param {GTTier} tier
+         * @param {string} dye
+         * @param {string} dye2
+         * @param {string} wire
+         * @param {number} scaler
+         */
+        const cat = (name, tier, dye, dye2, wire, scaler) => {
+            event.recipes.gtceu
+                .catto_shrine(id(name))
+                .layeredRecipe((layers) =>
+                    layers
+                        .itemInputs(`gtceu:${tier}_machine_hull`)
+                        .next()
+                        .itemInputs(`4x gtceu:${tier}_robot_arm`)
+                        .next()
+                        .itemInputs(`2x gtceu:${tier}_field_generator`)
+                        .next()
+                        .itemInputs(`1x gtceu:${tier}_fluid_regulator`)
+                        .next()
+                        .itemInputs(`2x gtceu:${tier}_sensor`)
+                        .next()
+                        .itemInputs(`8x gtceu:${wire}_single_wire`)
+                )
+                .inputFluids(`gtceu:${dye}_dye 1000000`)
+                .itemInputs(`512x minecraft:${dye2}_wool`, '512x #forge:cooked_fishes')
+                .itemOutputs(`placeablemaxwell:${name}`)
+                .duration(168000)
+                .EUt(GTValues.VH[ZPM] * Math.pow(4, scaler));
+        };
+
+        cat('mars', 'zpm', 'light_gray', 'gray', 'yttrium_barium_cuprate', 1);
+        cat('vasilisa', 'uv', 'gray', 'white', 'europium', 2);
+        cat('valenok', 'uhv', 'white', 'orange', 'cerium_tritelluride', 3);
+        cat('poomba', 'uev', 'brown', 'white', 'polonium_bismide', 4);
+        cat('maxwell', 'uiv', 'black', 'white', 'lepton_resonant_thallium_antimonide', 5);
+
         event.recipes.gtceu
-            .catto_shrine(id(name))
+            .catto_shrine(id('worries_about_it'))
             .layeredRecipe((layers) =>
                 layers
-                    .itemInputs(`gtceu:${tier}_machine_hull`)
+                    .itemInputs('placeablemaxwell:mars')
                     .next()
-                    .itemInputs(`4x gtceu:${tier}_robot_arm`)
+                    .itemInputs('placeablemaxwell:vasilisa')
                     .next()
-                    .itemInputs(`2x gtceu:${tier}_field_generator`)
+                    .itemInputs('placeablemaxwell:valenok')
                     .next()
-                    .itemInputs(`1x gtceu:${tier}_fluid_regulator`)
+                    .itemInputs('placeablemaxwell:poomba')
                     .next()
-                    .itemInputs(`2x gtceu:${tier}_sensor`)
-                    .next()
-                    .itemInputs(`8x gtceu:${wire}_single_wire`)
+                    .itemInputs('placeablemaxwell:maxwell')
             )
-            .inputFluids(`gtceu:${dye}_dye 1000000`)
-            .itemInputs(`512x minecraft:${dye2}_wool`, '512x #forge:cooked_fishes')
-            .itemOutputs(`placeablemaxwell:${name}`)
-            .duration(168000)
-            .EUt(GTValues.VH[ZPM] * Math.pow(4, scaler));
-    };
+            .itemOutputs('kubejs:worries_about_it')
+            .duration(429496728)
+            .EUt(69);
+    });
 
-    cat('mars', 'zpm', 'light_gray', 'gray', 'yttrium_barium_cuprate', 1);
-    cat('vasilisa', 'uv', 'gray', 'white', 'europium', 2);
-    cat('valenok', 'uhv', 'white', 'orange', 'cerium_tritelluride', 3);
-    cat('poomba', 'uev', 'brown', 'white', 'polonium_bismide', 4);
-    cat('maxwell', 'uiv', 'black', 'white', 'lepton_resonant_thallium_antimonide', 5);
-
-    event.recipes.gtceu
-        .catto_shrine(id('worries_about_it'))
-        .layeredRecipe((layers) =>
-            layers
-                .itemInputs('placeablemaxwell:mars')
-                .next()
-                .itemInputs('placeablemaxwell:vasilisa')
-                .next()
-                .itemInputs('placeablemaxwell:valenok')
-                .next()
-                .itemInputs('placeablemaxwell:poomba')
-                .next()
-                .itemInputs('placeablemaxwell:maxwell')
-        )
-        .itemOutputs('kubejs:worries_about_it')
-        .duration(429496728)
-        .EUt(69);
-
-    event.recipes.gtceu
-        .catto_shrine(id('why_are_you_worrying'))
-        .layeredRecipe((layers) =>
-            layers
-                .itemInputs('start_core:komaru')
-                .itemInputs('komarumod:komaru_spawn_egg')
-                .next()
-                .itemInputs('start_core:komaru')
-                .itemInputs('komarumod:komaru_powder')
-                .next()
-                .itemInputs('start_core:komaru')
-                .itemInputs('komarumod:komaru_spawn_egg')
-                .next()
-                .itemInputs('start_core:komaru')
-                .itemInputs('komarumod:komaru_powder')
-                .next()
-                .itemInputs('start_core:komaru')
-                .itemInputs('komarumod:komaru_spawn_egg')
-        )
-        .itemInputs('64x kubejs:worries_about_it')
-        .itemOutputs('kubejs:why_are_you_worrying')
-        .duration(429496728)
-        .EUt(420);
+    isModLoaded('komarumod', () => {
+        event.recipes.gtceu
+            .catto_shrine(id('why_are_you_worrying'))
+            .layeredRecipe((layers) =>
+                layers
+                    .itemInputs('start_core:komaru')
+                    .itemInputs('komarumod:komaru_spawn_egg')
+                    .next()
+                    .itemInputs('start_core:komaru')
+                    .itemInputs('komarumod:komaru_powder')
+                    .next()
+                    .itemInputs('start_core:komaru')
+                    .itemInputs('komarumod:komaru_spawn_egg')
+                    .next()
+                    .itemInputs('start_core:komaru')
+                    .itemInputs('komarumod:komaru_powder')
+                    .next()
+                    .itemInputs('start_core:komaru')
+                    .itemInputs('komarumod:komaru_spawn_egg')
+            )
+            .itemInputs('64x kubejs:worries_about_it')
+            .itemOutputs('kubejs:why_are_you_worrying')
+            .duration(429496728)
+            .EUt(420);
+    });
 
     event.recipes.gtceu
         .mixer(id('osthendah_dust'))

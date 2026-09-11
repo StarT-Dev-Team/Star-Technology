@@ -6,7 +6,7 @@ ServerEvents.recipes((event) => {
         .assembly_line(id('heart_of_the_flame'))
         .itemInputs(
             'kubejs:husk_brick',
-            '2x kubejs:helish_core',
+            '2x kubejs:decaying_core',
             '6x gtceu:dense_ancient_netherite_plate',
             '24x gtceu:pure_netherite_screw'
         )
@@ -36,7 +36,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('kubejs:heart_of_the_flame')).EUt(GTValues.VA[UHV]).CWUt(192)
         )
-        .EUtVA(UEV);
+        .EUtVA(UEV)
+        .addMaterialInfo(true, true);
 
     // === Cryostate ===
 
@@ -58,7 +59,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:mega_vacuum_freezer')).EUt(GTValues.VA[UHV]).CWUt(192)
         )
-        .EUtVA(UEV);
+        .EUtVA(UEV)
+        .addMaterialInfo(true, true);
 
     // === HAM ===
 
@@ -78,7 +80,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:indium_tin_lead_cadmium_soldering_alloy 13824',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 10368',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 10368',
             'gtceu:utopian_akreyrium 12000',
             'gtceu:perfluoroelastomer_rubber 8640'
         )
@@ -87,7 +89,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:super_abs')).EUt(GTValues.VHA[UHV]).CWUt(160)
         )
-        .EUtVHA(UEV);
+        .EUtVHA(UEV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('super_compact_heat_chamber'))
@@ -111,7 +114,8 @@ ServerEvents.recipes((event) => {
                 .CWUt(160)
         )
         .duration(4000)
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('omega_pressure_heat_chamber'))
@@ -137,5 +141,6 @@ ServerEvents.recipes((event) => {
                 .CWUt(192)
         )
         .duration(4800)
-        .EUtVHA(UEV);
+        .EUtVHA(UEV)
+        .addMaterialInfo(true, true);
 });

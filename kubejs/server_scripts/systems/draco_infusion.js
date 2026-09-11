@@ -79,7 +79,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:naquadated_soldering_alloy 57600',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 21600',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 21600',
             'gtceu:dragon_breath 500'
         )
         .itemOutputs('gtceu:draco_infusion')
@@ -103,7 +103,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:neutrindium_soldering_alloy 57600',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 43200',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 43200',
             'gtceu:pure_dragon_breath 15000'
         )
         .itemOutputs('gtceu:primordial_infusion')
@@ -144,8 +144,8 @@ ServerEvents.recipes((event) => {
     };
 
     infusion(
-        'dragonic_eye',
-        'kubejs:dragonic_eye',
+        'draconic_eye',
+        'kubejs:draconic_eye',
         'gtceu:dragon_breath 12500',
         'gtceu:quantum_eye',
         'gtceu:zpm_sensor',
@@ -153,7 +153,7 @@ ServerEvents.recipes((event) => {
         '2x kubejs:draconic_scale_cells',
         '2x kubejs:draconic_stem_cells',
         '4x gtceu:draconyallium_foil',
-        '2x kubejs:helish_star',
+        '2x kubejs:decaying_star',
         400,
         GTValues.VHA[UIV]
     );
@@ -316,7 +316,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .assembler(id('voidic_sponge'))
         .itemInputs('16x minecraft:sponge', '24x gtceu:fine_enderium_wire', '6x kubejs:voidic_reinforced_mesh')
-        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 288')
+        .inputFluids('gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 288')
         .itemOutputs('16x kubejs:void_saturation_sponge')
         .duration(900)
         .circuit(3)

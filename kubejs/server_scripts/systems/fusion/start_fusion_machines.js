@@ -104,7 +104,7 @@ ServerEvents.recipes((event) => {
         .itemInputs(
             'start_core:advanced_fusion_coil',
             '4x #gtceu:circuits/uiv',
-            'kubejs:helish_star',
+            'kubejs:decaying_star',
             'gtceu:double_magmada_alloy_plate',
             '2x gtceu:uhv_field_generator',
             '64x kubejs:uepic_chip',
@@ -127,7 +127,7 @@ ServerEvents.recipes((event) => {
         .itemInputs(
             'start_core:auxiliary_fusion_coil_mk2',
             '4x #gtceu:circuits/uxv',
-            'kubejs:dragonic_eye',
+            'kubejs:draconic_eye',
             'gtceu:double_abyssal_alloy_plate',
             '2x gtceu:uev_field_generator',
             '64x kubejs:uipic_chip',
@@ -152,7 +152,7 @@ ServerEvents.recipes((event) => {
     const t3Panel = 'kubejs:complex_neutron_reflector';
     const t4Panel = 'kubejs:reinforced_neutron_reflector';
     const t5Panel = 'kubejs:borealic_neutron_reflector';
-    const t6Panel = 'kubejs:dragonic_neutron_reflector';
+    const t6Panel = 'kubejs:draconic_neutron_reflector';
     const t7Panel = 'kubejs:prismalic_neutron_reflector';
 
     const t1Reflector = 'kubejs:basic_reflector_casing';
@@ -160,7 +160,7 @@ ServerEvents.recipes((event) => {
     const t3Reflector = 'kubejs:complex_reflector_casing';
     const t4Reflector = 'kubejs:reinforced_reflector_casing';
     const t5Reflector = 'kubejs:borealic_reflector_casing';
-    const t6Reflector = 'kubejs:dragonic_reflector_casing';
+    const t6Reflector = 'kubejs:draconic_reflector_casing';
     const t7Reflector = 'kubejs:prismalic_reflector_casing';
 
     /**
@@ -328,7 +328,7 @@ ServerEvents.recipes((event) => {
         'uhv',
         'cerium_tritelluride',
         t5Panel,
-        'poly_34_ethylenedioxythiophene_polystyrene_sulfate 288',
+        'poly_34_ethylenedioxythiophene_polystyrene_sulfonate 288',
         5,
         CleanroomType.STERILE_CLEANROOM
     );
@@ -338,7 +338,7 @@ ServerEvents.recipes((event) => {
         'uev',
         'polonium_bismide',
         t6Panel,
-        'poly_34_ethylenedioxythiophene_polystyrene_sulfate 576',
+        'poly_34_ethylenedioxythiophene_polystyrene_sulfonate 576',
         6,
         CleanroomType.STERILE_CLEANROOM
     );
@@ -348,7 +348,7 @@ ServerEvents.recipes((event) => {
         'uiv',
         'lepton_resonant_thallium_antimonide',
         t7Panel,
-        'poly_34_ethylenedioxythiophene_polystyrene_sulfate 1152',
+        'poly_34_ethylenedioxythiophene_polystyrene_sulfonate 1152',
         7,
         $StarTAbyssalContainmentMachine.ABYSSAL_CONTAINMENT_ROOM
     );
@@ -556,7 +556,7 @@ ServerEvents.recipes((event) => {
         'kubejs',
         t5Panel,
         'start_core:advanced_fusion_coil',
-        'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 288',
+        'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 288',
         CleanroomType.CLEANROOM,
         GTValues.VA[LuV]
     );
@@ -566,7 +566,7 @@ ServerEvents.recipes((event) => {
         'kubejs',
         t6Panel,
         'start_core:auxiliary_fusion_coil_mk2',
-        'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 576',
+        'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 576',
         CleanroomType.CLEANROOM,
         GTValues.VA[LuV]
     );

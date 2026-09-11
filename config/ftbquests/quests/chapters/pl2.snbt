@@ -864,7 +864,7 @@
 		{
 			dependencies: ["4BCC078B76C6CAE3"]
 			description: ["{ftbquests.pl.nether_star_shard.description}"]
-			icon: "mysticalagradditions:nether_star_shard"
+			icon: "kubejs:nether_star_shard"
 			id: "200BA54AC5EC0BF0"
 			tasks: [
 				{
@@ -1677,48 +1677,6 @@
 			y: -1.0d
 		}
 		{
-			dependencies: ["4974D7E690B02ECA"]
-			icon: "gtceu:seed_oil_bucket"
-			id: "191B7E204DDD439B"
-			tasks: [
-				{
-					id: "611E557E37F23869"
-					item: "gtceu:seed_oil_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "5DA561543146BA64"
-					type: "checkmark"
-				}
-			]
-			x: -2.5d
-			y: 1.0d
-		}
-		{
-			dependencies: ["4974D7E690B02ECA"]
-			icon: "gtceu:steam_bucket"
-			id: "16E4A6BB603C92AC"
-			tasks: [
-				{
-					id: "69A9224985A40092"
-					item: "gtceu:steam_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "30FF5B3E69106B38"
-					type: "checkmark"
-				}
-			]
-			x: -3.0d
-			y: 2.5d
-		}
-		{
-			dependencies: [
-				"191B7E204DDD439B"
-				"16E4A6BB603C92AC"
-			]
 			icon: "gtceu:linoleic_acid_bucket"
 			id: "40FCBE98AD90BC38"
 			tasks: [
@@ -1734,26 +1692,7 @@
 				}
 			]
 			x: -1.5d
-			y: 2.5d
-		}
-		{
-			dependencies: ["40FCBE98AD90BC38"]
-			icon: "gtceu:glycerol_bucket"
-			id: "152B649EA2D94533"
-			tasks: [
-				{
-					id: "53DC6CED2B490CE6"
-					item: "gtceu:glycerol_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "533CB08A64C83356"
-					type: "checkmark"
-				}
-			]
-			x: 0.5d
-			y: 2.5d
+			y: 5.0d
 		}
 		{
 			dependencies: ["4974D7E690B02ECA"]
@@ -1763,8 +1702,8 @@
 				item: "gtceu:sodium_hydroxide_dust"
 				type: "item"
 			}]
-			x: -2.0d
-			y: 4.0d
+			x: 0.5d
+			y: 5.0d
 		}
 		{
 			dependencies: [
@@ -1778,32 +1717,10 @@
 				type: "item"
 			}]
 			x: -0.5d
-			y: 4.0d
+			y: 3.5d
 		}
 		{
-			dependencies: ["4974D7E690B02ECA"]
-			icon: "gtceu:ethanol_bucket"
-			id: "4D88C910D02A1C63"
-			tasks: [
-				{
-					id: "2E7E81E4656AD622"
-					item: "gtceu:ethanol_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "39D70AAF57EA0EEF"
-					type: "checkmark"
-				}
-			]
-			x: -1.0d
-			y: 5.5d
-		}
-		{
-			dependencies: [
-				"4D88C910D02A1C63"
-				"2F8ABDE295264797"
-			]
+			dependencies: ["2F8ABDE295264797"]
 			icon: "gtceu:aerogel_solvent_mixture_bucket"
 			id: "60E55EDE4B94E462"
 			tasks: [
@@ -1818,14 +1735,10 @@
 					type: "checkmark"
 				}
 			]
-			x: 0.5d
-			y: 5.5d
+			x: 1.0d
+			y: 3.5d
 		}
 		{
-			dependencies: [
-				"31DD39F357886221"
-				"2E5B54A70C3AFD1B"
-			]
 			icon: "gtceu:silicon_tetrachloride_bucket"
 			id: "6F743F7896288C22"
 			tasks: [
@@ -1840,33 +1753,11 @@
 					type: "checkmark"
 				}
 			]
-			x: 0.0d
-			y: 8.5d
-		}
-		{
-			dependencies: ["4974D7E690B02ECA"]
-			icon: "gtceu:ethanol_bucket"
-			id: "5399B440912FAE80"
-			tasks: [
-				{
-					id: "52BC81FE09B00AC0"
-					item: "gtceu:ethanol_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "7622673A390A19AD"
-					type: "checkmark"
-				}
-			]
 			x: -0.5d
-			y: 7.0d
+			y: 6.5d
 		}
 		{
-			dependencies: [
-				"6F743F7896288C22"
-				"5399B440912FAE80"
-			]
+			dependencies: ["6F743F7896288C22"]
 			icon: "gtceu:tetraethyl_orthosilicate_bucket"
 			id: "3ACC7E920CA9E62D"
 			tasks: [
@@ -1882,30 +1773,10 @@
 				}
 			]
 			x: 1.0d
-			y: 7.0d
-		}
-		{
-			dependencies: ["4974D7E690B02ECA"]
-			icon: "gtceu:hydrochloric_acid_bucket"
-			id: "229CAA73A71DED07"
-			tasks: [
-				{
-					id: "1A7B9E97DEDBDB66"
-					item: "gtceu:hydrochloric_acid_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "44B7B54E59F5D902"
-					type: "checkmark"
-				}
-			]
-			x: 1.0d
-			y: 4.0d
+			y: 6.5d
 		}
 		{
 			dependencies: [
-				"229CAA73A71DED07"
 				"3ACC7E920CA9E62D"
 				"60E55EDE4B94E462"
 			]
@@ -1924,7 +1795,7 @@
 				}
 			]
 			x: 2.0d
-			y: 5.5d
+			y: 5.0d
 		}
 		{
 			dependencies: ["7DF57FCB2A07B40D"]
@@ -1935,26 +1806,7 @@
 				type: "item"
 			}]
 			x: 3.5d
-			y: 5.5d
-		}
-		{
-			dependencies: ["7DF57FCB2A07B40D"]
-			icon: "gtceu:diluted_hydrochloric_acid_bucket"
-			id: "15E7D9BF57264D3F"
-			tasks: [
-				{
-					id: "05DE7758E996ED2B"
-					item: "gtceu:diluted_hydrochloric_acid_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "6F1275B8504EC6F0"
-					type: "checkmark"
-				}
-			]
-			x: 3.0d
-			y: 4.0d
+			y: 5.0d
 		}
 		{
 			dependencies: [
@@ -1977,56 +1829,60 @@
 				type: "item"
 			}]
 			x: 5.5d
-			y: 5.5d
+			y: 5.0d
 		}
 		{
-			dependencies: ["3336D618E129F764"]
-			icon: "gtceu:ethanol_bucket"
-			id: "134271B387D00F14"
-			tasks: [
-				{
-					id: "0911F7EA33629E00"
-					item: "gtceu:ethanol_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "0BEA2DBC6D8808E2"
-					type: "checkmark"
-				}
+			dependencies: [
+				"2807BF3924BC55C6"
+				"7F4BA08F2901EDB1"
 			]
-			x: 4.5d
-			y: 7.0d
-		}
-		{
-			dependencies: ["4974D7E690B02ECA"]
-			icon: "gtceu:chlorine_bucket"
-			id: "31DD39F357886221"
-			tasks: [
-				{
-					id: "78FAAEAD2C2E6538"
-					item: "gtceu:chlorine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "49B38EEB1FE1B286"
-					type: "checkmark"
-				}
-			]
-			x: 1.5d
-			y: 8.5d
-		}
-		{
-			dependencies: ["4974D7E690B02ECA"]
-			id: "2E5B54A70C3AFD1B"
+			id: "51A98F14F14E79D8"
+			rewards: [{
+				count: 3
+				id: "3718EB9B1EC19BAF"
+				item: "kubejs:coin"
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
 			tasks: [{
-				id: "2352E001FEBF6DF0"
-				item: "gtceu:silicon_dust"
+				id: "16BADCAD6DA07FF6"
+				item: "gtceu:polycarbonate_bucket"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["68AC9C9038AD0BA7"]
+			id: "2807BF3924BC55C6"
+			tasks: [{
+				id: "1A4A00E26EA6C263"
+				item: "gtceu:sodium_diphenoxide_dust"
 				type: "item"
 			}]
 			x: -1.5d
-			y: 8.5d
+			y: 1.5d
+		}
+		{
+			id: "68AC9C9038AD0BA7"
+			tasks: [{
+				id: "0E287B0A81796B34"
+				item: "gtceu:bisphenol_a_bucket"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 1.5d
+		}
+		{
+			id: "7F4BA08F2901EDB1"
+			tasks: [{
+				id: "102EB49E4BBAF813"
+				item: "gtceu:phosgene_bucket"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 1.5d
 		}
 	]
 	title: "{ftbquests.pl2.title}"

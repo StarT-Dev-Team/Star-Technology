@@ -9,7 +9,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
     MH.compLiquid(
         'stabilization_mixture_base',
         [
-            '5x poly_34_ethylenedioxythiophene_polystyrene_sulfate',
+            '5x poly_34_ethylenedioxythiophene_polystyrene_sulfonate',
             '17x runic_convergence_infusion',
             '10x utopian_akreyrium',
         ],

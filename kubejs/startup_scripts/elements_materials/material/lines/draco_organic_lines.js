@@ -3,9 +3,9 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     MH.noCompFluid('draconic_hormone_residue', 0x6c4d6e);
 
-    MH.noCompFluid('drac_endrocritic_medium', 0x75577a);
+    MH.noCompFluid('drac_endocritic_medium', 0x75577a);
 
-    MH.noCompFluid('drac_aurouric_endrocrinal_medium', 0x6678a6);
+    MH.noCompFluid('drac_aurouric_endocrinal_medium', 0x6678a6);
 
     MH.noCompFluid('precursor_serum', 0x8c6fa3);
 

@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .create('super_gas_collector', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .tooltips([Text.translate('block.start_core.gap'), Text.translate('gtceu.multiblock.exact_hatch_1.tooltip')])
-        .recipeType('gas_collector')
+        .recipeTypes(['gas_collector', 'void_gas_collector'])
         .recipeModifiers([
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
@@ -24,7 +24,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.anyOf([
                         P.gtBlock('clean_machine_casing', { min: 10 }),
                         P.ability(PA.itemIn, { max: 1 }),
-                        P.ability(PA.fluidIn, { max: 1 }),
+                        P.ability(PA.fluidOut, { max: 1 }),
                         P.ability(PA.euIn, { max: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),

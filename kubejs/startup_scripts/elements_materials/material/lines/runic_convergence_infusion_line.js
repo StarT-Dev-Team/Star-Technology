@@ -1,3 +1,4 @@
+// priority: 500
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
@@ -26,7 +27,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0x990099,
         [noDecomp]
     );
-    MH.compLiquid('magnesium_nitride', ['3x magnesium', '2x nitrogen'], 0xcc66ff, []);
+
     MH.compLiquid(
         'runic_convergence_infusion',
         ['3x pure_netherite', '6x magnesium', '7x nitrogen', '2x silicon', '8x oxygen', '1x fluorine'],

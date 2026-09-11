@@ -416,12 +416,12 @@
 				"221A840C4A071343"
 				"0F4E7B496BC5C896"
 			]
-			icon: "gtceu:drac_endrocritic_medium_bucket"
+			icon: "gtceu:drac_endocritic_medium_bucket"
 			id: "7DB00D797172F8F8"
 			tasks: [
 				{
 					id: "1A54006686D3FADC"
-					item: "gtceu:drac_endrocritic_medium_bucket"
+					item: "gtceu:drac_endocritic_medium_bucket"
 					optional_task: true
 					type: "item"
 				}
@@ -449,12 +449,12 @@
 				"7DB00D797172F8F8"
 				"1599CBA5069B1B4C"
 			]
-			icon: "gtceu:drac_aurouric_endrocrinal_medium_bucket"
+			icon: "gtceu:drac_aurouric_endocrinal_medium_bucket"
 			id: "6CC2A99E0E26C42B"
 			tasks: [
 				{
 					id: "41110FDB77034BFA"
-					item: "gtceu:drac_aurouric_endrocrinal_medium_bucket"
+					item: "gtceu:drac_aurouric_endocrinal_medium_bucket"
 					optional_task: true
 					type: "item"
 				}

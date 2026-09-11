@@ -151,7 +151,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe {
     interface GTRecipeType extends $object<'com.gregtechceu.gtceu.api.recipe.GTRecipeType'> {
         recipeBuilder(id: string): GTRecipeBuilder;
         setMaxIOSize(maxInputs: number, maxOutputs: number, maxFluidInputs: number, maxFluidOutputs: number): this;
-        addDataInfo(dataInfo: $wrapped<Function<CompoundTag, String>>): this;
+        addDataInfo(dataInfo: $wrapped<Function<CompoundTag, string>>): this;
         addCustomRecipeLogic(recipeLogic: GTRecipeType$ICustomRecipeLogic): this;
         addToMainCategory(recipe: GTRecipe): void;
     }
@@ -207,6 +207,45 @@ declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient {
         'com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient',
         Predicate<FluidStack>
     > {}
+}
+
+declare namespace internal.com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate {
+    import Tag = net.minecraft.nbt.Tag;
+
+    interface NBTPredicate extends $object<'com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicate'> {
+        getType(): string;
+        test(tag: $wrapped<Tag>): boolean;
+    }
+
+    interface NBTPredicates extends $object<'com.gregtecgceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicates'> {}
+
+    const NBTPredicates: $class<NBTPredicates> & {
+        eqInt(key: string, value: number): NBTPredicate;
+        eqFloat(key: string, value: number): NBTPredicate;
+        eqDouble(key: string, value: number): NBTPredicate;
+        eqBool(key: string, value: boolean): NBTPredicate;
+        eqByte(key: string, value: boolean): NBTPredicate;
+        eqString(key: string, value: string): NBTPredicate;
+        eqTag(key: string, value: Tag): NBTPredicate;
+        neqInt(key: string, value: number): NBTPredicate;
+        neqFloat(key: string, value: number): NBTPredicate;
+        neqDouble(key: string, value: number): NBTPredicate;
+        neqBool(key: string, value: boolean): NBTPredicate;
+        neqByte(key: string, value: boolean): NBTPredicate;
+        neqString(key: string, value: string): NBTPredicate;
+        neqTag(key: string, value: $wrapped<Tag>): NBTPredicate;
+        lte(key: string, value: number): NBTPredicate;
+        gte(key: string, value: number): NBTPredicate;
+        gt(key: string, value: number): NBTPredicate;
+        lte(key: string, value: Tag): NBTPredicate;
+        gte(key: string, value: Tag): NBTPredicate;
+        gt(key: string, value: Tag): NBTPredicate;
+        any(...predicates: NBTPredicate[]): NBTPredicate;
+        any(predicates: NBTPredicate[]): NBTPredicate;
+        all(...predicates: NBTPredicate[]): NBTPredicate;
+        all(predicates: NBTPredicate[]): NBTPredicate;
+        not(predicate: NBTPredicate): NBTPredicate;
+    };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.recipe.modifier {
@@ -1354,6 +1393,24 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
         frames(...frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
         frames(frameMaterials: $wrapped<Material>[]): TraceabilityPredicate;
     };
+
+    interface MultiblockShapeInfo extends $object<'com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo'> {}
+
+    const MultiblockShapeInfo: $class<MultiblockShapeInfo> & {
+        builder(): MultiblockShapeInfo$ShapeInfoBuilder;
+    };
+
+    import Direction = net.minecraft.core.Direction;
+    import MultiblockMachineDefinition = machine.MultiblockMachineDefinition;
+
+    interface MultiblockShapeInfo$ShapeInfoBuilder extends $object<'com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo$ShapeInfoBuilder'> {
+        aisle(...aisle: string[]): this;
+        where(symbol: string, block: $wrapped<Block>): this;
+        where(symbol: string, machine: MultiblockMachineDefinition, direction: Direction): this;
+        where(symbol: string, machine: MachineDefinition, direction: Direction): this;
+        build(): MultiblockShapeInfo;
+        shallowCopy(): MultiblockShapeInfo$ShapeInfoBuilder;
+    }
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.pattern.util {
@@ -1471,6 +1528,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     import Block = net.minecraft.world.level.block.Block;
     import EditableMachineUI = gui.editor.EditableMachineUI;
     import Boolean = java.lang.Boolean;
+    import ItemStack = net.minecraft.world.item.ItemStack;
 
     interface MachineBuilder__Blueprint<T extends MachineDefinition, TSelf> extends $object<
         'com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder',
@@ -1479,6 +1537,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         machine(machine: $wrapped<Function<IMachineBlockEntity, MetaMachine>>): TSelf;
         rotationState(state: $wrapped<RotationState>): TSelf;
         tooltips(components: Component[]): TSelf;
+        tooltipBuilder(builder: $wrapped<BiConsumer<ItemStack, List<Component>>>): TSelf;
         paginatedTooltips(pages: Component[][]): TSelf;
         bottomTooltips(components: Component[]): TSelf;
         langValue(langValue: string): TSelf;
@@ -1494,6 +1553,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         appearanceBlock(block: $wrapped<Supplier<Block>>): TSelf;
         regressWhenWaiting(regressWhenWaiting: boolean): TSelf;
         workableCasingModel(baseCasing: $wrapped<ResourceLocation>, workableModel: $wrapped<ResourceLocation>): TSelf;
+        sidedWorkableCasingModel(
+            baseCasing: $wrapped<ResourceLocation>,
+            workableModel: $wrapped<ResourceLocation>
+        ): TSelf;
         workableTieredHullModel(workableModel: $wrapped<ResourceLocation>): TSelf;
         editableUI(ui: EditableMachineUI): TSelf;
         modelPropertyBool(property: Property<Boolean>, defaultValue: boolean): TSelf;
@@ -1506,6 +1569,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
     import BiConsumer = java.util.function_.BiConsumer;
     import IMultiController = machine.feature.multiblock.IMultiController;
     import IMultiPart = machine.feature.multiblock.IMultiPart;
+    import MultiblockShapeInfo = pattern.MultiblockShapeInfo;
 
     interface MultiblockMachineBuilder extends $object<
         'com.gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder',
@@ -1516,6 +1580,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
         'partSorter(java.util.function.Function)': (
             fn: $wrapped<Function<MultiblockControllerMachine, Comparator<IMultiPart>>>
         ) => this;
+        shapeInfos(shapes: (definition: MultiblockMachineDefinition) => MultiblockShapeInfo[]): this;
         additionalDisplay(additionalDisplay: $wrapped<BiConsumer<IMultiController, List<Component>>>): this;
     }
 }

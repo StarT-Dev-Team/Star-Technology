@@ -18,7 +18,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_assembler')).EUt(GTValues.VHA[ZPM]).CWUt(16)
         )
-        .EUtVHA(ZPM);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('heat_chamber'))
@@ -38,5 +39,6 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder.researchStack(Item.of('gtceu:zpm_electric_furnace')).EUt(GTValues.VHA[ZPM]).CWUt(16)
         )
         .duration(2400)
-        .EUtVHA(ZPM);
+        .EUtVHA(ZPM)
+        .addMaterialInfo(true, true);
 });

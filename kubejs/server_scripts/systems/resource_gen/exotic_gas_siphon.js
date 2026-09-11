@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     event.recipes.gtceu
         .assembly_line(id('exotic_gas_siphon'))
@@ -41,21 +42,23 @@ ServerEvents.recipes((event) => {
         .duration(1000)
         .EUtVA(ZPM);
 
-    event.recipes.gtceu
-        .exotic_gas_siphon(id('abydos'))
-        .circuit(2)
-        .outputFluids('gtceu:helium_3 32000')
-        .outputFluids('gtceu:argon 1500')
-        .outputFluids('gtceu:nitrous_oxide 150000')
-        .outputFluids('gtceu:neon 750')
-        .outputFluids('gtceu:radon 750')
-        .outputFluids('gtceu:tritium 4500')
-        .outputFluids('gtceu:krypton 750')
-        .outputFluids('gtceu:xenon 750')
-        .outputFluids('gtceu:deuterium 9000')
-        .dimension('sgjourney:abydos')
-        .duration(1000)
-        .EUtVA(ZPM);
+    isModLoaded('sgjourney', () => {
+        event.recipes.gtceu
+            .exotic_gas_siphon(id('abydos'))
+            .circuit(2)
+            .outputFluids('gtceu:helium_3 32000')
+            .outputFluids('gtceu:argon 1500')
+            .outputFluids('gtceu:nitrous_oxide 150000')
+            .outputFluids('gtceu:neon 750')
+            .outputFluids('gtceu:radon 750')
+            .outputFluids('gtceu:tritium 4500')
+            .outputFluids('gtceu:krypton 750')
+            .outputFluids('gtceu:xenon 750')
+            .outputFluids('gtceu:deuterium 9000')
+            .dimension('sgjourney:abydos')
+            .duration(1000)
+            .EUtVA(ZPM);
+    });
 
     event.recipes.gtceu
         .exotic_gas_siphon(id('nether'))

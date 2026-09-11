@@ -17,25 +17,19 @@
 		{
 			id: "4FC4729DDEC1BBA6"
 			linked_quest: "5B2F29A61D270031"
-			x: -2.5d
-			y: -2.0d
+			x: 5.5d
+			y: -2.5d
 		}
 		{
 			id: "28EDEA0EFB7E217A"
 			linked_quest: "72C473F289A5CBA4"
 			x: -3.5d
-			y: -3.5d
+			y: -2.5d
 		}
 		{
 			id: "4FDA617DF6380FE3"
 			linked_quest: "245C8B1564B2DEA6"
 			x: -3.5d
-			y: -4.5d
-		}
-		{
-			id: "748DA87BBBFC0D45"
-			linked_quest: "6B1E88A09583F979"
-			x: 5.5d
 			y: -3.5d
 		}
 		{
@@ -328,7 +322,7 @@
 				type: "item"
 			}]
 			x: -4.5d
-			y: 4.5d
+			y: 3.5d
 		}
 		{
 			dependencies: ["50FC2373E2304403"]
@@ -340,7 +334,7 @@
 				type: "item"
 			}]
 			x: -3.0d
-			y: 4.5d
+			y: 3.5d
 		}
 		{
 			dependencies: ["5B9586B718641184"]
@@ -352,7 +346,7 @@
 				type: "item"
 			}]
 			x: -2.5d
-			y: 3.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["5B9586B718641184"]
@@ -364,7 +358,7 @@
 				type: "item"
 			}]
 			x: -2.5d
-			y: 6.0d
+			y: 5.0d
 		}
 		{
 			dependencies: ["5B9586B718641184"]
@@ -376,7 +370,7 @@
 				type: "item"
 			}]
 			x: -1.5d
-			y: 5.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["5B9586B718641184"]
@@ -388,7 +382,7 @@
 				type: "item"
 			}]
 			x: -1.5d
-			y: 3.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["1667CD60FF78DE24"]
@@ -400,7 +394,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 2.0d
+			y: 1.0d
 		}
 		{
 			dependencies: ["1667CD60FF78DE24"]
@@ -420,7 +414,7 @@
 				}
 			]
 			x: 0.0d
-			y: 3.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["0273A37252F8B98F"]
@@ -432,7 +426,7 @@
 				type: "item"
 			}]
 			x: 1.5d
-			y: 2.0d
+			y: 1.0d
 		}
 		{
 			dependencies: ["66288D3E5DF9D718"]
@@ -451,7 +445,7 @@
 				type: "item"
 			}]
 			x: 3.5d
-			y: 2.0d
+			y: 1.0d
 		}
 		{
 			dependencies: ["27D411A047EDAEDB"]
@@ -463,7 +457,7 @@
 				type: "item"
 			}]
 			x: 1.5d
-			y: 3.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["377766418A81500B"]
@@ -482,7 +476,7 @@
 				type: "item"
 			}]
 			x: 3.5d
-			y: 3.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["1527CD336742FE55"]
@@ -501,7 +495,7 @@
 				type: "item"
 			}]
 			x: -1.5d
-			y: 7.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["6ACB1A16D492CAFC"]
@@ -520,7 +514,7 @@
 				type: "item"
 			}]
 			x: -1.5d
-			y: 2.0d
+			y: 1.0d
 		}
 		{
 			dependencies: ["0C4B03DB8E28129A"]
@@ -532,7 +526,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 5.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["0B520297F18E0838"]
@@ -551,7 +545,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 5.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["0C4B03DB8E28129A"]
@@ -571,7 +565,7 @@
 				}
 			]
 			x: 0.0d
-			y: 6.5d
+			y: 5.5d
 		}
 		{
 			dependencies: ["2E75ABB0371138E7"]
@@ -590,7 +584,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 6.5d
+			y: 5.5d
 		}
 		{
 			dependencies: ["6373DC17B2A31150"]
@@ -609,7 +603,7 @@
 				type: "item"
 			}]
 			x: 2.5d
-			y: -6.0d
+			y: -5.0d
 		}
 		{
 			dependencies: [
@@ -633,7 +627,7 @@
 				}
 			]
 			x: 0.5d
-			y: -6.0d
+			y: -5.0d
 		}
 		{
 			dependencies: ["0B21198EDF0CB4E3"]
@@ -653,7 +647,7 @@
 				}
 			]
 			x: -1.5d
-			y: -6.0d
+			y: -5.0d
 		}
 		{
 			dependencies: ["6A1E44C0D4F8DF06"]
@@ -673,7 +667,7 @@
 				}
 			]
 			x: -0.5d
-			y: -7.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["1AAB9C20E833029A"]
@@ -693,7 +687,7 @@
 				}
 			]
 			x: -3.5d
-			y: -6.0d
+			y: -5.0d
 		}
 		{
 			dependencies: ["3A15777DD813EE71"]
@@ -713,7 +707,7 @@
 				}
 			]
 			x: -2.5d
-			y: -7.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["2D1184752D7ACA66"]
@@ -1124,7 +1118,7 @@
 				type: "item"
 			}]
 			x: -2.5d
-			y: -4.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["61A21D40EC64D60E"]
@@ -1144,7 +1138,7 @@
 				}
 			]
 			x: -1.0d
-			y: -4.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["161D162CA760018E"]
@@ -1165,7 +1159,7 @@
 				}
 			]
 			x: 0.5d
-			y: -4.0d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -1187,7 +1181,7 @@
 				type: "item"
 			}]
 			x: 2.5d
-			y: -4.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["568D47BC3D755702"]
@@ -1198,8 +1192,8 @@
 				item: "gtceu:tungstic_acid_dust"
 				type: "item"
 			}]
-			x: 0.5d
-			y: -2.0d
+			x: 8.5d
+			y: -2.5d
 		}
 		{
 			dependencies: ["652ED98223A71FDB"]
@@ -1217,8 +1211,8 @@
 				item: "gtceu:tungsten_dust"
 				type: "item"
 			}]
-			x: 2.5d
-			y: -2.0d
+			x: 10.5d
+			y: -2.5d
 		}
 		{
 			dependencies: ["5B2F29A61D270031"]
@@ -1229,8 +1223,8 @@
 				item: "gtceu:tungstate_dust"
 				type: "item"
 			}]
-			x: -1.0d
-			y: -2.0d
+			x: 7.0d
+			y: -2.5d
 		}
 		{
 			dependencies: ["0AB3A8C14C3A0512"]
@@ -1250,7 +1244,7 @@
 				}
 			]
 			x: 5.0d
-			y: -7.0d
+			y: -6.5d
 		}
 		{
 			dependencies: ["0AB3A8C14C3A0512"]
@@ -1270,7 +1264,7 @@
 				}
 			]
 			x: 5.0d
-			y: -5.0d
+			y: -4.5d
 		}
 		{
 			dependencies: ["1A1969BCD61B4F09"]
@@ -1290,7 +1284,7 @@
 				}
 			]
 			x: 6.5d
-			y: -5.0d
+			y: -4.5d
 		}
 		{
 			dependencies: ["767CC03EDC618C0B"]
@@ -1310,7 +1304,7 @@
 				}
 			]
 			x: 6.5d
-			y: -7.0d
+			y: -6.5d
 		}
 		{
 			dependencies: [
@@ -1333,7 +1327,7 @@
 				}
 			]
 			x: 7.5d
-			y: -6.0d
+			y: -5.5d
 		}
 		{
 			dependencies: ["629C4DE28BB97660"]
@@ -1354,7 +1348,7 @@
 				}
 			]
 			x: 11.5d
-			y: -6.0d
+			y: -5.5d
 		}
 		{
 			dependencies: ["550DB81B8DC91730"]
@@ -1382,7 +1376,7 @@
 				}
 			]
 			x: 13.0d
-			y: -6.0d
+			y: -5.5d
 		}
 		{
 			dependencies: [
@@ -1404,7 +1398,7 @@
 				type: "item"
 			}]
 			x: 9.5d
-			y: -6.0d
+			y: -5.5d
 		}
 		{
 			dependencies: ["1AAB9C20E833029A"]
@@ -1424,7 +1418,7 @@
 				}
 			]
 			x: -4.0d
-			y: 0.0d
+			y: -1.0d
 		}
 		{
 			dependencies: [
@@ -1773,147 +1767,6 @@
 			y: -0.5d
 		}
 		{
-			dependencies: ["1207F7CCCB8335A5"]
-			id: "2322B5C57E863AFD"
-			rewards: [{
-				id: "34E8D2C5650E167F"
-				item: "kubejs:coin"
-				type: "item"
-			}]
-			shape: "gear"
-			size: 1.5d
-			tasks: [{
-				id: "4AFDC43A4DF95804"
-				item: "gtceu:bromine_bucket"
-				type: "item"
-			}]
-			x: 14.0d
-			y: -3.5d
-		}
-		{
-			dependencies: ["18CD53F83B5CA6C0"]
-			icon: "gtceu:concentrated_bromine_solution_bucket"
-			id: "1207F7CCCB8335A5"
-			tasks: [
-				{
-					id: "489666661C80FAC5"
-					item: "gtceu:concentrated_bromine_solution_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "4FEC77C9901A2916"
-					title: "{ftbquests.pl.concentrated_bromine_solution.title}"
-					type: "checkmark"
-				}
-			]
-			x: 12.0d
-			y: -3.5d
-		}
-		{
-			dependencies: ["207D97AC4EFA9011"]
-			icon: "gtceu:acidic_bromine_solution_bucket"
-			id: "18CD53F83B5CA6C0"
-			tasks: [
-				{
-					id: "3E6C16B276044098"
-					item: "gtceu:acidic_bromine_solution_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "6AB51AF8AAF32F05"
-					title: "{ftbquests.pl.acidic_bromine_solution.title}"
-					type: "checkmark"
-				}
-			]
-			x: 10.5d
-			y: -3.5d
-		}
-		{
-			dependencies: ["6A3F86F68FC25141"]
-			icon: "gtceu:brominated_chlorine_vapor_bucket"
-			id: "207D97AC4EFA9011"
-			tasks: [
-				{
-					id: "10FE6B082176F0FF"
-					item: "gtceu:brominated_chlorine_vapor_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "7AA4976128855159"
-					title: "{ftbquests.pl.brominated_chlorine_vapor.title}"
-					type: "checkmark"
-				}
-			]
-			x: 9.0d
-			y: -3.5d
-		}
-		{
-			dependencies: ["70DF71EEDB0AEA7C"]
-			icon: "gtceu:hot_chlorinated_brominated_brine_bucket"
-			id: "6A3F86F68FC25141"
-			tasks: [
-				{
-					id: "1BC1D05D54DAE0CB"
-					item: "gtceu:hot_chlorinated_brominated_brine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "1E17F518616149E2"
-					title: "{ftbquests.pl.hot_chlorinated_brominated_brine.title}"
-					type: "checkmark"
-				}
-			]
-			x: 7.5d
-			y: -3.5d
-		}
-		{
-			dependencies: [
-				"7922FA333384E7CA"
-				"6B1E88A09583F979"
-			]
-			icon: "gtceu:hot_brine_bucket"
-			id: "70DF71EEDB0AEA7C"
-			tasks: [
-				{
-					id: "3B49F21272614643"
-					item: "gtceu:hot_brine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "6B41042C6EA92503"
-					title: "{ftbquests.pl.hot_brine.title}"
-					type: "checkmark"
-				}
-			]
-			x: 6.5d
-			y: -2.5d
-		}
-		{
-			dependencies: ["18CD53F83B5CA6C0"]
-			icon: "gtceu:acidic_bromine_exhaust_bucket"
-			id: "3B84ADA552DD6FF6"
-			tasks: [
-				{
-					id: "0153BF78C681F3FC"
-					item: "gtceu:acidic_bromine_exhaust_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "686AD61F8E1B0D36"
-					title: "{ftbquests.pl.acidic_bromine_exhaust.title}"
-					type: "checkmark"
-				}
-			]
-			x: 11.0d
-			y: -4.5d
-		}
-		{
 			dependencies: ["06FBC454DC18AABA"]
 			icon: "gtceu:vinyl_acetate_bucket"
 			id: "718F143E6E120E52"
@@ -1931,7 +1784,7 @@
 				}
 			]
 			x: -2.5d
-			y: 0.0d
+			y: -1.0d
 		}
 		{
 			dependencies: ["718F143E6E120E52"]
@@ -1951,7 +1804,7 @@
 				}
 			]
 			x: -1.0d
-			y: 0.0d
+			y: -1.0d
 		}
 		{
 			dependencies: [
@@ -1975,7 +1828,7 @@
 				type: "item"
 			}]
 			x: 1.0d
-			y: 0.0d
+			y: -1.0d
 		}
 		{
 			dependencies: ["3CB63B290C9EFAA2"]
@@ -1995,127 +1848,7 @@
 				}
 			]
 			x: 3.0d
-			y: 0.0d
-		}
-		{
-			dependencies: ["3DAE5FC862CFB0B3"]
-			icon: "gtceu:hot_brine_bucket"
-			id: "7122AAF05EA6C169"
-			tasks: [
-				{
-					id: "0FFC26ED7248A036"
-					item: "gtceu:hot_brine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "32E722FFBBEABECA"
-					title: "{ftbquests.pl.hot_brine.title}"
-					type: "checkmark"
-				}
-			]
-			x: 13.0d
-			y: -2.5d
-		}
-		{
-			dependencies: ["6B1E88A09583F979"]
-			icon: "gtceu:raw_brine_bucket"
-			id: "7922FA333384E7CA"
-			tasks: [
-				{
-					id: "6A83DB74B6319591"
-					item: "gtceu:raw_brine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "2B604113D4EFF74C"
-					title: "{ftbquests.pl.raw_brine.title}"
-					type: "checkmark"
-				}
-			]
-			x: 4.5d
-			y: -2.5d
-		}
-		{
-			dependencies: ["6A3F86F68FC25141"]
-			icon: "gtceu:hot_alkaline_debrominated_brine_bucket"
-			id: "5E20303EBDE186BE"
-			tasks: [
-				{
-					id: "4FEB563680D33A0F"
-					item: "gtceu:hot_alkaline_debrominated_brine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "51043E6430D95FB7"
-					title: "{ftbquests.pl.hot_alkaline_debrominated_brine.title}"
-					type: "checkmark"
-				}
-			]
-			x: 8.5d
-			y: -2.5d
-		}
-		{
-			dependencies: ["5E20303EBDE186BE"]
-			icon: "gtceu:hot_debrominated_brine_bucket"
-			id: "466D567536DD2B09"
-			tasks: [
-				{
-					id: "6943BB0F50F0658E"
-					item: "gtceu:hot_debrominated_brine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "2CF9A32E88ED095F"
-					title: "{ftbquests.pl.hot_debrominated_brine.title}"
-					type: "checkmark"
-				}
-			]
-			x: 10.0d
-			y: -2.5d
-		}
-		{
-			dependencies: ["466D567536DD2B09"]
-			icon: "gtceu:debrominated_brine_bucket"
-			id: "3DAE5FC862CFB0B3"
-			tasks: [
-				{
-					id: "09BEAA62A2D347E0"
-					item: "gtceu:debrominated_brine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "0CC2251D32527FF6"
-					title: "{ftbquests.pl.debrominated_brine.title}"
-					type: "checkmark"
-				}
-			]
-			x: 11.5d
-			y: -2.5d
-		}
-		{
-			dependencies: ["3DAE5FC862CFB0B3"]
-			icon: "gtceu:salt_water_bucket"
-			id: "2D945812A0348DC4"
-			tasks: [
-				{
-					id: "63A8FEBF511C0BD4"
-					item: "gtceu:salt_water_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "2244321FCC5D2FB3"
-					title: "{ftbquests.pl.salt_water.title}"
-					type: "checkmark"
-				}
-			]
-			x: 12.0d
-			y: -1.5d
+			y: -1.0d
 		}
 		{
 			dependencies: ["12C9427A04A2F550"]

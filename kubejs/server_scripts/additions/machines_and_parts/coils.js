@@ -10,7 +10,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:hsla_steel 144')
         .itemOutputs('gtceu:molybdenum_disilicide_coil_block')
         .duration(500)
-        .EUt(1920);
+        .EUt(1920)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('cupronickel_coil_block'))
@@ -18,7 +19,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:tin_alloy 144')
         .itemOutputs('gtceu:cupronickel_coil_block')
         .duration(200)
-        .EUt(30);
+        .EUt(30)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('kanthal_coil_block'))
@@ -26,7 +28,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:copper 144')
         .itemOutputs('gtceu:kanthal_coil_block')
         .duration(300)
-        .EUt(120);
+        .EUt(120)
+        .addMaterialInfo(true, true);
 
     // === Nichrome, RTM, HSS-G (T1 Insulators) ===
     event.recipes.gtceu
@@ -39,7 +42,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:aluminium 144')
         .itemOutputs('gtceu:nichrome_coil_block')
         .duration(400)
-        .EUt(480);
+        .EUt(480)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('rtm_alloy_coil_block'))
@@ -51,7 +55,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:nichrome 144')
         .itemOutputs('gtceu:rtm_alloy_coil_block')
         .duration(500)
-        .EUt(1920);
+        .EUt(1920)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('hssg_coil_block'))
@@ -59,7 +64,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:tungsten 144')
         .itemOutputs('gtceu:hssg_coil_block')
         .duration(600)
-        .EUt(7680);
+        .EUt(7680)
+        .addMaterialInfo(true, true);
 
     // === Naquadah, Trinium, Tritanium (T2 Insulators + Frames) ===
     event.recipes.gtceu
@@ -73,7 +79,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:tungsten_steel 144')
         .itemOutputs('gtceu:naquadah_coil_block')
         .duration(700)
-        .EUt(30720);
+        .EUt(30720)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('trinium_coil_block'))
@@ -86,7 +93,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:naquadah 144')
         .itemOutputs('gtceu:trinium_coil_block')
         .duration(800)
-        .EUt(122880);
+        .EUt(122880)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('tritanium_coil_block'))
@@ -99,7 +107,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:trinium 144')
         .itemOutputs('gtceu:tritanium_coil_block')
         .duration(900)
-        .EUt(491520);
+        .EUt(491520)
+        .addMaterialInfo(true, true);
 
     // === Zalloy, Magmada, Abyssal (T3 Insulators + Frames + SC Fine Wire) ===
     event.recipes.gtceu
@@ -114,7 +123,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:tritanium 144')
         .itemOutputs('kubejs:zalloy_coil_block')
         .duration(1000)
-        .EUt(1966080);
+        .EUt(1966080)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('magmada_alloy_coil_block'))
@@ -128,7 +138,8 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:adamantine 144')
         .itemOutputs('kubejs:magmada_alloy_coil_block')
         .duration(1100)
-        .EUt(7864320);
+        .EUt(7864320)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembler(id('abyssal_alloy_coil_block'))
@@ -142,5 +153,6 @@ ServerEvents.recipes((event) => {
         .inputFluids('gtceu:void 144')
         .itemOutputs('kubejs:abyssal_alloy_coil_block')
         .duration(1200)
-        .EUt(31457280);
+        .EUt(31457280)
+        .addMaterialInfo(true, true);
 });

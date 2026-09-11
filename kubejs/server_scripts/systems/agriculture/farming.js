@@ -9,7 +9,7 @@
 // - skipLargeFarm: (optional) Set to true to skip Large Farm recipes
 
 /** @type { {name: string, seed?: string, fluid?: string, dimension?: string, voltage?: GTTier, skipLargeFarm?: boolean }[] } */
-global.farmCropList = [
+const farmCropList = [
     // Vanilla crops with seeds
     { name: 'minecraft:wheat', seed: 'minecraft:wheat_seeds' },
     { name: 'minecraft:pumpkin', seed: 'minecraft:pumpkin_seeds' },
@@ -27,33 +27,6 @@ global.farmCropList = [
     { name: 'minecraft:sweet_berries' },
     { name: 'minecraft:bamboo' },
     { name: 'minecraft:kelp' },
-
-    // Farmer's Delight crops
-    { name: 'farmersdelight:onion' },
-    { name: 'farmersdelight:tomato', seed: 'farmersdelight:tomato_seeds' },
-    { name: 'farmersdelight:cabbage', seed: 'farmersdelight:cabbage_seeds' },
-    { name: 'farmersdelight:rice_panicle', seed: 'farmersdelight:rice' },
-
-    // Thermal crops
-    { name: 'thermal:amaranth', seed: 'thermal:amaranth_seeds' },
-    { name: 'thermal:barley', seed: 'thermal:barley_seeds' },
-    { name: 'thermal:corn', seed: 'thermal:corn_seeds' },
-    { name: 'thermal:flax', seed: 'thermal:flax_seeds' },
-    { name: 'thermal:onion', seed: 'thermal:onion_seeds' },
-    { name: 'thermal:radish', seed: 'thermal:radish_seeds' },
-    { name: 'thermal:rice', seed: 'thermal:rice_seeds' },
-    { name: 'thermal:sadiroot', seed: 'thermal:sadiroot_seeds' },
-    { name: 'thermal:spinach', seed: 'thermal:spinach_seeds' },
-    { name: 'thermal:bell_pepper', seed: 'thermal:bell_pepper_seeds' },
-    { name: 'thermal:eggplant', seed: 'thermal:eggplant_seeds' },
-    { name: 'thermal:green_bean', seed: 'thermal:green_bean_seeds' },
-    { name: 'thermal:peanut', seed: 'thermal:peanut_seeds' },
-    { name: 'thermal:strawberry', seed: 'thermal:strawberry_seeds' },
-    { name: 'thermal:tomato', seed: 'thermal:tomato_seeds' },
-    { name: 'thermal:coffee', seed: 'thermal:coffee_seeds' },
-    { name: 'thermal:hops', seed: 'thermal:hops_seeds' },
-    { name: 'thermal:tea', seed: 'thermal:tea_seeds' },
-    { name: 'thermal:frost_melon', seed: 'thermal:frost_melon_seeds' },
 
     // Vanilla flowers (small)
     { name: 'minecraft:dandelion' },
@@ -94,6 +67,41 @@ global.farmCropList = [
         skipLargeFarm: true,
     },
 ];
+
+global.withModsLoaded('thermal', () => {
+    farmCropList.push(
+        { name: 'thermal:amaranth', seed: 'thermal:amaranth_seeds' },
+        { name: 'thermal:barley', seed: 'thermal:barley_seeds' },
+        { name: 'thermal:corn', seed: 'thermal:corn_seeds' },
+        { name: 'thermal:flax', seed: 'thermal:flax_seeds' },
+        { name: 'thermal:onion', seed: 'thermal:onion_seeds' },
+        { name: 'thermal:radish', seed: 'thermal:radish_seeds' },
+        { name: 'thermal:rice', seed: 'thermal:rice_seeds' },
+        { name: 'thermal:sadiroot', seed: 'thermal:sadiroot_seeds' },
+        { name: 'thermal:spinach', seed: 'thermal:spinach_seeds' },
+        { name: 'thermal:bell_pepper', seed: 'thermal:bell_pepper_seeds' },
+        { name: 'thermal:eggplant', seed: 'thermal:eggplant_seeds' },
+        { name: 'thermal:green_bean', seed: 'thermal:green_bean_seeds' },
+        { name: 'thermal:peanut', seed: 'thermal:peanut_seeds' },
+        { name: 'thermal:strawberry', seed: 'thermal:strawberry_seeds' },
+        { name: 'thermal:tomato', seed: 'thermal:tomato_seeds' },
+        { name: 'thermal:coffee', seed: 'thermal:coffee_seeds' },
+        { name: 'thermal:hops', seed: 'thermal:hops_seeds' },
+        { name: 'thermal:tea', seed: 'thermal:tea_seeds' },
+        { name: 'thermal:frost_melon', seed: 'thermal:frost_melon_seeds' }
+    );
+});
+
+global.withModsLoaded('farmersdelight', () => {
+    farmCropList.push(
+        { name: 'farmersdelight:onion' },
+        { name: 'farmersdelight:tomato', seed: 'farmersdelight:tomato_seeds' },
+        { name: 'farmersdelight:cabbage', seed: 'farmersdelight:cabbage_seeds' },
+        { name: 'farmersdelight:rice_panicle', seed: 'farmersdelight:rice' }
+    );
+});
+
+global.farmCropList = farmCropList;
 
 ServerEvents.recipes((event) => {
     const id = global.id;

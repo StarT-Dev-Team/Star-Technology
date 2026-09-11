@@ -18,7 +18,7 @@ ServerEvents.recipes((event) => {
         } = tierData;
 
         // Parallel Hatches
-        event
+        event.recipes.gtceu
             .shaped(Item.of(`start_core:${tier}_parallel_hatch`), ['SCE', 'CHC', 'BCB'], {
                 S: `gtceu:${tier}_sensor`,
                 E: `gtceu:${tier}_emitter`,
@@ -26,7 +26,8 @@ ServerEvents.recipes((event) => {
                 H: `gtceu:${tier}_machine_hull`,
                 B: `gtceu:${cable}_double_cable`,
             })
-            .id(`start:shaped/${tier}_parallel_hatch`);
+            .id(`start:shaped/${tier}_parallel_hatch`)
+            .addMaterialInfo();
 
         event.recipes.gtceu
             .assembler(id(`${tier}_absolute_parallel_hatch`))
@@ -40,7 +41,8 @@ ServerEvents.recipes((event) => {
             .inputFluids(`gtceu:${tierFluid} 576`)
             .itemOutputs(`start_core:${tier}_absolute_parallel_hatch`)
             .duration(320)
-            .EUt(GTValues.VA[GTValues[/** @type {'UHV' | 'UEV' | 'UIV'} */ (tier.toUpperCase())]]);
+            .EUt(GTValues.VA[GTValues[/** @type {'UHV' | 'UEV' | 'UIV'} */ (tier.toUpperCase())]])
+            .addMaterialInfo(true, true);
     }
 
     postUVMachines('uhv', 'kubejs:uepic_chip');

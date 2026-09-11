@@ -38,6 +38,10 @@ declare namespace internal.net.minecraft.server.level {
             structureAccess: StructureAccess
         ): StructureStart | null;
     }
+
+    import Player = world.entity.player.Player;
+
+    interface ServerPlayer extends $object<'net.minecraft.server.ServerPlayer', Player> {}
 }
 
 declare namespace internal.kjs {

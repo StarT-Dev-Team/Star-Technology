@@ -20,7 +20,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:indium_tin_lead_cadmium_soldering_alloy 46080',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 8640',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 8640',
             'gtceu:perfluoroelastomer_rubber 5760'
         )
         .itemOutputs('start_core:abyssal_containment_room')
@@ -31,7 +31,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(224)
         )
-        .EUtVA(UXV);
+        .EUtVA(UXV)
+        .addMaterialInfo(true, true);
 
     // === CHEF ===
     event.recipes.gtceu
@@ -52,7 +53,7 @@ ServerEvents.recipes((event) => {
         )
         .inputFluids(
             'gtceu:naquadated_soldering_alloy 24768',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 19008',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 19008',
             'start_core:corefire_nectar 100000',
             'gtceu:dragon_breath 12500'
         )
@@ -61,7 +62,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:mega_blast_furnace')).EUt(GTValues.VHA[UIV]).CWUt(192)
         )
-        .EUtVHA(UXV);
+        .EUtVHA(UXV)
+        .addMaterialInfo(true, true);
 
     // === Part Hub ===
     event.recipes.gtceu
@@ -77,7 +79,7 @@ ServerEvents.recipes((event) => {
             '64x kubejs:uepic_chip'
         )
         .inputFluids(
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 14400',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 14400',
             'gtceu:utopian_akreyrium 10000',
             'gtceu:tungsten_disulfide 7200',
             'gtceu:indium_tin_lead_cadmium_soldering_alloy 5600'
@@ -90,7 +92,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UEV])
                 .CWUt(192)
         )
-        .EUtVHA(UIV);
+        .EUtVHA(UIV)
+        .addMaterialInfo(true, true);
 
     // === Chem Plant ===
     event.recipes.gtceu
@@ -105,7 +108,7 @@ ServerEvents.recipes((event) => {
             '12x gtceu:draco_abyssal_rotor',
             '6x gtceu:small_draconyallium_gear',
             '2x gtceu:uiv_robot_arm',
-            '6x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_huge_fluid_pipe',
+            '6x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_huge_fluid_pipe',
             '4x gtceu:uiv_fluid_regulator',
             '4x gtceu:lepton_resonant_thallium_antimonide_spring',
             '64x gtceu:fine_rhenium_super_composite_alloy_wire',
@@ -114,7 +117,7 @@ ServerEvents.recipes((event) => {
         .inputFluids(
             'gtceu:naquadated_soldering_alloy 18720',
             'gtceu:perfluoroelastomer_rubber 15696',
-            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate 10080',
+            'gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate 10080',
             'gtceu:calamatium 5040'
         )
         .itemOutputs('gtceu:atomic_materialization_plant')
@@ -122,7 +125,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:chemical_plant')).EUt(GTValues.VA[UIV]).CWUt(216)
         )
-        .EUtVHA(UXV);
+        .EUtVHA(UXV)
+        .addMaterialInfo(true, true);
 
     // === Incomprehensible Chemical Reactor ===
     event.recipes.gtceu
@@ -143,7 +147,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(192)
         )
-        .EUtVHA(UIV);
+        .EUtVHA(UIV)
+        .addMaterialInfo(true, true);
 
     // === True Synthesis Plant ===
     event.recipes.gtceu
@@ -167,7 +172,8 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(256)
         )
-        .EUtVHA(UXV);
+        .EUtVHA(UXV)
+        .addMaterialInfo(true, true);
 
     // === Ak stabiliser 2 ===
     event.recipes.gtceu
@@ -194,5 +200,6 @@ ServerEvents.recipes((event) => {
                 .EUt(GTValues.VHA[UIV])
                 .CWUt(216)
         )
-        .EUtVA(UIV);
+        .EUtVA(UIV)
+        .addMaterialInfo(true, true);
 });

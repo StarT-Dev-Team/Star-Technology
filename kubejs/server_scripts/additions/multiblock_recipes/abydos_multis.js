@@ -16,7 +16,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_chemical_reactor')).EUt(GTValues.VHA[UV]).CWUt(64)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('advanced_synthesis_plant'))
@@ -52,7 +53,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:uv_chemical_reactor')).EUt(GTValues.VHA[UHV]).CWUt(96)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('cyclonic_sifter'))
@@ -72,7 +74,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_sifting_funnel')).EUt(GTValues.VHA[UV]).CWUt(24)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('manifold_centrifuge'))
@@ -94,7 +97,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_centrifuge')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('injection_mixer'))
@@ -114,7 +118,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_mixer')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('molten_destabiliser'))
@@ -134,7 +139,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_distillery')).EUt(GTValues.VHA[UV]).CWUt(24)
         )
-        .EUtVA(UV);
+        .EUtVA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('titan_forge'))
@@ -154,7 +160,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:large_extruder')).EUt(GTValues.VA[ZPM]).CWUt(64)
         )
-        .EUtVHA(UV);
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('compact_assembly_line'))
@@ -178,7 +185,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:assembly_line')).EUt(GTValues.VHA[UV]).CWUt(128)
         )
-        .EUtVHA(UHV);
+        .EUtVHA(UHV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('component_nexus'))
@@ -205,7 +213,8 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:compact_assembly_line')).EUt(GTValues.VHA[UHV]).CWUt(144)
         )
-        .EUtVHA(UEV);
+        .EUtVHA(UEV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('super_heat_chamber'))
@@ -228,7 +237,8 @@ ServerEvents.recipes((event) => {
             researchRecipeBuilder.researchStack(Item.of('gtceu:heat_chamber')).EUt(GTValues.VHA[UV]).CWUt(128)
         )
         .duration(3200)
-        .EUtVHA(UV);
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 
     event.recipes.gtceu
         .assembly_line(id('exotic_rock_crusher'))
@@ -248,5 +258,88 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:uv_rock_crusher')).EUt(GTValues.VHA[ZPM]).CWUt(24)
         )
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
+
+    event.recipes.gtceu
+        .assembler(id('runic_computer_casing'))
+        .itemInputs(
+            'gtceu:advanced_computer_casing',
+            'kubejs:proto_energized_rune',
+            '#gtceu:circuits/uv',
+            '64x gtceu:fine_tritanium_wire',
+            '64x gtceu:fine_europium_wire',
+            '4x gtceu:enriched_naquadah_trinium_europium_duranide_single_wire'
+        )
+        .inputFluids('gtceu:utopian_akreyrium 185')
+        .itemOutputs('start_core:runic_computer_casing')
+        .duration(190)
+        .addMaterialInfo(true)
         .EUtVHA(UV);
+
+    event.recipes.gtceu
+        .assembler(id('runic_high_power_casing'))
+        .itemInputs(
+            '2x gtceu:high_power_casing',
+            'kubejs:proto_solarus_rune',
+            'kubejs:proto_lunarus_rune',
+            '4x gtceu:double_enriched_naquadah_plate',
+            '2x #gtceu:circuits/uv',
+            '64x gtceu:fine_tritanium_wire',
+            '64x gtceu:fine_europium_wire',
+            '6x gtceu:zalloy_single_wire'
+        )
+        .inputFluids('gtceu:utopian_akreyrium 245')
+        .itemOutputs('2x start_core:runic_high_power_casing')
+        .duration(310)
+        .addMaterialInfo(true)
+        .EUtVHA(UV);
+
+    event.recipes.gtceu
+        .assembly_line(id('network_hub'))
+        .itemInputs(
+            'gtceu:network_switch',
+            '4x gtceu:uv_emitter',
+            '4x gtceu:uv_sensor',
+            '4x #gtceu:circuits/uhv',
+            '32x gtceu:ruthenium_trinium_americium_neutronate_double_wire',
+            '64x gtceu:tritan_steel_foil',
+            '64x gtceu:tritan_steel_foil',
+            '48x gtceu:normal_optical_pipe'
+        )
+        .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 576', 'gtceu:polyimide 576')
+        .itemOutputs('gtceu:network_hub')
+        .duration(2400)
+        .stationResearch((researchBuilder) =>
+            researchBuilder.researchStack(Item.of('gtceu:network_switch')).EUt(GTValues.VHA[ZPM]).CWUt(32)
+        )
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
+
+    event.recipes.gtceu
+        .assembly_line(id('ihpca'))
+        .itemInputs(
+            'gtceu:high_performance_computation_array',
+            '#gtceu:circuits/uev',
+            'gtceu:uhv_field_generator',
+            'start_core:data_dna_disk',
+            '4x gtceu:neutronium_ultradense_plate',
+            '64x gtceu:ruthenium_trinium_americium_neutronate_double_wire',
+            '64x gtceu:normal_optical_pipe'
+        )
+        .inputFluids(
+            'gtceu:indium_tin_lead_cadmium_soldering_alloy 1152',
+            'gtceu:utopian_akreyrium 576',
+            'gtceu:pcb_coolant 4000'
+        )
+        .itemOutputs('start_core:improved_high_performance_computation_array')
+        .duration(2400)
+        .stationResearch((researchBuilder) =>
+            researchBuilder
+                .researchStack(Item.of('gtceu:high_performance_computation_array'))
+                .EUt(GTValues.VHA[ZPM])
+                .CWUt(128)
+        )
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 });

@@ -491,10 +491,7 @@
 			y: -8.0d
 		}
 		{
-			dependencies: [
-				"623816C7D3EB91CD"
-				"1D2B296A9B23D0BF"
-			]
+			dependencies: ["1D2B296A9B23D0BF"]
 			icon: {
 				Count: 1
 				id: "gtceu:hydroxo_dioxo_titanite_mixture_bucket"
@@ -522,10 +519,7 @@
 			y: -8.0d
 		}
 		{
-			dependencies: [
-				"5CC3D76D20152621"
-				"6893DE5DC9C7470F"
-			]
+			dependencies: ["6893DE5DC9C7470F"]
 			icon: {
 				Count: 1
 				id: "gtceu:titanite_slurry_bucket"
@@ -599,109 +593,7 @@
 			y: -8.0d
 		}
 		{
-			dependencies: ["1AAB9C20E833029A"]
-			icon: {
-				Count: 1
-				id: "gtceu:perchloric_acid_bucket"
-				tag: { }
-			}
-			id: "5CC3D76D20152621"
-			tasks: [
-				{
-					id: "51FD0C80BC90F61E"
-					item: {
-						Count: 1
-						id: "gtceu:perchloric_acid_bucket"
-						tag: { }
-					}
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "3444A25ABE257C11"
-					type: "checkmark"
-				}
-			]
-			title: "{ftbquests.pl.perchloric_acid.title}"
-			x: -15.0d
-			y: -9.0d
-		}
-		{
-			dependencies: ["7557E3B3E5F86BAD"]
-			id: "5CDFB2E4DCD6E4F0"
-			tasks: [{
-				id: "7D0AE2B53F6A4420"
-				item: {
-					Count: 1
-					id: "gtceu:calcium_perchlorate_dust"
-					tag: { }
-				}
-				type: "item"
-			}]
-			x: -14.0d
-			y: -9.0d
-		}
-		{
-			dependencies: ["7557E3B3E5F86BAD"]
-			icon: {
-				Count: 1
-				id: "gtceu:silica_gel_bucket"
-				tag: { }
-			}
-			id: "2EDE14D28C3C6F25"
-			tasks: [
-				{
-					id: "2457DDA54D7610C6"
-					item: {
-						Count: 1
-						id: "gtceu:silica_gel_bucket"
-						tag: { }
-					}
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "2CFE1FD96A0363CD"
-					type: "checkmark"
-				}
-			]
-			title: "{ftbquests.pl.silica_gel.title}"
-			x: -14.0d
-			y: -7.0d
-		}
-		{
-			dependencies: ["3A15777DD813EE71"]
-			id: "623816C7D3EB91CD"
-			tasks: [{
-				id: "59713322AEB1606C"
-				item: {
-					Count: 1
-					id: "gtceu:sodium_hydroxide_dust"
-					tag: { }
-				}
-				type: "item"
-			}]
-			x: -12.0d
-			y: -9.0d
-		}
-		{
-			dependencies: ["330EAF566B740869"]
-			id: "5898C4D6A9614FC0"
-			tasks: [{
-				id: "6C3605E9C58BB9E8"
-				item: {
-					Count: 1
-					id: "gtceu:sodium_oxide_dust"
-					tag: { }
-				}
-				type: "item"
-			}]
-			x: -11.0d
-			y: -7.0d
-		}
-		{
 			dependencies: [
-				"7214D86C55033EAD"
 				"2746D19331452ACC"
 				"678B90BF2ACE2BBA"
 			]
@@ -731,10 +623,7 @@
 			y: 3.5d
 		}
 		{
-			dependencies: [
-				"357F58FB592B9628"
-				"560EB50E50454D31"
-			]
+			dependencies: ["560EB50E50454D31"]
 			id: "2746D19331452ACC"
 			tasks: [{
 				id: "554A409C85D47153"
@@ -762,21 +651,6 @@
 			}]
 			x: -9.0d
 			y: 3.5d
-		}
-		{
-			dependencies: ["1820787D031EAB15"]
-			id: "357F58FB592B9628"
-			tasks: [{
-				id: "6D47324C12489CA6"
-				item: {
-					Count: 1
-					id: "gtceu:potassium_hydroxide_dust"
-					tag: { }
-				}
-				type: "item"
-			}]
-			x: -8.0d
-			y: 2.5d
 		}
 		{
 			dependencies: [
@@ -1004,77 +878,6 @@
 			}]
 			x: -5.5d
 			y: -2.0d
-		}
-		{
-			dependencies: ["7658E16BA79A7632"]
-			icon: {
-				Count: 1
-				id: "gtceu:steam_bucket"
-				tag: { }
-			}
-			id: "34EA854FE36B7C69"
-			tasks: [
-				{
-					id: "06CAA1F283CDB147"
-					item: {
-						Count: 1
-						id: "gtceu:steam_bucket"
-						tag: { }
-					}
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "05FF2D945FA5110D"
-					type: "checkmark"
-				}
-			]
-			title: "{ftbquests.pl.steam.title}"
-			x: -5.5d
-			y: 4.5d
-		}
-		{
-			dependencies: ["7658E16BA79A7632"]
-			icon: {
-				Count: 1
-				id: "gtceu:carbon_monoxide_bucket"
-				tag: { }
-			}
-			id: "1E41DAA8519BE87F"
-			tasks: [
-				{
-					id: "53858FA4901F7454"
-					item: {
-						Count: 1
-						id: "gtceu:carbon_monoxide_bucket"
-						tag: { }
-					}
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "64600E4453B42D89"
-					type: "checkmark"
-				}
-			]
-			title: "{ftbquests.pl.carbon_monoxide.title}"
-			x: -5.5d
-			y: 2.5d
-		}
-		{
-			dependencies: ["3A15777DD813EE71"]
-			id: "7214D86C55033EAD"
-			tasks: [{
-				id: "77726D5EEEDC7244"
-				item: {
-					Count: 1
-					id: "gtceu:carbon_dust"
-					tag: { }
-				}
-				type: "item"
-			}]
-			x: -6.5d
-			y: 2.5d
 		}
 		{
 			dependencies: [
@@ -1954,8 +1757,8 @@
 				item: "gtceu:perfluoroelastomer_rubber_bucket"
 				type: "item"
 			}]
-			x: 0.5d
-			y: -5.0d
+			x: 1.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["6373DC17B2A31150"]
@@ -1974,14 +1777,10 @@
 				}
 			]
 			x: -2.0d
-			y: -6.5d
+			y: -3.0d
 		}
 		{
-			dependencies: [
-				"042874C597262403"
-				"500FB846B2A5EDB1"
-				"2FA4D8E5C281EE8F"
-			]
+			dependencies: ["500FB846B2A5EDB1"]
 			icon: "gtceu:perfluoromethyl_vinyl_ether_bucket"
 			id: "07234A79406AB3AA"
 			tasks: [
@@ -1996,46 +1795,8 @@
 					type: "checkmark"
 				}
 			]
-			x: -3.0d
-			y: -5.0d
-		}
-		{
-			dependencies: ["1820787D031EAB15"]
-			icon: "gtceu:methanol_bucket"
-			id: "042874C597262403"
-			tasks: [
-				{
-					id: "0B29E44716380BF8"
-					item: "gtceu:methanol_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "0B386086ADA13DC9"
-					type: "checkmark"
-				}
-			]
-			x: -4.0d
-			y: -6.0d
-		}
-		{
-			dependencies: ["3A15777DD813EE71"]
-			icon: "gtceu:fluorine_bucket"
-			id: "2FA4D8E5C281EE8F"
-			tasks: [
-				{
-					id: "514979C07F9F607D"
-					item: "gtceu:fluorine_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "631A10E330947DD4"
-					type: "checkmark"
-				}
-			]
-			x: -4.0d
-			y: -4.0d
+			x: -2.0d
+			y: -5.5d
 		}
 		{
 			dependencies: ["1AAB9C20E833029A"]
@@ -2053,8 +1814,8 @@
 					type: "checkmark"
 				}
 			]
-			x: -4.5d
-			y: -5.0d
+			x: -4.0d
+			y: -5.5d
 		}
 		{
 			dependencies: [
@@ -2068,14 +1829,10 @@
 				item: "gtceu:raw_perfluoroelastomer_rubber_dust"
 				type: "item"
 			}]
-			x: -1.5d
-			y: -5.0d
+			x: -1.0d
+			y: -4.0d
 		}
 		{
-			dependencies: [
-				"424C253C168CF038"
-				"3AD0847FDCE274A3"
-			]
 			icon: "gtceu:hexafluorobutadiene_bucket"
 			id: "2F16B7E71F407709"
 			tasks: [
@@ -2090,46 +1847,8 @@
 					type: "checkmark"
 				}
 			]
-			x: -1.5d
-			y: -3.5d
-		}
-		{
-			dependencies: ["1AAB9C20E833029A"]
-			icon: "gtceu:hydrofluoric_acid_bucket"
-			id: "3AD0847FDCE274A3"
-			tasks: [
-				{
-					id: "522EBFE2A5E6FAA7"
-					item: "gtceu:hydrofluoric_acid_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "059361C843B804B9"
-					type: "checkmark"
-				}
-			]
-			x: -0.5d
-			y: -3.0d
-		}
-		{
-			dependencies: ["170C262792DA7123"]
-			icon: "gtceu:butadiene_bucket"
-			id: "424C253C168CF038"
-			tasks: [
-				{
-					id: "241CE39114796864"
-					item: "gtceu:butadiene_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "43674598DBB598C5"
-					type: "checkmark"
-				}
-			]
-			x: -2.5d
-			y: -3.0d
+			x: -3.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["615443BBE5BF322A"]
@@ -2377,10 +2096,7 @@
 			y: 6.0d
 		}
 		{
-			dependencies: [
-				"75B49A50671FBADE"
-				"7AB2F356B5B0FDFD"
-			]
+			dependencies: ["7AB2F356B5B0FDFD"]
 			icon: "gtceu:methylamine_bucket"
 			id: "28A1B23E9197F5B7"
 			tasks: [
@@ -2416,25 +2132,6 @@
 			]
 			x: -0.5d
 			y: 4.5d
-		}
-		{
-			dependencies: ["1820787D031EAB15"]
-			icon: "gtceu:ammonia_bucket"
-			id: "75B49A50671FBADE"
-			tasks: [
-				{
-					id: "47856BB151864C59"
-					item: "gtceu:ammonia_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "0AB551CE36A7D172"
-					type: "checkmark"
-				}
-			]
-			x: 0.0d
-			y: 3.5d
 		}
 		{
 			dependencies: ["10575AA87FEC2AD8"]
@@ -2783,10 +2480,7 @@
 			y: -4.5d
 		}
 		{
-			dependencies: [
-				"47805931CAA35463"
-				"621B3A7D8B60BF23"
-			]
+			dependencies: ["47805931CAA35463"]
 			icon: "gtceu:rare_earth_sulfate_solution_bucket"
 			id: "6DB9F175F04569EF"
 			tasks: [
@@ -2805,10 +2499,7 @@
 			y: -4.5d
 		}
 		{
-			dependencies: [
-				"6DB9F175F04569EF"
-				"116624C13A9CE1CA"
-			]
+			dependencies: ["6DB9F175F04569EF"]
 			icon: "gtceu:rare_earth_leach_mixture_bucket"
 			id: "15296632D73B60FA"
 			tasks: [
@@ -3012,66 +2703,6 @@
 			y: 5.5d
 		}
 		{
-			dependencies: ["15296632D73B60FA"]
-			id: "49FE3BC8860CCB18"
-			tasks: [{
-				id: "5D795173676B6914"
-				item: "gtceu:yttrium_dust"
-				type: "item"
-			}]
-			x: -11.5d
-			y: -5.5d
-		}
-		{
-			dependencies: ["1AAB9C20E833029A"]
-			icon: "gtceu:sulfuric_acid_bucket"
-			id: "621B3A7D8B60BF23"
-			tasks: [
-				{
-					id: "16BDF9DA61F4B6E7"
-					item: "gtceu:sulfuric_acid_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "3ED13EB1FFC57380"
-					type: "checkmark"
-				}
-			]
-			x: -14.0d
-			y: -3.5d
-		}
-		{
-			dependencies: ["6DB9F175F04569EF"]
-			icon: "gtceu:phosphoric_acid_bucket"
-			id: "708224F54B887FC1"
-			tasks: [
-				{
-					id: "338ABD93E2275408"
-					item: "gtceu:phosphoric_acid_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "5B48B31EC123655B"
-					type: "checkmark"
-				}
-			]
-			x: -13.0d
-			y: -5.5d
-		}
-		{
-			dependencies: ["4597B95C2F5EE106"]
-			id: "116624C13A9CE1CA"
-			tasks: [{
-				id: "600E81C7EEE038AB"
-				item: "gtceu:rare_earth_dust"
-				type: "item"
-			}]
-			x: -12.5d
-			y: -3.5d
-		}
-		{
 			dependencies: ["493DD013C818BB7B"]
 			icon: "minecraft:sand"
 			id: "66E5020B15598CCD"
@@ -3187,27 +2818,7 @@
 			y: 6.0d
 		}
 		{
-			dependencies: ["493DD013C818BB7B"]
-			icon: "gtceu:oxygen_bucket"
-			id: "145393F03845BB83"
-			tasks: [
-				{
-					id: "77D7390B716DB754"
-					item: "gtceu:oxygen_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "55A0ACAB38B58779"
-					type: "checkmark"
-				}
-			]
-			x: -7.0d
-			y: 6.0d
-		}
-		{
 			dependencies: [
-				"145393F03845BB83"
 				"42F226BB73C1A1F4"
 				"77183C16B81172AE"
 			]
@@ -3303,25 +2914,6 @@
 				type: "item"
 			}]
 			x: -5.0d
-			y: 9.0d
-		}
-		{
-			dependencies: ["77183C16B81172AE"]
-			icon: "gtceu:hydrogen_bucket"
-			id: "00EF6D13E95FF942"
-			tasks: [
-				{
-					id: "38E18CA78500AD43"
-					item: "gtceu:hydrogen_bucket"
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "1E977F8D53A277A6"
-					type: "checkmark"
-				}
-			]
-			x: -9.5d
 			y: 9.0d
 		}
 		{

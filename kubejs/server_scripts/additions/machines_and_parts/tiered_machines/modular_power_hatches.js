@@ -7,7 +7,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:modular_auto_scaling_node')
         .circuit(3)
         .duration(5)
-        .EUt(30);
+        .EUt(30)
+        .addMaterialInfo(true);
 
     event.recipes.gtceu
         .assembler(id('modular_auto_scaling_terminal'))
@@ -15,7 +16,8 @@ ServerEvents.recipes((event) => {
         .itemOutputs('start_core:modular_auto_scaling_terminal')
         .circuit(3)
         .duration(5)
-        .EUt(30);
+        .EUt(30)
+        .addMaterialInfo(true);
 
     const components = global.componentMaterials;
 
@@ -50,7 +52,8 @@ ServerEvents.recipes((event) => {
                     .itemOutputs(`start_core:${tier}_${amperage}_modular_conduit_${outputHatch}`)
                     .circuit(2)
                     .duration(5)
-                    .EUt(30);
+                    .EUt(30)
+                    .addMaterialInfo(true);
             });
         });
     }

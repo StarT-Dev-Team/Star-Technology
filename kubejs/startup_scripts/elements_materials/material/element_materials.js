@@ -1,3 +1,4 @@
+// priority: 9000
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     // Periodic table materials
     const element = global.periodicTableElement;
@@ -127,9 +128,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         .components('1x zapolgium')
         .color(0xcc00cc)
         .iconSet(magnetic)
-        .flags(longRod)
-        .arcSmeltInto('zapolgium')
-        .ingotSmeltInto('zapolgium');
+        .flags(longRod);
 
     event
         .create('magnetic_dysprosium')

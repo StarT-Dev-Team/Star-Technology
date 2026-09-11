@@ -1,15 +1,9 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     const cpa = 'component_part_assembly';
     const assline = 'assembly_line';
-    const lcr = event.recipes.gtceu.large_chemical_reactor;
-    const cut = event.recipes.gtceu.cutter;
-    const assembler = event.recipes.gtceu.assembler;
-    const circAss = event.recipes.gtceu.circuit_assembler;
-    const rotor = event.recipes.gtceu.large_rotor_machine;
-    const heat = event.recipes.gtceu.heat_chamber;
-    const stargateComponent = event.recipes.gtceu.stargate_component_assembly;
 
     // Classic Gate Components
     const researchBuilder = global.researchBuilder;
@@ -159,27 +153,6 @@ ServerEvents.recipes((event) => {
 
     researchBuilder(
         assline,
-        'crystal_interface',
-        [
-            'gtceu:trinaquadalloy_frame',
-            '16x gtceu:prismalium_hex_wire',
-            '6x kubejs:csg_reinforced_plating',
-            'kubejs:csg_stellar_access_point',
-            'kubejs:csg_energy_modulator',
-            '64x gtceu:fine_dragonsteel_wire',
-            '64x gtceu:fine_dragonsteel_wire',
-        ],
-        ['gtceu:indium_tin_lead_cadmium_soldering_alloy 3888', 'gtceu:polycarbonate 2592'],
-        ['sgjourney:crystal_interface'],
-        6000,
-        24,
-        24 * 600,
-        GTValues.VHA[ZPM],
-        'start_core:zpm_64a_energy_converter'
-    );
-
-    researchBuilder(
-        assline,
         'csg_dimensional_supercomputer',
         [
             '3x gtceu:trinaquadalloy_frame',
@@ -200,7 +173,8 @@ ServerEvents.recipes((event) => {
         'gtceu:crystal_processor_mainframe'
     );
 
-    lcr(id('csg_enscription_plate'))
+    event.recipes.gtceu
+        .large_chemical_reactor(id('csg_enscription_plate'))
         .itemInputs('gtceu:naquadah_wafer', '48x gtceu:aerogel_foil', '1x #gtceu:circuits/uv')
         .inputFluids('gtceu:europium 1152', 'gtceu:naquadria 432')
         .itemOutputs('kubejs:csg_enscription_plate')
@@ -208,7 +182,8 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(ZPM);
 
-    cut(id('csg_enscription_chip'))
+    event.recipes.gtceu
+        .cutter(id('csg_enscription_chip'))
         .itemInputs('kubejs:csg_enscription_plate')
         .inputFluids('gtceu:nether_star_concentrate 432')
         .itemOutputs('2x kubejs:csg_enscription_chip')
@@ -216,21 +191,8 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(ZPM);
 
-    assembler(id('classic_dhd'))
-        .itemInputs(
-            'gtceu:atomic_casing',
-            'kubejs:csg_stellar_dialer',
-            '12x gtceu:dragonsteel_foil',
-            '12x kubejs:proto_solarus_rune',
-            '14x kubejs:proto_energized_rune',
-            '12x kubejs:proto_lunarus_rune'
-        )
-        .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 1296')
-        .itemOutputs('sgjourney:classic_dhd')
-        .duration(6000)
-        .EUtVHA(ZPM);
-
-    circAss(id('csg_computational_matrix'))
+    event.recipes.gtceu
+        .circuit_assembler(id('csg_computational_matrix'))
         .itemInputs(
             'gtceu:multilayer_fiber_reinforced_printed_circuit_board',
             '16x gtceu:fine_trinaquadalloy_wire',
@@ -245,7 +207,8 @@ ServerEvents.recipes((event) => {
         .cleanroom(CleanroomType.CLEANROOM)
         .EUtVHA(ZPM);
 
-    rotor(id('csg_stargate_rod_base'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('csg_stargate_rod_base'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('2x gtceu:prismalium_ring')
@@ -261,7 +224,8 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UV);
 
-    rotor(id('raw_stargate_rod'))
+    event.recipes.gtceu
+        .large_rotor_machine(id('raw_stargate_rod'))
         .layeredRecipe((layers) =>
             layers
                 .itemInputs('kubejs:csg_stargate_rod_base', '2x gtceu:quantum_star')
@@ -291,98 +255,146 @@ ServerEvents.recipes((event) => {
         .duration(800)
         .EUtVHA(UV);
 
-    heat(id('activated_stargate_rod'))
+    event.recipes.gtceu
+        .heat_chamber(id('activated_stargate_rod'))
         .itemInputs('kubejs:raw_stargate_rod')
         .inputFluids('gtceu:nether_star_concentrate 720')
         .itemOutputs('kubejs:activated_stargate_rod')
         .duration(800)
         .EUtVHA(UV);
 
-    stargateComponent('csg_ring')
-        .layeredRecipe((layers) =>
-            layers
-                .itemInputs('gtceu:prismalium_frame', '16x kubejs:activated_stargate_rod')
-                .next()
-                .itemInputs('2x kubejs:proto_solarus_rune', 'kubejs:csg_reinforced_plating')
-                .next()
-                .itemInputs('2x kubejs:proto_lunarus_rune', 'kubejs:csg_reinforced_plating')
-                .next()
-                .itemInputs('2x kubejs:proto_energized_rune', 'kubejs:csg_reinforced_plating')
-        )
-        .inputFluids('gtceu:naquadria 1728')
-        .itemOutputs('sgjourney:classic_stargate_ring_block')
-        .duration(1200)
-        .EUtVHA(UV);
+    isModLoaded('sgjourney', () => {
+        researchBuilder(
+            assline,
+            'crystal_interface',
+            [
+                'gtceu:trinaquadalloy_frame',
+                '16x gtceu:prismalium_hex_wire',
+                '6x kubejs:csg_reinforced_plating',
+                'kubejs:csg_stellar_access_point',
+                'kubejs:csg_energy_modulator',
+                '64x gtceu:fine_dragonsteel_wire',
+                '64x gtceu:fine_dragonsteel_wire',
+            ],
+            ['gtceu:indium_tin_lead_cadmium_soldering_alloy 3888', 'gtceu:polycarbonate 2592'],
+            ['sgjourney:crystal_interface'],
+            6000,
+            24,
+            24 * 600,
+            GTValues.VHA[ZPM],
+            'start_core:zpm_64a_energy_converter'
+        );
 
-    stargateComponent('csg_chevron')
-        .layeredRecipe((layers) =>
-            layers
-                .itemInputs(
-                    'sgjourney:classic_stargate_ring_block',
-                    'kubejs:csg_chevron',
-                    '6x kubejs:activated_stargate_rod'
-                )
-                .next()
-                .itemInputs(
-                    'kubejs:csg_field_stabiliser',
-                    'kubejs:csg_reinforced_plating',
-                    '2x kubejs:activated_stargate_rod'
-                )
-                .next()
-                .itemInputs('kubejs:proto_solarus_rune', '3x kubejs:proto_energized_rune', 'kubejs:proto_lunarus_rune')
-                .next()
-                .itemInputs(
-                    'kubejs:csg_field_stabiliser',
-                    'kubejs:csg_reinforced_plating',
-                    '2x kubejs:activated_stargate_rod'
-                )
-        )
-        .inputFluids('gtceu:naquadria 1152')
-        .itemOutputs('sgjourney:classic_stargate_chevron_block')
-        .duration(1200)
-        .EUtVHA(UV);
+        event.recipes.gtceu
+            .assembler(id('classic_dhd'))
+            .itemInputs(
+                'gtceu:atomic_casing',
+                'kubejs:csg_stellar_dialer',
+                '12x gtceu:dragonsteel_foil',
+                '12x kubejs:proto_solarus_rune',
+                '14x kubejs:proto_energized_rune',
+                '12x kubejs:proto_lunarus_rune'
+            )
+            .inputFluids('gtceu:indium_tin_lead_cadmium_soldering_alloy 1296')
+            .itemOutputs('sgjourney:classic_dhd')
+            .duration(6000)
+            .EUtVHA(ZPM);
 
-    stargateComponent('csg_base')
-        .layeredRecipe((layers) =>
-            layers
-                .itemInputs(
-                    'sgjourney:classic_stargate_ring_block',
-                    'kubejs:csg_dimensional_supercomputer',
-                    '6x kubejs:activated_stargate_rod'
-                )
-                .next()
-                .itemInputs(
-                    'kubejs:csg_stellar_access_point',
-                    'kubejs:csg_reinforced_plating',
-                    '2x kubejs:activated_stargate_rod'
-                )
-                .next()
-                .itemInputs(
-                    '6x kubejs:proto_solarus_rune',
-                    '4x kubejs:proto_energized_rune',
-                    '6x kubejs:proto_lunarus_rune'
-                )
-                .next()
-                .itemInputs(
-                    'kubejs:csg_stellar_access_point',
-                    'kubejs:csg_reinforced_plating',
-                    '2x kubejs:activated_stargate_rod'
-                )
-        )
-        .inputFluids('gtceu:naquadria 1152')
-        .itemOutputs('sgjourney:classic_stargate_base_block')
-        .duration(1200)
-        .EUtVHA(UV);
+        event.recipes.gtceu
+            .stargate_component_assembly('csg_ring')
+            .layeredRecipe((layers) =>
+                layers
+                    .itemInputs('gtceu:prismalium_frame', '16x kubejs:activated_stargate_rod')
+                    .next()
+                    .itemInputs('2x kubejs:proto_solarus_rune', 'kubejs:csg_reinforced_plating')
+                    .next()
+                    .itemInputs('2x kubejs:proto_lunarus_rune', 'kubejs:csg_reinforced_plating')
+                    .next()
+                    .itemInputs('2x kubejs:proto_energized_rune', 'kubejs:csg_reinforced_plating')
+            )
+            .inputFluids('gtceu:naquadria 1728')
+            .itemOutputs('sgjourney:classic_stargate_ring_block')
+            .duration(1200)
+            .EUtVHA(UV);
 
-    event.recipes.create
-        .mechanical_crafting(
-            'sgjourney:classic_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
-            [' CRCRC ', 'RR   RR', 'C     C', 'R     R', 'R     R', 'CR   RC', ' RCBCR '],
-            {
-                R: 'sgjourney:classic_stargate_ring_block',
-                C: 'sgjourney:classic_stargate_chevron_block',
-                B: 'sgjourney:classic_stargate_base_block',
-            }
-        )
-        .id('start:shaped/csg');
+        event.recipes.gtceu
+            .stargate_component_assembly('csg_chevron')
+            .layeredRecipe((layers) =>
+                layers
+                    .itemInputs(
+                        'sgjourney:classic_stargate_ring_block',
+                        'kubejs:csg_chevron',
+                        '6x kubejs:activated_stargate_rod'
+                    )
+                    .next()
+                    .itemInputs(
+                        'kubejs:csg_field_stabiliser',
+                        'kubejs:csg_reinforced_plating',
+                        '2x kubejs:activated_stargate_rod'
+                    )
+                    .next()
+                    .itemInputs(
+                        'kubejs:proto_solarus_rune',
+                        '3x kubejs:proto_energized_rune',
+                        'kubejs:proto_lunarus_rune'
+                    )
+                    .next()
+                    .itemInputs(
+                        'kubejs:csg_field_stabiliser',
+                        'kubejs:csg_reinforced_plating',
+                        '2x kubejs:activated_stargate_rod'
+                    )
+            )
+            .inputFluids('gtceu:naquadria 1152')
+            .itemOutputs('sgjourney:classic_stargate_chevron_block')
+            .duration(1200)
+            .EUtVHA(UV);
+
+        event.recipes.gtceu
+            .stargate_component_assembly('csg_base')
+            .layeredRecipe((layers) =>
+                layers
+                    .itemInputs(
+                        'sgjourney:classic_stargate_ring_block',
+                        'kubejs:csg_dimensional_supercomputer',
+                        '6x kubejs:activated_stargate_rod'
+                    )
+                    .next()
+                    .itemInputs(
+                        'kubejs:csg_stellar_access_point',
+                        'kubejs:csg_reinforced_plating',
+                        '2x kubejs:activated_stargate_rod'
+                    )
+                    .next()
+                    .itemInputs(
+                        '6x kubejs:proto_solarus_rune',
+                        '4x kubejs:proto_energized_rune',
+                        '6x kubejs:proto_lunarus_rune'
+                    )
+                    .next()
+                    .itemInputs(
+                        'kubejs:csg_stellar_access_point',
+                        'kubejs:csg_reinforced_plating',
+                        '2x kubejs:activated_stargate_rod'
+                    )
+            )
+            .inputFluids('gtceu:naquadria 1152')
+            .itemOutputs('sgjourney:classic_stargate_base_block')
+            .duration(1200)
+            .EUtVHA(UV);
+
+        isModLoaded(['sgjourney', 'kubejs_create'], () => {
+            event.recipes.create
+                .mechanical_crafting(
+                    'sgjourney:classic_stargate {BlockEntityTag:{LocalPointOfOrigin:1b}}',
+                    [' CRCRC ', 'RR   RR', 'C     C', 'R     R', 'R     R', 'CR   RC', ' RCBCR '],
+                    {
+                        R: 'sgjourney:classic_stargate_ring_block',
+                        C: 'sgjourney:classic_stargate_chevron_block',
+                        B: 'sgjourney:classic_stargate_base_block',
+                    }
+                )
+                .id('start:shaped/csg');
+        });
+    });
 });

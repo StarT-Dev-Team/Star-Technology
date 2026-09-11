@@ -13,6 +13,21 @@
     // Should nether generate as in default world type? [default: false]
     "Default": true,
     
+    // A list of biomes for each island in a circle shape around the island.
+    // First entry will be first circle of that radius. Second entry will be the next ring and the radius will be added to the previous radius.
+    // Example:
+    //   [
+    //     {
+    //       "id": "minecraft:plains",
+    //       "radius": 64
+    //     },
+    //     {
+    //       "id": "minecraft:end_highlands",
+    //       "radius": 32
+    //     }
+    //   ]
+    "centeredBiomes": [],
+    
     // File name in template directory of a valid template containing a nether portal
     "netherPortalStructure": null
   },
@@ -20,6 +35,21 @@
   "Overworld": {
   
     // Should overworld generate as in default world type? [default: false]
-    "Default": false
+    "Default": false,
+    
+    // A list of biomes for each island in a circle shape around the island.
+    // First entry will be first circle of that radius. Second entry will be the next ring and the radius will be added to the previous radius.
+    // Example:
+    //   [
+    //     {
+    //       "id": "minecraft:plains",
+    //       "radius": 64
+    //     },
+    //     {
+    //       "id": "minecraft:end_highlands",
+    //       "radius": 32
+    //     }
+    //   ]
+    "centeredBiomes": []
   }
 }

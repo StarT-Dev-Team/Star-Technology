@@ -29,11 +29,11 @@ GTCEuStartupEvents.materialModification((_event) => {
 
     setFormula('netherite_trisulfate_complex', '[*Nr*(SO4)3](OH)2');
     setFormula('netherite_hexammine_sulfate', '[*Nr*(NH3)6]SO4');
-    setFormula('ohmderblux_alloy', 'Cx5(Fe16TiAlNi4Co2)2Zr4(Si(FeS2)5(CrAl2O3)Hg3)Au)9(Co5Cr2NiMo)3');
+    // setFormula('ohmderblux_alloy', 'Cx5(Fe16TiAlNi4Co2)2Zr4?9(Co5Cr2NiMo)3');
     setFormula('netherite_gold_skystone_alloy', 'Nr4(SkC2)2(Sk(SiAu2)2)');
     setFormula('netherite_certus_quartz_skystone_alloy', 'Nr4(SkC2)2(Sk(SiO2)2)');
-    setFormula('dissipated_helish_concentrate', '⛧-');
-    setFormula('helish_concentrate', '⛧');
+    setFormula('dissipated_hellish_concentrate', '⛧-');
+    setFormula('hellish_concentrate', '⛧');
     setFormula('hellfire_ash', '🔥-');
     setFormula('nyanium', 'ᗢ');
     // setFormula('maxwellium', 'ᓚᘏᗢ')
@@ -62,7 +62,7 @@ GTCEuStartupEvents.materialModification((_event) => {
     setFormula('paradox', '☯');
     setFormula('draco_abyssal', '🜍∅🜍');
     setFormula('silver_sulfate', 'Ag2(SO4)');
-    setFormula('chromium_sulfate', 'Cr2(SO4)3');
+    // setFormula('chromium_sulfate', 'Cr2(SO4)3');
     setFormula('sparse_electron_akreyrium', 'Ak(?e?)?');
     setFormula('dense_electron_akreyrium', 'Ak(e)?');
     setFormula('sparse_muon_akreyrium', 'Ak(?μ?)?');

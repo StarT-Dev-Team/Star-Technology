@@ -17,5 +17,6 @@ ServerEvents.recipes((event) => {
         .stationResearch((researchRecipeBuilder) =>
             researchRecipeBuilder.researchStack(Item.of('gtceu:ev_fluid_drilling_rig')).EUt(GTValues.VHA[UV]).CWUt(144)
         )
-        .EUtVHA(UV);
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 });

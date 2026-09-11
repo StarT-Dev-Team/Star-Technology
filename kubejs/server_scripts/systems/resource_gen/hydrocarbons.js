@@ -22,7 +22,7 @@ ServerEvents.recipes((event) => {
         const cropName = crop.name;
         const cropIDArr = cropName.split(':');
 
-        const blacklist = ['wheat', 'carrot', 'potato', 'beetroot', 'sugar_cane', 'cactus'];
+        const blacklist = ['wheat', 'carrot', 'potato', 'beetroot', 'sugar_cane', 'cactus', 'chorus_fruit'];
 
         if (blacklist.includes(cropIDArr[1])) return;
 
@@ -134,7 +134,7 @@ ServerEvents.recipes((event) => {
             duration: 25,
         },
         {
-            output: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate 864',
+            output: 'poly_34_ethylenedioxythiophene_polystyrene_sulfonate 864',
             fluidInput: [`${BC} 11250`, `${FS} 9750`, `${PS} 7500`, `${CV} 4250`, 'gtceu:bromine 25'],
             inputItem: ['gtceu:sulfur_dust', '6x minecraft:sugar'],
             voltage: GTValues.VA[UXV] / 3,

@@ -20,20 +20,6 @@ ServerEvents.recipes((event) => {
         .circuit(0);
 
     event.recipes.gtceu
-        .extractor(id('nether_agglomeration'))
-        .itemInputs('gtceu:netherrack_dust')
-        .itemOutputs('mysticalagriculture:nether_agglomeratio')
-        .duration(120)
-        .EUt(80);
-
-    event.recipes.gtceu
-        .extractor(id('end_agglomeration'))
-        .itemInputs('gtceu:endstone_dust')
-        .itemOutputs('mysticalagriculture:end_agglomeratio')
-        .duration(120)
-        .EUt(80);
-
-    event.recipes.gtceu
         .mixer(id('nether_air_mix'))
         .itemInputs('3x gtceu:netherrack_dust')
         .inputFluids('gtceu:air 32000')

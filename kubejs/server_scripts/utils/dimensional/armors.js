@@ -1,5 +1,6 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
+    const isModLoaded = global.withModsLoaded;
 
     [
         { plastic: 'polyethylene', chance: 500, amount: 9216 },
@@ -7,7 +8,7 @@ ServerEvents.recipes((event) => {
         { plastic: 'epoxy', chance: 2250, amount: 576 },
         { plastic: 'polybenzimidazole', chance: 4500, amount: 144 },
         { plastic: 'polyether_ether_ketone', chance: 9000, amount: 36 },
-        { plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfate', chance: 18000, amount: 9 },
+        { plastic: 'poly_34_ethylenedioxythiophene_polystyrene_sulfonate', chance: 18000, amount: 9 },
     ].forEach((mat) => {
         const { plastic, chance, amount } = mat;
         const guaranteed = Math.floor(chance / 10000);
@@ -86,28 +87,30 @@ ServerEvents.recipes((event) => {
             .EUtVHA(UIV);
     });
 
-    event.recipes.create
-        .mechanical_crafting(
-            'kubejs:nether_talisman',
-            [
-                /* prettier-ignore-start */
-                'M     M',
-                'N M M N',
-                'N N N N',
-                'AAAAAAA',
-                'AAARAAA',
-                'DDDDDDD',
-                /* prettier-ignore-end */
-            ],
-            {
-                M: 'gtceu:magmada_alloy_round',
-                N: 'gtceu:netherite_gold_skystone_alloy_rod',
-                A: 'gtceu:ancient_runicalium_ingot',
-                R: 'gtceu:exquisite_ruby_gem',
-                D: 'gtceu:adamantine_ingot',
-            }
-        )
-        .id('start:mechanical_crafting/hell_crown');
+    isModLoaded('kubejs_create', () => {
+        event.recipes.create
+            .mechanical_crafting(
+                'kubejs:nether_talisman',
+                [
+                    /* prettier-ignore-start */
+                    'M     M',
+                    'N M M N',
+                    'N N N N',
+                    'AAAAAAA',
+                    'AAARAAA',
+                    'DDDDDDD',
+                    /* prettier-ignore-end */
+                ],
+                {
+                    M: 'gtceu:magmada_alloy_round',
+                    N: 'gtceu:netherite_gold_skystone_alloy_rod',
+                    A: 'gtceu:ancient_runicalium_ingot',
+                    R: 'gtceu:exquisite_ruby_gem',
+                    D: 'gtceu:adamantine_ingot',
+                }
+            )
+            .id('start:mechanical_crafting/hell_crown');
+    });
 
     event.recipes.gtceu
         .draco_infusion(id('elder_dragon_wings'))

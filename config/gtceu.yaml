@@ -12,6 +12,10 @@ recipes:
   # Default: false
   harderRods: false
 
+  # Adds smithing table recipes for the netherite tools.
+  # Default: true
+  netheriteToolSmithingRecipes: true
+
   # Whether to make crafting recipes for Bricks, Firebricks, Nether Bricks, and Coke Bricks harder.
   # Default: false
   harderBrickRecipes: false
@@ -19,13 +23,11 @@ recipes:
   # Whether to nerf Wood crafting to 2 Planks from 1 Log, and 2 Sticks from 2 Planks.
   # Default: false
   nerfWoodCrafting: false
-  # Packmode Sensitivity
 
   # Whether to make Wood related recipes harder.
   # Excludes sticks and planks.
   # Default: false
   hardWoodRecipes: false
-  # Packmode Sensitivity
 
   # Recipes for Buckets, Cauldrons, Hoppers, and Iron Bars require Iron Plates, Rods, and more.
   # Default: true
@@ -34,13 +36,11 @@ recipes:
   # Whether to make Redstone related recipes harder.
   # Default: false
   hardRedstoneRecipes: false
-  # Packmode Sensitivity
 
   # Whether to make Vanilla Tools and Armor recipes harder.
   # Excludes Flint and Steel, and Buckets.
   # Default: false
   hardToolArmorRecipes: false
-  # Packmode Sensitivity
 
   # Whether to make miscellaneous recipes harder.
   # Default: false
@@ -52,7 +52,6 @@ recipes:
   # Whether to nerf the Paper crafting recipe.
   # Default: true
   nerfPaperCrafting: false
-  # Packmode Sensitivity
 
   # Recipes for items like Iron Doors, Trapdoors, Anvil require Iron Plates, Rods, and more.
   # Default: false
@@ -98,7 +97,6 @@ recipes:
   # Whether tools should have enchants or not. Like the flint sword getting fire aspect.
   # Default: true
   enchantedTools: true
-  # Packmode Sensitivity
 
   # Whether to enable macerator decomposition recycling
   # Default: true
@@ -262,7 +260,6 @@ machines:
   # Whether to enable World Accelerators, which accelerate ticks for surrounding Tile Entities, Crops, etc.
   # Default: true
   enableWorldAccelerators: false
-  # Packmode Sensitivity
 
   # List of TileEntities that the World Accelerator should not accelerate.
   # GregTech TileEntities are always blocked.
@@ -340,7 +337,6 @@ machines:
   # (Requires Ordered Assembly Line Item Inputs to be enabled.)
   # Default: false
   orderedAssemblyLineFluids: false
-  # Packmode Sensitivity
 
   # Default maximum parallel of steam multiblocks
   # Default: 8
@@ -364,6 +360,14 @@ machines:
   # Whether multiblocks stall (pause) on power fail.
   # Default: false
   multiblocksStallOnPowerFail: false
+
+  # Default update rate of redstone covers in ticks
+  # Default: 20 ticks
+  coverDefaultTicksPerCycle: 20
+
+  # Minimum update rate of redstone covers in ticks
+  # Default: 1 tick
+  coverMinTicksPerCycle: 1
 
   # Small Steam Boiler Options
   smallBoilers:
@@ -588,6 +592,13 @@ gameplay:
   # Default: 0.001
   environmentalHazardDecayRate: 0.001
 
+  # List of domains that are allowed in the image module
+  allowedImageDomains:
+    - imgur.com
+    - discord.com
+    - github.com
+    - raw.githubusercontent.com
+
 # Config options for Mod Compatibility
 compat:
   # Config options regarding GTEU compatibility with other energy systems
@@ -605,20 +616,23 @@ compat:
     # Only affects converters.
     # Default: 4 FE == 1 EU
     feToEuRatio: 4
-    # Packmode Sensitivity
 
     # GTEU to Forge Energy ratio for converting EU to FE.
     # Affects native conversion and Converters.
     # Default: 4 FE == 1 EU
     euToFeRatio: 4
-    # Packmode Sensitivity
 
   # Config options regarding GTCEu compatibility with AE2
   ae2:
-    # The interval between ME Hatch/Bus interact ME network.
-    # It may cause lag if the interval is too small.
+    # The default interval between ME Hatch/Bus interact ME network.
+    # Can't be lower than minUpdateIntervals.
     # Default: 2 sec
     updateIntervals: 40
+
+    # The minimum interval between ME Hatch/Bus interact ME network.
+    # It may cause lag if the interval is too small.
+    # Default: 1 tick
+    minUpdateIntervals: 1
 
     # The energy consumption of ME Hatch/Bus.
     # Default: 4.0AE/t

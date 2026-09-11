@@ -104,6 +104,14 @@ declare namespace internal.dev.latvian.mods.kubejs.block {
         get block(): BlockContainerJS;
     }
 
+    interface BlockBrokenEventJS extends $object<'dev.latvian.mods.kubejs.player.BlockBrokenEventJS', PlayerEventJS> {
+        getBlock(): BlockContainerJS;
+        get block(): BlockContainerJS;
+        getXp(): number;
+        get xp(): number;
+        setXp(xp: number): void;
+    }
+
     import ItemStack = net.minecraft.world.item.ItemStack;
 
     interface BlockRightClickedEventJS extends $object<

@@ -1,7 +1,9 @@
+// priority: 1500
+
 GTCEuStartupEvents.registry('gtceu:material', (event) => {
     const MH = global.materialHelpers(event);
 
-    const { foil, gear, longRod, plates, rod, rotor, smallGear, ring, frame } = FLAGS;
+    const { foil, gear, longRod, plates, rod, rotor, smallGear, ring, frame, fineWire, densePlate } = FLAGS;
 
     MH.elemIngotFluid(
         'pure_netherite',
@@ -17,6 +19,16 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0xffd966,
         ICONSETS.diamond,
         []
+    );
+
+    // moved to avoid error
+    MH.compIngotLiquid(
+        'trinaquadalloy',
+        ['5x trinium', '3x naquadah', '2x carbon'],
+        0x281832,
+        ICONSETS.bright,
+        [8750, 'higher', GTValues.VA[ZPM], 1000],
+        [plates, rod, frame, fineWire, foil, densePlate]
     );
 
     MH.compIngotLiquid(
@@ -41,6 +53,14 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         'runic_laser_source_base',
         ['6x naquadic_netherite', '6x neptunium', '5x trinium'],
         0x00ff00,
+        ICONSETS.opal,
+        []
+    );
+
+    MH.compGem(
+        'akreyriadic_runixium',
+        ['7x runic_laser_source_base', '4x ancient_runicalium', '2x strontium_titanium_oxide', '5x akreyrium'],
+        0xffba75,
         ICONSETS.opal,
         []
     );

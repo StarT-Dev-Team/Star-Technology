@@ -17,7 +17,7 @@ StartupEvents.registry('item', (event) => {
 
     [
         'quantum',
-        'helish',
+        'decaying',
         'voidic',
         'draconic',
         'prismafae_illuminatus',

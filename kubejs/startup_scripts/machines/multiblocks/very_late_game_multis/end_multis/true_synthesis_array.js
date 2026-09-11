@@ -34,7 +34,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'AAAAAAAAAAAAAAAAAAA|A  E  E  E  A  E  A|CAAFAAAAAFAAAAAFAA |        C C  GGGGG |         C   HIFIH |        C C  GGGGG |C            AAFAA |A     A     AAABAAA',
                 'BAAAAAAAAAAAAAAAAAB|A  E  E  E  E  E  A| AABAAAAAEAAA    A | C           G E G |             I   I | C           G E G |             A   A |A     A     AAFFFAA',
                 'BAAFAAFAAFAAFAAFAAB|AEEEEEEEEEEEEEEEEEJ| FEBEFAFBBBFA  E F |             GEEEG | C           F E F |             GEEEG |             F E F |A     A     ABFFFBA',
-                'BAAAAAAAAAAAAAAAAAB|A  E  E  E  E EE  A| AABAAAAAEAAA E  A | C           G E G |             I   I | C           G E G |             A   A |A     A     AAFFFAA',
+                'BAAAAAAAAAAAAAAAAAB|A  E  E  E  E  E  A| AABAAAAAEAAA    A | C           G E G |             I   I | C           G E G |             A   A |A     A     AAFFFAA',
                 'AAAAAAAAAAAAAAAAAAA|A  E  E  E  A  E  A|CAAFAAAAAFAAAAAFAA |        C C  GGGGG |         C   HIFIH |        C C  GGGGG |C            AAFAA |A     A     AAABAAA',
                 'AAAFAAAABBBAAABBBAA|CAEEEEAAA@AACAAAAAC|CAAAAACC   CC     C|C     C     C     C|C     C     C     C|C     C     C     C|C     CC   CC     C|AAAAAAAAAAAAAAAAAAA',
                 'AAAAAAA            |A  E  A            | A   A             | GGGGG             | HIFIH             | GGGGG             | AAFAA             |AAABAAA            ',

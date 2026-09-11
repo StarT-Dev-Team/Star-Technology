@@ -431,7 +431,7 @@ ServerEvents.recipes((event) => {
         .itemInputs(
             '1x kubejs:draconic_printed_circuit_board',
             '4x kubejs:draconic_brain_matter_cells',
-            '8x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_small_fluid_pipe',
+            '8x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_small_fluid_pipe',
             '8x gtceu:void_plate',
             '16x gtceu:polyimide_foil',
             '8x gtceu:tritan_steel_bolt'
@@ -465,7 +465,7 @@ ServerEvents.recipes((event) => {
             '16x kubejs:draconic_brain_matter_cells',
             '8x gtceu:nyanium_small_fluid_pipe',
             '8x gtceu:abyssal_alloy_plate',
-            '16x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfate_foil',
+            '16x gtceu:poly_34_ethylenedioxythiophene_polystyrene_sulfonate_foil',
             '8x gtceu:hvga_steel_bolt'
         )
         .inputFluids('gtceu:draconic_enrichment_serum 200')

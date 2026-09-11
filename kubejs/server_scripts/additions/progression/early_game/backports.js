@@ -1,7 +1,7 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    event
+    event.recipes.gtceu
         .shaped('gtceu:kiln', ['WPW', 'RHR', 'BBB'], {
             W: 'gtceu:wood_plate',
             P: 'gtceu:wrought_iron_plate',
@@ -9,9 +9,10 @@ ServerEvents.recipes((event) => {
             H: '#forge:tools/hammers',
             B: 'minecraft:mud_bricks',
         })
-        .id('start:shaped/kiln');
+        .id('start:shaped/kiln')
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped('gtceu:steam_kiln', ['WPH', 'RKR', 'BBB'], {
             W: '#forge:tools/wrenches',
             P: 'gtceu:bronze_plate',
@@ -20,18 +21,20 @@ ServerEvents.recipes((event) => {
             K: 'gtceu:kiln',
             B: 'gtceu:steam_machine_casing',
         })
-        .id('start:shaped/steam_kiln');
+        .id('start:shaped/steam_kiln')
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped('gtceu:high_pressure_steam_hammer', ['BGB', 'PFP', 'BGB'], {
             G: 'gtceu:invar_gear',
             P: 'gtceu:potin_normal_fluid_pipe',
             F: 'gtceu:hp_steam_forge_hammer',
             B: 'kubejs:high_steam_machine_casing',
         })
-        .id('start:shaped/high_pressure_steam_hammer');
+        .id('start:shaped/high_pressure_steam_hammer')
+        .addMaterialInfo();
 
-    event
+    event.recipes.gtceu
         .shaped('2x kubejs:high_steam_machine_casing', ['PHP', 'PBP', 'PWP'], {
             P: 'gtceu:wrought_iron_plate',
             H: '#forge:tools/hammers',
@@ -46,7 +49,8 @@ ServerEvents.recipes((event) => {
         .circuit(6)
         .itemOutputs('2x kubejs:high_steam_machine_casing')
         .duration(50)
-        .EUt(16);
+        .EUt(16)
+        .addMaterialInfo(true, true);
 
     /**
      * @param {string} type
