@@ -2537,10 +2537,7 @@
 			y: -4.5d
 		}
 		{
-			dependencies: [
-				"33A6C9BC2B9DAD78"
-				"6A3C01534D53C73A"
-			]
+			dependencies: ["33A6C9BC2B9DAD78"]
 			id: "4DD388D3F5455C37"
 			tasks: [{
 				id: "52E1221DF87345AB"
@@ -2715,28 +2712,6 @@
 			}]
 			x: -17.5d
 			y: -0.5d
-		}
-		{
-			dependencies: ["1AAB9C20E833029A"]
-			id: "6A3C01534D53C73A"
-			tasks: [{
-				id: "1E13E94660036584"
-				item: "gtceu:sodium_hydroxide_dust"
-				type: "item"
-			}]
-			x: -9.0d
-			y: -3.5d
-		}
-		{
-			dependencies: ["4DD388D3F5455C37"]
-			id: "507FF5CE6D423FD8"
-			tasks: [{
-				id: "27B7EF5040D288DD"
-				item: "gtceu:sodium_bisulfate_dust"
-				type: "item"
-			}]
-			x: -9.0d
-			y: -5.5d
 		}
 		{
 			dependencies: ["493DD013C818BB7B"]
