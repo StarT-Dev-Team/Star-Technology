@@ -92,7 +92,7 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .macerator(id(`recycle_${tier}_photovoltaic_cell`))
             .itemInputs(`kubejs:damaged_${tier}_photovoltaic_cell`)
-            .itemOutputs(`3x gtceu:${tierMaterial}_dust`, `3x gtceu:small_${plastic}_dust`)
+            .itemOutputs(`6x gtceu:small_${tierMaterial}_dust`, `3x gtceu:small_${plastic}_dust`)
             .duration(100)
             .EUt(EU * 2);
 
