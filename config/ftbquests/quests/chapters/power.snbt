@@ -2300,7 +2300,7 @@
 			id: "1A14C2F4F35806E2"
 			tasks: [{
 				id: "39240F41055A730F"
-				item: "systeams:steamier_bucket"
+				item: "start_core:warm_steam_bucket"
 				type: "item"
 			}]
 			x: -7.0d
@@ -2311,7 +2311,7 @@
 			id: "149866CE30535DFC"
 			tasks: [{
 				id: "460A78D746179657"
-				item: "systeams:steam_bucket"
+				item: "gtceu:steam_bucket"
 				type: "item"
 			}]
 			x: -6.0d
@@ -2322,7 +2322,7 @@
 			id: "7F720241BBC6C8BC"
 			tasks: [{
 				id: "5BF80125B453A6C6"
-				item: "systeams:steamiest_bucket"
+				item: "start_core:hot_steam_bucket"
 				type: "item"
 			}]
 			x: -8.0d
@@ -2333,7 +2333,7 @@
 			id: "53770EB175F44961"
 			tasks: [{
 				id: "683167B5EFBD2745"
-				item: "systeams:steamiester_bucket"
+				item: "start_core:extremely_hot_steam_bucket"
 				type: "item"
 			}]
 			x: -9.0d
