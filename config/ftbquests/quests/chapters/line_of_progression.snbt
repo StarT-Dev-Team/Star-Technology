@@ -1636,6 +1636,18 @@
 								Count: 1b
 								id: "gtceu:dimensional_destabiliser"
 							}
+							{
+								Count: 1b
+								id: "gtceu:industrial_extraction_chamber"
+							}
+							{
+								Count: 1b
+								id: "gtceu:industrial_brewing_station"
+							}
+							{
+								Count: 1b
+								id: "gtceu:distillery_column"
+							}
 						]
 					}
 				}
@@ -1726,6 +1738,10 @@
 							{
 								Count: 1b
 								id: "start_core:fornaxs_infernal_rotary_engine"
+							}
+							{
+								Count: 1b
+								id: "gtceu:ultra_barrel"
 							}
 						]
 					}
