@@ -121,7 +121,7 @@ element {
 }
 
 element {
-  source = [source:local]/config/fancymenu/assets/main_menu_theta_1_release.png
+  source = [source:local]/config/fancymenu/assets/main_menu_theta_2_release.png
   repeat_texture = false
   nine_slice_texture = false
   nine_slice_texture_border_x = 5
