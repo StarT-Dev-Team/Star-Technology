@@ -44,6 +44,14 @@ ServerEvents.recipes((event) => {
         .EUt(20)
         .circuit(3);
 
+    event.remove({ id: 'gtceu:electrolyzer/decomposition_electrolyzing_signalum' });
+    event.recipes.gtceu
+        .electrolyzer('gtceu:electrolyzer/decomposition_electrolyzing_signalum')
+        .itemInputs('4x gtceu:signalum_dust')
+        .itemOutputs('gtceu:silver_dust', '3x gtceu:copper_dust', '4x minecraft:redstone')
+        .duration(544)
+        .EUt(60);
+
     event.recipes.gtceu
         .mixer(id('lumium_dust'))
         .itemInputs('gtceu:silver_dust', '3x gtceu:tin_dust', '2x minecraft:glowstone_dust')
