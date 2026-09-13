@@ -24,8 +24,8 @@
 		{
 			id: "23C36BA08644EF38"
 			linked_quest: "33FE3C68B0BD21B1"
-			x: 11.5d
-			y: 6.5d
+			x: 8.5d
+			y: 1.5d
 		}
 		{
 			id: "114E2ED3560BE835"
@@ -588,7 +588,7 @@
 			}]
 			title: "{ftbquests.abydos.nanofluidic_heat_sink.title}"
 			x: 9.5d
-			y: 2.5d
+			y: 6.5d
 		}
 		{
 			id: "39E723ECCBEE0A0A"
@@ -669,7 +669,7 @@
 				type: "item"
 			}]
 			x: 9.5d
-			y: 6.5d
+			y: 2.5d
 		}
 		{
 			dependencies: ["652809D17FCE8B11"]
@@ -1989,6 +1989,17 @@
 				type: "item"
 			}]
 			x: 7.5d
+			y: 6.5d
+		}
+		{
+			dependencies: ["4B7A774ADE857893"]
+			id: "0E9C0A22DC07E416"
+			tasks: [{
+				id: "5B02A54A8AF8FC21"
+				item: "start_core:improved_high_performance_computation_array"
+				type: "item"
+			}]
+			x: 11.5d
 			y: 6.5d
 		}
 	]
