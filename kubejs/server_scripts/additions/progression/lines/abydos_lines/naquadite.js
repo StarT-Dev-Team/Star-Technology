@@ -18,7 +18,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_bath(id('naquadite_solution'))
-        .itemInputs('3x gtceu:naquadite_dust')
+        .itemInputs('4x gtceu:naquadite_dust')
         .inputFluids('gtceu:hydroiodic_acid 500')
         .outputFluids('gtceu:naquadite_solution 1000')
         .duration(600)
@@ -27,7 +27,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .centrifuge(id('naquadah_from_naquadite'))
         .inputFluids('gtceu:naquadite_solution 1000')
-        .itemOutputs('4x gtceu:naquadah_dust', 'gtceu:magnesite_dust', 'gtceu:magnesia_dust')
+        .itemOutputs('2x gtceu:naquadah_dust', 'gtceu:magnesite_dust', 'gtceu:magnesia_dust')
         .duration(120)
         .EUtVA(ZPM);
 });
