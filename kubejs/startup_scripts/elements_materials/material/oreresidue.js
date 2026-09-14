@@ -65,7 +65,8 @@ StartupEvents.registry('fluid', (event) => {
             'molybdenite',
             'scheelite',
             'cobaltite',
-            'chromite'],
+            'chromite',
+        ],
         iv: [
             'naquadah',
             'titanite',
