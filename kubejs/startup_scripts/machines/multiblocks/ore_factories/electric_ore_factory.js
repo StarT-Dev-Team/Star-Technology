@@ -3,10 +3,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .create('electric_ore_factory', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('ore_factory')
-        .recipeModifiers([
-            GTRecipeModifiers.OC_NON_PERFECT,
-            GTRecipeModifiers.BATCH_MODE,
-        ])
+        .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT, GTRecipeModif
+
+_…truncated_
 
         .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
         .pattern((definition) =>
