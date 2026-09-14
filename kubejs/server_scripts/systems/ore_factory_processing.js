@@ -435,7 +435,7 @@ ServerEvents.recipes((event) => {
     const dust = (mat, amount) => {
         return `${amount}x gtceu:${mat}_dust`;
     };
-        /**
+    /**
      * @param {string} mat
      * @param {number} amount
      */
