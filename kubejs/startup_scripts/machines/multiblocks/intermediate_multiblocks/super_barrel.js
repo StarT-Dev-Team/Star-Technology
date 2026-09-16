@@ -26,7 +26,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '    BBB    |           |           |           |    BBB    ',
             ])
                 .whereDict({
-                    ' ': P.air(),
+                    ' ': P.any(),
                     B: P.anyOf([
                         P.gtBlock('palladium_substation'),
                         P.ability(PA.itemIn, { max: 2, view: 1 }),
