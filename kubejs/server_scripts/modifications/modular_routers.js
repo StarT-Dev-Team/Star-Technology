@@ -34,7 +34,8 @@ ServerEvents.recipes((event) => {
         .addMaterialInfo()
         .id(id('augment_core'));
 
-    event.recipes.gtceu.assembler(id('mr_augment_core'))
+    event.recipes.gtceu
+        .assembler(id('mr_augment_core'))
         .itemInputs('gtceu:gold_bolt', 'gtceu:iron_foil', 'minecraft:lapis_lazuli')
         .itemOutputs('8x modularrouters:augment_core')
         .duration(320)
@@ -51,7 +52,8 @@ ServerEvents.recipes((event) => {
         .addMaterialInfo()
         .id(id('blank_upgrade'));
 
-    event.recipes.gtceu.assembler(id('mr_blank_upgrade'))
+    event.recipes.gtceu
+        .assembler(id('mr_blank_upgrade'))
         .itemInputs('gtceu:gold_bolt', 'gtceu:iron_foil', 'minecraft:glowstone_dust')
         .itemOutputs('8x modularrouters:blank_upgrade')
         .duration(320)
@@ -68,7 +70,8 @@ ServerEvents.recipes((event) => {
         .addMaterialInfo()
         .id(id('blank_module'));
 
-    event.recipes.gtceu.assembler(id('mr_blank_module'))
+    event.recipes.gtceu
+        .assembler(id('mr_blank_module'))
         .itemInputs('gtceu:gold_bolt', 'gtceu:iron_foil', 'minecraft:redstone')
         .itemOutputs('8x modularrouters:blank_module')
         .duration(320)
