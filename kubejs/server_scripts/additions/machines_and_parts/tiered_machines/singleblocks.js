@@ -48,6 +48,7 @@ ServerEvents.recipes((event) => {
                 P: `gtceu:${tierMaterial}_plate`,
                 W: '#forge:tools/wrenches',
             })
+            .addMaterialInfo()
             .id(`start:shaped/${tier}_machine_casing`);
 
         event.recipes.gtceu
@@ -66,6 +67,7 @@ ServerEvents.recipes((event) => {
                 C: `gtceu:${cable}_single_cable`,
                 M: `gtceu:${tier}_machine_casing`,
             })
+            .addMaterialInfo()
             .id(`start:shaped/${tier}_machine_hull`);
 
         event.recipes.gtceu
