@@ -8,7 +8,7 @@ ServerEvents.recipes((event) => {
     event.remove({ mod: 'toms_storage' });
 
     event.recipes.gtceu
-        .shaped(Item.of(`6x ${tom('inventory_connector')}`), ['SPS', 'ITI', 'SPS'], {
+        .shaped(Item.of(tom('inventory_connector')), ['SPS', 'ITI', 'SPS'], {
             P: 'gtceu:wood_plate',
             S: 'minecraft:stick',
             T: tom('trim'),
@@ -52,10 +52,10 @@ ServerEvents.recipes((event) => {
         .id(rid('trim_clean'));
 
     event.recipes.gtceu
-        .shaped(Item.of(tom('inventory_cable')), ['SPS', 'SIS', 'SPS'], {
+        .shaped(Item.of(`6x ${tom('inventory_cable')}`), ['SPS', 'SIS', 'SPS'], {
             P: 'gtceu:wood_plate',
             S: 'minecraft:stick',
-            I: 'gtceu:tin_small_pipe',
+            I: 'gtceu:tin_small_item_pipe',
         })
         .addMaterialInfo()
         .id(rid('inventory_cable'));

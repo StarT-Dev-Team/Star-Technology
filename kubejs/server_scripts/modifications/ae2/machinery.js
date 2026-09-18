@@ -868,4 +868,27 @@ ServerEvents.recipes((event) => {
         repIn('aeinfinitybooster:dimension_card', 'minecraft:ender_eye', 'gtceu:exquisite_echo_shard_gem');
         repIn('aeinfinitybooster:dimension_card', 'minecraft:nether_star', 'gtceu:quantum_star');
     });
+
+    event.remove({ id: 'ae2:network/parts/terminals_interface' });
+    event
+        .shapeless('ae2:filter_terminal', [
+            '#ae2:illuminated_panel',
+            'gtceu:computer_monitor',
+            'ae2:engineering_processor',
+            '#ae2:quartz_wrench',
+        ])
+        .id(id('filter_terminal'));
+    event.remove({ id: 'ae2:network/blocks/super_me_replenisher' });
+    event.recipes.gtceu
+        .assembler(id('super_me_replenisher'))
+        .itemInputs(
+            'expatternprovider:oversize_interface',
+            '3x megacells:cell_dock',
+            '16x ae2:capacity_card',
+            '4x gtceu:netherite_gold_skystone_alloy_plate'
+        )
+        .inputFluids('gtceu:fluix_steel 576')
+        .itemOutputs('ae2:super_me_replenisher')
+        .duration(430)
+        .EUtVA(IV);
 });
