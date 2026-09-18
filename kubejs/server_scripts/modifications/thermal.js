@@ -115,117 +115,104 @@ ServerEvents.recipes((event) => {
     isModLoaded('systeams', () => {
         event.remove({ mod: 'systeams' });
 
+        /** @typedef FluidBasicIngredient
+         * @property {string} fluid
+         * @property {number} amount
+         */
+
+        /** @typedef FluidTagBasicIngredient
+         * @property {string} fluid_tag
+         * @property {number} amount
+         */
+
+        /** @typedef {FluidBasicIngredient | FluidTagBasicIngredient} FluidOrTagIngredient */
+
+        /**
+         * Returns a fluid ingredient that allows for either a fluid or a fluid tag.
+         * If the fluid starts with 'forge:' or '#', it is treated as a fluid tag.
+         * @param {string} fluid A string representing a fluid or fluid tag
+         * @param {number} amount The amount of the fluid
+         * @returns {FluidOrTagIngredient}
+         * */
+        const fluidIngredient = (fluid, amount) => {
+            let isFluidTag = false;
+            let tagIngredient = '';
+            if (fluid.startsWith('forge')) {
+                isFluidTag = true;
+                tagIngredient = fluid;
+            }
+            if (fluid.startsWith('#')) {
+                isFluidTag = true;
+                tagIngredient = fluid.substring(1);
+            }
+            /* eslint-disable id-match, camelcase */
+            let ingredient = isFluidTag
+                ? { fluid_tag: tagIngredient, amount: amount }
+                : { fluid: fluid, amount: amount };
+            /* eslint-enable id-match, camelcase */
+            return ingredient;
+        };
+
         /** @type {(fluid: string, energy: number) => void} */
         const steamDynamo = (fluid, energy) => {
             event.custom({
                 type: 'systeams:steam',
-                ingredient: {
-                    fluid: fluid,
-                    amount: 1000,
-                },
+                ingredient: fluidIngredient(fluid, 1000),
                 energy: energy,
             });
         };
 
-        /** @type {(fluid: string, energy: number) => void} */
-        const steamDynamoTag = (fluid, energy) => {
+        /** @type {(fluidIn: string, fluidInAmount: number, fluidOut: string, fluidOutAmount: number) => void} */
+        const steamBoiler = (fluidIn, fluidInAmount, fluidOut, fluidOutAmount) => {
             event.custom({
-                type: 'systeams:steam',
-                ingredient: {
-                    // eslint-disable-next-line id-match, camelcase
-                    fluid_tag: fluid,
-                    amount: 1000,
-                },
-                energy: energy,
+                type: 'systeams:boiling',
+                ingredient: fluidIngredient(fluidIn, fluidInAmount),
+                result: fluidIngredient(fluidOut, fluidOutAmount),
             });
-        };
-
-        /** @typedef {(fluidIn: string, fluidInAmount: number, fluidOut: string, fluidOutAmount: number) => void} SteamBoilerFunc */
-
-        /** @type {{noTag: SteamBoilerFunc, tagIn: SteamBoilerFunc}} */
-        const steamBoiler = {
-            noTag: (fluidIn, fluidInAmount, fluidOut, fluidOutAmount) => {
-                event.custom({
-                    type: 'systeams:boiling',
-                    ingredient: {
-                        fluid: fluidIn,
-                        amount: fluidInAmount,
-                    },
-                    result: {
-                        fluid: fluidOut,
-                        amount: fluidOutAmount,
-                    },
-                });
-            },
-            tagIn: (fluidIn, fluidInAmount, fluidOut, fluidOutAmount) => {
-                event.custom({
-                    type: 'systeams:boiling',
-                    ingredient: {
-                        // eslint-disable-next-line id-match, camelcase
-                        fluid_tag: fluidIn,
-                        amount: fluidInAmount,
-                    },
-                    result: {
-                        fluid: fluidOut,
-                        amount: fluidOutAmount,
-                    },
-                });
-            },
-        };
-
-        /** @type {(fluid: string, scale: number) => void} */
-        const steamTurbine = (fluid, scale) => {
-            event.recipes.gtceu
-                .steam_turbine(id(`${fluid.split(':')[1]}`))
-                .inputFluids(`${fluid} 640`)
-                .outputFluids(`gtceu:distilled_water ${4 - scale}`)
-                .duration(10 + 2 * scale)
-                .EUt(-32);
-        };
-
-        /** @type {(fluidIn: string, fluidOut: string) => void} */
-        const fluidHeater = (fluidIn, fluidOut) => {
-            event.recipes.gtceu
-                .fluid_heater(id(`${fluidIn.split(':')[1]}_to_${fluidOut.split(':')[1]}_boiling`))
-                .inputFluids(`${fluidIn} 500`)
-                .outputFluids(`${fluidOut} 1000`)
-                .duration(20)
-                .EUt(30);
         };
 
         // backwards compatibility
-        steamDynamoTag('forge:steam', 1000);
         steamDynamo('systeams:steamiester', 1000);
-        steamBoiler.tagIn('forge:steam', 50, 'start_core:warm_steam', 100);
-        steamBoiler.noTag('systeams:steamier', 50, 'start_core:hot_steam', 100);
-        steamBoiler.noTag('systeams:steamiester', 50, 'start_core:extremely_hot_steam', 100);
-        steamDynamo('systeams:steamier', 1200);
-        steamDynamo('systeams:steamiest', 1400);
+        steamDynamo('#forge:steam', 1000);
+        steamBoiler('minecraft:water', 100, 'gtceu:steam', 400);
 
-        fluidHeater('systeams:steamier', 'start_core:hot_steam');
-        fluidHeater('systeams:steamiest', 'start_core:extremely_hot_steam');
-        steamTurbine('systeams:steamier', 2);
-        steamTurbine('systeams:steamiest', 3);
+        /** @type {string[]}*/
+        let addedSteamTurbineRecipes = [];
 
-        // Steam Boiler
-        steamBoiler.noTag('minecraft:water', 100, 'gtceu:steam', 400);
-        steamBoiler.noTag('start_core:warm_steam', 50, 'start_core:hot_steam', 100);
-        steamBoiler.noTag('start_core:hot_steam', 50, 'start_core:extremely_hot_steam', 100);
+        /**
+         * @param {string} type
+         * @param {string} prior
+         * @param {number} scale
+         */
+        const systeamSteams = (type, prior, scale) => {
+            if (!addedSteamTurbineRecipes.includes(type)) {
+                event.recipes.gtceu
+                    .steam_turbine(id(`${type.split(':')[1]}`))
+                    .inputFluids(`${type} 640`)
+                    .outputFluids(`gtceu:distilled_water ${4 - scale}`)
+                    .duration(10 + 2 * scale)
+                    .EUt(-32);
 
-        // Steam Dynamo
-        steamDynamo('start_core:warm_steam', 1200);
-        steamDynamo('start_core:hot_steam', 1400);
-        steamDynamo('start_core:extremely_hot_steam', 1600);
+                steamDynamo(type, 1000 + 200 * scale);
 
-        // GT Fluid Heater
-        fluidHeater('#forge:steam', 'start_core:warm_steam');
-        fluidHeater('start_core:warm_steam', 'start_core:hot_steam');
-        fluidHeater('start_core:hot_steam', 'start_core:extremely_hot_steam');
+                addedSteamTurbineRecipes.push(type);
+            }
 
-        // GT Steam Turbine
-        steamTurbine('start_core:warm_steam', 2);
-        steamTurbine('start_core:hot_steam', 3);
-        steamTurbine('start_core:extremely_hot_steam', 4);
+            if (type !== 'steamier') {
+                steamBoiler(prior, 50, type, 100);
+                event.recipes.gtceu
+                    .fluid_heater(id(`${prior.split(':')[1]}_to_${type.split(':')[1]}_boiling`))
+                    .inputFluids(`${prior} 500`)
+                    .outputFluids(`${type} 1000`)
+                    .duration(20)
+                    .EUt(30);
+            }
+        };
+        systeamSteams('start_core:warm_steam', '#forge:steam', 1);
+        systeamSteams('start_core:hot_steam', 'systeams:steamier', 2);
+        systeamSteams('start_core:hot_steam', 'start_core:warm_steam', 2);
+        systeamSteams('start_core:extremely_hot_steam', 'systeams:steamiest', 3);
+        systeamSteams('start_core:extremely_hot_steam', 'start_core:hot_steam', 3);
 
         event.recipes.gtceu
             .assembler(id('boiler_pipe'))
