@@ -1,6 +1,4 @@
 {
-    "block.gtceu.theta2Removals.tooltip": "§4§lУстарело. Будет удалено в Theta 2",
-
     "block.gtceu.dimensional_finder.tooltip.0": "§7Пространственный импульс получен",
     "block.gtceu.dimensional_finder.tooltip.1": "§7Эта машина способна посылать импульсы в глубокий космос, записывая эхо на кристаллы, что иногда позволяет триангулировать местоположение региона на основе этих данных.",
 
@@ -1276,6 +1274,13 @@
     "material.gtceu.californium_252": "Калифорний-252",
     "material.gtceu.einsteinium_253": "Эйнштейний-253",
     "material.gtceu.fermium": "Фермий-257",
+    
+    "material.gtceu.mox238_blend": "Смесь MOX-238",
+    "material.gtceu.mox239_blend": "Смесь MOX-239",
+    "material.gtceu.mox241_blend": "Смесь MOX-241",
+    "material.gtceu.nqe_blend": "Смесь NQE",
+    "material.gtceu.tpu_blend": "Смесь TPU",
+    "material.gtceu.etu_blend": "Смесь ETU",
 
     "material.gtceu.hafnastide_rich_sludge": "Богатый гафнастидом шлам",
     "material.gtceu.flerovium_rich_re_sludge": "Богатый флеровием и рением шлам",
@@ -1405,5 +1410,30 @@
     "block.gtceu.catto_shrine": "Кошачий алтарь [ᗢSh]",
     "block.gtceu.catto_shrine.tooltip.0": "§7§o5 часов Ньян-кэта",
     "block.gtceu.catto_shrine.tooltip.1": "§8§oПусть о твоих подношениях узнают...",
-    "gtceu.catto_shrine": "Кошачий алтарь"
+    "gtceu.catto_shrine": "Кошачий алтарь",
+    
+    "material.gtceu.latex": "Латекс",
+    
+    "block.gtceu.lv_compound_generator": "Базовый составной генератор [BCG]",
+    "block.gtceu.mv_compound_generator": "§bПродвинутый составной генератор§r [ACG]",
+    "block.gtceu.hv_compound_generator": "§6Продвинутый составной генератор II§r [ACG II]",
+    "block.gtceu.compound_generator.desc": "§7Машина, которая может расширяться в размерах для генерации большей энергии. Может расширяться до 8 секций, где каждая секция имеет 1 выхондой разъем и производит 2A энергии.",
+    "block.gtceu.compound_generator.max_generation": "§7Максимальная генерация: §f%s EU/t",
+    
+    "block.gtceu.distillery_column": "Дистилляционная колонна [DC]",
+    "block.gtceu.distillery_column.tooltip.0": "§7Большой дистиллятор с повышенной эффективностью вместо одноблочных машин",
+    
+    "block.gtceu.industrial_brewing_station": "Промышленная пивоваренная станция [IBS]",
+    "block.gtceu.industrial_brewing_station.tooltip.0": "§7Большая пивоварня с повышением пропускной способности вместо одноблочных машин",
+    
+    "block.gtceu.industrial_extraction_chamber": "Промышленная экстракционная камера [IEC]",
+    "block.gtceu.industrial_extraction_chamber.tooltip.0": "§7Большой экстрактор с повышенной эффективностью вместо одноблочных машин",
+    
+    "block.gtceu.network_hub": "Сетевой концентратор [NH]",
+    "gtceu.machine.network_hub.extension_tooltip": "Может расширяться в размерах, чтобы вместить больше вычислительных люков.",
+
+    "block.gtceu.ultra_barrel": "Ультрабочка [UB]",
+    "block.gtceu.ultra_barrel.tooltip.0": "§7Абсолютная бочка для любых элитных потребностей в бочках.",
+    
+    "gtceu.machine.parallel_hatch_mk5.tooltip": "Позволяет выполнять до 8 рецептов параллельно."
 }
