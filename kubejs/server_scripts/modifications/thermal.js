@@ -119,7 +119,7 @@ ServerEvents.recipes((event) => {
         const steamDynamo = (fluid, energy) => {
             event.custom({
                 type: 'systeams:steam',
-                ingredient: { 
+                ingredient: {
                     fluid: fluid,
                     amount: 1000,
                 },
@@ -132,8 +132,9 @@ ServerEvents.recipes((event) => {
             event.custom({
                 type: 'systeams:steam',
                 ingredient: {
+                    // eslint-disable-next-line id-match, camelcase
                     fluid_tag: fluid,
-                    amount: 1000
+                    amount: 1000,
                 },
                 energy: energy,
             });
@@ -160,6 +161,7 @@ ServerEvents.recipes((event) => {
                 event.custom({
                     type: 'systeams:boiling',
                     ingredient: {
+                        // eslint-disable-next-line id-match, camelcase
                         fluid_tag: fluidIn,
                         amount: fluidInAmount,
                     },
@@ -189,7 +191,7 @@ ServerEvents.recipes((event) => {
                 .outputFluids(`${fluidOut} 1000`)
                 .duration(20)
                 .EUt(30);
-        }
+        };
 
         // backwards compatibility
         steamDynamoTag('forge:steam', 1000);
@@ -199,7 +201,7 @@ ServerEvents.recipes((event) => {
         steamBoiler.noTag('systeams:steamiester', 50, 'start_core:extremely_hot_steam', 100);
         steamDynamo('systeams:steamier', 1200);
         steamDynamo('systeams:steamiest', 1400);
-        
+
         fluidHeater('systeams:steamier', 'start_core:hot_steam');
         fluidHeater('systeams:steamiest', 'start_core:extremely_hot_steam');
         steamTurbine('systeams:steamier', 2);
