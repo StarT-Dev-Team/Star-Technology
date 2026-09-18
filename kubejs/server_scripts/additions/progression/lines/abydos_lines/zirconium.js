@@ -45,16 +45,16 @@ ServerEvents.recipes((event) => {
         .duration(120)
         .EUt(1984);
 
-    // CaTiSiO5 + 3B HClO4 => 1B (CaTiSiO5)?
+    // 8 CaTiSiO5 + 3B HClO4 => 1B (CaTiSiO5)?
     event.recipes.gtceu
         .mixer(id('titanite_proc_1'))
-        .itemInputs('gtceu:titanite_dust')
+        .itemInputs('8x gtceu:titanite_dust')
         .inputFluids('gtceu:perchloric_acid 3000')
         .outputFluids('gtceu:titanite_slurry 1000')
         .duration(400)
         .EUt(28000);
 
-    // 1B (CaTiSiO5)? => 11 CaCl2O8 + 1B (TiO2)? + 1BClHOgSi + 1B H2O
+    // 1B (CaTiSiO5)? => 11 CaCl2O8 + 1B (TiO2)? + 1BClHO6Si + 1B H2O
     event.recipes.gtceu
         .centrifuge(id('titanite_proc_2'))
         .inputFluids('gtceu:titanite_slurry 1000')
@@ -90,10 +90,10 @@ ServerEvents.recipes((event) => {
         .duration(900)
         .EUt(6400);
 
-    // 1B (TiCl4)(ZgCl4) => 5 ZrCl4 + 1B TiCl
+    // 1B (TiCl4)(ZrCl4) => 5 ZrCl4 + 1B TiCl
     event.recipes.gtceu
         .centrifuge(id('titanite_proc_6'))
-        .inputFluids('gtceu:titanium_tetrachloride_mixture 5000')
+        .inputFluids('gtceu:titanium_tetrachloride_mixture 1000')
         .itemOutputs('5x gtceu:zirconium_tetrachloride_dust')
         .outputFluids('gtceu:titanium_tetrachloride 1000')
         .duration(1200)
