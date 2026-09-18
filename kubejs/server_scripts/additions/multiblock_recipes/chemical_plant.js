@@ -12,9 +12,25 @@ ServerEvents.recipes((event) => {
         .EUtVHA(IV);
 
     event.recipes.gtceu // +5% on original platline for Ru, Rh, Os and Ir
-        .chemical_skip(id('plat_line_skip'))
+        .chemical_skip(id('plat_line_skip_from_ore'))
         .itemInputs('30x gtceu:purified_cooperite_ore')
         .inputFluids('gtceu:aqua_regia 24000')
+        .itemOutputs(
+            '20x gtceu:platinum_dust',
+            '12x gtceu:palladium_dust',
+            '7x gtceu:ruthenium_dust',
+            '7x gtceu:rhodium_dust',
+            '3x gtceu:osmium_dust',
+            '3x gtceu:iridium_dust'
+        )
+        .outputFluids('gtceu:nitric_acid 8000', 'gtceu:hydrochloric_acid 16000')
+        .duration(485)
+        .EUtVHA(ZPM);
+
+    event.recipes.gtceu // +5% on original platline for Ru, Rh, Os and Ir
+        .chemical_skip(id('plat_line_skip_from_pgs'))
+        .itemInputs('120x gtceu:platinum_group_sludge_dust')
+        .inputFluids('gtceu:aqua_regia 20000')
         .itemOutputs(
             '20x gtceu:platinum_dust',
             '12x gtceu:palladium_dust',
