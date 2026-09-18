@@ -873,7 +873,7 @@ ServerEvents.recipes((event) => {
     event
         .shapeless('ae2:filter_terminal', [
             '#ae2:illuminated_panel',
-            'gtceu:computer_monitor',
+            'gtceu:computer_monitor_cover',
             'ae2:engineering_processor',
             '#ae2:quartz_wrench',
         ])
