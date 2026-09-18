@@ -34,8 +34,8 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_reactor(id('strontium_titanium_oxide'))
-        .itemInputs('gtceu:strontium_oxide_dust', 'gtceu:titanium_oxide_dust')
-        .itemOutputs('2x gtceu:strontium_titanium_oxide_dust')
+        .itemInputs('2x gtceu:strontium_oxide_dust', '3x gtceu:titanium_oxide_dust')
+        .itemOutputs('5x gtceu:strontium_titanium_oxide_dust')
         .duration(400)
         .EUt(420);
 
