@@ -27,7 +27,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .centrifuge(id('naquadah_from_naquadite'))
         .inputFluids('gtceu:naquadite_solution 1000')
-        .itemOutputs('2x gtceu:naquadah_dust', 'gtceu:magnesite_dust', 'gtceu:magnetite_dust')
+        .itemOutputs('2x gtceu:naquadah_dust', 'gtceu:magnesia_dust', 'gtceu:magnetite_dust')
         .duration(120)
         .EUtVA(ZPM);
 });
