@@ -1,19 +1,9 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
-    event
-        .create('bulk_ore_processing_array')
-        .category('ore_processing')
-        .setEUIO('in')
-        .setMaxIOSize(1, 6, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
-        .setSound(GTSoundEntries.FURNACE);
-});
-
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('bulk_ore_processing_array', 'multiblock')
         .machine((holder) => new $BulkingMulti(holder))
         .rotationState(RotationState.NON_Y_AXIS)
-        .recipeType('bulk_ore_processing_array')
+        .recipeType('bulk_ore_factory')
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,

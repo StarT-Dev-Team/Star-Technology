@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .create('super_electric_ore_factory', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .tooltips([Text.translate('block.start_core.gap'), Text.translate('gtceu.multiblock.exact_hatch_1.tooltip')])
-        .recipeType('electric_ore_processing')
+        .recipeType('ore_factory')
         .recipeModifiers([
             GTRecipeModifiers.OC_NON_PERFECT,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
