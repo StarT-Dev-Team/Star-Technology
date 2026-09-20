@@ -8,6 +8,10 @@ ServerEvents.recipes((event) => {
             C: 'woodenbucket:wooden_bucket',
             D: '#minecraft:wooden_slabs',
         })
+        .modifyResult((grid, result) => {
+            const bucket = grid.find('woodenbucket:wooden_bucket');
+            return !bucket?.nbt?.Fluid ? 'gtceu:barrel' : 'air';
+        })
         .id('start:shaped/barrel');
 
     event
