@@ -3,19 +3,19 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_reactor(id('perchloric_acid'))
-        .itemInputs('gtceu:sodium_perchlorate_dust')
+        .itemInputs('6x gtceu:sodium_perchlorate_dust')
         .inputFluids('gtceu:hydrochloric_acid 1000')
         .outputFluids('gtceu:perchloric_acid 1000')
-        .itemOutputs('gtceu:salt_dust')
+        .itemOutputs('2x gtceu:salt_dust')
         .duration(200)
         .EUt(120);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('perchloric_acid'))
-        .itemInputs('gtceu:sodium_perchlorate_dust')
+        .itemInputs('6x gtceu:sodium_perchlorate_dust')
         .inputFluids('gtceu:hydrochloric_acid 1000')
         .outputFluids('gtceu:perchloric_acid 1000')
-        .itemOutputs('gtceu:salt_dust')
+        .itemOutputs('2x gtceu:salt_dust')
         .duration(200)
         .EUt(120);
 
