@@ -550,7 +550,7 @@
 		}
 		{
 			dependencies: ["073B57C15F3BFCFD"]
-			description: ["{ftbquests.asg.helish_core.description}"]
+			description: ["{ftbquests.asg.decaying_core.description}"]
 			id: "4869BB9EE1BCDDDB"
 			rewards: [{
 				id: "66C6CD8AE74C6A07"

@@ -1690,7 +1690,7 @@
 				}
 			]
 			title: "{ftbquests.ae2.ex_export_import_bus.title}"
-			x: -9.0d
+			x: -11.0d
 			y: 5.0d
 		}
 		{
@@ -1706,7 +1706,7 @@
 				item: "expatternprovider:ex_drive"
 				type: "item"
 			}]
-			x: -7.0d
+			x: -9.0d
 			y: 5.0d
 		}
 		{
@@ -1722,7 +1722,7 @@
 				item: "expatternprovider:ex_molecular_assembler"
 				type: "item"
 			}]
-			x: -9.0d
+			x: -11.0d
 			y: 3.0d
 		}
 		{
@@ -1739,8 +1739,8 @@
 				item: "expatternprovider:ex_pattern_access_part"
 				type: "item"
 			}]
-			x: -5.0d
-			y: 3.0d
+			x: -7.0d
+			y: 5.0d
 		}
 		{
 			dependencies: ["7FF1D8543D63EA7E"]
@@ -1793,7 +1793,7 @@
 				type: "item"
 			}]
 			x: -5.0d
-			y: 1.0d
+			y: 3.0d
 		}
 		{
 			dependencies: ["567E88B4BE35DB3C"]
@@ -1920,7 +1920,7 @@
 				title: "{ftbquests.ae2.extended_machines.title}"
 				type: "checkmark"
 			}]
-			x: -7.0d
+			x: -9.0d
 			y: 3.0d
 		}
 		{
@@ -2316,8 +2316,8 @@
 				item: "expandedae:exp_io_port"
 				type: "item"
 			}]
-			x: -3.0d
-			y: -1.0d
+			x: -5.0d
+			y: 1.0d
 		}
 		{
 			dependencies: ["6D441C650137BD6D"]
@@ -2545,7 +2545,7 @@
 				item: "gtceu:me_pattern_buffer"
 				type: "item"
 			}]
-			x: -11.0d
+			x: -13.0d
 			y: 5.0d
 		}
 		{
@@ -2561,7 +2561,7 @@
 				item: "gtceu:me_pattern_buffer_proxy"
 				type: "item"
 			}]
-			x: -11.0d
+			x: -13.0d
 			y: 3.0d
 		}
 		{
@@ -2637,6 +2637,28 @@
 			}]
 			x: -11.5d
 			y: -5.0d
+		}
+		{
+			dependencies: ["587DFCFB215EFD67"]
+			id: "78B4108132EF5C85"
+			tasks: [{
+				id: "094E3E57FC0B5D0C"
+				item: "ae2:super_me_replenisher"
+				type: "item"
+			}]
+			x: -3.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["534F27BC96F104A2"]
+			id: "41F86DC7B9082E98"
+			tasks: [{
+				id: "1732EBBC0A4C4154"
+				item: "ae2:filter_terminal"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 6.0d
 		}
 	]
 	title: "{ftbquests.ae2.title}"

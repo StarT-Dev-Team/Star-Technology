@@ -72,7 +72,7 @@ ServerEvents.recipes((event) => {
         .notConsumableFluid('thermal:ender 1000')
         .notConsumableFluid('minecraft:lava 1000')
         .itemOutputs('ae2:sky_stone_block')
-        .duration(48)
+        .duration(64)
         .EUt(84);
 
     event.recipes.gtceu

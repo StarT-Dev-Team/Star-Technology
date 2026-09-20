@@ -241,3 +241,9 @@ ServerEvents.tags('fluid', (event) => {
 
     event.add('start_core:komaru/faematter', 'gtceu:faematter');
 });
+
+ServerEvents.tags('fluid', (event) => {
+    ['start_core:warm_steam', 'start_core:hot_steam', 'start_core:extremeley_hot_steam'].forEach((steam) => {
+        event.add('systeams:steamish', steam);
+    });
+});
