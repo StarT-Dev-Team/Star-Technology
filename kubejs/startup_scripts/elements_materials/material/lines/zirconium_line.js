@@ -16,7 +16,12 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     MH.compLiquid('titanite_residue', ['1x rutile', '1x mystery'], 0xe6004c, [noDecomp]);
 
-    MH.compLiquid('titanium_tetrachloride_mixture', ['1x titanium_tetrachloride', '1x zirconium_tetrachloride'], 0xff1a66, [noDecomp]);
+    MH.compLiquid(
+        'titanium_tetrachloride_mixture',
+        ['1x titanium_tetrachloride', '1x zirconium_tetrachloride'],
+        0xff1a66,
+        [noDecomp]
+    );
 
     MH.compDust('zirconium_tetrachloride', ['1x zirconium', '4x chlorine'], 0xffad33, [noDecomp]);
 });
