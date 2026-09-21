@@ -36,5 +36,5 @@ ServerEvents.recipes((event) => {
         .itemInputs('start_core:neutronium_fluid_cell', 'gtceu:uhv_field_generator', '4x gtceu:tantalum_carbide_plate')
         .itemOutputs('start_core:empty_genome_holder')
         .duration(200)
-        .EUtVA(UEV);
+        .EUtVA(UHV);
 });

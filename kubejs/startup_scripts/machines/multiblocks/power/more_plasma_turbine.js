@@ -47,10 +47,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     H: P.anyOf([
                         P.kjsBlock('enriched_naquadah_machine_casing'),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.itemIn, { view: 1 }),
-                        P.ability(PA.itemOut, { view: 1 }),
+                        P.ability(PA.fluidIn, { view: 1 }),
+                        P.ability(PA.fluidOut, { view: 1 }),
                     ]),
-                    F: P.gtBlock('void_frame'),
+                    F: P.frame('void'),
                     C: P.kjsBlock('enriched_naquadah_machine_casing'),
                     E: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
                     X: P.kjsBlock('enriched_naquadah_heat_escape_casing'),

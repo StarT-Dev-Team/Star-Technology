@@ -5,8 +5,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .tooltips([Text.translate('block.start_core.gap'), Text.translate('gtceu.multiblock.exact_hatch_1.tooltip')])
         .recipeTypes(['industrial_barrel_aqueous', 'industrial_barrel_magmatic'])
         .recipeModifiers([
-            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             GTRecipeModifiers.PARALLEL_HATCH,
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
             GTRecipeModifiers.BATCH_MODE,
         ])
@@ -26,7 +26,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 '    BBB    |           |           |           |    BBB    ',
             ])
                 .whereDict({
-                    ' ': P.air(),
+                    ' ': P.any(),
                     B: P.anyOf([
                         P.gtBlock('palladium_substation'),
                         P.ability(PA.itemIn, { max: 2, view: 1 }),

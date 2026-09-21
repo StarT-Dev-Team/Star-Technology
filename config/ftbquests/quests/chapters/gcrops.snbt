@@ -840,6 +840,43 @@
 			x: -3.0d
 			y: 2.0d
 		}
+		{
+			dependencies: [
+				"3807C9AB50E1EFDC"
+				"442E3FA21085DF6D"
+				"59890DB1F594A300"
+			]
+			id: "263D2F6A41C65CEC"
+			tasks: [{
+				id: "734D0B9263A7AD44"
+				item: "start_core:ancient_netherite_gcrop"
+				type: "item"
+			}]
+			x: 7.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["319B52CFFFD95612"]
+			id: "59890DB1F594A300"
+			tasks: [{
+				id: "6502D540E9153576"
+				item: "gtceu:polonium_dust"
+				type: "item"
+			}]
+			x: 7.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["70EEDB38B78F5C7F"]
+			id: "442E3FA21085DF6D"
+			tasks: [{
+				id: "7D83C5845499654B"
+				item: "gtceu:bec_og_bucket"
+				type: "item"
+			}]
+			x: 7.0d
+			y: -0.5d
+		}
 	]
 	title: "gCrops"
 }
