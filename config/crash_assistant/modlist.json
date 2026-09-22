@@ -50,8 +50,8 @@
     "modId": "ae2",
     "name": "Applied Energistics 2",
     "version": "15.5.4-uelm",
-    "curseForgeHash": 26227824,
-    "modrinthHash": "84f6f3e8885906952e8f3fa32f2c9b2a3ff1aa0d"
+    "curseForgeHash": 2029636302,
+    "modrinthHash": "c3c5a55faf0ce232c8df07e63db5351490a0961d"
   },
   "Architects-Palette-1.20.1-1.3.6.1.jar": {
     "jarName": "Architects-Palette-1.20.1-1.3.6.1.jar",
@@ -749,13 +749,13 @@
     "curseForgeHash": 2455614585,
     "modrinthHash": "a5592ab84eae317907e5003f590cc4a8ba9cbe49"
   },
-  "gtceu-st-1.20.1-1.7.1a.jar": {
-    "jarName": "gtceu-st-1.20.1-1.7.1a.jar",
+  "gtceu-st-1.20.1-1.7.1b.jar": {
+    "jarName": "gtceu-st-1.20.1-1.7.1b.jar",
     "modId": "gtceu",
     "name": "GregTech CEu Modern - StarT Fork",
-    "version": "1.7.1a",
-    "curseForgeHash": 3954419938,
-    "modrinthHash": "72fe2b6953192f8d6cb99ced4c26c7e4f08b68fb"
+    "version": "1.7.1b",
+    "curseForgeHash": 2131882124,
+    "modrinthHash": "fd9f5359243e4df853db51dccf7a458b5f5bf3f1"
   },
   "guideme-20.1.15.jar": {
     "jarName": "guideme-20.1.15.jar",
@@ -1194,13 +1194,13 @@
     "curseForgeHash": 1252250449,
     "modrinthHash": "a692be4b155a6149f108e6dcb79e5ad9d49ad722"
   },
-  "Star-Technology-Core-1.8.1a.jar": {
-    "jarName": "Star-Technology-Core-1.8.1a.jar",
+  "Star-Technology-Core-1.8.1b.jar": {
+    "jarName": "Star-Technology-Core-1.8.1b.jar",
     "modId": "start_core",
     "name": "Star Technology Core",
-    "version": "1.8.1a",
-    "curseForgeHash": 4087175257,
-    "modrinthHash": "c50cc4f051b4af3ef700a490996ce1776c1727c2"
+    "version": "1.8.1b",
+    "curseForgeHash": 408420568,
+    "modrinthHash": "e0005a4a9627733b383c3945b04e218db2b232c5"
   },
   "Stargate Journey-1.20.1-0.6.42.jar": {
     "jarName": "Stargate Journey-1.20.1-0.6.42.jar",

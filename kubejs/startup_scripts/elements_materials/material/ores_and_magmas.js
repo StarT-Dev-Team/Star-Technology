@@ -8,7 +8,7 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
 
     MH.compDustOre('zapolite', ['2x zapolgium', '4x iodine', '2x aluminium', '5x oxygen'], 0xcc0099, [noDecomp]);
 
-    MH.compGemOre('xenotime', ['1x yttrium', '1x sulfate'], 0x948446, ICONSETS.gemVertical, [noDecomp]);
+    MH.compGemOre('xenotime', ['1x yttrium', '2x phosphate'], 0x948446, ICONSETS.gemVertical, [noDecomp]);
 
     MH.compDustOre('lautarite', ['1x calcium', '2x iodine', '6x oxygen'], 0x6666ff, []);
 

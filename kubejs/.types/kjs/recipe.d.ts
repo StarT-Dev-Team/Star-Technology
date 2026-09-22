@@ -71,7 +71,7 @@ declare namespace internal.dev.latvian.mods.kubejs.recipe {
         name: 'dev.latvian.mods.kubejs.recipe.ModifyRecipeResultCallback';
         functionalInterface: 'modify';
     }> {
-        modify(grid: ModifyRecipeCraftingGrid, result: ItemStack): ItemStack;
+        modify(grid: ModifyRecipeCraftingGrid, result: ItemStack): $wrapped<ItemStack>;
     }
 }
 
