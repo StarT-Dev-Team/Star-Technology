@@ -4,7 +4,7 @@ ServerEvents.recipes((event) => {
     // === Xenotime RE Line ===
     event.recipes.gtceu
         .large_chemical_reactor(id('xenotime_proc_1'))
-        .itemInputs('2x gtceu:xenotime_dust')
+        .itemInputs('3x gtceu:xenotime_dust')
         .inputFluids('gtceu:sulfuric_acid 3000')
         .outputFluids('gtceu:rare_earth_sulfate_solution 1000', 'gtceu:phosphoric_acid 2000')
         .duration(550)
