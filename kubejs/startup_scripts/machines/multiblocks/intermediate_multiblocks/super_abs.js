@@ -31,7 +31,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidIn, { view: 1 }),
                         P.ability(PA.fluidOut, { view: 1 }),
                         P.ability(PA.euIn, { max: 1 }),
-                        P.ability(PA.maintenance, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     B: P.gtBlock('tungsten_frame'),
                     C: P.gtBlock('heat_vent'),

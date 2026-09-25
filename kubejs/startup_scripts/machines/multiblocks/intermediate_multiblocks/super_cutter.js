@@ -22,7 +22,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.itemOut, { view: 1 }),
                         P.ability(PA.fluidIn, { view: 1 }),
                         P.ability(PA.euIn, { max: 1 }),
-                        P.ability(PA.maintenance, { max: 1 }),
+                        P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     B: P.gtBlock('steel_pipe_casing'),
                     C: P.gtBlock('stainless_steel_gearbox'),
