@@ -2,6 +2,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('industrial_extraction_chamber', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
+        .tooltips([Text.translate('block.start_core.gap'), Text.translate('gtceu.multiblock.exact_hatch_1.tooltip')])
         .recipeType('extractor')
         .recipeModifiers([
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
