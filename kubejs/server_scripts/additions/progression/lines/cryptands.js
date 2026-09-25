@@ -167,16 +167,16 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .large_chemical_reactor(id('sodium_chlorate'))
         .inputFluids('gtceu:salt_water 1000', 'gtceu:oxygen 3000')
-        .itemOutputs('gtceu:sodium_chlorate_dust')
+        .itemOutputs('5x gtceu:sodium_chlorate_dust')
         .outputFluids('minecraft:water 1000')
         .duration(320)
         .EUt(120);
 
     event.recipes.gtceu
         .large_chemical_reactor(id('sodium_perchlorate'))
-        .itemInputs('gtceu:sodium_chlorate_dust')
+        .itemInputs('5x gtceu:sodium_chlorate_dust')
         .inputFluids('gtceu:oxygen 1000')
-        .itemOutputs('gtceu:sodium_perchlorate_dust')
+        .itemOutputs('6x gtceu:sodium_perchlorate_dust')
         .duration(440)
         .EUt(120);
 
