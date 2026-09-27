@@ -749,13 +749,13 @@
     "curseForgeHash": 2455614585,
     "modrinthHash": "a5592ab84eae317907e5003f590cc4a8ba9cbe49"
   },
-  "gtceu-st-1.20.1-1.7.1b.jar": {
-    "jarName": "gtceu-st-1.20.1-1.7.1b.jar",
+  "gtceu-st-1.20.1-1.7.1c.jar": {
+    "jarName": "gtceu-st-1.20.1-1.7.1c.jar",
     "modId": "gtceu",
     "name": "GregTech CEu Modern - StarT Fork",
-    "version": "1.7.1b",
-    "curseForgeHash": 2131882124,
-    "modrinthHash": "fd9f5359243e4df853db51dccf7a458b5f5bf3f1"
+    "version": "1.7.1c",
+    "curseForgeHash": 3486023073,
+    "modrinthHash": "ce387b389ad3d3e0972e30740c39dbaac5e7ebe2"
   },
   "guideme-20.1.15.jar": {
     "jarName": "guideme-20.1.15.jar",

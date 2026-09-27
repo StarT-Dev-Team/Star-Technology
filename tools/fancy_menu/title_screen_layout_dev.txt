@@ -368,7 +368,7 @@ element {
 
 element {
   interactable = true
-  source = Theta 2 Release
+  source = Theta 2 Hotfix 3
   source_mode = direct
   shadow = true
   scale = 1.0
