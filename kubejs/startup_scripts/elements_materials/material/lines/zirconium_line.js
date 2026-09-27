@@ -24,5 +24,4 @@ GTCEuStartupEvents.registry('gtceu:material', (event) => {
         0xff1a66,
         [noDecomp]
     );
-
 });
