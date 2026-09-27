@@ -367,4 +367,16 @@ ServerEvents.recipes((event) => {
         'gtceu:cobalt_brass_buzz_saw_blade',
         'gtceu:steel_buzz_saw_blade'
     );
+
+    event.remove({ id: 'gtceu:alloy_blast_smelter/weapon_grade_naquadah_gas' });
+
+    event.recipes.gtceu
+        .alloy_blast_smelter('gtceu:alloy_blast_smelter/weapon_grade_naquadah_gas')
+        .itemInputs('7x gtceu:naquadria_dust', '4x gtceu:pure_netherite_dust', '6x gtceu:trinaquadalloy_dust')
+        .inputFluids('gtceu:fluorine 12000', 'gtceu:xenon 290')
+        .outputFluids('gtceu:molten_weapon_grade_naquadah 4176')
+        .duration(34974)
+        .blastFurnaceTemp(9001)
+        .EUtVA(ZPM)
+        .circuit(14);
 });
