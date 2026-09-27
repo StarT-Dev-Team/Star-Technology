@@ -160,7 +160,7 @@
 			size: 1.0d
 			tasks: [{
 				id: "619C5BEFBEF584B7"
-				item: "gtceu:tiny_debris_dust"
+				item: "gtceu:small_debris_dust"
 				type: "item"
 			}]
 			x: -14.0d
