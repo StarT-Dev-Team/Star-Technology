@@ -787,7 +787,7 @@
     "ftbquests.futuristic_mechanisms.indium_tin_barium_titanium_cuprate_ingot.description": "Used for active transformers and in some other crafting recipes such as wire superconductor.",
     "ftbquests.futuristic_mechanisms.iv_circuit_assembler.description": "This is the final Circuit Assembler you'll make.\n\nIt can later be upgraded into a Large Circuit Assembling Facility, which accepts only a single Energy Hatch. This allows access to Circuit Assemblers of a higher voltage tier before getting the next tier of Circuits.",
     "ftbquests.futuristic_mechanisms.iv_parallel_hatch.description": "Paralleling allows you to do more batches of a recipe at once.",
-    "ftbquests.futuristic_mechanisms.iv_parallel_hatch.subtitle": "4x Parallel Hatch",
+    "ftbquests.futuristic_mechanisms.iv_parallel_hatch.subtitle": "8x Parallel Hatch",
     "ftbquests.futuristic_mechanisms.luv_energy_input_hatch.description": "Now that you have the big Circuit Assembler, you can use this to instantly get access to §dLuV§r Circuit Assembler recipes.",
     "ftbquests.futuristic_mechanisms.luv_energy_input_hatch_16a.description": "§3UV§r recipe speeds, what a bargain.",
     "ftbquests.futuristic_mechanisms.luv_energy_input_hatch_4a.description": "§cZPM§r recipe speeds.",
