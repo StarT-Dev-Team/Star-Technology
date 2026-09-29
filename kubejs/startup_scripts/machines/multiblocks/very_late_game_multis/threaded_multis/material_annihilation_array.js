@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .machine((holder) => new $BulkingThreadedMulti(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .tooltips([Text.translate('block.start_core.gap'), Text.translate('block.kubejs.threading.tooltip')])
-        .recipeTypes(['bulk_ore_processing_array', 'arc_furnace', 'macerator', 'pulverizer'])
+        .recipeTypes(['bulk_ore_factory', 'arc_furnace', 'macerator', 'pulverizer'])
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,

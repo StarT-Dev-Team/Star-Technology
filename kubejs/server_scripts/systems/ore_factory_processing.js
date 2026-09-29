@@ -435,6 +435,13 @@ ServerEvents.recipes((event) => {
     const dust = (mat, amount) => {
         return `${amount}x gtceu:${mat}_dust`;
     };
+    /**
+     * @param {string} mat
+     * @param {number} amount
+     */
+    const oreResidue = (mat, amount) => {
+        return `kubejs:${mat}_residue ${amount}`;
+    };
 
     const fluids = {
         water: 'minecraft:water 100',
@@ -489,155 +496,61 @@ ServerEvents.recipes((event) => {
             .EUtVA(LV);
     };
 
-    /**
-     * Copies the recipes from primitive ore processing, but without fuels.
-     * Much faster than using coke fuel and generates more products per second than using blocks.
-     * Chances are bossted.
-     * @param {OreProcMaterial} materialObj
-     */
-    const electricPrimitiveProcessing = (materialObj) => {
-        event.recipes.gtceu
-            .electric_ore_processing(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 1))
-            .inputFluids(fluids.water)
-            .itemOutputs(dust(materialObj.material, 1))
-            .chancedOutput(dust(materialObj.material, 1), 7500, 0)
-            .chancedOutput(dust(materialObj.secondary, 1), 4500, 0)
-            .chancedOutput(dust(materialObj.tertiary, 1), 3250, 0)
-            .duration(160)
-            .EUtVA(LV);
+/**
+ * @param {OreProcMaterial} materialObj
+ */
+const centrifugePrimitive = (materialObj) => {
+    event.recipes.gtceu
+        .centrifuge(id(`${materialObj.material}`))
+        .inputFluids(`kubejs:${materialObj.material}_residue 10000`)
+        .itemOutputs(dust(materialObj.material, 10))
+        .itemOutputs(dust(materialObj.material, 5))
+        .itemOutputs(dust(materialObj.secondary, 3))
+        .itemOutputs(dust(materialObj.tertiary, 3))
+        .duration(320)
+        .EUtVA(LV);
+};
+
+/**
+ * @param {Required<OreProcMaterial>} materialObj
+ * @param {'lv'|'mv'|'hv'|'ev'} tier
+ */
+const centrifugeElectric = (materialObj, tier) => {
+    const voltages = {
+        lv: GTValues.VA[LV],
+        mv: GTValues.VA[MV],
+        hv: GTValues.VA[HV],
+        ev: GTValues.VA[EV],
     };
 
-    /**
-     * Energy based ore processing.
-     * Needs distilled water or sodium persulfate.
-     * @param {Required<OreProcMaterial>} materialObj
-     * @param {'lv' | 'mv' | 'hv' | 'ev'} tier
-     */
-    const electricProcessing = (materialObj, tier) => {
-        const voltages = {
-            lv: GTValues.VA[LV],
-            mv: GTValues.VA[MV],
-            hv: GTValues.VA[HV],
-            ev: GTValues.VA[EV],
-        };
-        const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
-        event.recipes.gtceu
-            .electric_ore_processing(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 1))
-            .inputFluids(fluid)
-            .itemOutputs(dust(materialObj.material, 1))
-            .chancedOutput(dust(materialObj.material, 1), 5000, 0)
-            .chancedOutput(dust(materialObj.secondary, 1), 2500, 100)
-            .chancedOutput(dust(materialObj.tertiary, 1), 1250, 50)
-            .chancedOutput(dust(materialObj.quaternary, 1), 750, 100)
-            .duration(320)
-            .EUt(voltages[tier]);
-    };
+    event.recipes.gtceu
+        .centrifuge(id(`${materialObj.material}`))
+        .inputFluids(`kubejs:${materialObj.material}_residue 10000`)
+        .itemOutputs(dust(materialObj.material, 10))
+        .itemOutputs(dust(materialObj.material, 5))
+        .itemOutputs(dust(materialObj.secondary, 3))
+        .itemOutputs(dust(materialObj.tertiary, 3))
+        .itemOutputs(dust(materialObj.quaternary, 1))
+        .duration(320)
+        .EUt(voltages[tier]);
+};
 
-    /**
-     * Improved energy based primitive ore processing.
-     * Uses less energy and is quicker.
-     * Chances are boosted.
-     * @param {OreProcMaterial} materialObj
-     */
-    const plantPrimitiveProcessing = (materialObj) => {
-        event.recipes.gtceu
-            .plant_ore_processing(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 1))
-            .inputFluids(fluids.water)
-            .itemOutputs(dust(materialObj.material, 1))
-            .chancedOutput(dust(materialObj.material, 1), 9500, 0)
-            .chancedOutput(dust(materialObj.secondary, 1), 6500, 0)
-            .chancedOutput(dust(materialObj.tertiary, 1), 5250, 0)
-            .duration(240)
-            .EUtVHA(LV);
-
-        event.recipes.gtceu
-            .bulk_ore_processing_array(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 10))
-            .inputFluids(fluids.water5x)
-            .itemOutputs(dust(materialObj.material, 10))
-            .itemOutputs(dust(materialObj.material, 10))
-            .itemOutputs(dust(materialObj.secondary, 8))
-            .itemOutputs(dust(materialObj.tertiary, 6))
-            .duration(2400)
-            .EUtVHA(LV);
-    };
-
-    /**
-     * Improved energy based ore processing.
-     * Uses less energy and is quicker.
-     * Chances are boosted.
-     * @param {Required<OreProcMaterial>} materialObj
-     * @param {'lv' | 'mv' | 'hv' | 'ev'} tier
-     */
-    const plantElectricProcessing = (materialObj, tier) => {
-        const voltages = {
-            lv: GTValues.VHA[LV],
-            mv: GTValues.VHA[MV],
-            hv: GTValues.VHA[HV],
-            ev: GTValues.VHA[EV],
-        };
-        const fluid = tier === 'lv' || tier === 'mv' ? fluids.distilledWater : fluids.sodiumPersulfate;
-        const fluid5x = tier === 'lv' || tier === 'mv' ? fluids.distilledWater5x : fluids.sodiumPersulfate5x;
-        event.recipes.gtceu
-            .plant_ore_processing(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 1))
-            .inputFluids(fluid)
-            .itemOutputs(dust(materialObj.material, 1))
-            .chancedOutput(dust(materialObj.material, 1), 7500, 0)
-            .chancedOutput(dust(materialObj.secondary, 1), 5500, 0)
-            .chancedOutput(dust(materialObj.tertiary, 1), 3250, 0)
-            .chancedOutput(dust(materialObj.quaternary, 1), 1750, 0)
-            .duration(240)
-            .EUt(voltages[tier]);
-
-        event.recipes.gtceu
-            .bulk_ore_processing_array(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 10))
-            .inputFluids(fluid5x)
-            .itemOutputs(dust(materialObj.material, 10))
-            .itemOutputs(dust(materialObj.material, 9))
-            .itemOutputs(dust(materialObj.secondary, 7))
-            .itemOutputs(dust(materialObj.tertiary, 4))
-            .itemOutputs(dust(materialObj.quaternary, 3))
-            .duration(2400)
-            .EUt(voltages[tier]);
-    };
-
-    /**
-     * Final form of 1-step ore processing.
-     * @param {Required<OreProcMaterial>} materialObj
-     */
-    const plantOreProcessing = (materialObj) => {
-        event.recipes.gtceu
-            .plant_ore_processing(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 1))
-            .inputFluids(fluids.sodiumPersulfate5x)
-            .itemOutputs(dust(materialObj.material, 1))
-            .chancedOutput(dust(materialObj.material, 1), 8000, 0)
-            .chancedOutput(dust(materialObj.secondary, 1), 6000, 0)
-            .chancedOutput(dust(materialObj.tertiary, 1), 3600, 0)
-            .chancedOutput(dust(materialObj.quaternary, 1), 2000, 0)
-            .chancedOutput(dust(materialObj.quinary, 1), 1000, 0)
-            .duration(320)
-            .EUtVA(IV);
-
-        event.recipes.gtceu
-            .bulk_ore_processing_array(id(`${materialObj.material}`))
-            .itemInputs(crushedOre(materialObj.material, 10))
-            .inputFluids(fluids.sodiumPersulfate25x)
-            .itemOutputs(dust(materialObj.material, 10))
-            .itemOutputs(dust(materialObj.material, 9))
-            .itemOutputs(dust(materialObj.secondary, 7))
-            .itemOutputs(dust(materialObj.tertiary, 5))
-            .itemOutputs(dust(materialObj.quaternary, 3))
-            .itemOutputs(dust(materialObj.quinary, 2))
-            .duration(3200)
-            .EUtVA(IV);
-    };
-
+/**
+ * @param {Required<OreProcMaterial>} materialObj
+ */
+const centrifugeIV = (materialObj) => {
+    event.recipes.gtceu
+        .centrifuge(id(`${materialObj.material}`))
+        .inputFluids(`kubejs:${materialObj.material}_residue 10000`)
+        .itemOutputs(dust(materialObj.material, 10))
+        .itemOutputs(dust(materialObj.material, 5))
+        .itemOutputs(dust(materialObj.secondary, 3))
+        .itemOutputs(dust(materialObj.tertiary, 2))
+        .itemOutputs(dust(materialObj.quaternary, 1))
+        .itemOutputs(dust(materialObj.quinary, 1))
+        .duration(320)
+        .EUtVA(IV);
+};
     /**
      * @param {OreProcMaterial} materialObj
      */
@@ -722,19 +635,25 @@ ServerEvents.recipes((event) => {
         .addMaterialInfo(true, true);
 
     // Iterate over each tier and processable item and register the recipes
-    /** @type {(keyof typeof oreProcessableTiers)[]} */ (Object.keys(oreProcessableTiers)).forEach((tier) => {
-        oreProcessableTiers[tier].forEach((item) => {
-            pulverizer(item);
+    // Primitive ore factory recipes only
+    oreProcessableTiers.primitive.forEach((item) => {
+        pulverizer(item);
+        primitiveProcessing(item);
+    });
 
+    // Centrifuge recipes for every residue
+    /** @type {(keyof typeof oreProcessableTiers)[]} */
+    (Object.keys(oreProcessableTiers)).forEach((tier) => {
+        oreProcessableTiers[tier].forEach((item) => {
             if (tier === 'primitive') {
-                primitiveProcessing(item);
-                electricPrimitiveProcessing(item);
-                plantPrimitiveProcessing(item);
+                centrifugePrimitive(item);
             } else if (tier === 'iv') {
-                plantOreProcessing(/** @type {any} */ (item));
+                centrifugeIV(/** @type {any} */ (item));
             } else {
-                electricProcessing(/** @type {any} */ (item), tier);
-                plantElectricProcessing(/** @type {any} */ (item), tier);
+                centrifugeElectric(
+                    /** @type {any} */ (item),
+                    /** @type {'lv'|'mv'|'hv'|'ev'} */ (tier)
+                );
             }
         });
     });
