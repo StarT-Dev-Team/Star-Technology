@@ -1,6 +1,5 @@
 // priority: 1000
 
-/* eslint-disable no-unused-vars */
 // @ts-ignore
 /** @global */ const ULV = 0;
 /** @global */ const LV = 1;
@@ -19,7 +18,84 @@
 // eslint-disable-next-line id-match
 /** @global */ const OpV = 13;
 /** @global */ const MAX = 14;
-/* eslint-enable no-unused-vars */
+
+/** @typedef {'ulv' | 'lv' | 'mv' | 'hv' | 'ev' | 'iv' | 'luv' | 'zpm' | 'uv' | 'uhv' | 'uev' | 'uiv' | 'uxv' | 'opv' | 'max'} GTTier */
+
+/** @type {Record<GTTier, number>} */
+global.v = {
+    ulv: GTValues.V[ULV],
+    lv: GTValues.V[LV],
+    mv: GTValues.V[MV],
+    hv: GTValues.V[HV],
+    ev: GTValues.V[EV],
+    iv: GTValues.V[IV],
+    luv: GTValues.V[LuV],
+    zpm: GTValues.V[ZPM],
+    uv: GTValues.V[UV],
+    uhv: GTValues.V[UHV],
+    uev: GTValues.V[UEV],
+    uiv: GTValues.V[UIV],
+    uxv: GTValues.V[UXV],
+    opv: GTValues.V[OpV],
+    max: GTValues.V[MAX],
+};
+
+/** @type {Record<GTTier, number>} */
+global.va = {
+    ulv: GTValues.VA[ULV],
+    lv: GTValues.VA[LV],
+    mv: GTValues.VA[MV],
+    hv: GTValues.VA[HV],
+    ev: GTValues.VA[EV],
+    iv: GTValues.VA[IV],
+    luv: GTValues.VA[LuV],
+    zpm: GTValues.VA[ZPM],
+    uv: GTValues.VA[UV],
+    uhv: GTValues.VA[UHV],
+    uev: GTValues.VA[UEV],
+    uiv: GTValues.VA[UIV],
+    uxv: GTValues.VA[UXV],
+    opv: GTValues.VA[OpV],
+    max: GTValues.VA[MAX],
+};
+
+/** @type {Record<GTTier, number>} */
+global.vh = {
+    ulv: GTValues.VH[ULV],
+    lv: GTValues.VH[LV],
+    mv: GTValues.VH[MV],
+    hv: GTValues.VH[HV],
+    ev: GTValues.VH[EV],
+    iv: GTValues.VH[IV],
+    luv: GTValues.VH[LuV],
+    zpm: GTValues.VH[ZPM],
+    uv: GTValues.VH[UV],
+    uhv: GTValues.VH[UHV],
+    uev: GTValues.VH[UEV],
+    uiv: GTValues.VH[UIV],
+    uxv: GTValues.VH[UXV],
+    opv: GTValues.VH[OpV],
+    max: GTValues.VH[MAX],
+};
+
+/** @type {Record<GTTier, number>} */
+global.vha = {
+    ulv: GTValues.VHA[ULV],
+    lv: GTValues.VHA[LV],
+    mv: GTValues.VHA[MV],
+    hv: GTValues.VHA[HV],
+    ev: GTValues.VHA[EV],
+    iv: GTValues.VHA[IV],
+    luv: GTValues.VHA[LuV],
+    zpm: GTValues.VHA[ZPM],
+    uv: GTValues.VHA[UV],
+    uhv: GTValues.VHA[UHV],
+    uev: GTValues.VHA[UEV],
+    uiv: GTValues.VHA[UIV],
+    uxv: GTValues.VHA[UXV],
+    opv: GTValues.VHA[OpV],
+    max: GTValues.VHA[MAX],
+};
 
 /**
  * @type {Record<Exclude<GTTier, 'uxv' | 'opv' | 'max'>, import("../additions/progression/components/component_materials_type").ComponentMaterial>}
