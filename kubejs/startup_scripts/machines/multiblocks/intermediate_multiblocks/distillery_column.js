@@ -12,13 +12,11 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .appearanceBlock(() => Block.getBlock('gtceu:stable_machine_casing'))
         .pattern((definition) =>
             newFactoryBlockPattern([
-                '       |       |       |       |       |       ',
-                '  PPP  |  CCC  |  CCC  |   C   |       |       ',
-                ' PMMMP | CGTGC | CGTGC |  GTG  |  GTG  |  GGG  ',
-                ' PMMMP | CT TC | CT TC | CT TC |  T T  |  G G  ',
-                ' PMMMP | CGTGC | CGTGC |  GTG  |  GTG  |  GGG  ',
-                '  PPP  |  C@C  |  CCC  |   C   |       |       ',
-                '       |       |       |       |       |       ',
+                ' PPP | CCC | CCC |  C  |     |     ',
+                'PMMMP|CGTGC|CGTGC| GTG | GTG | GGG ',
+                'PMMMP|CT TC|CT TC|CT TC| T T | G G ',
+                'PMMMP|CGTGC|CGTGC| GTG | GTG | GGG ',
+                ' PPP | C@C | CCC |  C  |     |     ',
             ])
                 .whereDict({
                     C: P.anyOf([
