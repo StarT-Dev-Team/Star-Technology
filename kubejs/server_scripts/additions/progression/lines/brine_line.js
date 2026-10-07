@@ -148,7 +148,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .chemical_reactor(id('iodine'))
         .inputFluids('gtceu:hydrogen_iodide 2000', 'gtceu:oxygen 1000')
-        .itemOutputs('gtceu:iodine_dust')
+        .itemOutputs('2x gtceu:iodine_dust')
         .outputFluids('minecraft:water 1000')
         .duration(1000)
         .EUtVA(HV);
@@ -156,7 +156,7 @@ ServerEvents.recipes((event) => {
     event.recipes.gtceu
         .large_chemical_reactor(id('iodine'))
         .inputFluids('gtceu:hydrogen_iodide 2000', 'gtceu:oxygen 1000')
-        .itemOutputs('gtceu:iodine_dust')
+        .itemOutputs('2x gtceu:iodine_dust')
         .outputFluids('minecraft:water 1000')
         .duration(1000)
         .EUtVA(HV);
