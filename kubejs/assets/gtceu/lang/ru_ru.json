@@ -1282,6 +1282,13 @@
     "material.gtceu.tpu_blend": "Смесь TPU",
     "material.gtceu.etu_blend": "Смесь ETU",
 
+    "material.gtceu.mox238_blend": "Смесь MOX-238",
+    "material.gtceu.mox239_blend": "Смесь MOX-239",
+    "material.gtceu.mox241_blend": "Смесь MOX-241",
+    "material.gtceu.nqe_blend": "Смесь NQE",
+    "material.gtceu.tpu_blend": "Смесь TPU",
+    "material.gtceu.etu_blend": "Смесь ETU",
+
     "material.gtceu.hafnastide_rich_sludge": "Богатый гафнастидом шлам",
     "material.gtceu.flerovium_rich_re_sludge": "Богатый флеровием и рением шлам",
     "material.gtceu.pologium_rich_sludge": "Богатый пологиумом шлам",

@@ -243,7 +243,7 @@ ServerEvents.tags('fluid', (event) => {
 });
 
 ServerEvents.tags('fluid', (event) => {
-    ['start_core:warm_steam', 'start_core:hot_steam', 'start_core:extremeley_hot_steam'].forEach((steam) => {
+    ['start_core:warm_steam', 'start_core:hot_steam', 'start_core:extremely_hot_steam'].forEach((steam) => {
         event.add('systeams:steamish', steam);
     });
 });

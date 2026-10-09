@@ -19,8 +19,8 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                 'BCCBCCCBCCB|    III    |    HHH    | ECH   HCE | ECH   HCE | ECH   HCE |    HHH    |    III    |BCCBCCCBCCB',
                 'BBBBCCCBBBB| E  IGI  E | E  HGH  E | ECH   HCE | FGG   GGF | ECH   HCE | E  HGH  E | E  IGI  E |BBBBCFCBBBB',
                 'BCCBCCCBCCB|    III    |    HHH    | ECH   HCE | ECH   HCE | ECH   HCE |    HHH    |    III    |BCCBCCCBCCB',
-                ' CCBBBBBCC |         D |         D |    HHH    | D  HGH  D |    HHH    | D       D | D       D | CCBBBBBCC ',
-                ' CCCCBCCCC | D         | D         |  D CCC D  |    CGC    |  D CCC D  |           |           | CCCCBCCCC ',
+                ' CCBBBBBCC | D       D | D       D |    HHH    | D  HGH  D |    HHH    | D       D | D       D | CCBBBBBCC ',
+                ' CCCCBCCCC |           |           |  D CCC D  |    CGC    |  D CCC D  |           |           | CCCCBCCCC ',
                 '  CCCBCCC  |   D E D   |   D E D   |    EEE    |   DE@ED   |    EEE    |   D E D   |   D E D   |  CCCBCCC  ',
                 '    BBB    |           |           |           |           |           |           |           |    BBB    ',
             ])

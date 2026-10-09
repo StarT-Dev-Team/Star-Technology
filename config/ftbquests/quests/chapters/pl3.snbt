@@ -385,7 +385,7 @@
 				}
 				type: "item"
 			}]
-			x: -4.0d
+			x: -3.5d
 			y: 3.5d
 		}
 		{
@@ -619,7 +619,7 @@
 					type: "checkmark"
 				}
 			]
-			x: -6.0d
+			x: -5.5d
 			y: 3.5d
 		}
 		{
@@ -634,7 +634,7 @@
 				}
 				type: "item"
 			}]
-			x: -7.5d
+			x: -7.0d
 			y: 3.5d
 		}
 		{
@@ -649,7 +649,7 @@
 				}
 				type: "item"
 			}]
-			x: -9.0d
+			x: -8.5d
 			y: 3.5d
 		}
 		{
@@ -667,11 +667,11 @@
 				}
 				type: "item"
 			}]
-			x: -10.5d
+			x: -10.0d
 			y: 3.5d
 		}
 		{
-			dependencies: ["70683E750C318105"]
+			dependencies: ["60267DAD7D99381F"]
 			id: "2DB6C9C0B6100088"
 			tasks: [{
 				id: "0109C7E8B41025A0"
@@ -682,7 +682,7 @@
 				}
 				type: "item"
 			}]
-			x: -12.0d
+			x: -12.5d
 			y: 2.5d
 		}
 		{
@@ -697,23 +697,8 @@
 				}
 				type: "item"
 			}]
-			x: -12.0d
+			x: -11.5d
 			y: 4.5d
-		}
-		{
-			dependencies: ["60267DAD7D99381F"]
-			id: "70683E750C318105"
-			tasks: [{
-				id: "4D7FAA9CA579748B"
-				item: {
-					Count: 1
-					id: "gtceu:small_zapolgium_diiodide_dioxide_dust"
-					tag: { }
-				}
-				type: "item"
-			}]
-			x: -13.5d
-			y: 2.5d
 		}
 		{
 			dependencies: ["60267DAD7D99381F"]
