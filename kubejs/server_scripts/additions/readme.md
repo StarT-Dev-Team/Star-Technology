@@ -10,7 +10,8 @@ New recipe additions.
 
 ## Folders
 
-| Folder                                       | Description                                                                                     |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [`multiblock_recipes/`](multiblock_recipes/) | Recipes processed by custom Star Technology multiblock machines.                                |
-| [`progression/`](progression/)               | Material processing chains and component crafting lines organised by tier and progression zone. |
+| Folder                                       | Description                                                                                             |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [`machines_and_parts/`](machines_and_parts/) | Machine crafting recipes — coils, converters, hatches/busses, intermediate and large multis, and tiers. |
+| [`multiblock_recipes/`](multiblock_recipes/) | Recipes processed by custom Star Technology multiblock machines.                                        |
+| [`progression/`](progression/)               | Material processing chains and component crafting lines organised by tier and progression zone.         |
