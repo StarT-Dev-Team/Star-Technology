@@ -361,12 +361,19 @@ ServerEvents.recipes((event) => {
         .EUt(30)
         .circuit(1);
 
-    // TODO: combe back to this decision in theta 3 to see if there is a better fit
-    event.replaceInput(
-        { id: 'gtceu:shaped/lv_cutter' },
-        'gtceu:cobalt_brass_buzz_saw_blade',
-        'gtceu:steel_buzz_saw_blade'
-    );
+    event.remove({ id: 'gtceu:shaped/lv_cutter' });
+    event.recipes.gtceu
+        .shaped(Item.of('gtceu:lv_cutter'), ['TCG', 'MHS', 'CTR'], {
+            T: 'gtceu:tin_single_cable',
+            C: '#gtceu:circuits/lv',
+            G: '#forge:glass',
+            M: 'gtceu:lv_conveyor_module',
+            H: 'gtceu:lv_machine_hull',
+            S: 'gtceu:steel_buzz_saw_blade',
+            R: 'gtceu:lv_electric_motor',
+        })
+        .addMaterialInfo()
+        .id('gtceu:shaped/lv_cutter');
 
     event.remove({ id: 'gtceu:alloy_blast_smelter/weapon_grade_naquadah_gas' });
 
