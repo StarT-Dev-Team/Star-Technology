@@ -13,17 +13,14 @@ Material processing chains and crafting recipes for the main progression path.
 
 ## Subfolders
 
-| Folder                                                     | Description                                                                                                                                                                             |
-| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`circuitry/`](circuitry/)                                 | Circuit and circuit-board recipes (circuit parts, assembled circuits, Draco circuit assembly, universal circuits).                                                                      |
-| [`components/`](components/)                               | Machine component recipes (component materials, Component Nexus recipes, component parts, LUV→UV and UHV→UIV tiers).                                                                    |
-| [`komaru/`](komaru/)                                       | Komaru module and frame recipes (part of the threading/Komaru system).                                                                                                                  |
-| [`lines/`](lines/)                                         | Material processing chains organised by dimension/zone (see below).                                                                                                                     |
-| [`machines_and_parts/`](machines_and_parts/)               | Machine crafting recipes — coils, converters, hatches/busses, intermediate and large multiblocks, single blocks.                                                                        |
-| [`/tiered_machines/`](machines_and_parts/tiered_machines/) | Tiered machine recipes: IO hatches, large energy hatches, modular power hatches, parallel hatches, single-block tiers, storage blocks, and transformers.                                |
-| [`early_game/`](/early_game/)                              | Early-game recipe additions before GT machines are available (alloys & tools, backports from later versions, barrels, blast furnaces, caskets, composters, miscellaneous QoL, sieving). |
-| [`power/`](power/)                                         | Power system recipes (solar panels, wireless power, thermal augments, modular combustion).                                                                                              |
-| [`recycling/`](recycling/)                                 | Deconstruction/recycling recipes for coils, components, converters, fusion casings, parallel hatches, and single blocks.                                                                |
+| Folder                       | Description                                                                                                                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`circuitry/`](circuitry/)   | Circuit and circuit-board recipes (circuit parts, assembled circuits, Draco circuit assembly, universal circuits).                                                                      |
+| [`components/`](components/) | Machine component recipes (component materials, Component Nexus recipes, component parts, LUV→UV and UHV→UIV tiers).                                                                    |
+| [`early_game/`](early_game/) | Early-game recipe additions before GT machines are available (alloys & tools, backports from later versions, barrels, blast furnaces, caskets, composters, miscellaneous QoL, sieving). |
+| [`komaru/`](komaru/)         | Komaru module and frame recipes (part of the threading/Komaru system).                                                                                                                  |
+| [`lines/`](lines/)           | Material processing chains organised by dimension/zone (see below).                                                                                                                     |
+| [`power/`](power/)           | Power system recipes (solar panels, wireless power, thermal augments, modular combustion).                                                                                              |
 
 ## lines/ subfolders
 

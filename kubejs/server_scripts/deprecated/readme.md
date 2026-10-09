@@ -11,6 +11,7 @@ Old scripts that are no longer active but are kept for reference.
 | [`cobbleworks.js`](cobbleworks.js)           | Former Cobbleworks resource generation system.                                         |
 | [`kinetic_box.js`](kinetic_box.js)           | Former Kinetic Box machine recipes.                                                    |
 | [`large_sieve.js`](large_sieve.js)           | Former Large Sieve standalone recipes (superseded by Mechanical Sieve system).         |
+| [`solar_energy.js`](solar_energy.js)         | Former solar energy and basic energy core recipes.                                     |
 
 ## [resource_gen/](resource_gen/) subfolder
 
