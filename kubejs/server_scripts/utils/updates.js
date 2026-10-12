@@ -17,7 +17,8 @@ PlayerEvents.loggedIn((event) => {
     const data = player.persistentData;
 
     /** @param {UpdateInfo} update */
-    const formatBreakingChangeContent = (update) => update.breakingChanges ? Text.translatable(`messages.kubejs.breaking_changes.${update.tag}`) : null;
+    const formatBreakingChangeContent = (update) =>
+        update.breakingChanges ? Text.translatable(`messages.kubejs.breaking_changes.${update.tag}`) : null;
 
     /**
      * @param {string | null} lastVersion
