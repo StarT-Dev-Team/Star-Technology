@@ -139,7 +139,7 @@ ServerEvents.recipes((event) => {
                     )
                 )
                 .CWUt(typeSpecial ? cwuS : cwuD)
-                .totalCWU(typeSpecial ? cwuS : cwuD * (typeSpecial ? duraS : duraD * 20))
+                .totalCWU((typeSpecial ? cwuS : cwuD) * (typeSpecial ? duraS : duraD) * 20)
                 .EUt(typeSpecial ? EUTS : EUTD);
 
             const mtscfItems = items.map((itemObj) => {
