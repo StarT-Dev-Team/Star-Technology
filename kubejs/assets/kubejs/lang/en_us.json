@@ -914,6 +914,7 @@
 
     "messages.kubejs.first_join": "Hello %s, welcome to the %s version of Star Technology!",
     "messages.kubejs.updated_version": "You have updated from %s to %s.",
+    "messages.kubejs.older_version": "a previous version",
     "messages.kubejs.breaking_changes": "Breaking changes from the update: \n%s",
     "messages.kubejs.breaking_changes.theta_3": " - Breaking change 1\n - Breaking change 2\n - Breaking change 3"
 }

@@ -163,7 +163,8 @@ export default [
                 MAX: 'readonly',
                 T: 'writable',
                 PACK_VERSION: 'writable',
-                VERSION_TAG: 'writable',
+                VERSION_SLUG: 'writable',
+                UPDATE_HISTORY: 'writable'
             },
         },
         rules: {
