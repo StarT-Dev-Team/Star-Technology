@@ -138,3 +138,6 @@ const $NetworkSwitchMachine = Java.loadClass(
     'com.gregtechceu.gtceu.common.machine.multiblock.electric.research.NetworkSwitchMachine'
 );
 const $TooltipHelper = Java.loadClass('com.gregtechceu.gtceu.client.util.TooltipHelper');
+
+const $StarTMaterials = Java.loadClass('com.startechnology.start_core.material.StarTMaterials');
+const $StarTElements = Java.loadClass('com.startechnology.start_core.elements.StarTElements');
