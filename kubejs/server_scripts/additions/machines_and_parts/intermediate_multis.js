@@ -231,7 +231,7 @@ ServerEvents.recipes((event) => {
         C: 'gtceu:ev_electric_pump',
     });
 
-    event.shaped('gtceu:thermic_fluid_heater', ['TPT', 'AMA', 'CDC'], {
+    event.recipes.gtceu.shaped('gtceu:thermic_fluid_heater', ['TPT', 'AMA', 'CDC'], {
         T: '#gtceu:circuits/ev',
         P: 'gtceu:tempered_glass',
         M: 'gtceu:hv_fluid_heater',
