@@ -2,13 +2,21 @@
 
 Shared helpers and constants loaded at high priority, available to all other startup scripts via `global`.
 
+## Root files
+
+| File                                             | Description                                                            |
+| ------------------------------------------------ | ---------------------------------------------------------------------- |
+| [`dimensional_stages.js`](dimensional_stages.js) | Handles dimensional stage registration and restrictions for stargates. |
+
 ## [helpers/](helpers/)
 
-| File                                         | Description                                                                                                                                                                                                                                   |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`const_loader.js`](helpers/const_loader.js) | Loads all Java class references used across startup scripts (`StarTRecipeModifiers`, `StarTPartAbility`, `BoostedPlasmaTurbine`, `StartSteamMulti`, threading classes, etc.). Loaded at priority 1,000,000 so it runs before everything else. |
-| [`gt_helpers.js`](helpers/gt_helpers.js)     | GregTech utility functions (`global.getGtMaterial`, coil temperature display, multi-smelter parallel display, cracker overclock display, etc.).                                                                                               |
-| [`ui_builder.js`](helpers/ui_builder.js)     | Helpers for constructing machine UI layouts programmatically.                                                                                                                                                                                 |
+| File                                                   | Description                                                                                                                                                                                                                                   |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`const_loader.js`](helpers/const_loader.js)           | Loads all Java class references used across startup scripts (`StarTRecipeModifiers`, `StarTPartAbility`, `BoostedPlasmaTurbine`, `StartSteamMulti`, threading classes, etc.). Loaded at priority 1,000,000 so it runs before everything else. |
+| [`gt_helpers.js`](helpers/gt_helpers.js)               | GregTech utility functions (`global.getGtMaterial`, coil temperature display, multi-smelter parallel display, cracker overclock display, etc.).                                                                                               |
+| [`js_helpers.js`](helpers/js_helpers.js)               | General JavaScript utility helpers used across startup scripts.                                                                                                                                                                               |
+| [`predicate_helpers.js`](helpers/predicate_helpers.js) | Block and pattern predicate helpers for multiblock structure validation.                                                                                                                                                                      |
+| [`ui_builder.js`](helpers/ui_builder.js)               | Helpers for constructing machine UI layouts programmatically.                                                                                                                                                                                 |
 
 ## [extras/](extras/)
 

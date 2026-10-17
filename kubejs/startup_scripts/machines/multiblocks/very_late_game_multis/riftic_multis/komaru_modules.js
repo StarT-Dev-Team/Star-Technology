@@ -186,7 +186,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.itemOut, { max: 2, view: 1 }),
                         P.ability(PA.fluidIn, { max: 2, view: 1 }),
                         P.ability(PA.fluidOut, { max: 2, view: 1 }),
-                        P.ability(PA.compIn, { exact: 1 }),
+                        P.ability(PA.optIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     B: P.kjsBlock('superdense_assembly_control_casing'),

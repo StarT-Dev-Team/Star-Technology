@@ -706,6 +706,7 @@
 							value: "gtceu:dna_strand/resource"
 						}
 					}
+					optional_task: true
 					title: "{ftbquests.gcrops.resource_traits.title}"
 					type: "item"
 				}
@@ -761,6 +762,7 @@
 							value: "gtceu:dna_strand/auxiliary"
 						}
 					}
+					optional_task: true
 					title: "{ftbquests.gcrops.auxiliary_traits.title}"
 					type: "item"
 				}
@@ -788,6 +790,7 @@
 							value: "gtceu:dna_strand/climate"
 						}
 					}
+					optional_task: true
 					title: "{ftbquests.gcrops.climate_traits.title}"
 					type: "item"
 				}

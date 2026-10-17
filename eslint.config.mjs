@@ -128,6 +128,8 @@ export default [
                 $BulkingMulti: 'readonly',
                 $BulkingCoiledMulti: 'readonly',
                 $BulkingThreadedMulti: 'readonly',
+                $StarTMaterials: 'readonly',
+                $StarTElements: 'readonly',
                 // Miscellaneous globals
                 Ponder: 'readonly',
                 Direction: 'readonly',
