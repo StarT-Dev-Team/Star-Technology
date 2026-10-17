@@ -370,6 +370,7 @@ declare namespace internal.kjs.kubejs {
     interface PlayerEvents {
         tick(callback: (event: SimplePlayerEventJS) => void): void;
         chat(callback: (event: PlayerChatDecorateEventJS) => void): void;
+        loggedIn(callback: (event: SimplePlayerEventJS) => void): void;
     }
 }
 

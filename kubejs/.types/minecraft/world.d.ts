@@ -606,6 +606,7 @@ declare namespace internal.net.minecraft.world.entity.player {
         sendSystemMessage(message: unknown): void;
         getName(): Component;
         get name(): Component;
+        get persistentData(): any; // CompoundTag with beans
     }
 }
 
