@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .create('thermic_fluid_heater', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
         .tooltips([Text.translate('block.start_core.gap'), Text.translate('gtceu.multiblock.exact_hatch_1.tooltip')])
-        .bottomTooltips([Text.translate('block.gtceu.thermic_fluid_heater.bottom.0')])
+        .bottomTooltips([Text.translate('start.multiblock_contest.1M.top_20', Text.literal('kiiyoko'))])
         .recipeType('fluid_heater')
         .recipeModifiers([
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
