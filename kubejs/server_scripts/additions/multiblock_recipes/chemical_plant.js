@@ -194,16 +194,10 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_skip(id('zapolgium_skip'))
-        .itemInputs('450x gtceu:zapolite_dust', '516x gtceu:potassium_hydroxide_dust')
-        .inputFluids('gtceu:hydrogen 72000', 'gtceu:hydrochloric_acid 172000')
-        .itemOutputs(
-            '86x gtceu:zapolgium_dust',
-            '250x gtceu:bauxite_dust',
-            '172x gtceu:iodine_dust',
-            '344x gtceu:rock_salt_dust'
-        )
-        .outputFluids('minecraft:water 122000', 'gtceu:oxygen 86000')
-        .duration(500)
+        .itemInputs('140x gtceu:zapolite_dust')
+        .itemOutputs('20x gtceu:zapolgium_dust', '50x gtceu:bauxite_dust', '40x gtceu:iodine_dust')
+        .outputFluids('gtceu:oxygen 30000')
+        .duration(80)
         .EUtVHA(UIV);
 
     event.recipes.gtceu
