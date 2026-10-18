@@ -220,6 +220,28 @@ ServerEvents.recipes((event) => {
         .duration(14)
         .EUtVHA(UIV);
 
+    event.recipes.gtceu
+        .chemical_skip(id('xenotime_skip'))
+        .itemInputs('60x gtceu:xenotime_dust', '10x gtceu:rare_earth_dust')
+        .inputFluids('gtceu:hydrogen 120000')
+        .itemOutputs(
+            '25x gtceu:lutetium_dust',
+            '25x gtceu:dysprosium_dust',
+            '25x gtceu:europium_dust',
+            '25x gtceu:samarium_dust'
+        )
+        .outputFluids('gtceu:phosphoric_acid 40000')
+        .duration(18)
+        .EUtVHA(UIV);
+
+    event.recipes.gtceu
+        .chemical_skip(id('naquadite_skip'))
+        .itemInputs('40x gtceu:naquadite_dust')
+        .inputFluids('gtceu:hydroiodic_acid 5000')
+        .itemOutputs('20x gtceu:naquadah_dust', '10x gtceu:magnesia_dust', '10x gtceu:magnetite_dust')
+        .duration(14)
+        .EUtVHA(UIV);
+
     // === Enlightened Chemistry ===
 
     event.recipes.gtceu
