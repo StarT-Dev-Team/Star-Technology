@@ -137,6 +137,21 @@ ServerEvents.recipes((event) => {
         .EUtVHA(UEV);
 
     event.recipes.gtceu
+        .chemical_skip(id('indium_line'))
+        .itemInputs('20x gtceu:purified_sphalerite_ore', '20x gtceu:purified_galena_ore')
+        .inputFluids('gtceu:sulfuric_acid 40000')
+        .itemOutputs(
+            '20x gtceu:indium_dust',
+            '60x gtceu:sulfur_dust',
+            '10x gtceu:lead_dust',
+            '10x gtceu:silver_dust',
+            '10x gtceu:zinc_dust'
+        )
+        .outputFluids('gtceu:oxygen 60000', 'gtceu:diluted_sulfuric_acid 10000', 'minecraft:water 10000')
+        .duration(85)
+        .EUtVHA(LuV);
+
+    event.recipes.gtceu
         .chemical_skip(id('tungstate_line'))
         .itemInputs('1x gtceu:tungstate_dust')
         .inputFluids('gtceu:hydrochloric_acid 2000')
