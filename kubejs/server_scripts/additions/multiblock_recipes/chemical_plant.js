@@ -138,7 +138,7 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_skip(id('tungstate_line'))
-        .itemInputs('1x gtceu:tungstate_dust')
+        .itemInputs('7x gtceu:tungstate_dust')
         .inputFluids('gtceu:hydrochloric_acid 2000')
         .itemOutputs('1x gtceu:tungsten_dust', '2x gtceu:lithium_dust')
         .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000', 'gtceu:oxygen 4000')
