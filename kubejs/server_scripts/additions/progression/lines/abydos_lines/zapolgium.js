@@ -1,13 +1,12 @@
 ServerEvents.recipes((event) => {
     const id = global.id;
 
-    // Zg2I4Al2O6 => ZgI2Al2O4 + ZgI2O2 (40% + 10%)
+    // 14 Zg2I4Al2O6 => 9 ZgI2Al2O4 + 5 ZgI2O2
     event.recipes.gtceu
         .electromagnetic_separator(id('zapolite_proc_1'))
-        .itemInputs('gtceu:zapolite_dust')
-        .itemOutputs('gtceu:zapolgium_aluminium_oxide_dust')
-        .chancedOutput('gtceu:zapolgium_diiodide_dioxide_dust', 4000, 1000)
-        .duration(100)
+        .itemInputs('14x gtceu:zapolite_dust')
+        .itemOutputs('9x gtceu:zapolgium_aluminium_oxide_dust', '5x gtceu:zapolgium_diiodide_dioxide_dust')
+        .duration(1200)
         .EUt(2600);
 
     // 9ZgI2Al2O4 => 4ZgI2O + 5Al2O3
