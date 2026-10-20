@@ -222,7 +222,7 @@ ServerEvents.recipes((event) => {
         })
         .addMaterialInfo();
 
-    event.shaped('gtceu:distillery_column', ['TPG', 'AMA', 'GCT'], {
+    event.recipes.gtceu.shaped('gtceu:distillery_column', ['TPG', 'AMA', 'GCT'], {
         T: '#gtceu:circuits/iv',
         P: 'gtceu:tempered_glass',
         G: 'gtceu:titanium_normal_fluid_pipe',
@@ -231,25 +231,7 @@ ServerEvents.recipes((event) => {
         C: 'gtceu:ev_electric_pump',
     });
 
-    event.shaped('gtceu:industrial_brewing_station', ['TPG', 'AMA', 'GCT'], {
-        M: 'gtceu:ev_brewery',
-        T: 'gtceu:ev_electric_pump',
-        P: 'gtceu:laminated_glass',
-        C: 'gtceu:aluminium_quadruple_cable',
-        G: 'gtceu:titanium_plate',
-        A: '#gtceu:circuits/iv',
-    });
-
-    event.shaped('gtceu:distillery_column', ['TPG', 'AMA', 'GCT'], {
-        T: '#gtceu:circuits/iv',
-        P: 'gtceu:tempered_glass',
-        G: 'gtceu:titanium_normal_fluid_pipe',
-        M: 'gtceu:ev_distillery',
-        A: 'gtceu:aluminium_quadruple_cable',
-        C: 'gtceu:ev_electric_pump',
-    });
-
-    event.shaped('gtceu:industrial_brewing_station', ['TPG', 'AMA', 'GCT'], {
+    event.recipes.gtceu.shaped('gtceu:industrial_brewing_station', ['TPG', 'AMA', 'GCT'], {
         M: 'gtceu:ev_brewery',
         T: 'gtceu:ev_electric_pump',
         P: 'gtceu:laminated_glass',
