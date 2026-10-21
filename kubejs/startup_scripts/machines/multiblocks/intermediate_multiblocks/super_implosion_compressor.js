@@ -37,5 +37,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'gtceu:block/casings/gcym/stress_proof_casing',
             'gtceu:block/multiblock/implosion_compressor'
         )
-        .additionalDisplay(global.multiSmelterParallelDisplay);
+        .additionalDisplay($CoiledMulti.SMELTER_DISPLAY);
 });

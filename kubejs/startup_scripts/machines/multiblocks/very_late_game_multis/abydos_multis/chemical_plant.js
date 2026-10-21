@@ -50,5 +50,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'kubejs:block/casings/basic/machine_casing_peek',
             'gtceu:block/multiblock/large_chemical_reactor'
         )
-        .additionalDisplay(global.chemicalOverclockDisplay);
+        .additionalDisplay($CoiledMulti.CHEMICAL_DISPLAY);
 });
