@@ -52,7 +52,10 @@ const P = {
      * @param {internal.com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition} definition
      * @returns {internal.com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate}
      */
-    controller: (definition) => Predicates.controller(Predicates.blocks(definition.get())),
+    controller: (definition) =>
+        Predicates['controller(com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate)'](
+            Predicates.blocks(definition.get())
+        ),
     /**
      * @param {string | internal.net.minecraft.world.level.block.Block} id
      * @param {PredicateSettings} [settings]
