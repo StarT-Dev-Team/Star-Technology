@@ -1149,6 +1149,9 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
         new (name: string): PartAbility;
     };
 
+    import BiConsumer = java.util.function_.BiConsumer;
+    import List = java.util.List;
+    import Component = net.minecraft.network.chat.Component;
     import IMultiController = feature.multiblock.IMultiController;
 
     interface MultiblockControllerMachine extends $object<
@@ -1196,6 +1199,12 @@ declare namespace internal.com.gregtechceu.gtceu.api.machine.multiblock {
 
     const CoilWorkableElectricMultiblockMachine: $class<CoilWorkableElectricMultiblockMachine> & {
         new (holder: IMachineBlockEntity): CoilWorkableElectricMultiblockMachine;
+
+        BLAST_DISPLAY: BiConsumer<IMultiController, List<Component>>;
+        SMELTER_DISPLAY: BiConsumer<IMultiController, List<Component>>;
+        CRACKER_DISPLAY: BiConsumer<IMultiController, List<Component>>;
+        PYROLYSE_DISPLAY: BiConsumer<IMultiController, List<Component>>;
+        CHEMICAL_DISPLAY: BiConsumer<IMultiController, List<Component>>;
     };
 
     interface LayeredWorkableElectricMultiblockMachine extends $object<

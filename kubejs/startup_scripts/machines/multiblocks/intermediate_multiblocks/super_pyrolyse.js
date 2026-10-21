@@ -47,5 +47,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'gtceu:block/casings/solid/machine_casing_robust_tungstensteel',
             'gtceu:block/multiblock/pyrolyse_oven'
         )
-        .additionalDisplay(global.pyrolyseOvenOverclockDisplay);
+        .additionalDisplay($CoiledMulti.PYROLYSE_DISPLAY);
 });
