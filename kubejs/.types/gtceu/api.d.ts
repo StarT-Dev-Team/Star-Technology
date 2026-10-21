@@ -1366,6 +1366,10 @@ declare namespace internal.com.gregtechceu.gtceu.api.pattern {
 
     const Predicates: $class<Predicates> & {
         controller(predicate: TraceabilityPredicate): TraceabilityPredicate;
+        controller(definition: MachineDefinition): TraceabilityPredicate;
+        'controller(com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate)'(
+            predicate: TraceabilityPredicate
+        ): TraceabilityPredicate;
         states(allowedStates: BlockState): TraceabilityPredicate;
         blocks(...blocks: $wrapped<Block>[]): TraceabilityPredicate;
         blocks(blocks: $wrapped<Block>[]): TraceabilityPredicate;
