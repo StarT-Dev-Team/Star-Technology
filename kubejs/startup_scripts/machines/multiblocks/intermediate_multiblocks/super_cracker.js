@@ -43,5 +43,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'gtceu:block/casings/solid/machine_casing_palladium_substation',
             'gtceu:block/multiblock/cracking_unit'
         )
-        .additionalDisplay(global.crackerOverclockDisplay);
+        .additionalDisplay($CoiledMulti.CRACKER_DISPLAY);
 });

@@ -48,5 +48,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'gtceu:block/casings/gcym/high_temperature_smelting_casing',
             'gtceu:block/multiblock/gcym/blast_alloy_smelter'
         )
-        .additionalDisplay(global.coilMachineTempDisplay);
+        .additionalDisplay($CoiledMulti.BLAST_DISPLAY);
 });

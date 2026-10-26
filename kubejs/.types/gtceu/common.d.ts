@@ -862,6 +862,12 @@ declare namespace internal.com.gregtechceu.gtceu.common.data {
         VACUUM_RECIPES: GTRecipeType;
         ASSEMBLY_LINE_RECIPES: GTRecipeType;
 
+        ebfMachineTemp(coil: internal.com.gregtechceu.gtceu.api.block.ICoilType, tier: number): number;
+        crackerEUtMultiplier(coilTier: number): number;
+        pyrolyseDurationMultiplier(coilTier: number): number;
+        chemicalReactorDurationMultiplier(coilTier: number): number;
+        chemicalReactorEUtMultiplier(coilTier: number): number;
+
         get(name: string): GTRecipeType;
     };
 
