@@ -231,6 +231,15 @@ ServerEvents.recipes((event) => {
         C: 'gtceu:ev_electric_pump',
     });
 
+    event.recipes.gtceu.shaped('gtceu:thermic_fluid_heater', ['TPT', 'AMA', 'CDC'], {
+        T: '#gtceu:circuits/ev',
+        P: 'gtceu:tempered_glass',
+        M: 'gtceu:hv_fluid_heater',
+        A: 'gtceu:kanthal_quadruple_wire',
+        C: 'gtceu:hv_electric_pump',
+        D: 'gtceu:gold_double_cable',
+    });
+
     event.recipes.gtceu.shaped('gtceu:industrial_brewing_station', ['TPG', 'AMA', 'GCT'], {
         M: 'gtceu:ev_brewery',
         T: 'gtceu:ev_electric_pump',
