@@ -1,18 +1,8 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
-    event
-        .create('plant_ore_processing')
-        .category('ore_processing')
-        .setEUIO('in')
-        .setMaxIOSize(1, 6, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
-        .setSound(GTSoundEntries.FURNACE);
-});
-
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('ore_processing_plant', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .recipeType('plant_ore_processing')
+        .recipeType('ore_factory')
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT,
