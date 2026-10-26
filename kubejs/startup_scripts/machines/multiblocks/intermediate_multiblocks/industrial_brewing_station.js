@@ -31,6 +31,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     M: P.gtBlock('heat_vent'),
                     G: P.gtBlock('black_steel_frame'),
                     T: P.gtBlock('laminated_glass'),
+                    ' ': P.any(),
                     '@': P.controller(definition),
                 })
                 .build()
