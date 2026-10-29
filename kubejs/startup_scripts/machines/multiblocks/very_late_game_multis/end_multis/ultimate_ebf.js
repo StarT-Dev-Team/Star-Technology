@@ -66,5 +66,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'kubejs:block/casings/nether_multis/extreme_temperature_smelting_casing',
             'gtceu:block/multiblock/gcym/mega_blast_furnace'
         )
-        .additionalDisplay(global.coilMachineTempDisplay);
+        .additionalDisplay($CoiledMulti.BLAST_DISPLAY);
 });
