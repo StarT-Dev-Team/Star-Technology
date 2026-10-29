@@ -77,5 +77,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'kubejs:block/casings/riftic_multis/absolute_temperature_smelting_casing',
             'gtceu:block/multiblock/gcym/blast_alloy_smelter'
         )
-        .additionalDisplay(global.coilMachineTempDisplay);
+        .additionalDisplay($CoiledMulti.BLAST_DISPLAY);
 });
