@@ -47,7 +47,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     S: P.anyOf([
                         P.kjsBlock('enriched_naquadah_machine_casing'),
                         P.ability(PA.fluidIn, { max: 3, view: 1 }),
-                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                         P.ability(PA.optIn, { exact: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),

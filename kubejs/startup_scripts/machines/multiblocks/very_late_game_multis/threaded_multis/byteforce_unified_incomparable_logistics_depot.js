@@ -36,7 +36,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidIn, { max: 20, view: 1 }),
                         P.ability(PA.fluidOut, { max: 20, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
-                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     C: P.kjsBlock('draco_assembly_grating'),

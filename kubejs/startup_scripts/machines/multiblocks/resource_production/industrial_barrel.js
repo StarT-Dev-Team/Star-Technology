@@ -36,7 +36,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     C: P.anyOf([
                         P.block(GTBlocks.CASING_STAINLESS_CLEAN.get()),
                         P.ability(PA.itemIn, { max: 2, view: 1 }),
-                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                         P.ability(PA.itemOut, { max: 2, view: 1 }),
                         P.ability(PA.fluidIn, { max: 2, view: 1 }),
                         P.ability(PA.fluidOut, { max: 2, view: 1 }),
