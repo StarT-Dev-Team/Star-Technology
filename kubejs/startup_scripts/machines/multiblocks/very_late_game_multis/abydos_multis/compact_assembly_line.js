@@ -22,7 +22,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     S: P.anyOf([
                         P.kjsBlock('superdense_machine_casing'),
                         P.ability(PA.fluidIn, { max: 4, view: 1 }),
-                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.optIn, { exact: 1 }),
                     ]),
                     G: P.gtBlock('fusion_glass'),

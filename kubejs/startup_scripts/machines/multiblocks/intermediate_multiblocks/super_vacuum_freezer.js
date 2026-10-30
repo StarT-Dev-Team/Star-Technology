@@ -24,7 +24,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.itemOut, { view: 1 }),
                         P.ability(PA.fluidIn, { view: 1 }),
                         P.ability(PA.fluidOut, { view: 1 }),
-                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     B: P.gtBlock('extreme_engine_intake_casing'),
