@@ -7,7 +7,7 @@ ServerEvents.recipes((event) => {
         event.recipes.gtceu
             .assembler(id(`${tier}_universal_circuit`))
             .circuit(5)
-            .itemInputs(`#gtceu:circuits/${tier}`)
+            .itemInputs(Ingredient.of(`#gtceu:circuits/${tier}`).subtract(`kubejs:${tier}_universal_circuit`))
             .itemOutputs(`kubejs:${tier}_universal_circuit`)
             .EUt(4)
             .duration(1);

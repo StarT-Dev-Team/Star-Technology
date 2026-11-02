@@ -110,6 +110,20 @@ ServerEvents.recipes((event) => {
         event.recipes.thermal.lapidary_fuel('gtceu:flawless_diatron_gem', 750000 * 2.5);
         event.recipes.thermal.lapidary_fuel('gtceu:exquisite_diatron_gem', 750000 * 6.25);
         event.recipes.thermal.lapidary_fuel('minecraft:diamond', 300000);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_diamond_gem', 300000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_diamond_gem', 300000 * 6.25);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_lapis_gem', 40000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_lapis_gem', 40000 * 6.25);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_ruby_gem', 125000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_ruby_gem', 125000 * 6.25);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_amethyst_gem', 40000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_amethyst_gem', 40000 * 6.25);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_emerald_gem', 125000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_emerald_gem', 125000 * 6.25);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_sapphire_gem', 125000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_sapphire_gem', 125000 * 6.25);
+        event.recipes.thermal.lapidary_fuel('gtceu:flawless_nether_quartz_gem', 40000 * 2.5);
+        event.recipes.thermal.lapidary_fuel('gtceu:exquisite_nether_quartz_gem', 40000 * 6.25);
     });
 
     isModLoaded('systeams', () => {

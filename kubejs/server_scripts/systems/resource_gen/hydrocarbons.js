@@ -154,6 +154,20 @@ ServerEvents.recipes((event) => {
             voltage: GTValues.VHA[ZPM],
             duration: 285,
         },
+        {
+            output: 'polytetrafluoroethylene 4320',
+            fluidInput: [`${CV} 4250`, 'gtceu:fluorine 8500', 'gtceu:oxygen 7500'],
+            inputItem: false,
+            voltage: GTValues.VA[IV],
+            duration: 85,
+        },
+        {
+            output: 'styrene_butadiene_rubber 9072',
+            fluidInput: [`${BC} 5625`, `${CV} 1875`, `${PS} 1875`, 'gtceu:oxygen 28125'],
+            inputItem: ['7x gtceu:sulfur_dust'],
+            voltage: GTValues.VA[IV] / 2,
+            duration: 25,
+        },
     ]).forEach((superSkip) => {
         const { output, fluidInput, inputItem, voltage, duration } = superSkip;
         const recipe = event.recipes.gtceu.bacteria_synthesizer(id(`${output.split(' ')[0]}_synthesis`));

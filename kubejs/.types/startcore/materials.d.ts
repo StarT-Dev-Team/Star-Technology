@@ -1,4 +1,4 @@
-declare namespace internal.com.startechnology.start_core.material {
+declare namespace internal.com.startechnology.start_core.materials {
     import Material = com.gregtechceu.gtceu.api.data.chemical.material.Material;
 
     const StarTMaterials: {
@@ -663,6 +663,6 @@ declare namespace internal.com.startechnology.start_core.material {
 
 declare namespace internal.kjs {
     interface LoadableClasses {
-        'com.startechnology.start_core.material.StarTMaterials': typeof internal.com.startechnology.start_core.material.StarTMaterials;
+        'com.startechnology.start_core.materials.StarTMaterials': typeof internal.com.startechnology.start_core.materials.StarTMaterials;
     }
 }

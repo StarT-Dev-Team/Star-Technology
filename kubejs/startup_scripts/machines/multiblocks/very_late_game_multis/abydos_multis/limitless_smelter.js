@@ -44,5 +44,5 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             'gtceu:block/casings/gcym/high_temperature_smelting_casing',
             'gtceu:block/machines/electric_furnace'
         )
-        .additionalDisplay(global.multiSmelterParallelDisplay);
+        .additionalDisplay($CoiledMulti.SMELTER_DISPLAY);
 });

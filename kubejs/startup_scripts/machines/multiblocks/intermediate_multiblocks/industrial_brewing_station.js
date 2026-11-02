@@ -2,6 +2,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('industrial_brewing_station', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
+        .tooltips([Text.translate('block.start_core.gap'), Text.translate('gtceu.multiblock.exact_hatch_1.tooltip')])
         .recipeType('brewery')
         .recipeModifiers([
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
@@ -11,19 +12,16 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         .appearanceBlock(() => Block.getBlock('gtceu:stable_machine_casing'))
         .pattern((definition) =>
             newFactoryBlockPattern([
-                '       |       |       |       ',
                 ' GCCCG | GTTTG | GTTTG |  GGG  ',
                 ' CPPPC | T   T | T   T | GCCCG ',
                 ' CPMPC | T M T | T M T | GCCCG ',
                 ' CPPPC | T   T | T   T | GCCCG ',
                 ' GC@CG | GTTTG | GTTTG |  GGG  ',
-                '       |       |       |       ',
             ])
                 .whereDict({
                     C: P.anyOf([
                         P.gtBlock('titanium_firebox_casing', { min: 6 }),
                         P.ability(PA.itemIn, { max: 1 }),
-                        P.ability(PA.itemOut, { max: 1 }),
                         P.ability(PA.fluidIn, { max: 1 }),
                         P.ability(PA.fluidOut, { max: 1 }),
                         P.ability(PA.euIn, { max: 1 }),

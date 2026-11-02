@@ -137,8 +137,23 @@ ServerEvents.recipes((event) => {
         .EUtVHA(UEV);
 
     event.recipes.gtceu
+        .chemical_skip(id('indium_line'))
+        .itemInputs('20x gtceu:purified_sphalerite_ore', '20x gtceu:purified_galena_ore')
+        .inputFluids('gtceu:sulfuric_acid 40000')
+        .itemOutputs(
+            '20x gtceu:indium_dust',
+            '60x gtceu:sulfur_dust',
+            '10x gtceu:lead_dust',
+            '10x gtceu:silver_dust',
+            '10x gtceu:zinc_dust'
+        )
+        .outputFluids('gtceu:oxygen 60000', 'gtceu:diluted_sulfuric_acid 10000', 'minecraft:water 10000')
+        .duration(85)
+        .EUtVHA(LuV);
+
+    event.recipes.gtceu
         .chemical_skip(id('tungstate_line'))
-        .itemInputs('1x gtceu:tungstate_dust')
+        .itemInputs('7x gtceu:tungstate_dust')
         .inputFluids('gtceu:hydrochloric_acid 2000')
         .itemOutputs('1x gtceu:tungsten_dust', '2x gtceu:lithium_dust')
         .outputFluids('gtceu:chlorine 2000', 'gtceu:hydrogen 2000', 'gtceu:oxygen 4000')
@@ -194,16 +209,10 @@ ServerEvents.recipes((event) => {
 
     event.recipes.gtceu
         .chemical_skip(id('zapolgium_skip'))
-        .itemInputs('450x gtceu:zapolite_dust', '516x gtceu:potassium_hydroxide_dust')
-        .inputFluids('gtceu:hydrogen 72000', 'gtceu:hydrochloric_acid 172000')
-        .itemOutputs(
-            '86x gtceu:zapolgium_dust',
-            '250x gtceu:bauxite_dust',
-            '172x gtceu:iodine_dust',
-            '344x gtceu:rock_salt_dust'
-        )
-        .outputFluids('minecraft:water 122000', 'gtceu:oxygen 86000')
-        .duration(500)
+        .itemInputs('140x gtceu:zapolite_dust')
+        .itemOutputs('20x gtceu:zapolgium_dust', '50x gtceu:bauxite_dust', '40x gtceu:iodine_dust')
+        .outputFluids('gtceu:oxygen 30000')
+        .duration(80)
         .EUtVHA(UIV);
 
     event.recipes.gtceu
@@ -217,6 +226,28 @@ ServerEvents.recipes((event) => {
             '50x gtceu:calcium_hydroxide_dust'
         )
         .outputFluids('gtceu:oxygen 10000')
+        .duration(14)
+        .EUtVHA(UIV);
+
+    event.recipes.gtceu
+        .chemical_skip(id('xenotime_skip'))
+        .itemInputs('60x gtceu:xenotime_dust', '10x gtceu:rare_earth_dust')
+        .inputFluids('gtceu:hydrogen 120000')
+        .itemOutputs(
+            '25x gtceu:lutetium_dust',
+            '25x gtceu:dysprosium_dust',
+            '25x gtceu:europium_dust',
+            '25x gtceu:samarium_dust'
+        )
+        .outputFluids('gtceu:phosphoric_acid 40000')
+        .duration(18)
+        .EUtVHA(UIV);
+
+    event.recipes.gtceu
+        .chemical_skip(id('naquadite_skip'))
+        .itemInputs('40x gtceu:naquadite_dust')
+        .inputFluids('gtceu:hydroiodic_acid 5000')
+        .itemOutputs('20x gtceu:naquadah_dust', '10x gtceu:magnesia_dust', '10x gtceu:magnetite_dust')
         .duration(14)
         .EUtVHA(UIV);
 
