@@ -48,7 +48,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     A: P.anyOf([
                         P.kjsBlock('cattomolymer_casing'),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn, { max: 2 }),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     B: P.kjsBlock('nyanium_heat_escape_casing'),

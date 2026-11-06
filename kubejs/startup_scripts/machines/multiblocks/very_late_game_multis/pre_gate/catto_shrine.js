@@ -46,7 +46,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidIn, { max: 2, view: 1 }),
                         P.ability(PA.itemOut, { max: 1, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                     ]),
                     G: P.gtBlock('fusion_glass'),
                     H: P.gtBlock('superconducting_coil'),
