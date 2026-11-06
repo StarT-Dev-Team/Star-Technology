@@ -25,7 +25,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.itemOut, { max: 1 }),
                         P.ability(PA.fluidIn, { max: 1 }),
                         P.ability(PA.fluidOut, { max: 1 }),
-                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     P: P.gtBlock('titanium_firebox_casing'),

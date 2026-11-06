@@ -33,7 +33,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.block(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
                             .or(P.ability(PA.maintenance, { exact: 1 }))
                             .or(P.ability(PA.parallelHatch, { max: 1 }))
-                            .or(P.ability(PA.euIn, { max: 2 })),
+                            .or(P.ability(PA.euIn, { min: 1, max: 2 })),
                     ]),
                     S: P.block(GCYMBlocks.CASING_STRESS_PROOF.get()),
                     F: P.gtBlock('tungsten_steel_frame'),

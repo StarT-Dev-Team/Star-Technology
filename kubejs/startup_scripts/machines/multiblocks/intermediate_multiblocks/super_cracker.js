@@ -26,7 +26,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.itemIn, { max: 2, view: 1 }),
                         P.ability(PA.fluidIn, { max: 2, view: 1 }),
                         P.ability(PA.fluidOut, { max: 2, view: 1 }),
-                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     C: P.gtBlock('birmabright_frame'),

@@ -45,7 +45,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidOut, { max: 2, view: 1 }),
                         P.ability(PA.itemIn, { max: 2, view: 1 }),
                         P.ability(PA.itemOut, { max: 2, view: 1 }),
-                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                         P.ability(PA.variadicsInterface, { max: 4, view: 1 }),
                     ]),

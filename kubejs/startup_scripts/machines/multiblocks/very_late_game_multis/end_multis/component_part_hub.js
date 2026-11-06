@@ -30,7 +30,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidIn, { max: 4, view: 1 }),
                         P.ability(PA.itemIn, { max: 8, view: 1 }),
                         P.ability(PA.itemOut, { max: 1, view: 1 }),
-                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.optIn, { exact: 1 }),
                         P.gtBlock('uhv_stabilization_module', { exact: 1 }),
                     ]),
