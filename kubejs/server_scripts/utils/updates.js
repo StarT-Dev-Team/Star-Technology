@@ -50,7 +50,7 @@ PlayerEvents.loggedIn((event) => {
      * @param {string | undefined} fromVersion
      */
     const displayUpdateMessage = (fromVersion) => {
-        /** @type {string | internal.net.minecraft.network.chat.MutableComponent} */
+        /** @type {string | internal.net.minecraft.network.chat.MutableComponent | undefined} */
         let fromVersionText = fromVersion;
         if (!fromVersionText) {
             fromVersionText = Text.translatable('messages.kubejs.older_version');

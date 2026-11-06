@@ -30,7 +30,7 @@ const UPDATE_HISTORY = [
     {
         version: 'Theta 3',
         tag: 'theta_3',
-        breakingChanges: true,
+        breakingChanges: false,
     },
 ];
 
