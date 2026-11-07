@@ -1,6 +1,6 @@
 global.withModsLoaded('exnihilosequentia', () => {
     BlockEvents.rightClicked('minecraft:grass_block', (event) => {
-        if (event.player.isCrouching() && event.player.getMainHandItem() === null) {
+        if (event.player.isCrouching() && event.player.getMainHandItem().isEmpty()) {
             if (Math.random() < 0.75) {
                 event.block.popItemFromFace(Item.of('exnihilosequentia:stone_pebble'), 'up');
             }
