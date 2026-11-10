@@ -164,6 +164,9 @@ export default [
                 OpV: 'readonly',
                 MAX: 'readonly',
                 T: 'writable',
+                PACK_VERSION: 'writable',
+                VERSION_SLUG: 'writable',
+                UPDATE_HISTORY: 'writable'
             },
         },
         rules: {

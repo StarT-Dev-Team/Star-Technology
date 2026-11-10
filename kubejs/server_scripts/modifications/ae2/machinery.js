@@ -398,18 +398,20 @@ ServerEvents.recipes((event) => {
             GTValues.VA[MV]
         );
 
-        assemblerFluidRem(
-            'expanded_io_port',
-            'expandedae:exp_io_port',
-            [
-                'expatternprovider:ex_io_port',
-                '4x ae2:engineering_processor',
-                '#gtceu:circuits/iv',
-                '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
-            ],
-            'fluix_steel 576',
-            GTValues.VA[IV]
-        );
+        isModLoaded('expandedae', () => {
+            assemblerFluidRem(
+                'expanded_io_port',
+                'expandedae:exp_io_port',
+                [
+                    'expatternprovider:ex_io_port',
+                    '4x ae2:engineering_processor',
+                    '#gtceu:circuits/iv',
+                    '8x gtceu:netherite_certus_quartz_skystone_alloy_plate',
+                ],
+                'fluix_steel 576',
+                GTValues.VA[IV]
+            );
+        });
 
         ['import_bus', 'export_bus'].forEach((type) => {
             assemblerFluidRem(
