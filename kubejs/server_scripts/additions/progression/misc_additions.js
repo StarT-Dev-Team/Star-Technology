@@ -173,6 +173,14 @@ ServerEvents.recipes((event) => {
         .circuit(3)
         .duration(360)
         .EUtVHA(LuV);
+
+    event.recipes.gtceu
+        .large_chemical_reactor(id('water_recombination'))
+        .inputFluids('gtceu:oxygen 1000', 'gtceu:hydrogen 2000')
+        .outputFluids('minecraft:water 1000')
+        .duration(40)
+        .EUtVA(ULV)
+        .circuit(6);
 });
 
 ItemEvents.rightClicked('kubejs:compass_of_the_flame', (event) => {

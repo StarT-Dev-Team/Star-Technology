@@ -2605,12 +2605,20 @@
 				"78644D6D1CEC15C6"
 				"6F20CEDBB56F1041"
 			]
+			icon: "gtceu:refractory_dense_residue_bucket"
 			id: "172A010B8001FE83"
-			tasks: [{
-				id: "2A4313777A00D25F"
-				item: "gtceu:refractory_dense_residue_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "2A4313777A00D25F"
+					item: "gtceu:refractory_dense_residue_bucket"
+					optional_task: true
+					type: "item"
+				}
+				{
+					id: "3587824547D33887"
+					type: "checkmark"
+				}
+			]
 			x: -17.5d
 			y: -5.5d
 		}
@@ -2619,12 +2627,20 @@
 				"53D32686A5778F2F"
 				"6F20CEDBB56F1041"
 			]
+			icon: "gtceu:reactive_dense_residue_bucket"
 			id: "02D8D2CC068C36B5"
-			tasks: [{
-				id: "53ABC551CBDF7964"
-				item: "gtceu:reactive_dense_residue_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "53ABC551CBDF7964"
+					item: "gtceu:reactive_dense_residue_bucket"
+					optional_task: true
+					type: "item"
+				}
+				{
+					id: "200A6A71E231AE48"
+					type: "checkmark"
+				}
+			]
 			x: -17.5d
 			y: 4.5d
 		}
@@ -3035,12 +3051,20 @@
 				"150C05FADA9CCDBC"
 				"514820A534A03D55"
 			]
+			icon: "gtceu:naquadite_solution_bucket"
 			id: "7105D59889790CAE"
-			tasks: [{
-				id: "3D4BAA25E33BA464"
-				item: "gtceu:naquadite_solution_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "3D4BAA25E33BA464"
+					item: "gtceu:naquadite_solution_bucket"
+					optional_task: true
+					type: "item"
+				}
+				{
+					id: "397D2ABE7799462D"
+					type: "checkmark"
+				}
+			]
 			x: -10.5d
 			y: -0.5d
 		}
