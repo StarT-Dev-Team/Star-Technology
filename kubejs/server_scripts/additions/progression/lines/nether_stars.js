@@ -117,6 +117,7 @@ ServerEvents.recipes((event) => {
             .itemInputs('1x kubejs:energized_nether_star_shard')
             .inputFluids(`gtceu:${element} 1728`)
             .outputFluids(`gtceu:energized_${element} 1728`)
+            .minTemp(4299)
             .duration(960)
             .EUtVA(LuV);
 

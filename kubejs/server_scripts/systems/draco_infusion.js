@@ -43,6 +43,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('minecraft:chorus_fruit')
         .inputFluids('gtceu:oganesson 10')
         .itemOutputs('minecraft:popped_chorus_fruit')
+        .minTemp(3999)
         .duration(2400)
         .EUtVHA(UV);
 

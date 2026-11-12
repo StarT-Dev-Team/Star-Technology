@@ -230,6 +230,20 @@ declare namespace internal.com.startechnology.start_core.machine.compound_genera
     };
 }
 
+declare namespace internal.com.startechnology.start_core.machine.heat_chamber {
+    import WorkableElectricMultiblockMachine = com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+
+    interface HeatChamberMachine extends $object<
+        'com.startechnology.start_core.machine.heat_chamber.HeatChamberMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const HeatChamberMachine: $class<HeatChamberMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): HeatChamberMachine;
+    };
+}
+
 declare namespace internal.kjs {
     interface LoadableClasses {
         'com.startechnology.start_core.machine.StarTPartAbility': typeof internal.com.startechnology.start_core.machine.StarTPartAbility;
@@ -248,5 +262,6 @@ declare namespace internal.kjs {
         'com.startechnology.start_core.machine.bulking.BulkingCoiledMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingCoiledMachine;
         'com.startechnology.start_core.machine.bulking.BulkingThreadedMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingThreadedMachine;
         'com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine': typeof internal.com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine;
+        'com.startechnology.start_core.machine.heat_chamber.HeatChamberMachine': typeof internal.com.startechnology.start_core.machine.heat_chamber.HeatChamberMachine;
     }
 }

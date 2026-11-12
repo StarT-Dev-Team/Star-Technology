@@ -1,11 +1,13 @@
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('super_compact_heat_chamber', 'multiblock')
+        .machine((holder) => new $HeatChamberMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('heat_chamber')
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.HEAT_CHAMBER,
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
             GTRecipeModifiers.BATCH_MODE,
         ])

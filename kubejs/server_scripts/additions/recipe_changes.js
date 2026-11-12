@@ -321,8 +321,9 @@ ServerEvents.recipes((event) => {
         .itemInputs('gtceu:tiny_enriched_naquadah_dust')
         .inputFluids('gtceu:neon 120')
         .itemOutputs('gtceu:tiny_purified_naquadah_dust')
+        .minTemp(2399)
         .duration(480)
-        .EUt(16384);
+        .EUtVHA(LuV);
 
     //echo changes
     event.remove({ id: /gtceu:implosion_compressor\/implode_dust_echo_shard_.*/ });

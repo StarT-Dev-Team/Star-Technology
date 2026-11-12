@@ -6,6 +6,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('32x gtceu:graphite_dust')
         .inputFluids('gtceu:utopian_akreyrium 2000', 'gtceu:pcb_coolant 5000')
         .outputFluids('gtceu:akreyrium_pcb_graphite_nanoparticle_coolant 4000')
+        .minTemp(5699)
         .duration(250)
         .EUtVHA(ZPM);
 
