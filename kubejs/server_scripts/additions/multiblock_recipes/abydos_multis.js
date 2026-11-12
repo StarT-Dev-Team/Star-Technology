@@ -342,4 +342,28 @@ ServerEvents.recipes((event) => {
         )
         .EUtVHA(UV)
         .addMaterialInfo(true, true);
+
+    event.recipes.gtceu
+        .assembly_line(id('drone_nest'))
+        .itemInputs(
+            'gtceu:high_performance_computation_array',
+            '#gtceu:circuits/uev',
+            'gtceu:uhv_field_generator',
+            'start_core:data_dna_disk',
+            '4x gtceu:neutronium_ultradense_plate',
+            '64x gtceu:ruthenium_trinium_americium_neutronate_double_wire',
+            '64x gtceu:normal_optical_pipe'
+        )
+        .inputFluids(
+            'gtceu:indium_tin_lead_cadmium_soldering_alloy 1152',
+            'gtceu:utopian_akreyrium 576',
+            'gtceu:pcb_coolant 4000'
+        )
+        .itemOutputs('gtceu:drone_nest')
+        .duration(2400)
+        .stationResearch((researchBuilder) =>
+            researchBuilder.researchStack(Item.of('kubejs:reconnaissance_drone')).EUt(GTValues.VHA[ZPM]).CWUt(32)
+        )
+        .EUtVHA(UV)
+        .addMaterialInfo(true, true);
 });
