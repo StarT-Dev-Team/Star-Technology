@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .create('drone_reconnaissance')
         .category('highly_advanced')
         .setEUIO('in')
-        .setMaxIOSize(2, 6, 2, 3)
+        .setMaxIOSize(3, 12, 1, 0)
         .setSound(GTSoundEntries.COOLING)
         .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, FillDirection.LEFT_TO_RIGHT);
 });

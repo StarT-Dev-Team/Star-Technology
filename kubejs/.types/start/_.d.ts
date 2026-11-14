@@ -95,5 +95,6 @@ declare namespace internal.kjs {
         me_assembler(id: $wrapped<ResourceLocation>): GTRecipeJS;
         fermenting(id: $wrapped<ResourceLocation>): GTRecipeJS;
         pulverizer(id: $wrapped<ResourceLocation>): GTRecipeJS;
+        drone_reconnaissance(id: $wrapped<ResourceLocation>): GTRecipeJS;
     }
 }
