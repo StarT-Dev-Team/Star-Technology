@@ -21,6 +21,7 @@ declare namespace internal.dev.latvian.mods.kubejs.server.tag {
         add(tag: $wrapped<ResourceLocation>, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
         remove(tag: $wrapped<ResourceLocation>, filters: TagEventFilter__Wrapper[]): TagWrapper;
         remove(tag: $wrapped<ResourceLocation>, ...filters: TagEventFilter__Wrapper[]): TagWrapper;
+        removeAll(tag: $wrapped<ResourceLocation>): TagWrapper;
         removeAllTagsFrom(...ids: TagEventFilter__Wrapper[]): void;
         removeAllTagsFrom(ids: TagEventFilter__Wrapper[]): void;
     }
