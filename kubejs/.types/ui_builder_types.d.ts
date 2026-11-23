@@ -1,6 +1,5 @@
-import IGuiTexture = internal.com.lowdragmc.lowdraglib.gui.texture.IGuiTexture;
-import ResourceTexture = internal.com.lowdragmc.lowdraglib.gui.texture.ResourceTexture;
-import ProgressTexture = internal.com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
+import IGuiTexture = internal.com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
+import SpriteTexture = internal.com.lowdragmc.lowdraglib2.gui.texture.SpriteTexture;
 
 interface UIBuilderParams {
     group: string;
@@ -10,7 +9,7 @@ interface UIBuilderParams {
     progress: {
         pos: [number, number];
         size: [number, number];
-        texture: ResourceTexture | ProgressTexture;
+        texture: SpriteTexture;
     };
     inputs: {
         type: 'item' | 'fluid';

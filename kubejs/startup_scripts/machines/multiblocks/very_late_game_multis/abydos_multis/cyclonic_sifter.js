@@ -5,7 +5,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .setEUIO('in')
         .setMaxIOSize(2, 6, 2, 3)
         .setSound(GTSoundEntries.CENTRIFUGE)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, $FillDirection.LEFT_TO_RIGHT);
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {

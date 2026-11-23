@@ -6,7 +6,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .setMaxTooltips(4)
         .setMaxIOSize(6, 1, 6, 1)
         .setSound(GTSoundEntries.MIXER)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_MIXER, $FillDirection.LEFT_TO_RIGHT);
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {

@@ -141,3 +141,6 @@ const $TooltipHelper = Java.loadClass('com.gregtechceu.gtceu.client.util.Tooltip
 
 const $StarTMaterials = Java.loadClass('com.startechnology.start_core.materials.StarTMaterials');
 const $StarTElements = Java.loadClass('com.startechnology.start_core.elements.StarTElements');
+
+const $FillDirection = Java.loadClass('com.lowdragmc.lowdraglib2.gui.ui.data.FillDirection');
+const $GuiTextureGroup = Java.loadClass('com.lowdragmc.lowdraglib2.gui.texture.GuiTextureGroup');

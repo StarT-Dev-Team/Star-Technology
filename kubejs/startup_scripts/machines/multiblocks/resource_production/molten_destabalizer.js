@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('resource_production')
         .setMaxIOSize(0, 12, 1, 8)
         .setSound(GTSoundEntries.MINER)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_DISTILLATION_TOWER, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_DISTILLATION_TOWER, $FillDirection.LEFT_TO_RIGHT);
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {

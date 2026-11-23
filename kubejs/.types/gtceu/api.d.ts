@@ -95,7 +95,7 @@ declare namespace internal.com.gregtechceu.gtceu.api.capability.recipe {
     }
 
     import Enum = internal.java.lang.Enum;
-    import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
+    import IGuiTexture = lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
 
     interface IO extends $object<
         { name: 'com.gregtechceu.gtceu.api.capability.recipe.IO'; enumClass: typeof IO },
@@ -1610,350 +1610,347 @@ declare namespace internal.com.gregtechceu.gtceu.api.sound {
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.gui {
-    import ResourceTexture = com.lowdragmc.lowdraglib.gui.texture.ResourceTexture;
-    import ResourceBorderTexture = com.lowdragmc.lowdraglib.gui.texture.ResourceBorderTexture;
+    import SpriteTexture = com.lowdragmc.lowdraglib2.gui.texture.SpriteTexture;
+
+    interface SteamTexture extends $object<'com.gregtechceu.gtceu.api.gui.SteamTexture'> {
+        get(isHighPressure: boolean): SpriteTexture;
+    }
 
     const GuiTextures: {
-        GREGTECH_LOGO: ResourceTexture;
-        GREGTECH_LOGO_XMAS: ResourceTexture;
-        TOOL_FRONT_FACING_ROTATION: ResourceTexture;
-        TOOL_IO_FACING_ROTATION: ResourceTexture;
-        TOOL_PAUSE: ResourceTexture;
-        TOOL_START: ResourceTexture;
-        TOOL_COVER_SETTINGS: ResourceTexture;
-        TOOL_MUTE: ResourceTexture;
-        TOOL_SOUND: ResourceTexture;
-        TOOL_ALLOW_INPUT: ResourceTexture;
-        TOOL_ATTACH_COVER: ResourceTexture;
-        TOOL_REMOVE_COVER: ResourceTexture;
-        TOOL_PIPE_BLOCK: ResourceTexture;
-        TOOL_PIPE_CONNECT: ResourceTexture;
-        TOOL_WIRE_BLOCK: ResourceTexture;
-        TOOL_WIRE_CONNECT: ResourceTexture;
-        TOOL_AUTO_OUTPUT: ResourceTexture;
-        TOOL_DISABLE_AUTO_OUTPUT: ResourceTexture;
-        TOOL_SWITCH_CONVERTER_NATIVE: ResourceTexture;
-        TOOL_SWITCH_CONVERTER_EU: ResourceTexture;
-        CLIPBOARD_BACKGROUND: ResourceTexture;
-        CLIPBOARD_PAPER_BACKGROUND: ResourceTexture;
-        DISPLAY: ResourceTexture;
-        BLANK: ResourceTexture;
-        BLANK_TRANSPARENT: ResourceTexture;
-        FLUID_TANK_BACKGROUND: ResourceTexture;
-        FLUID_TANK_OVERLAY: ResourceTexture;
-        SLOT_DARKENED: ResourceTexture;
-        TOGGLE_BUTTON_BACK: ResourceTexture;
-        CLOSE_ICON: ResourceTexture;
-        BLOCKS_INPUT: ResourceTexture;
-        BUTTON_ALLOW_IMPORT_EXPORT: ResourceTexture;
-        BUTTON_BLACKLIST: ResourceTexture;
-        BUTTON_CHUNK_MODE: ResourceTexture;
-        BUTTON_CLEAR_GRID: ResourceTexture;
-        BUTTON_FILTER_DAMAGE: ResourceTexture;
-        BUTTON_DISTINCT_BUSES: ResourceTexture;
-        BUTTON_POWER: ResourceTexture;
-        BUTTON_BATCH: ResourceTexture;
-        BUTTON_FILTER_NBT: ResourceTexture;
-        BUTTON_FLUID_OUTPUT: ResourceTexture;
-        BUTTON_ITEM_OUTPUT: ResourceTexture;
-        BUTTON_LOCK: ResourceTexture;
-        BUTTON_REDSTONE_STRENGTH: ResourceTexture;
-        BUTTON_VOID: ResourceTexture;
-        BUTTON_VOID_PARTIAL: ResourceTexture;
-        BUTTON_VOID_MULTIBLOCK: ResourceTexture;
-        BUTTON_LEFT: ResourceTexture;
-        BUTTON_PUBLIC_PRIVATE: ResourceTexture;
-        BUTTON_CHECK: ResourceTexture;
-        BUTTON_LIST: ResourceTexture;
-        BUTTON_RIGHT: ResourceTexture;
-        BUTTON_SILK_TOUCH_MODE: ResourceTexture;
-        BUTTON_SWITCH_VIEW: ResourceTexture;
-        BUTTON_WORKING_ENABLE: ResourceTexture;
-        BUTTON_INT_CIRCUIT_PLUS: ResourceTexture;
-        BUTTON_INT_CIRCUIT_MINUS: ResourceTexture;
-        CLIPBOARD_BUTTON: ResourceTexture;
-        DISTRIBUTION_MODE: ResourceTexture;
-        BUTTON_AUTO_PULL: ResourceTexture;
-        LOCK: ResourceTexture;
-        LOCK_WHITE: ResourceTexture;
-        SWITCH: ResourceTexture;
-        SWITCH_HORIZONTAL: ResourceTexture;
-        VANILLA_BUTTON: ResourceTexture;
-        ENERGY_DETECTOR_COVER_MODE_BUTTON: ResourceTexture;
-        INVERT_REDSTONE_BUTTON: ResourceTexture;
-        IO_CONFIG_FLUID_MODES_BUTTON: ResourceTexture;
-        IO_CONFIG_ITEM_MODES_BUTTON: ResourceTexture;
-        IO_CONFIG_COVER_SLOT_OVERLAY: ResourceTexture;
-        IO_CONFIG_COVER_SETTINGS: ResourceTexture;
-        PATTERN_OVERLAY: ResourceTexture;
-        REFUND_OVERLAY: ResourceTexture;
-        INDICATOR_NO_ENERGY: ResourceTexture;
-        TANK_ICON: ResourceTexture;
-        SLIDER_BACKGROUND: ResourceTexture;
-        SLIDER_BACKGROUND_VERTICAL: ResourceTexture;
-        SLIDER_ICON: ResourceTexture;
-        MAINTENANCE_BUTTON: ResourceTexture;
-        MAINTENANCE_ICON: ResourceTexture;
-        STORAGE_ICON: ResourceTexture;
-        BUTTON_MINER_MODES: ResourceTexture;
-        OREBY_BASE: ResourceTexture;
-        OREBY_CHEM: ResourceTexture;
-        OREBY_SEP: ResourceTexture;
-        OREBY_SIFT: ResourceTexture;
-        OREBY_SMELT: ResourceTexture;
-        PRIMITIVE_FURNACE_OVERLAY: ResourceTexture;
-        PRIMITIVE_DUST_OVERLAY: ResourceTexture;
-        PRIMITIVE_INGOT_OVERLAY: ResourceTexture;
-        PRIMITIVE_LARGE_FLUID_TANK: ResourceTexture;
-        PRIMITIVE_LARGE_FLUID_TANK_OVERLAY: ResourceTexture;
-        PRIMITIVE_BLAST_FURNACE_PROGRESS_BAR: ResourceTexture;
-        ATOMIC_OVERLAY_1: ResourceTexture;
-        ATOMIC_OVERLAY_2: ResourceTexture;
-        ARROW_INPUT_OVERLAY: ResourceTexture;
-        ARROW_OUTPUT_OVERLAY: ResourceTexture;
-        BATTERY_OVERLAY: ResourceTexture;
-        BEAKER_OVERLAY_1: ResourceTexture;
-        BEAKER_OVERLAY_2: ResourceTexture;
-        BEAKER_OVERLAY_3: ResourceTexture;
-        BEAKER_OVERLAY_4: ResourceTexture;
-        BENDER_OVERLAY: ResourceTexture;
-        BOX_OVERLAY: ResourceTexture;
-        BOXED_OVERLAY: ResourceTexture;
-        BREWER_OVERLAY: ResourceTexture;
-        CANNER_OVERLAY: ResourceTexture;
-        CHARGER_OVERLAY: ResourceTexture;
-        CANISTER_OVERLAY: ResourceTexture;
-        CENTRIFUGE_OVERLAY: ResourceTexture;
-        CIRCUIT_OVERLAY: ResourceTexture;
-        COMPRESSOR_OVERLAY: ResourceTexture;
-        CRACKING_OVERLAY_1: ResourceTexture;
-        CRACKING_OVERLAY_2: ResourceTexture;
-        CRUSHED_ORE_OVERLAY: ResourceTexture;
-        CRYSTAL_OVERLAY: ResourceTexture;
-        CUTTER_OVERLAY: ResourceTexture;
-        DARK_CANISTER_OVERLAY: ResourceTexture;
-        DUST_OVERLAY: ResourceTexture;
-        EXTRACTOR_OVERLAY: ResourceTexture;
-        FILTER_SLOT_OVERLAY: ResourceTexture;
-        FURNACE_OVERLAY_1: ResourceTexture;
-        FURNACE_OVERLAY_2: ResourceTexture;
-        HAMMER_OVERLAY: ResourceTexture;
-        HEATING_OVERLAY_1: ResourceTexture;
-        HEATING_OVERLAY_2: ResourceTexture;
-        IMPLOSION_OVERLAY_1: ResourceTexture;
-        IMPLOSION_OVERLAY_2: ResourceTexture;
-        IN_SLOT_OVERLAY: ResourceTexture;
-        INGOT_OVERLAY: ResourceTexture;
-        INT_CIRCUIT_OVERLAY: ResourceTexture;
-        LENS_OVERLAY: ResourceTexture;
-        LIGHTNING_OVERLAY_1: ResourceTexture;
-        LIGHTNING_OVERLAY_2: ResourceTexture;
-        MOLD_OVERLAY: ResourceTexture;
-        MOLECULAR_OVERLAY_1: ResourceTexture;
-        MOLECULAR_OVERLAY_2: ResourceTexture;
-        MOLECULAR_OVERLAY_3: ResourceTexture;
-        MOLECULAR_OVERLAY_4: ResourceTexture;
-        OUT_SLOT_OVERLAY: ResourceTexture;
-        PAPER_OVERLAY: ResourceTexture;
-        PRINTED_PAPER_OVERLAY: ResourceTexture;
-        PIPE_OVERLAY_2: ResourceTexture;
-        PIPE_OVERLAY_1: ResourceTexture;
-        PRESS_OVERLAY_1: ResourceTexture;
-        PRESS_OVERLAY_2: ResourceTexture;
-        PRESS_OVERLAY_3: ResourceTexture;
-        PRESS_OVERLAY_4: ResourceTexture;
-        SAWBLADE_OVERLAY: ResourceTexture;
-        SOLIDIFIER_OVERLAY: ResourceTexture;
-        STRING_SLOT_OVERLAY: ResourceTexture;
-        TOOL_SLOT_OVERLAY: ResourceTexture;
-        TURBINE_OVERLAY: ResourceTexture;
-        VIAL_OVERLAY_1: ResourceTexture;
-        VIAL_OVERLAY_2: ResourceTexture;
-        WIREMILL_OVERLAY: ResourceTexture;
-        POSITIVE_MATTER_OVERLAY: ResourceTexture;
-        NEUTRAL_MATTER_OVERLAY: ResourceTexture;
-        DATA_ORB_OVERLAY: ResourceTexture;
-        SCANNER_OVERLAY: ResourceTexture;
-        DUCT_TAPE_OVERLAY: ResourceTexture;
-        RESEARCH_STATION_OVERLAY: ResourceTexture;
-        PROGRESS_BAR_ARC_FURNACE: ResourceTexture;
-        PROGRESS_BAR_ARROW: ResourceTexture;
-        PROGRESS_BAR_ARROW_MULTIPLE: ResourceTexture;
-        PROGRESS_BAR_ASSEMBLER: ResourceTexture;
-        PROGRESS_BAR_ASSEMBLY_LINE: ResourceTexture;
-        PROGRESS_BAR_ASSEMBLY_LINE_ARROW: ResourceTexture;
-        PROGRESS_BAR_BATH: ResourceTexture;
-        PROGRESS_BAR_BENDING: ResourceTexture;
-        PROGRESS_BAR_BOILER_HEAT: ResourceTexture;
-        PROGRESS_BAR_CANNER: ResourceTexture;
-        PROGRESS_BAR_CIRCUIT: ResourceTexture;
-        PROGRESS_BAR_CIRCUIT_ASSEMBLER: ResourceTexture;
-        PROGRESS_BAR_COKE_OVEN: ResourceTexture;
-        PROGRESS_BAR_COMPRESS: ResourceTexture;
-        PROGRESS_BAR_CRACKING: ResourceTexture;
-        PROGRESS_BAR_CRACKING_INPUT: ResourceTexture;
-        PROGRESS_BAR_CRYSTALLIZATION: ResourceTexture;
-        PROGRESS_BAR_DISTILLATION_TOWER: ResourceTexture;
-        PROGRESS_BAR_EXTRACT: ResourceTexture;
-        PROGRESS_BAR_EXTRUDER: ResourceTexture;
-        PROGRESS_BAR_FUSION: ResourceTexture;
-        PROGRESS_BAR_GAS_COLLECTOR: ResourceTexture;
-        PROGRESS_BAR_HAMMER: ResourceTexture;
-        PROGRESS_BAR_HAMMER_BASE: ResourceTexture;
-        PROGRESS_BAR_LATHE: ResourceTexture;
-        PROGRESS_BAR_LATHE_BASE: ResourceTexture;
-        PROGRESS_BAR_MACERATE: ResourceTexture;
-        PROGRESS_BAR_MAGNET: ResourceTexture;
-        PROGRESS_BAR_MASS_FAB: ResourceTexture;
-        PROGRESS_BAR_MIXER: ResourceTexture;
-        PROGRESS_BAR_PACKER: ResourceTexture;
-        PROGRESS_BAR_RECYCLER: ResourceTexture;
-        PROGRESS_BAR_REPLICATOR: ResourceTexture;
-        PROGRESS_BAR_SIFT: ResourceTexture;
-        PROGRESS_BAR_SLICE: ResourceTexture;
-        PROGRESS_BAR_UNLOCK: ResourceTexture;
-        PROGRESS_BAR_UNPACKER: ResourceTexture;
-        PROGRESS_BAR_WIREMILL: ResourceTexture;
-        PROGRESS_BAR_RESEARCH_STATION_1: ResourceTexture;
-        PROGRESS_BAR_RESEARCH_STATION_2: ResourceTexture;
-        PROGRESS_BAR_RESEARCH_STATION_BASE: ResourceTexture;
-        INFO_ICON: ResourceTexture;
-        MULTIBLOCK_CATEGORY: ResourceTexture;
-        ARC_FURNACE_RECYCLING_CATEGORY: ResourceTexture;
-        MACERATOR_RECYCLING_CATEGORY: ResourceTexture;
-        EXTRACTOR_RECYCLING_CATEGORY: ResourceTexture;
-        COVER_MACHINE_CONTROLLER: ResourceTexture;
-        ICON_REMOVE: ResourceTexture;
-        ICON_UP: ResourceTexture;
-        ICON_DOWN: ResourceTexture;
-        ICON_RIGHT: ResourceTexture;
-        ICON_LEFT: ResourceTexture;
-        ICON_ADD: ResourceTexture;
-        ICON_NEW_PAGE: ResourceTexture;
-        ICON_LOAD: ResourceTexture;
-        ICON_SAVE: ResourceTexture;
-        ICON_LOCATION: ResourceTexture;
-        ICON_VISIBLE: ResourceTexture;
-        ICON_CALCULATOR: ResourceTexture;
-        UI_FRAME_SIDE_UP: ResourceTexture;
-        UI_FRAME_SIDE_DOWN: ResourceTexture;
-        BUTTON_FLUID: ResourceTexture;
-        BUTTON_ITEM: ResourceTexture;
-        BUTTON_ENERGY: ResourceTexture;
-        BUTTON_MACHINE: ResourceTexture;
-        BUTTON_INTERFACE: ResourceTexture;
-        COVER_INTERFACE_MACHINE_ON_PROXY: ResourceTexture;
-        COVER_INTERFACE_MACHINE_OFF_PROXY: ResourceTexture;
-        SCENE: ResourceTexture;
-        INSUFFICIENT_INPUT: ResourceTexture;
-        LIGHT_ON: ResourceTexture;
-        LIGHT_OFF: ResourceTexture;
-        UP: ResourceTexture;
-        TIER: ResourceTexture[];
-        LAMP_NO_BLOOM: ResourceTexture;
-        LAMP_NO_LIGHT: ResourceTexture;
-        NUMBER_BACKGROUND: ResourceTexture;
-        CONFIG_ARROW: ResourceTexture;
-        CONFIG_ARROW_DARK: ResourceTexture;
-        SELECT_BOX: ResourceTexture;
-        HPCA_COMPONENT_OUTLINE: ResourceTexture;
-        HPCA_ICON_EMPTY_COMPONENT: ResourceTexture;
-        HPCA_ICON_ADVANCED_COMPUTATION_COMPONENT: ResourceTexture;
-        HPCA_ICON_BRIDGE_COMPONENT: ResourceTexture;
-        HPCA_ICON_COMPUTATION_COMPONENT: ResourceTexture;
-        HPCA_ICON_ACTIVE_COOLER_COMPONENT: ResourceTexture;
-        HPCA_ICON_HEAT_SINK_COMPONENT: ResourceTexture;
-        HPCA_ICON_DAMAGED_ADVANCED_COMPUTATION_COMPONENT: ResourceTexture;
-        HPCA_ICON_DAMAGED_COMPUTATION_COMPONENT: ResourceTexture;
+        GREGTECH_LOGO: SpriteTexture;
+        GREGTECH_LOGO_XMAS: SpriteTexture;
+        TOOL_FRONT_FACING_ROTATION: SpriteTexture;
+        TOOL_IO_FACING_ROTATION: SpriteTexture;
+        TOOL_PAUSE: SpriteTexture;
+        TOOL_START: SpriteTexture;
+        TOOL_COVER_SETTINGS: SpriteTexture;
+        TOOL_MUTE: SpriteTexture;
+        TOOL_SOUND: SpriteTexture;
+        TOOL_ALLOW_INPUT: SpriteTexture;
+        TOOL_ATTACH_COVER: SpriteTexture;
+        TOOL_REMOVE_COVER: SpriteTexture;
+        TOOL_PIPE_BLOCK: SpriteTexture;
+        TOOL_PIPE_CONNECT: SpriteTexture;
+        TOOL_WIRE_BLOCK: SpriteTexture;
+        TOOL_WIRE_CONNECT: SpriteTexture;
+        TOOL_AUTO_OUTPUT: SpriteTexture;
+        TOOL_DISABLE_AUTO_OUTPUT: SpriteTexture;
+        TOOL_SWITCH_CONVERTER_NATIVE: SpriteTexture;
+        TOOL_SWITCH_CONVERTER_EU: SpriteTexture;
+        TOOL_BATCH_ON: SpriteTexture;
+        TOOL_BATCH_OFF: SpriteTexture;
+        BACKGROUND: SpriteTexture;
+        BACKGROUND_INVERSE: SpriteTexture;
+        BACKGROUND_STEAM: SteamTexture;
+        CLIPBOARD_BACKGROUND: SpriteTexture;
+        CLIPBOARD_PAPER_BACKGROUND: SpriteTexture;
+        TITLE_BAR_BACKGROUND: SpriteTexture;
+        DISPLAY: SpriteTexture;
+        DISPLAY_STEAM: SteamTexture;
+        BLANK: SpriteTexture;
+        BLANK_TRANSPARENT: SpriteTexture;
+        FLUID_SLOT: SpriteTexture;
+        FLUID_TANK_BACKGROUND: SpriteTexture;
+        FLUID_TANK_OVERLAY: SpriteTexture;
+        SLOT: SpriteTexture;
+        SLOT_DARK: SpriteTexture;
+        SLOT_DARKENED: SpriteTexture;
+        SLOT_STEAM: SteamTexture;
+        TOGGLE_BUTTON_BACK: SpriteTexture;
+        CLOSE_ICON: SpriteTexture;
+        BLOCKS_INPUT: SpriteTexture;
+        BUTTON: SpriteTexture;
+        BUTTON_ALLOW_IMPORT_EXPORT: SpriteTexture;
+        BUTTON_BLACKLIST: SpriteTexture;
+        BUTTON_CHUNK_MODE: SpriteTexture;
+        BUTTON_CLEAR_GRID: SpriteTexture;
+        BUTTON_FILTER_DAMAGE: SpriteTexture;
+        BUTTON_DISTINCT_BUSES: SpriteTexture;
+        BUTTON_POWER: SpriteTexture;
+        BUTTON_BATCH: SpriteTexture;
+        BUTTON_FILTER_NBT: SpriteTexture;
+        BUTTON_FLUID_OUTPUT: SpriteTexture;
+        BUTTON_ITEM_OUTPUT: SpriteTexture;
+        BUTTON_LOCK: SpriteTexture;
+        BUTTON_REDSTONE_STRENGTH: SpriteTexture;
+        BUTTON_VOID: SpriteTexture;
+        BUTTON_VOID_PARTIAL: SpriteTexture;
+        BUTTON_VOID_MULTIBLOCK: SpriteTexture;
+        BUTTON_LEFT: SpriteTexture;
+        BUTTON_PUBLIC_PRIVATE: SpriteTexture;
+        BUTTON_CHECK: SpriteTexture;
+        BUTTON_LIST: SpriteTexture;
+        BUTTON_RIGHT: SpriteTexture;
+        BUTTON_PAGE_LEFT: SpriteTexture;
+        BUTTON_PAGE_RIGHT: SpriteTexture;
+        BUTTON_SILK_TOUCH_MODE: SpriteTexture;
+        BUTTON_SWITCH_VIEW: SpriteTexture;
+        BUTTON_WORKING_ENABLE: SpriteTexture;
+        BUTTON_INT_CIRCUIT_PLUS: SpriteTexture;
+        BUTTON_INT_CIRCUIT_MINUS: SpriteTexture;
+        CLIPBOARD_BUTTON: SpriteTexture;
+        CLIPBOARD_TEXT_BOX: SpriteTexture;
+        DISTRIBUTION_MODE: SpriteTexture;
+        BUTTON_AUTO_PULL: SpriteTexture;
+        LOCK: SpriteTexture;
+        LOCK_WHITE: SpriteTexture;
+        SWITCH: SpriteTexture;
+        SWITCH_HORIZONTAL: SpriteTexture;
+        VANILLA_BUTTON: SpriteTexture;
+        ENERGY_DETECTOR_COVER_MODE_BUTTON: SpriteTexture;
+        INVERT_REDSTONE_BUTTON: SpriteTexture;
+        IO_CONFIG_FLUID_MODES_BUTTON: SpriteTexture;
+        IO_CONFIG_ITEM_MODES_BUTTON: SpriteTexture;
+        IO_CONFIG_COVER_SLOT_OVERLAY: SpriteTexture;
+        IO_CONFIG_COVER_SETTINGS: SpriteTexture;
+        PATTERN_OVERLAY: SpriteTexture;
+        REFUND_OVERLAY: SpriteTexture;
+        INDICATOR_NO_ENERGY: SpriteTexture;
+        INDICATOR_NO_STEAM: SteamTexture;
+        TANK_ICON: SpriteTexture;
+        SLIDER_BACKGROUND: SpriteTexture;
+        SLIDER_BACKGROUND_VERTICAL: SpriteTexture;
+        SLIDER_ICON: SpriteTexture;
+        MAINTENANCE_BUTTON: SpriteTexture;
+        MAINTENANCE_ICON: SpriteTexture;
+        STORAGE_ICON: SpriteTexture;
+        BUTTON_MINER_MODES: SpriteTexture;
+        OREBY_BASE: SpriteTexture;
+        OREBY_CHEM: SpriteTexture;
+        OREBY_SEP: SpriteTexture;
+        OREBY_SIFT: SpriteTexture;
+        OREBY_SMELT: SpriteTexture;
+        PRIMITIVE_BACKGROUND: SpriteTexture;
+        PRIMITIVE_SLOT: SpriteTexture;
+        PRIMITIVE_FURNACE_OVERLAY: SpriteTexture;
+        PRIMITIVE_DUST_OVERLAY: SpriteTexture;
+        PRIMITIVE_INGOT_OVERLAY: SpriteTexture;
+        PRIMITIVE_LARGE_FLUID_TANK: SpriteTexture;
+        PRIMITIVE_LARGE_FLUID_TANK_OVERLAY: SpriteTexture;
+        PRIMITIVE_BLAST_FURNACE_PROGRESS_BAR: SpriteTexture;
+        ATOMIC_OVERLAY_1: SpriteTexture;
+        ATOMIC_OVERLAY_2: SpriteTexture;
+        ARROW_INPUT_OVERLAY: SpriteTexture;
+        ARROW_OUTPUT_OVERLAY: SpriteTexture;
+        BATTERY_OVERLAY: SpriteTexture;
+        BEAKER_OVERLAY_1: SpriteTexture;
+        BEAKER_OVERLAY_2: SpriteTexture;
+        BEAKER_OVERLAY_3: SpriteTexture;
+        BEAKER_OVERLAY_4: SpriteTexture;
+        BENDER_OVERLAY: SpriteTexture;
+        BOX_OVERLAY: SpriteTexture;
+        BOXED_OVERLAY: SpriteTexture;
+        BREWER_OVERLAY: SpriteTexture;
+        CANNER_OVERLAY: SpriteTexture;
+        CHARGER_OVERLAY: SpriteTexture;
+        CANISTER_OVERLAY: SpriteTexture;
+        CANISTER_OVERLAY_STEAM: SteamTexture;
+        CENTRIFUGE_OVERLAY: SpriteTexture;
+        CIRCUIT_OVERLAY: SpriteTexture;
+        COAL_OVERLAY_STEAM: SteamTexture;
+        COMPRESSOR_OVERLAY: SpriteTexture;
+        COMPRESSOR_OVERLAY_STEAM: SteamTexture;
+        CRACKING_OVERLAY_1: SpriteTexture;
+        CRACKING_OVERLAY_2: SpriteTexture;
+        CRUSHED_ORE_OVERLAY: SpriteTexture;
+        CRUSHED_ORE_OVERLAY_STEAM: SteamTexture;
+        CRYSTAL_OVERLAY: SpriteTexture;
+        CUTTER_OVERLAY: SpriteTexture;
+        DARK_CANISTER_OVERLAY: SpriteTexture;
+        DUST_OVERLAY: SpriteTexture;
+        DUST_OVERLAY_STEAM: SteamTexture;
+        EXTRACTOR_OVERLAY: SpriteTexture;
+        EXTRACTOR_OVERLAY_STEAM: SteamTexture;
+        FILTER_SLOT_OVERLAY: SpriteTexture;
+        FURNACE_OVERLAY_1: SpriteTexture;
+        FURNACE_OVERLAY_2: SpriteTexture;
+        FURNACE_OVERLAY_STEAM: SteamTexture;
+        HAMMER_OVERLAY: SpriteTexture;
+        HAMMER_OVERLAY_STEAM: SteamTexture;
+        HEATING_OVERLAY_1: SpriteTexture;
+        HEATING_OVERLAY_2: SpriteTexture;
+        IMPLOSION_OVERLAY_1: SpriteTexture;
+        IMPLOSION_OVERLAY_2: SpriteTexture;
+        IN_SLOT_OVERLAY: SpriteTexture;
+        IN_SLOT_OVERLAY_STEAM: SteamTexture;
+        INGOT_OVERLAY: SpriteTexture;
+        INT_CIRCUIT_OVERLAY: SpriteTexture;
+        LENS_OVERLAY: SpriteTexture;
+        LIGHTNING_OVERLAY_1: SpriteTexture;
+        LIGHTNING_OVERLAY_2: SpriteTexture;
+        MOLD_OVERLAY: SpriteTexture;
+        MOLECULAR_OVERLAY_1: SpriteTexture;
+        MOLECULAR_OVERLAY_2: SpriteTexture;
+        MOLECULAR_OVERLAY_3: SpriteTexture;
+        MOLECULAR_OVERLAY_4: SpriteTexture;
+        OUT_SLOT_OVERLAY: SpriteTexture;
+        OUT_SLOT_OVERLAY_STEAM: SteamTexture;
+        PAPER_OVERLAY: SpriteTexture;
+        PRINTED_PAPER_OVERLAY: SpriteTexture;
+        PIPE_OVERLAY_2: SpriteTexture;
+        PIPE_OVERLAY_1: SpriteTexture;
+        PRESS_OVERLAY_1: SpriteTexture;
+        PRESS_OVERLAY_2: SpriteTexture;
+        PRESS_OVERLAY_3: SpriteTexture;
+        PRESS_OVERLAY_4: SpriteTexture;
+        SAWBLADE_OVERLAY: SpriteTexture;
+        SOLIDIFIER_OVERLAY: SpriteTexture;
+        STRING_SLOT_OVERLAY: SpriteTexture;
+        TOOL_SLOT_OVERLAY: SpriteTexture;
+        TURBINE_OVERLAY: SpriteTexture;
+        VIAL_OVERLAY_1: SpriteTexture;
+        VIAL_OVERLAY_2: SpriteTexture;
+        WIREMILL_OVERLAY: SpriteTexture;
+        POSITIVE_MATTER_OVERLAY: SpriteTexture;
+        NEUTRAL_MATTER_OVERLAY: SpriteTexture;
+        DATA_ORB_OVERLAY: SpriteTexture;
+        SCANNER_OVERLAY: SpriteTexture;
+        DUCT_TAPE_OVERLAY: SpriteTexture;
+        RESEARCH_STATION_OVERLAY: SpriteTexture;
+        PROGRESS_BAR_ARC_FURNACE: SpriteTexture;
+        PROGRESS_BAR_ARROW: SpriteTexture;
+        PROGRESS_BAR_ARROW_STEAM: SteamTexture;
+        PROGRESS_BAR_ARROW_MULTIPLE: SpriteTexture;
+        PROGRESS_BAR_ASSEMBLER: SpriteTexture;
+        PROGRESS_BAR_ASSEMBLY_LINE: SpriteTexture;
+        PROGRESS_BAR_ASSEMBLY_LINE_ARROW: SpriteTexture;
+        PROGRESS_BAR_BATH: SpriteTexture;
+        PROGRESS_BAR_BENDING: SpriteTexture;
+        PROGRESS_BAR_BOILER_EMPTY: SteamTexture;
+        PROGRESS_BAR_BOILER_FUEL: SteamTexture;
+        PROGRESS_BAR_BOILER_HEAT: SpriteTexture;
+        PROGRESS_BAR_CANNER: SpriteTexture;
+        PROGRESS_BAR_CIRCUIT: SpriteTexture;
+        PROGRESS_BAR_CIRCUIT_ASSEMBLER: SpriteTexture;
+        PROGRESS_BAR_COKE_OVEN: SpriteTexture;
+        PROGRESS_BAR_COMPRESS: SpriteTexture;
+        PROGRESS_BAR_COMPRESS_STEAM: SteamTexture;
+        PROGRESS_BAR_CRACKING: SpriteTexture;
+        PROGRESS_BAR_CRACKING_INPUT: SpriteTexture;
+        PROGRESS_BAR_CRYSTALLIZATION: SpriteTexture;
+        PROGRESS_BAR_DISTILLATION_TOWER: SpriteTexture;
+        PROGRESS_BAR_EXTRACT: SpriteTexture;
+        PROGRESS_BAR_EXTRACT_STEAM: SteamTexture;
+        PROGRESS_BAR_EXTRUDER: SpriteTexture;
+        PROGRESS_BAR_FUSION: SpriteTexture;
+        PROGRESS_BAR_GAS_COLLECTOR: SpriteTexture;
+        PROGRESS_BAR_HAMMER: SpriteTexture;
+        PROGRESS_BAR_HAMMER_STEAM: SteamTexture;
+        PROGRESS_BAR_HAMMER_BASE: SpriteTexture;
+        PROGRESS_BAR_HAMMER_BASE_STEAM: SteamTexture;
+        PROGRESS_BAR_LATHE: SpriteTexture;
+        PROGRESS_BAR_LATHE_BASE: SpriteTexture;
+        PROGRESS_BAR_MACERATE: SpriteTexture;
+        PROGRESS_BAR_MACERATE_STEAM: SteamTexture;
+        PROGRESS_BAR_MAGNET: SpriteTexture;
+        PROGRESS_BAR_MASS_FAB: SpriteTexture;
+        PROGRESS_BAR_MIXER: SpriteTexture;
+        PROGRESS_BAR_PACKER: SpriteTexture;
+        PROGRESS_BAR_RECYCLER: SpriteTexture;
+        PROGRESS_BAR_REPLICATOR: SpriteTexture;
+        PROGRESS_BAR_SIFT: SpriteTexture;
+        PROGRESS_BAR_SLICE: SpriteTexture;
+        PROGRESS_BAR_SOLAR_STEAM: SteamTexture;
+        PROGRESS_BAR_UNLOCK: SpriteTexture;
+        PROGRESS_BAR_UNPACKER: SpriteTexture;
+        PROGRESS_BAR_WIREMILL: SpriteTexture;
+        PROGRESS_BAR_RESEARCH_STATION_1: SpriteTexture;
+        PROGRESS_BAR_RESEARCH_STATION_2: SpriteTexture;
+        PROGRESS_BAR_RESEARCH_STATION_BASE: SpriteTexture;
+        INFO_ICON: SpriteTexture;
+        MULTIBLOCK_CATEGORY: SpriteTexture;
+        ARC_FURNACE_RECYCLING_CATEGORY: SpriteTexture;
+        MACERATOR_RECYCLING_CATEGORY: SpriteTexture;
+        EXTRACTOR_RECYCLING_CATEGORY: SpriteTexture;
+        COVER_MACHINE_CONTROLLER: SpriteTexture;
+        ICON_REMOVE: SpriteTexture;
+        ICON_UP: SpriteTexture;
+        ICON_DOWN: SpriteTexture;
+        ICON_RIGHT: SpriteTexture;
+        ICON_LEFT: SpriteTexture;
+        ICON_ADD: SpriteTexture;
+        ICON_NEW_PAGE: SpriteTexture;
+        ICON_LOAD: SpriteTexture;
+        ICON_SAVE: SpriteTexture;
+        ICON_LOCATION: SpriteTexture;
+        ICON_VISIBLE: SpriteTexture;
+        ICON_CALCULATOR: SpriteTexture;
+        UI_FRAME_SIDE_UP: SpriteTexture;
+        UI_FRAME_SIDE_DOWN: SpriteTexture;
+        BUTTON_FLUID: SpriteTexture;
+        BUTTON_ITEM: SpriteTexture;
+        BUTTON_ENERGY: SpriteTexture;
+        BUTTON_MACHINE: SpriteTexture;
+        BUTTON_INTERFACE: SpriteTexture;
+        COVER_INTERFACE_MACHINE_ON_PROXY: SpriteTexture;
+        COVER_INTERFACE_MACHINE_OFF_PROXY: SpriteTexture;
+        SCENE: SpriteTexture;
+        DISPLAY_FRAME: SpriteTexture;
+        INSUFFICIENT_INPUT: SpriteTexture;
+        ENERGY_BAR_BACKGROUND: SpriteTexture;
+        ENERGY_BAR_BASE: SpriteTexture;
+        LIGHT_ON: SpriteTexture;
+        LIGHT_OFF: SpriteTexture;
+        UP: SpriteTexture;
+        TIER: SpriteTexture[];
+        LAMP_NO_BLOOM: SpriteTexture;
+        LAMP_NO_LIGHT: SpriteTexture;
+        NUMBER_BACKGROUND: SpriteTexture;
+        CONFIG_ARROW: SpriteTexture;
+        CONFIG_ARROW_DARK: SpriteTexture;
+        SELECT_BOX: SpriteTexture;
+        HPCA_COMPONENT_OUTLINE: SpriteTexture;
+        HPCA_ICON_EMPTY_COMPONENT: SpriteTexture;
+        HPCA_ICON_ADVANCED_COMPUTATION_COMPONENT: SpriteTexture;
+        HPCA_ICON_BRIDGE_COMPONENT: SpriteTexture;
+        HPCA_ICON_COMPUTATION_COMPONENT: SpriteTexture;
+        HPCA_ICON_ACTIVE_COOLER_COMPONENT: SpriteTexture;
+        HPCA_ICON_HEAT_SINK_COMPONENT: SpriteTexture;
+        HPCA_ICON_DAMAGED_ADVANCED_COMPUTATION_COMPONENT: SpriteTexture;
+        HPCA_ICON_DAMAGED_COMPUTATION_COMPONENT: SpriteTexture;
+    };
+}
 
-        BACKGROUND: ResourceBorderTexture;
-        BACKGROUND_INVERSE: ResourceBorderTexture;
-        TITLE_BAR_BACKGROUND: ResourceBorderTexture;
-        FLUID_SLOT: ResourceBorderTexture;
-        SLOT: ResourceBorderTexture;
-        SLOT_DARK: ResourceBorderTexture;
-        BUTTON: ResourceBorderTexture;
-        CLIPBOARD_TEXT_BOX: ResourceBorderTexture;
-        PRIMITIVE_BACKGROUND: ResourceBorderTexture;
-        PRIMITIVE_SLOT: ResourceBorderTexture;
-        DISPLAY_FRAME: ResourceBorderTexture;
-        ENERGY_BAR_BACKGROUND: ResourceBorderTexture;
-        ENERGY_BAR_BASE: ResourceBorderTexture;
+declare namespace internal.com.gregtechceu.gtceu.api.gui.texture {
+    import SpriteTexture = com.lowdragmc.lowdraglib2.gui.texture.SpriteTexture;
+
+    interface UVSpriteTexture extends $object<'com.gregtechceu.gtceu.api.gui.texture.UVSpriteTexture', SpriteTexture> {}
+
+    const UVSpriteTexture: $class<UVSpriteTexture> & {
+        of(base: SpriteTexture, u: number, v: number, uWidth: number, vHeight: number): UVSpriteTexture;
     };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.gui.widget {
-    interface SlotWidget extends $object<
-        'com.gregtechceu.gtceu.api.gui.widget.SlotWidget',
-        com.lowdragmc.lowdraglib.gui.widget.SlotWidget
+    import SpriteTexture = com.lowdragmc.lowdraglib2.gui.texture.SpriteTexture;
+    import FillDirection = com.lowdragmc.lowdraglib2.gui.ui.data.FillDirection;
+    import ProgressBar = com.lowdragmc.lowdraglib2.gui.ui.elements.ProgressBar;
+
+    interface ProgressTextureBar extends $object<
+        'com.gregtechceu.gtceu.api.gui.widget.ProgressTextureBar',
+        ProgressBar
     > {}
 
-    import Container = net.minecraft.world.Container;
-    import IItemHandlerModifiable = net.minecraftforge.items.IItemHandlerModifiable;
-
-    const SlotWidget: $class<SlotWidget> & {
-        new (): SlotWidget;
-        new (
-            inventory: Container,
-            slotIndex: number,
-            xPosition: number,
-            yPosition: number,
-            canTakeItems: boolean,
-            canPutItems: boolean
-        ): SlotWidget;
-        new (
-            itemHandler: IItemHandlerModifiable,
-            slotIndex: number,
-            xPosition: number,
-            yPosition: number,
-            canTakeItems: boolean,
-            canPutItems: boolean
-        ): SlotWidget;
-    };
-
-    interface TankWidget extends $object<
-        'com.gregtechceu.gtceu.api.gui.widget.TankWidget',
-        com.lowdragmc.lowdraglib.gui.widget.SlotWidget
-    > {}
-
-    import IFluidHandler = net.minecraftforge.fluids.capability.IFluidHandler;
-
-    const TankWidget: $class<TankWidget> & {
-        new (): TankWidget;
-        new (
-            fluidTank: IFluidHandler,
-            x: number,
-            y: number,
-            allowClickContainerFilling: boolean,
-            allowClickContainerEmptying: boolean
-        ): TankWidget;
-        new (
-            fluidTank: IFluidHandler,
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-            allowClickContainerFilling: boolean,
-            allowClickContainerEmptying: boolean
-        ): TankWidget;
+    const ProgressTextureBar: $class<ProgressTextureBar> & {
+        of(sheet: SpriteTexture, direction: FillDirection, width: number, height: number): ProgressTextureBar;
     };
 }
 
 declare namespace internal.com.gregtechceu.gtceu.api.gui.editor {
-    interface EditableMachineUI extends $object<'com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI' /* , IEditableUI<WidgetGroup, MetaMachine> */> {}
-
     import Supplier = java.util.function_.Supplier;
     import BiConsumer = java.util.function_.BiConsumer;
     import ResourceLocation = net.minecraft.resources.ResourceLocation;
-    import WidgetGroup = com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
+    import UIElement = com.lowdragmc.lowdraglib2.gui.ui.UIElement;
     import MetaMachine = machine.MetaMachine;
+
+    interface EditableMachineUI extends $object<'com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI'> {}
 
     const EditableMachineUI: $class<EditableMachineUI> & {
         new (
             groupName: string,
             uiPath: $wrapped<ResourceLocation>,
-            widgetSupplier: $wrapped<Supplier<WidgetGroup>>,
-            binder: $wrapped<BiConsumer<WidgetGroup, MetaMachine>>
+            creator: $wrapped<Supplier<UIElement>>,
+            binder: $wrapped<BiConsumer<UIElement, MetaMachine>>
         ): EditableMachineUI;
     };
 }
@@ -2260,7 +2257,7 @@ declare namespace internal.kjs {
         'com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity': typeof internal.com.gregtechceu.gtceu.api.blockentity.PipeBlockEntity;
         'com.gregtechceu.gtceu.api.pipenet.IPipeNode': typeof internal.com.gregtechceu.gtceu.api.pipenet.IPipeNode;
         'com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI': typeof internal.com.gregtechceu.gtceu.api.gui.editor.EditableMachineUI;
-        'com.gregtechceu.gtceu.api.gui.widget.SlotWidget': typeof internal.com.gregtechceu.gtceu.api.gui.widget.SlotWidget;
-        'com.gregtechceu.gtceu.api.gui.widget.TankWidget': typeof internal.com.gregtechceu.gtceu.api.gui.widget.TankWidget;
+        'com.gregtechceu.gtceu.api.gui.texture.UVSpriteTexture': typeof internal.com.gregtechceu.gtceu.api.gui.texture.UVSpriteTexture;
+        'com.gregtechceu.gtceu.api.gui.widget.ProgressTextureBar': typeof internal.com.gregtechceu.gtceu.api.gui.widget.ProgressTextureBar;
     }
 }

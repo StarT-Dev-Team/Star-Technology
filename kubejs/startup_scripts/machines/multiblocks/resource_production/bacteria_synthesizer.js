@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .create('bacteria_synthesizer')
         .category('resource_production')
         .setMaxIOSize(2, 0, 6, 1)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.CHEMICAL);
 });
 

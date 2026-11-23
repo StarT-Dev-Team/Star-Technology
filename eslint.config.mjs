@@ -108,9 +108,8 @@ export default [
                 MultiblockShapeInfo: 'readonly',
                 // LDLib globals
                 GuiTextures: 'readonly',
-                FillDirection: 'readonly',
-                WidgetGroup: 'readonly',
-                ProgressWidget: 'readonly',
+                $FillDirection: 'readonly',
+                $GuiTextureGroup: 'readonly',
                 // Core mod globals
                 $StarTAbyssalContainmentMachine: 'readonly',
                 $StarTAbyssalContainmentMachine: 'readonly',

@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('komaru')
         .setEUIO('in')
         .setMaxIOSize(1, 12, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.REPLICATOR);
 });
 

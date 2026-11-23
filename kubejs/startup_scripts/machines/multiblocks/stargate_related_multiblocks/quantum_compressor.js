@@ -6,21 +6,21 @@
 //     //     .category('gate_construction')
 //     //     .setEUIO('in')
 //     //     .setMaxIOSize(18, 1, 0, 0)
-//     //     .setProgressBar(GuiTextures.PROGRESS_BAR_COMPRESS , FillDirection.LEFT_TO_RIGHT)
+//     //     .setProgressBar(GuiTextures.PROGRESS_BAR_COMPRESS , $FillDirection.LEFT_TO_RIGHT)
 //     //     .setSound(GTSoundEntries.ARC);
 
 //     event.create('quantum_compressor_extraction')
 //         .category('gate_construction')
 //         .setEUIO('in')
 //         .setMaxIOSize(1, 0, 0, 2)
-//         .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT , FillDirection.LEFT_TO_RIGHT)
+//         .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT , $FillDirection.LEFT_TO_RIGHT)
 //         .setSound(GTSoundEntries.ARC);
 
 //     event.create('quantum_compressor_infusion')
 //         .category('gate_construction')
 //         .setEUIO('in')
 //         .setMaxIOSize(2, 1, 3, 0)
-//         .setProgressBar(GuiTextures.PROGRESS_BAR_REPLICATOR , FillDirection.LEFT_TO_RIGHT)
+//         .setProgressBar(GuiTextures.PROGRESS_BAR_REPLICATOR , $FillDirection.LEFT_TO_RIGHT)
 //         .setSound(GTSoundEntries.ARC);
 
 // });

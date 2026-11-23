@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('gate_construction')
         .setEUIO('in')
         .setMaxIOSize(4, 1, 2, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_MASS_FAB, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_MASS_FAB, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.ASSEMBLER)
         .setLayered();
 });

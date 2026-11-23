@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .create('dimensional_destabiliser')
         .category('resource_production')
         .setMaxIOSize(3, 3, 3, 3)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.COMPUTATION);
 });
 

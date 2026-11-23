@@ -5,7 +5,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('resource_production')
         .setEUIO('in')
         .setMaxIOSize(1, 1, 2, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_MACERATE, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_MACERATE, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.FORGE_HAMMER);
 });
 

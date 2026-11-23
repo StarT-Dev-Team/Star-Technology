@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('resource_production')
         .setEUIO('in')
         .setMaxIOSize(2, 2, 2, 2)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.BATH);
 
     event
@@ -12,7 +12,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('resource_production')
         .setEUIO('in')
         .setMaxIOSize(2, 2, 2, 2)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.BATH);
 });
 

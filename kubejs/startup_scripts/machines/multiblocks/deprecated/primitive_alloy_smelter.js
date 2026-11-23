@@ -6,7 +6,7 @@
 //     event.create('primitive_alloy_smelter')
 //         .category('primitive_alloy_smelter')
 //         .setMaxIOSize(3, 2, 0, 0)
-//         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
+//         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, $FillDirection.LEFT_TO_RIGHT)
 //         .setSound(GTSoundEntries.FIRE);
 // });
 
