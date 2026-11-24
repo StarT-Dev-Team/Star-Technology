@@ -4,7 +4,7 @@
 //         .category('resource_production')
 //         .setEUIO('in')
 //         .setMaxIOSize(1, 1, 2, 0)
-//         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE , FillDirection.LEFT_TO_RIGHT)
+//         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE , $FillDirection.LEFT_TO_RIGHT)
 //         .setSound(GTSoundEntries.COOLING);
 
 // });

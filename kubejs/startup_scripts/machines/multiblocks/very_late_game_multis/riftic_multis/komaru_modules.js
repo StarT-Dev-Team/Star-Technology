@@ -4,14 +4,14 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('komaru')
         .setEUIO('in')
         .setMaxIOSize(1, 12, 1, 3)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT);
 
     event
         .create('voidic_refinement')
         .category('komaru')
         .setEUIO('in')
         .setMaxIOSize(1, 15, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT);
 
     event
         .create('riftic_infusion_assembly')
@@ -19,21 +19,21 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .setEUIO('in')
         .setHasResearchSlot(true)
         .setMaxIOSize(16, 1, 6, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT);
 
     event
         .create('riftic_enhancement')
         .category('komaru')
         .setEUIO('in')
         .setMaxIOSize(2, 1, 2, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT);
 
     event
         .create('rimula_extraction')
         .category('komaru')
         .setEUIO('in')
         .setMaxIOSize(1, 0, 1, 2)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT);
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT);
 });
 
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {

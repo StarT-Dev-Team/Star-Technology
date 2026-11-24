@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('extremely_advanced')
         .setEUIO('in')
         .setMaxIOSize(16, 1, 3, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.ASSEMBLER)
         .setMaxTooltips(4)
         .setHasResearchSlot(true);
@@ -14,7 +14,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('extremely_advanced')
         .setEUIO('in')
         .setMaxIOSize(4, 1, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.ASSEMBLER)
         .setMaxTooltips(4)
         .setHasResearchSlot(true);

@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('pulverizer')
         .setEUIO('in')
         .setMaxIOSize(2, 2, 0, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.MACERATOR)
         .setIconSupplier(() => Item.of('gtceu:lv_pulverizer'));
 });

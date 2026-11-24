@@ -1,13 +1,17 @@
 declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
     import BuilderBase__Blueprint = api.registry.registrate.BuilderBase__Blueprint;
-    import ResourceTexture = lowdragmc.lowdraglib.gui.texture.ResourceTexture;
-    import IGuiTexture = lowdragmc.lowdraglib.gui.texture.IGuiTexture;
+    import SpriteTexture = lowdragmc.lowdraglib2.gui.texture.SpriteTexture;
+    import IGuiTexture = lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
+    import UIElement = lowdragmc.lowdraglib2.gui.ui.UIElement;
+    import BiConsumer = java.util.function_.BiConsumer;
+    import GTRecipe = api.recipe.GTRecipe;
+    import SteamTexture = api.gui.SteamTexture;
     import IO = api.capability.recipe.IO;
     import Supplier = java.util.function_.Supplier;
     import ItemStack = net.minecraft.world.item.ItemStack;
     import GTRecipeType = api.recipe.GTRecipeType;
     import SoundEntry = api.sound.SoundEntry;
-    import ProgressTexture$FillDirection = lowdragmc.lowdraglib.gui.texture.ProgressTexture$FillDirection;
+    import FillDirection = lowdragmc.lowdraglib2.gui.ui.data.FillDirection;
 
     interface GTRecipeTypeBuilder extends $object<
         'com.gregtechceu.gtceu.integration.kjs.builders.GTRecipeTypeBuilder',
@@ -17,10 +21,12 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.builders {
         setEUIO(io: $wrapped<IO>): this;
         setMaxTooltips(maxTooltips: number): this;
         setMaxIOSize(maxInputs: number, maxOutputs: number, maxFluidInputs: number, maxFluidOutputs: number): this;
-        setProgressBar(progressBar: ResourceTexture, moveType: $wrapped<ProgressTexture$FillDirection>): this;
+        setProgressBar(progressBar: SpriteTexture, moveType: $wrapped<FillDirection>): this;
+        setSteamProgressBar(progressBar: SteamTexture, moveType: $wrapped<FillDirection>): this;
         setSound(sound: SoundEntry): this;
         setLayered(): this;
         setSlotOverlay(isOutput: boolean, isFluid: boolean, slotOverlay: IGuiTexture): this;
+        setUiBuilder(uiBuilder: $wrapped<BiConsumer<GTRecipe, UIElement>>): this;
         setHasResearchSlot(hasResearchSlot: boolean): this;
         setIconSupplier(iconSupplier: $wrapped<Supplier<ItemStack>>): this;
     }

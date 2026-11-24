@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .create('steam_ore_processing')
         .category('ore_processing')
         .setMaxIOSize(1, 4, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.FURNACE);
 });
 

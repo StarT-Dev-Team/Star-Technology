@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .create('mechanical_sieve')
         .category('resource_production')
         .setMaxIOSize(2, 6, 0, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.MACERATOR);
 });
 

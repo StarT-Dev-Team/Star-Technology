@@ -4,7 +4,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .category('primitive')
         .setEUIO('in')
         .setMaxIOSize(3, 1, 0, 1)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.BATH);
 });
 
@@ -35,9 +35,9 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         type: 'fluid',
                         index: 0,
                         pos: [114, 38],
-                        texture: new GuiTextureGroup(
+                        texture: new $GuiTextureGroup(
                             GuiTextures.PRIMITIVE_SLOT,
-                            GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.getSubTexture(0, 0.04, 1, 0.22)
+                            GuiTextures.PRIMITIVE_LARGE_FLUID_TANK_OVERLAY.copy().setSprite(0, 2, 20, 13)
                         ),
                     },
                 ],

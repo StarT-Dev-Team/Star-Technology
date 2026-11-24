@@ -3,7 +3,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
         .create('exotic_rock_crushing')
         .category('resource_production')
         .setMaxIOSize(3, 1, 2, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, FillDirection.LEFT_TO_RIGHT)
+        .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, $FillDirection.LEFT_TO_RIGHT)
         .setSound(GTSoundEntries.COMPUTATION);
 });
 
