@@ -11,6 +11,10 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
             GTRecipeModifiers.BATCH_MODE,
         ])
+        .tooltips([
+            Text.translatable('block.gtceu.heat_chamber.mechanics.tooltip.0'),
+            Text.translatable('block.gtceu.heat_chamber.mechanics.tooltip.1'),
+        ])
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)
         .pattern((definition) =>
             newFactoryBlockPattern([

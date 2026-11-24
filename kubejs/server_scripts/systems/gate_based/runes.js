@@ -3,17 +3,15 @@ ServerEvents.recipes((event) => {
 
     /**
      * @param {string} output
-     * @param {string} lens
      * @param {string} plate
      * @param {string} catalyst
      * @param {string} fluid
      * @param {number} EU
      * @param {number} duration
      */
-    let rcasRecipe = (output, lens, plate, catalyst, fluid, EU, duration) => {
+    let rcasRecipe = (output, plate, catalyst, fluid, EU, duration) => {
         let rcas = event.recipes.gtceu
             .runic_circuitry_assembling_station(id(output))
-            .notConsumable(lens)
             .itemInputs('kubejs:' + plate, catalyst)
             .itemOutputs('kubejs:' + output)
             .duration(duration)
@@ -26,7 +24,6 @@ ServerEvents.recipes((event) => {
 
     rcasRecipe(
         'proto_solarus_rune',
-        'gtceu:yellow_glass_lens',
         'csg_enscription_plate',
         '64x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 576',
@@ -35,7 +32,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'proto_energized_rune',
-        'gtceu:ruby_lens',
         'csg_enscription_plate',
         '64x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 576',
@@ -44,7 +40,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'proto_lunarus_rune',
-        'gtceu:sapphire_lens',
         'csg_enscription_plate',
         '64x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 576',
@@ -53,7 +48,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'csg_dpu',
-        'gtceu:nether_star_lens',
         'csg_enscription_chip',
         '8x gtceu:indium_gallium_phosphide_dust',
         'gtceu:nether_star_concentrate 72',
@@ -63,7 +57,6 @@ ServerEvents.recipes((event) => {
 
     rcasRecipe(
         'runic_reinforced_plating',
-        'gtceu:brown_glass_lens',
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
@@ -72,7 +65,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'runic_pathway_plating',
-        'gtceu:amethyst_lens',
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
@@ -81,7 +73,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'runic_stabilization_plating',
-        'gtceu:emerald_lens',
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
@@ -90,7 +81,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'runic_transportation_plating',
-        'gtceu:certus_quartz_lens',
         'asg_enscription_plate',
         '64x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 5000',
@@ -99,7 +89,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'asg_dpu',
-        'gtceu:orange_glass_lens',
         'asg_enscription_chip',
         '8x gtceu:silicon_carbide_over_bismuth_tritelluride_dust',
         'gtceu:runic_convergence_infusion 750',
@@ -109,7 +98,6 @@ ServerEvents.recipes((event) => {
 
     rcasRecipe(
         'transcension_engraved_undina_sigil',
-        'gtceu:echo_shard_lens',
         'dsg_enscription_plate',
         'kubejs:undina_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
@@ -118,7 +106,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'transcension_engraved_sylvestris_sigil',
-        'gtceu:echo_shard_lens',
         'dsg_enscription_plate',
         'kubejs:sylvestris_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
@@ -127,7 +114,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'transcension_engraved_gnomus_sigil',
-        'gtceu:echo_shard_lens',
         'dsg_enscription_plate',
         'kubejs:gnomus_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
@@ -136,7 +122,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'transcension_engraved_vulcanus_sigil',
-        'gtceu:echo_shard_lens',
         'dsg_enscription_plate',
         'kubejs:vulcanus_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
@@ -145,7 +130,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'transcension_engraved_illustris_sigil',
-        'gtceu:echo_shard_lens',
         'dsg_enscription_plate',
         'kubejs:illustris_singularity',
         'gtceu:draconic_stabilization_mixture 6250',
@@ -154,7 +138,6 @@ ServerEvents.recipes((event) => {
     );
     rcasRecipe(
         'transcension_engraved_tenebrosus_sigil',
-        'gtceu:echo_shard_lens',
         'dsg_enscription_plate',
         'kubejs:tenebrosus_singularity',
         'gtceu:draconic_stabilization_mixture 6250',

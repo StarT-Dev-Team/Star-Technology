@@ -143,3 +143,11 @@ const $StarTMaterials = Java.loadClass('com.startechnology.start_core.materials.
 const $StarTElements = Java.loadClass('com.startechnology.start_core.elements.StarTElements');
 
 const $HeatChamberMachine = Java.loadClass('com.startechnology.start_core.machine.heat_chamber.HeatChamberMachine');
+
+const $DimensionalFinderMachine = Java.loadClass(
+    'com.startechnology.start_core.machine.dimensional_finder.DimensionalFinderMachine'
+);
+
+const $RunicCircuitryAssemblyStationMachine = Java.loadClass(
+    'com.startechnology.start_core.machine.runic_circuitry.RunicCircuitryAssemblyStationMachine'
+);

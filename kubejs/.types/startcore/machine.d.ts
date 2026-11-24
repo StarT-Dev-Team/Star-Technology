@@ -244,6 +244,34 @@ declare namespace internal.com.startechnology.start_core.machine.heat_chamber {
     };
 }
 
+declare namespace internal.com.startechnology.start_core.machine.dimensional_finder {
+    import OpticalComputationMachine = com.gregtechceu.gtceu.common.machine.multiblock.electric.research.OpticalComputationMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+
+    interface DimensionalFinderMachine extends $object<
+        'com.startechnology.start_core.machine.dimensional_finder.DimensionalFinderMachine',
+        OpticalComputationMachine
+    > {}
+
+    const DimensionalFinderMachine: $class<DimensionalFinderMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): DimensionalFinderMachine;
+    };
+}
+
+declare namespace internal.com.startechnology.start_core.machine.runic_circuitry {
+    import WorkableElectricMultiblockMachine = com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+    import IMachineBlockEntity = com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
+
+    interface RunicCircuitryAssemblyStationMachine extends $object<
+        'com.startechnology.start_core.machine.runic_circuitry.RunicCircuitryAssemblyStationMachine',
+        WorkableElectricMultiblockMachine
+    > {}
+
+    const RunicCircuitryAssemblyStationMachine: $class<RunicCircuitryAssemblyStationMachine> & {
+        new (holder: IMachineBlockEntity, ...args: any[]): RunicCircuitryAssemblyStationMachine;
+    };
+}
+
 declare namespace internal.kjs {
     interface LoadableClasses {
         'com.startechnology.start_core.machine.StarTPartAbility': typeof internal.com.startechnology.start_core.machine.StarTPartAbility;
@@ -263,5 +291,7 @@ declare namespace internal.kjs {
         'com.startechnology.start_core.machine.bulking.BulkingThreadedMachine': typeof internal.com.startechnology.start_core.machine.bulking.BulkingThreadedMachine;
         'com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine': typeof internal.com.startechnology.start_core.machine.compound_generator.CompoundGeneratorMachine;
         'com.startechnology.start_core.machine.heat_chamber.HeatChamberMachine': typeof internal.com.startechnology.start_core.machine.heat_chamber.HeatChamberMachine;
+        'com.startechnology.start_core.machine.dimensional_finder.DimensionalFinderMachine': typeof internal.com.startechnology.start_core.machine.dimensional_finder.DimensionalFinderMachine;
+        'com.startechnology.start_core.machine.runic_circuitry.RunicCircuitryAssemblyStationMachine': typeof internal.com.startechnology.start_core.machine.runic_circuitry.RunicCircuitryAssemblyStationMachine;
     }
 }

@@ -1,6 +1,9 @@
 {
     "block.gtceu.dimensional_finder.tooltip.0": "§7Get Dimensionally Pinged",
     "block.gtceu.dimensional_finder.tooltip.1": "§7This machine can send pulses into deep space, recording the echoes on crystals, and can sometimes triangulate a region's location based on that data.",
+    "block.gtceu.dimensional_finder.mechanics.tooltip.0": "The Dimensional Finder navigates the star map to find the exact address of a dimension. It starts by chosing an object of interest that is relatively close to the diomension taht is being targeted, then navigates across diferent spacial annomalies until all leads end.",
+    "block.gtceu.dimensional_finder.mechanics.tooltip.1": "The machine will consume a coordinate crystal and engrave it with the path it took. It can output a coordinate crystal that points to a random spacial annomaly, which can be used as a starting point for another run.",
+    "block.gtceu.dimensional_finder.mechanics.tooltip.2": "Once the dimension is found, a final run is done to find the shortest path to the dimension, and engrave a coordinate crystal with the address of the dimension.",
 
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.0": "§a§lAkreyrium §a§lProcessing",
     "block.gtceu.folding_akreyrium_stabiliser.tooltip.1": "§7A reintegration device designed to recombine Akreyrium. By folding the distinct variants of Akreyrium through a precise stabilization matrix over a crystal, a highly refined and pure version of Akreyrium can be obtained.",
@@ -21,6 +24,7 @@
     "block.gtceu.large_quantum_compressor.tooltip.0": "§7This multi can compress large amounts of matter into infusions and collapse gravi-stars into singularities via said infusions.",
 
     "block.gtceu.runic_circuitry_assembling_station.tooltip.0": "§7An apparatus crossing the boundaries between technology and magic, that can inscribe dense plates with pure singularities to write runes containing mystical powers.",
+    "block.gtceu.runic_circuitry_assembling_station.mechanics.tooltip": "The Runic Circuitry Assembling Station requires a random colored lens to operate. Each color is assigned to a different redstone signal starting from 1 in the following order: §6Orange§r, §dMagenta§r, §bLight Blue§r, §eYellow§r, §aLime§r, §dPink§r, §8Gray§r, §7Light Gray§r, §3Cyan§r, §5Purple§r, §9Blue§r, §6Brown§r, §2Green§r, §cRed§r, §8Black§r",
 
     "block.gtceu.runic_inscribe_manipulate.tooltip.0": "§7A more advanced Runic Inscriber, that can layer runes on top of each other to fuse their powers, or assemble them into a structured block form so they can exert power over the material world.",
 
@@ -40,6 +44,8 @@
     "block.gtceu.exotic_gas_siphon.tooltip.7": "§7This machine can collect the ambient air in the surrounding atmosphere, providing the same functionality as a basic §fGas Collector§7.",
 
     "block.gtceu.heat_chamber.tooltip.0": "§7This large multiblock can reach extreme heats in a controlled environment, and can use that heat to purify materials and catalyse reactions.",
+    "block.gtceu.heat_chamber.mechanics.tooltip.0": "§7The Heat Chamber will heat up to the temperature each recipe needs to run at. The rate at which it heats up is determined by the amount of parallels it can do comapred to the maximum amount of parallels set in the parallel hatch:\n - parallels < 25% = 2K/s\n - parallels < 50% = 5 K/s\n - parallels < 75% = 10 K/s\n - parallels >= 75% = 25 K/s",
+    "block.gtceu.heat_chamber.mechanics.tooltip.1": "§7The Heat Chamber will also cool down at a rate of 1K/s when not in use.",
 
     "block.gtceu.super_pressure_heat_chamber.tooltip.0": "§7A machine that can provide incredible heat and pressure, making it capable of fusing together incomplete products into some of the most resilient materials known across the galaxy.",
 
