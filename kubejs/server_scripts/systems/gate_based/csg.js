@@ -260,6 +260,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('kubejs:raw_stargate_rod')
         .inputFluids('gtceu:nether_star_concentrate 720')
         .itemOutputs('kubejs:activated_stargate_rod')
+        .minTemp(4899)
         .duration(800)
         .EUtVHA(UV);
 

@@ -339,6 +339,7 @@ declare namespace internal.com.gregtechceu.gtceu.integration.kjs.recipe {
         addDataNumber(key: string, data: number): this;
         addDataBool(key: string, data: boolean): this;
         treeType(treeType: 'latex' | 'sap' | 'resin'): this;
+        minTemp(temp: number): this;
     }
 
     interface GTShapedRecipeSchema$ShapedRecipeJS extends $object<

@@ -73,6 +73,7 @@ ServerEvents.recipes((event) => {
             .itemInputs('1x gtceu:small_activated_nether_dust')
             .outputFluids(`gtceu:molten_${type}_mixture 100`)
             .itemOutputs('1x gtceu:small_atomic_nether_sludge_dust')
+            .minTemp(7199)
             .duration(300)
             .EUtVHA(UHV);
     });
@@ -83,6 +84,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('3x gtceu:small_activated_nether_dust', '7x gtceu:tiny_activated_nether_dust')
         .outputFluids('gtceu:enriched_estaltadyne_solution 500')
         .itemOutputs('3x gtceu:small_atomic_nether_sludge_dust', '7x gtceu:tiny_atomic_nether_sludge_dust')
+        .minTemp(7799)
         .duration(1200)
         .EUtVHA(UHV);
 

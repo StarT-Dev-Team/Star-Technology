@@ -11,6 +11,7 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('runic_circuitry_assembling_station', 'multiblock')
+        .machine((holder) => new $RunicCircuitryAssemblyStationMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('runic_circuitry_assembling_station')
         .recipeModifiers([
@@ -18,6 +19,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
             GTRecipeModifiers.OC_NON_PERFECT,
             GTRecipeModifiers.BATCH_MODE,
         ])
+        .tooltips([Text.translatable('block.gtceu.runic_circuitry_assembling_station.mechanics.tooltip')])
         .appearanceBlock(() => Block.getBlock('kubejs:lumium_casing'))
         .pattern((definition) =>
             newFactoryBlockPattern([
@@ -45,6 +47,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.itemOut),
                         P.ability(PA.fluidIn),
                         P.ability(PA.itemIn),
+                        P.ability(PA.variadicsInterface, { max: 1, view: 1 }),
                     ]),
                     E: P.kjsBlock('enriched_naquadah_engine_intake_casing'),
                     F: P.kjsBlock('enriched_naquadah_heat_escape_casing'),

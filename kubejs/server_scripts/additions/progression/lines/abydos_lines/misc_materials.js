@@ -92,6 +92,7 @@ ServerEvents.recipes((event) => {
         .itemInputs('gtceu:neutronium_silicon_carbide_dust')
         .inputFluids('gtceu:polyether_ether_ketone 36')
         .itemOutputs('gtceu:hot_neutronium_silicon_carbide_ingot')
+        .minTemp(7899)
         .duration(200)
         .EUtVA(ZPM);
 });

@@ -17,6 +17,7 @@ declare namespace internal.com.startechnology.start_core.recipe {
         REFLECTOR_FUSION_REACTOR: RecipeModifier;
         BULKING: RecipeModifier;
         COMPOUND_GENERATOR: RecipeModifier;
+        HEAT_CHAMBER: RecipeModifier;
     };
 }
 

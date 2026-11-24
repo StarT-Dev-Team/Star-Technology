@@ -1,19 +1,14 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
-    event
-        .create('dimensional_finder')
-        .category('gate_construction')
-        .setEUIO('in')
-        .setMaxIOSize(3, 1, 1, 0)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_REPLICATOR, FillDirection.LEFT_TO_RIGHT)
-        .setSound(GTSoundEntries.COMPUTATION);
-});
-
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('dimensional_finder', 'multiblock')
         .rotationState(RotationState.NON_Y_AXIS)
-        .machine((holder) => new $OpticalComputationMachine(holder))
+        .machine((holder) => new $DimensionalFinderMachine(holder))
         .recipeType('dimensional_finder')
+        .tooltips([
+            Text.translatable('block.gtceu.dimensional_finder.mechanics.tooltip.0'),
+            Text.translatable('block.gtceu.dimensional_finder.mechanics.tooltip.1'),
+            Text.translatable('block.gtceu.dimensional_finder.mechanics.tooltip.2'),
+        ])
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)
         .pattern((definition) =>
             newFactoryBlockPattern([

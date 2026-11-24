@@ -399,6 +399,7 @@ ServerEvents.recipes((event) => {
         .heat_chamber(id('superheated_infernal_concentrate'))
         .inputFluids('gtceu:infernal_concentrate 950', 'gtceu:utopian_akreyrium 50')
         .outputFluids('gtceu:superheated_infernal_concentrate 1000')
+        .minTemp(8899)
         .duration(640)
         .EUtVA(UEV);
 

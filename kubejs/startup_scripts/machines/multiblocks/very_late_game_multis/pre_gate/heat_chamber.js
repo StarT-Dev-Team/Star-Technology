@@ -1,22 +1,18 @@
-GTCEuStartupEvents.registry('gtceu:recipe_type', (event) => {
-    event
-        .create('heat_chamber')
-        .category('highly_advanced')
-        .setEUIO('in')
-        .setMaxIOSize(4, 4, 4, 4)
-        .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
-        .setSound(GTSoundEntries.ARC);
-});
-
 GTCEuStartupEvents.registry('gtceu:machine', (event) => {
     event
         .create('heat_chamber', 'multiblock')
+        .machine((holder) => new $HeatChamberMachine(holder))
         .rotationState(RotationState.NON_Y_AXIS)
         .recipeType('heat_chamber')
         .recipeModifiers([
             GTRecipeModifiers.PARALLEL_HATCH,
             GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.HEAT_CHAMBER,
             GTRecipeModifiers.BATCH_MODE,
+        ])
+        .tooltips([
+            Text.translatable('block.gtceu.heat_chamber.mechanics.tooltip.0'),
+            Text.translatable('block.gtceu.heat_chamber.mechanics.tooltip.1'),
         ])
         .appearanceBlock(GCYMBlocks.CASING_HIGH_TEMPERATURE_SMELTING)
         .pattern((definition) =>

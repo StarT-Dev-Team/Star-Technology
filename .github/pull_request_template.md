@@ -9,7 +9,7 @@ Delete any guidance comments before submitting.
 
 ## Changelog
 
-<!-- These points go directly in the changelogs. Make sure to be brief and expresive. Codebase changes are not addded in the final changelog. Remove unused categories. -->
+<!-- These points go directly in the changelogs. Make sure to be brief and expresive. Codebase changes are not added in the final changelog. Remove unused categories. -->
 
 ### Additions
 - 

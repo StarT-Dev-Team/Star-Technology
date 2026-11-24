@@ -32,6 +32,7 @@ ServerEvents.recipes((event) => {
             'gtceu:energized_blaze 720'
         )
         .outputFluids('gtceu:nether_star_concentrate 576')
+        .minTemp(3299)
         .duration(250)
         .EUt((1 / 3) * GTValues.VA[UV]);
 
@@ -138,6 +139,7 @@ ServerEvents.recipes((event) => {
         .heat_chamber(id('crude_to_void_ingot'))
         .itemInputs('gtceu:raw_void_ingot')
         .itemOutputs('gtceu:hot_void_ingot')
+        .minTemp(6199)
         .duration(6000)
         .EUtVHA(LuV);
 

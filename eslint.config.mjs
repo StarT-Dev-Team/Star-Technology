@@ -130,6 +130,9 @@ export default [
                 $BulkingThreadedMulti: 'readonly',
                 $StarTMaterials: 'readonly',
                 $StarTElements: 'readonly',
+                $DimensionalFinderMachine: 'readonly',
+                $HeatChamberMachine: 'readonly',
+                $RunicCircuitryAssemblyStationMachine: 'readonly',
                 // Miscellaneous globals
                 Ponder: 'readonly',
                 Direction: 'readonly',
