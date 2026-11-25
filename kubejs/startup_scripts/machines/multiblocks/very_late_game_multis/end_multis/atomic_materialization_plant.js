@@ -34,7 +34,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.ability(PA.fluidIn, { max: 8, view: 1 }),
                         P.ability(PA.fluidOut, { max: 8, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
-                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                         P.ability(PA.parallelHatch, { max: 1 }),
                     ]),
                     B: P.gtBlock('heat_vent'),

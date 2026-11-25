@@ -41,7 +41,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     ' ': P.any(),
                     B: P.anyOf([
                         P.kjsBlock('aberration_casing'),
-                        P.ability(PA.euIn, { max: 2, view: 1 }),
+                        P.ability(PA.euIn, { min: 1, max: 2, view: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     C: P.gtBlock('hvga_steel_frame'),

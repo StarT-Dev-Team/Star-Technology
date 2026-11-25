@@ -25,7 +25,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.gtBlock('clean_machine_casing', { min: 10 }),
                         P.ability(PA.itemIn, { max: 1 }),
                         P.ability(PA.fluidOut, { max: 1 }),
-                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     P: P.kjsBlock('pallaridium_pipe_casing'),

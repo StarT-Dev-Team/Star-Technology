@@ -1571,6 +1571,13 @@ declare namespace internal.com.gregtechceu.gtceu.api.registry.registrate {
             workableModel: $wrapped<ResourceLocation>
         ): TSelf;
         workableTieredHullModel(workableModel: $wrapped<ResourceLocation>): TSelf;
+        overlayCasingModel(baseCasing: $wrapped<ResourceLocation>, overlayModel: $wrapped<ResourceLocation>): TSelf;
+        colorOverlayCasingModel(
+            casing: $wrapped<ResourceLocation>,
+            overlay: $wrapped<ResourceLocation>,
+            pipeOverlay: $wrapped<ResourceLocation> | null,
+            emissiveOverlay: $wrapped<ResourceLocation> | null
+        ): TSelf;
         editableUI(ui: EditableMachineUI): TSelf;
         modelPropertyBool(property: Property<Boolean>, defaultValue: boolean): TSelf;
         modelPropertyInt(property: Property<Boolean>, defaultValue: number): TSelf;

@@ -24,7 +24,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.gtBlock('clean_machine_casing', { min: 10 }),
                         P.ability(PA.fluidIn, { max: 1 }),
                         P.ability(PA.fluidOut, { max: 1 }),
-                        P.ability(PA.euIn, { max: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.maintenance, { exact: 1 }),
                     ]),
                     A: P.kjsBlock('stainless_steel_firebox_casing'),

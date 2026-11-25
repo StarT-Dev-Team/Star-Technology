@@ -10,7 +10,11 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
         ])
         .machine((holder) => new $StarTDraconicInfusionMachine(holder))
         .recipeType('draco_infusion')
-        .recipeModifiers([GTRecipeModifiers.OC_NON_PERFECT_SUBTICK, $StarTRecipeModifiers.THROUGHPUT_BOOSTING])
+        .recipeModifiers([
+            GTRecipeModifiers.OC_NON_PERFECT_SUBTICK,
+            $StarTRecipeModifiers.THROUGHPUT_BOOSTING,
+            GTRecipeModifiers.BATCH_MODE,
+        ])
         .appearanceBlock(() => Block.getBlock('kubejs:nyanium_machine_casing'))
         .pattern((definition) =>
             newFactoryBlockPattern([

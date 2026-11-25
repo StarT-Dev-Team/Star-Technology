@@ -25,7 +25,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                         P.gtBlock('solid_machine_casing'),
                         P.ability(PA.fluidIn, { max: 1, view: 1 }),
                         P.ability(PA.itemOut, { max: 3, view: 2 }),
-                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                     ]),
                     F: P.gtBlock('steel_firebox_casing'),
                     B: P.gtBlock('cupronickel_coil_block'),

@@ -29,7 +29,7 @@ GTCEuStartupEvents.registry('gtceu:machine', (event) => {
                     B: P.anyOf([
                         P.gtBlock('robust_machine_casing'),
                         P.ability(PA.itemIn, { max: 2, view: 1 }),
-                        P.ability(PA.euIn, { max: 1, view: 1 }),
+                        P.ability(PA.euIn, { exact: 1 }),
                         P.ability(PA.itemOut, { max: 2, view: 1 }),
                         P.ability(PA.fluidIn, { max: 2, view: 1 }),
                         P.ability(PA.fluidOut, { max: 2, view: 1 }),
