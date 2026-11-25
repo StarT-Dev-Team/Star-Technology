@@ -97,6 +97,10 @@ ServerEvents.tags('item', (event) => {
         event.remove('minecraft:beacon_payment_items', 'vintage:vanadium_ingot');
         event.remove('minecraft:trim_materials', 'vintage:vanadium_ingot');
     });
+
+    isModLoaded('ae2', () => {
+        event.removeAll('ae2:p2p_attunements/fe_p2p_tunnel');
+    });
 });
 
 ServerEvents.tags('item', (event) => {
